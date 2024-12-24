@@ -1,0 +1,77 @@
+﻿USE [EDS_CT]
+GO
+
+/****** Object:  StoredProcedure [dbo].[VNDC_spGetLstHvByKhoaHoc]    Script Date: 11/11/2024 3:37:54 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[VNDC_spGetLstHvByKhoaHoc] 
+	@ID_KhoaHoc int
+AS
+BEGIN
+	create table #tempHocVien (
+							ID nvarchar (255),
+							GiaoVienID nchar (10),
+							HoGiaoVien nvarchar(255),
+							TenGiaoVien nvarchar(255),
+							HoTen nvarchar (255),
+							SoCMT nvarchar (20),
+							NgaySinh datetime,
+							HangGPLX nvarchar (10),
+							HangDaoTao nvarchar (10),
+							Images varbinary (max),
+							GioiTinh nvarchar (10),
+							Ho nvarchar (50),
+							Ten nvarchar (50),
+							IDKhoaHoc int,
+							KhoaHoc nvarchar (50),
+							GhiThe bit,
+							TongThoiGianText nvarchar (255),
+							KetLuan bit)
+	
+	declare @Ma_HV nvarchar (255)
+	declare @TongThoiGian numeric
+	declare @TongThoiGianText nvarchar (255)
+	declare @NguongHang int
+	declare @Hang nchar (10)
+
+	Declare curHV cursor For
+						select ID from tblHocVien
+						where IDKhoaHoc = @ID_KhoaHoc
+						order by Ten, Ho
+
+	OPEN curHV  
+		Fetch Next From curHV Into @Ma_HV
+		while @@fetch_status = 0
+		begin
+			set @TongThoiGian = (select SUM(TongThoiGian) from v_ThongTinTap  where ID_HocVien = @Ma_HV and ID_KhoaHoc = @ID_KhoaHoc and ID_BaiTap > 0 and Datediff(s, Time_In, Time_Out) >= 60)
+
+			if @TongThoiGian is null
+				set @TongThoiGianText = '...'
+			else
+				set @TongThoiGianText = CONVERT(varchar,DATEADD(second,SUM(@TongThoiGian),0),108)
+
+			set @Hang = (select HangDaoTao from tblHocVien where ID = @Ma_HV)
+			set @NguongHang = (select Value from tblNguong where Name = @Hang)
+
+			Insert into #tempHocVien (ID, GiaoVienID, HoGiaoVien, TenGiaoVien, HoTen, SoCMT, NgaySinh, HangGPLX, HangDaoTao, Images, GioiTinh, Ho, Ten, IDKhoaHoc, KhoaHoc, TongThoiGianText, KetLuan)
+						    (SELECT hv.ID, hv.GiaoVienID, gv.HoTenDem, gv.TenGV, hv.HoTen, hv.SoCMT, hv.NgaySinh, hv.HangGPLX, hv.HangDaoTao, hv.Images, hv.GioiTinh, hv.Ho, hv.Ten, hv.IDKhoaHoc, kh.Ten, @TongThoiGianText, (CASE WHEN @TongThoiGian >= @NguongHang THEN 1 ELSE 0 END) 
+							FROM tblHocVien AS hv 
+							INNER JOIN tblKhoaHoc AS kh ON hv.IDKhoaHoc = kh.ID
+							FULL OUTER JOIN tblGiaoVien AS gv ON hv.GiaoVienID = gv.GiaoVienID
+							Where hv.ID = @Ma_HV and hv.IDKhoaHoc = @ID_KhoaHoc)
+				
+			Fetch Next From curHV Into @Ma_HV
+		end -- End of Fetch
+	Close curHV
+	Deallocate curHV
+
+	select * from #tempHocVien
+END
+
+GO
+
+

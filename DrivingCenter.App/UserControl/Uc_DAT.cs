@@ -1,0 +1,651 @@
+﻿using DrivingCenter.App.DAO;
+using DrivingCenter.App.DTO.DAT;
+using DrivingCenter.App.Helper;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace DrivingCenter.App.UserControl
+{
+    public partial class Uc_DAT : DevExpress.XtraEditors.XtraUserControl
+    {
+        public Uc_DAT()
+        {
+            InitializeComponent();
+        }
+
+        private void Uc_DAT_Load(object sender, EventArgs e)
+        {
+            dtp_PhByDay.DateTime = DateTime.Now;
+            dtp_TongHopHvByDay.DateTime = DateTime.Now;
+            dtp_TongHopGioDay.DateTime = DateTime.Now;
+            dtp_PhienHocLoiByDay.DateTime = DateTime.Now;
+
+            dtp_From.DateTime = DAT_DAO.Instance.GetMinNgayKG();
+            dtp_To.DateTime = DAT_DAO.Instance.GetMaxNgayBG();
+
+            //DateTime now = DateTime.Now;
+            //DateTime lastDayOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month));
+            //dtp_To.DateTime = lastDayOfMonth;
+
+            LoadKhDangDaoTao();
+        }
+
+        //-----------Panel Left------------
+        private bool isCollapsed;
+
+        //---------------------------------
+        private DataTable dt;
+
+        private List<TongHopHVByDay> lstSum;
+        private List<TongHopGV> lstSumGV;
+        private List<KhoaHocDangDT> lstKhoaHoc;
+        private List<PhienHoc> lstPH;
+        private string HangDaoTao;
+        private int khoahocid;
+        private string TenKhoaHoc;
+
+        #region Phiên Học
+
+        private void LoadPhienHoc()
+        {
+            string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
+            label11.Text = "DANH SÁCH PHIÊN HỌC NGÀY " + day;
+            lstPH = DAT_DAO.Instance.GetLstPhienByDateTrue(day);
+            CheckPhInList(lstPH);
+        }
+
+        private void btn_ViewPhByDay_Click(object sender, EventArgs e)
+        {
+            LoadPhienHoc();
+        }
+
+        private void dtp_PhByDay_EditValueChanged(object sender, EventArgs e)
+        {
+            LoadPhienHoc();
+        }
+
+        private void btn_Reload_Click(object sender, EventArgs e)
+        {
+            string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            DAT_DAO.Instance.ReLoad(datetime);
+            LoadPhienHoc();
+        }
+
+        private void CheckPhInList(List<PhienHoc> lstPH)
+        {
+            int sendTC = 0;
+
+            foreach (PhienHoc item in lstPH)
+            {
+                //-----Kiểm tra tỉ lệ nhận diện-------
+                item.TyLe = Math.Round((double)(item.SoLanNhanDienThanhCong) / (item.SoLanNhanDien) * 100, 1);
+                if (item.TyLe < 90)
+                {
+                    item.Error = "Nhận Diện! ";
+                }
+
+                //-----Kiểm tra quãng đường phiên <5--
+                if (item.QuangDuongPhien < 5 && item.LogOut == true)
+                {
+                    item.Error = "Quãng đường <5! ";
+                }
+
+                //-----Kiểm tra vận tốc---------------
+                double vantoc = item.QuangDuongPhien / ((item.dbTime) / 3600);
+                if (vantoc < 20)
+                {
+                    item.Error += "Vận Tốc! ";
+                }
+
+                //-----Kiểm tra đăng nhập sớm---------
+                int HourIn = (item.Time_LogIn).Hour;
+                if (HourIn < 7)
+                {
+                    item.Error += "ĐN Sớm! ";
+                }
+
+                //-----Kiểm tra chạy quá giờ----------
+                int HourOut = (item.Time_LogOut).Hour;
+                int MinuteOut = (item.Time_LogOut).Minute;
+                if (HourOut == 22 && MinuteOut > 30 || HourOut > 22)
+                {
+                    item.Error += "Quá Giờ! ";
+                }
+
+                //------Kiểm tra dạy đúng ngày giờ----
+                int khoahoc = int.Parse(item.TenKH.Substring(item.TenKH.IndexOf("K") + 1));
+                DayOfWeek wk = item.Time_LogIn.DayOfWeek;
+                if (khoahoc % 2 == 0)
+                {
+                    if (wk == DayOfWeek.Tuesday || wk == DayOfWeek.Wednesday || wk == DayOfWeek.Thursday || (wk == DayOfWeek.Monday && (item.Time_LogIn).Hour < 17 || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour >= 22 && (item.Time_LogOut).Minute > 30) || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour > 23)
+                    {
+                        item.Error += "Sai ngày giờ! ";
+                    }
+                }
+                else
+                {
+                    if (wk == DayOfWeek.Friday || wk == DayOfWeek.Saturday || wk == DayOfWeek.Sunday || (wk == DayOfWeek.Monday && (item.Time_LogIn).Hour < 7) || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour >= 12 && (item.Time_LogOut).Minute > 30 || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour >= 13)
+                    {
+                        item.Error += "Sai ngày giờ! ";
+                    }
+                }
+
+                //------Kiểm tra nghỉ thiếu---------- -
+                foreach (PhienHoc item1 in lstPH)
+                {
+                    TimeSpan tp = (item1.Time_LogIn - item.Time_LogOut);
+                    if (item1.MaPhien != item.MaPhien && tp.TotalSeconds > 0)
+                    {
+                        if (tp.TotalSeconds < 900 && item1.NguoiLxID == item.NguoiLxID && item1.TenKH == item.TenKH)
+                        {
+                            item1.Error = item1.Error + "Nghỉ Thiếu! ";
+                        }
+                    }
+                }
+
+                //------Kiểm tra status gửi TC--------
+                if (item.LogOut == true & item.SendTongCuc == false)
+                {
+                    item.Error += "Chưa gửi TC! ";
+                    sendTC++;
+                }
+            }
+
+            int stt = 0;
+            foreach (PhienHoc item in lstPH)
+            {
+                item.STT = stt + 1;
+                stt++;
+            }
+
+            lb_CountUnSendTC.Text = sendTC.ToString();
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            dt = convert.ToDataTable(lstPH);
+
+            gridControl_PhienHoc.DataSource = lstPH;
+        }
+
+        private void btn_ExportPH_Click(object sender, EventArgs e)
+        {
+            ExportExcel export = new ExportExcel();
+            export.ExportToExcel(dt, "Kết Quả");
+        }
+
+        #region Context Menustrip Phiên học
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadPhienHoc();
+        }
+
+        private void DetailSession_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;
+            var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
+
+            frmDetailSession f = new frmDetailSession(diemdanhnguoilxId.ToString());
+            f.ShowDialog();
+        }
+
+        private void CheckImgNull_Click(object sender, EventArgs e)
+        {
+            List<PhienHoc> lstNull = new List<PhienHoc>();
+
+            gridControl_PhienHoc.DataSource = lstNull;
+
+            foreach (PhienHoc item in lstPH.ToList())
+            {
+                int check = DAT_DAO.Instance.CheckImgNullNew(item.MaPhien.ToString());
+                if (check == 1)
+                {
+                    lstPH.Remove(item);
+                }
+            }
+
+            gridControl_PhienHoc.DataSource = lstPH;
+        }
+
+        private void mn_SessionLock_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;
+
+            var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
+
+            fGhiChu f = new fGhiChu(diemdanhnguoilxId.ToString());
+            f.Show();
+        }
+
+        private void deleteSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;
+
+            var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
+
+            string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
+            if (MessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            {
+                DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
+                List<PhienHoc> lstPH = DAT_DAO.Instance.GetLstPhienByDateTrue(day);
+                CheckPhInList(lstPH);
+            }
+        }
+
+        private void EndSession_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;
+
+            var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
+            var NguoiLxID = Convert.ToInt64(gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "NguoiLxID"));
+
+            var checkLogOut = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "LogOut");
+
+            if ((bool)checkLogOut == false)
+            {
+                var result = MessageBox.Show(string.Format("Phiên học chưa kết thúc. Bạn muốn kết thúc phiên học?"), "Thông báo", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    DAT_DAO.Instance.KetThucPhien(Convert.ToInt64(NguoiLxID), diemdanhnguoilxId.ToString());
+                }
+            }
+            LoadPhienHoc();
+        }
+
+        #endregion Context Menustrip Phiên học
+
+        #endregion Phiên Học
+
+        #region Kết Quả
+
+        private void btn_Extend_Click(object sender, EventArgs e)
+        {
+            if (isCollapsed)
+            {
+                PanelLeft.Width = PanelLeft.Width + 210;
+                isCollapsed = false;
+                this.Refresh();
+            }
+            else
+            {
+                PanelLeft.Width = PanelLeft.Width - 210;
+                isCollapsed = true;
+                this.Refresh();
+            }
+        }
+
+        private void LoadKhDangDaoTao()
+        {
+            lstKhoaHoc = DAT_DAO.Instance.GetAllKhoaHocDDT();
+            gridControl_KhoaHoc.DataSource = lstKhoaHoc;
+        }
+
+        private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
+        {
+            LoadKhDangDaoTao();
+        }
+
+        public List<TongHopHVByKhoa> TongHopKQByKhoa(int khoahocid)
+        {
+            List<TongHopHVByKhoa> lst = DAT_DAO.Instance.TongHopHvByKhoa(khoahocid);
+
+            List<TongHopHVByKhoa> lstB1 = DAT_DAO.Instance.TongHopPhB11(khoahocid);
+
+            List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(khoahocid);
+
+            if (HangDaoTao == "B2")
+            {
+                foreach (TongHopHVByKhoa itemB1 in lstB1)
+                {
+                    foreach (TongHopHVByKhoa item in lst)
+                    {
+                        if (itemB1.MaDK == item.MaDK)
+                        {
+                            item.TongQuangDuong_B1 = itemB1.TongQuangDuong_B1;
+                            item.TongThoiGian_B1 = itemB1.TongThoiGian_B1;
+                        }
+                    }
+                }
+            }
+            foreach (TongHopHVByKhoa item in lst)
+            {
+                foreach (TongHopHVByKhoa itemBD in lstBD)
+                {
+                    if (item.MaDK == itemBD.MaDK)
+                    {
+                        item.TongQuangDuong_PhienDem = itemBD.TongQuangDuong_PhienDem;
+                        item.TongThoiGian_PhienDem = itemBD.TongThoiGian_PhienDem;
+                    }
+                }
+            }
+            return lst;
+        }
+
+        public void ViewTongHopKQ(List<TongHopHVByKhoa> lstKQ, string HangDaoTao)
+        {
+            List<ViewTongHopHvByKhoa> lstView = new List<ViewTongHopHvByKhoa>();
+            int HvDuDK = 0;
+            int stt = 0;
+            foreach (TongHopHVByKhoa item in lstKQ)
+            {
+                ViewTongHopHvByKhoa view = new ViewTongHopHvByKhoa();
+                view.STT = stt + 1;
+                stt++;
+                view.View_MaDK = item.MaDK;
+                view.View_HoTenGV = item.HoTenGV;
+                view.View_HoVaTen = item.HoVaTenHV;
+                view.View_HangDaoTao = item.HangDaoTao;
+                view.View_TongQuangDuong = item.TongQuangDuongTichLuy;
+                TimeSpan timePhien = TimeSpan.FromSeconds(item.TongThoiGianTichLuy);
+                view.TongThoiGian = Math.Round(item.TongThoiGianTichLuy / 3600, 4);
+                if (timePhien.Days >= 1)
+                {
+                    int hour = timePhien.Days * 24 + timePhien.Hours;
+                    view.View_TongThoiGian = string.Format("{0:D2} giờ {1:D2} phút", hour, timePhien.Minutes);
+                }
+                else
+                {
+                    view.View_TongThoiGian = string.Format("{0:D2} giờ {1:D2} phút", timePhien.Hours, timePhien.Minutes);
+                }
+                view.View_QuangDuongPhienGuiTC = item.QuangDuongPhienGuiTC;
+                TimeSpan timeSendTC = TimeSpan.FromSeconds(item.ThoiGianPhienGuiTC);
+                if (timeSendTC.Days >= 1)
+                {
+                    int hour = timeSendTC.Days * 24 + timeSendTC.Hours;
+                    view.View_ThoiGianPhienGuiTC = string.Format("{0:D2} giờ {1:D2} phút", hour, timeSendTC.Minutes);
+                }
+                else
+                {
+                    view.View_ThoiGianPhienGuiTC = string.Format("{0:D2} giờ {1:D2} phút", timeSendTC.Hours, timeSendTC.Minutes);
+                }
+
+                view.View_TongQuangDuong_B11 = item.TongQuangDuong_B1;
+                TimeSpan timeB1 = TimeSpan.FromSeconds(item.TongThoiGian_B1);
+                view.View_TongThoiGian_B11 = string.Format("{0:D2} giờ {1:D2} phút", timeB1.Hours, timeB1.Minutes);
+                view.TongThoiGianSTD = Math.Round(item.TongThoiGian_B1 / 3600, 4);
+                view.View_TongQuangDuong_PhienDem = item.TongQuangDuong_PhienDem;
+                TimeSpan timeBD = TimeSpan.FromSeconds(item.TongThoiGian_PhienDem);
+                view.View_TongThoiGian_PhienDem = string.Format("{0:D2} giờ {1:D2} phút", timeBD.Hours, timeBD.Minutes);
+                view.TongThoiGianBD = Math.Round(item.TongThoiGian_PhienDem / 3600, 4);
+                view.View_SoNgayHoc = item.SoNgayHocKQ;
+
+                //------Check điều kiện DAT New------
+                if (HangDaoTao == "B11")
+                {
+                    if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 6)
+                    {
+                        view.View_Status += "Đủ điều kiện!";
+                        HvDuDK++;
+                    }
+                }
+                else
+                {
+                    if (item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 && item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8)
+                    {
+                        view.View_Status += "Đủ điều kiện!";
+                        HvDuDK++;
+                    }
+                }
+
+                lstView.Add(view);
+            }
+
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            dt = convert.ToDataTable(lstView);
+
+            grid_Result.DataSource = lstView;
+
+            DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, khoahocid);
+        }
+
+        private void gridView_KhoaHocDDT_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            KhoaHocDangDT rowData = gridView_KhoaHocDDT.GetFocusedRow() as KhoaHocDangDT;
+
+            khoahocid = Convert.ToInt32(rowData.KhoaHocID);
+            TenKhoaHoc = rowData.TenKH;
+            HangDaoTao = rowData.HangDaoTao.ToString();
+            string KhoaHoc = rowData.TenKH.ToString();
+            lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + KhoaHoc;
+            ViewTongHopKQ(TongHopKQByKhoa(khoahocid), HangDaoTao);
+        }
+
+        private void mn_ContextThongKeGiaoVien_Click(object sender, EventArgs e)
+        {
+            // Lấy giá trị của cột "ID" từ dòng hiện tại
+            int focusedRowHandle = gridView_KhoaHocDDT.FocusedRowHandle;
+            string khoahoc = gridView_KhoaHocDDT.GetRowCellValue(focusedRowHandle, "TenKH").ToString();
+
+            lstSumGV = DAT_DAO.Instance.TongHopGVsByKh(khoahoc);
+
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            DataTable dt = convert.ToDataTable(lstSumGV);
+
+            ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
+            exportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
+        }
+
+        private void mn_XoaPhienHocLoginIsNull_Click(object sender, EventArgs e)
+        {
+            List<Guid> list = DAT_DAO.Instance.GetlstPhienHocLoginIsNull(khoahocid);
+            int sophienhocLoginIsNull = list.Count();
+            if (sophienhocLoginIsNull == 0)
+            {
+                MessageBox.Show(string.Format("Không có phiên học Login Is Null !"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show(string.Format("Có {0} phiên học Login Is Null ! \n Bạn có chắc muốn xóa {0} phiên học Login Is Null? ", sophienhocLoginIsNull), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    DAT_DAO.Instance.DeletePhienHocLoginIsNull(list);
+                }
+            }
+        }
+
+        private void btn_ExportResultToExcel_Click(object sender, EventArgs e)
+        {
+            ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
+            exportExcelWithName.ExportToExcel(dt, TenKhoaHoc, TenKhoaHoc);
+        }
+
+        #endregion Kết Quả
+
+        #region Tổng hợp giờ Học Viên trong ngày
+
+        private void LoadSumTimeHV(string day)
+        {
+            lstSum = DAT_DAO.Instance.TongHopGioHVByDay(day);
+
+            int stt = 0;
+            foreach (TongHopHVByDay item in lstSum)
+            {
+                int time = Convert.ToInt32((item.TongThoiGianLD_Phien.Trim()).Remove(2, 6));
+                if (time >= 4)
+                {
+                    item.GhiChu = "Quá giờ!";
+                }
+                item.STT = stt + 1;
+                stt++;
+            }
+
+            gridControl_TongHopHvByDay.DataSource = lstSum;
+        }
+
+        private void btn_ViewTongHopHv_Click(object sender, EventArgs e)
+        {
+            string day = dtp_TongHopHvByDay.DateTime.ToString("dd/MM/yyyy");
+            LoadSumTimeHV(day);
+            lb_Tonghophocvienbyday.Text = "TỔNG HỢP GIỜ HỌC CỦA HỌC VIÊN NGÀY " + day;
+        }
+
+        private void dtp_TongHopHvByDay_EditValueChanged(object sender, EventArgs e)
+        {
+            string day = dtp_TongHopHvByDay.DateTime.ToString("dd/MM/yyyy");
+            LoadSumTimeHV(day);
+            lb_Tonghophocvienbyday.Text = "TỔNG HỢP GIỜ HỌC CỦA HỌC VIÊN NGÀY " + day;
+        }
+
+        #endregion Tổng hợp giờ Học Viên trong ngày
+
+        #region Tổng hợp giờ dạy của giáo viên trong ngày
+
+        private void dtp_TongHopGioDay_EditValueChanged(object sender, EventArgs e)
+        {
+            string day = dtp_TongHopGioDay.DateTime.ToString("dd/MM/yyyy");
+            LoadTongHopGV(day);
+            lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
+        }
+
+        private void btn_TongHopGioGv_Click(object sender, EventArgs e)
+        {
+            string day = dtp_TongHopGioDay.DateTime.ToString("dd/MM/yyyy");
+            LoadTongHopGV(day);
+            lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
+        }
+
+        private void LoadTongHopGV(string day)
+        {
+            lstSumGV = DAT_DAO.Instance.TongHopGVsByDay(day);
+            List<string> lstMaGVs = DAT_DAO.Instance.GetLstGvTrue(day);
+
+            int stt = 0;
+            foreach (TongHopGV item in lstSumGV)
+            {
+                if (lstMaGVs.Contains(item.MaGv) == false)
+                {
+                    item.SGhiChu += "Không ĐN/ĐX! ";
+                }
+
+                int hour = Convert.ToInt32(item.SThoiGian.Trim().Remove(2, 6));
+                int minute = Convert.ToInt32((item.SThoiGian.Trim().Substring(3)).Remove(2, 3));
+                if (hour == 10 && minute > 0 || hour > 10)
+                {
+                    item.SGhiChu = "Quá Giờ! ";
+                }
+
+                if (item.SoHocVienByDay == 1)
+                {
+                    item.SGhiChu += "Dạy 1 Hv/Ngày! ";
+                }
+                item.STT = stt + 1;
+                stt++;
+            }
+
+            gridControl_TongHopGioDay.DataSource = lstSumGV;
+        }
+
+        #endregion Tổng hợp giờ dạy của giáo viên trong ngày
+
+        #region Phiên học lỗi trong ngày
+
+        private void btn_ViewPhLoi_Click(object sender, EventArgs e)
+        {
+            string day = dtp_PhienHocLoiByDay.DateTime.ToString("dd/MM/yyyy");
+            lbl_PhienHocLoi.Text = "DANH SÁCH PHIÊN HỌC LỖI " + day;
+            LoadAllPhLoi(day);
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHocLoi.FocusedRowHandle;
+            if (focusedRowHandle < 0)
+            {
+                MessageBox.Show("Không có phiên học cần xóa!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var diemdanhnguoilxId = gridView_PhienHocLoi.GetRowCellValue(focusedRowHandle, "MaPhien");
+                string day = dtp_PhienHocLoiByDay.DateTime.ToString("dd/MM/yyyy");
+                if (MessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+                    DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
+                    LoadAllPhLoi(day);
+                }
+            }
+        }
+
+        private void LoadAllPhLoi(string day)
+        {
+            List<PhienHoc> lstPhLoi = DAT_DAO.Instance.GetLstPhienLoiByDate(day);
+            CheckPhInList(lstPhLoi);
+            gridControl_PhienHocLoi.DataSource = lstPhLoi;
+        }
+
+        #endregion Phiên học lỗi trong ngày
+
+        #region Phiên học sai
+
+        private void btn_ViewPhienHocSai_Click(object sender, EventArgs e)
+        {
+            string from = dtp_From.DateTime.ToString("yyyyMMdd");
+            string to = dtp_To.DateTime.ToString("yyyyMMdd");
+
+            LoadLstPhienHocBo(from, to);
+        }
+
+        private void LoadLstPhienHocBo(string from, string to)
+        {
+            List<PhienHoc> lst = DAT_DAO.Instance.TongHopPhienHocLoi(from, to);
+
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            dt = convert.ToDataTable(lst);
+
+            gridControl_PhienHocBo.DataSource = lst;
+        }
+
+        private void mn_refresh_Click(object sender, EventArgs e)
+        {
+            string from = dtp_From.DateTime.ToString("yyyyMMdd");
+            string to = dtp_To.DateTime.ToString("yyyyMMdd");
+
+            LoadLstPhienHocBo(from, to);
+        }
+
+        private void mn_UnlockSession_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHocBo.FocusedRowHandle;
+
+            var diemdanhnguoilxId = gridView_PhienHocBo.GetRowCellValue(focusedRowHandle, "MaPhien");
+
+            var result = MessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                DAT_DAO.Instance.UnlockSession(diemdanhnguoilxId.ToString());
+            }
+
+            string from = dtp_From.DateTime.ToString("yyyyMMdd");
+            string to = dtp_To.DateTime.ToString("yyyyMMdd");
+
+            LoadLstPhienHocBo(from, to);
+        }
+
+        private void mn_DeletePhienHoc_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHocBo.FocusedRowHandle;
+
+            var diemdanhnguoilxId = gridView_PhienHocBo.GetRowCellValue(focusedRowHandle, "MaPhien");
+
+            var result = MessageBox.Show(string.Format("Xóa phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
+            }
+
+            string from = dtp_From.DateTime.ToString("yyyyMMdd");
+            string to = dtp_To.DateTime.ToString("yyyyMMdd");
+
+            LoadLstPhienHocBo(from, to);
+        }
+        private void btn_ExportPhSai_Click(object sender, EventArgs e)
+        {
+            ExportExcel export = new ExportExcel();
+            export.ExportToExcel(dt, "Danh sách phiên học sai");
+        }
+
+
+        #endregion Phiên học sai
+
+       
+    }
+}
