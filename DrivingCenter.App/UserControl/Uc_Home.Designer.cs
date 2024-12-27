@@ -203,11 +203,11 @@ namespace DrivingCenter.App.UserControl
             // gridControl_XeOnline
             // 
             this.gridControl_XeOnline.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_XeOnline.Location = new System.Drawing.Point(10, 317);
+            this.gridControl_XeOnline.Location = new System.Drawing.Point(7, 317);
             this.gridControl_XeOnline.MainView = this.gridView_XeOnline;
-            this.gridControl_XeOnline.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.gridControl_XeOnline.Margin = new System.Windows.Forms.Padding(7, 0, 10, 0);
             this.gridControl_XeOnline.Name = "gridControl_XeOnline";
-            this.gridControl_XeOnline.Size = new System.Drawing.Size(1109, 237);
+            this.gridControl_XeOnline.Size = new System.Drawing.Size(1102, 237);
             this.gridControl_XeOnline.TabIndex = 2;
             this.gridControl_XeOnline.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_XeOnline});
