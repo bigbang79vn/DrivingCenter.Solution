@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1498, 768);
             this.Name = "fSplitSession";
-            this.Text = "fSplitSession";
+            this.Text = "Tách phiên đào tạo";
             this.ResumeLayout(false);
 
         }
