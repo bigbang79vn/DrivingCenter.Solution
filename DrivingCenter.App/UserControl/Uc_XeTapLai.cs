@@ -135,7 +135,7 @@ namespace DrivingCenter.App.UserControl
             var Imei = gridView_XeTapLai.GetFocusedRowCellValue("Imei");
             if (vehicleId != null)
             {
-                //DAT_DAO.Instance.DeleteXeTapLai((int)vehicleId, (string)Imei);
+                DAT_DAO.Instance.DeleteXeTapLai((int)vehicleId, (string)Imei);
             }
         }
     }

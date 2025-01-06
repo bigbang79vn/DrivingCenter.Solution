@@ -260,6 +260,13 @@ namespace DrivingCenter.App.DAO
             return result;
         }
 
+        public int DeleteXeTapLai(int vehicleId, string imei)
+        {
+            string query = string.Format("DELETE FROM [dbo].[Vehicles] WHERE VehicleID = {0} AND Imei = '{1}' ", vehicleId, imei);
+            int result = DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            return result;
+        }
+
         #endregion Tổng hợp xe tập lái
 
         #region DAT
