@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
+using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,9 +100,20 @@ namespace DrivingCenter.App.UserControl
             }
             else if (button.Caption == "Export")
             {
+                List<XeTapLai> lst = DAT_DAO.Instance.GetAllVehicles();
+                ConvertListToDataTable convert = new ConvertListToDataTable();
+                DataTable dt = convert.ToDataTable(lst);
+                ExportExcel export = new ExportExcel();
+                export.ExportToExcel(dt, "Kết Quả");
             }
             else if (button.Caption == "Delete")
             {
+                var resul = MessageBox.Show("Bạn có chắc chắn xóa thiết bị này không?", "Alert", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK;
+                if (resul)
+                {
+                    Delete();
+                    GetLsVehicle();
+                }
             }
         }
 
@@ -114,6 +126,16 @@ namespace DrivingCenter.App.UserControl
             if (xeTap != null && vehicleId != null)
             {
                 DAT_DAO.Instance.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap);
+            }
+        }
+
+        private void Delete()
+        {
+            var vehicleId = gridView_XeTapLai.GetFocusedRowCellValue("VehicleID");
+            var Imei = gridView_XeTapLai.GetFocusedRowCellValue("Imei");
+            if (vehicleId != null)
+            {
+                //DAT_DAO.Instance.DeleteXeTapLai((int)vehicleId, (string)Imei);
             }
         }
     }
