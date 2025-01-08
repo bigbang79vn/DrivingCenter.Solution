@@ -367,5 +367,13 @@ namespace DrivingCenter.App.DAO
         }
 
         #endregion
+
+        #region Lịch Học STD + Cabin
+        //public List<Schedule> GetLstSchedule()
+        //{
+        //    string query = string.Format("S")
+        //}
+
+        #endregion
     }
 }

@@ -412,8 +412,11 @@
     <Compile Include="DTO\Cabin\GvCabin.cs" />
     <Compile Include="DTO\Cabin\HocVien.cs" />
     <Compile Include="DTO\Cabin\KhoaHoc.cs" />
+    <Compile Include="DTO\Common\Schedule.cs" />
     <Compile Include="DTO\Cabin\ThongKe.cs" />
     <Compile Include="DTO\Cabin\Result.cs" />
+    <Compile Include="DTO\Common\Assignment.cs" />
+    <Compile Include="DTO\Common\Category.cs" />
     <Compile Include="DTO\DAT\ChiTietPhienHoc.cs" />
     <Compile Include="DTO\DAT\KhoaHocDDT.cs" />
     <Compile Include="DTO\DAT\PhienHoc.cs" />
@@ -614,6 +617,12 @@
     <Compile Include="UserControl\Uc_Home.Designer.cs">
       <DependentUpon>Uc_Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\Uc_LichHoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Uc_LichHoc.Designer.cs">
+      <DependentUpon>Uc_LichHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_Print.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -738,6 +747,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_Home.resx">
       <DependentUpon>Uc_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Uc_LichHoc.resx">
+      <DependentUpon>Uc_LichHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_Print.resx">
       <DependentUpon>Uc_Print.cs</DependentUpon>

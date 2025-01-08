@@ -52,6 +52,7 @@ namespace DrivingCenter.App
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
+            this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -90,6 +91,7 @@ namespace DrivingCenter.App
             this.acc_CabinEMC,
             this.acc_GPLX,
             this.acc_QLLT,
+            this.acc_LichHoc,
             this.acc_DAT,
             this.acc_TongHopXe,
             this.acc_XeTapLai,
@@ -270,10 +272,18 @@ namespace DrivingCenter.App
             this.barButtonItem2});
             this.fluentFormDefaultManager1.MaxItemId = 10;
             // 
+            // acc_LichHoc
+            // 
+            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
+            this.acc_LichHoc.Name = "acc_LichHoc";
+            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_LichHoc.Text = "Lịch Học";
+            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
+            // 
             // frmMain
             // 
             this.Appearance.Options.UseFont = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1586, 764);
             this.ControlContainer = this.MainContainer;
@@ -318,6 +328,7 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XeTapLai;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acc_LichHoc;
     }
 }
 

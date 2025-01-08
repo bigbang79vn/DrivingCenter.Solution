@@ -1,9 +1,12 @@
-﻿using DocumentFormat.OpenXml.Drawing;
+﻿using DevExpress.Data.Filtering.Helpers;
+using DocumentFormat.OpenXml.Drawing;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
+using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
 using GMap.NET;
 using NPOI.SS.Formula.Functions;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -642,11 +645,11 @@ namespace DrivingCenter.App.DAO
 
         public List<PointLatLng> GetlstPoint(string diemdanhnguoilxId)
         {
-            List<PointLatLng > lstPoint = new List<PointLatLng>();
+            List<PointLatLng> lstPoint = new List<PointLatLng>();
             string query = string.Format("SELECT Lat, Lng  FROM VehicleHistory WHERE DiemDanhNguoiLxId = '{0}' ORDER BY TongQuangDuongPhien asc", diemdanhnguoilxId);
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
-            
-            lstPoint = dt.AsEnumerable().Select(item => new PointLatLng { 
+
+            lstPoint = dt.AsEnumerable().Select(item => new PointLatLng {
                 Lat = (double)item["Lat"],
                 Lng = (double)item["Lng"]
             }).ToList();
@@ -654,7 +657,7 @@ namespace DrivingCenter.App.DAO
             return lstPoint;
         }
 
-        public DataTable GetDetailSession (string diemdanhnguoilxId)
+        public DataTable GetDetailSession(string diemdanhnguoilxId)
         {
             string query = string.Format("SELECT TenGV, dd.NguoiLxID, hv.HoVaTen, hv.TenKH, dd.DiemDanhNguoiLxID, dd.BienSo, dd.HangXe, dd.ThoiDiem, dd.ThoiDiem_Logout, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, Lat_Logout, Lng_Logout  " +
                 "FROM DiemDanhNguoiLx AS dd, NguoiLX AS hv " +
@@ -772,5 +775,53 @@ namespace DrivingCenter.App.DAO
             DateTime result = (DateTime)DataProviderDAT.Instance.ExcuteScalar(query);
             return result;
         }
+
+        #region Lịch học Cabin + STD
+
+        public DataTable GetCategory()
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT MonthID, ParentMonthID, Name FROM Categories";
+            dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            return dt;
+        }
+
+        public List<Schedule> GetAllSchedule(int monthId)
+        {
+            string query = $"SELECT Id, KhoaHocId, MaKH, TenKH, lh.GiaoVienID, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, ThietBiID, TimeInCB, TimeOutCB, Status, HangDT " +
+                $"FROM LichHoc lh, GiaoVien gv " +
+                $"WHERE gv.GiaoVienID = lh.GiaoVienID and MonthId = {monthId}";
+            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+
+            List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule { 
+                Id = (Guid)item["Id"],
+                KhoaHocId = (int)item["KhoaHocId"],
+                MaKH = item["MaKH"].ToString(),
+                TenKH = item["TenKH"].ToString(),
+                GiaoVienId = (int)item["GiaoVienID"],
+                GiaoVien = item["HoTenDem"].ToString() + " " + item["TenGV"].ToString(),
+                MaXeTap = item["MaXeTap"] == DBNull.Value ? "" : item["MaXeTap"].ToString(),
+                MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value? "" : item["MaXeTapB11"].ToString(),
+                //TimeInB11 = (DateTime)item["TimeInB11"],
+                //TimeOutB11 = (DateTime)item["TimeOutB11"],
+                //ThietBiID = (int)item["ThietBiID"],
+                //TimeInCB = (DateTime)item["TimeInCB"],
+                //TimeOutCB = (DateTime)item["TimeOutCB"],
+                //Status =  (bool)item["Status"],
+                HangDT = item["HangDT"].ToString()
+            }).ToList();
+
+            return list;
+        }
+
+        #endregion
+
+        #region Phân Công đào tạo
+        public void Assignment(Assignment ass)
+        {
+            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'%{2}%'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
+            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+        }
+        #endregion
     }
 }

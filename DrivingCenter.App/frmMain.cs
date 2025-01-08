@@ -113,6 +113,21 @@ namespace DrivingCenter.App
         {
         }
 
+        private void acc_LichHoc_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                Uc_LichHoc uc = new Uc_LichHoc();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Lịch học STD và Cabin điện tử";
+            }
+        }
         private void acc_TongHopXe_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -186,5 +201,7 @@ namespace DrivingCenter.App
             fAccount f = new fAccount();
             f.Show();
         }
+
+        
     }
 }
