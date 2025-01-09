@@ -41,6 +41,25 @@
             this.tblLayout_LichHoc = new System.Windows.Forms.TableLayoutPanel();
             this.gridCtrl_LichHoc = new DevExpress.XtraGrid.GridControl();
             this.gridView_LichHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.KhoaHocId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaKH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenKH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaoVienID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaoVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaXeTap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoGrid_XeTapLai = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.MaXeTapB11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TimeInB11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.TimeOutB11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ThietBiID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoGrid_Cabin = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.TimeInCB = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TimeOutCB = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.treeList_Category = new DevExpress.XtraTreeList.TreeList();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ImportData = new System.Windows.Forms.TableLayoutPanel();
@@ -61,6 +80,12 @@
             this.tblLayout_LichHoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LichHoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoDate.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoGrid_Cabin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).BeginInit();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_ImportData.SuspendLayout();
@@ -175,6 +200,32 @@
             this.tblLayout_LichHoc.RowCount = 2;
             this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLayout_LichHoc.Size = new System.Drawing.Size(1462, 679);
             this.tblLayout_LichHoc.TabIndex = 1;
             // 
@@ -184,6 +235,10 @@
             this.gridCtrl_LichHoc.Location = new System.Drawing.Point(283, 53);
             this.gridCtrl_LichHoc.MainView = this.gridView_LichHoc;
             this.gridCtrl_LichHoc.Name = "gridCtrl_LichHoc";
+            this.gridCtrl_LichHoc.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoGrid_XeTapLai,
+            this.repoDate,
+            this.repoGrid_Cabin});
             this.gridCtrl_LichHoc.Size = new System.Drawing.Size(1176, 623);
             this.gridCtrl_LichHoc.TabIndex = 0;
             this.gridCtrl_LichHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -191,8 +246,245 @@
             // 
             // gridView_LichHoc
             // 
+            this.gridView_LichHoc.Appearance.GroupRow.BackColor = System.Drawing.Color.SteelBlue;
+            this.gridView_LichHoc.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_LichHoc.Appearance.GroupRow.ForeColor = System.Drawing.Color.White;
+            this.gridView_LichHoc.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gridView_LichHoc.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView_LichHoc.Appearance.GroupRow.Options.UseForeColor = true;
+            this.gridView_LichHoc.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_LichHoc.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView_LichHoc.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView_LichHoc.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView_LichHoc.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_LichHoc.Appearance.Row.Options.UseFont = true;
+            this.gridView_LichHoc.ColumnPanelRowHeight = 27;
+            this.gridView_LichHoc.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Id,
+            this.KhoaHocId,
+            this.MaKH,
+            this.TenKH,
+            this.GiaoVienID,
+            this.GiaoVien,
+            this.MaXeTap,
+            this.MaXeTapB11,
+            this.TimeInB11,
+            this.TimeOutB11,
+            this.ThietBiID,
+            this.TimeInCB,
+            this.TimeOutCB,
+            this.HangDT});
             this.gridView_LichHoc.GridControl = this.gridCtrl_LichHoc;
+            this.gridView_LichHoc.GroupCount = 2;
             this.gridView_LichHoc.Name = "gridView_LichHoc";
+            this.gridView_LichHoc.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView_LichHoc.OptionsView.ShowGroupPanelColumnsAsSingleRow = true;
+            this.gridView_LichHoc.OptionsView.ShowIndicator = false;
+            this.gridView_LichHoc.RowHeight = 27;
+            this.gridView_LichHoc.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.HangDT, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TenKH, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView_LichHoc.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView_LichHoc_CellValueChanged);
+            // 
+            // Id
+            // 
+            this.Id.Caption = "Id";
+            this.Id.FieldName = "Id";
+            this.Id.Name = "Id";
+            // 
+            // KhoaHocId
+            // 
+            this.KhoaHocId.Caption = "KhoaHocId";
+            this.KhoaHocId.FieldName = "KhoaHocId";
+            this.KhoaHocId.Name = "KhoaHocId";
+            // 
+            // MaKH
+            // 
+            this.MaKH.AppearanceCell.Options.UseTextOptions = true;
+            this.MaKH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.MaKH.Caption = "Mã Khóa Học";
+            this.MaKH.FieldName = "MaKH";
+            this.MaKH.Name = "MaKH";
+            this.MaKH.Visible = true;
+            this.MaKH.VisibleIndex = 0;
+            this.MaKH.Width = 130;
+            // 
+            // TenKH
+            // 
+            this.TenKH.Caption = "Tên Khóa Học";
+            this.TenKH.FieldName = "TenKH";
+            this.TenKH.Name = "TenKH";
+            this.TenKH.Visible = true;
+            this.TenKH.VisibleIndex = 2;
+            // 
+            // GiaoVienID
+            // 
+            this.GiaoVienID.Caption = "GiaoVienID";
+            this.GiaoVienID.FieldName = "GiaoVienID";
+            this.GiaoVienID.Name = "GiaoVienID";
+            // 
+            // GiaoVien
+            // 
+            this.GiaoVien.Caption = "Giáo Viên";
+            this.GiaoVien.FieldName = "GiaoVien";
+            this.GiaoVien.Name = "GiaoVien";
+            this.GiaoVien.Visible = true;
+            this.GiaoVien.VisibleIndex = 1;
+            this.GiaoVien.Width = 160;
+            // 
+            // MaXeTap
+            // 
+            this.MaXeTap.AppearanceCell.Options.UseTextOptions = true;
+            this.MaXeTap.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.MaXeTap.Caption = "Xe Tập Lái";
+            this.MaXeTap.ColumnEdit = this.repoGrid_XeTapLai;
+            this.MaXeTap.FieldName = "MaXeTap";
+            this.MaXeTap.Name = "MaXeTap";
+            this.MaXeTap.Visible = true;
+            this.MaXeTap.VisibleIndex = 2;
+            this.MaXeTap.Width = 100;
+            // 
+            // repoGrid_XeTapLai
+            // 
+            this.repoGrid_XeTapLai.AutoHeight = false;
+            this.repoGrid_XeTapLai.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoGrid_XeTapLai.Name = "repoGrid_XeTapLai";
+            this.repoGrid_XeTapLai.NullText = "Chưa phân công";
+            this.repoGrid_XeTapLai.PopupView = this.repositoryItemGridLookUpEdit1View;
+            // 
+            // repositoryItemGridLookUpEdit1View
+            // 
+            this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
+            this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
+            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // MaXeTapB11
+            // 
+            this.MaXeTapB11.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.MaXeTapB11.AppearanceCell.Font = new System.Drawing.Font("San Francisco Text Bold G3", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaXeTapB11.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MaXeTapB11.AppearanceCell.Options.UseBackColor = true;
+            this.MaXeTapB11.AppearanceCell.Options.UseFont = true;
+            this.MaXeTapB11.AppearanceCell.Options.UseForeColor = true;
+            this.MaXeTapB11.AppearanceCell.Options.UseTextOptions = true;
+            this.MaXeTapB11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.MaXeTapB11.Caption = "Xe Số Tự Động";
+            this.MaXeTapB11.ColumnEdit = this.repoGrid_XeTapLai;
+            this.MaXeTapB11.FieldName = "MaXeTapB11";
+            this.MaXeTapB11.Name = "MaXeTapB11";
+            this.MaXeTapB11.Visible = true;
+            this.MaXeTapB11.VisibleIndex = 3;
+            this.MaXeTapB11.Width = 100;
+            // 
+            // TimeInB11
+            // 
+            this.TimeInB11.AppearanceCell.Options.UseTextOptions = true;
+            this.TimeInB11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimeInB11.Caption = "Thời Gian Bắt Đầu STĐ";
+            this.TimeInB11.ColumnEdit = this.repoDate;
+            this.TimeInB11.FieldName = "TimeInB11";
+            this.TimeInB11.Name = "TimeInB11";
+            this.TimeInB11.Visible = true;
+            this.TimeInB11.VisibleIndex = 4;
+            this.TimeInB11.Width = 155;
+            // 
+            // repoDate
+            // 
+            this.repoDate.AutoHeight = false;
+            this.repoDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoDate.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.repoDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoDate.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.ClassicNew;
+            this.repoDate.DisplayFormat.FormatString = "HH:mm dd/MM/yyyy";
+            this.repoDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repoDate.MaskSettings.Set("mask", "HH:mm:ss | dd/MM/yyyy");
+            this.repoDate.Name = "repoDate";
+            this.repoDate.NullDate = "...";
+            this.repoDate.UseMaskAsDisplayFormat = true;
+            this.repoDate.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
+            // 
+            // TimeOutB11
+            // 
+            this.TimeOutB11.AppearanceCell.Options.UseTextOptions = true;
+            this.TimeOutB11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimeOutB11.Caption = "Thời Gian Kết Thúc STĐ";
+            this.TimeOutB11.ColumnEdit = this.repoDate;
+            this.TimeOutB11.FieldName = "TimeOutB11";
+            this.TimeOutB11.Name = "TimeOutB11";
+            this.TimeOutB11.Visible = true;
+            this.TimeOutB11.VisibleIndex = 5;
+            this.TimeOutB11.Width = 154;
+            // 
+            // ThietBiID
+            // 
+            this.ThietBiID.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ThietBiID.AppearanceCell.Font = new System.Drawing.Font("San Francisco Text Bold G3", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ThietBiID.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ThietBiID.AppearanceCell.Options.UseBackColor = true;
+            this.ThietBiID.AppearanceCell.Options.UseFont = true;
+            this.ThietBiID.AppearanceCell.Options.UseForeColor = true;
+            this.ThietBiID.AppearanceCell.Options.UseTextOptions = true;
+            this.ThietBiID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ThietBiID.Caption = "Cabin Điện Thử";
+            this.ThietBiID.ColumnEdit = this.repoGrid_Cabin;
+            this.ThietBiID.FieldName = "ThietBiID";
+            this.ThietBiID.Name = "ThietBiID";
+            this.ThietBiID.Visible = true;
+            this.ThietBiID.VisibleIndex = 6;
+            this.ThietBiID.Width = 89;
+            // 
+            // repoGrid_Cabin
+            // 
+            this.repoGrid_Cabin.AutoHeight = false;
+            this.repoGrid_Cabin.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoGrid_Cabin.Name = "repoGrid_Cabin";
+            this.repoGrid_Cabin.NullText = "Chưa phân công";
+            this.repoGrid_Cabin.PopupView = this.gridView1;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // TimeInCB
+            // 
+            this.TimeInCB.AppearanceCell.Options.UseTextOptions = true;
+            this.TimeInCB.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimeInCB.Caption = "Thời Gian Bắt Đầu Cabin";
+            this.TimeInCB.ColumnEdit = this.repoDate;
+            this.TimeInCB.FieldName = "TimeInCB";
+            this.TimeInCB.Name = "TimeInCB";
+            this.TimeInCB.Visible = true;
+            this.TimeInCB.VisibleIndex = 7;
+            this.TimeInCB.Width = 141;
+            // 
+            // TimeOutCB
+            // 
+            this.TimeOutCB.AppearanceCell.Options.UseTextOptions = true;
+            this.TimeOutCB.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TimeOutCB.Caption = "Thời Gian Kết Thúc Cabin";
+            this.TimeOutCB.ColumnEdit = this.repoDate;
+            this.TimeOutCB.FieldName = "TimeOutCB";
+            this.TimeOutCB.Name = "TimeOutCB";
+            this.TimeOutCB.Visible = true;
+            this.TimeOutCB.VisibleIndex = 8;
+            this.TimeOutCB.Width = 145;
+            // 
+            // HangDT
+            // 
+            this.HangDT.Caption = "Hạng Đào Tạo";
+            this.HangDT.FieldName = "HangDT";
+            this.HangDT.Name = "HangDT";
+            this.HangDT.Visible = true;
+            this.HangDT.VisibleIndex = 1;
             // 
             // treeList_Category
             // 
@@ -200,6 +492,7 @@
             this.treeList_Category.Appearance.Row.Options.UseFont = true;
             this.treeList_Category.Appearance.SelectedRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeList_Category.Appearance.SelectedRow.Options.UseFont = true;
+            this.treeList_Category.ColumnPanelRowHeight = 27;
             this.treeList_Category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList_Category.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeList_Category.KeyFieldName = "MonthID";
@@ -210,6 +503,7 @@
             this.treeList_Category.OptionsFind.ExpandNodesOnIncrementalSearch = true;
             this.treeList_Category.OptionsView.ShowIndicator = false;
             this.treeList_Category.ParentFieldName = "ParentMonthID";
+            this.treeList_Category.RowHeight = 27;
             this.treeList_Category.Size = new System.Drawing.Size(274, 623);
             this.treeList_Category.TabIndex = 1;
             this.treeList_Category.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList_Category_FocusedNodeChanged);
@@ -382,6 +676,12 @@
             this.tblLayout_LichHoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_LichHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LichHoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoDate.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoGrid_Cabin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_ImportData.ResumeLayout(false);
@@ -422,5 +722,24 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tblLayout_LichHoc;
         private DevExpress.XtraTreeList.TreeList treeList_Category;
+        private DevExpress.XtraGrid.Columns.GridColumn Id;
+        private DevExpress.XtraGrid.Columns.GridColumn KhoaHocId;
+        private DevExpress.XtraGrid.Columns.GridColumn MaKH;
+        private DevExpress.XtraGrid.Columns.GridColumn TenKH;
+        private DevExpress.XtraGrid.Columns.GridColumn GiaoVienID;
+        private DevExpress.XtraGrid.Columns.GridColumn GiaoVien;
+        private DevExpress.XtraGrid.Columns.GridColumn MaXeTap;
+        private DevExpress.XtraGrid.Columns.GridColumn MaXeTapB11;
+        private DevExpress.XtraGrid.Columns.GridColumn TimeInB11;
+        private DevExpress.XtraGrid.Columns.GridColumn TimeOutB11;
+        private DevExpress.XtraGrid.Columns.GridColumn ThietBiID;
+        private DevExpress.XtraGrid.Columns.GridColumn TimeInCB;
+        private DevExpress.XtraGrid.Columns.GridColumn TimeOutCB;
+        private DevExpress.XtraGrid.Columns.GridColumn HangDT;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_XeTapLai;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repoDate;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_Cabin;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

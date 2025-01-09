@@ -1,4 +1,5 @@
 ﻿using DevExpress.Data.Filtering.Helpers;
+using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Drawing;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
@@ -13,6 +14,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.DAO
 {
@@ -788,10 +790,11 @@ namespace DrivingCenter.App.DAO
 
         public List<Schedule> GetAllSchedule(int monthId)
         {
-            string query = $"SELECT Id, KhoaHocId, MaKH, TenKH, lh.GiaoVienID, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, ThietBiID, TimeInCB, TimeOutCB, Status, HangDT " +
-                $"FROM LichHoc lh, GiaoVien gv " +
-                $"WHERE gv.GiaoVienID = lh.GiaoVienID and MonthId = {monthId}";
+            string query = $"SELECT Id, kh.KhoaHocId, kh.MaKH, kh.TenKH, lh.GiaoVienID, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, ThietBiID, TimeInCB, TimeOutCB, Status, HangDT " +
+                $"FROM LichHoc lh, GiaoVien gv, KhoaHoc kh " +
+                $"WHERE gv.GiaoVienID = lh.GiaoVienID and lh.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+
 
             List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule { 
                 Id = (Guid)item["Id"],
@@ -802,16 +805,22 @@ namespace DrivingCenter.App.DAO
                 GiaoVien = item["HoTenDem"].ToString() + " " + item["TenGV"].ToString(),
                 MaXeTap = item["MaXeTap"] == DBNull.Value ? "" : item["MaXeTap"].ToString(),
                 MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value? "" : item["MaXeTapB11"].ToString(),
-                //TimeInB11 = (DateTime)item["TimeInB11"],
-                //TimeOutB11 = (DateTime)item["TimeOutB11"],
-                //ThietBiID = (int)item["ThietBiID"],
-                //TimeInCB = (DateTime)item["TimeInCB"],
-                //TimeOutCB = (DateTime)item["TimeOutCB"],
-                //Status =  (bool)item["Status"],
+                TimeInB11 = (DateTime)item["TimeInB11"],
+                TimeOutB11 = (DateTime)item["TimeOutB11"],
+                ThietBiID = (int)item["ThietBiID"],
+                TimeInCB = (DateTime)item["TimeInCB"],
+                TimeOutCB = (DateTime)item["TimeOutCB"],
+                //Status = (bool)item["Status"],
                 HangDT = item["HangDT"].ToString()
             }).ToList();
 
             return list;
+        }
+
+        public void UpdateXeTapB11(Schedule rowdata)
+        {
+            string query = $"EXEC [dbo].[sp_UpdateXeB11InNguoiLX] @KhoaHocID = {rowdata.KhoaHocId}, @GiaoVienID = {rowdata.GiaoVienId}, @MaXeB11 = N'{rowdata.MaXeTapB11}', @TimeInB11 = '{rowdata.TimeInB11}', @TimeOutB11 = '{rowdata.TimeOutB11}', @TimeInCB = '{rowdata.TimeInCB}', @TimeOutCB = '{rowdata.TimeOutCB}'";
+            DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
 
         #endregion

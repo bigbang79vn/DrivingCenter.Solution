@@ -4,6 +4,7 @@ using DevExpress.XtraTreeList.Nodes;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
+using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.GPLX;
 using ExcelDataReader;
 using System;
@@ -29,7 +30,8 @@ namespace DrivingCenter.App.UserControl
             tblLayout_ImportData.Dock = DockStyle.Fill;
 
             LoadCategory();
-            LoadLichHoc();
+            LoadXeTapLai();
+            LoadCabin();
 
         }
         private void tileBar_SelectedItemChanged(object sender, TileItemEventArgs e)
@@ -63,6 +65,46 @@ namespace DrivingCenter.App.UserControl
                 node.Expanded = true;
                 node = node.ParentNode;
             }
+        }
+
+        private void LoadXeTapLai()
+        {
+            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai();
+            repoGrid_XeTapLai.DataSource = lst;
+            repoGrid_XeTapLai.DisplayMember = "BienSoXe";
+            repoGrid_XeTapLai.ValueMember = "MaXe";
+
+            repoGrid_XeTapLai.PopupView.Columns.AddField("BienSoXe").Visible = true;
+            repoGrid_XeTapLai.PopupView.Columns.AddField("MaXe").Visible = true;
+            repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
+        }
+
+        private void LoadCabin()
+        {
+            List<Cabin> lst = CabinEco_DAO.Instance.GetLstCabin();
+            repoGrid_Cabin.DataSource = lst;
+            repoGrid_Cabin.DisplayMember = "NameCabin";
+            repoGrid_Cabin.ValueMember = "IdThietBi";
+
+            repoGrid_Cabin.PopupView.Columns.AddField("NameCabin").Visible = true;
+            repoGrid_Cabin.PopupView.Columns.AddField("GhiChu").Visible = true;
+        }
+
+        private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
+        {
+            var focusedNode = e.Node;
+            if (focusedNode != null)
+            {
+                ExpandParentNodes(focusedNode);
+                int MonthId = (int)focusedNode["MonthID"];
+                LoadLichHoc(MonthId);
+            }
+        }
+
+        private void gridView_LichHoc_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
+            DAT_DAO.Instance.UpdateXeTapB11(rowData);
         }
 
         #endregion
@@ -159,15 +201,5 @@ namespace DrivingCenter.App.UserControl
 
         #endregion
 
-        private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
-        {
-            var focusedNode = e.Node;
-            if (focusedNode != null)
-            {
-                ExpandParentNodes(focusedNode);
-                int MonthId = (int)focusedNode["MonthID"];
-                LoadLichHoc(MonthId);
-            }
-        }
     }
 }
