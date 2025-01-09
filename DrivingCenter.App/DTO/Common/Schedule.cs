@@ -14,14 +14,14 @@ namespace DrivingCenter.App.DTO.Cabin
         public string TenKH { get; set; }
         public int? GiaoVienId { get; set; }
         public string GiaoVien { get; set; }
+        public DateTime? ThoiDiemChayDAT { get; set; }
+        public DateTime? ThoiDiemKetThucDAT { get; set; }
         public string MaXeTap { get; set; }
         public string MaXeTapB11 { get; set; }
         public DateTime? TimeInB11 { get; set; }
         public DateTime? TimeOutB11 { get; set ; }
         public int? ThietBiID { get; set; }
         public string Cabin { get; set; }
-        public DateTime? TimeInCB { get; set; }
-        public DateTime? TimeOutCB { get; set; }
         public bool? Status { get; set; }
         public string HangDT { get; set; }
 

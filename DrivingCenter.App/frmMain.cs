@@ -125,7 +125,7 @@ namespace DrivingCenter.App
                 Uc_LichHoc uc = new Uc_LichHoc();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Lịch học STD và Cabin điện tử";
+                this.itemNav.Caption = $"Lịch học số tự động";
             }
         }
         private void acc_TongHopXe_Click(object sender, EventArgs e)

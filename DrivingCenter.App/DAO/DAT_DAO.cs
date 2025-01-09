@@ -790,7 +790,7 @@ namespace DrivingCenter.App.DAO
 
         public List<Schedule> GetAllSchedule(int monthId)
         {
-            string query = $"SELECT Id, kh.KhoaHocId, kh.MaKH, kh.TenKH, lh.GiaoVienID, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, ThietBiID, TimeInCB, TimeOutCB, Status, HangDT " +
+            string query = $"SELECT Id, kh.KhoaHocId, kh.MaKH, kh.TenKH, lh.GiaoVienID, ThoiDiemChayDAT, ThoiDiemKetThucDAT, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, HangDT " +
                 $"FROM LichHoc lh, GiaoVien gv, KhoaHoc kh " +
                 $"WHERE gv.GiaoVienID = lh.GiaoVienID and lh.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
@@ -803,13 +803,12 @@ namespace DrivingCenter.App.DAO
                 TenKH = item["TenKH"].ToString(),
                 GiaoVienId = (int)item["GiaoVienID"],
                 GiaoVien = item["HoTenDem"].ToString() + " " + item["TenGV"].ToString(),
+                ThoiDiemChayDAT = (DateTime)item["ThoiDiemChayDAT"],
+                ThoiDiemKetThucDAT = (DateTime)item["ThoiDiemKetThucDAT"],
                 MaXeTap = item["MaXeTap"] == DBNull.Value ? "" : item["MaXeTap"].ToString(),
                 MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value? "" : item["MaXeTapB11"].ToString(),
                 TimeInB11 = (DateTime)item["TimeInB11"],
                 TimeOutB11 = (DateTime)item["TimeOutB11"],
-                ThietBiID = (int)item["ThietBiID"],
-                TimeInCB = (DateTime)item["TimeInCB"],
-                TimeOutCB = (DateTime)item["TimeOutCB"],
                 //Status = (bool)item["Status"],
                 HangDT = item["HangDT"].ToString()
             }).ToList();
@@ -819,8 +818,17 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateXeTapB11(Schedule rowdata)
         {
-            string query = $"EXEC [dbo].[sp_UpdateXeB11InNguoiLX] @KhoaHocID = {rowdata.KhoaHocId}, @GiaoVienID = {rowdata.GiaoVienId}, @MaXeB11 = N'{rowdata.MaXeTapB11}', @TimeInB11 = '{rowdata.TimeInB11}', @TimeOutB11 = '{rowdata.TimeOutB11}', @TimeInCB = '{rowdata.TimeInCB}', @TimeOutCB = '{rowdata.TimeOutCB}'";
+            string query = $"EXEC [dbo].[sp_UpdateXeB11InNguoiLX] @KhoaHocID = {rowdata.KhoaHocId}, @GiaoVienID = {rowdata.GiaoVienId}, @MaXeB11 = N'{rowdata.MaXeTapB11}', @TimeInB11 = '{rowdata.TimeInB11}', @TimeOutB11 = '{rowdata.TimeOutB11}'";
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
+        }
+
+        public void UpdateLichDAT(int khoahocid, string timestart, string timeend)
+        {
+            string query = $"UPDATE NguoiLX SET ThoiDiemChayDAT = '{timestart}', ThoiDiemKetThucDAT = '{timeend}' WHERE KhoaHocID = {khoahocid}";
+            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+
+            string query2 = $"UPDATE LichHoc SET ThoiDiemChayDAT = '{timestart}', ThoiDiemKetThucDAT = '{timeend}' WHERE KhoaHocID = {khoahocid}";
+            DataProviderDAT.Instance.ExcuteNoneQuery(query2);
         }
 
         #endregion

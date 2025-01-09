@@ -38,6 +38,7 @@ namespace DrivingCenter.App
             this.acc_CabinEMC = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_QLLT = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_DAT = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_TongHopXe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_XeTapLai = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -52,7 +53,6 @@ namespace DrivingCenter.App
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -146,6 +146,14 @@ namespace DrivingCenter.App
             this.acc_QLLT.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acc_QLLT.Text = "Lý Thuyết";
             this.acc_QLLT.Click += new System.EventHandler(this.acc_QLLT_Click);
+            // 
+            // acc_LichHoc
+            // 
+            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
+            this.acc_LichHoc.Name = "acc_LichHoc";
+            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_LichHoc.Text = "Lịch Học STĐ";
+            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
             // 
             // acc_DAT
             // 
@@ -271,14 +279,6 @@ namespace DrivingCenter.App
             this.barButtonItem1,
             this.barButtonItem2});
             this.fluentFormDefaultManager1.MaxItemId = 10;
-            // 
-            // acc_LichHoc
-            // 
-            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
-            this.acc_LichHoc.Name = "acc_LichHoc";
-            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_LichHoc.Text = "Lịch Học";
-            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
             // 
             // frmMain
             // 

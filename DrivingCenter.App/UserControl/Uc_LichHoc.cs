@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraLayout.Filtering.Templates;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using DrivingCenter.App.DAO;
@@ -28,12 +29,15 @@ namespace DrivingCenter.App.UserControl
 
             tblLayout_LichHoc.Dock = DockStyle.Fill;
             tblLayout_ImportData.Dock = DockStyle.Fill;
+            dateEdit_Start.EditValue = DateTime.Today;
+            dateEdit_End.EditValue = DateTime.Today;
 
             LoadCategory();
             LoadXeTapLai();
-            LoadCabin();
 
         }
+
+        int MonthId = 0;
         private void tileBar_SelectedItemChanged(object sender, TileItemEventArgs e)
         {
             navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
@@ -79,24 +83,13 @@ namespace DrivingCenter.App.UserControl
             repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
         }
 
-        private void LoadCabin()
-        {
-            List<Cabin> lst = CabinEco_DAO.Instance.GetLstCabin();
-            repoGrid_Cabin.DataSource = lst;
-            repoGrid_Cabin.DisplayMember = "NameCabin";
-            repoGrid_Cabin.ValueMember = "IdThietBi";
-
-            repoGrid_Cabin.PopupView.Columns.AddField("NameCabin").Visible = true;
-            repoGrid_Cabin.PopupView.Columns.AddField("GhiChu").Visible = true;
-        }
-
         private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             var focusedNode = e.Node;
             if (focusedNode != null)
             {
                 ExpandParentNodes(focusedNode);
-                int MonthId = (int)focusedNode["MonthID"];
+                MonthId = (int)focusedNode["MonthID"];
                 LoadLichHoc(MonthId);
             }
         }
@@ -105,6 +98,16 @@ namespace DrivingCenter.App.UserControl
         {
             Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
             DAT_DAO.Instance.UpdateXeTapB11(rowData);
+        }
+
+        private void btn_Apdunglich_Click(object sender, EventArgs e)
+        {
+            Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
+            string timeStart = dateEdit_Start.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            string timeEnd = dateEdit_End.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            DAT_DAO.Instance.UpdateLichDAT(rowData.KhoaHocId, timeStart, timeEnd);
+
+            LoadLichHoc(MonthId);
         }
 
         #endregion
@@ -201,5 +204,6 @@ namespace DrivingCenter.App.UserControl
 
         #endregion
 
+        
     }
 }
