@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.FReport;
@@ -89,20 +90,22 @@ namespace DrivingCenter.App.UserControl
         {
             string HangDaoTao = "";
             kh = cbx_KhoaHoc.SelectedItem as KhoaHocGPLX;
-            if (kh.MaKHGplx.Length >= 6)
-            {
-                string newmakh = kh.MaKHGplx.Substring(0, 6);
-                if (newmakh == "66015K")
-                    HangDaoTao = "B2";
-                else
-                {
-                    if (newmakh == "660152")
-                        HangDaoTao = "B11";
-                    else
-                        MessageBox.Show("Mã khóa học không đúng!", "Thông báo", MessageBoxButtons.OK);
-                }
-            }
+            if (kh.MaKHGplx.Length == 12)
+                HangDaoTao = "B";
+            else if (kh.MaKHGplx.Length == 13)
+                HangDaoTao = "B.01";
             return HangDaoTao;
+        }
+
+        public string GetHangGPLXByMaKH()
+        {
+            string HangGPLX = "";
+            kh = cbx_KhoaHoc.SelectedItem as KhoaHocGPLX;
+            if (kh.MaKHGplx.Length == 12)
+                HangGPLX = "B1";
+            else if (kh.MaKHGplx.Length == 13)
+                HangGPLX = "B11";
+            return HangGPLX;
         }
 
         private void btn_ReadData_Click(object sender, EventArgs e)
@@ -227,7 +230,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLX_HoSo.NgayHHGPLXDaCo = "";
                         nguoiLX_HoSo.NgayTTGPLXDaCo = dt.Rows[i]["NgayTTGPLXDaCo"].ToString();
                         nguoiLX_HoSo.DonViHocLX = null;
-                        nguoiLX_HoSo.HangGPLX = GetHangDaoTaoByMaKH();
+                        nguoiLX_HoSo.HangGPLX = GetHangGPLXByMaKH();
                         nguoiLX_HoSo.SoNamLX = 0;
                         nguoiLX_HoSo.SoKmLXAnToan = 0;
                         nguoiLX_HoSo.GiayCNSK = true;
@@ -308,7 +311,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLXHS_GT1.MaGT = 1;
                         nguoiLXHS_GT1.MaDK = item.MaDK;
                         nguoiLXHS_GT1.SoHoSo = item.SoHoSo;
-                        nguoiLXHS_GT1.TenGT = "Đơn đề nghị học, sát hạch để cấp giấy phép lái xe theo mẫu quy định tại Phụ lục 13";
+                        nguoiLXHS_GT1.TenGT = "Đơn đề nghị học, sát hạch để cấp giấy phép lái xe theo mẫu quy định tại Phụ lục XI";
                         nguoiLXHS_GT1.TrangThai = true;
                         lstnguoiLXHS_GT.Add(nguoiLXHS_GT1);
 
@@ -324,7 +327,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLXHS_GT3.MaGT = 3;
                         nguoiLXHS_GT3.MaDK = item.MaDK;
                         nguoiLXHS_GT3.SoHoSo = item.SoHoSo;
-                        nguoiLXHS_GT3.TenGT = "Bản sao chụp giấy chứng minh nhân dân hoặc hộ chiếu còn thời hạn";
+                        nguoiLXHS_GT3.TenGT = "Giấy chứng nhận sức khoẻ do cơ sở y tế có thẩm quyền cấp theo quy định";
                         nguoiLXHS_GT3.TrangThai = true;
                         lstnguoiLXHS_GT.Add(nguoiLXHS_GT3);
                     }
@@ -361,12 +364,12 @@ namespace DrivingCenter.App.UserControl
                         lbStatus.Text = "Try Again";
                         txtHangDaoTao.Focus();
                     }
-            }
+                }
                 catch (Exception ex)
                 {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-        }
         }
 
         #endregion Import Data
