@@ -292,7 +292,7 @@ namespace DrivingCenter.App.UserControl
 
             List<TongHopHVByKhoa> lstB1 = DAT_DAO.Instance.TongHopPhB11(khoahocid);
 
-            List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(khoahocid);
+            List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(khoahocid, HangDaoTao);
 
             if (HangDaoTao == "B2")
             {

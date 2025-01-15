@@ -435,9 +435,9 @@ namespace DrivingCenter.App.DAO
             return lstResultB11;
         }
 
-        public List<TongHopHVByKhoa> TongHopPhBD(int khoahocId)
+        public List<TongHopHVByKhoa> TongHopPhBD(int khoahocId, string hangdaotao)
         {
-            string query = string.Format("SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{0}' ", khoahocId);
+            string query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}'";
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
