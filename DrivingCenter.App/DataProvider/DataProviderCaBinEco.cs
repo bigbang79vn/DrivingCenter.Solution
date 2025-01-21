@@ -33,7 +33,7 @@ namespace DrivingCenter.App.DataProvider
             DataTable data = new DataTable();
             using (SqlConnection connection = new SqlConnection(connectionSTR))
             {
-                connection.Open();
+                 connection.Open();
 
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
 
