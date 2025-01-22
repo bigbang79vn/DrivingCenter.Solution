@@ -458,7 +458,7 @@ namespace DrivingCenter.App.DAO
         //---------Tổng hợp giờ dạy GV by khóa học-------
         public List<TongHopGV> TongHopGVsByKh(string khoahoc)
         {
-            string query = string.Format("SELECT MaGV , HoTenGV, ThoiDiem, COUNT(HoVaTen) AS SoHocVien, SUM(SoPhien) AS SoPhien, TenKH, BienSoXe, ROUND(SUM(TongQuangDuongLD_Phiens),1) as SQuangDuong, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianLD_Phiens),0),108) as SThoiGian " +
+            string query = string.Format("SELECT MaGV , HoTenGV, ThoiDiem, COUNT(HoVaTen) AS SoHocVien, SUM(SoPhien) AS SoPhien, TenKH, BienSoXe, ROUND(SUM(TongQuangDuongLD_Phiens),1) as SQuangDuong, SUM(TongThoiGianLD_Phiens) as TongThoiGian, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianLD_Phiens),0),108) as SThoiGian " +
                 "FROM TongHopGvFn " +
                 "WHERE TenKH = '{0}' " +
                 "GROUP BY MaGV, HoTenGV, ThoiDiem, BienSoXe, TenKH " +
@@ -526,7 +526,7 @@ namespace DrivingCenter.App.DAO
 
         public List<TongHopGV> TongHopGVsByDay(string day)
         {
-            string query = string.Format("SELECT MaGV , HoTenGV, ThoiDiem, COUNT(HoVaTen) AS SoHocVien, SUM(SoPhien) AS SoPhien, TenKH, BienSoXe, ROUND(SUM(TongQuangDuongLD_Phiens),1) as SQuangDuong, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianLD_Phiens),0),108) as SThoiGian " +
+            string query = string.Format("SELECT MaGV , HoTenGV, ThoiDiem, COUNT(HoVaTen) AS SoHocVien, SUM(SoPhien) AS SoPhien, TenKH, BienSoXe, ROUND(SUM(TongQuangDuongLD_Phiens),1) as SQuangDuong, SUM(TongThoiGianLD_Phiens) as TongThoiGian, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianLD_Phiens),0),108) as SThoiGian " +
                 "FROM TongHopGvFn " +
                 "WHERE ThoiDiem = '{0}' " +
                 "GROUP by MaGV, HoTenGV, ThoiDiem, BienSoXe, TenKH " +

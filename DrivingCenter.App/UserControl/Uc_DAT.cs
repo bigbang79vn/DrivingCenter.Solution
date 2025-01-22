@@ -419,6 +419,26 @@ namespace DrivingCenter.App.UserControl
 
             lstSumGV = DAT_DAO.Instance.TongHopGVsByKh(khoahoc);
 
+            foreach (var item in lstSumGV)
+            {
+                if (DateTime.TryParseExact(item.NgayTap, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime date))
+                {
+                    DayOfWeek dayOfWeek = date.DayOfWeek;
+                    if (item.TongThoiGian > 36000 && dayOfWeek != DayOfWeek.Monday)
+                    {
+                        item.SGhiChu = "Quá giờ dạy!";
+                    }
+                    else if (item.TongThoiGian > 18000 && dayOfWeek.Equals(DayOfWeek.Monday))
+                    {
+                        item.SGhiChu = "Quá giờ dạy Thứ 2!";
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ngày không hợp lệ!");
+                }
+            }
+
             ConvertListToDataTable convert = new ConvertListToDataTable();
             DataTable dt = convert.ToDataTable(lstSumGV);
 

@@ -18,6 +18,7 @@ namespace DrivingCenter.App.DTO.DAT
         public string TenKhoaHoc { get; set; }
         public string BienSoXeGv { get; set; }
         public double SQuangDuong { get; set; }
+        public double TongThoiGian { get; set; }
         public string SThoiGian { get; set; }
         public string SGhiChu { get; set; }
 
@@ -31,6 +32,7 @@ namespace DrivingCenter.App.DTO.DAT
             this.BienSoXeGv = row["BienSoXe"].ToString();
             this.SoHocVienByDay = (int)row["SoHocVien"];
             this.SQuangDuong = (double)row["SQuangDuong"];
+            this.TongThoiGian = (double)row["TongThoiGian"];
             this.SThoiGian = row["SThoiGian"].ToString();
         }
     }
