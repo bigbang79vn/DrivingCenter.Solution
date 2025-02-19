@@ -568,11 +568,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(672, 14);
+            this.label2.Location = new System.Drawing.Point(669, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 17);
+            this.label2.Size = new System.Drawing.Size(119, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Ngày Bắt Đầu DAT";
+            this.label2.Text = "Ngày Kết Thúc DAT";
             // 
             // dateEdit_Start
             // 
