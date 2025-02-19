@@ -34,7 +34,7 @@ namespace DrivingCenter.App.UserControl
 
             LoadCategory();
             LoadXeTapLai();
-
+            InsertLichHoc();
         }
 
         int MonthId = 0;
@@ -44,7 +44,12 @@ namespace DrivingCenter.App.UserControl
         }
 
         #region Lịch học
-        
+
+        private void InsertLichHoc()
+        {
+            DAT_DAO.Instance.InsertLichHoc();
+        }
+
         private void LoadCategory()
         {
             DataTable dt = DAT_DAO.Instance.GetCategory();
@@ -191,7 +196,6 @@ namespace DrivingCenter.App.UserControl
                         {
                             DAT_DAO.Instance.Assignment(item);
                         }
-
                         MessageBox.Show(string.Format("Hoàn thành phân công đào tạo khóa {0}", cb_SheetData.SelectedIndex.ToString()), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

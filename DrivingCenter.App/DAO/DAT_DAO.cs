@@ -836,7 +836,20 @@ namespace DrivingCenter.App.DAO
         #region Phân Công đào tạo
         public void Assignment(Assignment ass)
         {
-            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'%{2}%'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
+            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}' and TenGV like N'%{2}%'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
+            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+        }
+
+        public void InsertLichHoc()
+        {
+            string query = "INSERT INTO [dbo].[LichHoc] ( [KhoaHocId] ,[MaKH] ,[TenKH] ,[GiaoVienID] ,[MaXeTap] ,[MaXeTapB11] ,[HangDT]) " +
+                "SELECT distinct KH.KhoaHocID, KH.MaKH, KH.TenKH, HV.GiaoVienID, HV.MaXeTap, HV.XeB11, hv.HangDaoTao " +
+                "FROM NguoiLX HV, KhoaHoc KH " +
+                "WHERE hv.KhoaHocID = kh.KhoaHocID  and kh.KhoaHocID IN (" +
+                "   SELECT KhoaHocID " +
+                "   FROM KhoaHoc A " +
+                "   WHERE NOT EXISTS (" +
+                "       SELECT 1 FROM LichHoc B WHERE A.KhoaHocID = B.KhoaHocId))";
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
         #endregion
