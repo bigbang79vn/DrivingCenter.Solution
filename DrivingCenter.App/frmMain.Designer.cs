@@ -36,9 +36,8 @@ namespace DrivingCenter.App
             this.acc_Home = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEco = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEMC = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acc_QLLT = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_DAT = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_TongHopXe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_XeTapLai = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -90,7 +89,6 @@ namespace DrivingCenter.App
             this.acc_CabinEco,
             this.acc_CabinEMC,
             this.acc_GPLX,
-            this.acc_QLLT,
             this.acc_LichHoc,
             this.acc_DAT,
             this.acc_TongHopXe,
@@ -131,6 +129,14 @@ namespace DrivingCenter.App
             this.acc_CabinEMC.Text = "Cabin EMC";
             this.acc_CabinEMC.Click += new System.EventHandler(this.acc_CabinEMC_Click);
             // 
+            // acc_LichHoc
+            // 
+            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
+            this.acc_LichHoc.Name = "acc_LichHoc";
+            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_LichHoc.Text = "Đào Tạo";
+            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
+            // 
             // acc_GPLX
             // 
             this.acc_GPLX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_GPLX.ImageOptions.SvgImage")));
@@ -138,22 +144,6 @@ namespace DrivingCenter.App
             this.acc_GPLX.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acc_GPLX.Text = "G.P.L.X";
             this.acc_GPLX.Click += new System.EventHandler(this.acc_GPLX_Click);
-            // 
-            // acc_QLLT
-            // 
-            this.acc_QLLT.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_QLLT.ImageOptions.SvgImage")));
-            this.acc_QLLT.Name = "acc_QLLT";
-            this.acc_QLLT.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_QLLT.Text = "Lý Thuyết";
-            this.acc_QLLT.Click += new System.EventHandler(this.acc_QLLT_Click);
-            // 
-            // acc_LichHoc
-            // 
-            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
-            this.acc_LichHoc.Name = "acc_LichHoc";
-            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_LichHoc.Text = "Lịch Học STĐ";
-            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
             // 
             // acc_DAT
             // 
@@ -315,7 +305,6 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_CabinEco;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_CabinEMC;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_GPLX;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acc_QLLT;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_DAT;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_TongHopXe;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_TotNghiep;

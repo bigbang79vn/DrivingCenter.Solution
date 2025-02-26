@@ -419,6 +419,7 @@
     <Compile Include="DTO\Common\Category.cs" />
     <Compile Include="DTO\DAT\ChiTietPhienHoc.cs" />
     <Compile Include="DTO\DAT\KhoaHocDDT.cs" />
+    <Compile Include="DTO\DAT\NguoiLxInDAT.cs" />
     <Compile Include="DTO\DAT\PhienHoc.cs" />
     <Compile Include="DTO\DAT\SoPhien.cs" />
     <Compile Include="DTO\DAT\TongHopGV.cs" />
@@ -492,6 +493,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhanCongDaoTao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhanCongDaoTao.Designer.cs">
+      <DependentUpon>frmPhanCongDaoTao.cs</DependentUpon>
     </Compile>
     <Compile Include="fSplitSession.cs">
       <SubType>Form</SubType>
@@ -617,11 +624,11 @@
     <Compile Include="UserControl\Uc_Home.Designer.cs">
       <DependentUpon>Uc_Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\Uc_LichHoc.cs">
+    <Compile Include="UserControl\Uc_DaoTao.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\Uc_LichHoc.Designer.cs">
-      <DependentUpon>Uc_LichHoc.cs</DependentUpon>
+    <Compile Include="UserControl\Uc_DaoTao.Designer.cs">
+      <DependentUpon>Uc_DaoTao.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Uc_Print.cs">
       <SubType>UserControl</SubType>
@@ -670,6 +677,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhanCongDaoTao.resx">
+      <DependentUpon>frmPhanCongDaoTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSplitSession.resx">
       <DependentUpon>fSplitSession.cs</DependentUpon>
@@ -748,8 +758,8 @@
     <EmbeddedResource Include="UserControl\Uc_Home.resx">
       <DependentUpon>Uc_Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\Uc_LichHoc.resx">
-      <DependentUpon>Uc_LichHoc.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\Uc_DaoTao.resx">
+      <DependentUpon>Uc_DaoTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_Print.resx">
       <DependentUpon>Uc_Print.cs</DependentUpon>

@@ -109,10 +109,6 @@ namespace DrivingCenter.App
             }
         }
 
-        private void acc_QLLT_Click(object sender, EventArgs e)
-        {
-        }
-
         private void acc_LichHoc_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -122,7 +118,7 @@ namespace DrivingCenter.App
             else
             {
                 MainContainer.Controls.Clear();
-                Uc_LichHoc uc = new Uc_LichHoc();
+                Uc_DaoTao uc = new Uc_DaoTao();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
                 this.itemNav.Caption = $"Lịch học số tự động";

@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Map.Kml.Model;
+using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Filtering.Templates;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,19 +23,18 @@ using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
-    public partial class Uc_LichHoc : DevExpress.XtraEditors.XtraUserControl
+    public partial class Uc_DaoTao : DevExpress.XtraEditors.XtraUserControl
     {
-        public Uc_LichHoc()
+        public Uc_DaoTao()
         {
             InitializeComponent();
 
             tblLayout_LichHoc.Dock = DockStyle.Fill;
             tblLayout_ImportData.Dock = DockStyle.Fill;
-            dateEdit_Start.EditValue = DateTime.Today;
-            dateEdit_End.EditValue = DateTime.Today;
 
             LoadCategory();
             LoadXeTapLai();
+            LoadGiaoVien();
             InsertLichHoc();
         }
 
@@ -56,24 +57,16 @@ namespace DrivingCenter.App.UserControl
 
             treeList_Category.DataSource = dt;
             //treeList_Category.ExpandAll();
+            treeList_Category.ExpandToLevel(1);
         }
 
 
-        public void LoadLichHoc(int monthId)
+        public void LoadDanhSachHocVien(int KhoaHocID)
         {
-            List<Schedule> lst = new List<Schedule>();
-            lst = DAT_DAO.Instance.GetAllSchedule(monthId);
+            List<NguoiLxInDAT> lst = new List<NguoiLxInDAT>();
+            lst = DAT_DAO.Instance.GetAllNguoiLxByKhoaHocID(KhoaHocID);
 
-            gridCtrl_LichHoc.DataSource = lst;
-        }
-
-        private void ExpandParentNodes(TreeListNode node)
-        {
-            while (node != null)
-            {
-                node.Expanded = true;
-                node = node.ParentNode;
-            }
+            gridCtrl_DanhSachHocVien.DataSource = lst;
         }
 
         private void LoadXeTapLai()
@@ -88,32 +81,62 @@ namespace DrivingCenter.App.UserControl
             repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
         }
 
+        private void LoadGiaoVien()
+        {
+            List<GiaoVien> lst = DAT_DAO.Instance.GetAllGV();
+            repoGrid_GiaoVien.DataSource = lst;
+            repoGrid_GiaoVien.DisplayMember = "HoTenGV";
+            repoGrid_GiaoVien.ValueMember = "GiaoVienID";
+
+            repoGrid_GiaoVien.PopupView.Columns.AddField("HoTenGV").Visible = true;
+            repoGrid_GiaoVien.PopupView.Columns.AddField("NgaySinh").Visible = true;
+            repoGrid_GiaoVien.PopupView.Columns.AddField("HangGPLX").Visible = true;
+        }
+
         private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             var focusedNode = e.Node;
             if (focusedNode != null)
             {
-                ExpandParentNodes(focusedNode);
+                int KhoaHocId = (int)focusedNode["MonthID"]/10000;
                 MonthId = (int)focusedNode["MonthID"];
-                LoadLichHoc(MonthId);
+                LoadDanhSachHocVien((int)KhoaHocId);
             }
         }
 
-        private void gridView_LichHoc_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void treeList_Category_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
-            Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
-            DAT_DAO.Instance.UpdateXeTapB11(rowData);
+
+            if (e.Node.Level == 0) // Root Level
+            {
+                e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
+                e.Appearance.ForeColor = Color.White;
+                e.Appearance.BackColor = Color.FromArgb(78, 109, 156);
+            }
+            else if (e.Node.Level == 1) // Level 1
+            {
+                e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
+                e.Appearance.BackColor = Color.FromArgb(156, 78, 78);
+            }
+            else if (e.Node.Level == 2) // Level 2
+            {
+                e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
+                e.Appearance.BackColor = Color.LightYellow;
+            }
         }
 
-        private void btn_Apdunglich_Click(object sender, EventArgs e)
+        private void MenuItem_BoTriXeSTD_Click(object sender, EventArgs e)
         {
-            Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
-            string timeStart = dateEdit_Start.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-            string timeEnd = dateEdit_End.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-            DAT_DAO.Instance.UpdateLichDAT(rowData.KhoaHocId, timeStart, timeEnd);
-
-            LoadLichHoc(MonthId);
+            frmPhanCongDaoTao f = new frmPhanCongDaoTao(MonthId);
+            f.Show();
         }
+
+        private void gridView_DanhSachHocVien_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
+            //DAT_DAO.Instance.UpdateXeTapB11(rowData);
+        }
+
 
         #endregion
 
@@ -192,7 +215,7 @@ namespace DrivingCenter.App.UserControl
                     DialogResult dialogResult = MessageBox.Show("Phân công đào tạo dựa vào danh sách?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        foreach (var item in lst) 
+                        foreach (var item in lst)
                         {
                             DAT_DAO.Instance.Assignment(item);
                         }
@@ -206,8 +229,10 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+
+
         #endregion
 
-        
+
     }
 }

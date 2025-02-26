@@ -651,7 +651,8 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("SELECT Lat, Lng  FROM VehicleHistory WHERE DiemDanhNguoiLxId = '{0}' ORDER BY TongQuangDuongPhien asc", diemdanhnguoilxId);
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
-            lstPoint = dt.AsEnumerable().Select(item => new PointLatLng {
+            lstPoint = dt.AsEnumerable().Select(item => new PointLatLng
+            {
                 Lat = (double)item["Lat"],
                 Lng = (double)item["Lng"]
             }).ToList();
@@ -676,7 +677,8 @@ namespace DrivingCenter.App.DAO
                 "WHERE dt.DiemDanhNguoiLxId = '{0}' AND dt.HistoryID = img.HistoryID", diemdanhnguoilxId);
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
-            List<ChiTietPhienHoc> lst = dt.AsEnumerable().Select(item => new ChiTietPhienHoc {
+            List<ChiTietPhienHoc> lst = dt.AsEnumerable().Select(item => new ChiTietPhienHoc
+            {
                 Id = (Guid)item["HistoryID"],
                 ThoiDiem = (DateTime)item["ThoiDiem"],
                 VanToc = Math.Round((double)item["VanToc"], 3),
@@ -783,9 +785,47 @@ namespace DrivingCenter.App.DAO
         public DataTable GetCategory()
         {
             DataTable dt = new DataTable();
-            string query = "SELECT MonthID, ParentMonthID, Name FROM Categories";
+            //string query = "SELECT MonthID, ParentMonthID, Name FROM Categories ";
+            string query = "EXEC [dbo].[spGetTreeKhoaHoc] @MaCSDT = N'66015'";
             dt = DataProviderDAT.Instance.ExcuteQuery(query);
             return dt;
+        }
+
+        public List<NguoiLxInDAT> GetAllNguoiLxByKhoaHocID(int khoahocId)
+        {
+            string query = $"SELECT KhoaHocID, TenKH, HangDaoTao, NguoiLXID, MaDK, HoVaTen, NgaySinh, GioiTinh, SoCMT, GiaoVienID, MaXeTap, XeB11, TongQuangDuongLD, TongThoiGianLD, ThoiDiemChayDAT, ThoiDiemKetThucDAT " +
+                $"FROM NguoiLX " +
+                $"WHERE KhoaHocID = {khoahocId} AND MaCSDT = 66015";
+
+            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+
+
+            List<NguoiLxInDAT> lst = new List<NguoiLxInDAT>();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                lst = dt.AsEnumerable().Select(item => new NguoiLxInDAT
+                {
+                    KhoaHocID = (int)item["KhoaHocID"],
+                    TenKH = item["TenKH"].ToString(),
+                    HangDT = item["HangDaoTao"].ToString(),
+                    NguoiLXID = (Int64)item["NguoiLXID"],
+                    MaDK = item["MaDK"].ToString(),
+                    HoVaTen = item["HoVaTen"].ToString(),
+                    NgaySinh = (DateTime)item["NgaySinh"],
+                    GioiTinh = item["GioiTinh"].ToString(),
+                    CCCD = item["SoCMT"].ToString(),
+                    GiaoVienID = item["GiaoVienID"] == DBNull.Value ? 0 : (int)item["GiaoVienID"],
+                    MaXeTap = item["MaXeTap"].ToString(),
+                    MaXeTapB11 = item["XeB11"] == DBNull.Value ? "" : item["XeB11"].ToString(),
+                    TongQuangDuongTichLuy = Convert.ToDouble(item["TongQuangDuongLD"]),
+                    TongThoiGianTichLuy = (int)item["TongThoiGianLD"],
+                    ThoiDiemChayDAT = (DateTime)item["ThoiDiemChayDAT"],
+                    ThoiDiemKetThucDAT = (DateTime)item["ThoiDiemKetThucDAT"]
+                }).ToList();
+            }
+
+            return lst;
         }
 
         public List<Schedule> GetAllSchedule(int monthId)
@@ -796,7 +836,8 @@ namespace DrivingCenter.App.DAO
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
 
-            List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule { 
+            List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule
+            {
                 Id = (Guid)item["Id"],
                 KhoaHocId = (int)item["KhoaHocId"],
                 MaKH = item["MaKH"].ToString(),
@@ -806,7 +847,7 @@ namespace DrivingCenter.App.DAO
                 ThoiDiemChayDAT = (DateTime)item["ThoiDiemChayDAT"],
                 ThoiDiemKetThucDAT = (DateTime)item["ThoiDiemKetThucDAT"],
                 MaXeTap = item["MaXeTap"] == DBNull.Value ? "" : item["MaXeTap"].ToString(),
-                MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value? "" : item["MaXeTapB11"].ToString(),
+                MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value ? "" : item["MaXeTapB11"].ToString(),
                 TimeInB11 = (DateTime)item["TimeInB11"],
                 TimeOutB11 = (DateTime)item["TimeOutB11"],
                 //Status = (bool)item["Status"],
