@@ -1,9 +1,13 @@
-﻿using DrivingCenter.App.DAO;
+﻿using DevExpress.Export;
+using DevExpress.XtraGrid;
+using DevExpress.XtraPrinting;
+using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
@@ -94,11 +98,22 @@ namespace DrivingCenter.App.UserControl
             }
             else if (button.Caption == "Export")
             {
-                List<XeTapLai> lst = DAT_DAO.Instance.GetAllVehicles();
-                ConvertListToDataTable convert = new ConvertListToDataTable();
-                DataTable dt = convert.ToDataTable(lst);
-                ExportExcel export = new ExportExcel();
-                export.ExportToExcel(dt, "Kết Quả");
+                //List<XeTapLai> lst = DAT_DAO.Instance.GetAllVehicles();
+                //ConvertListToDataTable convert = new ConvertListToDataTable();
+                //DataTable dt = convert.ToDataTable(lst);
+                //ExportExcel export = new ExportExcel();
+                //export.ExportToExcel(dt, "Kết Quả");
+
+                string fileName = $"XeTapLai.xlsx";
+                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+                gridControl_XeTapLai.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+                {
+                    ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+                });
+
+                MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else if (button.Caption == "Delete")
             {

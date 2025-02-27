@@ -1,9 +1,12 @@
-﻿using DrivingCenter.App.DAO;
+﻿using DevExpress.Export;
+using DevExpress.XtraPrinting;
+using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -411,6 +414,10 @@ namespace DrivingCenter.App.UserControl
             ViewTongHopKQ(TongHopKQByKhoa(khoahocid), HangDaoTao);
         }
 
+        private void cb_ShowSendTC_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
         private void mn_ContextThongKeGiaoVien_Click(object sender, EventArgs e)
         {
             // Lấy giá trị của cột "ID" từ dòng hiện tại
@@ -465,8 +472,23 @@ namespace DrivingCenter.App.UserControl
 
         private void btn_ExportResultToExcel_Click(object sender, EventArgs e)
         {
-            ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
-            exportExcelWithName.ExportToExcel(dt, TenKhoaHoc, TenKhoaHoc);
+            if (cb_StyleExport.Checked)
+            {
+                string fileName = $"{TenKhoaHoc}.xlsx";
+                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+                grid_Result.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+                {
+                    ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+                });
+
+                MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
+                exportExcelWithName.ExportToExcel(dt, TenKhoaHoc, TenKhoaHoc);
+            }
         }
 
         #endregion Kết Quả
@@ -664,8 +686,9 @@ namespace DrivingCenter.App.UserControl
         }
 
 
+
         #endregion Phiên học sai
 
-       
+        
     }
 }

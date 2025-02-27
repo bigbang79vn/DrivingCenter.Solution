@@ -230,9 +230,12 @@ namespace DrivingCenter.App.UserControl
         }
 
 
-
         #endregion
 
-
+        private void gridView_DanhSachHocVien_DoubleClick(object sender, EventArgs e)
+        {
+            NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
+            MessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
+        }
     }
 }

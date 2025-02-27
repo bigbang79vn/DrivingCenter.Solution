@@ -793,12 +793,9 @@ namespace DrivingCenter.App.DAO
 
         public List<NguoiLxInDAT> GetAllNguoiLxByKhoaHocID(int khoahocId)
         {
-            string query = $"SELECT KhoaHocID, TenKH, HangDaoTao, NguoiLXID, MaDK, HoVaTen, NgaySinh, GioiTinh, SoCMT, GiaoVienID, MaXeTap, XeB11, TongQuangDuongLD, TongThoiGianLD, ThoiDiemChayDAT, ThoiDiemKetThucDAT " +
-                $"FROM NguoiLX " +
-                $"WHERE KhoaHocID = {khoahocId} AND MaCSDT = 66015";
+            string query = $"EXEC [dbo].[spGetALLNguoiLxByKhoaHocCSDT] @MaCSDT = N'66015', @KhoaHocID = {khoahocId}";
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
-
 
             List<NguoiLxInDAT> lst = new List<NguoiLxInDAT>();
 
@@ -820,8 +817,8 @@ namespace DrivingCenter.App.DAO
                     MaXeTapB11 = item["XeB11"] == DBNull.Value ? "" : item["XeB11"].ToString(),
                     TongQuangDuongTichLuy = Convert.ToDouble(item["TongQuangDuongLD"]),
                     TongThoiGianTichLuy = (int)item["TongThoiGianLD"],
-                    ThoiDiemChayDAT = (DateTime)item["ThoiDiemChayDAT"],
-                    ThoiDiemKetThucDAT = (DateTime)item["ThoiDiemKetThucDAT"]
+                    ThoiDiemChayDAT = item["ThoiDiemChayDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemChayDAT"],
+                    ThoiDiemKetThucDAT = item["ThoiDiemKetThucDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemKetThucDAT"]
                 }).ToList();
             }
 
@@ -844,12 +841,12 @@ namespace DrivingCenter.App.DAO
                 TenKH = item["TenKH"].ToString(),
                 GiaoVienId = (int)item["GiaoVienID"],
                 GiaoVien = item["HoTenDem"].ToString() + " " + item["TenGV"].ToString(),
-                ThoiDiemChayDAT = (DateTime)item["ThoiDiemChayDAT"],
-                ThoiDiemKetThucDAT = (DateTime)item["ThoiDiemKetThucDAT"],
+                ThoiDiemChayDAT = item["ThoiDiemChayDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemChayDAT"],
+                ThoiDiemKetThucDAT = item["ThoiDiemKetThucDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemKetThucDAT"],
                 MaXeTap = item["MaXeTap"] == DBNull.Value ? "" : item["MaXeTap"].ToString(),
                 MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value ? "" : item["MaXeTapB11"].ToString(),
-                TimeInB11 = (DateTime)item["TimeInB11"],
-                TimeOutB11 = (DateTime)item["TimeOutB11"],
+                TimeInB11 = item["TimeInB11"] == DBNull.Value ? (DateTime?)null : (DateTime)item["TimeInB11"],
+                TimeOutB11 = item["TimeOutB11"] == DBNull.Value ? (DateTime?)null : (DateTime)item["TimeOutB11"],
                 //Status = (bool)item["Status"],
                 HangDT = item["HangDT"].ToString()
             }).ToList();
@@ -877,7 +874,7 @@ namespace DrivingCenter.App.DAO
         #region Phân Công đào tạo
         public void Assignment(Assignment ass)
         {
-            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}' and TenGV like N'%{2}%'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
+            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'{2}'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
 

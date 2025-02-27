@@ -76,6 +76,8 @@
             this.repoGrid_Cabin = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage_DetailHocVien = new DevExpress.XtraTab.XtraTabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ImportData = new System.Windows.Forms.TableLayoutPanel();
             this.grdCtrl_ImportData = new DevExpress.XtraGrid.GridControl();
@@ -109,6 +111,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_Cabin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.xtraTabPage_DetailHocVien.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_ImportData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrl_ImportData)).BeginInit();
@@ -133,7 +137,7 @@
             this.TongQuangDuongTichLuy.Name = "TongQuangDuongTichLuy";
             this.TongQuangDuongTichLuy.Visible = true;
             this.TongQuangDuongTichLuy.VisibleIndex = 9;
-            this.TongQuangDuongTichLuy.Width = 100;
+            this.TongQuangDuongTichLuy.Width = 111;
             // 
             // tileBar
             // 
@@ -400,23 +404,23 @@
             this.TongQuangDuongTichLuy,
             this.TongThoiGianTichLuy});
             gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.HangDT;
+            gridFormatRule1.Column = this.ThoiDiemChayDAT;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Expression;
-            formatConditionRuleValue1.Expression = "[HangDT] = \'B2\' OR [HangDT] = \'B\' AND [TongQuangDuongTichLuy] > 810 AND [TongThoi" +
-    "GianTichLuy] > 72000";
             gridFormatRule1.Rule = formatConditionRuleValue1;
             this.gridView_DanhSachHocVien.FormatRules.Add(gridFormatRule1);
             this.gridView_DanhSachHocVien.GridControl = this.gridCtrl_DanhSachHocVien;
             this.gridView_DanhSachHocVien.GroupCount = 1;
             this.gridView_DanhSachHocVien.Name = "gridView_DanhSachHocVien";
             this.gridView_DanhSachHocVien.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView_DanhSachHocVien.OptionsBehavior.Editable = false;
             this.gridView_DanhSachHocVien.OptionsPrint.ExpandAllDetails = true;
             this.gridView_DanhSachHocVien.OptionsView.ShowGroupPanelColumnsAsSingleRow = true;
             this.gridView_DanhSachHocVien.RowHeight = 27;
             this.gridView_DanhSachHocVien.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.GiaoVienID, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView_DanhSachHocVien.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView_DanhSachHocVien_CellValueChanged);
+            this.gridView_DanhSachHocVien.DoubleClick += new System.EventHandler(this.gridView_DanhSachHocVien_DoubleClick);
             // 
             // MaDK
             // 
@@ -425,7 +429,7 @@
             this.MaDK.Name = "MaDK";
             this.MaDK.Visible = true;
             this.MaDK.VisibleIndex = 0;
-            this.MaDK.Width = 127;
+            this.MaDK.Width = 133;
             // 
             // TenKH
             // 
@@ -472,7 +476,7 @@
             this.HocVien.Name = "HocVien";
             this.HocVien.Visible = true;
             this.HocVien.VisibleIndex = 1;
-            this.HocVien.Width = 128;
+            this.HocVien.Width = 134;
             // 
             // NgaySinh
             // 
@@ -481,7 +485,7 @@
             this.NgaySinh.Name = "NgaySinh";
             this.NgaySinh.Visible = true;
             this.NgaySinh.VisibleIndex = 2;
-            this.NgaySinh.Width = 81;
+            this.NgaySinh.Width = 85;
             // 
             // GioiTinh
             // 
@@ -490,7 +494,7 @@
             this.GioiTinh.Name = "GioiTinh";
             this.GioiTinh.Visible = true;
             this.GioiTinh.VisibleIndex = 3;
-            this.GioiTinh.Width = 69;
+            this.GioiTinh.Width = 72;
             // 
             // CCCD
             // 
@@ -499,7 +503,7 @@
             this.CCCD.Name = "CCCD";
             this.CCCD.Visible = true;
             this.CCCD.VisibleIndex = 4;
-            this.CCCD.Width = 97;
+            this.CCCD.Width = 101;
             // 
             // MaXeTap
             // 
@@ -511,7 +515,7 @@
             this.MaXeTap.Name = "MaXeTap";
             this.MaXeTap.Visible = true;
             this.MaXeTap.VisibleIndex = 5;
-            this.MaXeTap.Width = 99;
+            this.MaXeTap.Width = 103;
             // 
             // repoGrid_XeTapLai
             // 
@@ -546,7 +550,7 @@
             this.MaXeTapB11.Name = "MaXeTapB11";
             this.MaXeTapB11.Visible = true;
             this.MaXeTapB11.VisibleIndex = 6;
-            this.MaXeTapB11.Width = 99;
+            this.MaXeTapB11.Width = 103;
             // 
             // ThoiDiemChayDAT
             // 
@@ -557,7 +561,7 @@
             this.ThoiDiemChayDAT.Name = "ThoiDiemChayDAT";
             this.ThoiDiemChayDAT.Visible = true;
             this.ThoiDiemChayDAT.VisibleIndex = 7;
-            this.ThoiDiemChayDAT.Width = 136;
+            this.ThoiDiemChayDAT.Width = 104;
             // 
             // ThoiDiemKetThucDAT
             // 
@@ -568,7 +572,7 @@
             this.ThoiDiemKetThucDAT.Name = "ThoiDiemKetThucDAT";
             this.ThoiDiemKetThucDAT.Visible = true;
             this.ThoiDiemKetThucDAT.VisibleIndex = 8;
-            this.ThoiDiemKetThucDAT.Width = 80;
+            this.ThoiDiemKetThucDAT.Width = 103;
             // 
             // TongThoiGianTichLuy
             // 
@@ -579,7 +583,7 @@
             this.TongThoiGianTichLuy.Name = "TongThoiGianTichLuy";
             this.TongThoiGianTichLuy.Visible = true;
             this.TongThoiGianTichLuy.VisibleIndex = 10;
-            this.TongThoiGianTichLuy.Width = 94;
+            this.TongThoiGianTichLuy.Width = 117;
             // 
             // repoDate
             // 
@@ -616,11 +620,35 @@
             // 
             // xtraTabPage_DetailHocVien
             // 
+            this.xtraTabPage_DetailHocVien.Controls.Add(this.tableLayoutPanel1);
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
             this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1191, 615);
             this.xtraTabPage_DetailHocVien.Text = "Thông tin học viên";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.72292F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.27708F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 615F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1191, 615);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(348, 609);
+            this.panel2.TabIndex = 0;
             // 
             // navigationPage2
             // 
@@ -812,6 +840,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_Cabin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.xtraTabPage_DetailHocVien.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_ImportData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrl_ImportData)).EndInit();
@@ -883,5 +913,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_GiaoVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn HangDT;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
