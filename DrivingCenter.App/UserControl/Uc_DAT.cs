@@ -173,8 +173,17 @@ namespace DrivingCenter.App.UserControl
 
         private void btn_ExportPH_Click(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
-            export.ExportToExcel(dt, "Kết Quả");
+            string day = dtp_PhByDay.DateTime.ToString("dd-MM-yyyy");
+
+            string fileName = $"Phien DAT - {day}.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridControl_PhienHoc.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #region Context Menustrip Phiên học

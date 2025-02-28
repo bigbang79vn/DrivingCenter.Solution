@@ -827,7 +827,7 @@ namespace DrivingCenter.App.DAO
 
         public List<Schedule> GetAllSchedule(int monthId)
         {
-            string query = $"SELECT Id, kh.KhoaHocId, kh.MaKH, kh.TenKH, lh.GiaoVienID, ThoiDiemChayDAT, ThoiDiemKetThucDAT, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, HangDT " +
+            string query = $"SELECT Id, kh.KhoaHocId, kh.MaKH, kh.TenKH, lh.GiaoVienID, ThoiDiemChayDAT, ThoiDiemKetThucDAT, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, HangDT, lh.Status " +
                 $"FROM LichHoc lh, GiaoVien gv, KhoaHoc kh " +
                 $"WHERE gv.GiaoVienID = lh.GiaoVienID and lh.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);

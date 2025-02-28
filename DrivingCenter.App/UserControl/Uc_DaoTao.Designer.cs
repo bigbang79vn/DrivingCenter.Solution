@@ -34,6 +34,7 @@
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tileBar = new DevExpress.XtraBars.Navigation.TileBar();
@@ -69,7 +70,6 @@
             this.repoGrid_XeTapLai = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaXeTapB11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemKetThucDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongThoiGianTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
@@ -92,6 +92,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.ColKhoaHoc = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.cậpNhậtPhânCôngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -121,6 +122,17 @@
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // ThoiDiemChayDAT
+            // 
+            this.ThoiDiemChayDAT.AppearanceCell.Options.UseTextOptions = true;
+            this.ThoiDiemChayDAT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ThoiDiemChayDAT.Caption = "Ngày Bắt Đầu DAT";
+            this.ThoiDiemChayDAT.FieldName = "ThoiDiemChayDAT";
+            this.ThoiDiemChayDAT.Name = "ThoiDiemChayDAT";
+            this.ThoiDiemChayDAT.Visible = true;
+            this.ThoiDiemChayDAT.VisibleIndex = 7;
+            this.ThoiDiemChayDAT.Width = 104;
             // 
             // HangDT
             // 
@@ -306,9 +318,10 @@
             this.contextMenuStrip_KhoaHoc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_ThemKhoaHoc,
             this.MenuItem_BoTriXeSTD,
-            this.MenuItem_XuatBaoCao});
+            this.MenuItem_XuatBaoCao,
+            this.cậpNhậtPhânCôngToolStripMenuItem});
             this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(187, 70);
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(187, 114);
             // 
             // MenuItem_ThemKhoaHoc
             // 
@@ -551,17 +564,6 @@
             this.MaXeTapB11.Visible = true;
             this.MaXeTapB11.VisibleIndex = 6;
             this.MaXeTapB11.Width = 103;
-            // 
-            // ThoiDiemChayDAT
-            // 
-            this.ThoiDiemChayDAT.AppearanceCell.Options.UseTextOptions = true;
-            this.ThoiDiemChayDAT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ThoiDiemChayDAT.Caption = "Ngày Bắt Đầu DAT";
-            this.ThoiDiemChayDAT.FieldName = "ThoiDiemChayDAT";
-            this.ThoiDiemChayDAT.Name = "ThoiDiemChayDAT";
-            this.ThoiDiemChayDAT.Visible = true;
-            this.ThoiDiemChayDAT.VisibleIndex = 7;
-            this.ThoiDiemChayDAT.Width = 104;
             // 
             // ThoiDiemKetThucDAT
             // 
@@ -811,6 +813,13 @@
             this.ColKhoaHoc.VisibleIndex = 0;
             this.ColKhoaHoc.Width = 225;
             // 
+            // cậpNhậtPhânCôngToolStripMenuItem
+            // 
+            this.cậpNhậtPhânCôngToolStripMenuItem.Name = "cậpNhậtPhânCôngToolStripMenuItem";
+            this.cậpNhậtPhânCôngToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.cậpNhậtPhânCôngToolStripMenuItem.Text = "Cập nhật phân công";
+            this.cậpNhậtPhânCôngToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtPhânCôngToolStripMenuItem_Click);
+            // 
             // Uc_DaoTao
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -915,5 +924,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn HangDT;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripMenuItem cậpNhậtPhânCôngToolStripMenuItem;
     }
 }

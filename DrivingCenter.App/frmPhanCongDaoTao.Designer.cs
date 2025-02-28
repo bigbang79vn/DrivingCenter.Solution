@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.tblLayout_LichHoc = new System.Windows.Forms.TableLayoutPanel();
             this.gridCtrl_LichHoc = new DevExpress.XtraGrid.GridControl();
             this.gridView_LichHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -56,6 +58,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateEdit_Start = new DevExpress.XtraEditors.DateEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tblLayout_LichHoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LichHoc)).BeginInit();
@@ -132,7 +135,17 @@
             this.MaXeTapB11,
             this.TimeInB11,
             this.TimeOutB11,
-            this.HangDT});
+            this.HangDT,
+            this.Status});
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.Status;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue1.Appearance.Options.UseFont = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "True";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView_LichHoc.FormatRules.Add(gridFormatRule1);
             this.gridView_LichHoc.GridControl = this.gridCtrl_LichHoc;
             this.gridView_LichHoc.GroupCount = 2;
             this.gridView_LichHoc.Name = "gridView_LichHoc";
@@ -429,6 +442,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ngày Bắt Đầu DAT";
             // 
+            // Status
+            // 
+            this.Status.Caption = "Check";
+            this.Status.FieldName = "Status";
+            this.Status.Name = "Status";
+            // 
             // frmPhanCongDaoTao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,5 +507,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn HangDT;
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_Cabin;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn Status;
     }
 }

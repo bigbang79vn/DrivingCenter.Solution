@@ -35,7 +35,6 @@ namespace DrivingCenter.App.UserControl
             LoadCategory();
             LoadXeTapLai();
             LoadGiaoVien();
-            InsertLichHoc();
         }
 
         int MonthId = 0;
@@ -236,6 +235,11 @@ namespace DrivingCenter.App.UserControl
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
             MessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
+        }
+
+        private void cậpNhậtPhânCôngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InsertLichHoc();
         }
     }
 }
