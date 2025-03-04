@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Export;
+using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.GPLX;
@@ -10,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,7 +88,7 @@ namespace DrivingCenter.App.UserControl
                     ConvertListToDataTable convert = new ConvertListToDataTable();
                     dt = convert.ToDataTable(lstThiSinh);
 
-                    dtgv_Datahv.DataSource = dt;
+                    gridControl_ThiSinh.DataSource = dt;
 
                     //----Format datetime ----------
                     foreach (DataRow dr in dt.Rows)
@@ -117,24 +120,28 @@ namespace DrivingCenter.App.UserControl
                     STT++;
                 }
 
-                ConvertListToDataTable convert = new ConvertListToDataTable();
-                dt = convert.ToDataTable(lstThiSinh);
-
-                dtgv_Datahv.DataSource = dt;
+                gridControl_ThiSinh.DataSource = lstThiSinh;
 
                 //----Format datetime ----------
 
-                foreach (DataRow dr in dt.Rows)
-                {
-                    dr["NgaySinh"] = DateTime.Parse((dr["NgaySinh"].ToString())).ToString("dd-MM-yyyy");
-                }
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    dr["NgaySinh"] = DateTime.Parse((dr["NgaySinh"].ToString())).ToString("dd-MM-yyyy");
+                //}
             }
         }
 
         private void btn_Export_Click(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
-            export.ExportToExcel(dt, "Kết Quả Kỳ Thi Tốt Nghiệp {0}");
+            string fileName = $"KetQuaThiTotNghiep.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridControl_ThiSinh.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btn_Insert_Click(object sender, EventArgs e)

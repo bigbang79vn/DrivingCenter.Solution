@@ -1,6 +1,8 @@
-﻿using DevExpress.Map.Kml.Model;
+﻿using DevExpress.Export;
+using DevExpress.Map.Kml.Model;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Filtering.Templates;
+using DevExpress.XtraPrinting;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using DrivingCenter.App.DAO;
@@ -8,6 +10,7 @@ using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.GPLX;
+using DrivingCenter.App.Helper;
 using ExcelDataReader;
 using System;
 using System.Collections.Generic;
@@ -20,6 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -237,9 +241,56 @@ namespace DrivingCenter.App.UserControl
             MessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
         }
 
-        private void cậpNhậtPhânCôngToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuItem_CheckLyThuyet_Click(object sender, EventArgs e)
+        {
+            string filePath = "";
+            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    txtFilePath.Text = openFileDialog.FileName;
+
+                    //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+                    using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            {
+                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                            });
+                            tableCollection = result.Tables;
+
+                            foreach (DataTable table in tableCollection)
+                            {
+                                DataTable dt = tableCollection["Worksheet"];
+                                frmKiemTraLyThuyet f = new frmKiemTraLyThuyet(dt);
+                                f.Show();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MenuItem_PhanCong_Click(object sender, EventArgs e)
         {
             InsertLichHoc();
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            string fileName = $"Danh_Sach.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridCtrl_DanhSachHocVien.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
