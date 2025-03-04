@@ -434,7 +434,7 @@
     <Compile Include="DTO\GPLX\NguoiLX_HoSo.cs" />
     <Compile Include="DTO\GPLX\NguoiLX_HoSo_Update.cs" />
     <Compile Include="DTO\GPLX\ThiSinh.cs" />
-    <Compile Include="DTO\LyThuyet\HocVienLyThuyet.cs" />
+    <Compile Include="DTO\LyThuyet\NguoiLxInLT.cs" />
     <Compile Include="fAccount.cs">
       <SubType>Form</SubType>
     </Compile>

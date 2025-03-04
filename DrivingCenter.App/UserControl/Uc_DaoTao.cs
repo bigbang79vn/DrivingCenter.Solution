@@ -10,6 +10,7 @@ using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.GPLX;
+using DrivingCenter.App.DTO.LyThuyet;
 using DrivingCenter.App.Helper;
 using ExcelDataReader;
 using System;
@@ -42,6 +43,7 @@ namespace DrivingCenter.App.UserControl
         }
 
         int MonthId = 0;
+        int KhoaHocId;
         private void tileBar_SelectedItemChanged(object sender, TileItemEventArgs e)
         {
             navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
@@ -101,7 +103,7 @@ namespace DrivingCenter.App.UserControl
             var focusedNode = e.Node;
             if (focusedNode != null)
             {
-                int KhoaHocId = (int)focusedNode["MonthID"]/10000;
+                KhoaHocId = (int)focusedNode["MonthID"]/10000;
                 MonthId = (int)focusedNode["MonthID"];
                 LoadDanhSachHocVien((int)KhoaHocId);
             }
@@ -265,7 +267,7 @@ namespace DrivingCenter.App.UserControl
                             foreach (DataTable table in tableCollection)
                             {
                                 DataTable dt = tableCollection["Worksheet"];
-                                frmKiemTraLyThuyet f = new frmKiemTraLyThuyet(dt);
+                                frmKiemTraLyThuyet f = new frmKiemTraLyThuyet(dt, KhoaHocId);
                                 f.Show();
                             }
                         }

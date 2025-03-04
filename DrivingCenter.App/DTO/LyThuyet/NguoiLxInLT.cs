@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DTO.LyThuyet
 {
-    public class HocVienLyThuyet
+    public class NguoiLxInLT
     {
         public int KhoaHocID { get; set; }
         public string TenKH { get; set; }
@@ -26,5 +26,7 @@ namespace DrivingCenter.App.DTO.LyThuyet
         public string PL3 { get; set; }
         public string MoPhong { get; set; }
         public string KetLuan { get; set; }
+        public DateTime LastLogin { get; set; }
+        public string TimeToDay { get; set; }
     }
 }

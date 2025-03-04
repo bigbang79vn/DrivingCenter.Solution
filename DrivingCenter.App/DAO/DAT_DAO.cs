@@ -1,10 +1,12 @@
 ﻿using DevExpress.Data.Filtering.Helpers;
+using DevExpress.Utils.Behaviors;
 using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Drawing;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
+using DrivingCenter.App.DTO.LyThuyet;
 using GMap.NET;
 using NPOI.SS.Formula.Functions;
 using Org.BouncyCastle.Bcpg.OpenPgp;
@@ -890,6 +892,28 @@ namespace DrivingCenter.App.DAO
                 "       SELECT 1 FROM LichHoc B WHERE A.KhoaHocID = B.KhoaHocId))";
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
+        #endregion
+
+        #region Kết Quả học lý thuyết
+        public List<NguoiLxInLT> GetAllNguoiLxByKhoaHoc(int khoahocId)
+        {
+            string query = $"SELECT KhoaHocID, TenKH, MaDK, NguoiLXID, HoVaTen, NgaySinh, GioiTinh, SoCMT, HangDaoTao, GiaoVienID FROM NguoiLX WHERE KhoaHocID =  {khoahocId}";
+            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+
+            List<NguoiLxInLT> lst = dt.AsEnumerable().Select(item => new NguoiLxInLT
+            {
+                MaDK = item["MaDK"].ToString(),
+                TenKH = item["TenKH"].ToString(),
+                HoVaTen = item["HoVaTen"].ToString(),
+                NgaySinh = (DateTime)item["NgaySinh"],
+                GioiTinh = item["GioiTinh"].ToString(),
+                CCCD = item["SoCMT"].ToString(),
+                HangDT = item["HangDaoTao"].ToString(),
+                GiaoVienID = (int)item["GiaoVienID"],
+            }).ToList();
+            return lst;
+        }
+
         #endregion
     }
 }
