@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement11 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement12 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,16 +44,11 @@
             this.navigationFrame = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.customersNavigationPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.tblLayout_LichHoc = new System.Windows.Forms.TableLayoutPanel();
-            this.treeList_Category = new DevExpress.XtraTreeList.TreeList();
-            this.Col_TenKH = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.KhoaHocID = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.contextMenuStrip_KhoaHoc = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.MenuItem_ThemKhoaHoc = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_BoTriXeSTD = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_XuatBaoCao = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_PhanCong = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_CheckLyThuyet = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel_Right = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lb_KetquaKh = new System.Windows.Forms.Label();
+            this.btn_ExportResultToExcel = new System.Windows.Forms.Button();
+            this.btn_Extend = new System.Windows.Forms.Button();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage_LstHocVien = new DevExpress.XtraTab.XtraTabPage();
             this.gridCtrl_DanhSachHocVien = new DevExpress.XtraGrid.GridControl();
@@ -80,6 +75,17 @@
             this.xtraTabPage_DetailHocVien = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PanelLeft = new System.Windows.Forms.Panel();
+            this.btn_LoadKhoaHoc = new System.Windows.Forms.Button();
+            this.treeList_Category = new DevExpress.XtraTreeList.TreeList();
+            this.Col_TenKH = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.KhoaHocID = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.contextMenuStrip_KhoaHoc = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MenuItem_ThemKhoaHoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_BoTriXeSTD = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_XuatBaoCao = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_PhanCong = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_CheckLyThuyet = new System.Windows.Forms.ToolStripMenuItem();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ImportData = new System.Windows.Forms.TableLayoutPanel();
             this.grdCtrl_ImportData = new DevExpress.XtraGrid.GridControl();
@@ -94,14 +100,11 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.ColKhoaHoc = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.contextMenuStrip_HocVien = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.navigationPage1.SuspendLayout();
-            this.tblLayout_LichHoc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).BeginInit();
-            this.contextMenuStrip_KhoaHoc.SuspendLayout();
+            this.panel_Right.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage_LstHocVien.SuspendLayout();
@@ -117,6 +120,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage_DetailHocVien.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.PanelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).BeginInit();
+            this.contextMenuStrip_KhoaHoc.SuspendLayout();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_ImportData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrl_ImportData)).BeginInit();
@@ -124,7 +130,6 @@
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.contextMenuStrip_HocVien.SuspendLayout();
             this.SuspendLayout();
             // 
             // ThoiDiemChayDAT
@@ -199,19 +204,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement3.Text = "Lịch Học";
-            this.employeesTileBarItem.Elements.Add(tileItemElement3);
+            tileItemElement11.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement11.Text = "Lịch Học";
+            this.employeesTileBarItem.Elements.Add(tileItemElement11);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement4.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement4);
+            tileItemElement12.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement12.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement12.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement12);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -243,136 +248,95 @@
             // 
             this.navigationPage1.AutoScroll = true;
             this.navigationPage1.Caption = "navigationPage1";
-            this.navigationPage1.Controls.Add(this.tblLayout_LichHoc);
+            this.navigationPage1.Controls.Add(this.panel_Right);
+            this.navigationPage1.Controls.Add(this.PanelLeft);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
             // 
-            // tblLayout_LichHoc
+            // panel_Right
             // 
-            this.tblLayout_LichHoc.ColumnCount = 2;
-            this.tblLayout_LichHoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tblLayout_LichHoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayout_LichHoc.Controls.Add(this.treeList_Category, 0, 0);
-            this.tblLayout_LichHoc.Controls.Add(this.xtraTabControl1, 1, 0);
-            this.tblLayout_LichHoc.Location = new System.Drawing.Point(3, 8);
-            this.tblLayout_LichHoc.Name = "tblLayout_LichHoc";
-            this.tblLayout_LichHoc.RowCount = 1;
-            this.tblLayout_LichHoc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayout_LichHoc.Size = new System.Drawing.Size(1479, 653);
-            this.tblLayout_LichHoc.TabIndex = 1;
+            this.panel_Right.Controls.Add(this.panel3);
+            this.panel_Right.Controls.Add(this.xtraTabControl1);
+            this.panel_Right.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Right.Location = new System.Drawing.Point(234, 0);
+            this.panel_Right.Name = "panel_Right";
+            this.panel_Right.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.panel_Right.Size = new System.Drawing.Size(1266, 690);
+            this.panel_Right.TabIndex = 2;
             // 
-            // treeList_Category
+            // panel3
             // 
-            this.treeList_Category.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.treeList_Category.Appearance.FocusedRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeList_Category.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Blue;
-            this.treeList_Category.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.treeList_Category.Appearance.FocusedRow.Options.UseFont = true;
-            this.treeList_Category.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.treeList_Category.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeList_Category.Appearance.HeaderPanel.Options.UseFont = true;
-            this.treeList_Category.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.treeList_Category.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.treeList_Category.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeList_Category.Appearance.Row.Options.UseFont = true;
-            this.treeList_Category.Appearance.SelectedRow.Font = new System.Drawing.Font("Roboto", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeList_Category.Appearance.SelectedRow.Options.UseFont = true;
-            this.treeList_Category.ColumnPanelRowHeight = 31;
-            this.treeList_Category.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.Col_TenKH,
-            this.KhoaHocID});
-            this.treeList_Category.ContextMenuStrip = this.contextMenuStrip_KhoaHoc;
-            this.treeList_Category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeList_Category.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeList_Category.KeyFieldName = "MonthID";
-            this.treeList_Category.Location = new System.Drawing.Point(3, 3);
-            this.treeList_Category.Name = "treeList_Category";
-            this.treeList_Category.OptionsBehavior.AutoSelectAllInEditor = false;
-            this.treeList_Category.OptionsBehavior.Editable = false;
-            this.treeList_Category.OptionsBehavior.ReadOnly = true;
-            this.treeList_Category.OptionsFilter.ExpandNodesOnFiltering = true;
-            this.treeList_Category.OptionsFind.ExpandNodesOnIncrementalSearch = true;
-            this.treeList_Category.OptionsMenu.EnableNodeMenu = false;
-            this.treeList_Category.OptionsView.ShowIndicator = false;
-            this.treeList_Category.ParentFieldName = "ParentMonthID";
-            this.treeList_Category.Size = new System.Drawing.Size(244, 647);
-            this.treeList_Category.TabIndex = 1;
-            this.treeList_Category.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList_Category_FocusedNodeChanged);
-            this.treeList_Category.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeList_Category_CustomDrawNodeCell);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.lb_KetquaKh);
+            this.panel3.Controls.Add(this.btn_ExportResultToExcel);
+            this.panel3.Controls.Add(this.btn_Extend);
+            this.panel3.Location = new System.Drawing.Point(5, 3);
+            this.panel3.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1258, 29);
+            this.panel3.TabIndex = 2;
             // 
-            // Col_TenKH
+            // lb_KetquaKh
             // 
-            this.Col_TenKH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.Col_TenKH.AppearanceHeader.Options.UseBackColor = true;
-            this.Col_TenKH.Caption = "Khóa Học";
-            this.Col_TenKH.FieldName = "Name";
-            this.Col_TenKH.Name = "Col_TenKH";
-            this.Col_TenKH.Visible = true;
-            this.Col_TenKH.VisibleIndex = 0;
+            this.lb_KetquaKh.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lb_KetquaKh.AutoSize = true;
+            this.lb_KetquaKh.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lb_KetquaKh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.lb_KetquaKh.Location = new System.Drawing.Point(557, 3);
+            this.lb_KetquaKh.Name = "lb_KetquaKh";
+            this.lb_KetquaKh.Size = new System.Drawing.Size(118, 25);
+            this.lb_KetquaKh.TabIndex = 3;
+            this.lb_KetquaKh.Text = "KHÓA HỌC";
             // 
-            // KhoaHocID
+            // btn_ExportResultToExcel
             // 
-            this.KhoaHocID.Caption = "KhoaHocID";
-            this.KhoaHocID.FieldName = "KhoaHocID";
-            this.KhoaHocID.Name = "KhoaHocID";
+            this.btn_ExportResultToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ExportResultToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.btn_ExportResultToExcel.FlatAppearance.BorderSize = 0;
+            this.btn_ExportResultToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ExportResultToExcel.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btn_ExportResultToExcel.ForeColor = System.Drawing.Color.White;
+            this.btn_ExportResultToExcel.Location = new System.Drawing.Point(1168, -1);
+            this.btn_ExportResultToExcel.Name = "btn_ExportResultToExcel";
+            this.btn_ExportResultToExcel.Size = new System.Drawing.Size(90, 29);
+            this.btn_ExportResultToExcel.TabIndex = 2;
+            this.btn_ExportResultToExcel.Text = "Export";
+            this.btn_ExportResultToExcel.UseVisualStyleBackColor = false;
+            this.btn_ExportResultToExcel.Click += new System.EventHandler(this.btn_ExportResultToExcel_Click);
             // 
-            // contextMenuStrip_KhoaHoc
+            // btn_Extend
             // 
-            this.contextMenuStrip_KhoaHoc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItem_ThemKhoaHoc,
-            this.MenuItem_BoTriXeSTD,
-            this.MenuItem_XuatBaoCao,
-            this.MenuItem_PhanCong,
-            this.MenuItem_CheckLyThuyet});
-            this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 114);
-            // 
-            // MenuItem_ThemKhoaHoc
-            // 
-            this.MenuItem_ThemKhoaHoc.Name = "MenuItem_ThemKhoaHoc";
-            this.MenuItem_ThemKhoaHoc.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_ThemKhoaHoc.Text = "Thêm khóa học";
-            // 
-            // MenuItem_BoTriXeSTD
-            // 
-            this.MenuItem_BoTriXeSTD.Name = "MenuItem_BoTriXeSTD";
-            this.MenuItem_BoTriXeSTD.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_BoTriXeSTD.Text = "Bố trí xe STĐ";
-            this.MenuItem_BoTriXeSTD.Click += new System.EventHandler(this.MenuItem_BoTriXeSTD_Click);
-            // 
-            // MenuItem_XuatBaoCao
-            // 
-            this.MenuItem_XuatBaoCao.Name = "MenuItem_XuatBaoCao";
-            this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_XuatBaoCao.Text = "Xuất báo cáo đào tạo";
-            // 
-            // MenuItem_PhanCong
-            // 
-            this.MenuItem_PhanCong.Name = "MenuItem_PhanCong";
-            this.MenuItem_PhanCong.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_PhanCong.Text = "Cập nhật phân công";
-            this.MenuItem_PhanCong.Click += new System.EventHandler(this.MenuItem_PhanCong_Click);
-            // 
-            // MenuItem_CheckLyThuyet
-            // 
-            this.MenuItem_CheckLyThuyet.Name = "MenuItem_CheckLyThuyet";
-            this.MenuItem_CheckLyThuyet.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_CheckLyThuyet.Text = "Kiểm tra học lý thuyết";
-            this.MenuItem_CheckLyThuyet.Click += new System.EventHandler(this.MenuItem_CheckLyThuyet_Click);
+            this.btn_Extend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.btn_Extend.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Extend.FlatAppearance.BorderSize = 0;
+            this.btn_Extend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Extend.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Extend.ForeColor = System.Drawing.Color.White;
+            this.btn_Extend.Location = new System.Drawing.Point(0, 0);
+            this.btn_Extend.Name = "btn_Extend";
+            this.btn_Extend.Size = new System.Drawing.Size(63, 29);
+            this.btn_Extend.TabIndex = 1;
+            this.btn_Extend.Text = "|<<>>|";
+            this.btn_Extend.UseVisualStyleBackColor = false;
+            this.btn_Extend.Click += new System.EventHandler(this.btn_Extend_Click);
             // 
             // xtraTabControl1
             // 
+            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.xtraTabControl1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xtraTabControl1.Appearance.Options.UseFont = true;
             this.xtraTabControl1.AppearancePage.Header.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xtraTabControl1.AppearancePage.Header.Options.UseFont = true;
             this.xtraTabControl1.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xtraTabControl1.AppearancePage.HeaderActive.Options.UseFont = true;
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(253, 3);
+            this.xtraTabControl1.Location = new System.Drawing.Point(5, 34);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage_LstHocVien;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1223, 647);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1258, 656);
             this.xtraTabControl1.TabIndex = 4;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage_LstHocVien,
@@ -384,12 +348,11 @@
             this.xtraTabPage_LstHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_LstHocVien.ImageOptions.SvgImage")));
             this.xtraTabPage_LstHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.xtraTabPage_LstHocVien.Name = "xtraTabPage_LstHocVien";
-            this.xtraTabPage_LstHocVien.Size = new System.Drawing.Size(1221, 615);
+            this.xtraTabPage_LstHocVien.Size = new System.Drawing.Size(1256, 624);
             this.xtraTabPage_LstHocVien.Text = "Danh sách học viên";
             // 
             // gridCtrl_DanhSachHocVien
             // 
-            this.gridCtrl_DanhSachHocVien.ContextMenuStrip = this.contextMenuStrip_HocVien;
             this.gridCtrl_DanhSachHocVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCtrl_DanhSachHocVien.Location = new System.Drawing.Point(0, 0);
             this.gridCtrl_DanhSachHocVien.MainView = this.gridView_DanhSachHocVien;
@@ -399,7 +362,7 @@
             this.repoDate,
             this.repoGrid_Cabin,
             this.repoGrid_GiaoVien});
-            this.gridCtrl_DanhSachHocVien.Size = new System.Drawing.Size(1221, 615);
+            this.gridCtrl_DanhSachHocVien.Size = new System.Drawing.Size(1256, 624);
             this.gridCtrl_DanhSachHocVien.TabIndex = 0;
             this.gridCtrl_DanhSachHocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_DanhSachHocVien});
@@ -452,6 +415,7 @@
             this.gridView_DanhSachHocVien.OptionsPrint.ExpandAllDetails = true;
             this.gridView_DanhSachHocVien.OptionsView.ShowGroupedColumns = true;
             this.gridView_DanhSachHocVien.OptionsView.ShowGroupPanelColumnsAsSingleRow = true;
+            this.gridView_DanhSachHocVien.OptionsView.ShowIndicator = false;
             this.gridView_DanhSachHocVien.RowHeight = 27;
             this.gridView_DanhSachHocVien.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.GiaoVienID, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -650,7 +614,7 @@
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
-            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1221, 615);
+            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1256, 618);
             this.xtraTabPage_DetailHocVien.Text = "Thông tin học viên";
             // 
             // tableLayoutPanel1
@@ -664,8 +628,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 615F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1221, 615);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 618F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1256, 618);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -673,8 +637,134 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(356, 609);
+            this.panel2.Size = new System.Drawing.Size(367, 612);
             this.panel2.TabIndex = 0;
+            // 
+            // PanelLeft
+            // 
+            this.PanelLeft.Controls.Add(this.btn_LoadKhoaHoc);
+            this.PanelLeft.Controls.Add(this.treeList_Category);
+            this.PanelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PanelLeft.Location = new System.Drawing.Point(0, 0);
+            this.PanelLeft.Name = "PanelLeft";
+            this.PanelLeft.Size = new System.Drawing.Size(234, 690);
+            this.PanelLeft.TabIndex = 2;
+            // 
+            // btn_LoadKhoaHoc
+            // 
+            this.btn_LoadKhoaHoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.btn_LoadKhoaHoc.FlatAppearance.BorderSize = 0;
+            this.btn_LoadKhoaHoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LoadKhoaHoc.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btn_LoadKhoaHoc.ForeColor = System.Drawing.Color.White;
+            this.btn_LoadKhoaHoc.Location = new System.Drawing.Point(3, 3);
+            this.btn_LoadKhoaHoc.Name = "btn_LoadKhoaHoc";
+            this.btn_LoadKhoaHoc.Size = new System.Drawing.Size(232, 29);
+            this.btn_LoadKhoaHoc.TabIndex = 2;
+            this.btn_LoadKhoaHoc.Text = "Load Khóa Học";
+            this.btn_LoadKhoaHoc.UseVisualStyleBackColor = false;
+            this.btn_LoadKhoaHoc.Click += new System.EventHandler(this.btn_LoadKhoaHoc_Click);
+            // 
+            // treeList_Category
+            // 
+            this.treeList_Category.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeList_Category.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.treeList_Category.Appearance.FocusedRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeList_Category.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Blue;
+            this.treeList_Category.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.treeList_Category.Appearance.FocusedRow.Options.UseFont = true;
+            this.treeList_Category.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.treeList_Category.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeList_Category.Appearance.HeaderPanel.Options.UseFont = true;
+            this.treeList_Category.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.treeList_Category.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.treeList_Category.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeList_Category.Appearance.Row.Options.UseFont = true;
+            this.treeList_Category.Appearance.SelectedRow.Font = new System.Drawing.Font("Roboto", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeList_Category.Appearance.SelectedRow.Options.UseFont = true;
+            this.treeList_Category.ColumnPanelRowHeight = 31;
+            this.treeList_Category.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.Col_TenKH,
+            this.KhoaHocID});
+            this.treeList_Category.ContextMenuStrip = this.contextMenuStrip_KhoaHoc;
+            this.treeList_Category.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeList_Category.KeyFieldName = "MonthID";
+            this.treeList_Category.Location = new System.Drawing.Point(3, 35);
+            this.treeList_Category.Name = "treeList_Category";
+            this.treeList_Category.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.treeList_Category.OptionsBehavior.Editable = false;
+            this.treeList_Category.OptionsBehavior.ReadOnly = true;
+            this.treeList_Category.OptionsFilter.ExpandNodesOnFiltering = true;
+            this.treeList_Category.OptionsFind.ExpandNodesOnIncrementalSearch = true;
+            this.treeList_Category.OptionsMenu.EnableNodeMenu = false;
+            this.treeList_Category.OptionsView.ShowColumns = false;
+            this.treeList_Category.OptionsView.ShowIndicator = false;
+            this.treeList_Category.ParentFieldName = "ParentMonthID";
+            this.treeList_Category.Size = new System.Drawing.Size(231, 652);
+            this.treeList_Category.TabIndex = 1;
+            this.treeList_Category.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList_Category_FocusedNodeChanged);
+            this.treeList_Category.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeList_Category_CustomDrawNodeCell);
+            // 
+            // Col_TenKH
+            // 
+            this.Col_TenKH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.Col_TenKH.AppearanceHeader.Options.UseBackColor = true;
+            this.Col_TenKH.Caption = "Khóa Học";
+            this.Col_TenKH.FieldName = "Name";
+            this.Col_TenKH.Name = "Col_TenKH";
+            this.Col_TenKH.Visible = true;
+            this.Col_TenKH.VisibleIndex = 0;
+            // 
+            // KhoaHocID
+            // 
+            this.KhoaHocID.Caption = "KhoaHocID";
+            this.KhoaHocID.FieldName = "KhoaHocID";
+            this.KhoaHocID.Name = "KhoaHocID";
+            // 
+            // contextMenuStrip_KhoaHoc
+            // 
+            this.contextMenuStrip_KhoaHoc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_ThemKhoaHoc,
+            this.MenuItem_BoTriXeSTD,
+            this.MenuItem_XuatBaoCao,
+            this.MenuItem_PhanCong,
+            this.MenuItem_CheckLyThuyet});
+            this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 114);
+            // 
+            // MenuItem_ThemKhoaHoc
+            // 
+            this.MenuItem_ThemKhoaHoc.Name = "MenuItem_ThemKhoaHoc";
+            this.MenuItem_ThemKhoaHoc.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_ThemKhoaHoc.Text = "Thêm khóa học";
+            // 
+            // MenuItem_BoTriXeSTD
+            // 
+            this.MenuItem_BoTriXeSTD.Name = "MenuItem_BoTriXeSTD";
+            this.MenuItem_BoTriXeSTD.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_BoTriXeSTD.Text = "Bố trí xe STĐ";
+            this.MenuItem_BoTriXeSTD.Click += new System.EventHandler(this.MenuItem_BoTriXeSTD_Click);
+            // 
+            // MenuItem_XuatBaoCao
+            // 
+            this.MenuItem_XuatBaoCao.Name = "MenuItem_XuatBaoCao";
+            this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_XuatBaoCao.Text = "Xuất báo cáo đào tạo";
+            // 
+            // MenuItem_PhanCong
+            // 
+            this.MenuItem_PhanCong.Name = "MenuItem_PhanCong";
+            this.MenuItem_PhanCong.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_PhanCong.Text = "Cập nhật phân công";
+            this.MenuItem_PhanCong.Click += new System.EventHandler(this.MenuItem_PhanCong_Click);
+            // 
+            // MenuItem_CheckLyThuyet
+            // 
+            this.MenuItem_CheckLyThuyet.Name = "MenuItem_CheckLyThuyet";
+            this.MenuItem_CheckLyThuyet.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_CheckLyThuyet.Text = "Kiểm tra học lý thuyết";
+            this.MenuItem_CheckLyThuyet.Click += new System.EventHandler(this.MenuItem_CheckLyThuyet_Click);
             // 
             // navigationPage2
             // 
@@ -837,20 +927,6 @@
             this.ColKhoaHoc.VisibleIndex = 0;
             this.ColKhoaHoc.Width = 225;
             // 
-            // contextMenuStrip_HocVien
-            // 
-            this.contextMenuStrip_HocVien.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToolStripMenuItem});
-            this.contextMenuStrip_HocVien.Name = "contextMenuStrip_HocVien";
-            this.contextMenuStrip_HocVien.Size = new System.Drawing.Size(108, 26);
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
-            // 
             // Uc_DaoTao
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -864,9 +940,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).EndInit();
             this.navigationFrame.ResumeLayout(false);
             this.navigationPage1.ResumeLayout(false);
-            this.tblLayout_LichHoc.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).EndInit();
-            this.contextMenuStrip_KhoaHoc.ResumeLayout(false);
+            this.panel_Right.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage_LstHocVien.ResumeLayout(false);
@@ -882,6 +958,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage_DetailHocVien.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.PanelLeft.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).EndInit();
+            this.contextMenuStrip_KhoaHoc.ResumeLayout(false);
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_ImportData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrl_ImportData)).EndInit();
@@ -891,7 +970,6 @@
             this.panel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            this.contextMenuStrip_HocVien.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -920,7 +998,6 @@
         private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TableLayoutPanel tblLayout_LichHoc;
         private DevExpress.XtraTreeList.TreeList treeList_Category;
         private DevExpress.XtraGrid.Columns.GridColumn MaDK;
         private DevExpress.XtraGrid.Columns.GridColumn GiaoVienID;
@@ -958,7 +1035,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_PhanCong;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_CheckLyThuyet;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_HocVien;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.Panel panel_Right;
+        private System.Windows.Forms.Panel PanelLeft;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lb_KetquaKh;
+        private System.Windows.Forms.Button btn_ExportResultToExcel;
+        private System.Windows.Forms.Button btn_Extend;
+        private System.Windows.Forms.Button btn_LoadKhoaHoc;
     }
 }

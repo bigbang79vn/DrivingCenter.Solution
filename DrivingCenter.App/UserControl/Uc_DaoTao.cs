@@ -34,7 +34,6 @@ namespace DrivingCenter.App.UserControl
         {
             InitializeComponent();
 
-            tblLayout_LichHoc.Dock = DockStyle.Fill;
             tblLayout_ImportData.Dock = DockStyle.Fill;
 
             LoadCategory();
@@ -42,6 +41,7 @@ namespace DrivingCenter.App.UserControl
             LoadGiaoVien();
         }
 
+        private bool isCollapsed;
         int MonthId = 0;
         int KhoaHocId;
         private void tileBar_SelectedItemChanged(object sender, TileItemEventArgs e)
@@ -104,6 +104,7 @@ namespace DrivingCenter.App.UserControl
             if (focusedNode != null)
             {
                 KhoaHocId = (int)focusedNode["MonthID"]/10000;
+                //string tenkhoa = 
                 MonthId = (int)focusedNode["MonthID"];
                 LoadDanhSachHocVien((int)KhoaHocId);
             }
@@ -281,9 +282,29 @@ namespace DrivingCenter.App.UserControl
             InsertLichHoc();
         }
 
-        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
         {
+            LoadCategory();
+        }
 
+        private void btn_Extend_Click(object sender, EventArgs e)
+        {
+            if (isCollapsed)
+            {
+                PanelLeft.Width = PanelLeft.Width + 234;
+                isCollapsed = false;
+                this.Refresh();
+            }
+            else
+            {
+                PanelLeft.Width = PanelLeft.Width - 234;
+                isCollapsed = true;
+                this.Refresh();
+            }
+        }
+
+        private void btn_ExportResultToExcel_Click(object sender, EventArgs e)
+        {
             string fileName = $"Danh_Sach.xlsx";
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
 

@@ -467,7 +467,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("frmKiemTraLyThuyet.IconOptions.SvgImage")));
             this.Name = "frmKiemTraLyThuyet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kiểm tra kết quả học lý thuyết Online";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmKiemTraLyThuyet_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_DanhSachHocVien)).EndInit();
