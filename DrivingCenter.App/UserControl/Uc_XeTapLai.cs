@@ -7,6 +7,7 @@ using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -98,12 +99,6 @@ namespace DrivingCenter.App.UserControl
             }
             else if (button.Caption == "Export")
             {
-                //List<XeTapLai> lst = DAT_DAO.Instance.GetAllVehicles();
-                //ConvertListToDataTable convert = new ConvertListToDataTable();
-                //DataTable dt = convert.ToDataTable(lst);
-                //ExportExcel export = new ExportExcel();
-                //export.ExportToExcel(dt, "Kết Quả");
-
                 string fileName = $"XeTapLai.xlsx";
                 string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
 
@@ -112,8 +107,11 @@ namespace DrivingCenter.App.UserControl
                     ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
                 });
 
-                MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                var result = MessageBox.Show("Xuất Excel thành công! Mở file?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                }
             }
             else if (button.Caption == "Delete")
             {

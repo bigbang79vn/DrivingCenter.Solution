@@ -68,8 +68,7 @@ namespace DrivingCenter.App.UserControl
 
         public void LoadDanhSachHocVien(int KhoaHocID)
         {
-            List<NguoiLxInDAT> lst = new List<NguoiLxInDAT>();
-            lst = DAT_DAO.Instance.GetAllNguoiLxByKhoaHocID(KhoaHocID);
+            List<NguoiLxInDAT> lst = DAT_DAO.Instance.GetAllNguoiLxByKhoaHocID(KhoaHocID);
 
             gridCtrl_DanhSachHocVien.DataSource = lst;
         }
@@ -103,16 +102,26 @@ namespace DrivingCenter.App.UserControl
             var focusedNode = e.Node;
             if (focusedNode != null)
             {
-                KhoaHocId = (int)focusedNode["MonthID"]/10000;
-                //string tenkhoa = 
+                KhoaHocId = (int)focusedNode["MonthID"] / 10000;
                 MonthId = (int)focusedNode["MonthID"];
+                //if(treeList_Category.FocusedNode.GetValue("Name"))
+                object tenkhoa = treeList_Category.FocusedNode.GetValue("Name");
+
+                object IDKhoaHoc = treeList_Category.FocusedNode.GetValue("KhoaHocID");
+                if (IDKhoaHoc != null)
+                {
+                    lb_KetquaKh.Text = "KHÓA HỌC " + tenkhoa.ToString();
+                }
+                else
+                {
+                    lb_KetquaKh.Text = tenkhoa.ToString();
+                }
                 LoadDanhSachHocVien((int)KhoaHocId);
             }
         }
 
         private void treeList_Category_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
-
             if (e.Node.Level == 0) // Root Level
             {
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
@@ -122,12 +131,13 @@ namespace DrivingCenter.App.UserControl
             else if (e.Node.Level == 1) // Level 1
             {
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
-                e.Appearance.BackColor = Color.FromArgb(156, 78, 78);
+                e.Appearance.ForeColor = Color.White;
+                e.Appearance.BackColor = Color.FromArgb(78, 109, 156);
             }
             else if (e.Node.Level == 2) // Level 2
             {
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
-                e.Appearance.BackColor = Color.LightYellow;
+                e.Appearance.BackColor = Color.FromArgb(222, 241, 255);
             }
         }
 

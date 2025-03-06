@@ -819,6 +819,7 @@ namespace DrivingCenter.App.DAO
                     MaXeTapB11 = item["XeB11"] == DBNull.Value ? "" : item["XeB11"].ToString(),
                     TongQuangDuongTichLuy = Convert.ToDouble(item["TongQuangDuongLD"]),
                     TongThoiGianTichLuy = (int)item["TongThoiGianLD"],
+                    TongThoiGianText = TimeSpan.FromSeconds((int)item["TongThoiGianLD"]).ToString(@"hh\:mm\:ss"),
                     ThoiDiemChayDAT = item["ThoiDiemChayDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemChayDAT"],
                     ThoiDiemKetThucDAT = item["ThoiDiemKetThucDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemKetThucDAT"]
                 }).ToList();
