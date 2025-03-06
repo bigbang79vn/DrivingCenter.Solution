@@ -44,6 +44,7 @@ namespace DrivingCenter.App.UserControl
         private bool isCollapsed;
         int MonthId = 0;
         int KhoaHocId;
+        object TenKhoaHoc;
         private void tileBar_SelectedItemChanged(object sender, TileItemEventArgs e)
         {
             navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
@@ -105,16 +106,16 @@ namespace DrivingCenter.App.UserControl
                 KhoaHocId = (int)focusedNode["MonthID"] / 10000;
                 MonthId = (int)focusedNode["MonthID"];
                 //if(treeList_Category.FocusedNode.GetValue("Name"))
-                object tenkhoa = treeList_Category.FocusedNode.GetValue("Name");
+                TenKhoaHoc = treeList_Category.FocusedNode.GetValue("Name");
 
                 object IDKhoaHoc = treeList_Category.FocusedNode.GetValue("KhoaHocID");
-                if (IDKhoaHoc != null)
+                if (IDKhoaHoc == DBNull.Value)
                 {
-                    lb_KetquaKh.Text = "KHÓA HỌC " + tenkhoa.ToString();
+                    lb_KetquaKh.Text = TenKhoaHoc.ToString();
                 }
                 else
                 {
-                    lb_KetquaKh.Text = tenkhoa.ToString();
+                    lb_KetquaKh.Text = "KHÓA HỌC " + TenKhoaHoc.ToString();
                 }
                 LoadDanhSachHocVien((int)KhoaHocId);
             }
@@ -315,7 +316,7 @@ namespace DrivingCenter.App.UserControl
 
         private void btn_ExportResultToExcel_Click(object sender, EventArgs e)
         {
-            string fileName = $"Danh_Sach.xlsx";
+            string fileName = $"Danh-Sach-{TenKhoaHoc}.xlsx";
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
 
             gridCtrl_DanhSachHocVien.ExportToXlsx(filePath, new XlsxExportOptionsEx()

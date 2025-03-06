@@ -462,7 +462,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLxCCTN.NgayQDTN = dtp_NgayQD.DateTime.ToString("dd/MM/yyyy");
                         nguoiLxCCTN.NgayQDTNEng = dtp_NgayQD.DateTime.ToString("dd MMMM yyyy");
                         nguoiLxCCTN.SoCCTN = dt.Rows[i]["SoCNTN"].ToString() + " " + "LX" + dt.Rows[i]["Lop"].ToString();
-                        nguoiLxCCTN.SoVaoSo = "Q01/" + dt.Rows[i]["SoCNTN"].ToString();
+                        nguoiLxCCTN.SoVaoSo = "Q02/" + dt.Rows[i]["SoCNTN"].ToString();
                         nguoiLxCCTN.HoVaTenEng = StringUtil.RemoveVietnameseSign(dt.Rows[i]["Ho"].ToString() + " " + dt.Rows[i]["Ten"].ToString());
                         if (nguoiLxCCTN.GioiTinh == "Nam")
                             nguoiLxCCTN.GioiTinhEng = "Mr";
@@ -480,7 +480,8 @@ namespace DrivingCenter.App.UserControl
                             nguoiLxCCTN.XepLoaiTNEng = "Average Good";
                         else
                             nguoiLxCCTN.XepLoaiTNEng = "Average";
-                        nguoiLxCCTN.HangGPLXEng = "Class " + dt.Rows[i]["Lop"].ToString().Substring(0, dt.Rows[i]["Lop"].ToString().IndexOf("-")) + " car-driving";
+                        //nguoiLxCCTN.HangGPLXEng = "Class " + dt.Rows[i]["Lop"].ToString().Substring(0, dt.Rows[i]["Lop"].ToString().IndexOf("-")) + " car-driving";
+                        nguoiLxCCTN.HangGPLXEng = "Class B car-driving";
                         nguoiLxCCTN.HinhAnh = "";
 
                         lstNguoiLxCCTN.Add(nguoiLxCCTN);
