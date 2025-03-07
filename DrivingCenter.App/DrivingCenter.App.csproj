@@ -405,12 +405,10 @@
   <ItemGroup>
     <Compile Include="DAO\CabinEco_DAO.cs" />
     <Compile Include="DAO\CabinI2E_DAO.cs" />
-    <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DAT_DAO.cs" />
     <Compile Include="DAO\GPLX_DAO.cs" />
     <Compile Include="DAO\IMG_DAO.cs" />
     <Compile Include="DAO\MySQL_DAO.cs" />
-    <Compile Include="DataProvider\DataProvider.cs" />
     <Compile Include="DataProvider\DataProviderCaBinEco.cs" />
     <Compile Include="DataProvider\DataProviderCaBinI2E.cs" />
     <Compile Include="DataProvider\DataProviderDAT.cs" />

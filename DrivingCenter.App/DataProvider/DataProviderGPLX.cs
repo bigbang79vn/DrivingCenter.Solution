@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PinApplication.DAO
+namespace DrivingCenter.App.DAO
 {
     public class DataProviderGPLX
     {

@@ -1,9 +1,12 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.DataAccess.ObjectBinding;
+using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using DocumentFormat.OpenXml.Drawing.Diagrams;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.FReport;
 using DrivingCenter.App.Helper;
+using DrivingCenter.App.Report;
 using ExcelDataReader;
 using System;
 using System.Collections.Generic;

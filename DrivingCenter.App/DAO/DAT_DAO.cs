@@ -505,7 +505,6 @@ namespace DrivingCenter.App.DAO
         }
 
         #endregion DAT
-
         public List<TongHopHVByDay> TongHopGioHVByDay(string day)
         {
             string query = string.Format("SELECT ph.MaDK, CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, hv.HoVaTen, kh.TenKH, pH.BienSo as BienSoXe, ROUND(SUM(ph.TongQuangDuongLD_Phien), 1) AS TongQuangDuongLD_Phien, CONVERT(varchar, DATEADD(second, SUM(ph.TongThoiGianLD_Phien), 0), 108) AS TongThoiGianLD_Phien " +

@@ -1,6 +1,4 @@
 ﻿using DrivingCenter.App.DTO.GPLX;
-using PinApplication.DAO;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
