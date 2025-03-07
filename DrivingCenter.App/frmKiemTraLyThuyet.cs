@@ -100,7 +100,7 @@ namespace DrivingCenter.App
                 ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
             });
 
-            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

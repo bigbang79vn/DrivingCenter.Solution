@@ -129,7 +129,7 @@ namespace DrivingCenter.App.UserControl
                             tableCollection = result.Tables;
                             cb_SheetDataImport.Items.Clear();
 
-                            MessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
+                            XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
 
                             foreach (DataTable table in tableCollection)
                             {
@@ -156,7 +156,7 @@ namespace DrivingCenter.App.UserControl
         {
             if (cb_SheetDataImport.SelectedItem == null)
             {
-                MessageBox.Show(string.Format("Bạn chưa chọn Sheet chứa Data!"));
+                XtraMessageBox.Show(string.Format("Bạn chưa chọn Sheet chứa Data!"));
                 cb_SheetDataImport.Focus();
             }
             else
@@ -357,7 +357,7 @@ namespace DrivingCenter.App.UserControl
 
                         string KhoaHoc = kh.TenKHGplx;
 
-                        MessageBox.Show(string.Format("Import thành công {0} học viên cho khóa {1}!", lstNguoiLX.Count, KhoaHoc));
+                        XtraMessageBox.Show(string.Format("Import thành công {0} học viên cho khóa {1}!", lstNguoiLX.Count, KhoaHoc));
                     }
                     else if (dialogResult == DialogResult.No)
                     {
@@ -367,7 +367,7 @@ namespace DrivingCenter.App.UserControl
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -401,7 +401,7 @@ namespace DrivingCenter.App.UserControl
                             {
                                 cbb_SheetDataUpdate.Items.Add(table.TableName);
                             }
-                            MessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
+                            XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
                         }
                     }
                 }
@@ -490,7 +490,7 @@ namespace DrivingCenter.App.UserControl
 
                 try
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn đúng cập nhật kết quả?", "Thông Báo", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = XtraMessageBox.Show("Bạn chắc chắn đúng cập nhật kết quả?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         if (cb_CapNhatKQ.Checked)
@@ -502,7 +502,7 @@ namespace DrivingCenter.App.UserControl
                                     GPLX_DAO.Instance.UpdateResultGraduate(item);
                                 }
                             }
-                            MessageBox.Show(string.Format("Cập nhật kết quả tốt nghiệp thành công {0} học viên!", lstNguoiLxUpdates.Count));
+                            XtraMessageBox.Show(string.Format("Cập nhật kết quả tốt nghiệp thành công {0} học viên!", lstNguoiLxUpdates.Count));
                         }
 
                         if (lstNguoiLxCCTN != null)
@@ -512,7 +512,7 @@ namespace DrivingCenter.App.UserControl
                             {
                                 IMG_DAO.Instance.InsertDataReportCNTN(item);
                             }
-                            MessageBox.Show(string.Format("Cập nhật kết quả thành công dữ liệu in CCTN {0} học viên!", lstNguoiLxCCTN.Count));
+                            XtraMessageBox.Show(string.Format("Cập nhật kết quả thành công dữ liệu in CCTN {0} học viên!", lstNguoiLxCCTN.Count));
                         }
 
                         lbStatusUpdate.Text = "Done";
@@ -524,7 +524,7 @@ namespace DrivingCenter.App.UserControl
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -579,7 +579,7 @@ namespace DrivingCenter.App.UserControl
                 }
                 else
                 {
-                    MessageBox.Show("Bạn phải chọn học viên cần in chứng chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Bạn phải chọn học viên cần in chứng chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else if (button.Caption == "Print B11")
@@ -593,7 +593,7 @@ namespace DrivingCenter.App.UserControl
                 }
                 else
                 {
-                    MessageBox.Show("Bạn phải chọn học viên cần in chứng chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Bạn phải chọn học viên cần in chứng chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else if (button.Caption == "Save")
@@ -616,7 +616,7 @@ namespace DrivingCenter.App.UserControl
                 var ngaysinh = Convert.ToDateTime(NgaySinh);
                 string NgaySinhEng = ngaysinh.ToString("dd MMMM yyyy");
 
-                var result = MessageBox.Show(string.Format("Cập nhật thông tin học viên {0}?", HoVaTen), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                var result = XtraMessageBox.Show(string.Format("Cập nhật thông tin học viên {0}?", HoVaTen), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.OK)
                 {
                     IMG_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng);

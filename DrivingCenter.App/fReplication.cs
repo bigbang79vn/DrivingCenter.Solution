@@ -121,7 +121,7 @@ namespace DrivingCenter.App
             int[] selectedRowHandles = gridView_BaiTapNguon.GetSelectedRows();
             if (!selectedRowHandles.Any())
             {
-                MessageBox.Show("Không có kết quả cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                XtraMessageBox.Show("Không có kết quả cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             else
             {
@@ -154,7 +154,7 @@ namespace DrivingCenter.App
                     CabinI2E_DAO.Instance.UpdateTimeExerToNguoiLx(NguoiLxId);
                     LoadResultByNguoiLxID(NguoiLxId);
                 }
-                MessageBox.Show("Cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                XtraMessageBox.Show("Cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
         }
 

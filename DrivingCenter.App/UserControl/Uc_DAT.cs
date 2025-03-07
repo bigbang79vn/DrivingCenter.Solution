@@ -1,4 +1,5 @@
 ﻿using DevExpress.Export;
+using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
@@ -6,6 +7,7 @@ using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -183,7 +185,11 @@ namespace DrivingCenter.App.UserControl
                 ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
             });
 
-            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
         }
 
         #region Context Menustrip Phiên học
@@ -237,7 +243,7 @@ namespace DrivingCenter.App.UserControl
             var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
 
             string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
-            if (MessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
                 DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
                 List<PhienHoc> lstPH = DAT_DAO.Instance.GetLstPhienByDateTrue(day);
@@ -256,7 +262,7 @@ namespace DrivingCenter.App.UserControl
 
             if ((bool)checkLogOut == false)
             {
-                var result = MessageBox.Show(string.Format("Phiên học chưa kết thúc. Bạn muốn kết thúc phiên học?"), "Thông báo", MessageBoxButtons.OKCancel);
+                var result = XtraMessageBox.Show(string.Format("Phiên học chưa kết thúc. Bạn muốn kết thúc phiên học?"), "Thông báo", MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)
                 {
                     DAT_DAO.Instance.KetThucPhien(Convert.ToInt64(NguoiLxID), diemdanhnguoilxId.ToString());
@@ -468,11 +474,11 @@ namespace DrivingCenter.App.UserControl
             int sophienhocLoginIsNull = list.Count();
             if (sophienhocLoginIsNull == 0)
             {
-                MessageBox.Show(string.Format("Không có phiên học Login Is Null !"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show(string.Format("Không có phiên học Login Is Null !"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (MessageBox.Show(string.Format("Có {0} phiên học Login Is Null ! \n Bạn có chắc muốn xóa {0} phiên học Login Is Null? ", sophienhocLoginIsNull), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (XtraMessageBox.Show(string.Format("Có {0} phiên học Login Is Null ! \n Bạn có chắc muốn xóa {0} phiên học Login Is Null? ", sophienhocLoginIsNull), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     DAT_DAO.Instance.DeletePhienHocLoginIsNull(list);
                 }
@@ -491,7 +497,7 @@ namespace DrivingCenter.App.UserControl
                     ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
                 });
 
-                MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -602,13 +608,13 @@ namespace DrivingCenter.App.UserControl
             int focusedRowHandle = gridView_PhienHocLoi.FocusedRowHandle;
             if (focusedRowHandle < 0)
             {
-                MessageBox.Show("Không có phiên học cần xóa!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Không có phiên học cần xóa!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 var diemdanhnguoilxId = gridView_PhienHocLoi.GetRowCellValue(focusedRowHandle, "MaPhien");
                 string day = dtp_PhienHocLoiByDay.DateTime.ToString("dd/MM/yyyy");
-                if (MessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
                     DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
                     LoadAllPhLoi(day);
@@ -659,7 +665,7 @@ namespace DrivingCenter.App.UserControl
 
             var diemdanhnguoilxId = gridView_PhienHocBo.GetRowCellValue(focusedRowHandle, "MaPhien");
 
-            var result = MessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
+            var result = XtraMessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
                 DAT_DAO.Instance.UnlockSession(diemdanhnguoilxId.ToString());
@@ -677,7 +683,7 @@ namespace DrivingCenter.App.UserControl
 
             var diemdanhnguoilxId = gridView_PhienHocBo.GetRowCellValue(focusedRowHandle, "MaPhien");
 
-            var result = MessageBox.Show(string.Format("Xóa phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
+            var result = XtraMessageBox.Show(string.Format("Xóa phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
                 DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
@@ -690,8 +696,21 @@ namespace DrivingCenter.App.UserControl
         }
         private void btn_ExportPhSai_Click(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
-            export.ExportToExcel(dt, "Danh sách phiên học sai");
+            string day = dtp_PhByDay.DateTime.ToString("dd-MM-yyyy");
+
+            string fileName = $"Phien DAT b.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridControl_PhienHocBo.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
         }
 
 

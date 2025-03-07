@@ -246,7 +246,7 @@ namespace DrivingCenter.App.UserControl
                     }
                 }
             }
-            MessageBox.Show("Đồng bộ giáo viên thành công!", "Thông báo", MessageBoxButtons.OK);
+            XtraMessageBox.Show("Đồng bộ giáo viên thành công!", "Thông báo", MessageBoxButtons.OK);
             LoadLstHvByKH((int)cbb_KhoaHocEMC.EditValue);
         }
 
@@ -329,11 +329,11 @@ namespace DrivingCenter.App.UserControl
 
                             CabinI2E_DAO.Instance.InsertNguoiLxBase(khoahocId, tenkhoahoc, hv, ConvertBase64ToBytes(hv.ImageBase64));
                         }
-                        MessageBox.Show("Thêm khóa học thành công!");
+                        XtraMessageBox.Show("Thêm khóa học thành công!");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        XtraMessageBox.Show("Error: " + ex.Message);
                     }
                 }
             } 

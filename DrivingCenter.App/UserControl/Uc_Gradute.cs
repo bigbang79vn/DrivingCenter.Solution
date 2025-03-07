@@ -141,7 +141,7 @@ namespace DrivingCenter.App.UserControl
                 ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
             });
 
-            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btn_Insert_Click(object sender, EventArgs e)
@@ -174,7 +174,7 @@ namespace DrivingCenter.App.UserControl
                 }
             }
 
-            MessageBox.Show("Insert dữ liệu thành công!", "Thông Báo", MessageBoxButtons.OK);
+            XtraMessageBox.Show("Insert dữ liệu thành công!", "Thông Báo", MessageBoxButtons.OK);
             btn_Insert.Enabled = false;
         }
     }

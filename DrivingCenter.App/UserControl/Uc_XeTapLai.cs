@@ -107,7 +107,7 @@ namespace DrivingCenter.App.UserControl
                     ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
                 });
 
-                var result = MessageBox.Show("Xuất Excel thành công! Mở file?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
@@ -115,7 +115,7 @@ namespace DrivingCenter.App.UserControl
             }
             else if (button.Caption == "Delete")
             {
-                var resul = MessageBox.Show("Bạn có chắc chắn xóa thiết bị này không?", "Alert", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK;
+                var resul = XtraMessageBox.Show("Bạn có chắc chắn xóa thiết bị này không?", "Alert", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK;
                 if (resul)
                 {
                     Delete();

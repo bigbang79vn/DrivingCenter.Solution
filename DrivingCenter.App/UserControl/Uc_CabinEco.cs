@@ -132,7 +132,7 @@ namespace DrivingCenter.App.UserControl
 
             if (IdKhoaHoc == 0)
             {
-                MessageBox.Show("Không có khóa học đang đào tạo");
+                XtraMessageBox.Show("Không có khóa học đang đào tạo");
             }
             else
             {
@@ -209,7 +209,7 @@ namespace DrivingCenter.App.UserControl
 
             if (button.Caption == "Delete")
             {
-                if (MessageBox.Show("Are you sure delete this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                if (XtraMessageBox.Show("Are you sure delete this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
                     int[] selectedRowHandles = gridView.GetSelectedRows();
 
@@ -271,11 +271,11 @@ namespace DrivingCenter.App.UserControl
             string MaDKNewBySoCCD = CabinEco_DAO.Instance.GetMaDKNew(Id_KhoaHoc, SoCCCD);
             if (MaDKNewBySoCCD == string.Empty)
             {
-                MessageBox.Show(string.Format("Không có thông tin học viên trong khóa học {0}", ((sender as ToolStripMenuItem).Tag as KhoaHoc).TenKhoaHoc), "Thông báo", MessageBoxButtons.OK);
+                XtraMessageBox.Show(string.Format("Không có thông tin học viên trong khóa học {0}", ((sender as ToolStripMenuItem).Tag as KhoaHoc).TenKhoaHoc), "Thông báo", MessageBoxButtons.OK);
             }
             else
             {
-                if (MessageBox.Show("Are you sure change course this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                if (XtraMessageBox.Show("Are you sure change course this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
                     List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(rowData.MaDK);
 
@@ -300,7 +300,7 @@ namespace DrivingCenter.App.UserControl
 
             var cabin = (sender as ToolStripMenuItem).Tag as Cabin;
 
-            if (MessageBox.Show("Are you sure change Cabin this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (XtraMessageBox.Show("Are you sure change Cabin this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
                 List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(rowData.MaDK);
 
@@ -332,7 +332,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_CreateAll_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure add all result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (XtraMessageBox.Show("Are you sure add all result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
                 HocVien rowData = gridview_HocVien.GetFocusedRow() as HocVien;
 
@@ -383,7 +383,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_Create01Result_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure add 01 result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (XtraMessageBox.Show("Are you sure add 01 result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
                 HocVien rowData = gridview_HocVien.GetFocusedRow() as HocVien;
 
@@ -478,7 +478,7 @@ namespace DrivingCenter.App.UserControl
                     }
                 }
             }
-            MessageBox.Show("Đồng bộ giáo viên thành công!", "Thông báo", MessageBoxButtons.OK);
+            XtraMessageBox.Show("Đồng bộ giáo viên thành công!", "Thông báo", MessageBoxButtons.OK);
             LoadLstHvByKH(IdKhoaHoc);
         }
 
@@ -628,11 +628,11 @@ namespace DrivingCenter.App.UserControl
 
                             CabinEco_DAO.Instance.InsertNguoiLxBase(khoahocId, STT, hv, ConvertBase64ToBytes(hv.ImageBase64), STT);
                         }
-                        MessageBox.Show("Thêm khóa học thành công!");
+                        XtraMessageBox.Show("Thêm khóa học thành công!");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        XtraMessageBox.Show("Error: " + ex.Message);
                     }
                 }
             }

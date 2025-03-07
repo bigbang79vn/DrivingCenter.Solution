@@ -181,7 +181,7 @@ namespace DrivingCenter.App.UserControl
                             tableCollection = result.Tables;
                             cb_SheetData.Items.Clear();
 
-                            MessageBox.Show("Chọn Sheet chứa thông tin học viên cần phân công", "Thông báo", MessageBoxButtons.OK);
+                            XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần phân công", "Thông báo", MessageBoxButtons.OK);
 
                             foreach (DataTable table in tableCollection)
                             {
@@ -203,7 +203,7 @@ namespace DrivingCenter.App.UserControl
         {
             if (cb_SheetData.SelectedItem == null)
             {
-                MessageBox.Show(string.Format("Bạn chưa chọn Sheet chứa Data!"));
+                XtraMessageBox.Show(string.Format("Bạn chưa chọn Sheet chứa Data!"));
                 cb_SheetData.Focus();
             }
             else
@@ -229,19 +229,19 @@ namespace DrivingCenter.App.UserControl
                 }
                 try
                 {
-                    DialogResult dialogResult = MessageBox.Show("Phân công đào tạo dựa vào danh sách?", "Thông Báo", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = XtraMessageBox.Show("Phân công đào tạo dựa vào danh sách?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         foreach (var item in lst)
                         {
                             DAT_DAO.Instance.Assignment(item);
                         }
-                        MessageBox.Show(string.Format("Hoàn thành phân công đào tạo khóa {0}", cb_SheetData.SelectedIndex.ToString()), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show(string.Format("Hoàn thành phân công đào tạo khóa {0}", cb_SheetData.SelectedIndex.ToString()), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -252,12 +252,11 @@ namespace DrivingCenter.App.UserControl
         private void gridView_DanhSachHocVien_DoubleClick(object sender, EventArgs e)
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
-            MessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
+            XtraMessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
         }
 
         private void MenuItem_CheckLyThuyet_Click(object sender, EventArgs e)
         {
-            string filePath = "";
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -324,7 +323,7 @@ namespace DrivingCenter.App.UserControl
                 ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
             });
 
-            MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
