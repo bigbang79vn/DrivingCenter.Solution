@@ -266,9 +266,9 @@ namespace DrivingCenter.App.UserControl
                 if (result == DialogResult.OK)
                 {
                     DAT_DAO.Instance.KetThucPhien(Convert.ToInt64(NguoiLxID), diemdanhnguoilxId.ToString());
+                    LoadPhienHoc();
                 }
             }
-            LoadPhienHoc();
         }
 
         #endregion Context Menustrip Phiên học
@@ -513,7 +513,11 @@ namespace DrivingCenter.App.UserControl
                     ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
                 });
 
-                XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                }
             }
             else
             {
