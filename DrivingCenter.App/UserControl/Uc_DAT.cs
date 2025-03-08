@@ -405,7 +405,7 @@ namespace DrivingCenter.App.UserControl
                         HvDuDK++;
                     }
                 }
-                if(HangDaoTao == "B01")
+                if(HangDaoTao == "B.01")
                 {
                     if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4)
                     {

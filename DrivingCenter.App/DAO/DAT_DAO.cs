@@ -439,7 +439,15 @@ namespace DrivingCenter.App.DAO
 
         public List<TongHopHVByKhoa> TongHopPhBD(int khoahocId, string hangdaotao)
         {
-            string query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}'";
+            string query = $"";
+            if (hangdaotao == "B2" || hangdaotao == "B")
+            {
+                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B2'";
+            }
+            else
+            {
+                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B11'";
+            }
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
