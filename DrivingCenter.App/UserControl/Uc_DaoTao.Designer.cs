@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -200,19 +200,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement1.Text = "Lịch Học";
-            this.employeesTileBarItem.Elements.Add(tileItemElement1);
+            tileItemElement3.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement3.Text = "Lịch Học";
+            this.employeesTileBarItem.Elements.Add(tileItemElement3);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement2.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement2);
+            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement4.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement4);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -342,9 +342,9 @@
             // 
             this.xtraTabPage_LstHocVien.Controls.Add(this.gridCtrl_DanhSachHocVien);
             this.xtraTabPage_LstHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_LstHocVien.ImageOptions.SvgImage")));
-            this.xtraTabPage_LstHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.xtraTabPage_LstHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
             this.xtraTabPage_LstHocVien.Name = "xtraTabPage_LstHocVien";
-            this.xtraTabPage_LstHocVien.Size = new System.Drawing.Size(1256, 624);
+            this.xtraTabPage_LstHocVien.Size = new System.Drawing.Size(1256, 619);
             this.xtraTabPage_LstHocVien.Text = "Danh sách học viên";
             // 
             // gridCtrl_DanhSachHocVien
@@ -356,7 +356,7 @@
             this.gridCtrl_DanhSachHocVien.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoGrid_XeTapLai,
             this.repoGrid_GiaoVien});
-            this.gridCtrl_DanhSachHocVien.Size = new System.Drawing.Size(1256, 624);
+            this.gridCtrl_DanhSachHocVien.Size = new System.Drawing.Size(1256, 619);
             this.gridCtrl_DanhSachHocVien.TabIndex = 0;
             this.gridCtrl_DanhSachHocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_DanhSachHocVien});
@@ -585,10 +585,10 @@
             // 
             this.xtraTabPage_DetailHocVien.Controls.Add(this.tableLayoutPanel1);
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
-            this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
+            this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
             this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
             this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1256, 624);
-            this.xtraTabPage_DetailHocVien.Text = "Thông tin học viên";
+            this.xtraTabPage_DetailHocVien.Text = "Chi tiết học viên";
             // 
             // tableLayoutPanel1
             // 

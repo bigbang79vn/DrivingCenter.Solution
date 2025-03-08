@@ -243,7 +243,7 @@ namespace DrivingCenter.App.UserControl
             var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
 
             string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
-            if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học \n{0}", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
                 DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
                 List<PhienHoc> lstPH = DAT_DAO.Instance.GetLstPhienByDateTrue(day);
@@ -262,7 +262,7 @@ namespace DrivingCenter.App.UserControl
 
             if ((bool)checkLogOut == false)
             {
-                var result = XtraMessageBox.Show(string.Format("Phiên học chưa kết thúc. Bạn muốn kết thúc phiên học?"), "Thông báo", MessageBoxButtons.OKCancel);
+                var result = XtraMessageBox.Show(string.Format("Phiên học chưa kết thúc. Bạn muốn kết thúc phiên học?"), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
                 if (result == DialogResult.OK)
                 {
                     DAT_DAO.Instance.KetThucPhien(Convert.ToInt64(NguoiLxID), diemdanhnguoilxId.ToString());
@@ -614,7 +614,7 @@ namespace DrivingCenter.App.UserControl
             {
                 var diemdanhnguoilxId = gridView_PhienHocLoi.GetRowCellValue(focusedRowHandle, "MaPhien");
                 string day = dtp_PhienHocLoiByDay.DateTime.ToString("dd/MM/yyyy");
-                if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học {0} ?", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học \n{0}", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
                     DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
                     LoadAllPhLoi(day);
@@ -698,7 +698,7 @@ namespace DrivingCenter.App.UserControl
         {
             string day = dtp_PhByDay.DateTime.ToString("dd-MM-yyyy");
 
-            string fileName = $"Phien DAT b.xlsx";
+            string fileName = $"Phien_DAT_bo.xlsx";
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
 
             gridControl_PhienHocBo.ExportToXlsx(filePath, new XlsxExportOptionsEx()
