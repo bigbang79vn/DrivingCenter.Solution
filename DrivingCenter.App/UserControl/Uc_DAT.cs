@@ -397,6 +397,22 @@ namespace DrivingCenter.App.UserControl
                         HvDuDK++;
                     }
                 }
+                if (HangDaoTao == "B")
+                {
+                    if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 6)
+                    {
+                        view.View_Status += "Đủ điều kiện!";
+                        HvDuDK++;
+                    }
+                }
+                if(HangDaoTao == "B01")
+                {
+                    if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4)
+                    {
+                        view.View_Status += "Đủ điều kiện!";
+                        HvDuDK++;
+                    }
+                }
                 else
                 {
                     if (item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 && item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8)
