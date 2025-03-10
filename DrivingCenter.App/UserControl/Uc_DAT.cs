@@ -447,7 +447,16 @@ namespace DrivingCenter.App.UserControl
 
         private void cb_ShowSendTC_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (cb_ShowSendTC.Checked)
+            {
+                View_QuangDuongPhienGuiTC.Visible = true;
+                View_ThoiGianPhienGuiTC.Visible = true;
+            }
+            else
+            {
+                View_QuangDuongPhienGuiTC.Visible = false;
+                View_ThoiGianPhienGuiTC.Visible = false;
+            }
         }
         private void mn_ContextThongKeGiaoVien_Click(object sender, EventArgs e)
         {

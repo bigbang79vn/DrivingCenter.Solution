@@ -30,7 +30,6 @@ namespace DrivingCenter.App.DTO.DAT
         public double TyLe { get; set; }
         public string Error { get; set; }
         public bool Active { get; set; }
-        public bool ImgLogout { get; set; }
         public string Note { get; set; }
 
         public PhienHoc()

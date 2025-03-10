@@ -287,8 +287,8 @@
             this.gridView_Result = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STT_V = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_MaDK = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.View_HoTenGV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_HoVaTen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.View_HoTenGV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_HangDaoTao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_TongQuangDuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_QuangDuongPhienGuiTC = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -2941,8 +2941,8 @@
             this.gridView_Result.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.STT_V,
             this.View_MaDK,
-            this.View_HoTenGV,
             this.View_HoVaTen,
+            this.View_HoTenGV,
             this.View_HangDaoTao,
             this.View_TongQuangDuong,
             this.View_QuangDuongPhienGuiTC,
@@ -3005,14 +3005,6 @@
             this.View_MaDK.VisibleIndex = 1;
             this.View_MaDK.Width = 172;
             // 
-            // View_HoTenGV
-            // 
-            this.View_HoTenGV.Caption = "Giáo Viên";
-            this.View_HoTenGV.FieldName = "View_HoTenGV";
-            this.View_HoTenGV.Name = "View_HoTenGV";
-            this.View_HoTenGV.Visible = true;
-            this.View_HoTenGV.VisibleIndex = 3;
-            // 
             // View_HoVaTen
             // 
             this.View_HoVaTen.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -3023,6 +3015,14 @@
             this.View_HoVaTen.Visible = true;
             this.View_HoVaTen.VisibleIndex = 2;
             this.View_HoVaTen.Width = 159;
+            // 
+            // View_HoTenGV
+            // 
+            this.View_HoTenGV.Caption = "Giáo Viên";
+            this.View_HoTenGV.FieldName = "View_HoTenGV";
+            this.View_HoTenGV.Name = "View_HoTenGV";
+            this.View_HoTenGV.Visible = true;
+            this.View_HoTenGV.VisibleIndex = 3;
             // 
             // View_HangDaoTao
             // 
@@ -3088,7 +3088,7 @@
             this.View_TongQuangDuong_B11.AppearanceCell.Options.UseBackColor = true;
             this.View_TongQuangDuong_B11.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongQuangDuong_B11.AppearanceHeader.Options.UseBackColor = true;
-            this.View_TongQuangDuong_B11.Caption = "Quãng đường B11";
+            this.View_TongQuangDuong_B11.Caption = "Quãng đường STĐ";
             this.View_TongQuangDuong_B11.FieldName = "View_TongQuangDuong_B11";
             this.View_TongQuangDuong_B11.Name = "View_TongQuangDuong_B11";
             this.View_TongQuangDuong_B11.Visible = true;
@@ -3101,7 +3101,7 @@
             this.View_TongThoiGian_B11.AppearanceCell.Options.UseBackColor = true;
             this.View_TongThoiGian_B11.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongThoiGian_B11.AppearanceHeader.Options.UseBackColor = true;
-            this.View_TongThoiGian_B11.Caption = "Thời gian B11";
+            this.View_TongThoiGian_B11.Caption = "Thời gian STĐ";
             this.View_TongThoiGian_B11.FieldName = "View_TongThoiGian_B11";
             this.View_TongThoiGian_B11.Name = "View_TongThoiGian_B11";
             this.View_TongThoiGian_B11.Visible = true;
