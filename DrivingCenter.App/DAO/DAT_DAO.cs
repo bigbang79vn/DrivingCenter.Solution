@@ -486,6 +486,13 @@ namespace DrivingCenter.App.DAO
             return lstGV;
         }
 
+        public DataTable BaoCaoKetQuaHocVien(int KhoaHocID, int KieuKetQua)
+        {
+            string query = $"EXEC [dbo].[spQuaTrinhDaoTaoKhoaHoc] @MaCSDT = N'66015', @KhoaHocID = {KhoaHocID}, @TieuDe = N'BÁO CÁO KẾT QUẢ THỰC HÀNH LÁI XE CỦA KHÓA HỌC', @Result = {KieuKetQua}";
+
+            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            return dt;
+        }
         #endregion Menu Context Tổng hợp
 
         public int CheckImgNull(string day)

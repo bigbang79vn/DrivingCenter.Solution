@@ -552,6 +552,12 @@
     <Compile Include="Helper\StringUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\rptBaoCaoKetQuaHoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptBaoCaoKetQuaHoc.Designer.cs">
+      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rptChungChi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -734,6 +740,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\rptBaoCaoKetQuaHoc.resx">
+      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rptChungChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptChungChi.cs</LastGenOutput>

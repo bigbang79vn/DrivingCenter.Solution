@@ -1,9 +1,11 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
+using DrivingCenter.App.Report;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -492,6 +494,45 @@ namespace DrivingCenter.App.UserControl
             ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
             exportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
         }
+        private void mn_ThongKeKetQuaHocVien_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 0);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+        private void mn_ThongKeHocVienHoanThanh_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 1);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = dt;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+
+        private void mn_ThongKeHocVienKhongHoanThanh_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 2);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
 
         private void mn_XoaPhienHocLoginIsNull_Click(object sender, EventArgs e)
         {
@@ -741,6 +782,8 @@ namespace DrivingCenter.App.UserControl
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
             }
         }
+
+
 
 
 

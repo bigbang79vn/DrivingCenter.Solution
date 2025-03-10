@@ -309,7 +309,8 @@
             this.gridControl_KhoaHoc = new DevExpress.XtraGrid.GridControl();
             this.menu_TongHop = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mn_ContextThongKeGiaoVien = new System.Windows.Forms.ToolStripMenuItem();
-            this.mn_ThongKePhienHocHoanThanh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_ThongKeHocVienHoanThanh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_ThongKeHocVienKhongHoanThanh = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mn_ContextThongKePhienTruyenThieu = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_XoaPhienHocLoginIsNull = new System.Windows.Forms.ToolStripMenuItem();
@@ -349,6 +350,7 @@
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.mn_ThongKeKetQuaHocVien = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -3259,53 +3261,64 @@
             // 
             this.menu_TongHop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mn_ContextThongKeGiaoVien,
-            this.mn_ThongKePhienHocHoanThanh,
+            this.mn_ThongKeKetQuaHocVien,
+            this.mn_ThongKeHocVienHoanThanh,
+            this.mn_ThongKeHocVienKhongHoanThanh,
             this.toolStripSeparator2,
             this.mn_ContextThongKePhienTruyenThieu,
             this.mn_XoaPhienHocLoginIsNull,
             this.toolStripSeparator3});
             this.menu_TongHop.Name = "contextMenuStrip1";
-            this.menu_TongHop.Size = new System.Drawing.Size(248, 104);
+            this.menu_TongHop.Size = new System.Drawing.Size(266, 170);
             // 
             // mn_ContextThongKeGiaoVien
             // 
             this.mn_ContextThongKeGiaoVien.Image = ((System.Drawing.Image)(resources.GetObject("mn_ContextThongKeGiaoVien.Image")));
             this.mn_ContextThongKeGiaoVien.Name = "mn_ContextThongKeGiaoVien";
-            this.mn_ContextThongKeGiaoVien.Size = new System.Drawing.Size(247, 22);
+            this.mn_ContextThongKeGiaoVien.Size = new System.Drawing.Size(265, 22);
             this.mn_ContextThongKeGiaoVien.Text = "Thống kê báo cáo giáo viên";
             this.mn_ContextThongKeGiaoVien.Click += new System.EventHandler(this.mn_ContextThongKeGiaoVien_Click);
             // 
-            // mn_ThongKePhienHocHoanThanh
+            // mn_ThongKeHocVienHoanThanh
             // 
-            this.mn_ThongKePhienHocHoanThanh.Image = ((System.Drawing.Image)(resources.GetObject("mn_ThongKePhienHocHoanThanh.Image")));
-            this.mn_ThongKePhienHocHoanThanh.Name = "mn_ThongKePhienHocHoanThanh";
-            this.mn_ThongKePhienHocHoanThanh.Size = new System.Drawing.Size(247, 22);
-            this.mn_ThongKePhienHocHoanThanh.Text = "Thống kê học viên hoàn thành";
+            this.mn_ThongKeHocVienHoanThanh.Image = ((System.Drawing.Image)(resources.GetObject("mn_ThongKeHocVienHoanThanh.Image")));
+            this.mn_ThongKeHocVienHoanThanh.Name = "mn_ThongKeHocVienHoanThanh";
+            this.mn_ThongKeHocVienHoanThanh.Size = new System.Drawing.Size(265, 22);
+            this.mn_ThongKeHocVienHoanThanh.Text = "Báo cáo học viên hoàn thành";
+            this.mn_ThongKeHocVienHoanThanh.Click += new System.EventHandler(this.mn_ThongKeHocVienHoanThanh_Click);
+            // 
+            // mn_ThongKeHocVienKhongHoanThanh
+            // 
+            this.mn_ThongKeHocVienKhongHoanThanh.Image = ((System.Drawing.Image)(resources.GetObject("mn_ThongKeHocVienKhongHoanThanh.Image")));
+            this.mn_ThongKeHocVienKhongHoanThanh.Name = "mn_ThongKeHocVienKhongHoanThanh";
+            this.mn_ThongKeHocVienKhongHoanThanh.Size = new System.Drawing.Size(265, 22);
+            this.mn_ThongKeHocVienKhongHoanThanh.Text = "Báo cáo học viên không hoàn thành";
+            this.mn_ThongKeHocVienKhongHoanThanh.Click += new System.EventHandler(this.mn_ThongKeHocVienKhongHoanThanh_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(262, 6);
             // 
             // mn_ContextThongKePhienTruyenThieu
             // 
             this.mn_ContextThongKePhienTruyenThieu.Image = ((System.Drawing.Image)(resources.GetObject("mn_ContextThongKePhienTruyenThieu.Image")));
             this.mn_ContextThongKePhienTruyenThieu.Name = "mn_ContextThongKePhienTruyenThieu";
-            this.mn_ContextThongKePhienTruyenThieu.Size = new System.Drawing.Size(247, 22);
+            this.mn_ContextThongKePhienTruyenThieu.Size = new System.Drawing.Size(265, 22);
             this.mn_ContextThongKePhienTruyenThieu.Text = "Thống kê phiên học truyền thiếu";
             // 
             // mn_XoaPhienHocLoginIsNull
             // 
             this.mn_XoaPhienHocLoginIsNull.Image = ((System.Drawing.Image)(resources.GetObject("mn_XoaPhienHocLoginIsNull.Image")));
             this.mn_XoaPhienHocLoginIsNull.Name = "mn_XoaPhienHocLoginIsNull";
-            this.mn_XoaPhienHocLoginIsNull.Size = new System.Drawing.Size(247, 22);
+            this.mn_XoaPhienHocLoginIsNull.Size = new System.Drawing.Size(265, 22);
             this.mn_XoaPhienHocLoginIsNull.Text = "Xóa phiên học Login is Null";
             this.mn_XoaPhienHocLoginIsNull.Click += new System.EventHandler(this.mn_XoaPhienHocLoginIsNull_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(244, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(262, 6);
             // 
             // gridView_KhoaHocDDT
             // 
@@ -3806,6 +3819,14 @@
             this.NhanDien_PH.FieldName = "NhanDien";
             this.NhanDien_PH.Name = "NhanDien_PH";
             // 
+            // mn_ThongKeKetQuaHocVien
+            // 
+            this.mn_ThongKeKetQuaHocVien.Image = ((System.Drawing.Image)(resources.GetObject("mn_ThongKeKetQuaHocVien.Image")));
+            this.mn_ThongKeKetQuaHocVien.Name = "mn_ThongKeKetQuaHocVien";
+            this.mn_ThongKeKetQuaHocVien.Size = new System.Drawing.Size(265, 22);
+            this.mn_ThongKeKetQuaHocVien.Text = "Báo cáo kết quả khóa học";
+            this.mn_ThongKeKetQuaHocVien.Click += new System.EventHandler(this.mn_ThongKeKetQuaHocVien_Click);
+            // 
             // Uc_DAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4032,7 +4053,7 @@
         private System.Windows.Forms.ToolStripMenuItem mn_ContextThongKePhienTruyenThieu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mn_XoaPhienHocLoginIsNull;
-        private System.Windows.Forms.ToolStripMenuItem mn_ThongKePhienHocHoanThanh;
+        private System.Windows.Forms.ToolStripMenuItem mn_ThongKeHocVienHoanThanh;
         private System.Windows.Forms.ToolStripMenuItem mn_ContextThongKeGiaoVien;
         private System.Windows.Forms.ContextMenuStrip ctmenu_PhienBo;
         private System.Windows.Forms.ToolStripMenuItem mn_refresh;
@@ -4133,5 +4154,7 @@
         private System.Windows.Forms.ToolStripMenuItem mn_DeletePhienHoc;
         private System.Windows.Forms.ToolStripMenuItem DetailSession;
         private System.Windows.Forms.CheckBox cb_StyleExport;
+        private System.Windows.Forms.ToolStripMenuItem mn_ThongKeHocVienKhongHoanThanh;
+        private System.Windows.Forms.ToolStripMenuItem mn_ThongKeKetQuaHocVien;
     }
 }
