@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_Gradute));
             this.KetQua_LT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Tab_Control = new System.Windows.Forms.TabControl();
             this.KhoaThiTotNghiep = new System.Windows.Forms.TabPage();
@@ -42,6 +44,11 @@
             this.dtgv_khoahocdangthi = new System.Windows.Forms.DataGridView();
             this.TenKhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDKhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mn_Gradute = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mn_DanhSachHocVienKetThucMon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_DanhSachHocVienThiTotNghiep = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mn_XuatDanhSach = new System.Windows.Forms.ToolStripMenuItem();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_ThiSinh = new DevExpress.XtraGrid.GridControl();
@@ -60,17 +67,19 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Insert = new System.Windows.Forms.Button();
-            this.btn_Export = new System.Windows.Forms.Button();
             this.btn_ReadData = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.mn_Refresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Tab_Control.SuspendLayout();
             this.KhoaThiTotNghiep.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_khoahocdangthi)).BeginInit();
+            this.mn_Gradute.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_ThiSinh)).BeginInit();
@@ -131,7 +140,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 766F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 757F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1492, 757);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -182,6 +191,7 @@
             this.dtgv_khoahocdangthi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenKhoaHoc,
             this.IDKhoaHoc});
+            this.dtgv_khoahocdangthi.ContextMenuStrip = this.mn_Gradute;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -228,6 +238,47 @@
             this.IDKhoaHoc.ReadOnly = true;
             this.IDKhoaHoc.Visible = false;
             this.IDKhoaHoc.Width = 300;
+            // 
+            // mn_Gradute
+            // 
+            this.mn_Gradute.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mn_Refresh,
+            this.toolStripSeparator2,
+            this.mn_DanhSachHocVienKetThucMon,
+            this.mn_DanhSachHocVienThiTotNghiep,
+            this.toolStripSeparator1,
+            this.mn_XuatDanhSach});
+            this.mn_Gradute.Name = "mn_Gradute";
+            this.mn_Gradute.Size = new System.Drawing.Size(253, 126);
+            // 
+            // mn_DanhSachHocVienKetThucMon
+            // 
+            this.mn_DanhSachHocVienKetThucMon.Image = ((System.Drawing.Image)(resources.GetObject("mn_DanhSachHocVienKetThucMon.Image")));
+            this.mn_DanhSachHocVienKetThucMon.Name = "mn_DanhSachHocVienKetThucMon";
+            this.mn_DanhSachHocVienKetThucMon.Size = new System.Drawing.Size(252, 22);
+            this.mn_DanhSachHocVienKetThucMon.Text = "Danh sách học viên kết thúc môn";
+            this.mn_DanhSachHocVienKetThucMon.Click += new System.EventHandler(this.mn_DanhSachHocVienKetThucMon_Click);
+            // 
+            // mn_DanhSachHocVienThiTotNghiep
+            // 
+            this.mn_DanhSachHocVienThiTotNghiep.Image = ((System.Drawing.Image)(resources.GetObject("mn_DanhSachHocVienThiTotNghiep.Image")));
+            this.mn_DanhSachHocVienThiTotNghiep.Name = "mn_DanhSachHocVienThiTotNghiep";
+            this.mn_DanhSachHocVienThiTotNghiep.Size = new System.Drawing.Size(252, 22);
+            this.mn_DanhSachHocVienThiTotNghiep.Text = "Danh sách học viên thi tốt nghiệp";
+            this.mn_DanhSachHocVienThiTotNghiep.Click += new System.EventHandler(this.mn_DanhSachHocVienThiTotNghiep_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(249, 6);
+            // 
+            // mn_XuatDanhSach
+            // 
+            this.mn_XuatDanhSach.Image = ((System.Drawing.Image)(resources.GetObject("mn_XuatDanhSach.Image")));
+            this.mn_XuatDanhSach.Name = "mn_XuatDanhSach";
+            this.mn_XuatDanhSach.Size = new System.Drawing.Size(252, 22);
+            this.mn_XuatDanhSach.Text = "Export kết quả";
+            this.mn_XuatDanhSach.Click += new System.EventHandler(this.mn_XuatDanhSach_Click);
             // 
             // panel7
             // 
@@ -460,7 +511,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel1.Controls.Add(this.btn_Insert);
-            this.panel1.Controls.Add(this.btn_Export);
             this.panel1.Controls.Add(this.btn_ReadData);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
@@ -487,24 +537,6 @@
             this.btn_Insert.UseVisualStyleBackColor = false;
             this.btn_Insert.Click += new System.EventHandler(this.btn_Insert_Click);
             // 
-            // btn_Export
-            // 
-            this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Export.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.btn_Export.FlatAppearance.BorderSize = 0;
-            this.btn_Export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Export.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Export.ForeColor = System.Drawing.Color.White;
-            this.btn_Export.Location = new System.Drawing.Point(961, 19);
-            this.btn_Export.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(114, 30);
-            this.btn_Export.TabIndex = 11;
-            this.btn_Export.Text = "Export";
-            this.btn_Export.UseVisualStyleBackColor = false;
-            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
-            // 
             // btn_ReadData
             // 
             this.btn_ReadData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -514,7 +546,7 @@
             this.btn_ReadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ReadData.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ReadData.ForeColor = System.Drawing.Color.White;
-            this.btn_ReadData.Location = new System.Drawing.Point(825, 19);
+            this.btn_ReadData.Location = new System.Drawing.Point(960, 20);
             this.btn_ReadData.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ReadData.Name = "btn_ReadData";
             this.btn_ReadData.Size = new System.Drawing.Size(114, 30);
@@ -532,7 +564,7 @@
             this.panel2.Controls.Add(this.txtFilePath);
             this.panel2.Location = new System.Drawing.Point(159, 19);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(624, 30);
+            this.panel2.Size = new System.Drawing.Size(765, 30);
             this.panel2.TabIndex = 9;
             // 
             // txtFilePath
@@ -546,7 +578,7 @@
             this.txtFilePath.Location = new System.Drawing.Point(13, 6);
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.ReadOnly = true;
-            this.txtFilePath.Size = new System.Drawing.Size(593, 19);
+            this.txtFilePath.Size = new System.Drawing.Size(733, 19);
             this.txtFilePath.TabIndex = 0;
             // 
             // label1
@@ -559,6 +591,19 @@
             this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "File Path";
+            // 
+            // mn_Refresh
+            // 
+            this.mn_Refresh.Image = ((System.Drawing.Image)(resources.GetObject("mn_Refresh.Image")));
+            this.mn_Refresh.Name = "mn_Refresh";
+            this.mn_Refresh.Size = new System.Drawing.Size(252, 22);
+            this.mn_Refresh.Text = "Refresh";
+            this.mn_Refresh.Click += new System.EventHandler(this.mn_Refresh_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(249, 6);
             // 
             // Uc_Gradute
             // 
@@ -574,6 +619,7 @@
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_khoahocdangthi)).EndInit();
+            this.mn_Gradute.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_ThiSinh)).EndInit();
@@ -601,7 +647,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Insert;
-        private System.Windows.Forms.Button btn_Export;
         private System.Windows.Forms.Button btn_ReadData;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtFilePath;
@@ -621,5 +666,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn DiemMoPhong;
         private DevExpress.XtraGrid.Columns.GridColumn KetQua_MP;
         private DevExpress.XtraGrid.Columns.GridColumn IDThiSinh;
+        private System.Windows.Forms.ContextMenuStrip mn_Gradute;
+        private System.Windows.Forms.ToolStripMenuItem mn_DanhSachHocVienKetThucMon;
+        private System.Windows.Forms.ToolStripMenuItem mn_XuatDanhSach;
+        private System.Windows.Forms.ToolStripMenuItem mn_DanhSachHocVienThiTotNghiep;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mn_Refresh;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

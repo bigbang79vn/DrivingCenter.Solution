@@ -513,9 +513,9 @@ namespace DrivingCenter.App.UserControl
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
-            rpt.DataSource = dt;
+            rpt.DataSource = resultBC;
 
-            //// Hiển thị report
+            // Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }
@@ -524,12 +524,12 @@ namespace DrivingCenter.App.UserControl
         {
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 2);
 
-            //// Gán DataSource cho Report
+            // Gán DataSource cho Report
             rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
             rpt.DataSource = resultBC;
 
 
-            //// Hiển thị report
+            // Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }

@@ -570,6 +570,12 @@
       <DependentUpon>rptChungChi_New.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\rptDanhSachThiSinh.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDanhSachThiSinh.Designer.cs">
+      <DependentUpon>rptDanhSachThiSinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rptPhieuTheoDoi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -756,6 +762,9 @@
     <EmbeddedResource Include="Report\rptChungChi_New.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptChungChi_New1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDanhSachThiSinh.resx">
+      <DependentUpon>rptDanhSachThiSinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptPhieuTheoDoi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

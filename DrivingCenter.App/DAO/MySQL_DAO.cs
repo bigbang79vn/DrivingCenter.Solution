@@ -18,8 +18,8 @@ namespace DrivingCenter.App.DAO
         public static DataTable GetlistKhoaHoc()
         {
             string query = "SELECT IDKhoaHoc, TenKhoaHoc FROM esmartn.khoahoc where TrangThai = 2 OR TrangThai = 0;";
+            //string query = "CALL esmartn.khoahoc_getlist_Online;";
 
-            //string query = "SELECT IDKhoaHoc, TenKhoaHoc FROM esmartn.khoahoc;";
             cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
             if (cmd != null)
             {
@@ -51,10 +51,12 @@ namespace DrivingCenter.App.DAO
                                HoVaTen = (string)(item["HoTen"]),
                                NgaySinh = (DateTime)(item["NgaySinh"]),
                                SoCMT = (string)(item["SoCMT"]),
+                               TenKhoaHoc = (string)(item["KhoaThi"]),
+                               NgayThi = (DateTime)(item["NgayThi"]),
                                HangGPLX = (string)(item["LoaiBang"]),
                                DiemLT = (int)(item["TraLoiDung"]),
                                Result_LT = (string)(item["KetQua"]),
-                               DiemMP = (int)(item["DiemMoPhong"]) == -1 ? 0 : (int)(item["DiemMoPhong"]),
+                               DiemMP = (item["DiemMoPhong"]) == DBNull.Value || (int)(item["DiemMoPhong"]) == -1  ? 0 : (int)(item["DiemMoPhong"]),
                                Result_MP = (item["KetQuaMoPhong"]) == DBNull.Value ? "" : (string)(item["KetQuaMoPhong"])
                            })
                            .ToList();

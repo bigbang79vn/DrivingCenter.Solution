@@ -1,15 +1,18 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.Helper;
+using DrivingCenter.App.Report;
 using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -130,20 +133,6 @@ namespace DrivingCenter.App.UserControl
                 //}
             }
         }
-
-        private void btn_Export_Click(object sender, EventArgs e)
-        {
-            string fileName = $"KetQuaThiTotNghiep.xlsx";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
-
-            gridControl_ThiSinh.ExportToXlsx(filePath, new XlsxExportOptionsEx()
-            {
-                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
-            });
-
-            XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void btn_Insert_Click(object sender, EventArgs e)
         {
             if (dtgv_khoahocdangthi.SelectedCells.Count > 0)
@@ -177,5 +166,60 @@ namespace DrivingCenter.App.UserControl
             XtraMessageBox.Show("Insert dữ liệu thành công!", "Thông Báo", MessageBoxButtons.OK);
             btn_Insert.Enabled = false;
         }
+
+        #region ContextMenuStrip
+        private void mn_Refresh_Click(object sender, EventArgs e)
+        {
+            LoadListKhoaHoc();
+        }
+        private void mn_DanhSachHocVienKetThucMon_Click(object sender, EventArgs e)
+        {
+            //Gán dữ liệu
+            rptDanhSachThiSinh rpt = new rptDanhSachThiSinh();
+
+            rpt.Parameters["FlagTieuDe"].Value = "DANH SÁCH THÍ SINH DỰ KIỂM TRA KẾT THÚC MÔN";  // Giá trị tham số
+            rpt.Parameters["FlagTieuDe"].Visible = false; // Ẩn hộp thoại nhập param
+
+            rpt.DataSource = lstThiSinh;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+        private void mn_DanhSachHocVienThiTotNghiep_Click(object sender, EventArgs e)
+        {
+            //Gán dữ liệu
+            rptDanhSachThiSinh rpt = new rptDanhSachThiSinh();
+
+            rpt.Parameters["FlagTieuDe"].Value = "DANH SÁCH THÍ SINH DỰ KIỂM TRA TỐT NGHIỆP";  // Giá trị tham số
+            rpt.Parameters["FlagTieuDe"].Visible = false; // Ẩn hộp thoại nhập param
+
+            rpt.DataSource = lstThiSinh;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+
+        private void mn_XuatDanhSach_Click(object sender, EventArgs e)
+        {
+            string fileName = $"Document.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridControl_ThiSinh.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+        }
+
+        #endregion
+
+        
     }
 }
