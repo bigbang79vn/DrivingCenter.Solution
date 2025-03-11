@@ -476,6 +476,12 @@
     <Compile Include="fGhiChu.Designer.cs">
       <DependentUpon>fGhiChu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBaoCaoKhoaHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaoCaoKhoaHoc.Designer.cs">
+      <DependentUpon>frmBaoCaoKhoaHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetailSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -552,12 +558,6 @@
     <Compile Include="Helper\StringUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\rptBaoCaoKetQuaHoc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\rptBaoCaoKetQuaHoc.Designer.cs">
-      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\rptChungChi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -611,6 +611,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTongHopKhoaHocEMC.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptBaoCaoKetQuaHoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptBaoCaoKetQuaHoc.Designer.cs">
+      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_Detail.cs">
       <SubType>UserControl</SubType>
@@ -696,6 +702,9 @@
     <EmbeddedResource Include="fGhiChu.resx">
       <DependentUpon>fGhiChu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBaoCaoKhoaHoc.resx">
+      <DependentUpon>frmBaoCaoKhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetailSession.resx">
       <DependentUpon>frmDetailSession.cs</DependentUpon>
     </EmbeddedResource>
@@ -740,9 +749,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\rptBaoCaoKetQuaHoc.resx">
-      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\rptChungChi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptChungChi.cs</LastGenOutput>
@@ -778,6 +784,9 @@
     <EmbeddedResource Include="Report\rptTongHopKhoaHocEMC.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopKhoaHocEMC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptBaoCaoKetQuaHoc.resx">
+      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Detail.resx">
       <DependentUpon>UC_Detail.cs</DependentUpon>

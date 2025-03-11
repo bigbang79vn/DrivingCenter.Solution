@@ -407,7 +407,7 @@ namespace DrivingCenter.App.UserControl
                         HvDuDK++;
                     }
                 }
-                if(HangDaoTao == "B.01")
+                if (HangDaoTao == "B.01")
                 {
                     if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4)
                     {
@@ -515,7 +515,7 @@ namespace DrivingCenter.App.UserControl
             rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
             rpt.DataSource = dt;
 
-            // Hiển thị report
+            //// Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }
@@ -524,12 +524,12 @@ namespace DrivingCenter.App.UserControl
         {
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 2);
 
-            // Gán DataSource cho Report
+            //// Gán DataSource cho Report
             rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
             rpt.DataSource = resultBC;
 
 
-            // Hiển thị report
+            //// Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }
@@ -646,6 +646,11 @@ namespace DrivingCenter.App.UserControl
 
                 int hour = Convert.ToInt32(item.SThoiGian.Trim().Remove(2, 6));
                 int minute = Convert.ToInt32((item.SThoiGian.Trim().Substring(3)).Remove(2, 3));
+                DayOfWeek wk = dtp_PhByDay.DateTime.DayOfWeek;
+                if (wk == DayOfWeek.Monday && hour == 5)
+                {
+                    item.SGhiChu = "Quá Giờ! ";
+                }
                 if (hour == 10 && minute > 0 || hour > 10)
                 {
                     item.SGhiChu = "Quá Giờ! ";
@@ -789,6 +794,6 @@ namespace DrivingCenter.App.UserControl
 
         #endregion Phiên học sai
 
-        
+
     }
 }

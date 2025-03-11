@@ -15,27 +15,27 @@ namespace DrivingCenter.App.FReport
     public partial class rptPrint : DevExpress.XtraEditors.XtraForm
     {
         private string _lstNguoiLXID;
-        private int _temp;
+        private int _flag;
 
         public rptPrint()
         {
             InitializeComponent();
         }
 
-        public rptPrint(string lstNguoiLXID, int temp) : this()
+        public rptPrint(string lstNguoiLXID, int flag) : this()
         {
             _lstNguoiLXID = lstNguoiLXID;
-            _temp = temp;
+            _flag = flag;
         }
 
         private void rptPrint_Load(object sender, EventArgs e)
         {
-            LoadReport(_lstNguoiLXID, _temp);
+            LoadReport(_lstNguoiLXID, _flag);
         }
 
-        public void LoadReport(string lstNguoiLXID, int temp)
+        public void LoadReport(string lstNguoiLXID, int flag)
         {
-            if (temp == 1)
+            if (flag == 1)
             {
                 rptPhieuTheoDoi rpt = new Report.rptPhieuTheoDoi();
                 rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
@@ -44,7 +44,7 @@ namespace DrivingCenter.App.FReport
                 crystalReportViewer.ReportSource = null;
                 crystalReportViewer.ReportSource = rpt;
             }
-            else if (temp == 2)
+            else if (flag == 2)
             {
                 rptTheHocVien rpt = new Report.rptTheHocVien();
                 rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
@@ -52,7 +52,7 @@ namespace DrivingCenter.App.FReport
                 crystalReportViewer.ReportSource = null;
                 crystalReportViewer.ReportSource = rpt;
             }
-            else if (temp == 3)
+            else if (flag == 3)
             {
                 rptTemTheDAT rpt = new Report.rptTemTheDAT();
                 rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
