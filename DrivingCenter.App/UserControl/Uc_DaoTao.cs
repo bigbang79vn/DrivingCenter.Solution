@@ -255,6 +255,7 @@ namespace DrivingCenter.App.UserControl
             XtraMessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
         }
 
+        #region ContextMenuStrip
         private void MenuItem_CheckLyThuyet_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
@@ -287,11 +288,16 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+        private void MenuItem_XuatBaoCao_Click(object sender, EventArgs e)
+        {
+
+        }
         private void MenuItem_PhanCong_Click(object sender, EventArgs e)
         {
             InsertLichHoc();
         }
 
+        #endregion
         private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
         {
             LoadCategory();
@@ -325,5 +331,7 @@ namespace DrivingCenter.App.UserControl
 
             XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        
     }
 }

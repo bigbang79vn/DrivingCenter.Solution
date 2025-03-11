@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,6 +96,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.ColKhoaHoc = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -122,6 +123,7 @@
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // TongQuangDuongTichLuy
@@ -200,19 +202,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement3.Text = "Lịch Học";
-            this.employeesTileBarItem.Elements.Add(tileItemElement3);
+            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement5.Text = "Lịch Học";
+            this.employeesTileBarItem.Elements.Add(tileItemElement5);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement4.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement4);
+            tileItemElement6.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement6.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement6);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -587,7 +589,7 @@
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
             this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
-            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1256, 624);
+            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1256, 619);
             this.xtraTabPage_DetailHocVien.Text = "Chi tiết học viên";
             // 
             // tableLayoutPanel1
@@ -602,7 +604,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 624F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1256, 624);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1256, 619);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -610,7 +612,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(367, 618);
+            this.panel2.Size = new System.Drawing.Size(367, 613);
             this.panel2.TabIndex = 0;
             // 
             // PanelLeft
@@ -724,6 +726,7 @@
             this.MenuItem_XuatBaoCao.Name = "MenuItem_XuatBaoCao";
             this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(190, 22);
             this.MenuItem_XuatBaoCao.Text = "Xuất báo cáo đào tạo";
+            this.MenuItem_XuatBaoCao.Click += new System.EventHandler(this.MenuItem_XuatBaoCao_Click);
             // 
             // MenuItem_PhanCong
             // 
@@ -900,6 +903,10 @@
             this.ColKhoaHoc.VisibleIndex = 0;
             this.ColKhoaHoc.Width = 225;
             // 
+            // popupMenu1
+            // 
+            this.popupMenu1.Name = "popupMenu1";
+            // 
             // Uc_DaoTao
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -939,6 +946,7 @@
             this.panel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1009,5 +1017,6 @@
         private System.Windows.Forms.Button btn_Extend;
         private System.Windows.Forms.Button btn_LoadKhoaHoc;
         private DevExpress.XtraGrid.Columns.GridColumn TongThoiGianText;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
     }
 }
