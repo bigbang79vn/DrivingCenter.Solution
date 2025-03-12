@@ -79,9 +79,14 @@
             this.contextMenuStrip_KhoaHoc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuItem_ThemKhoaHoc = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_BoTriXeSTD = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_XuatBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_PhanCong = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_CheckLyThuyet = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItem_XuatBaoCao = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_Baocaokhoahoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_KetQuaQuaTrinhHoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_KetQuaDATQuaTrinhHoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_KetQuaKHONGDATQuaTrinhHoc = new System.Windows.Forms.ToolStripMenuItem();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ImportData = new System.Windows.Forms.TableLayoutPanel();
             this.grdCtrl_ImportData = new DevExpress.XtraGrid.GridControl();
@@ -96,7 +101,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.ColKhoaHoc = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -123,7 +127,6 @@
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // TongQuangDuongTichLuy
@@ -603,7 +606,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 624F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 619F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1256, 619);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -702,34 +705,32 @@
             this.contextMenuStrip_KhoaHoc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_ThemKhoaHoc,
             this.MenuItem_BoTriXeSTD,
-            this.MenuItem_XuatBaoCao,
             this.MenuItem_PhanCong,
-            this.MenuItem_CheckLyThuyet});
+            this.MenuItem_CheckLyThuyet,
+            this.toolStripSeparator1,
+            this.MenuItem_XuatBaoCao,
+            this.mn_Baocaokhoahoc});
             this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 114);
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 164);
             // 
             // MenuItem_ThemKhoaHoc
             // 
+            this.MenuItem_ThemKhoaHoc.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_ThemKhoaHoc.Image")));
             this.MenuItem_ThemKhoaHoc.Name = "MenuItem_ThemKhoaHoc";
             this.MenuItem_ThemKhoaHoc.Size = new System.Drawing.Size(190, 22);
             this.MenuItem_ThemKhoaHoc.Text = "Thêm khóa học";
             // 
             // MenuItem_BoTriXeSTD
             // 
+            this.MenuItem_BoTriXeSTD.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_BoTriXeSTD.Image")));
             this.MenuItem_BoTriXeSTD.Name = "MenuItem_BoTriXeSTD";
             this.MenuItem_BoTriXeSTD.Size = new System.Drawing.Size(190, 22);
             this.MenuItem_BoTriXeSTD.Text = "Bố trí xe STĐ";
             this.MenuItem_BoTriXeSTD.Click += new System.EventHandler(this.MenuItem_BoTriXeSTD_Click);
             // 
-            // MenuItem_XuatBaoCao
-            // 
-            this.MenuItem_XuatBaoCao.Name = "MenuItem_XuatBaoCao";
-            this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_XuatBaoCao.Text = "Xuất báo cáo đào tạo";
-            this.MenuItem_XuatBaoCao.Click += new System.EventHandler(this.MenuItem_XuatBaoCao_Click);
-            // 
             // MenuItem_PhanCong
             // 
+            this.MenuItem_PhanCong.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_PhanCong.Image")));
             this.MenuItem_PhanCong.Name = "MenuItem_PhanCong";
             this.MenuItem_PhanCong.Size = new System.Drawing.Size(190, 22);
             this.MenuItem_PhanCong.Text = "Cập nhật phân công";
@@ -737,10 +738,59 @@
             // 
             // MenuItem_CheckLyThuyet
             // 
+            this.MenuItem_CheckLyThuyet.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_CheckLyThuyet.Image")));
             this.MenuItem_CheckLyThuyet.Name = "MenuItem_CheckLyThuyet";
             this.MenuItem_CheckLyThuyet.Size = new System.Drawing.Size(190, 22);
             this.MenuItem_CheckLyThuyet.Text = "Kiểm tra học lý thuyết";
             this.MenuItem_CheckLyThuyet.Click += new System.EventHandler(this.MenuItem_CheckLyThuyet_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            // 
+            // MenuItem_XuatBaoCao
+            // 
+            this.MenuItem_XuatBaoCao.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_XuatBaoCao.Image")));
+            this.MenuItem_XuatBaoCao.Name = "MenuItem_XuatBaoCao";
+            this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_XuatBaoCao.Text = "Xuất báo cáo đào tạo";
+            this.MenuItem_XuatBaoCao.Click += new System.EventHandler(this.MenuItem_XuatBaoCao_Click);
+            // 
+            // mn_Baocaokhoahoc
+            // 
+            this.mn_Baocaokhoahoc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mn_KetQuaQuaTrinhHoc,
+            this.mn_KetQuaDATQuaTrinhHoc,
+            this.mn_KetQuaKHONGDATQuaTrinhHoc});
+            this.mn_Baocaokhoahoc.Image = ((System.Drawing.Image)(resources.GetObject("mn_Baocaokhoahoc.Image")));
+            this.mn_Baocaokhoahoc.Name = "mn_Baocaokhoahoc";
+            this.mn_Baocaokhoahoc.Size = new System.Drawing.Size(190, 22);
+            this.mn_Baocaokhoahoc.Text = "Báo cáo khóa học";
+            // 
+            // mn_KetQuaQuaTrinhHoc
+            // 
+            this.mn_KetQuaQuaTrinhHoc.Image = ((System.Drawing.Image)(resources.GetObject("mn_KetQuaQuaTrinhHoc.Image")));
+            this.mn_KetQuaQuaTrinhHoc.Name = "mn_KetQuaQuaTrinhHoc";
+            this.mn_KetQuaQuaTrinhHoc.Size = new System.Drawing.Size(259, 22);
+            this.mn_KetQuaQuaTrinhHoc.Text = "Kết quả quá trình học";
+            this.mn_KetQuaQuaTrinhHoc.Click += new System.EventHandler(this.mn_KetQuaQuaTrinhHoc_Click);
+            // 
+            // mn_KetQuaDATQuaTrinhHoc
+            // 
+            this.mn_KetQuaDATQuaTrinhHoc.Image = ((System.Drawing.Image)(resources.GetObject("mn_KetQuaDATQuaTrinhHoc.Image")));
+            this.mn_KetQuaDATQuaTrinhHoc.Name = "mn_KetQuaDATQuaTrinhHoc";
+            this.mn_KetQuaDATQuaTrinhHoc.Size = new System.Drawing.Size(259, 22);
+            this.mn_KetQuaDATQuaTrinhHoc.Text = "Kết quả ĐẠT quá trình học";
+            this.mn_KetQuaDATQuaTrinhHoc.Click += new System.EventHandler(this.mn_KetQuaDATQuaTrinhHoc_Click);
+            // 
+            // mn_KetQuaKHONGDATQuaTrinhHoc
+            // 
+            this.mn_KetQuaKHONGDATQuaTrinhHoc.Image = ((System.Drawing.Image)(resources.GetObject("mn_KetQuaKHONGDATQuaTrinhHoc.Image")));
+            this.mn_KetQuaKHONGDATQuaTrinhHoc.Name = "mn_KetQuaKHONGDATQuaTrinhHoc";
+            this.mn_KetQuaKHONGDATQuaTrinhHoc.Size = new System.Drawing.Size(259, 22);
+            this.mn_KetQuaKHONGDATQuaTrinhHoc.Text = "Kết quả KHÔNG ĐẠT quá trình học";
+            this.mn_KetQuaKHONGDATQuaTrinhHoc.Click += new System.EventHandler(this.mn_KetQuaKHONGDATQuaTrinhHoc_Click);
             // 
             // navigationPage2
             // 
@@ -903,10 +953,6 @@
             this.ColKhoaHoc.VisibleIndex = 0;
             this.ColKhoaHoc.Width = 225;
             // 
-            // popupMenu1
-            // 
-            this.popupMenu1.Name = "popupMenu1";
-            // 
             // Uc_DaoTao
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -946,7 +992,6 @@
             this.panel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1017,6 +1062,10 @@
         private System.Windows.Forms.Button btn_Extend;
         private System.Windows.Forms.Button btn_LoadKhoaHoc;
         private DevExpress.XtraGrid.Columns.GridColumn TongThoiGianText;
-        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mn_Baocaokhoahoc;
+        private System.Windows.Forms.ToolStripMenuItem mn_KetQuaQuaTrinhHoc;
+        private System.Windows.Forms.ToolStripMenuItem mn_KetQuaDATQuaTrinhHoc;
+        private System.Windows.Forms.ToolStripMenuItem mn_KetQuaKHONGDATQuaTrinhHoc;
     }
 }

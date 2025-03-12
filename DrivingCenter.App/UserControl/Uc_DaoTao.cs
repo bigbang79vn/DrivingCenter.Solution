@@ -3,6 +3,7 @@ using DevExpress.Map.Kml.Model;
 using DevExpress.XtraEditors;
 using DevExpress.XtraLayout.Filtering.Templates;
 using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using DrivingCenter.App.DAO;
@@ -12,6 +13,7 @@ using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.DTO.LyThuyet;
 using DrivingCenter.App.Helper;
+using DrivingCenter.App.Report;
 using ExcelDataReader;
 using System;
 using System.Collections.Generic;
@@ -332,6 +334,45 @@ namespace DrivingCenter.App.UserControl
             XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        
+        private void mn_KetQuaQuaTrinhHoc_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 0);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+
+        private void mn_KetQuaDATQuaTrinhHoc_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 1);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+
+        private void mn_KetQuaKHONGDATQuaTrinhHoc_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 2);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
     }
 }
