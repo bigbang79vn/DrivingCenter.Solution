@@ -930,5 +930,32 @@ namespace DrivingCenter.App.DAO
         }
 
         #endregion
+
+        #region Thông tin đào tạo chi tiết
+
+        public NguoiLxInDAT GetInfoNguoiLxByID(Int64 NguoiLxId) 
+        {
+            string query = $"EXEC [dbo].[spGetInfoNguoiLxByID] @MaCSDT = N'66015', @NguoiLxID = {NguoiLxId}";
+            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+
+            NguoiLxInDAT NguoixLx = dt.AsEnumerable()
+                         .Select(row => new NguoiLxInDAT
+                         {
+                             TenKH = row["TenKH"].ToString(),
+                             MaDK = row["MaDK"].ToString(),
+                             HoVaTen = row["HoVaTen"].ToString(),
+                             NgaySinh = Convert.ToDateTime(row["NgaySinh"]),
+                             CCCD = row["SoCMT"].ToString(),
+                             GioiTinh = row["GioiTinh"].ToString(),
+                             HangDT = row["HangDaoTao"].ToString(),
+                             Anh = (byte[])row["Anh"],
+                             TongQuangDuongTichLuy = Convert.ToDouble(row["TongQuangDuongLD"]),
+                             //TongThoiGianTichLuy = (int)row["TongThoiGianLD"],
+                             //TongThoiGianText = TimeSpan.FromSeconds((double)row["TongThoiGianLD"]).ToString(@"hh\:mm\:ss")
+                         })
+                         .FirstOrDefault();
+            return NguoixLx;
+        }
+        #endregion
     }
 }

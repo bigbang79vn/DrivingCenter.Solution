@@ -37,6 +37,7 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
 
             tblLayout_ImportData.Dock = DockStyle.Fill;
+            xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
 
             LoadCategory();
             LoadXeTapLai();
@@ -254,10 +255,58 @@ namespace DrivingCenter.App.UserControl
         private void gridView_DanhSachHocVien_DoubleClick(object sender, EventArgs e)
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
-            XtraMessageBox.Show(rowData.NguoiLXID.ToString(), "Thông Báo");
+
+            UC_DetailStudent ucHV = new UC_DetailStudent(rowData.NguoiLXID);
+
+            xtraTabPage_DetailHocVien.Controls.Clear();
+            ucHV.Dock = DockStyle.Fill;
+            xtraTabPage_DetailHocVien.Controls.Add(ucHV);
+
+            // Chuyển sang TabPage chi tiết
+            xtraTabControl.SelectedTabPage = xtraTabPage_DetailHocVien;
         }
 
         #region ContextMenuStrip
+        private void mn_KetQuaQuaTrinhHoc_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 0);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+
+        private void mn_KetQuaDATQuaTrinhHoc_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 1);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
+
+        private void mn_KetQuaKHONGDATQuaTrinhHoc_Click(object sender, EventArgs e)
+        {
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 2);
+
+            // Gán DataSource cho Report
+            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rpt.DataSource = resultBC;
+
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
         private void MenuItem_CheckLyThuyet_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
@@ -334,45 +383,6 @@ namespace DrivingCenter.App.UserControl
             XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void mn_KetQuaQuaTrinhHoc_Click(object sender, EventArgs e)
-        {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 0);
-
-            // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
-            rpt.DataSource = resultBC;
-
-
-            // Hiển thị report
-            ReportPrintTool printTool = new ReportPrintTool(rpt);
-            printTool.ShowPreview();
-        }
-
-        private void mn_KetQuaDATQuaTrinhHoc_Click(object sender, EventArgs e)
-        {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 1);
-
-            // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
-            rpt.DataSource = resultBC;
-
-            // Hiển thị report
-            ReportPrintTool printTool = new ReportPrintTool(rpt);
-            printTool.ShowPreview();
-        }
-
-        private void mn_KetQuaKHONGDATQuaTrinhHoc_Click(object sender, EventArgs e)
-        {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 2);
-
-            // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
-            rpt.DataSource = resultBC;
-
-
-            // Hiển thị report
-            ReportPrintTool printTool = new ReportPrintTool(rpt);
-            printTool.ShowPreview();
-        }
+        
     }
 }

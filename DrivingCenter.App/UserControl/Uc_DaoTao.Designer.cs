@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,7 +47,8 @@
             this.lb_KetquaKh = new System.Windows.Forms.Label();
             this.btn_ExportResultToExcel = new System.Windows.Forms.Button();
             this.btn_Extend = new System.Windows.Forms.Button();
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabControl = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage_DetailHocVien = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage_LstHocVien = new DevExpress.XtraTab.XtraTabPage();
             this.gridCtrl_DanhSachHocVien = new DevExpress.XtraGrid.GridControl();
             this.gridView_DanhSachHocVien = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -68,9 +69,6 @@
             this.ThoiDiemKetThucDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongThoiGianText = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongThoiGianTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xtraTabPage_DetailHocVien = new DevExpress.XtraTab.XtraTabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.PanelLeft = new System.Windows.Forms.Panel();
             this.btn_LoadKhoaHoc = new System.Windows.Forms.Button();
             this.treeList_Category = new DevExpress.XtraTreeList.TreeList();
@@ -106,8 +104,8 @@
             this.navigationPage1.SuspendLayout();
             this.panel_Right.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).BeginInit();
+            this.xtraTabControl.SuspendLayout();
             this.xtraTabPage_LstHocVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_DanhSachHocVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_DanhSachHocVien)).BeginInit();
@@ -115,8 +113,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
-            this.xtraTabPage_DetailHocVien.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.PanelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).BeginInit();
             this.contextMenuStrip_KhoaHoc.SuspendLayout();
@@ -205,19 +201,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement5.Text = "Lịch Học";
-            this.employeesTileBarItem.Elements.Add(tileItemElement5);
+            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement1.Text = "Lịch Học";
+            this.employeesTileBarItem.Elements.Add(tileItemElement1);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement6.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement6.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement6);
+            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement2.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement2);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -257,7 +253,7 @@
             // panel_Right
             // 
             this.panel_Right.Controls.Add(this.panel3);
-            this.panel_Right.Controls.Add(this.xtraTabControl1);
+            this.panel_Right.Controls.Add(this.xtraTabControl);
             this.panel_Right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Right.Location = new System.Drawing.Point(234, 0);
             this.panel_Right.Name = "panel_Right";
@@ -323,25 +319,33 @@
             this.btn_Extend.UseVisualStyleBackColor = false;
             this.btn_Extend.Click += new System.EventHandler(this.btn_Extend_Click);
             // 
-            // xtraTabControl1
+            // xtraTabControl
             // 
-            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.xtraTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControl1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xtraTabControl1.Appearance.Options.UseFont = true;
-            this.xtraTabControl1.AppearancePage.Header.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xtraTabControl1.AppearancePage.Header.Options.UseFont = true;
-            this.xtraTabControl1.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xtraTabControl1.AppearancePage.HeaderActive.Options.UseFont = true;
-            this.xtraTabControl1.Location = new System.Drawing.Point(5, 34);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage_LstHocVien;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1258, 656);
-            this.xtraTabControl1.TabIndex = 4;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabControl.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xtraTabControl.Appearance.Options.UseFont = true;
+            this.xtraTabControl.AppearancePage.Header.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xtraTabControl.AppearancePage.Header.Options.UseFont = true;
+            this.xtraTabControl.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xtraTabControl.AppearancePage.HeaderActive.Options.UseFont = true;
+            this.xtraTabControl.Location = new System.Drawing.Point(5, 34);
+            this.xtraTabControl.Name = "xtraTabControl";
+            this.xtraTabControl.SelectedTabPage = this.xtraTabPage_DetailHocVien;
+            this.xtraTabControl.Size = new System.Drawing.Size(1258, 656);
+            this.xtraTabControl.TabIndex = 2;
+            this.xtraTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage_LstHocVien,
             this.xtraTabPage_DetailHocVien});
+            // 
+            // xtraTabPage_DetailHocVien
+            // 
+            this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
+            this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+            this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
+            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1256, 619);
+            this.xtraTabPage_DetailHocVien.Text = "Chi tiết học viên";
             // 
             // xtraTabPage_LstHocVien
             // 
@@ -586,38 +590,6 @@
             this.TongThoiGianTichLuy.Name = "TongThoiGianTichLuy";
             this.TongThoiGianTichLuy.Width = 104;
             // 
-            // xtraTabPage_DetailHocVien
-            // 
-            this.xtraTabPage_DetailHocVien.Controls.Add(this.tableLayoutPanel1);
-            this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
-            this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
-            this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
-            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1256, 619);
-            this.xtraTabPage_DetailHocVien.Text = "Chi tiết học viên";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.72292F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.27708F));
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 619F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1256, 619);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(367, 613);
-            this.panel2.TabIndex = 0;
-            // 
             // PanelLeft
             // 
             this.PanelLeft.Controls.Add(this.btn_LoadKhoaHoc);
@@ -711,7 +683,7 @@
             this.MenuItem_XuatBaoCao,
             this.mn_Baocaokhoahoc});
             this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 164);
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 142);
             // 
             // MenuItem_ThemKhoaHoc
             // 
@@ -969,8 +941,8 @@
             this.panel_Right.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).EndInit();
+            this.xtraTabControl.ResumeLayout(false);
             this.xtraTabPage_LstHocVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_DanhSachHocVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_DanhSachHocVien)).EndInit();
@@ -978,8 +950,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
-            this.xtraTabPage_DetailHocVien.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.PanelLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList_Category)).EndInit();
             this.contextMenuStrip_KhoaHoc.ResumeLayout(false);
@@ -1031,7 +1001,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn ThoiDiemChayDAT;
         private DevExpress.XtraTreeList.Columns.TreeListColumn Col_TenKH;
         private DevExpress.XtraTreeList.Columns.TreeListColumn ColKhoaHoc;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage_LstHocVien;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage_DetailHocVien;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_KhoaHoc;
@@ -1050,8 +1020,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_GiaoVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn HangDT;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_PhanCong;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_CheckLyThuyet;
         private System.Windows.Forms.Panel panel_Right;

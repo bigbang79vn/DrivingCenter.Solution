@@ -25,5 +25,7 @@ namespace DrivingCenter.App.DTO.DAT
         public string TongThoiGianText { get; set; }
         public DateTime? ThoiDiemChayDAT { get; set; }
         public DateTime? ThoiDiemKetThucDAT { get; set; }
+        public byte[] Anh { get; set; }
+        public string ImageBase64 { get; set; }
     }
 }
