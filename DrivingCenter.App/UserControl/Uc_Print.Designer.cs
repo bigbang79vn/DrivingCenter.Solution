@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,7 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_InTemTheDAT = new System.Windows.Forms.Button();
             this.btn_InPhieuTheoDoi = new System.Windows.Forms.Button();
-            this.btn_PrintlstHV = new System.Windows.Forms.Button();
+            this.btn_InTheHocVien = new System.Windows.Forms.Button();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NguoiLXID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,7 +112,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(28, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.Size = new System.Drawing.Size(63, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Khóa Học";
             // 
@@ -133,7 +133,7 @@
             // 
             this.panel2.Controls.Add(this.btn_InTemTheDAT);
             this.panel2.Controls.Add(this.btn_InPhieuTheoDoi);
-            this.panel2.Controls.Add(this.btn_PrintlstHV);
+            this.panel2.Controls.Add(this.btn_InTheHocVien);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(6, 740);
             this.panel2.Name = "panel2";
@@ -174,28 +174,28 @@
             this.btn_InPhieuTheoDoi.UseVisualStyleBackColor = false;
             this.btn_InPhieuTheoDoi.Click += new System.EventHandler(this.btn_InPhieuTheoDoi_Click);
             // 
-            // btn_PrintlstHV
+            // btn_InTheHocVien
             // 
-            this.btn_PrintlstHV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PrintlstHV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.btn_PrintlstHV.FlatAppearance.BorderSize = 0;
-            this.btn_PrintlstHV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PrintlstHV.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PrintlstHV.ForeColor = System.Drawing.Color.White;
-            this.btn_PrintlstHV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_PrintlstHV.Location = new System.Drawing.Point(1316, 12);
-            this.btn_PrintlstHV.Name = "btn_PrintlstHV";
-            this.btn_PrintlstHV.Size = new System.Drawing.Size(160, 31);
-            this.btn_PrintlstHV.TabIndex = 0;
-            this.btn_PrintlstHV.Text = "In Thẻ Học Viên";
-            this.btn_PrintlstHV.UseVisualStyleBackColor = false;
-            this.btn_PrintlstHV.Click += new System.EventHandler(this.btn_PrintlstHV_Click);
+            this.btn_InTheHocVien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_InTheHocVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.btn_InTheHocVien.FlatAppearance.BorderSize = 0;
+            this.btn_InTheHocVien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_InTheHocVien.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_InTheHocVien.ForeColor = System.Drawing.Color.White;
+            this.btn_InTheHocVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_InTheHocVien.Location = new System.Drawing.Point(1316, 12);
+            this.btn_InTheHocVien.Name = "btn_InTheHocVien";
+            this.btn_InTheHocVien.Size = new System.Drawing.Size(160, 31);
+            this.btn_InTheHocVien.TabIndex = 0;
+            this.btn_InTheHocVien.Text = "In Thẻ Học Viên";
+            this.btn_InTheHocVien.UseVisualStyleBackColor = false;
+            this.btn_InTheHocVien.Click += new System.EventHandler(this.btn_InTheHocVien_Click);
             // 
             // STT
             // 
             this.STT.DataPropertyName = "STT";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.STT.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.STT.DefaultCellStyle = dataGridViewCellStyle1;
             this.STT.HeaderText = "STT";
             this.STT.MinimumWidth = 24;
             this.STT.Name = "STT";
@@ -234,9 +234,9 @@
             // HoVaTen
             // 
             this.HoVaTen.DataPropertyName = "HoVaTen";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.HoVaTen.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.HoVaTen.DefaultCellStyle = dataGridViewCellStyle2;
             this.HoVaTen.HeaderText = "Học Viên";
             this.HoVaTen.MinimumWidth = 24;
             this.HoVaTen.Name = "HoVaTen";
@@ -247,8 +247,8 @@
             // NgaySinh
             // 
             this.NgaySinh.DataPropertyName = "NgaySinh";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NgaySinh.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NgaySinh.DefaultCellStyle = dataGridViewCellStyle3;
             this.NgaySinh.HeaderText = "Ngày Sinh";
             this.NgaySinh.MinimumWidth = 24;
             this.NgaySinh.Name = "NgaySinh";
@@ -259,8 +259,8 @@
             // GioiTinh
             // 
             this.GioiTinh.DataPropertyName = "GioiTinh";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.GioiTinh.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.GioiTinh.DefaultCellStyle = dataGridViewCellStyle4;
             this.GioiTinh.HeaderText = "Giới Tính";
             this.GioiTinh.MinimumWidth = 24;
             this.GioiTinh.Name = "GioiTinh";
@@ -279,8 +279,8 @@
             // SoCMT
             // 
             this.SoCMT.DataPropertyName = "SoCMT";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SoCMT.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SoCMT.DefaultCellStyle = dataGridViewCellStyle5;
             this.SoCMT.HeaderText = "CMT/CCCD";
             this.SoCMT.MinimumWidth = 24;
             this.SoCMT.Name = "SoCMT";
@@ -324,7 +324,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEdit_KhoaHoc.Properties.NullText = "Chọn khóa học";
             this.searchLookUpEdit_KhoaHoc.Properties.PopupView = this.gridView1;
-            this.searchLookUpEdit_KhoaHoc.Size = new System.Drawing.Size(165, 20);
+            this.searchLookUpEdit_KhoaHoc.Size = new System.Drawing.Size(165, 22);
             this.searchLookUpEdit_KhoaHoc.TabIndex = 19;
             this.searchLookUpEdit_KhoaHoc.EditValueChanged += new System.EventHandler(this.searchLookUpEdit_KhoaHoc_EditValueChanged);
             // 
@@ -444,7 +444,7 @@
             this.MaDK_HV.FieldName = "MaDK";
             this.MaDK_HV.Name = "MaDK_HV";
             this.MaDK_HV.Visible = true;
-            this.MaDK_HV.VisibleIndex = 2;
+            this.MaDK_HV.VisibleIndex = 1;
             this.MaDK_HV.Width = 207;
             // 
             // gridColumn9
@@ -455,7 +455,7 @@
             this.gridColumn9.FieldName = "HoTenHV";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 3;
+            this.gridColumn9.VisibleIndex = 2;
             this.gridColumn9.Width = 254;
             // 
             // gridColumn10
@@ -468,7 +468,7 @@
             this.gridColumn10.FieldName = "NgaySinh";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 4;
+            this.gridColumn10.VisibleIndex = 3;
             this.gridColumn10.Width = 171;
             // 
             // gridColumn11
@@ -481,7 +481,7 @@
             this.gridColumn11.FieldName = "GioiTinh";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 5;
+            this.gridColumn11.VisibleIndex = 4;
             this.gridColumn11.Width = 148;
             // 
             // gridColumn13
@@ -490,7 +490,7 @@
             this.gridColumn13.FieldName = "Address";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 6;
+            this.gridColumn13.VisibleIndex = 5;
             this.gridColumn13.Width = 236;
             // 
             // gridColumn14
@@ -501,7 +501,7 @@
             this.gridColumn14.FieldName = "SoCMT";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 7;
+            this.gridColumn14.VisibleIndex = 6;
             this.gridColumn14.Width = 172;
             // 
             // gridColumn12
@@ -512,7 +512,7 @@
             this.gridColumn12.FieldName = "NgayCapCMT";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 8;
+            this.gridColumn12.VisibleIndex = 7;
             this.gridColumn12.Width = 150;
             // 
             // repositoryItemCheckEdit1
@@ -523,8 +523,8 @@
             // Address
             // 
             this.Address.DataPropertyName = "Address";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Address.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle6;
             this.Address.HeaderText = "Địa Chỉ";
             this.Address.MinimumWidth = 24;
             this.Address.Name = "Address";
@@ -562,7 +562,7 @@
         private System.Windows.Forms.Label lb_lstHvbyKhoaHoc;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn_InPhieuTheoDoi;
-        private System.Windows.Forms.Button btn_PrintlstHV;
+        private System.Windows.Forms.Button btn_InTheHocVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiLXID;

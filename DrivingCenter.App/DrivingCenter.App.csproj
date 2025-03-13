@@ -506,12 +506,6 @@
     <Compile Include="fReplication.Designer.cs">
       <DependentUpon>fReplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="FReport\rptPrint.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FReport\rptPrint.Designer.cs">
-      <DependentUpon>rptPrint.cs</DependentUpon>
-    </Compile>
     <Compile Include="FReport\rptPrintReportCNTN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -594,12 +588,6 @@
       <DependentUpon>rptResult_EMC.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\rptTemTheDAT.cs">
-      <DependentUpon>rptTemTheDAT.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Report\rptTongHopKhoaHocEco.cs">
       <DependentUpon>rptTongHopKhoaHocEco.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -624,11 +612,11 @@
     <Compile Include="Report\rptTheHocVien.Designer.cs">
       <DependentUpon>rptTheHocVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\TemTheDAT.cs">
+    <Compile Include="Report\rptTemTheDAT.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\TemTheDAT.Designer.cs">
-      <DependentUpon>TemTheDAT.cs</DependentUpon>
+    <Compile Include="Report\rptTemTheDAT.Designer.cs">
+      <DependentUpon>rptTemTheDAT.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_Detail.cs">
       <SubType>UserControl</SubType>
@@ -729,9 +717,6 @@
     <EmbeddedResource Include="fReplication.resx">
       <DependentUpon>fReplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FReport\rptPrint.resx">
-      <DependentUpon>rptPrint.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FReport\rptPrintReportCNTN.resx">
       <DependentUpon>rptPrintReportCNTN.cs</DependentUpon>
     </EmbeddedResource>
@@ -783,10 +768,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptResult_EMC1.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptTemTheDAT.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptTemTheDAT.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\rptTongHopKhoaHocEco.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopKhoaHocEco.cs</LastGenOutput>
@@ -801,8 +782,8 @@
     <EmbeddedResource Include="Report\rptTheHocVien.resx">
       <DependentUpon>rptTheHocVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\TemTheDAT.resx">
-      <DependentUpon>TemTheDAT.cs</DependentUpon>
+    <EmbeddedResource Include="Report\rptTemTheDAT.resx">
+      <DependentUpon>rptTemTheDAT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Detail.resx">
       <DependentUpon>UC_Detail.cs</DependentUpon>

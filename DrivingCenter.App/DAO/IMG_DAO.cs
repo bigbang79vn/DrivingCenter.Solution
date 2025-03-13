@@ -112,5 +112,11 @@ namespace DrivingCenter.App.DAO
             string query = $"EXEC [dbo].[usp_LoadDataPhieuTheoDoi] @lstNguoiLXID = N'{lstNguoiLxID}'";
             return DataProviderIMG.Instance.ExcuteQuery(query);
         }
+
+        public DataTable GetDataTemTheDAT(string lstNguoiLxID)
+        {
+            string query = $"EXEC [dbo].[usp_LoadDaTaHvInTemDat] @lstNguoiLXID = N'{lstNguoiLxID}'";
+            return DataProviderIMG.Instance.ExcuteQuery(query);
+        }
     }
 }

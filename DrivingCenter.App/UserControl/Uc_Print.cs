@@ -58,6 +58,30 @@ namespace DrivingCenter.App.UserControl
                 LoadlstHocVienbyKhoaHoc((int)IdKhoaHoc);
             }
         }
+        private void btn_InTheHocVien_Click(object sender, EventArgs e)
+        {
+            string lstNguoiLxID = "";
+
+            // Lấy các chỉ số của các hàng được chọn
+            int[] selectedRowHandles = gridView_lstHocVien.GetSelectedRows();
+
+            foreach (int rowHandle in selectedRowHandles)
+            {
+                var cellValue = gridView_lstHocVien.GetRowCellValue(rowHandle, "NguoiLxID");
+
+                lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
+            }
+
+            DataTable resultBC = IMG_DAO.Instance.GetDataTheHocVien(lstNguoiLxID);
+
+            // Gán DataSource cho Report
+            rptTheHocVien rpt = new rptTheHocVien();
+            rpt.DataSource = resultBC;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
+        }
 
         private void btn_InPhieuTheoDoi_Click(object sender, EventArgs e)
         {
@@ -84,7 +108,7 @@ namespace DrivingCenter.App.UserControl
             printTool.ShowPreview();
         }
 
-        private void btn_PrintlstHV_Click(object sender, EventArgs e)
+        private void btn_InTemTheDAT_Click(object sender, EventArgs e)
         {
             string lstNguoiLxID = "";
 
@@ -98,34 +122,15 @@ namespace DrivingCenter.App.UserControl
                 lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
             }
 
-            DataTable resultBC = IMG_DAO.Instance.GetDataTheHocVien(lstNguoiLxID);
+            DataTable resultBC = IMG_DAO.Instance.GetDataTemTheDAT(lstNguoiLxID);
 
             // Gán DataSource cho Report
-            rptTheHocVien rpt = new rptTheHocVien();
+            rptTemTheDAT rpt = new rptTemTheDAT();
             rpt.DataSource = resultBC;
 
             // Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
-        }
-
-        private void btn_InTemTheDAT_Click(object sender, EventArgs e)
-        {
-            string lstNguoiLxID = "";
-            int temp = 3;
-
-            // Lấy các chỉ số của các hàng được chọn
-            int[] selectedRowHandles = gridView_lstHocVien.GetSelectedRows();
-
-            foreach (int rowHandle in selectedRowHandles)
-            {
-                var cellValue = gridView_lstHocVien.GetRowCellValue(rowHandle, "NguoiLxID");
-
-                lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
-            }
-
-            rptPrint f = new rptPrint(lstNguoiLxID, temp);
-            f.Show();
         }
     }
 }
