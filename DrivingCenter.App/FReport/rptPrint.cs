@@ -37,21 +37,21 @@ namespace DrivingCenter.App.FReport
         {
             if (flag == 1)
             {
-                rptPhieuTheoDoi rpt = new Report.rptPhieuTheoDoi();
-                rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
-                rpt.SetDatabaseLogon("it", "@97UiLYW0Fwkl3qQWK($4My^");
+                //rptPhieuTheoDoi rpt = new Report.rptPhieuTheoDoi();
+                //rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
+                //rpt.SetDatabaseLogon("it", "@97UiLYW0Fwkl3qQWK($4My^");
 
-                crystalReportViewer.ReportSource = null;
-                crystalReportViewer.ReportSource = rpt;
+                //crystalReportViewer.ReportSource = null;
+                //crystalReportViewer.ReportSource = rpt;
             }
-            else if (flag == 2)
-            {
-                rptTheHocVien rpt = new Report.rptTheHocVien();
-                rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
-                rpt.SetDatabaseLogon("it", "@97UiLYW0Fwkl3qQWK($4My^");
-                crystalReportViewer.ReportSource = null;
-                crystalReportViewer.ReportSource = rpt;
-            }
+            //else if (flag == 2)
+            //{
+            //    rptTheHocVien rpt = new Report.rptTheHocVien();
+            //    rpt.SetParameterValue("@lstNguoiLXID", lstNguoiLXID);
+            //    rpt.SetDatabaseLogon("it", "@97UiLYW0Fwkl3qQWK($4My^");
+            //    crystalReportViewer.ReportSource = null;
+            //    crystalReportViewer.ReportSource = rpt;
+            //}
             else if (flag == 3)
             {
                 rptTemTheDAT rpt = new Report.rptTemTheDAT();

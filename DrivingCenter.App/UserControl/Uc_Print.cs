@@ -1,8 +1,11 @@
-﻿using DrivingCenter.App.DAO;
+﻿using DevExpress.XtraReports.UI;
+using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.FReport;
+using DrivingCenter.App.Report;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
@@ -59,7 +62,6 @@ namespace DrivingCenter.App.UserControl
         private void btn_InPhieuTheoDoi_Click(object sender, EventArgs e)
         {
             string lstNguoiLxID = "";
-            int temp = 1;
 
             // Lấy các chỉ số của các hàng được chọn
             int[] selectedRowHandles = gridView_lstHocVien.GetSelectedRows();
@@ -71,14 +73,20 @@ namespace DrivingCenter.App.UserControl
                 lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
             }
 
-            rptPrint f = new rptPrint(lstNguoiLxID, temp);
-            f.Show();
+            DataTable resultBC = IMG_DAO.Instance.GetDataPhieuTheoDoi(lstNguoiLxID);
+
+            // Gán DataSource cho Report
+            rptPhieuTheoDoi rpt = new rptPhieuTheoDoi();
+            rpt.DataSource = resultBC;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
         }
 
         private void btn_PrintlstHV_Click(object sender, EventArgs e)
         {
             string lstNguoiLxID = "";
-            int temp = 2;
 
             // Lấy các chỉ số của các hàng được chọn
             int[] selectedRowHandles = gridView_lstHocVien.GetSelectedRows();
@@ -90,8 +98,15 @@ namespace DrivingCenter.App.UserControl
                 lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
             }
 
-            rptPrint f = new rptPrint(lstNguoiLxID, temp);
-            f.Show();
+            DataTable resultBC = IMG_DAO.Instance.GetDataTheHocVien(lstNguoiLxID);
+
+            // Gán DataSource cho Report
+            rptTheHocVien rpt = new rptTheHocVien();
+            rpt.DataSource = resultBC;
+
+            // Hiển thị report
+            ReportPrintTool printTool = new ReportPrintTool(rpt);
+            printTool.ShowPreview();
         }
 
         private void btn_InTemTheDAT_Click(object sender, EventArgs e)

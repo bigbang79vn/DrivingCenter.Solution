@@ -100,5 +100,17 @@ namespace DrivingCenter.App.DAO
             DataTable dt = DataProviderIMG.Instance.ExcuteQuery(query);
             return dt;
         }
+
+        public DataTable GetDataTheHocVien(string lstNguoiLxID)
+        {
+            string query = $"EXEC [dbo].[usp_LoadDaTaHV] @lstNguoiLXID = N'{lstNguoiLxID}'";
+            return DataProviderIMG.Instance.ExcuteQuery(query);
+        }
+
+        public DataTable GetDataPhieuTheoDoi(string lstNguoiLxID)
+        {
+            string query = $"EXEC [dbo].[usp_LoadDataPhieuTheoDoi] @lstNguoiLXID = N'{lstNguoiLxID}'";
+            return DataProviderIMG.Instance.ExcuteQuery(query);
+        }
     }
 }
