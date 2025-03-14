@@ -307,7 +307,7 @@ namespace DrivingCenter.App.UserControl
 
             List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(khoahocid, HangDaoTao);
 
-            if (HangDaoTao == "B2")
+            if (HangDaoTao == "B2" || HangDaoTao == "B")
             {
                 foreach (TongHopHVByKhoa itemB1 in lstB1)
                 {
@@ -335,95 +335,72 @@ namespace DrivingCenter.App.UserControl
             return lst;
         }
 
+        public int HvDuDK { get; private set; } = 0;
+
+        public List<ViewTongHopHvByKhoa> ProcessTongHop(List<TongHopHVByKhoa> lstKQ, string HangDaoTao)
+        {
+            return lstKQ.Select((item, index) =>
+            {
+                var view = new ViewTongHopHvByKhoa
+                {
+                    STT = index + 1,
+                    View_MaDK = item.MaDK,
+                    View_HoTenGV = item.HoTenGV,
+                    View_HoVaTen = item.HoVaTenHV,
+                    View_HangDaoTao = item.HangDaoTao,
+                    View_TongQuangDuong = item.TongQuangDuongTichLuy,
+                    TongThoiGian = Math.Round(item.TongThoiGianTichLuy / 3600, 4),
+                    View_TongThoiGian = FormatTimeSpan(TimeSpan.FromSeconds(item.TongThoiGianTichLuy)),
+                    View_QuangDuongPhienGuiTC = item.QuangDuongPhienGuiTC,
+                    View_ThoiGianPhienGuiTC = FormatTimeSpan(TimeSpan.FromSeconds(item.ThoiGianPhienGuiTC)),
+                    View_TongQuangDuong_B11 = item.TongQuangDuong_B1,
+                    View_TongThoiGian_B11 = FormatTimeSpan(TimeSpan.FromSeconds(item.TongThoiGian_B1)),
+                    TongThoiGianSTD = Math.Round(item.TongThoiGian_B1 / 3600, 4),
+                    View_TongQuangDuong_PhienDem = item.TongQuangDuong_PhienDem,
+                    View_TongThoiGian_PhienDem = FormatTimeSpan(TimeSpan.FromSeconds(item.TongThoiGian_PhienDem)),
+                    TongThoiGianBD = Math.Round(item.TongThoiGian_PhienDem / 3600, 4),
+                    View_SoNgayHoc = item.SoNgayHocKQ
+                };
+
+                // Check điều kiện DAT New
+                view.View_Status = CheckDatNewCondition(item, HangDaoTao) ? "Đủ điều kiện!" : "";
+                if (!string.IsNullOrEmpty(view.View_Status)) HvDuDK++;
+
+                return view;
+            }).ToList();
+        }
+
+        private string FormatTimeSpan(TimeSpan ts)
+        {
+            int hours = ts.Days * 24 + ts.Hours;
+            return $"{hours:D2} giờ {ts.Minutes:D2} phút";
+        }
+
+        private bool CheckDatNewCondition(TongHopHVByKhoa item, string hangDaoTao)
+        {
+            bool baseCondition = item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200;
+            switch (hangDaoTao)
+            {
+                case "B11":
+                    return baseCondition && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 6;
+                case "B":
+                    return item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 && 
+                           item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 6;
+                case "B.01":
+                    return baseCondition && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4;
+                default:
+                    return item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 &&
+                           item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8;
+            }
+        }
+
         public void ViewTongHopKQ(List<TongHopHVByKhoa> lstKQ, string HangDaoTao)
         {
-            List<ViewTongHopHvByKhoa> lstView = new List<ViewTongHopHvByKhoa>();
-            int HvDuDK = 0;
-            int stt = 0;
-            foreach (TongHopHVByKhoa item in lstKQ)
-            {
-                ViewTongHopHvByKhoa view = new ViewTongHopHvByKhoa();
-                view.STT = stt + 1;
-                stt++;
-                view.View_MaDK = item.MaDK;
-                view.View_HoTenGV = item.HoTenGV;
-                view.View_HoVaTen = item.HoVaTenHV;
-                view.View_HangDaoTao = item.HangDaoTao;
-                view.View_TongQuangDuong = item.TongQuangDuongTichLuy;
-                TimeSpan timePhien = TimeSpan.FromSeconds(item.TongThoiGianTichLuy);
-                view.TongThoiGian = Math.Round(item.TongThoiGianTichLuy / 3600, 4);
-                if (timePhien.Days >= 1)
-                {
-                    int hour = timePhien.Days * 24 + timePhien.Hours;
-                    view.View_TongThoiGian = string.Format("{0:D2} giờ {1:D2} phút", hour, timePhien.Minutes);
-                }
-                else
-                {
-                    view.View_TongThoiGian = string.Format("{0:D2} giờ {1:D2} phút", timePhien.Hours, timePhien.Minutes);
-                }
-                view.View_QuangDuongPhienGuiTC = item.QuangDuongPhienGuiTC;
-                TimeSpan timeSendTC = TimeSpan.FromSeconds(item.ThoiGianPhienGuiTC);
-                if (timeSendTC.Days >= 1)
-                {
-                    int hour = timeSendTC.Days * 24 + timeSendTC.Hours;
-                    view.View_ThoiGianPhienGuiTC = string.Format("{0:D2} giờ {1:D2} phút", hour, timeSendTC.Minutes);
-                }
-                else
-                {
-                    view.View_ThoiGianPhienGuiTC = string.Format("{0:D2} giờ {1:D2} phút", timeSendTC.Hours, timeSendTC.Minutes);
-                }
-
-                view.View_TongQuangDuong_B11 = item.TongQuangDuong_B1;
-                TimeSpan timeB1 = TimeSpan.FromSeconds(item.TongThoiGian_B1);
-                view.View_TongThoiGian_B11 = string.Format("{0:D2} giờ {1:D2} phút", timeB1.Hours, timeB1.Minutes);
-                view.TongThoiGianSTD = Math.Round(item.TongThoiGian_B1 / 3600, 4);
-                view.View_TongQuangDuong_PhienDem = item.TongQuangDuong_PhienDem;
-                TimeSpan timeBD = TimeSpan.FromSeconds(item.TongThoiGian_PhienDem);
-                view.View_TongThoiGian_PhienDem = string.Format("{0:D2} giờ {1:D2} phút", timeBD.Hours, timeBD.Minutes);
-                view.TongThoiGianBD = Math.Round(item.TongThoiGian_PhienDem / 3600, 4);
-                view.View_SoNgayHoc = item.SoNgayHocKQ;
-
-                //------Check điều kiện DAT New------
-                if (HangDaoTao == "B11")
-                {
-                    if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 6)
-                    {
-                        view.View_Status += "Đủ điều kiện!";
-                        HvDuDK++;
-                    }
-                }
-                if (HangDaoTao == "B")
-                {
-                    if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 6)
-                    {
-                        view.View_Status += "Đủ điều kiện!";
-                        HvDuDK++;
-                    }
-                }
-                if (HangDaoTao == "B.01")
-                {
-                    if (item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200 && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4)
-                    {
-                        view.View_Status += "Đủ điều kiện!";
-                        HvDuDK++;
-                    }
-                }
-                else
-                {
-                    if (item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 && item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8)
-                    {
-                        view.View_Status += "Đủ điều kiện!";
-                        HvDuDK++;
-                    }
-                }
-
-                lstView.Add(view);
-            }
-
+            List<ViewTongHopHvByKhoa> lst = ProcessTongHop(lstKQ, HangDaoTao);
             ConvertListToDataTable convert = new ConvertListToDataTable();
-            dt = convert.ToDataTable(lstView);
+            dt = convert.ToDataTable(lst);
 
-            grid_Result.DataSource = lstView;
+            grid_Result.DataSource = lst;
 
             DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, khoahocid);
         }
