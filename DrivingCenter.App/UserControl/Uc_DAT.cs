@@ -12,6 +12,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
@@ -81,94 +82,86 @@ namespace DrivingCenter.App.UserControl
             LoadPhienHoc();
         }
 
-        private void CheckPhInList(List<PhienHoc> lstPH)
+        public int SendTC { get; private set; } = 0;
+
+        public void ProcessPhienHoc(List<PhienHoc> lstPH)
         {
-            int sendTC = 0;
+            // Sắp xếp theo Time_LogOut để kiểm tra nghỉ thiếu hiệu quả hơn
+            var sortedList = lstPH.OrderBy(x => x.Time_LogOut).ToList();
 
-            foreach (PhienHoc item in lstPH)
+            for (int i = 0; i < sortedList.Count; i++)
             {
-                //-----Kiểm tra tỉ lệ nhận diện-------
-                item.TyLe = Math.Round((double)(item.SoLanNhanDienThanhCong) / (item.SoLanNhanDien) * 100, 1);
-                if (item.TyLe < 90)
-                {
-                    item.Error = "Nhận Diện! ";
-                }
+                var item = sortedList[i];
+                item.STT = i + 1; // Gán STT
 
-                //-----Kiểm tra quãng đường phiên <5--
-                if (item.QuangDuongPhien < 5 && item.LogOut == true)
-                {
-                    item.Error = "Quãng đường <5! ";
-                }
+                var sb = new StringBuilder(); // Dùng StringBuilder để tích lũy lỗi
 
-                //-----Kiểm tra vận tốc---------------
-                double vantoc = item.QuangDuongPhien / ((item.dbTime) / 3600);
-                if (vantoc < 20)
-                {
-                    item.Error += "Vận Tốc! ";
-                }
+                // Tỷ lệ nhận diện
+                item.TyLe = item.SoLanNhanDien > 0 ? Math.Round((double)item.SoLanNhanDienThanhCong / item.SoLanNhanDien * 100, 1) : 0;
+                if (item.TyLe < 90) sb.Append("Nhận Diện! ");
 
-                //-----Kiểm tra đăng nhập sớm---------
-                int HourIn = (item.Time_LogIn).Hour;
-                if (HourIn < 7)
-                {
-                    item.Error += "ĐN Sớm! ";
-                }
+                // Quãng đường
+                if (item.QuangDuongPhien < 5 && item.LogOut) sb.Append("Quãng đường <5! ");
 
-                //-----Kiểm tra chạy quá giờ----------
-                int HourOut = (item.Time_LogOut).Hour;
-                int MinuteOut = (item.Time_LogOut).Minute;
-                if (HourOut == 22 && MinuteOut > 30 || HourOut > 22)
-                {
-                    item.Error += "Quá Giờ! ";
-                }
+                // Vận tốc
+                double vantoc = item.dbTime > 0 ? item.QuangDuongPhien / (item.dbTime / 3600) : 0;
+                if (vantoc < 20) sb.Append("Vận Tốc! ");
 
-                //------Kiểm tra dạy đúng ngày giờ----
+                // Đăng nhập sớm
+                if (item.Time_LogIn.Hour < 7) sb.Append("ĐN Sớm! ");
+
+                // Chạy quá giờ
+                var logout = item.Time_LogOut;
+                if (logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)) sb.Append("Quá Giờ! ");
+
+                // Kiểm tra ngày giờ theo khóa học
                 int khoahoc = int.Parse(item.TenKH.Substring(item.TenKH.IndexOf("K") + 1));
-                DayOfWeek wk = item.Time_LogIn.DayOfWeek;
-                if (khoahoc % 2 == 0)
+                if (IsInvalidCourseTime(item, khoahoc)) sb.Append("Sai ngày giờ! ");
+
+                // Gửi Tổng cục
+                if (item.LogOut && !item.SendTongCuc)
                 {
-                    if (wk == DayOfWeek.Tuesday || wk == DayOfWeek.Wednesday || wk == DayOfWeek.Thursday || (wk == DayOfWeek.Monday && (item.Time_LogIn).Hour < 17 || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour >= 22 && (item.Time_LogOut).Minute > 30) || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour > 23)
-                    {
-                        item.Error += "Sai ngày giờ! ";
-                    }
-                }
-                else
-                {
-                    if (wk == DayOfWeek.Friday || wk == DayOfWeek.Saturday || wk == DayOfWeek.Sunday || (wk == DayOfWeek.Monday && (item.Time_LogIn).Hour < 7) || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour >= 12 && (item.Time_LogOut).Minute > 30 || wk == DayOfWeek.Monday && (item.Time_LogOut).Hour >= 13)
-                    {
-                        item.Error += "Sai ngày giờ! ";
-                    }
+                    sb.Append("Chưa gửi TC! ");
+                    SendTC++;
                 }
 
-                //------Kiểm tra nghỉ thiếu---------- -
-                foreach (PhienHoc item1 in lstPH)
+                // Gán chuỗi lỗi
+                item.Error = sb.ToString();
+
+                // Kiểm tra nghỉ thiếu với phần tử tiếp theo (nếu có)
+                if (i < sortedList.Count - 1)
                 {
-                    TimeSpan tp = (item1.Time_LogIn - item.Time_LogOut);
-                    if (item1.MaPhien != item.MaPhien && tp.TotalSeconds > 0)
+                    var nextItem = sortedList[i + 1];
+                    if (nextItem.NguoiLxID == item.NguoiLxID && nextItem.TenKH == item.TenKH)
                     {
-                        if (tp.TotalSeconds < 900 && item1.NguoiLxID == item.NguoiLxID && item1.TenKH == item.TenKH)
+                        TimeSpan tp = nextItem.Time_LogIn - item.Time_LogOut;
+                        if (tp.TotalSeconds > 0 && tp.TotalSeconds < 900)
                         {
-                            item1.Error = item1.Error + "Nghỉ Thiếu! ";
+                            nextItem.Error += "Nghỉ Thiếu! ";
                         }
                     }
                 }
-
-                //------Kiểm tra status gửi TC--------
-                if (item.LogOut == true & item.SendTongCuc == false)
-                {
-                    item.Error += "Chưa gửi TC! ";
-                    sendTC++;
-                }
             }
+        }
 
-            int stt = 0;
-            foreach (PhienHoc item in lstPH)
-            {
-                item.STT = stt + 1;
-                stt++;
-            }
+        private bool IsInvalidCourseTime(PhienHoc item, int khoahoc)
+        {
+            DayOfWeek wk = item.Time_LogIn.DayOfWeek;
+            var loginHour = item.Time_LogIn.Hour;
+            var logout = item.Time_LogOut;
+            bool isEven = khoahoc % 2 == 0;
 
-            lb_CountUnSendTC.Text = sendTC.ToString();
+            return isEven
+                ? wk == DayOfWeek.Tuesday || wk == DayOfWeek.Wednesday || wk == DayOfWeek.Thursday ||
+                  (wk == DayOfWeek.Monday && (loginHour < 17 || logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)))
+                : wk == DayOfWeek.Friday || wk == DayOfWeek.Saturday || wk == DayOfWeek.Sunday ||
+                  (wk == DayOfWeek.Monday && (loginHour < 7 || logout.Hour > 12 || (logout.Hour == 12 && logout.Minute > 30)));
+        }
+        private void CheckPhInList(List<PhienHoc> lstPH)
+        {
+            ProcessPhienHoc(lstPH);
+
+            lb_CountUnSendTC.Text = SendTC.ToString();
             ConvertListToDataTable convert = new ConvertListToDataTable();
             dt = convert.ToDataTable(lstPH);
 

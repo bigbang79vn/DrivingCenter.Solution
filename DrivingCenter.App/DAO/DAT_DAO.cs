@@ -298,7 +298,6 @@ namespace DrivingCenter.App.DAO
                 "ORDER by ph.Logout, ph.SendTongCuc ASC", day);
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
-            List<PhienHoc> LstPhienHoc = new List<PhienHoc>();
 
             return dt.AsEnumerable().Select(item => new PhienHoc
             {
