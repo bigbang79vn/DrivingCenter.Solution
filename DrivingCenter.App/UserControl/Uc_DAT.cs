@@ -82,10 +82,9 @@ namespace DrivingCenter.App.UserControl
             LoadPhienHoc();
         }
 
-        public int SendTC { get; private set; } = 0;
-
-        public void ProcessPhienHoc(List<PhienHoc> lstPH)
+        public int ProcessPhienHoc(List<PhienHoc> lstPH)
         {
+            int SendTC = 0;
             // Sắp xếp theo Time_LogOut để kiểm tra nghỉ thiếu hiệu quả hơn
             var sortedList = lstPH.OrderBy(x => x.Time_LogOut).ToList();
 
@@ -142,6 +141,7 @@ namespace DrivingCenter.App.UserControl
                     }
                 }
             }
+            return SendTC;
         }
 
         private bool IsInvalidCourseTime(PhienHoc item, int khoahoc)
@@ -161,7 +161,7 @@ namespace DrivingCenter.App.UserControl
         {
             ProcessPhienHoc(lstPH);
 
-            lb_CountUnSendTC.Text = SendTC.ToString();
+            lb_CountUnSendTC.Text = ProcessPhienHoc(lstPH).ToString();
             ConvertListToDataTable convert = new ConvertListToDataTable();
             dt = convert.ToDataTable(lstPH);
 
@@ -414,6 +414,7 @@ namespace DrivingCenter.App.UserControl
             HangDaoTao = rowData.HangDaoTao.ToString();
             string KhoaHoc = rowData.TenKH.ToString();
             lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + KhoaHoc;
+            HvDuDK = 0;
             ViewTongHopKQ(TongHopKQByKhoa(khoahocid), HangDaoTao);
         }
 
