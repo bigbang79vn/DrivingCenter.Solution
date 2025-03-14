@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,20 +15,20 @@ namespace DrivingCenter.App.DataProvider
     {
         private static DataProviderDAT instance;
 
+        //-------connectionSTR WAN--------------------------
+        private string connectionSTR = @"Data Source=117.3.1.31,1433;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+
+        //-------connectionSTR LAN--------------------------
+        //private string connectionSTR = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+
         public static DataProviderDAT Instance
         {
             get { if (instance == null) instance = new DataProviderDAT(); return DataProviderDAT.instance; }
             private set => instance = value;
         }
-
         public DataProviderDAT()
         {
         }
-
-        ////-------Server--------------------------
-        private string connectionSTR = @"Data Source=117.3.1.31,1433;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
-
-        //private string connectionSTR = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
@@ -88,34 +90,6 @@ namespace DrivingCenter.App.DataProvider
                 connection.Close();
             }
             return data;
-        }
-
-        public int ExcuteQueryReturn(string query)
-        {
-            int returnValue;
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter returnParameter = new SqlParameter();
-
-                    returnParameter.Direction = ParameterDirection.ReturnValue;
-                    command.Parameters.Add(returnParameter);
-
-                    // Thực thi Stored Procedure
-                    command.ExecuteNonQuery();
-
-                    // Lấy giá trị trả về
-                    returnValue = (int)returnParameter.Value;
-                }
-
-                connection.Close();
-            }
-            return returnValue;
         }
 
         public object ExcuteScalar(string query, object[] parameter = null)

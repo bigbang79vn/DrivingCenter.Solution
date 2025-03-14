@@ -1,22 +1,13 @@
-﻿using DevExpress.Data.Filtering.Helpers;
-using DevExpress.Utils.Behaviors;
-using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Drawing;
-using DrivingCenter.App.DataProvider;
+﻿using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.LyThuyet;
 using GMap.NET;
-using NPOI.SS.Formula.Functions;
-using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DrivingCenter.App.DAO
 {
@@ -309,31 +300,77 @@ namespace DrivingCenter.App.DAO
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
             List<PhienHoc> LstPhienHoc = new List<PhienHoc>();
 
-            LstPhienHoc = dt.AsEnumerable().Select(item => new PhienHoc
+            return dt.AsEnumerable().Select(item => new PhienHoc
             {
-                HoTenGV = (string)item["HoTenGV"],
-                NguoiLxID = (Int64)item["NguoiLxID"],
-                HoTenHV = (string)item["HoVaTen"],
-                MaKH = (string)item["MaKH"],
-                TenKH = (string)item["TenKH"],
-                MaPhien = (Guid)item["DiemDanhNguoiLxID"],
-                BienSoXe = (string)item["BienSo"],
-                Time_LogIn = (DateTime)item["ThoiDiem"],
-                Time_LogOut = item["ThoiDiem_Logout"] == DBNull.Value ? DateTime.Now : (DateTime)item["ThoiDiem_Logout"],
-                QuangDuongPhien = item["TongQuangDuongLD_Phien"] == DBNull.Value ? 0 : (double)item["TongQuangDuongLD_Phien"],
-                ThoiGianPhien = item["TongThoiGianLD_Phien"] == DBNull.Value ? "" : (string)item["TongThoiGianLD_Phien"],
-                dbTime = item["dbTime"] == DBNull.Value ? 0 : (double)item["dbTime"],
-                LogOut = (bool)item["Logout"],
-                SendTongCuc = (bool)item["SendTongCuc"],
-                NhanDien = item["SoLanNhanDienThanhCong"].ToString() + "/" + item["SoLanNhanDien"].ToString(),
-                SoLanNhanDien = item["SoLanNhanDien"] == DBNull.Value ? 0 : (int)item["SoLanNhanDien"],
-                SoLanNhanDienThanhCong = item["SoLanNhanDienThanhCong"] == DBNull.Value ? 0 : (int)item["SoLanNhanDienThanhCong"],
-                Active = (bool)item["ActivePhien"],
-                Note = item["Note"] == DBNull.Value ? string.Empty : (string)item["Note"]
+                HoTenGV = item.Field<string>("HoTenGV"),
+                NguoiLxID = item.Field<long>("NguoiLxID"),
+                HoTenHV = item.Field<string>("HoVaTen"),
+                MaKH = item.Field<string>("MaKH"),
+                TenKH = item.Field<string>("TenKH"),
+                MaPhien = item.Field<Guid>("DiemDanhNguoiLxID"),
+                BienSoXe = item.Field<string>("BienSo"),
+                Time_LogIn = item.Field<DateTime>("ThoiDiem"),
+                Time_LogOut = item.Field<DateTime?>("ThoiDiem_Logout") ?? DateTime.Now,
+                QuangDuongPhien = item.Field<double?>("TongQuangDuongLD_Phien") ?? 0,
+                ThoiGianPhien = item.Field<string>("TongThoiGianLD_Phien") ?? "",
+                dbTime = item.Field<double?>("dbTime") ?? 0,
+                LogOut = item.Field<bool>("Logout"),
+                SendTongCuc = item.Field<bool>("SendTongCuc"),
+                NhanDien = $"{item.Field<int?>("SoLanNhanDienThanhCong") ?? 0}/{item.Field<int?>("SoLanNhanDien") ?? 0}",
+                SoLanNhanDien = item.Field<int?>("SoLanNhanDien") ?? 0,
+                SoLanNhanDienThanhCong = item.Field<int?>("SoLanNhanDienThanhCong") ?? 0,
+                Active = item.Field<bool>("ActivePhien"),
+                Note = item.Field<string>("Note") ?? ""
             }).ToList();
-
-            return LstPhienHoc;
         }
+
+        //public List<PhienHoc> GetAllPhienHocToDay(string day)
+        //{
+        //    string query = @"
+        //        SELECT 
+        //            CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV,
+        //            ph.NguoiLxID, hv.HoVaTen, kh.MaKH, kh.TenKH,
+        //            ph.DiemDanhNguoiLxID, ph.BienSo, ph.Logout, ph.SendTongCuc,
+        //            ph.ThoiDiem, ph.ThoiDiem_Logout,
+        //            ROUND(ph.TongQuangDuongLD_Phien, 1) AS TongQuangDuongLD_Phien,
+        //            CONVERT(varchar, DATEADD(second, ph.TongThoiGianLD_Phien, 0), 108) AS TongThoiGianLD_Phien,
+        //            ph.TongThoiGianLD_Phien as dbTime,
+        //            ph.SoLanNhanDien, ph.SoLanNhanDienThanhCong,
+        //            ph.ActivePhien, ph.Note
+        //        FROM DiemDanhNguoiLx ph
+        //        INNER JOIN GiaoVien gv ON ph.GiaoVienID = gv.GiaoVienID
+        //        INNER JOIN NguoiLX hv ON hv.NguoiLXID = ph.NguoiLxID
+        //        INNER JOIN KhoaHoc kh ON hv.KhoaHocID = kh.KhoaHocID
+        //        WHERE CONVERT(VARCHAR, ThoiDiem, 103) = @day
+        //        ORDER BY ph.Logout, ph.SendTongCuc ASC";
+
+        //    var parameters = new { day };
+        //    var dt = DataProviderApp.Instance.ExecuteQuery(query, parameters);
+
+        //    return dt.AsEnumerable().Select(item => new PhienHoc
+        //        {
+        //            HoTenGV = item.Field<string>("HoTenGV"),
+        //            NguoiLxID = item.Field<long>("NguoiLxID"),
+        //            HoTenHV = item.Field<string>("HoVaTen"),
+        //            MaKH = item.Field<string>("MaKH"),
+        //            TenKH = item.Field<string>("TenKH"),
+        //            MaPhien = item.Field<Guid>("DiemDanhNguoiLxID"),
+        //            BienSoXe = item.Field<string>("BienSo"),
+        //            Time_LogIn = item.Field<DateTime>("ThoiDiem"),
+        //            Time_LogOut = item.Field<DateTime?>("ThoiDiem_Logout") ?? DateTime.Now,
+        //            QuangDuongPhien = item.Field<double?>("TongQuangDuongLD_Phien") ?? 0,
+        //            ThoiGianPhien = item.Field<string>("TongThoiGianLD_Phien") ?? "",
+        //            dbTime = item.Field<double?>("dbTime") ?? 0,
+        //            LogOut = item.Field<bool>("Logout"),
+        //            SendTongCuc = item.Field<bool>("SendTongCuc"),
+        //            NhanDien = $"{item.Field<int?>("SoLanNhanDienThanhCong") ?? 0}/{item.Field<int?>("SoLanNhanDien") ?? 0}",
+        //            SoLanNhanDien = item.Field<int?>("SoLanNhanDien") ?? 0,
+        //            SoLanNhanDienThanhCong = item.Field<int?>("SoLanNhanDienThanhCong") ?? 0,
+        //            Active = item.Field<bool>("ActivePhien"),
+        //            Note = item.Field<string>("Note") ?? ""
+        //        }).ToList();
+        //}
+
 
         public List<PhienHoc> GetLstPhienByDateTrue(string day)
         {
@@ -933,7 +970,7 @@ namespace DrivingCenter.App.DAO
 
         #region Thông tin đào tạo chi tiết
 
-        public NguoiLxInDAT GetInfoNguoiLxByID(Int64 NguoiLxId) 
+        public NguoiLxInDAT GetInfoNguoiLxByID(Int64 NguoiLxId)
         {
             string query = $"EXEC [dbo].[spGetInfoNguoiLxByID] @MaCSDT = N'66015', @NguoiLxID = {NguoiLxId}";
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
