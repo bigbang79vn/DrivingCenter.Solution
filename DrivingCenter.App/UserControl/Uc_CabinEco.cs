@@ -675,5 +675,31 @@ namespace DrivingCenter.App.UserControl
             }
             return Jpegbytes;
         }
+
+        private void grd_HocVien_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Kiểm tra chuột phải
+            if (e.Button == MouseButtons.Right)
+            {
+                // Kiểm tra tổ hợp Shift + Ctrl
+                if (Control.ModifierKeys == (Keys.Shift | Keys.Control))
+                {
+                    // Hiển thị các item ẩn
+                    contextMenuStrip_DTT.Items["toolStripSeparator4"].Visible = true;
+                    contextMenuStrip_DTT.Items["mn_CreateAll"].Visible = true;
+                    contextMenuStrip_DTT.Items["mn_Create01Result"].Visible = true;
+                }
+                else
+                {
+                    // Ẩn các item ẩn khi không nhấn Shift + Ctrl
+                    contextMenuStrip_DTT.Items["toolStripSeparator4"].Visible = false;
+                    contextMenuStrip_DTT.Items["mn_CreateAll"].Visible = false;
+                    contextMenuStrip_DTT.Items["mn_Create01Result"].Visible = false;
+                }
+
+                // Hiển thị ContextMenuStrip tại vị trí chuột
+                contextMenuStrip_DTT.Show(grd_HocVien, e.Location);
+            }
+        }
     }
 }

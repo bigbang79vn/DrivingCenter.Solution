@@ -401,8 +401,6 @@ namespace DrivingCenter.App.UserControl
             dt = convert.ToDataTable(lst);
 
             grid_Result.DataSource = lst;
-
-            DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, khoahocid);
         }
 
         private void gridView_KhoaHocDDT_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -416,6 +414,7 @@ namespace DrivingCenter.App.UserControl
             lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + KhoaHoc;
             HvDuDK = 0;
             ViewTongHopKQ(TongHopKQByKhoa(khoahocid), HangDaoTao);
+            DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, khoahocid);
         }
 
         private void cb_ShowSendTC_CheckedChanged(object sender, EventArgs e)

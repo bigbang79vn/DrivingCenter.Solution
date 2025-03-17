@@ -418,6 +418,7 @@ namespace DrivingCenter.App.UserControl
             this.grd_HocVien.TabIndex = 1;
             this.grd_HocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridview_HocVien});
+            this.grd_HocVien.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grd_HocVien_MouseDown);
             // 
             // contextMenuStrip_DTT
             // 
@@ -481,6 +482,7 @@ namespace DrivingCenter.App.UserControl
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(245, 6);
+            this.toolStripSeparator4.Visible = false;
             // 
             // mn_CreateAll
             // 
@@ -489,6 +491,7 @@ namespace DrivingCenter.App.UserControl
             this.mn_CreateAll.Name = "mn_CreateAll";
             this.mn_CreateAll.Size = new System.Drawing.Size(248, 22);
             this.mn_CreateAll.Text = "Cập nhật kết quả";
+            this.mn_CreateAll.Visible = false;
             this.mn_CreateAll.Click += new System.EventHandler(this.mn_CreateAll_Click);
             // 
             // mn_Create01Result
@@ -497,6 +500,7 @@ namespace DrivingCenter.App.UserControl
             this.mn_Create01Result.Name = "mn_Create01Result";
             this.mn_Create01Result.Size = new System.Drawing.Size(248, 22);
             this.mn_Create01Result.Text = "Cập nhật 01 kết quả";
+            this.mn_Create01Result.Visible = false;
             this.mn_Create01Result.Click += new System.EventHandler(this.mn_Create01Result_Click);
             // 
             // toolStripSeparator1
