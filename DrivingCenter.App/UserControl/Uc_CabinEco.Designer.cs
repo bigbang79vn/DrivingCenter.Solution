@@ -238,7 +238,7 @@ namespace DrivingCenter.App.UserControl
             this.Result.FieldName = "Result";
             this.Result.Name = "Result";
             this.Result.Visible = true;
-            this.Result.VisibleIndex = 2;
+            this.Result.VisibleIndex = 3;
             this.Result.Width = 102;
             // 
             // Status
@@ -581,6 +581,9 @@ namespace DrivingCenter.App.UserControl
             this.gridview_HocVien.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridview_HocVien.OptionsFind.FindNullPrompt = "Tìm kiếm...";
             this.gridview_HocVien.OptionsSelection.CheckBoxSelectorColumnWidth = 50;
+            this.gridview_HocVien.OptionsSelection.MultiSelect = true;
+            this.gridview_HocVien.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridview_HocVien.OptionsView.ShowIndicator = false;
             this.gridview_HocVien.RowHeight = 32;
             this.gridview_HocVien.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TenGV, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -612,7 +615,7 @@ namespace DrivingCenter.App.UserControl
             this.HoTenHV.FieldName = "HoTenHV";
             this.HoTenHV.Name = "HoTenHV";
             this.HoTenHV.Visible = true;
-            this.HoTenHV.VisibleIndex = 0;
+            this.HoTenHV.VisibleIndex = 1;
             this.HoTenHV.Width = 233;
             // 
             // SoCMT
@@ -648,7 +651,7 @@ namespace DrivingCenter.App.UserControl
             this.ToTalSecond.FieldName = "ToTalSecond";
             this.ToTalSecond.Name = "ToTalSecond";
             this.ToTalSecond.Visible = true;
-            this.ToTalSecond.VisibleIndex = 1;
+            this.ToTalSecond.VisibleIndex = 2;
             this.ToTalSecond.Width = 139;
             // 
             // TenGV
