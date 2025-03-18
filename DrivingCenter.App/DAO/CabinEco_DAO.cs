@@ -202,6 +202,14 @@ namespace DrivingCenter.App.DAO
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
 
+
+        public DataTable GetDataReportByMaDK(string lstMaDK)
+        {
+            string query = $"EXEC [dbo].[spLoadDataReport] @lstMaDK = N'{lstMaDK}'";
+            return DataProviderCaBinEco.Instance.ExcuteQuery(query);
+        }
+
+
         public void UpdateGv(int GiaoVienID, string MaDK)
         {
             string query = string.Format("UPDATE tblHocVien set GiaoVienID = '{0}' where ID = '{1}'", GiaoVienID, MaDK);

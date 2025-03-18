@@ -1,7 +1,9 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.FReport;
+using DrivingCenter.App.Report;
 using ImageMagick;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -440,9 +443,34 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_PrintAllReport_Click(object sender, EventArgs e)
         {
-            string lstMaDK = CabinEco_DAO.Instance.GetLstMaDK(IdKhoaHoc);
-            rptPrintReport_ECO f = new rptPrintReport_ECO(lstMaDK, 0, 1);
-            f.Show();
+            StringBuilder lstMaDK = new StringBuilder();
+
+            // Lấy các chỉ số của các hàng được chọn
+            int[] selectedRowHandles = gridview_HocVien.GetSelectedRows();
+
+            foreach (int rowHandle in selectedRowHandles)
+            {
+                var cellValue = gridview_HocVien.GetRowCellValue(rowHandle, "MaDK");
+
+                if (cellValue != null)
+                {
+                    if (lstMaDK.Length > 0)
+                        lstMaDK.Append(",");
+
+                    lstMaDK.Append(cellValue.ToString());
+                }
+            }
+
+            if (string.IsNullOrEmpty(lstMaDK?.ToString()))
+            {
+                XtraMessageBox.Show("Chọn học viên cần in kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(lstMaDK.ToString());
+
+            // Gán DataSource và hiển thị report
+            new ReportPrintTool(new ResultEco { DataSource = resultBC }).ShowPreview();
         }
 
         private void mn_SyncTeacher_Click(object sender, EventArgs e)
