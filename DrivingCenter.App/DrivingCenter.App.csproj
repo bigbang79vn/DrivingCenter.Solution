@@ -556,6 +556,12 @@
     <Compile Include="Helper\StringUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ResultEco.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ResultEco.Designer.cs">
+      <DependentUpon>ResultEco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rptPhieuTheoDoi.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -750,6 +756,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\ResultEco.resx">
+      <DependentUpon>ResultEco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rptPhieuTheoDoi.resx">
       <DependentUpon>rptPhieuTheoDoi.cs</DependentUpon>
     </EmbeddedResource>

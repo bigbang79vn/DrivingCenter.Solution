@@ -648,6 +648,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
         {
+
         }
 
         private void mn_ThemKhoaHoc_Click(object sender, EventArgs e)

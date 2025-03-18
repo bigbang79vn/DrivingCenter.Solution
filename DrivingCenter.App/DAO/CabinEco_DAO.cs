@@ -80,7 +80,7 @@ namespace DrivingCenter.App.DAO
         {
             List<HocVien> lstStudent = new List<HocVien>();
 
-            string query = string.Format("EXEC [dbo].[VNDC_spGetLstHvByKhoaHoc] @ID_KhoaHoc = {0}", IdKhoaHoc);
+            string query = string.Format("EXEC [dbo].[spGetLstHvByKhoaHoc] @ID_KhoaHoc = {0}", IdKhoaHoc);
 
             DataTable dt = DataProviderCaBinEco.Instance.ExcuteQuery(query);
 
@@ -163,7 +163,7 @@ namespace DrivingCenter.App.DAO
 
         public int CreateResult(int idthietbi, string ghichu, string idhocvien, int idbaitap, string datecreate, int idkhoahoc, int lantap, int lantapcabin, int minute)
         {
-            string query = "VNDC_spAddResult @IdThietBi , @Cabin ,  @IdHocVien , @IdBaiTap , @DateCreate , @IdKhoaHoc , @LanTap , @LanTapCaBin , @Minute ";
+            string query = "spResult @IdThietBi , @Cabin ,  @IdHocVien , @IdBaiTap , @DateCreate , @IdKhoaHoc , @LanTap , @LanTapCaBin , @Minute ";
             int result = DataProviderCaBinEco.Instance.ExcuteNoneQuery(query, new object[] { idthietbi, ghichu, idhocvien, idbaitap, datecreate, idkhoahoc, lantap, lantapcabin, minute });
             return result;
         }
@@ -197,7 +197,7 @@ namespace DrivingCenter.App.DAO
 
         public string GetLstMaDK(int khoahocID)
         {
-            string query = string.Format("EXEC dbo.VNDC_spGetLstMaDK @KhoaHocID = {0}", khoahocID);
+            string query = string.Format("EXEC dbo.spGetLstMaDK @KhoaHocID = {0}", khoahocID);
             var getValue = DataProviderCaBinEco.Instance.ExcuteScalar(query);
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
@@ -323,7 +323,7 @@ namespace DrivingCenter.App.DAO
 
         public int InsertKhoaHoc(KhoaHoc kh)
         {
-            string query = "VNDC_spAddKhoaHoc @MaKH , @TenKH , @NgayKG , @NgayBG , @HangDaoTao ";
+            string query = "spAddKhoaHoc @MaKH , @TenKH , @NgayKG , @NgayBG , @HangDaoTao ";
             int result = DataProviderCaBinEco.Instance.ExcuteNoneQuery(query, new object[] { kh.MaKhoaHoc, kh.TenKhoaHoc, kh.NgayKhaiGiang, kh.NgayBeGiang, kh.HangDaoTao });
             return result;
         }
