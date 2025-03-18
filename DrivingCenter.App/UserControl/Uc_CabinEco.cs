@@ -243,8 +243,10 @@ namespace DrivingCenter.App.UserControl
             else if (button.Caption == "Print")
             {
                 HocVien hv = gridview_HocVien.GetFocusedRow() as HocVien;
-                rptPrintReport_ECO f = new rptPrintReport_ECO(hv.MaDK, 0, 1);
-                f.Show();
+                var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(hv.MaDK);
+
+                // Gán DataSource và hiển thị report
+                new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
             }
             else if (button.Caption == "Save")
             {
@@ -470,7 +472,7 @@ namespace DrivingCenter.App.UserControl
             var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(lstMaDK.ToString());
 
             // Gán DataSource và hiển thị report
-            new ReportPrintTool(new ResultEco { DataSource = resultBC }).ShowPreview();
+            new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
         }
 
         private void mn_SyncTeacher_Click(object sender, EventArgs e)

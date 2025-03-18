@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace DrivingCenter.App.Report
 {
-	public partial class ResultEco : DevExpress.XtraReports.UI.XtraReport
+	public partial class rptBaoCaoTongHopEco : DevExpress.XtraReports.UI.XtraReport
 	{	
-		public ResultEco()
+		public rptBaoCaoTongHopEco()
 		{
 			InitializeComponent();
 		}
