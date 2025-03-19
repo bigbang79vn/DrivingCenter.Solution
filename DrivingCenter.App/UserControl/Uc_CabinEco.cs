@@ -672,20 +672,26 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_TongHopBaoCao_Click(object sender, EventArgs e)
         {
-            rptPrintReport_ECO f = new rptPrintReport_ECO("", IdKhoaHoc, 2);
-            f.Show();
+            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 0);
+            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
         }
 
         private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
         {
+            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
+            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
+        }
 
+        private void mn_HocVienKoDuDieuKien_Click(object sender, EventArgs e)
+        {
+            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 2);
+            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
         }
 
         private void mn_ThemKhoaHoc_Click(object sender, EventArgs e)
         {
             ThemKhoaHoc();
         }
-
 
         private byte[] ConvertBase64ToBytes(string base64String)
         {
@@ -732,5 +738,7 @@ namespace DrivingCenter.App.UserControl
                 contextMenuStrip_DTT.Show(grd_HocVien, e.Location);
             }
         }
+
+        
     }
 }

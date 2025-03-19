@@ -480,12 +480,6 @@
     <Compile Include="fGhiChu.Designer.cs">
       <DependentUpon>fGhiChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FReport\rptPrintReport_ECO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FReport\rptPrintReport_ECO.Designer.cs">
-      <DependentUpon>rptPrintReport_ECO.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmBaoCaoKhoaHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -598,12 +592,6 @@
       <DependentUpon>rptResult_EMC.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\rptTongHopKhoaHocEco1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptTongHopKhoaHocEco.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Report\rptTongHopKhoaHocEMC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -712,9 +700,6 @@
     <EmbeddedResource Include="fGhiChu.resx">
       <DependentUpon>fGhiChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FReport\rptPrintReport_ECO.resx">
-      <DependentUpon>rptPrintReport_ECO.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmBaoCaoKhoaHoc.resx">
       <DependentUpon>frmBaoCaoKhoaHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -779,10 +764,6 @@
     <EmbeddedResource Include="Report\rptResult_EMC.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptResult_EMC1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptTongHopKhoaHocEco.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptTongHopKhoaHocEco1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptTongHopKhoaHocEMC.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

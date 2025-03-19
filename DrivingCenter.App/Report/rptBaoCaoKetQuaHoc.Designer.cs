@@ -521,7 +521,7 @@
             this.xrLabel3.SizeF = new System.Drawing.SizeF(460.4165F, 23F);
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam";
+            this.xrLabel3.Text = "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM";
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel2

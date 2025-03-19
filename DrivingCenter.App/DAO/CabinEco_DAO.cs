@@ -156,7 +156,7 @@ namespace DrivingCenter.App.DAO
 
         public string GetMaDKNew(int Id_KhoaHoc, string SoCMT)
         {
-            string query = string.Format("SELECT ID FROM tblHocVien WHERE IDKhoaHoc = {0} AND SoCMT = '{1}'", Id_KhoaHoc, SoCMT);
+            string query = $"SELECT ID FROM tblHocVien WHERE IDKhoaHoc = {Id_KhoaHoc} AND SoCMT = '{SoCMT}'";
             var getValue = DataProviderCaBinEco.Instance.ExcuteScalar(query);
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
@@ -178,12 +178,8 @@ namespace DrivingCenter.App.DAO
 
         public DateTime GetTimeOut(int id)
         {
-            string query = string.Format("SELECT Convert (datetime, dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), Time_Out)) AS Time_Out " +
-                "FROM tblKetQuaTap " +
-                "WHERE ID = {0}", id);
-
-            DateTime timeout = (DateTime)DataProviderCaBinEco.Instance.ExcuteScalar(query);
-            return timeout;
+            string query = $"SELECT Convert (datetime, dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), Time_Out)) AS Time_Out FROM tblKetQuaTap WHERE ID = {id}";
+            return (DateTime)DataProviderCaBinEco.Instance.ExcuteScalar(query);
         }
 
         public void DeleteResultExcer(int ID_KetQua)
@@ -197,7 +193,7 @@ namespace DrivingCenter.App.DAO
 
         public string GetLstMaDK(int khoahocID)
         {
-            string query = string.Format("EXEC dbo.spGetLstMaDK @KhoaHocID = {0}", khoahocID);
+            string query = $"EXEC dbo.spGetLstMaDK @KhoaHocID = {khoahocID}";
             var getValue = DataProviderCaBinEco.Instance.ExcuteScalar(query);
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
@@ -209,22 +205,26 @@ namespace DrivingCenter.App.DAO
             return DataProviderCaBinEco.Instance.ExcuteQuery(query);
         }
 
-
+        public DataTable GetBaoCaoByKhoaHocID(int IdKhoaHoc, int flag)
+        {
+            string query = $"EXEC [dbo].[spTongHop] @flag = {flag}, @ID_KhoaHoc = {IdKhoaHoc}, @NguongHang = 10800";
+            return DataProviderCaBinEco.Instance.ExcuteQuery(query);
+        }
         public void UpdateGv(int GiaoVienID, string MaDK)
         {
-            string query = string.Format("UPDATE tblHocVien set GiaoVienID = '{0}' where ID = '{1}'", GiaoVienID, MaDK);
+            string query = $"UPDATE tblHocVien set GiaoVienID = '{GiaoVienID}' where ID = '{MaDK}'";
             DataProviderCaBinEco.Instance.ExcuteNoneQuery(query);
         }
 
         public void ChangeCourse(int idKhoaHoc, string MaDK, int ID)
         {
-            string query = string.Format("UPDATE tblKetQuaTap SET ID_KhoaHoc = {0} , ID_HocVien = '{1}'  WHERE ID  = {2}", idKhoaHoc, MaDK, ID);
+            string query = $"UPDATE tblKetQuaTap SET ID_KhoaHoc = {idKhoaHoc} , ID_HocVien = '{MaDK}'  WHERE ID  = {ID}";
             DataProviderCaBinEco.Instance.ExcuteNoneQuery(query);
         }
 
         public void ChangeCabin(Cabin cabin, int ID)
         {
-            string query = string.Format("UPDATE tblKetQuaTap SET ID_ThietBi = {0} , Cabin = '{1}'  WHERE ID  = {2}", cabin.IdThietBi , cabin.GhiChu, ID);
+            string query = $"UPDATE tblKetQuaTap SET ID_ThietBi = {cabin.IdThietBi} , Cabin = '{cabin.GhiChu}'  WHERE ID  = {ID}";
             DataProviderCaBinEco.Instance.ExcuteNoneQuery(query);
         }
 
@@ -232,7 +232,7 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = string.Format("SELECT MAX(LanTap) as MaxLanTap FROM tblKetQuaTap WHERE Id_HocVien = '{0}'", IdHocVien);
+                string query = $"EXEC dbo.spGetLstMaDK @KhoaHocID = {IdHocVien}";
                 var getValue = DataProviderCaBinEco.Instance.ExcuteScalar(query);
                 return Convert.ToInt32(getValue);
             }
@@ -255,7 +255,7 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = string.Format("SELECT MAX(dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), ID_BaiTap)) AS IdBaiTapMax FROM tblKetQuaTap WHERE Id_HocVien =  '{0}' ", IdHocVien);
+                string query = $"SELECT MAX(dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), ID_BaiTap)) AS IdBaiTapMax FROM tblKetQuaTap WHERE Id_HocVien =  '{IdHocVien}' ";
                 var getValue = DataProviderCaBinEco.Instance.ExcuteScalar(query);
                 return Convert.ToInt32(getValue);
             }
@@ -266,7 +266,7 @@ namespace DrivingCenter.App.DAO
         }
         public void UpdateBaiTap(Int64 ID, int IDBaiTap)
         {
-            string query = string.Format("UPDATE tblKetQuaTap SET ID_BaiTap = dbo.SetEcoString(N'csdt@66015','{0}') WHERE ID = '{1}'", IDBaiTap, ID);
+            string query = $"UPDATE tblKetQuaTap SET ID_BaiTap = dbo.SetEcoString(N'csdt@66015','{IDBaiTap}') WHERE ID = '{ID}'";
             DataProviderCaBinEco.Instance.ExcuteNoneQuery(query);
         }
 
@@ -302,7 +302,7 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateKhoaHoc(int id, string Ten, string hangdaotao, int status)
         {
-            string query = string.Format("  Update tblKhoaHoc set Ten = N'{0}', HangDaoTao = N'{1}', HangGPLX = N'{1}', Status = {2} where ID = {3}", Ten, hangdaotao, status, id);
+            string query = $"Update tblKhoaHoc set Ten = N'{Ten}', HangDaoTao = N'{hangdaotao}', HangGPLX = N'{hangdaotao}', Status = {status} where ID = {id}";
             DataProviderCaBinEco.Instance.ExcuteNoneQuery(query);
         }
         public List<ThongKe> LstThongKe(string day)
@@ -340,7 +340,7 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = string.Format("select ID from tblKhoaHoc WHERE MaKhoaHoc = '{0}'", MaKH);
+                string query = $"select ID from tblKhoaHoc WHERE MaKhoaHoc = '{MaKH}'";
                 return (int)DataProviderCaBinEco.Instance.ExcuteScalar(query);
             }
             catch
@@ -376,12 +376,5 @@ namespace DrivingCenter.App.DAO
 
         #endregion
 
-        #region Lịch Học STD + Cabin
-        //public List<Schedule> GetLstSchedule()
-        //{
-        //    string query = string.Format("S")
-        //}
-
-        #endregion
     }
 }
