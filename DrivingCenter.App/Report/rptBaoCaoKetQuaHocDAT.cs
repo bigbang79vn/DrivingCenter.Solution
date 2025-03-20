@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace DrivingCenter.App.Report
 {
-	public partial class rptBaoCaoKetQuaHoc : DevExpress.XtraReports.UI.XtraReport
+	public partial class rptBaoCaoKetQuaHocDAT : DevExpress.XtraReports.UI.XtraReport
 	{	
-		public rptBaoCaoKetQuaHoc()
+		public rptBaoCaoKetQuaHocDAT()
 		{
 			InitializeComponent();
 		}

@@ -272,7 +272,7 @@ namespace DrivingCenter.App.UserControl
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 0);
 
             // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
 
 
@@ -280,26 +280,24 @@ namespace DrivingCenter.App.UserControl
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }
-
         private void mn_KetQuaDATQuaTrinhHoc_Click(object sender, EventArgs e)
         {
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 1);
 
             // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
 
             // Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }
-
         private void mn_KetQuaKHONGDATQuaTrinhHoc_Click(object sender, EventArgs e)
         {
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 2);
 
             // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
 
 
@@ -338,7 +336,6 @@ namespace DrivingCenter.App.UserControl
                 }
             }
         }
-
         private void MenuItem_XuatBaoCao_Click(object sender, EventArgs e)
         {
 
@@ -347,7 +344,6 @@ namespace DrivingCenter.App.UserControl
         {
             InsertLichHoc();
         }
-
         #endregion
         private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
         {

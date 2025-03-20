@@ -469,7 +469,7 @@ namespace DrivingCenter.App.UserControl
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 0);
 
             // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
 
 
@@ -482,7 +482,7 @@ namespace DrivingCenter.App.UserControl
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 1);
 
             // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
 
             // Hiển thị report
@@ -495,7 +495,7 @@ namespace DrivingCenter.App.UserControl
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 2);
 
             // Gán DataSource cho Report
-            rptBaoCaoKetQuaHoc rpt = new rptBaoCaoKetQuaHoc();
+            rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
 
 

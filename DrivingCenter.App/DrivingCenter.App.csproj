@@ -598,11 +598,11 @@
       <DependentUpon>rptTongHopKhoaHocEMC.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\rptBaoCaoKetQuaHoc.cs">
+    <Compile Include="Report\rptBaoCaoKetQuaHocDAT.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\rptBaoCaoKetQuaHoc.Designer.cs">
-      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
+    <Compile Include="Report\rptBaoCaoKetQuaHocDAT.Designer.cs">
+      <DependentUpon>rptBaoCaoKetQuaHocDAT.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\rptTheHocVien.cs">
       <SubType>Component</SubType>
@@ -769,8 +769,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTongHopKhoaHocEMC.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptBaoCaoKetQuaHoc.resx">
-      <DependentUpon>rptBaoCaoKetQuaHoc.cs</DependentUpon>
+    <EmbeddedResource Include="Report\rptBaoCaoKetQuaHocDAT.resx">
+      <DependentUpon>rptBaoCaoKetQuaHocDAT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptTheHocVien.resx">
       <DependentUpon>rptTheHocVien.cs</DependentUpon>
