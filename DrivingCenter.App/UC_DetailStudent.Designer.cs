@@ -29,11 +29,11 @@
         ///
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
             this.gridControl_PhienHocByNguoiLxId = new DevExpress.XtraGrid.GridControl();
@@ -65,6 +65,14 @@
             this.layoutControlGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Img_Login = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Img_Logout = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.XeTap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Time_Login = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Time_Logout = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TongThoiGianLD_Phien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TongQuangDuongLD_Phien = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
@@ -118,6 +126,15 @@
             // 
             // gridView_PhienHocByNguoiLxId
             // 
+            this.gridView_PhienHocByNguoiLxId.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.STT,
+            this.Img_Login,
+            this.Img_Logout,
+            this.XeTap,
+            this.Time_Login,
+            this.Time_Logout,
+            this.TongThoiGianLD_Phien,
+            this.TongQuangDuongLD_Phien});
             this.gridView_PhienHocByNguoiLxId.GridControl = this.gridControl_PhienHocByNguoiLxId;
             this.gridView_PhienHocByNguoiLxId.Name = "gridView_PhienHocByNguoiLxId";
             // 
@@ -447,17 +464,17 @@
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions6.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions7.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions8.ImageUri.Uri = "SaveAndNew;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions9.ImageUri.Uri = "Reset;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions10.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndNew;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions4.ImageUri.Uri = "Reset;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions5.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And Close", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And New", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Reset Changes", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And Close", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And New", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Reset Changes", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
@@ -470,6 +487,68 @@
             this.windowsUIButtonPanelMain.TabIndex = 3;
             this.windowsUIButtonPanelMain.Text = "windowsUIButtonPanelMain";
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
+            // 
+            // STT
+            // 
+            this.STT.Caption = "STT";
+            this.STT.Name = "STT";
+            this.STT.Visible = true;
+            this.STT.VisibleIndex = 0;
+            // 
+            // Img_Login
+            // 
+            this.Img_Login.Caption = "Login";
+            this.Img_Login.FieldName = "ThoiDiem";
+            this.Img_Login.Name = "Img_Login";
+            this.Img_Login.Visible = true;
+            this.Img_Login.VisibleIndex = 1;
+            // 
+            // Img_Logout
+            // 
+            this.Img_Logout.Caption = "Logout";
+            this.Img_Logout.FieldName = "ThoiDiem_Logout";
+            this.Img_Logout.Name = "Img_Logout";
+            this.Img_Logout.Visible = true;
+            this.Img_Logout.VisibleIndex = 2;
+            // 
+            // XeTap
+            // 
+            this.XeTap.Caption = "Biển số xe tập";
+            this.XeTap.Name = "XeTap";
+            this.XeTap.Visible = true;
+            this.XeTap.VisibleIndex = 3;
+            // 
+            // Time_Login
+            // 
+            this.Time_Login.Caption = "Thời điểm Login";
+            this.Time_Login.FieldName = "ThoiDiem";
+            this.Time_Login.Name = "Time_Login";
+            this.Time_Login.Visible = true;
+            this.Time_Login.VisibleIndex = 4;
+            // 
+            // Time_Logout
+            // 
+            this.Time_Logout.Caption = "Thời điểm Logout";
+            this.Time_Logout.FieldName = "ThoiDiem_Logout";
+            this.Time_Logout.Name = "Time_Logout";
+            this.Time_Logout.Visible = true;
+            this.Time_Logout.VisibleIndex = 5;
+            // 
+            // TongThoiGianLD_Phien
+            // 
+            this.TongThoiGianLD_Phien.Caption = "Thời gian đào tạo";
+            this.TongThoiGianLD_Phien.FieldName = "TongThoiGianLD_Phien";
+            this.TongThoiGianLD_Phien.Name = "TongThoiGianLD_Phien";
+            this.TongThoiGianLD_Phien.Visible = true;
+            this.TongThoiGianLD_Phien.VisibleIndex = 6;
+            // 
+            // TongQuangDuongLD_Phien
+            // 
+            this.TongQuangDuongLD_Phien.Caption = "Quãng đường đào tạo";
+            this.TongQuangDuongLD_Phien.FieldName = "TongQuangDuongLD_Phien";
+            this.TongQuangDuongLD_Phien.Name = "TongQuangDuongLD_Phien";
+            this.TongQuangDuongLD_Phien.Visible = true;
+            this.TongQuangDuongLD_Phien.VisibleIndex = 7;
             // 
             // UC_DetailStudent
             // 
@@ -530,5 +609,13 @@
         private System.Windows.Forms.Label lb_MaDK;
         private DevExpress.XtraGrid.GridControl gridControl_PhienHocByNguoiLxId;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_PhienHocByNguoiLxId;
+        private DevExpress.XtraGrid.Columns.GridColumn STT;
+        private DevExpress.XtraGrid.Columns.GridColumn Img_Login;
+        private DevExpress.XtraGrid.Columns.GridColumn Img_Logout;
+        private DevExpress.XtraGrid.Columns.GridColumn XeTap;
+        private DevExpress.XtraGrid.Columns.GridColumn Time_Login;
+        private DevExpress.XtraGrid.Columns.GridColumn Time_Logout;
+        private DevExpress.XtraGrid.Columns.GridColumn TongThoiGianLD_Phien;
+        private DevExpress.XtraGrid.Columns.GridColumn TongQuangDuongLD_Phien;
     }
 }

@@ -2,6 +2,7 @@
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
+using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.DTO.LyThuyet;
 using GMap.NET;
 using System;
@@ -991,6 +992,12 @@ namespace DrivingCenter.App.DAO
                          })
                          .FirstOrDefault();
             return NguoixLx;
+        }
+
+        public DataTable GetBaoCaoHocVienByNguoilxID(Int64 NguoilxId)
+        {
+            string query = $"EXEC [dbo].[spTongHopDiemDanhLDByNguoiLx] @MaCSDT = N'66015', @NguoiLxID = {NguoilxId}";
+            return DataProviderDAT.Instance.ExcuteQuery(query);
         }
         #endregion
     }

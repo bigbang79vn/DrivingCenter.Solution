@@ -80,17 +80,16 @@ namespace DrivingCenter.App.DAO
             DataProviderIMG.Instance.ExcuteNoneQuery(query);
         }
 
-        public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng)
+        public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng, string sovaoso)
         {
-            string query = string.Format("UPDATE ReportCNTN SET " +
-                "HoVaTen = N'{0}', " +
-                "NgaySinh = '{1}', " +
-                "GioiTinh = N'{2}', " +
-                "HoVaTenEng = '{3}', " +
-                "NgaySinhEng = '{4}', " +
-                "GioiTinhEng = '{5}' " +
-                "WHERE MaDK = '{6}'",
-                hoten, ngaysinh, gioitinh, hotenEng, ngaysinhEng, gioitinhEng, madk);
+            string query = $@"UPDATE ReportCNTN SET HoVaTen = N'{hoten}', 
+                NgaySinh = '{ngaysinh}', 
+                GioiTinh = N'{gioitinh}', 
+                HoVaTenEng = '{hotenEng}', 
+                NgaySinhEng = '{ngaysinhEng}',
+                GioiTinhEng = '{gioitinhEng}',
+                SoVaoSo = '{sovaoso}'
+                WHERE MaDK = '{madk}'";
             DataProviderIMG.Instance.ExcuteNoneQuery(query);
         }
 

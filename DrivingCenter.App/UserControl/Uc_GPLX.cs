@@ -607,6 +607,7 @@ namespace DrivingCenter.App.UserControl
                 string HoVaTen = gridView_Certificate.GetRowCellValue(focusedRowHandle, "HoVaTen").ToString();
                 string NgaySinh = gridView_Certificate.GetRowCellValue(focusedRowHandle, "NgaySinh").ToString();
                 string GioiTinh = gridView_Certificate.GetRowCellValue(focusedRowHandle, "GioiTinh").ToString();
+                string SoVaoSo = gridView_Certificate.GetRowCellValue(focusedRowHandle, "SoVaoSo").ToString();
 
                 string MaDK = gridView_Certificate.GetRowCellValue(focusedRowHandle, "MaDK").ToString();
 
@@ -622,7 +623,7 @@ namespace DrivingCenter.App.UserControl
                 var result = XtraMessageBox.Show(string.Format("Cập nhật thông tin học viên {0}?", HoVaTen), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.OK)
                 {
-                    IMG_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng);
+                    IMG_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng, SoVaoSo);
                 }
                 LoadlstStudentInReportCNTN();
             }

@@ -556,6 +556,12 @@
     <Compile Include="Report\rptBaoCaoTongHopEco.Designer.cs">
       <DependentUpon>rptBaoCaoTongHopEco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rptResultDAT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptResultDAT.Designer.cs">
+      <DependentUpon>rptResultDAT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rptResultEco.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -743,6 +749,9 @@
     </Compile>
     <EmbeddedResource Include="Report\rptBaoCaoTongHopEco.resx">
       <DependentUpon>rptBaoCaoTongHopEco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptResultDAT.resx">
+      <DependentUpon>rptResultDAT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptResultEco.resx">
       <DependentUpon>rptResultEco.cs</DependentUpon>

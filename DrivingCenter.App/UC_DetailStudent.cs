@@ -1,9 +1,12 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Helpers;
+using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
+using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
+using DrivingCenter.App.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,6 +47,8 @@ namespace DrivingCenter.App
             lb_QuangDuongTL.Text = nguoiLx.TongQuangDuongTichLuy.ToString();
             lb_TimeTichLuy.Text = nguoiLx.TongThoiGianText;
 
+            var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(nguoiLxId);
+            new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
         }
     }
 }

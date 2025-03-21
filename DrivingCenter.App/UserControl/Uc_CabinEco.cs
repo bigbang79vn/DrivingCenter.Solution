@@ -353,7 +353,9 @@ namespace DrivingCenter.App.UserControl
                 int LanTap = 1;
 
                 Random rd = new Random();
-                int minute = rd.Next(18, 28);
+                bool isB11orB2 = rowData.HangGPLX == "B11" || rowData.HangGPLX == "B2";
+                int minute = rd.Next(isB11orB2 ? 18 : 12, isB11orB2 ? 28 : 17);
+
                 CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, 2, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
 
                 while (lst.Count != 0)
@@ -366,7 +368,8 @@ namespace DrivingCenter.App.UserControl
                     Datecreate = timeout.ToString("yyyy-MM-dd HH:mm:ss.fff");
                     LanTap++;
 
-                    int minute2 = rd.Next(18, 28);
+                    int minute2 = rd.Next(isB11orB2 ? 18 : 12, isB11orB2 ? 28 : 17);
+
                     CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, IdBaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute2);
 
                     lst.Remove(IdBaiTap);
@@ -411,8 +414,11 @@ namespace DrivingCenter.App.UserControl
                     int ID = CabinEco_DAO.Instance.GetIdMaxByIdHocVien(IdHocVien);
                     DateTime timeout = CabinEco_DAO.Instance.GetTimeOut(ID);
                     Datecreate = timeout.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
                     Random rd = new Random();
-                    int minute = rd.Next(18, 28);
+                    bool isB11orB2 = rowData.HangGPLX == "B11" || rowData.HangGPLX == "B2";
+                    int minute = rd.Next(isB11orB2 ? 18 : 12, isB11orB2 ? 28 : 17);
+
                     if (MaxID_BaiTap < 8)
                     {
                         MaxID_BaiTap++;
@@ -738,7 +744,5 @@ namespace DrivingCenter.App.UserControl
                 contextMenuStrip_DTT.Show(grd_HocVien, e.Location);
             }
         }
-
-        
     }
 }

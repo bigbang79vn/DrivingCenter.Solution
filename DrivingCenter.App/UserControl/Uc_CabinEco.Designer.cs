@@ -30,21 +30,21 @@ namespace DrivingCenter.App.UserControl
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_CabinEco));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule5 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue5 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Result = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tileBar = new DevExpress.XtraBars.Navigation.TileBar();
@@ -72,6 +72,7 @@ namespace DrivingCenter.App.UserControl
             this.mn_PrintAllReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_TongHopBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_HocVienDuDieuKien = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_HocVienKoDuDieuKien = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mn_SyncTeacher = new System.Windows.Forms.ToolStripMenuItem();
             this.gridview_HocVien = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -171,7 +172,7 @@ namespace DrivingCenter.App.UserControl
             this.txt_MaKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.mn_HocVienKoDuDieuKien = new System.Windows.Forms.ToolStripMenuItem();
+            this.HangGPLX = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.customersNavigationPage.SuspendLayout();
@@ -300,17 +301,17 @@ namespace DrivingCenter.App.UserControl
             this.TileBar_DangDaoTao.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.TileBar_DangDaoTao.AppearanceItem.Normal.Options.UseBackColor = true;
             this.TileBar_DangDaoTao.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.Text = "Đang Đào Tạo";
-            this.TileBar_DangDaoTao.Elements.Add(tileItemElement4);
+            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement1.Text = "Đang Đào Tạo";
+            this.TileBar_DangDaoTao.Elements.Add(tileItemElement1);
             this.TileBar_DangDaoTao.Name = "TileBar_DangDaoTao";
             // 
             // TileBar_TongHop
             // 
             this.TileBar_TongHop.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement5.Text = "Tổng Hợp";
-            this.TileBar_TongHop.Elements.Add(tileItemElement5);
+            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement2.Text = "Tổng Hợp";
+            this.TileBar_TongHop.Elements.Add(tileItemElement2);
             this.TileBar_TongHop.Id = 2;
             this.TileBar_TongHop.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.TileBar_TongHop.Name = "TileBar_TongHop";
@@ -318,9 +319,9 @@ namespace DrivingCenter.App.UserControl
             // TileBar_KhoaHoc
             // 
             this.TileBar_KhoaHoc.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement6.Text = "Khóa Học";
-            this.TileBar_KhoaHoc.Elements.Add(tileItemElement6);
+            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement3.Text = "Khóa Học";
+            this.TileBar_KhoaHoc.Elements.Add(tileItemElement3);
             this.TileBar_KhoaHoc.Id = 3;
             this.TileBar_KhoaHoc.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.TileBar_KhoaHoc.Name = "TileBar_KhoaHoc";
@@ -443,7 +444,7 @@ namespace DrivingCenter.App.UserControl
             this.toolStripSeparator2,
             this.mn_SyncTeacher});
             this.contextMenuStrip_DTT.Name = "contextMenuStrip_DTT";
-            this.contextMenuStrip_DTT.Size = new System.Drawing.Size(283, 292);
+            this.contextMenuStrip_DTT.Size = new System.Drawing.Size(283, 270);
             // 
             // mn_refresh
             // 
@@ -537,6 +538,14 @@ namespace DrivingCenter.App.UserControl
             this.mn_HocVienDuDieuKien.Text = "Danh sách học viên đủ điều kiện";
             this.mn_HocVienDuDieuKien.Click += new System.EventHandler(this.mn_HocVienDuDieuKien_Click);
             // 
+            // mn_HocVienKoDuDieuKien
+            // 
+            this.mn_HocVienKoDuDieuKien.Image = ((System.Drawing.Image)(resources.GetObject("mn_HocVienKoDuDieuKien.Image")));
+            this.mn_HocVienKoDuDieuKien.Name = "mn_HocVienKoDuDieuKien";
+            this.mn_HocVienKoDuDieuKien.Size = new System.Drawing.Size(282, 22);
+            this.mn_HocVienKoDuDieuKien.Text = "Danh sách học vên không đủ điều kiện";
+            this.mn_HocVienKoDuDieuKien.Click += new System.EventHandler(this.mn_HocVienKoDuDieuKien_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -563,29 +572,30 @@ namespace DrivingCenter.App.UserControl
             this.SoCMT,
             this.ToTalSecond,
             this.Result,
-            this.TenGV});
-            gridFormatRule4.ApplyToRow = true;
-            gridFormatRule4.Column = this.Result;
-            gridFormatRule4.Name = "Format_True";
-            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.Navy;
-            formatConditionRuleValue4.Appearance.Options.UseFont = true;
-            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue4.Value1 = "True";
-            gridFormatRule4.Rule = formatConditionRuleValue4;
-            gridFormatRule5.ApplyToRow = true;
-            gridFormatRule5.Column = this.Result;
-            gridFormatRule5.Name = "Format_False";
-            formatConditionRuleValue5.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue5.Appearance.Options.UseFont = true;
-            formatConditionRuleValue5.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue5.Value1 = "False";
-            gridFormatRule5.Rule = formatConditionRuleValue5;
-            this.gridview_HocVien.FormatRules.Add(gridFormatRule4);
-            this.gridview_HocVien.FormatRules.Add(gridFormatRule5);
+            this.TenGV,
+            this.HangGPLX});
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.Result;
+            gridFormatRule1.Name = "Format_True";
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Navy;
+            formatConditionRuleValue1.Appearance.Options.UseFont = true;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "True";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.Result;
+            gridFormatRule2.Name = "Format_False";
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue2.Appearance.Options.UseFont = true;
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "False";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridview_HocVien.FormatRules.Add(gridFormatRule1);
+            this.gridview_HocVien.FormatRules.Add(gridFormatRule2);
             this.gridview_HocVien.GridControl = this.grd_HocVien;
             this.gridview_HocVien.GroupCount = 1;
             this.gridview_HocVien.GroupRowHeight = 32;
@@ -1056,15 +1066,15 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions6.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
-            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
-            windowsUIButtonImageOptions8.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions3.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -1611,20 +1621,20 @@ namespace DrivingCenter.App.UserControl
             this.NgayBeGiang,
             this.HangDaoTao,
             this.Status});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.Status;
-            gridFormatRule1.Name = "format_Status";
-            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue1.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
-            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue1.Appearance.Options.UseFont = true;
-            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = "False";
-            formatConditionRuleValue1.Value2 = "";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule1);
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Column = this.Status;
+            gridFormatRule3.Name = "format_Status";
+            formatConditionRuleValue3.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
+            formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = "False";
+            formatConditionRuleValue3.Value2 = "";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule3);
             this.gridView_QLKhoaHoc.GridControl = this.grd_QuanLyKhoaHoc;
             this.gridView_QLKhoaHoc.GroupCount = 1;
             this.gridView_QLKhoaHoc.GroupRowHeight = 32;
@@ -1952,13 +1962,13 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions9.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
-            windowsUIButtonImageOptions10.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions10.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions10.SvgImage")));
+            windowsUIButtonImageOptions4.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Thêm Khóa Học", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Thêm Khóa Học", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
@@ -1973,13 +1983,11 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
             // 
-            // mn_HocVienKoDuDieuKien
+            // HangGPLX
             // 
-            this.mn_HocVienKoDuDieuKien.Image = ((System.Drawing.Image)(resources.GetObject("mn_HocVienKoDuDieuKien.Image")));
-            this.mn_HocVienKoDuDieuKien.Name = "mn_HocVienKoDuDieuKien";
-            this.mn_HocVienKoDuDieuKien.Size = new System.Drawing.Size(282, 22);
-            this.mn_HocVienKoDuDieuKien.Text = "Danh sách học vên không đủ điều kiện";
-            this.mn_HocVienKoDuDieuKien.Click += new System.EventHandler(this.mn_HocVienKoDuDieuKien_Click);
+            this.HangGPLX.Caption = "HangGPLX";
+            this.HangGPLX.FieldName = "HangGPLX";
+            this.HangGPLX.Name = "HangGPLX";
             // 
             // Uc_CabinEco
             // 
@@ -2186,5 +2194,6 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.ToolStripMenuItem mn_TransferCabin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem mn_HocVienKoDuDieuKien;
+        private DevExpress.XtraGrid.Columns.GridColumn HangGPLX;
     }
 }
