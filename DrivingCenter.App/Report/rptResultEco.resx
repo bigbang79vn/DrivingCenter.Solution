@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="xrTableCell31.ExpressionBindings" xml:space="preserve">
+    <value>IIF(
+    [HangDaoTao] IN ('B11', 'B2'), 
+    IIF([TongSoNoiDung] = 8 AND [TotalSecondDT] &gt;= 10800, 
+        'Đáp ứng quy định', 
+        'Không đáp ứng quy định'
+    ), 
+    IIF([TongSoNoiDung] = 8 AND [TotalSecondDT] &gt;= 7200, 
+        'Đáp ứng quy định', 
+        'Không đáp ứng quy định'
+    )
+)
+</value>
+  </data>
 </root>
