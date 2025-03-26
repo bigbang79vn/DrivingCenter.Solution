@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -201,19 +201,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement1.Text = "Lịch Học";
-            this.employeesTileBarItem.Elements.Add(tileItemElement1);
+            tileItemElement3.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement3.Text = "Lịch Học";
+            this.employeesTileBarItem.Elements.Add(tileItemElement3);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement2.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement2);
+            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement4.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement4);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -422,6 +422,8 @@
             // 
             // MaDK
             // 
+            this.MaDK.AppearanceCell.Options.UseTextOptions = true;
+            this.MaDK.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.MaDK.Caption = "Mã Đăng Ký";
             this.MaDK.FieldName = "MaDK";
             this.MaDK.Name = "MaDK";
@@ -438,12 +440,14 @@
             // 
             // GiaoVienID
             // 
+            this.GiaoVienID.AppearanceCell.Options.UseTextOptions = true;
+            this.GiaoVienID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GiaoVienID.Caption = "Giáo Viên";
             this.GiaoVienID.ColumnEdit = this.repoGrid_GiaoVien;
             this.GiaoVienID.FieldName = "GiaoVienID";
             this.GiaoVienID.Name = "GiaoVienID";
             this.GiaoVienID.Visible = true;
-            this.GiaoVienID.VisibleIndex = 5;
+            this.GiaoVienID.VisibleIndex = 1;
             this.GiaoVienID.Width = 105;
             // 
             // repoGrid_GiaoVien
@@ -474,34 +478,40 @@
             this.HocVien.FieldName = "HoVaTen";
             this.HocVien.Name = "HocVien";
             this.HocVien.Visible = true;
-            this.HocVien.VisibleIndex = 1;
+            this.HocVien.VisibleIndex = 2;
             this.HocVien.Width = 138;
             // 
             // NgaySinh
             // 
+            this.NgaySinh.AppearanceCell.Options.UseTextOptions = true;
+            this.NgaySinh.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.NgaySinh.Caption = "Ngày Sinh";
             this.NgaySinh.FieldName = "NgaySinh";
             this.NgaySinh.Name = "NgaySinh";
             this.NgaySinh.Visible = true;
-            this.NgaySinh.VisibleIndex = 2;
+            this.NgaySinh.VisibleIndex = 3;
             this.NgaySinh.Width = 87;
             // 
             // GioiTinh
             // 
+            this.GioiTinh.AppearanceCell.Options.UseTextOptions = true;
+            this.GioiTinh.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.GioiTinh.Caption = "Giới Tính";
             this.GioiTinh.FieldName = "GioiTinh";
             this.GioiTinh.Name = "GioiTinh";
             this.GioiTinh.Visible = true;
-            this.GioiTinh.VisibleIndex = 3;
+            this.GioiTinh.VisibleIndex = 4;
             this.GioiTinh.Width = 64;
             // 
             // CCCD
             // 
+            this.CCCD.AppearanceCell.Options.UseTextOptions = true;
+            this.CCCD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.CCCD.Caption = "Số CMT/CCCD";
             this.CCCD.FieldName = "CCCD";
             this.CCCD.Name = "CCCD";
             this.CCCD.Visible = true;
-            this.CCCD.VisibleIndex = 4;
+            this.CCCD.VisibleIndex = 5;
             this.CCCD.Width = 94;
             // 
             // MaXeTap
@@ -653,8 +663,8 @@
             this.treeList_Category.ParentFieldName = "ParentMonthID";
             this.treeList_Category.Size = new System.Drawing.Size(231, 652);
             this.treeList_Category.TabIndex = 1;
-            this.treeList_Category.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList_Category_FocusedNodeChanged);
             this.treeList_Category.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeList_Category_CustomDrawNodeCell);
+            this.treeList_Category.DoubleClick += new System.EventHandler(this.treeList_Category_DoubleClick);
             // 
             // Col_TenKH
             // 

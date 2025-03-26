@@ -17,10 +17,12 @@ namespace DrivingCenter.App.DTO.DAT
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
         public string CCCD { get; set; }
+        public DateTime NgayCapCMT { get; set; }
         public int GiaoVienID { get; set; }
+        public string TenGV { get; set; }
         public string MaXeTap { get; set; }
         public string MaXeTapB11 { get; set; }
-        public double TongQuangDuongTichLuy { get; set; }
+        public double? TongQuangDuongTichLuy { get; set; }
         public int TongThoiGianTichLuy { get; set; }
         public string TongThoiGianText { get; set; }
         public DateTime? ThoiDiemChayDAT { get; set; }

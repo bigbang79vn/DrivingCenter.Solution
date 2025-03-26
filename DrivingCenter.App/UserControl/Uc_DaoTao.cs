@@ -101,29 +101,6 @@ namespace DrivingCenter.App.UserControl
             repoGrid_GiaoVien.PopupView.Columns.AddField("HangGPLX").Visible = true;
         }
 
-        private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
-        {
-            var focusedNode = e.Node;
-            if (focusedNode != null)
-            {
-                KhoaHocId = (int)focusedNode["MonthID"] / 10000;
-                MonthId = (int)focusedNode["MonthID"];
-                //if(treeList_Category.FocusedNode.GetValue("Name"))
-                TenKhoaHoc = treeList_Category.FocusedNode.GetValue("Name");
-
-                object IDKhoaHoc = treeList_Category.FocusedNode.GetValue("KhoaHocID");
-                if (IDKhoaHoc == DBNull.Value)
-                {
-                    lb_KetquaKh.Text = TenKhoaHoc.ToString();
-                }
-                else
-                {
-                    lb_KetquaKh.Text = "KHÓA HỌC " + TenKhoaHoc.ToString();
-                }
-                LoadDanhSachHocVien((int)KhoaHocId);
-            }
-        }
-
         private void treeList_Category_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
             if (e.Node.Level == 0) // Root Level
@@ -256,7 +233,7 @@ namespace DrivingCenter.App.UserControl
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
 
-            UC_DetailStudent ucHV = new UC_DetailStudent(rowData.NguoiLXID);
+            UC_DetailStudent ucHV = new UC_DetailStudent(rowData);
 
             xtraTabPage_DetailHocVien.Controls.Clear();
             ucHV.Dock = DockStyle.Fill;
@@ -379,6 +356,28 @@ namespace DrivingCenter.App.UserControl
             XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        
+        private void treeList_Category_DoubleClick(object sender, EventArgs e)
+        {
+            var focusedNode = treeList_Category.FocusedNode;
+            if (focusedNode != null)
+            {
+                KhoaHocId = (int)focusedNode["MonthID"] / 10000;
+                MonthId = (int)focusedNode["MonthID"];
+                //if(treeList_Category.FocusedNode.GetValue("Name"))
+                TenKhoaHoc = treeList_Category.FocusedNode.GetValue("Name");
+
+                object IDKhoaHoc = treeList_Category.FocusedNode.GetValue("KhoaHocID");
+                if (IDKhoaHoc == DBNull.Value)
+                {
+                    lb_KetquaKh.Text = TenKhoaHoc.ToString();
+                }
+                else
+                {
+                    lb_KetquaKh.Text = "KHÓA HỌC " + TenKhoaHoc.ToString();
+                }
+                LoadDanhSachHocVien((int)KhoaHocId);
+                xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
+            }
+        }
     }
 }

@@ -868,6 +868,7 @@ namespace DrivingCenter.App.DAO
                     NgaySinh = (DateTime)item["NgaySinh"],
                     GioiTinh = item["GioiTinh"].ToString(),
                     CCCD = item["SoCMT"].ToString(),
+                    NgayCapCMT = (DateTime)item["NgayCapCMT"],
                     GiaoVienID = item["GiaoVienID"] == DBNull.Value ? 0 : (int)item["GiaoVienID"],
                     MaXeTap = item["MaXeTap"].ToString(),
                     MaXeTapB11 = item["XeB11"] == DBNull.Value ? "" : item["XeB11"].ToString(),
@@ -973,28 +974,14 @@ namespace DrivingCenter.App.DAO
 
         #region Thông tin đào tạo chi tiết
 
-        public NguoiLxInDAT GetInfoNguoiLxByID(Int64 NguoiLxId)
+        public DataTable GetResultNguoiLxByID(Int64 NguoiLxId)
         {
-            string query = $"EXEC [dbo].[spGetInfoNguoiLxByID] @MaCSDT = N'66015', @NguoiLxID = {NguoiLxId}";
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            string query = $@"SELECT IMG.AnhChup, IMG.AnhChup_Logout, DAT.DiemDanhNguoiLxID, DAT.ThoiDiem, ThoiDiem_Logout, BienSo, HangXe, ROUND(TongQuangDuongLD_Phien,3) AS TongQuangDuongLD_Phien, ROUND(TongThoiGianLD_Phien / 3600,3) AS TongThoiGianLD_Phien 
+            FROM DiemDanhNguoiLx AS DAT, [I2EDAT_IMAGE].[dbo].[DiemDanhNguoiLx] AS IMG 
+            WHERE DAT.DiemDanhNguoiLxID = IMG.DiemDanhNguoiLxID AND DAT.NguoiLxID = {NguoiLxId} 
+            ORDER BY DAT.ThoiDiem DESC";
+            return DataProviderDAT.Instance.ExcuteQuery(query);
 
-            NguoiLxInDAT NguoixLx = dt.AsEnumerable()
-                         .Select(row => new NguoiLxInDAT
-                         {
-                             TenKH = row["TenKH"].ToString(),
-                             MaDK = row["MaDK"].ToString(),
-                             HoVaTen = row["HoVaTen"].ToString(),
-                             NgaySinh = Convert.ToDateTime(row["NgaySinh"]),
-                             CCCD = row["SoCMT"].ToString(),
-                             GioiTinh = row["GioiTinh"].ToString(),
-                             HangDT = row["HangDaoTao"].ToString(),
-                             Anh = (byte[])row["Anh"],
-                             TongQuangDuongTichLuy = Convert.ToDouble(row["TongQuangDuongLD"]),
-                             //TongThoiGianTichLuy = (int)row["TongThoiGianLD"],
-                             //TongThoiGianText = TimeSpan.FromSeconds((double)row["TongThoiGianLD"]).ToString(@"hh\:mm\:ss")
-                         })
-                         .FirstOrDefault();
-            return NguoixLx;
         }
 
         public DataTable GetBaoCaoHocVienByNguoilxID(Int64 NguoilxId)
@@ -1002,6 +989,13 @@ namespace DrivingCenter.App.DAO
             string query = $"EXEC [dbo].[spTongHopDiemDanhLDByNguoiLx] @MaCSDT = N'66015', @NguoiLxID = {NguoilxId}";
             return DataProviderDAT.Instance.ExcuteQuery(query);
         }
+
+        public byte[] GetAnhChupNguoiLx(Int64 NguoiLxID)
+        {
+            string query = $"EXEC [dbo].[spGetAnhChupNguoiLx] @MaCSDT = N'66015', @NguoiLxID = {NguoiLxID}";
+            return (byte[])DataProviderDAT.Instance.ExcuteScalar(query);
+        }
+
         #endregion
     }
 }
