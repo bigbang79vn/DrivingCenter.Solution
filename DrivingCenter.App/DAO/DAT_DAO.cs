@@ -2,7 +2,6 @@
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.DTO.LyThuyet;
 using GMap.NET;
 using System;
@@ -599,13 +598,17 @@ namespace DrivingCenter.App.DAO
 
         public List<string> GetLstGvTrue(string day)
         {
-            string query = string.Format("SELECT DISTINCT MaGV FROM DiemDanhNguoiLx " +
-                "WHERE (ROUND(Lat,3,1) = '12.67' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-                "OR (ROUND(Lat_Logout,3,1) = '12.67' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-                "OR (ROUND(Lng,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-                "OR (ROUND(Lng_Logout,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-                "AND TongQuangDuongLD_Phien > 5 AND ActivePhien = 1 " +
-                "Order by MaGV asc ", day);
+            //string query = string.Format("SELECT DISTINCT MaGV FROM DiemDanhNguoiLx " +
+            //    "WHERE (ROUND(Lat,3,1) = '12.67' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
+            //    "OR (ROUND(Lat_Logout,3,1) = '12.67' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
+            //    "OR (ROUND(Lng,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
+            //    "OR (ROUND(Lng_Logout,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
+            //    "AND TongQuangDuongLD_Phien > 5 AND ActivePhien = 1 " +
+            //    "Order by MaGV asc ", day);
+
+            string query = $@"SELECT DISTINCT MaGV FROM DiemDanhNguoiLx WHERE 
+                (ROUND(Lat,3,1) = '12.67' AND ROUND(Lng,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{day}') OR 
+                (ROUND(Lat_Logout,3,1) = '12.67' AND ROUND(Lng_Logout,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{day}') AND TongQuangDuongLD_Phien > 5 AND ActivePhien = 1 Order by MaGV asc ";
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
