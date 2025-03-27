@@ -79,7 +79,7 @@ namespace DrivingCenter.App
             }
             else if (button.Caption == "Reset Changes")
             {
-                XtraMessageBox.Show("Reset Changes", "Alert", MessageBoxButtons.OK);
+                GetDataSource(_NguoiLxid);
             }
             else if (button.Caption == "Delete")
             {

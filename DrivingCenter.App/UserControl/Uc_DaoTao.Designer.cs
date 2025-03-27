@@ -45,7 +45,6 @@
             this.panel_Right = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lb_KetquaKh = new System.Windows.Forms.Label();
-            this.btn_ExportResultToExcel = new System.Windows.Forms.Button();
             this.btn_Extend = new System.Windows.Forms.Button();
             this.xtraTabControl = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage_DetailHocVien = new DevExpress.XtraTab.XtraTabPage();
@@ -267,7 +266,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.lb_KetquaKh);
-            this.panel3.Controls.Add(this.btn_ExportResultToExcel);
             this.panel3.Controls.Add(this.btn_Extend);
             this.panel3.Location = new System.Drawing.Point(5, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
@@ -279,29 +277,14 @@
             // 
             this.lb_KetquaKh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lb_KetquaKh.AutoSize = true;
-            this.lb_KetquaKh.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lb_KetquaKh.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_KetquaKh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_KetquaKh.Location = new System.Drawing.Point(557, 3);
             this.lb_KetquaKh.Name = "lb_KetquaKh";
-            this.lb_KetquaKh.Size = new System.Drawing.Size(118, 25);
+            this.lb_KetquaKh.Size = new System.Drawing.Size(104, 23);
             this.lb_KetquaKh.TabIndex = 3;
             this.lb_KetquaKh.Text = "KHÓA HỌC";
-            // 
-            // btn_ExportResultToExcel
-            // 
-            this.btn_ExportResultToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ExportResultToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.btn_ExportResultToExcel.FlatAppearance.BorderSize = 0;
-            this.btn_ExportResultToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ExportResultToExcel.Font = new System.Drawing.Font("Roboto", 9F);
-            this.btn_ExportResultToExcel.ForeColor = System.Drawing.Color.White;
-            this.btn_ExportResultToExcel.Location = new System.Drawing.Point(1168, -1);
-            this.btn_ExportResultToExcel.Name = "btn_ExportResultToExcel";
-            this.btn_ExportResultToExcel.Size = new System.Drawing.Size(90, 29);
-            this.btn_ExportResultToExcel.TabIndex = 2;
-            this.btn_ExportResultToExcel.Text = "Export";
-            this.btn_ExportResultToExcel.UseVisualStyleBackColor = false;
-            this.btn_ExportResultToExcel.Click += new System.EventHandler(this.btn_ExportResultToExcel_Click);
+            this.lb_KetquaKh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_Extend
             // 
@@ -452,6 +435,8 @@
             // 
             // repoGrid_GiaoVien
             // 
+            this.repoGrid_GiaoVien.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.repoGrid_GiaoVien.Appearance.Options.UseFont = true;
             this.repoGrid_GiaoVien.AutoHeight = false;
             this.repoGrid_GiaoVien.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -528,6 +513,8 @@
             // 
             // repoGrid_XeTapLai
             // 
+            this.repoGrid_XeTapLai.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.repoGrid_XeTapLai.Appearance.Options.UseFont = true;
             this.repoGrid_XeTapLai.AutoHeight = false;
             this.repoGrid_XeTapLai.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1036,7 +1023,6 @@
         private System.Windows.Forms.Panel PanelLeft;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lb_KetquaKh;
-        private System.Windows.Forms.Button btn_ExportResultToExcel;
         private System.Windows.Forms.Button btn_Extend;
         private System.Windows.Forms.Button btn_LoadKhoaHoc;
         private DevExpress.XtraGrid.Columns.GridColumn TongThoiGianText;

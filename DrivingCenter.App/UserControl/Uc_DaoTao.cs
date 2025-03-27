@@ -64,9 +64,14 @@ namespace DrivingCenter.App.UserControl
         {
             DataTable dt = DAT_DAO.Instance.GetCategory();
 
-            treeList_Category.DataSource = dt;
+            var filteredData = dt.AsEnumerable()
+                .Where(row => row.Field<int>("Level") != 0)
+                .OrderBy(row => row.Field<int>("MonthID"))
+                .CopyToDataTable();
+
+            treeList_Category.DataSource = filteredData;
             //treeList_Category.ExpandAll();
-            treeList_Category.ExpandToLevel(1);
+            treeList_Category.ExpandToLevel(0);
         }
 
 
@@ -104,7 +109,7 @@ namespace DrivingCenter.App.UserControl
         private void treeList_Category_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
             if (e.Node.Level == 0) // Root Level
-            {
+            { 
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
                 e.Appearance.ForeColor = Color.White;
                 e.Appearance.BackColor = Color.FromArgb(78, 109, 156);
@@ -112,13 +117,13 @@ namespace DrivingCenter.App.UserControl
             else if (e.Node.Level == 1) // Level 1
             {
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
-                e.Appearance.ForeColor = Color.White;
-                e.Appearance.BackColor = Color.FromArgb(78, 109, 156);
+                e.Appearance.ForeColor = Color.Black;
+                e.Appearance.BackColor = Color.FromArgb(222, 241, 255);
             }
             else if (e.Node.Level == 2) // Level 2
             {
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
-                e.Appearance.BackColor = Color.FromArgb(222, 241, 255);
+                e.Appearance.BackColor = Color.White;
             }
         }
 
