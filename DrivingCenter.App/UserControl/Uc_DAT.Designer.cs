@@ -284,6 +284,8 @@
             this.xtraTab_KetQua = new DevExpress.XtraTab.XtraTabPage();
             this.PanelRight = new System.Windows.Forms.Panel();
             this.grid_Result = new DevExpress.XtraGrid.GridControl();
+            this.menu_ResultHocVien = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_Result = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STT_V = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_MaDK = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -299,6 +301,7 @@
             this.View_TongQuangDuong_PhienDem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_TongThoiGian_PhienDem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.View_SoNgayHoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.View_NguoilxId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.cb_StyleExport = new System.Windows.Forms.CheckBox();
             this.cb_ShowSendTC = new System.Windows.Forms.CheckBox();
@@ -390,6 +393,7 @@
             this.xtraTab_KetQua.SuspendLayout();
             this.PanelRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Result)).BeginInit();
+            this.menu_ResultHocVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).BeginInit();
             this.panel5.SuspendLayout();
             this.PanelLeft.SuspendLayout();
@@ -2915,6 +2919,7 @@
             this.grid_Result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grid_Result.ContextMenuStrip = this.menu_ResultHocVien;
             this.grid_Result.Location = new System.Drawing.Point(3, 35);
             this.grid_Result.MainView = this.gridView_Result;
             this.grid_Result.Name = "grid_Result";
@@ -2922,6 +2927,21 @@
             this.grid_Result.TabIndex = 2;
             this.grid_Result.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Result});
+            // 
+            // menu_ResultHocVien
+            // 
+            this.menu_ResultHocVien.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printToolStripMenuItem});
+            this.menu_ResultHocVien.Name = "menu_ResultHocVien";
+            this.menu_ResultHocVien.Size = new System.Drawing.Size(127, 26);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.printToolStripMenuItem.Text = "In kết quả";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // gridView_Result
             // 
@@ -2955,7 +2975,8 @@
             this.View_TongQuangDuong_PhienDem,
             this.View_TongThoiGian_PhienDem,
             this.View_SoNgayHoc,
-            this.View_Status});
+            this.View_Status,
+            this.View_NguoilxId});
             gridFormatRule5.ApplyToRow = true;
             gridFormatRule5.Column = this.View_Status;
             gridFormatRule5.Name = "KiemTra_DDK";
@@ -3148,6 +3169,12 @@
             this.View_SoNgayHoc.Visible = true;
             this.View_SoNgayHoc.VisibleIndex = 10;
             this.View_SoNgayHoc.Width = 64;
+            // 
+            // View_NguoilxId
+            // 
+            this.View_NguoilxId.Caption = "NguoiLxID";
+            this.View_NguoilxId.FieldName = "NguoiLxID";
+            this.View_NguoilxId.Name = "View_NguoilxId";
             // 
             // panel5
             // 
@@ -3878,6 +3905,7 @@
             this.xtraTab_KetQua.ResumeLayout(false);
             this.PanelRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Result)).EndInit();
+            this.menu_ResultHocVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -4156,5 +4184,8 @@
         private System.Windows.Forms.CheckBox cb_StyleExport;
         private System.Windows.Forms.ToolStripMenuItem mn_ThongKeHocVienKhongHoanThanh;
         private System.Windows.Forms.ToolStripMenuItem mn_ThongKeKetQuaHocVien;
+        private System.Windows.Forms.ContextMenuStrip menu_ResultHocVien;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn View_NguoilxId;
     }
 }

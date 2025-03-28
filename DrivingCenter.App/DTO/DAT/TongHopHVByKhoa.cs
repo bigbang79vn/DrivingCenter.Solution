@@ -8,6 +8,7 @@ namespace DrivingCenter.App.DTO.DAT
 {
     public class TongHopHVByKhoa
     {
+        public Int64 NguoiLxID { get; set; }
         public string MaDK { get; set; }
         public string HoTenGV { get; set; }
         public string HoVaTenHV { get; set; }

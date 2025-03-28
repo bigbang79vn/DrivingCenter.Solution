@@ -9,6 +9,8 @@ namespace DrivingCenter.App.DTO.DAT
     public class ViewTongHopHvByKhoa
     {
         public int STT { get; set; }
+
+        public Int64 NguoiLxID { get; set; }
         public string View_MaDK { get; set; }
         public string View_HoTenGV { get; set; }
         public string View_HoVaTen { get; set; }

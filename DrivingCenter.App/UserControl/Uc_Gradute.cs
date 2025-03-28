@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
+using DocumentFormat.OpenXml.Wordprocessing;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.GPLX;
@@ -34,6 +35,7 @@ namespace DrivingCenter.App.UserControl
         private void Uc_Gradute_Load(object sender, EventArgs e)
         {
             ConnectMySQL.EstablishConnection();
+            btn_Insert.Enabled = false;
             LoadListKhoaHoc();
         }
 
@@ -218,8 +220,12 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+
         #endregion
 
-        
+        private void txtFilePath_TextChanged(object sender, EventArgs e)
+        {
+            btn_Insert.Enabled = !string.IsNullOrEmpty(txtFilePath.Text);
+        }
     }
 }

@@ -344,6 +344,7 @@ namespace DrivingCenter.App.UserControl
                 var view = new ViewTongHopHvByKhoa
                 {
                     STT = index + 1,
+                    NguoiLxID = item.NguoiLxID,
                     View_MaDK = item.MaDK,
                     View_HoTenGV = item.HoTenGV,
                     View_HoVaTen = item.HoVaTenHV,
@@ -758,12 +759,13 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-
-
-
-
         #endregion Phiên học sai
 
-
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var NguoiLXID = Convert.ToInt64(gridView_Result.GetFocusedRowCellValue("NguoiLxID"));
+            var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(NguoiLXID);
+            new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
+        }
     }
 }

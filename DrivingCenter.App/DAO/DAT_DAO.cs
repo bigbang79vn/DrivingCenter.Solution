@@ -422,11 +422,18 @@ namespace DrivingCenter.App.DAO
 
         public List<TongHopHVByKhoa> TongHopHvByKhoa(int khoahocId)
         {
-            string query = string.Format("SELECT KhoaHocID, MaDK, HoTenGV, HoVaTen, HangDaoTao,  COUNT(NgayHoc) AS SoNgayHoc , ROUND(SUM(TongQuangDuongLD_Phien),3) as TongQuangDuongLD_Phien , ROUND(SUM(TongThoiGianLD_Phien),1) as TongThoiGianLD_Phien , ROUND(SUM(QuangDuongPhienGuiTC),3) as QuangDuongPhienGuiTC, ROUND(SUM(ThoiGianPhienGuiTC),3) as ThoiGianPhienGuiTC " +
-                "FROM KQHvGroup " +
-                "WHERE KhoaHocID = '{0}' " +
-                "GROUP BY MaDK, HoTenGV, HoVaTen, HangDaoTao, KhoaHocID " +
-                "ORDER BY HoTenGV", khoahocId);
+            string query = $@"SELECT NguoiLXID, KhoaHocID, MaDK, HoTenGV, HoVaTen, HangDaoTao,  COUNT(NgayHoc) AS SoNgayHoc , ROUND(SUM(TongQuangDuongLD_Phien),3) as TongQuangDuongLD_Phien , ROUND(SUM(TongThoiGianLD_Phien),1) as TongThoiGianLD_Phien , ROUND(SUM(QuangDuongPhienGuiTC),3) as QuangDuongPhienGuiTC, ROUND(SUM(ThoiGianPhienGuiTC),3) as ThoiGianPhienGuiTC 
+                FROM KQHvGroup
+                WHERE KhoaHocID = '{khoahocId}'
+                GROUP BY 
+                    NguoiLXID,
+                    KhoaHocID,
+                    MaDK,
+                    HoTenGV,
+                    HoVaTen,
+                    HangDaoTao
+                ORDER BY 
+                    HoTenGV";
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
@@ -434,6 +441,7 @@ namespace DrivingCenter.App.DAO
 
             lstResult = dt.AsEnumerable().Select(item => new TongHopHVByKhoa
             {
+                NguoiLxID = (Int64)(item["NguoiLXID"]),
                 MaDK = (string)(item["MaDK"]),
                 HoTenGV = (string)(item)["HoTenGV"],
                 HoVaTenHV = (string)(item)["HoVaTen"],

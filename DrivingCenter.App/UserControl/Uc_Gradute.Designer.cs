@@ -32,9 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_Gradute));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_Gradute));
             this.KetQua_LT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Tab_Control = new System.Windows.Forms.TabControl();
             this.KhoaThiTotNghiep = new System.Windows.Forms.TabPage();
@@ -45,6 +45,8 @@
             this.TenKhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDKhoaHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mn_Gradute = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mn_Refresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mn_DanhSachHocVienKetThucMon = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_DanhSachHocVienThiTotNghiep = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,8 +73,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.mn_Refresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Tab_Control.SuspendLayout();
             this.KhoaThiTotNghiep.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -249,7 +249,20 @@
             this.toolStripSeparator1,
             this.mn_XuatDanhSach});
             this.mn_Gradute.Name = "mn_Gradute";
-            this.mn_Gradute.Size = new System.Drawing.Size(253, 126);
+            this.mn_Gradute.Size = new System.Drawing.Size(253, 104);
+            // 
+            // mn_Refresh
+            // 
+            this.mn_Refresh.Image = ((System.Drawing.Image)(resources.GetObject("mn_Refresh.Image")));
+            this.mn_Refresh.Name = "mn_Refresh";
+            this.mn_Refresh.Size = new System.Drawing.Size(252, 22);
+            this.mn_Refresh.Text = "Refresh";
+            this.mn_Refresh.Click += new System.EventHandler(this.mn_Refresh_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(249, 6);
             // 
             // mn_DanhSachHocVienKetThucMon
             // 
@@ -580,6 +593,7 @@
             this.txtFilePath.ReadOnly = true;
             this.txtFilePath.Size = new System.Drawing.Size(733, 19);
             this.txtFilePath.TabIndex = 0;
+            this.txtFilePath.TextChanged += new System.EventHandler(this.txtFilePath_TextChanged);
             // 
             // label1
             // 
@@ -591,19 +605,6 @@
             this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "File Path";
-            // 
-            // mn_Refresh
-            // 
-            this.mn_Refresh.Image = ((System.Drawing.Image)(resources.GetObject("mn_Refresh.Image")));
-            this.mn_Refresh.Name = "mn_Refresh";
-            this.mn_Refresh.Size = new System.Drawing.Size(252, 22);
-            this.mn_Refresh.Text = "Refresh";
-            this.mn_Refresh.Click += new System.EventHandler(this.mn_Refresh_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(249, 6);
             // 
             // Uc_Gradute
             // 
