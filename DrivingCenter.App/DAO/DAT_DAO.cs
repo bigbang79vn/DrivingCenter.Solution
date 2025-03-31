@@ -488,11 +488,11 @@ namespace DrivingCenter.App.DAO
             string query = $"";
             if (hangdaotao == "B2" || hangdaotao == "B")
             {
-                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangDaoTao = '{hangdaotao}' or HangDaoTao = 'B2'";
+                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B2'";
             }
             else
             {
-                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangDaoTao = '{hangdaotao}' or HangDaoTao = 'B11'";
+                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B11'";
             }
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
