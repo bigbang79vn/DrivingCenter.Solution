@@ -1,5 +1,6 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
 using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
@@ -57,33 +58,8 @@ namespace DrivingCenter.App.UserControl
 
             List<PhienHoc> lstPhienHocTheoXe = DAT_DAO.Instance.LstPhienHocTheoXe(bienso, from, to);
 
-            int stt = 0;
+            gridControl_BaoCaoTheoXe.DataSource = lstPhienHocTheoXe;
 
-            double TongQuangDuong = 0;
-            double TongThoiGian = 0;
-
-            foreach (PhienHoc item in lstPhienHocTheoXe)
-            {
-                item.STT = stt + 1;
-                stt++;
-                TongQuangDuong = TongQuangDuong + item.QuangDuongPhien;
-                TongThoiGian = TongThoiGian + item.dbTime;
-            }
-
-            ConvertListToDataTable convert = new ConvertListToDataTable();
-
-            dt = convert.ToDataTable(lstPhienHocTheoXe);
-
-            gridControl_BaoCaoTheoXe.DataSource = dt;
-
-            lb_TongThoiGian.Text = Math.Round(TongThoiGian / 3600, 1).ToString() + " Giờ";
-            lb_TongQuangDuong.Text = TongQuangDuong.ToString() + " Km";
-
-            foreach (DataRow row in dt.Rows)
-            {
-                row["Time_LogIn"] = DateTime.Parse((row["Time_LogIn"].ToString())).ToString("HH:mm:ss dd/MM/yyyy");
-                row["Time_LogOut"] = DateTime.Parse((row["Time_LogOut"].ToString())).ToString("HH:mm:ss dd/MM/yyyy");
-            }
         }
 
         private void btn_View_Click(object sender, EventArgs e)
@@ -106,6 +82,15 @@ namespace DrivingCenter.App.UserControl
             if (result == DialogResult.OK)
             {
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+        }
+
+        private void gridView_BaoCaoTheoXe_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
+                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
             }
         }
     }

@@ -58,15 +58,9 @@
             this.btn_View = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lb_TongQuangDuong = new System.Windows.Forms.Label();
-            this.lb_TongThoiGian = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl_BaoCaoTheoXe = new DevExpress.XtraGrid.GridControl();
             this.gridView_BaoCaoTheoXe = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTenGV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTenHV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenKH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -86,7 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtk_From.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtk_From.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_BaoCaoTheoXe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_BaoCaoTheoXe)).BeginInit();
@@ -477,83 +470,17 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1500, 800);
             this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.label12);
-            this.panel4.Controls.Add(this.lb_TongQuangDuong);
-            this.panel4.Controls.Add(this.lb_TongThoiGian);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 737);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1494, 60);
-            this.panel4.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.label14.Font = new System.Drawing.Font("Roboto Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(1146, 33);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(139, 18);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Tổng quãng đường:";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.label12.Font = new System.Drawing.Font("Roboto Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(1146, 10);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(108, 18);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Tổng thời gian:";
-            // 
-            // lb_TongQuangDuong
-            // 
-            this.lb_TongQuangDuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_TongQuangDuong.AutoSize = true;
-            this.lb_TongQuangDuong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.lb_TongQuangDuong.Font = new System.Drawing.Font("Roboto Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_TongQuangDuong.ForeColor = System.Drawing.Color.White;
-            this.lb_TongQuangDuong.Location = new System.Drawing.Point(1305, 33);
-            this.lb_TongQuangDuong.Name = "lb_TongQuangDuong";
-            this.lb_TongQuangDuong.Size = new System.Drawing.Size(12, 18);
-            this.lb_TongQuangDuong.TabIndex = 3;
-            this.lb_TongQuangDuong.Text = ".";
-            // 
-            // lb_TongThoiGian
-            // 
-            this.lb_TongThoiGian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_TongThoiGian.AutoSize = true;
-            this.lb_TongThoiGian.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.lb_TongThoiGian.Font = new System.Drawing.Font("Roboto Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_TongThoiGian.ForeColor = System.Drawing.Color.White;
-            this.lb_TongThoiGian.Location = new System.Drawing.Point(1305, 10);
-            this.lb_TongThoiGian.Name = "lb_TongThoiGian";
-            this.lb_TongThoiGian.Size = new System.Drawing.Size(12, 18);
-            this.lb_TongThoiGian.TabIndex = 3;
-            this.lb_TongThoiGian.Text = ".";
             // 
             // panel1
             // 
@@ -566,7 +493,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1494, 667);
+            this.panel1.Size = new System.Drawing.Size(1494, 733);
             this.panel1.TabIndex = 1;
             // 
             // gridControl_BaoCaoTheoXe
@@ -577,7 +504,7 @@
             this.gridControl_BaoCaoTheoXe.Location = new System.Drawing.Point(0, 251);
             this.gridControl_BaoCaoTheoXe.MainView = this.gridView_BaoCaoTheoXe;
             this.gridControl_BaoCaoTheoXe.Name = "gridControl_BaoCaoTheoXe";
-            this.gridControl_BaoCaoTheoXe.Size = new System.Drawing.Size(1494, 416);
+            this.gridControl_BaoCaoTheoXe.Size = new System.Drawing.Size(1494, 482);
             this.gridControl_BaoCaoTheoXe.TabIndex = 3;
             this.gridControl_BaoCaoTheoXe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_BaoCaoTheoXe});
@@ -602,7 +529,6 @@
             this.gridView_BaoCaoTheoXe.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_BaoCaoTheoXe.ColumnPanelRowHeight = 32;
             this.gridView_BaoCaoTheoXe.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.STT,
             this.HoTenGV,
             this.HoTenHV,
             this.TenKH,
@@ -618,23 +544,14 @@
             this.gridView_BaoCaoTheoXe.GroupRowHeight = 27;
             this.gridView_BaoCaoTheoXe.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuangDuongPhien", this.QuangDuongPhien, "{0} Km"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "dbTime", this.ThoiGianPhien, "")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "dbTime", this.ThoiGianPhien, "{0:N1} Giờ")});
+            this.gridView_BaoCaoTheoXe.IndicatorWidth = 35;
             this.gridView_BaoCaoTheoXe.Name = "gridView_BaoCaoTheoXe";
             this.gridView_BaoCaoTheoXe.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_BaoCaoTheoXe.RowHeight = 27;
             this.gridView_BaoCaoTheoXe.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.BienSoXe, DevExpress.Data.ColumnSortOrder.Ascending)});
-            // 
-            // STT
-            // 
-            this.STT.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.STT.AppearanceHeader.Options.UseBackColor = true;
-            this.STT.Caption = "STT";
-            this.STT.FieldName = "STT";
-            this.STT.Name = "STT";
-            this.STT.Visible = true;
-            this.STT.VisibleIndex = 0;
-            this.STT.Width = 40;
+            this.gridView_BaoCaoTheoXe.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_BaoCaoTheoXe_CustomDrawRowIndicator);
             // 
             // HoTenGV
             // 
@@ -696,6 +613,8 @@
             this.Time_LogIn.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.Time_LogIn.AppearanceHeader.Options.UseBackColor = true;
             this.Time_LogIn.Caption = "Login";
+            this.Time_LogIn.DisplayFormat.FormatString = "HH:mm:ss dd/MM/yyyy";
+            this.Time_LogIn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.Time_LogIn.FieldName = "Time_LogIn";
             this.Time_LogIn.Name = "Time_LogIn";
             this.Time_LogIn.Visible = true;
@@ -707,6 +626,8 @@
             this.Time_LogOut.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.Time_LogOut.AppearanceHeader.Options.UseBackColor = true;
             this.Time_LogOut.Caption = "Logout";
+            this.Time_LogOut.DisplayFormat.FormatString = "HH:mm:ss dd/MM/yyyy";
+            this.Time_LogOut.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.Time_LogOut.FieldName = "Time_LogOut";
             this.Time_LogOut.Name = "Time_LogOut";
             this.Time_LogOut.Visible = true;
@@ -765,8 +686,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtk_From.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtk_From.Properties)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_BaoCaoTheoXe)).EndInit();
@@ -796,11 +715,6 @@
         private System.Windows.Forms.Button btn_View;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lb_TongQuangDuong;
-        private System.Windows.Forms.Label lb_TongThoiGian;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.DateEdit dtk_To;
         private DevExpress.XtraEditors.DateEdit dtk_From;
@@ -815,7 +729,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.GridControl gridControl_BaoCaoTheoXe;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_BaoCaoTheoXe;
-        private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraGrid.Columns.GridColumn HoTenGV;
         private DevExpress.XtraGrid.Columns.GridColumn HoTenHV;
         private DevExpress.XtraGrid.Columns.GridColumn TenKH;
