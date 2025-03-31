@@ -37,6 +37,7 @@ namespace DrivingCenter.App.UserControl
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.cbb_SheetData = new DevExpress.XtraBars.Navigation.TileBar();
             this.tileBarGroupTables = new DevExpress.XtraBars.Navigation.TileBarGroup();
             this.tileBar_NhapHoSo = new DevExpress.XtraBars.Navigation.TileBarItem();
@@ -334,7 +335,7 @@ namespace DrivingCenter.App.UserControl
             this.cbx_KhoaHoc.FormattingEnabled = true;
             this.cbx_KhoaHoc.Location = new System.Drawing.Point(5, 2);
             this.cbx_KhoaHoc.Name = "cbx_KhoaHoc";
-            this.cbx_KhoaHoc.Size = new System.Drawing.Size(233, 23);
+            this.cbx_KhoaHoc.Size = new System.Drawing.Size(233, 25);
             this.cbx_KhoaHoc.TabIndex = 5;
             this.cbx_KhoaHoc.SelectedIndexChanged += new System.EventHandler(this.cbx_KhoaHoc_SelectedIndexChanged);
             // 
@@ -355,7 +356,7 @@ namespace DrivingCenter.App.UserControl
             this.cb_SheetDataImport.FormattingEnabled = true;
             this.cb_SheetDataImport.Location = new System.Drawing.Point(3, 2);
             this.cb_SheetDataImport.Name = "cb_SheetDataImport";
-            this.cb_SheetDataImport.Size = new System.Drawing.Size(133, 23);
+            this.cb_SheetDataImport.Size = new System.Drawing.Size(133, 25);
             this.cb_SheetDataImport.TabIndex = 5;
             this.cb_SheetDataImport.SelectedIndexChanged += new System.EventHandler(this.cb_SheetDataImport_SelectedIndexChanged);
             // 
@@ -446,7 +447,7 @@ namespace DrivingCenter.App.UserControl
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(780, 87);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 15);
+            this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 14;
             this.label5.Text = "Số HS";
             // 
@@ -458,7 +459,7 @@ namespace DrivingCenter.App.UserControl
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(614, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.Size = new System.Drawing.Size(58, 17);
             this.label3.TabIndex = 15;
             this.label3.Text = "Hạng ĐT";
             // 
@@ -470,7 +471,7 @@ namespace DrivingCenter.App.UserControl
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(275, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 15);
+            this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 16;
             this.label2.Text = "Khóa";
             // 
@@ -482,7 +483,7 @@ namespace DrivingCenter.App.UserControl
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(33, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "Sheet data";
             // 
@@ -513,7 +514,7 @@ namespace DrivingCenter.App.UserControl
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(32, 46);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 15);
+            this.label6.Size = new System.Drawing.Size(63, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "File name";
             // 
@@ -580,7 +581,7 @@ namespace DrivingCenter.App.UserControl
             this.lbStatusUpdate.ForeColor = System.Drawing.Color.White;
             this.lbStatusUpdate.Location = new System.Drawing.Point(120, 124);
             this.lbStatusUpdate.Name = "lbStatusUpdate";
-            this.lbStatusUpdate.Size = new System.Drawing.Size(78, 23);
+            this.lbStatusUpdate.Size = new System.Drawing.Size(78, 24);
             this.lbStatusUpdate.TabIndex = 25;
             this.lbStatusUpdate.Text = "Status...";
             // 
@@ -594,7 +595,7 @@ namespace DrivingCenter.App.UserControl
             this.cb_CapNhatKQ.ForeColor = System.Drawing.Color.White;
             this.cb_CapNhatKQ.Location = new System.Drawing.Point(423, 81);
             this.cb_CapNhatKQ.Name = "cb_CapNhatKQ";
-            this.cb_CapNhatKQ.Size = new System.Drawing.Size(141, 19);
+            this.cb_CapNhatKQ.Size = new System.Drawing.Size(142, 21);
             this.cb_CapNhatKQ.TabIndex = 24;
             this.cb_CapNhatKQ.Text = "Cập nhật kết quả TN";
             this.cb_CapNhatKQ.UseVisualStyleBackColor = true;
@@ -646,7 +647,7 @@ namespace DrivingCenter.App.UserControl
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtp_NgayIn.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtp_NgayIn.Size = new System.Drawing.Size(168, 20);
+            this.dtp_NgayIn.Size = new System.Drawing.Size(168, 22);
             this.dtp_NgayIn.TabIndex = 12;
             // 
             // panel14
@@ -671,7 +672,7 @@ namespace DrivingCenter.App.UserControl
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtp_NgayQD.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtp_NgayQD.Size = new System.Drawing.Size(168, 20);
+            this.dtp_NgayQD.Size = new System.Drawing.Size(168, 22);
             this.dtp_NgayQD.TabIndex = 12;
             this.dtp_NgayQD.EditValueChanged += new System.EventHandler(this.dtp_NgayQD_EditValueChanged);
             // 
@@ -697,7 +698,7 @@ namespace DrivingCenter.App.UserControl
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtp_NgayVaoSo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtp_NgayVaoSo.Size = new System.Drawing.Size(168, 20);
+            this.dtp_NgayVaoSo.Size = new System.Drawing.Size(168, 22);
             this.dtp_NgayVaoSo.TabIndex = 12;
             // 
             // panel7
@@ -766,7 +767,7 @@ namespace DrivingCenter.App.UserControl
             this.label1.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label1.Location = new System.Drawing.Point(32, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Số CNTN";
             // 
@@ -777,7 +778,7 @@ namespace DrivingCenter.App.UserControl
             this.label7.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label7.Location = new System.Drawing.Point(32, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 15);
+            this.label7.Size = new System.Drawing.Size(44, 17);
             this.label7.TabIndex = 10;
             this.label7.Text = "Số QĐ";
             // 
@@ -788,7 +789,7 @@ namespace DrivingCenter.App.UserControl
             this.label14.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label14.Location = new System.Drawing.Point(330, 104);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 15);
+            this.label14.Size = new System.Drawing.Size(106, 17);
             this.label14.TabIndex = 10;
             this.label14.Text = "Ngày Tháng Năm";
             // 
@@ -799,7 +800,7 @@ namespace DrivingCenter.App.UserControl
             this.label13.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label13.Location = new System.Drawing.Point(330, 68);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(101, 15);
+            this.label13.Size = new System.Drawing.Size(102, 17);
             this.label13.TabIndex = 10;
             this.label13.Text = "Ngày Quyết Định";
             // 
@@ -810,7 +811,7 @@ namespace DrivingCenter.App.UserControl
             this.label12.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label12.Location = new System.Drawing.Point(330, 32);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(116, 15);
+            this.label12.Size = new System.Drawing.Size(117, 17);
             this.label12.TabIndex = 10;
             this.label12.Text = "Ngày Vào Sổ CNTN";
             // 
@@ -821,7 +822,7 @@ namespace DrivingCenter.App.UserControl
             this.label8.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label8.Location = new System.Drawing.Point(32, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 15);
+            this.label8.Size = new System.Drawing.Size(77, 17);
             this.label8.TabIndex = 10;
             this.label8.Text = "Số sổ CNTN";
             // 
@@ -842,7 +843,7 @@ namespace DrivingCenter.App.UserControl
             this.cbb_SheetDataUpdate.FormattingEnabled = true;
             this.cbb_SheetDataUpdate.Location = new System.Drawing.Point(13, 2);
             this.cbb_SheetDataUpdate.Name = "cbb_SheetDataUpdate";
-            this.cbb_SheetDataUpdate.Size = new System.Drawing.Size(210, 23);
+            this.cbb_SheetDataUpdate.Size = new System.Drawing.Size(210, 25);
             this.cbb_SheetDataUpdate.TabIndex = 5;
             this.cbb_SheetDataUpdate.SelectedIndexChanged += new System.EventHandler(this.cbb_SheetDataUpdate_SelectedIndexChanged);
             // 
@@ -888,7 +889,7 @@ namespace DrivingCenter.App.UserControl
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(33, 83);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 15);
+            this.label9.Size = new System.Drawing.Size(69, 17);
             this.label9.TabIndex = 17;
             this.label9.Text = "Sheet data";
             // 
@@ -919,7 +920,7 @@ namespace DrivingCenter.App.UserControl
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(33, 47);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 15);
+            this.label10.Size = new System.Drawing.Size(63, 17);
             this.label10.TabIndex = 10;
             this.label10.Text = "File name";
             // 
@@ -1126,11 +1127,13 @@ namespace DrivingCenter.App.UserControl
             windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
             windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
             windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B11", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B2", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B2", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;

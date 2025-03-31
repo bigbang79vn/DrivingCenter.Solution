@@ -22,18 +22,5 @@ namespace DrivingCenter.App.DTO.DAT
         public string SThoiGian { get; set; }
         public string SGhiChu { get; set; }
 
-        public TongHopGV(DataRow row)
-        {
-            this.MaGv = row["MaGV"].ToString();
-            this.SHoTenGV = row["HoTenGV"].ToString();
-            this.NgayTap = row["ThoiDiem"].ToString();
-            this.SoPhien = (int)row["SoPhien"];
-            this.TenKhoaHoc = row["TenKH"].ToString();
-            this.BienSoXeGv = row["BienSoXe"].ToString();
-            this.SoHocVienByDay = (int)row["SoHocVien"];
-            this.SQuangDuong = (double)row["SQuangDuong"];
-            this.TongThoiGian = (double)row["TongThoiGian"];
-            this.SThoiGian = row["SThoiGian"].ToString();
-        }
     }
 }

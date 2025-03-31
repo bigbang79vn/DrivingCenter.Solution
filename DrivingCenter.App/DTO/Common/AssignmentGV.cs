@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DTO.Common
 {
-    public class Assignment
+    public class AssignmentGV
     {
         public string MaDK { get; set; }
         public int GiaoVienId { get; set; }

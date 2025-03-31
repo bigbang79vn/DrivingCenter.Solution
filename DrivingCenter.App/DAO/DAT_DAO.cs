@@ -1,9 +1,11 @@
-﻿using DrivingCenter.App.DataProvider;
+﻿using DevExpress.CodeParser;
+using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.LyThuyet;
 using GMap.NET;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -486,11 +488,11 @@ namespace DrivingCenter.App.DAO
             string query = $"";
             if (hangdaotao == "B2" || hangdaotao == "B")
             {
-                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B2'";
+                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangDaoTao = '{hangdaotao}' or HangDaoTao = 'B2'";
             }
             else
             {
-                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B11'";
+                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangDaoTao = '{hangdaotao}' or HangDaoTao = 'B11'";
             }
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
@@ -520,12 +522,19 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
-            List<TongHopGV> lstGV = new List<TongHopGV>();
-            foreach (DataRow item in dt.Rows)
+            List<TongHopGV> lstGV = dt.AsEnumerable().Select(item => new TongHopGV
             {
-                TongHopGV gv = new TongHopGV(item);
-                lstGV.Add(gv);
-            }
+                MaGv = item["MaGV"].ToString(),
+                SHoTenGV = item["HoTenGV"].ToString(),
+                NgayTap = item["ThoiDiem"].ToString(),
+                SoPhien = (int)item["SoPhien"],
+                TenKhoaHoc = item["TenKH"].ToString(),
+                BienSoXeGv = item["BienSoXe"].ToString(),
+                SoHocVienByDay = (int)item["SoHocVien"],
+                SQuangDuong = (double)item["SQuangDuong"],
+                TongThoiGian = (double)item["TongThoiGian"],
+                SThoiGian = item["SThoiGian"].ToString()
+            }).ToList();
 
             return lstGV;
         }
@@ -584,23 +593,37 @@ namespace DrivingCenter.App.DAO
             return LstSum;
         }
 
-        public List<TongHopGV> TongHopGVsByDay(string day)
+        public List<TongHopGV> TongHopGVsByDay(string day, int flag)
         {
-            string query = string.Format("SELECT MaGV , HoTenGV, ThoiDiem, COUNT(HoVaTen) AS SoHocVien, SUM(SoPhien) AS SoPhien, TenKH, BienSoXe, ROUND(SUM(TongQuangDuongLD_Phiens),1) as SQuangDuong, SUM(TongThoiGianLD_Phiens) as TongThoiGian, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianLD_Phiens),0),108) as SThoiGian " +
-                "FROM TongHopGvFn " +
-                "WHERE ThoiDiem = '{0}' " +
-                "GROUP by MaGV, HoTenGV, ThoiDiem, BienSoXe, TenKH " +
-                "ORDER by HoTenGV", day);
+            string query;
+            if (flag == 0)
+            {
+                query = $"EXEC [dbo].[spTongHopGioDay] @NgayDay = N'{day}'";
+            }
+            else
+            {
+                query = $@"SELECT MaGV , HoTenGV, ThoiDiem, COUNT(HoVaTen) AS SoHocVien, SUM(SoPhien) AS SoPhien, TenKH, BienSoXe, ROUND(SUM(TongQuangDuongLD_Phiens),1) as SQuangDuong, SUM(TongThoiGianLD_Phiens) as TongThoiGianLD_Phiens, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianLD_Phiens),0),108) as SThoiGian
+                FROM TongHopGvFn 
+                WHERE ThoiDiem = '{day}'
+                GROUP by MaGV, HoTenGV, ThoiDiem, BienSoXe, TenKH
+                ORDER by HoTenGV";
+            }
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
-            List<TongHopGV> lstGV = new List<TongHopGV>();
-            foreach (DataRow item in dt.Rows)
-            {
-                TongHopGV gv = new TongHopGV(item);
-                lstGV.Add(gv);
-            }
+            List<TongHopGV> lstGV = dt.AsEnumerable().Select(item => new TongHopGV{
+                MaGv = item["MaGV"].ToString(),
+                SHoTenGV = item["HoTenGV"].ToString(),
+                NgayTap = item["ThoiDiem"].ToString(),
+                SoPhien = (int)item["SoPhien"],
+                TenKhoaHoc = item["TenKH"].ToString(),
+                BienSoXeGv = item["BienSoXe"].ToString(),
+                SoHocVienByDay = (int)item["SoHocVien"],
+                SQuangDuong = (double)item["SQuangDuong"],
+                TongThoiGian = (double)item["TongThoiGianLD_Phiens"],
+                SThoiGian = item["SThoiGian"].ToString(),
 
+            }).ToList();
             return lstGV;
         }
 
@@ -938,7 +961,7 @@ namespace DrivingCenter.App.DAO
         #endregion
 
         #region Phân Công đào tạo
-        public void Assignment(Assignment ass)
+        public void Assignment(AssignmentGV ass)
         {
             string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'{2}'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
             DataProviderDAT.Instance.ExcuteNoneQuery(query);

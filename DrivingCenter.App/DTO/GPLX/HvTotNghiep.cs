@@ -21,6 +21,7 @@ namespace DrivingCenter.App.DTO.GPLX
         public string NgayBG { get; set; }
         public string XepLoaiTN { get; set; }
         public string NgayQDTN { get; set; }
+        public string SoChungChi { get; set; }
         public string SoCCTN { get; set; }
         public string SoVaoSo { get; set; }
         public string HoVaTenEng { get; set; }

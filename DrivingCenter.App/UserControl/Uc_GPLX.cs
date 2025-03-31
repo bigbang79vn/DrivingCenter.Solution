@@ -464,6 +464,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLxCCTN.XepLoaiTN = dt.Rows[i]["XepLoai"].ToString();
                         nguoiLxCCTN.NgayQDTN = dtp_NgayQD.DateTime.ToString("dd/MM/yyyy");
                         nguoiLxCCTN.NgayQDTNEng = dtp_NgayQD.DateTime.ToString("dd MMMM yyyy");
+                        nguoiLxCCTN.SoChungChi = "Q01/" + dt.Rows[i]["Lop"].ToString() + "/" + dt.Rows[i]["SoCNTN"].ToString();
                         nguoiLxCCTN.SoCCTN = dt.Rows[i]["SoCNTN"].ToString() + " " + "LX" + dt.Rows[i]["Lop"].ToString();
                         nguoiLxCCTN.SoVaoSo = "Q02/" + dt.Rows[i]["SoCNTN"].ToString();
                         nguoiLxCCTN.HoVaTenEng = StringUtil.RemoveVietnameseSign(dt.Rows[i]["Ho"].ToString() + " " + dt.Rows[i]["Ten"].ToString());
@@ -593,6 +594,19 @@ namespace DrivingCenter.App.UserControl
                     DataTable dt = IMG_DAO.Instance.GetDataPrintCCTN(lstId);
                     rptPrintReportCNTN f = new rptPrintReportCNTN(dt, HangDT);
                     f.Show();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Bạn phải chọn học viên cần in chứng chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (button.Caption == "Print")
+            {
+                if (lstId != "")
+                {
+                    DataTable dt = IMG_DAO.Instance.GetDataPrintCCTN(lstId);
+
+                    new ReportPrintTool(new rptCertificate { DataSource = dt }).ShowPreview();
                 }
                 else
                 {

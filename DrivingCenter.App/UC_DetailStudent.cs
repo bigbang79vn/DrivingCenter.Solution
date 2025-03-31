@@ -66,11 +66,25 @@ namespace DrivingCenter.App
 
             if (button.Caption == "Detail")
             {
-                int focusedRowHandle = gridView_PhienHocByNguoiLxId.FocusedRowHandle;
-                var diemdanhnguoilxId = gridView_PhienHocByNguoiLxId.GetRowCellValue(focusedRowHandle, "DiemDanhNguoiLxID");
+                try
+                {
+                    int focusedRowHandle = gridView_PhienHocByNguoiLxId.FocusedRowHandle;
+                    var diemdanhnguoilxId = gridView_PhienHocByNguoiLxId.GetRowCellValue(focusedRowHandle, "DiemDanhNguoiLxID");
 
-                frmDetailSession f = new frmDetailSession(diemdanhnguoilxId.ToString());
-                f.ShowDialog();
+                    if (diemdanhnguoilxId == null)
+                    {
+                        throw new Exception("Giá trị DiemDanhNguoiLxID là null.");
+                    }
+
+                    frmDetailSession f = new frmDetailSession(diemdanhnguoilxId.ToString());
+                    f.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
             }
             else if (button.Caption == "Print")
             {

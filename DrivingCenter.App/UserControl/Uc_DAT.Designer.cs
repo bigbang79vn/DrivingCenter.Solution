@@ -240,6 +240,7 @@
             this.xtraTab_TongHopGV = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbb_TongHopGv = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btn_TongHopGioGv = new System.Windows.Forms.Button();
             this.dtp_TongHopGioDay = new DevExpress.XtraEditors.DateEdit();
             this.lb_TongHopGvByDay = new System.Windows.Forms.Label();
@@ -378,6 +379,7 @@
             this.xtraTab_TongHopGV.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_TongHopGv.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_TongHopGioDay.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_TongHopGioDay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_TongHopGioDay)).BeginInit();
@@ -2250,6 +2252,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panel2.Controls.Add(this.cbb_TongHopGv);
             this.panel2.Controls.Add(this.btn_TongHopGioGv);
             this.panel2.Controls.Add(this.dtp_TongHopGioDay);
             this.panel2.Controls.Add(this.lb_TongHopGvByDay);
@@ -2260,6 +2263,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1488, 50);
             this.panel2.TabIndex = 0;
+            // 
+            // cbb_TongHopGv
+            // 
+            this.cbb_TongHopGv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbb_TongHopGv.Location = new System.Drawing.Point(1343, 14);
+            this.cbb_TongHopGv.Name = "cbb_TongHopGv";
+            this.cbb_TongHopGv.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_TongHopGv.Properties.Appearance.Options.UseFont = true;
+            this.cbb_TongHopGv.Properties.Appearance.Options.UseTextOptions = true;
+            this.cbb_TongHopGv.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_TongHopGv.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_TongHopGv.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.cbb_TongHopGv.Properties.AppearanceDropDown.Options.UseTextOptions = true;
+            this.cbb_TongHopGv.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_TongHopGv.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.cbb_TongHopGv.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_TongHopGv.Size = new System.Drawing.Size(123, 22);
+            this.cbb_TongHopGv.TabIndex = 19;
+            this.cbb_TongHopGv.SelectedIndexChanged += new System.EventHandler(this.cbb_TongHopGv_SelectedIndexChanged);
             // 
             // btn_TongHopGioGv
             // 
@@ -3889,6 +3912,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_TongHopGv.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_TongHopGioDay.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_TongHopGioDay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_TongHopGioDay)).EndInit();
@@ -4187,5 +4211,6 @@
         private System.Windows.Forms.ContextMenuStrip menu_ResultHocVien;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn View_NguoilxId;
+        private DevExpress.XtraEditors.ComboBoxEdit cbb_TongHopGv;
     }
 }

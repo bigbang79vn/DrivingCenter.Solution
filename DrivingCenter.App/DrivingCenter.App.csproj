@@ -448,7 +448,7 @@
     <Compile Include="DTO\Common\Schedule.cs" />
     <Compile Include="DTO\Cabin\ThongKe.cs" />
     <Compile Include="DTO\Cabin\Result.cs" />
-    <Compile Include="DTO\Common\Assignment.cs" />
+    <Compile Include="DTO\Common\AssignmentGV.cs" />
     <Compile Include="DTO\Common\Category.cs" />
     <Compile Include="DTO\DAT\ChiTietPhienHoc.cs" />
     <Compile Include="DTO\DAT\KhoaHocDDT.cs" />

@@ -194,13 +194,13 @@ namespace DrivingCenter.App.UserControl
             else
             {
                 DataTable dt = tableCollection[cb_SheetData.SelectedItem.ToString()];
-                List<Assignment> lst = new List<Assignment>();
+                List<AssignmentGV> lst = new List<AssignmentGV>();
 
                 if (dt != null)
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        Assignment asg = new Assignment();
+                        AssignmentGV asg = new AssignmentGV();
                         asg.GiaoVien = dt.Rows[i]["GiaoVien"].ToString().Trim();
                         asg.TenGV = asg.GiaoVien.Substring(asg.GiaoVien.Trim().LastIndexOf(' ') + 1);
                         int lastIndex = asg.GiaoVien.LastIndexOf(' ');

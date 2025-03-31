@@ -69,13 +69,23 @@ namespace DrivingCenter.App.DAO
 
         public void InsertDataReportCNTN(HvTotNghiep nguoiLx_CCTN)
         {
-            string query = string.Format("EXEC [dbo].[usp_ReportCNTN_Insert] " +
-                "@MaDK = '{0}' , @HoVaTen = N'{1}' , @NgaySinh = '{2}' , @GioiTinh = N'{3}' , @HangGPLX = N'{4}' , " +
-                "@XepLoaiTN = N'{5}' , @NgayQDTN = '{6}' , @SoCCTN = '{7}' , @SoVaoSo = '{8}' , " +
-                "@HoVaTenEng = '{9}' , @GioiTinhEng = '{10}' , @NgaySinhEng = '{11}' , @XepLoaiTNEng = '{12}' , @NgayQDTNEng = '{13}' , @HangGPLXEng = '{14}' ",
-                nguoiLx_CCTN.MaDK, nguoiLx_CCTN.HoVaTen, nguoiLx_CCTN.NgaySinh, nguoiLx_CCTN.GioiTinh, nguoiLx_CCTN.HangGPLX,
-                nguoiLx_CCTN.XepLoaiTN, nguoiLx_CCTN.NgayQDTN, nguoiLx_CCTN.SoCCTN, nguoiLx_CCTN.SoVaoSo,
-                nguoiLx_CCTN.HoVaTenEng, nguoiLx_CCTN.GioiTinhEng, nguoiLx_CCTN.NgaySinhEng, nguoiLx_CCTN.XepLoaiTNEng, nguoiLx_CCTN.NgayQDTNEng, nguoiLx_CCTN.HangGPLXEng);
+            string query = $@"EXEC [dbo].[usp_ReportCNTN_Insert]
+                    @MaDK = '{nguoiLx_CCTN.MaDK}', 
+                    @HoVaTen = N'{nguoiLx_CCTN.HoVaTen}', 
+                    @NgaySinh = '{nguoiLx_CCTN.NgaySinh}',
+                    @GioiTinh = N'{nguoiLx_CCTN.GioiTinh}', 
+                    @HangGPLX = N'{nguoiLx_CCTN.HangGPLX}', 
+                    @XepLoaiTN = N'{nguoiLx_CCTN.XepLoaiTN}', 
+                    @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}',
+                    @SoChungChi = '{nguoiLx_CCTN.SoChungChi}',
+                    @SoCCTN = '{nguoiLx_CCTN.SoCCTN}', 
+                    @SoVaoSo = '{nguoiLx_CCTN.SoVaoSo}',
+                    @HoVaTenEng = '{nguoiLx_CCTN.HoVaTenEng}',
+                    @GioiTinhEng = '{nguoiLx_CCTN.GioiTinhEng}', 
+                    @NgaySinhEng = '{nguoiLx_CCTN.NgaySinhEng}',
+                    @XepLoaiTNEng = '{nguoiLx_CCTN.XepLoaiTNEng}', 
+                    @NgayQDTNEng = '{nguoiLx_CCTN.NgayQDTNEng}',
+                    @HangGPLXEng = '{nguoiLx_CCTN.HangGPLXEng}'";
 
             DataProviderIMG.Instance.ExcuteNoneQuery(query);
         }
