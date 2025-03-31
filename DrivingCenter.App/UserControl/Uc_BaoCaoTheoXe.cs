@@ -1,15 +1,14 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Export;
+using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
@@ -22,7 +21,7 @@ namespace DrivingCenter.App.UserControl
         }
 
         private DataTable dt = new DataTable();
-
+        private string xetap;
         private void Uc_BaoCaoTheoXe_Load(object sender, EventArgs e)
         {
             LoadlstXe();
@@ -46,6 +45,7 @@ namespace DrivingCenter.App.UserControl
         {
             var selectedObject = cbb_XeTapLai.GetSelectedDataRow() as XeTapLai;
 
+            xetap = selectedObject.BienSoXe;
             lb_BienSoXe.Text = selectedObject.BienSoXe;
             lb_HangXe.Text = selectedObject.HangGPLX;
             lb_ThoiGian.Text = "Từ " + dtk_From.DateTime.ToString("dd/MM/yyyy") + " Đến " + dtk_To.DateTime.ToString("dd/MM/yyyy");
@@ -74,7 +74,7 @@ namespace DrivingCenter.App.UserControl
 
             dt = convert.ToDataTable(lstPhienHocTheoXe);
 
-            dtgv_PhienHocTheoXe.DataSource = dt;
+            gridControl_BaoCaoTheoXe.DataSource = dt;
 
             lb_TongThoiGian.Text = Math.Round(TongThoiGian / 3600, 1).ToString() + " Giờ";
             lb_TongQuangDuong.Text = TongQuangDuong.ToString() + " Km";
@@ -94,8 +94,19 @@ namespace DrivingCenter.App.UserControl
 
         private void btn_export_Click_1(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
-            export.ExportToExcel(dt, "Phiên Học Theo Xe");
+            string fileName = $"{xetap}.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridControl_BaoCaoTheoXe.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
         }
     }
 }
