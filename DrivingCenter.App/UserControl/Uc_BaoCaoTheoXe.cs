@@ -22,7 +22,7 @@ namespace DrivingCenter.App.UserControl
         }
 
         private DataTable dt = new DataTable();
-        private string xetap;
+        private string bienso;
         private void Uc_BaoCaoTheoXe_Load(object sender, EventArgs e)
         {
             LoadlstXe();
@@ -44,22 +44,33 @@ namespace DrivingCenter.App.UserControl
 
         private void ViewInfo()
         {
-            var selectedObject = cbb_XeTapLai.GetSelectedDataRow() as XeTapLai;
+            try
+            {
+                var selectedObject = cbb_XeTapLai.GetSelectedDataRow() as XeTapLai;
 
-            xetap = selectedObject.BienSoXe;
-            lb_BienSoXe.Text = selectedObject.BienSoXe;
-            lb_HangXe.Text = selectedObject.HangGPLX;
-            lb_ThoiGian.Text = "Từ " + dtk_From.DateTime.ToString("dd/MM/yyyy") + " Đến " + dtk_To.DateTime.ToString("dd/MM/yyyy");
+                if (selectedObject == null)
+                {
+                    MessageBox.Show("Vui lòng chọn một xe tập lái!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            string from = dtk_From.DateTime.ToString("yyyyMMdd");
-            string to = dtk_To.DateTime.ToString("yyyyMMdd");
+                lb_BienSoXe.Text = selectedObject.BienSoXe;
+                lb_HangXe.Text = selectedObject.HangGPLX;
+                lb_ThoiGian.Text = "Từ " + dtk_From.DateTime.ToString("dd/MM/yyyy") + " Đến " + dtk_To.DateTime.ToString("dd/MM/yyyy");
 
-            string bienso = selectedObject.MaXe;
+                string from = dtk_From.DateTime.ToString("yyyyMMdd");
+                string to = dtk_To.DateTime.ToString("yyyyMMdd");
 
-            List<PhienHoc> lstPhienHocTheoXe = DAT_DAO.Instance.LstPhienHocTheoXe(bienso, from, to);
+                bienso = selectedObject.MaXe;
 
-            gridControl_BaoCaoTheoXe.DataSource = lstPhienHocTheoXe;
+                List<PhienHoc> lstPhienHocTheoXe = DAT_DAO.Instance.LstPhienHocTheoXe(bienso, from, to);
 
+                gridControl_BaoCaoTheoXe.DataSource = lstPhienHocTheoXe;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_View_Click(object sender, EventArgs e)
@@ -70,18 +81,31 @@ namespace DrivingCenter.App.UserControl
 
         private void btn_export_Click_1(object sender, EventArgs e)
         {
-            string fileName = $"{xetap}.xlsx";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
-
-            gridControl_BaoCaoTheoXe.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            try
             {
-                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
-            });
+                if (gridControl_BaoCaoTheoXe == null || gridControl_BaoCaoTheoXe.DataSource == null)
+                {
+                    XtraMessageBox.Show("Không có dữ liệu để xuất Excel!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (result == DialogResult.OK)
+                string fileName = $"{bienso}.xlsx";
+                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+                gridControl_BaoCaoTheoXe.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+                {
+                    ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+                });
+
+                var result = XtraMessageBox.Show("✅ Xuất Excel thành công! Mở file?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                }
+            }
+            catch (Exception ex)
             {
-                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                XtraMessageBox.Show("❌ Đã xảy ra lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
