@@ -516,7 +516,6 @@
             this.gridView_BaoCaoTheoXe.Appearance.GroupFooter.Options.UseTextOptions = true;
             this.gridView_BaoCaoTheoXe.Appearance.GroupFooter.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_BaoCaoTheoXe.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView_BaoCaoTheoXe.Appearance.GroupRow.Options.UseFont = true;
             this.gridView_BaoCaoTheoXe.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.gridView_BaoCaoTheoXe.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridView_BaoCaoTheoXe.Appearance.HeaderPanel.Options.UseBackColor = true;
@@ -561,7 +560,7 @@
             this.HoTenGV.FieldName = "HoTenGV";
             this.HoTenGV.Name = "HoTenGV";
             this.HoTenGV.Visible = true;
-            this.HoTenGV.VisibleIndex = 1;
+            this.HoTenGV.VisibleIndex = 0;
             this.HoTenGV.Width = 150;
             // 
             // HoTenHV
@@ -572,7 +571,7 @@
             this.HoTenHV.FieldName = "HoTenHV";
             this.HoTenHV.Name = "HoTenHV";
             this.HoTenHV.Visible = true;
-            this.HoTenHV.VisibleIndex = 2;
+            this.HoTenHV.VisibleIndex = 1;
             this.HoTenHV.Width = 149;
             // 
             // TenKH
@@ -583,7 +582,7 @@
             this.TenKH.FieldName = "TenKH";
             this.TenKH.Name = "TenKH";
             this.TenKH.Visible = true;
-            this.TenKH.VisibleIndex = 3;
+            this.TenKH.VisibleIndex = 2;
             this.TenKH.Width = 98;
             // 
             // MaPhien
@@ -594,7 +593,7 @@
             this.MaPhien.FieldName = "MaPhien";
             this.MaPhien.Name = "MaPhien";
             this.MaPhien.Visible = true;
-            this.MaPhien.VisibleIndex = 4;
+            this.MaPhien.VisibleIndex = 3;
             this.MaPhien.Width = 217;
             // 
             // BienSoXe
@@ -618,7 +617,7 @@
             this.Time_LogIn.FieldName = "Time_LogIn";
             this.Time_LogIn.Name = "Time_LogIn";
             this.Time_LogIn.Visible = true;
-            this.Time_LogIn.VisibleIndex = 5;
+            this.Time_LogIn.VisibleIndex = 4;
             this.Time_LogIn.Width = 135;
             // 
             // Time_LogOut
@@ -631,7 +630,7 @@
             this.Time_LogOut.FieldName = "Time_LogOut";
             this.Time_LogOut.Name = "Time_LogOut";
             this.Time_LogOut.Visible = true;
-            this.Time_LogOut.VisibleIndex = 6;
+            this.Time_LogOut.VisibleIndex = 5;
             this.Time_LogOut.Width = 135;
             // 
             // QuangDuongPhien
@@ -642,7 +641,7 @@
             this.QuangDuongPhien.FieldName = "QuangDuongPhien";
             this.QuangDuongPhien.Name = "QuangDuongPhien";
             this.QuangDuongPhien.Visible = true;
-            this.QuangDuongPhien.VisibleIndex = 7;
+            this.QuangDuongPhien.VisibleIndex = 6;
             this.QuangDuongPhien.Width = 135;
             // 
             // ThoiGianPhien
@@ -653,7 +652,7 @@
             this.ThoiGianPhien.FieldName = "ThoiGianPhien";
             this.ThoiGianPhien.Name = "ThoiGianPhien";
             this.ThoiGianPhien.Visible = true;
-            this.ThoiGianPhien.VisibleIndex = 8;
+            this.ThoiGianPhien.VisibleIndex = 7;
             this.ThoiGianPhien.Width = 135;
             // 
             // Error
@@ -664,7 +663,7 @@
             this.Error.FieldName = "Error";
             this.Error.Name = "Error";
             this.Error.Visible = true;
-            this.Error.VisibleIndex = 9;
+            this.Error.VisibleIndex = 8;
             this.Error.Width = 178;
             // 
             // Uc_BaoCaoTheoXe
