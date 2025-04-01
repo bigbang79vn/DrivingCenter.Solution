@@ -53,7 +53,7 @@ namespace DrivingCenter.App
                 string NgaySinh = ngaysinh.ToString("dd/MM/yyyy");
                 lbl_NgaySinh.Text = NgaySinh;
 
-                ImageExtension img = new ImageExtension(); 
+                ImageExtension img = new ImageExtension();
                 var image = img.byteArrayToImage(hv.Anh);
                 pictureBox1.Image = image;
 

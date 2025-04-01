@@ -21,19 +21,26 @@ namespace DrivingCenter.App.Helper
 
         public Image byteArrayToImage(byte[] byteArrayIn)
         {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
+            if (byteArrayIn == null || byteArrayIn.Length == 0)
+            {
+                throw new ArgumentException("⚠ Dữ liệu ảnh không hợp lệ: Mảng byte rỗng hoặc null.");
+            }
 
-            //Lưu hình vào path của mình ví dụ D:\\anh.jpg, png
-
-            //if (byteArrayIn != null && byteArrayIn.Length > 0)
-            //{
-            //    string savePath = @"D:\New\a.jpg";
-            //    // Lưu dữ liệu ảnh vào file
-            //    File.WriteAllBytes(savePath, byteArrayIn);
-            //}
-
-            return returnImage;
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(byteArrayIn))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException("⚠ Dữ liệu không phải là hình ảnh hợp lệ hoặc bị hỏng.");
+            }
+            catch (OutOfMemoryException)
+            {
+                throw new OutOfMemoryException("⚠ Hình ảnh quá lớn hoặc bị lỗi, không thể tải vào bộ nhớ.");
+            }
         }
     }
 }
