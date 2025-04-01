@@ -70,7 +70,7 @@
             this.Time_LogOut = new DevExpress.XtraGrid.Columns.GridColumn();
             this.QuangDuongPhien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiGianPhien = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Error = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Note = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_XeTapLai.Properties)).BeginInit();
@@ -537,7 +537,7 @@
             this.Time_LogOut,
             this.QuangDuongPhien,
             this.ThoiGianPhien,
-            this.Error});
+            this.Note});
             this.gridView_BaoCaoTheoXe.GridControl = this.gridControl_BaoCaoTheoXe;
             this.gridView_BaoCaoTheoXe.GroupCount = 1;
             this.gridView_BaoCaoTheoXe.GroupRowHeight = 27;
@@ -655,16 +655,20 @@
             this.ThoiGianPhien.VisibleIndex = 7;
             this.ThoiGianPhien.Width = 135;
             // 
-            // Error
+            // Note
             // 
-            this.Error.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.Error.AppearanceHeader.Options.UseBackColor = true;
-            this.Error.Caption = "Error";
-            this.Error.FieldName = "Error";
-            this.Error.Name = "Error";
-            this.Error.Visible = true;
-            this.Error.VisibleIndex = 8;
-            this.Error.Width = 178;
+            this.Note.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Note.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Note.AppearanceCell.Options.UseFont = true;
+            this.Note.AppearanceCell.Options.UseForeColor = true;
+            this.Note.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.Note.AppearanceHeader.Options.UseBackColor = true;
+            this.Note.Caption = "Note";
+            this.Note.FieldName = "Note";
+            this.Note.Name = "Note";
+            this.Note.Visible = true;
+            this.Note.VisibleIndex = 8;
+            this.Note.Width = 178;
             // 
             // Uc_BaoCaoTheoXe
             // 
@@ -737,6 +741,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Time_LogOut;
         private DevExpress.XtraGrid.Columns.GridColumn QuangDuongPhien;
         private DevExpress.XtraGrid.Columns.GridColumn ThoiGianPhien;
-        private DevExpress.XtraGrid.Columns.GridColumn Error;
+        private DevExpress.XtraGrid.Columns.GridColumn Note;
     }
 }
