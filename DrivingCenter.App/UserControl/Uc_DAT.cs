@@ -26,6 +26,9 @@ namespace DrivingCenter.App.UserControl
 
         private void Uc_DAT_Load(object sender, EventArgs e)
         {
+            cbb_TongHopGv.Properties.Items.AddRange(new string[] { "Theo Giáo Viên", "Theo Xe" });
+            cbb_TongHopGv.EditValue = "Theo Giáo Viên";
+
             dtp_PhByDay.DateTime = DateTime.Now;
             dtp_TongHopHvByDay.DateTime = DateTime.Now;
             dtp_TongHopGioDay.DateTime = DateTime.Now;
@@ -34,16 +37,11 @@ namespace DrivingCenter.App.UserControl
             dtp_From.DateTime = DAT_DAO.Instance.GetMinNgayKG();
             dtp_To.DateTime = DAT_DAO.Instance.GetMaxNgayBG();
 
-            cbb_TongHopGv.Properties.Items.AddRange(new string[] { "Theo Giáo Viên", "Theo Xe"});
-            cbb_TongHopGv.EditValue = "Theo Giáo Viên";
-
             //DateTime now = DateTime.Now;
             //DateTime lastDayOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month));
             //dtp_To.DateTime = lastDayOfMonth;
 
             LoadKhDangDaoTao();
-
-
         }
 
         //-----------Panel Left------------
@@ -605,19 +603,33 @@ namespace DrivingCenter.App.UserControl
 
         private void dtp_TongHopGioDay_EditValueChanged(object sender, EventArgs e)
         {
-            string day = dtp_TongHopGioDay.DateTime.ToString("dd/MM/yyyy");
-            LoadTongHopGV(day, flag);
-            lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
+            TongHopGvTrongNgay();
         }
 
         private void btn_TongHopGioGv_Click(object sender, EventArgs e)
         {
-            string day = dtp_TongHopGioDay.DateTime.ToString("dd/MM/yyyy");
-            LoadTongHopGV(day, flag);
-            lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
+            TongHopGvTrongNgay();
+        }
+        private void cbb_TongHopGv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TongHopGvTrongNgay();
         }
 
-        private void LoadTongHopGV(string day, int flag)
+        private void TongHopGvTrongNgay()
+        {
+            flag = cbb_TongHopGv.EditValue.ToString() == "Theo Giáo Viên" ? 0 : 1;
+            string day = dtp_TongHopGioDay.DateTime.ToString("dd/MM/yyyy");
+            if (DateTime.TryParseExact(day, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime date))
+            {
+                LoadTongHopGV(day, flag);
+            }
+            else
+            {
+                Console.WriteLine("Ngày không hợp lệ!");
+            }
+            lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
+        }
+        private void LoadTongHopGV(string day,  int flag)
         {
             lstSumGV = DAT_DAO.Instance.TongHopGVsByDay(day, flag);
             List<string> lstMaGVs = DAT_DAO.Instance.GetLstGvTrue(day);
@@ -781,14 +793,6 @@ namespace DrivingCenter.App.UserControl
             var NguoiLXID = Convert.ToInt64(gridView_Result.GetFocusedRowCellValue("NguoiLxID"));
             var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(NguoiLXID);
             new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
-        }
-
-        private void cbb_TongHopGv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            flag = cbb_TongHopGv.EditValue.ToString() == "Theo Giáo Viên" ? 0 : 1;
-            string day = dtp_TongHopGioDay.DateTime.ToString("dd/MM/yyyy");
-            LoadTongHopGV(day, flag);
-            lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
         }
     }
 }
