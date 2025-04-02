@@ -426,7 +426,7 @@
             this.LogOut_PH.FieldName = "LogOut";
             this.LogOut_PH.Name = "LogOut_PH";
             this.LogOut_PH.Visible = true;
-            this.LogOut_PH.VisibleIndex = 10;
+            this.LogOut_PH.VisibleIndex = 9;
             this.LogOut_PH.Width = 64;
             // 
             // repositoryItemCheckEdit1
@@ -1730,13 +1730,14 @@
             gridFormatRule1.Rule = formatConditionRuleValue1;
             this.gridView_PhienHoc.FormatRules.Add(gridFormatRule1);
             this.gridView_PhienHoc.GridControl = this.gridControl_PhienHoc;
+            this.gridView_PhienHoc.IndicatorWidth = 45;
             this.gridView_PhienHoc.Name = "gridView_PhienHoc";
             this.gridView_PhienHoc.OptionsBehavior.ReadOnly = true;
             this.gridView_PhienHoc.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView_PhienHoc.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm...";
             this.gridView_PhienHoc.OptionsFind.SearchInPreview = true;
-            this.gridView_PhienHoc.OptionsView.ShowIndicator = false;
             this.gridView_PhienHoc.RowHeight = 28;
+            this.gridView_PhienHoc.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_PhienHoc_CustomDrawRowIndicator);
             // 
             // STT_PH
             // 
@@ -1749,8 +1750,6 @@
             this.STT_PH.Caption = "STT";
             this.STT_PH.FieldName = "STT";
             this.STT_PH.Name = "STT_PH";
-            this.STT_PH.Visible = true;
-            this.STT_PH.VisibleIndex = 0;
             this.STT_PH.Width = 41;
             // 
             // HoTenGV_PH
@@ -1761,7 +1760,7 @@
             this.HoTenGV_PH.FieldName = "HoTenGV";
             this.HoTenGV_PH.Name = "HoTenGV_PH";
             this.HoTenGV_PH.Visible = true;
-            this.HoTenGV_PH.VisibleIndex = 1;
+            this.HoTenGV_PH.VisibleIndex = 0;
             this.HoTenGV_PH.Width = 141;
             // 
             // HoTenHV_PH
@@ -1774,7 +1773,7 @@
             this.HoTenHV_PH.FieldName = "HoTenHV";
             this.HoTenHV_PH.Name = "HoTenHV_PH";
             this.HoTenHV_PH.Visible = true;
-            this.HoTenHV_PH.VisibleIndex = 2;
+            this.HoTenHV_PH.VisibleIndex = 1;
             this.HoTenHV_PH.Width = 175;
             // 
             // TenKH_PH
@@ -1787,7 +1786,7 @@
             this.TenKH_PH.FieldName = "TenKH";
             this.TenKH_PH.Name = "TenKH_PH";
             this.TenKH_PH.Visible = true;
-            this.TenKH_PH.VisibleIndex = 3;
+            this.TenKH_PH.VisibleIndex = 2;
             this.TenKH_PH.Width = 68;
             // 
             // MaPhien_PH
@@ -1800,7 +1799,7 @@
             this.MaPhien_PH.FieldName = "MaPhien";
             this.MaPhien_PH.Name = "MaPhien_PH";
             this.MaPhien_PH.Visible = true;
-            this.MaPhien_PH.VisibleIndex = 4;
+            this.MaPhien_PH.VisibleIndex = 3;
             this.MaPhien_PH.Width = 230;
             // 
             // BienSoXe_PH
@@ -1813,7 +1812,7 @@
             this.BienSoXe_PH.FieldName = "BienSoXe";
             this.BienSoXe_PH.Name = "BienSoXe_PH";
             this.BienSoXe_PH.Visible = true;
-            this.BienSoXe_PH.VisibleIndex = 5;
+            this.BienSoXe_PH.VisibleIndex = 4;
             this.BienSoXe_PH.Width = 64;
             // 
             // Time_LogIn_PH
@@ -1830,7 +1829,7 @@
             this.Time_LogIn_PH.FieldName = "Time_LogIn";
             this.Time_LogIn_PH.Name = "Time_LogIn_PH";
             this.Time_LogIn_PH.Visible = true;
-            this.Time_LogIn_PH.VisibleIndex = 6;
+            this.Time_LogIn_PH.VisibleIndex = 5;
             this.Time_LogIn_PH.Width = 115;
             // 
             // Time_LogOut_PH
@@ -1847,7 +1846,7 @@
             this.Time_LogOut_PH.FieldName = "Time_LogOut";
             this.Time_LogOut_PH.Name = "Time_LogOut_PH";
             this.Time_LogOut_PH.Visible = true;
-            this.Time_LogOut_PH.VisibleIndex = 7;
+            this.Time_LogOut_PH.VisibleIndex = 6;
             this.Time_LogOut_PH.Width = 113;
             // 
             // QuangDuongPhien_PH
@@ -1860,7 +1859,7 @@
             this.QuangDuongPhien_PH.FieldName = "QuangDuongPhien";
             this.QuangDuongPhien_PH.Name = "QuangDuongPhien_PH";
             this.QuangDuongPhien_PH.Visible = true;
-            this.QuangDuongPhien_PH.VisibleIndex = 8;
+            this.QuangDuongPhien_PH.VisibleIndex = 7;
             this.QuangDuongPhien_PH.Width = 70;
             // 
             // ThoiGianPhien_PH
@@ -1873,7 +1872,7 @@
             this.ThoiGianPhien_PH.FieldName = "ThoiGianPhien";
             this.ThoiGianPhien_PH.Name = "ThoiGianPhien_PH";
             this.ThoiGianPhien_PH.Visible = true;
-            this.ThoiGianPhien_PH.VisibleIndex = 9;
+            this.ThoiGianPhien_PH.VisibleIndex = 8;
             // 
             // SendTongCuc_PH
             // 
@@ -1886,7 +1885,7 @@
             this.SendTongCuc_PH.FieldName = "SendTongCuc";
             this.SendTongCuc_PH.Name = "SendTongCuc_PH";
             this.SendTongCuc_PH.Visible = true;
-            this.SendTongCuc_PH.VisibleIndex = 11;
+            this.SendTongCuc_PH.VisibleIndex = 10;
             this.SendTongCuc_PH.Width = 59;
             // 
             // SoLanNhanDienThanhCong_Ph
@@ -1899,7 +1898,7 @@
             this.SoLanNhanDienThanhCong_Ph.FieldName = "NhanDien";
             this.SoLanNhanDienThanhCong_Ph.Name = "SoLanNhanDienThanhCong_Ph";
             this.SoLanNhanDienThanhCong_Ph.Visible = true;
-            this.SoLanNhanDienThanhCong_Ph.VisibleIndex = 12;
+            this.SoLanNhanDienThanhCong_Ph.VisibleIndex = 11;
             // 
             // TyLe_PH
             // 
@@ -1913,7 +1912,7 @@
             this.TyLe_PH.FieldName = "TyLe";
             this.TyLe_PH.Name = "TyLe_PH";
             this.TyLe_PH.Visible = true;
-            this.TyLe_PH.VisibleIndex = 13;
+            this.TyLe_PH.VisibleIndex = 12;
             this.TyLe_PH.Width = 68;
             // 
             // Error_PH
@@ -1930,7 +1929,7 @@
             this.Error_PH.FieldName = "Error";
             this.Error_PH.Name = "Error_PH";
             this.Error_PH.Visible = true;
-            this.Error_PH.VisibleIndex = 14;
+            this.Error_PH.VisibleIndex = 13;
             this.Error_PH.Width = 128;
             // 
             // NguoiLxID_PH

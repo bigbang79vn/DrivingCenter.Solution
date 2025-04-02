@@ -539,7 +539,7 @@
             this.ThoiGianPhien,
             this.Note});
             this.gridView_BaoCaoTheoXe.GridControl = this.gridControl_BaoCaoTheoXe;
-            this.gridView_BaoCaoTheoXe.GroupCount = 1;
+            this.gridView_BaoCaoTheoXe.GroupCount = 2;
             this.gridView_BaoCaoTheoXe.GroupRowHeight = 27;
             this.gridView_BaoCaoTheoXe.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuangDuongPhien", this.QuangDuongPhien, "{0} Km"),
@@ -549,7 +549,8 @@
             this.gridView_BaoCaoTheoXe.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_BaoCaoTheoXe.RowHeight = 27;
             this.gridView_BaoCaoTheoXe.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.BienSoXe, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.BienSoXe, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.HoTenGV, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView_BaoCaoTheoXe.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_BaoCaoTheoXe_CustomDrawRowIndicator);
             // 
             // HoTenGV
@@ -571,7 +572,7 @@
             this.HoTenHV.FieldName = "HoTenHV";
             this.HoTenHV.Name = "HoTenHV";
             this.HoTenHV.Visible = true;
-            this.HoTenHV.VisibleIndex = 1;
+            this.HoTenHV.VisibleIndex = 0;
             this.HoTenHV.Width = 149;
             // 
             // TenKH
@@ -582,7 +583,7 @@
             this.TenKH.FieldName = "TenKH";
             this.TenKH.Name = "TenKH";
             this.TenKH.Visible = true;
-            this.TenKH.VisibleIndex = 2;
+            this.TenKH.VisibleIndex = 1;
             this.TenKH.Width = 98;
             // 
             // MaPhien
@@ -593,7 +594,7 @@
             this.MaPhien.FieldName = "MaPhien";
             this.MaPhien.Name = "MaPhien";
             this.MaPhien.Visible = true;
-            this.MaPhien.VisibleIndex = 3;
+            this.MaPhien.VisibleIndex = 2;
             this.MaPhien.Width = 217;
             // 
             // BienSoXe
@@ -617,7 +618,7 @@
             this.Time_LogIn.FieldName = "Time_LogIn";
             this.Time_LogIn.Name = "Time_LogIn";
             this.Time_LogIn.Visible = true;
-            this.Time_LogIn.VisibleIndex = 4;
+            this.Time_LogIn.VisibleIndex = 3;
             this.Time_LogIn.Width = 135;
             // 
             // Time_LogOut
@@ -630,7 +631,7 @@
             this.Time_LogOut.FieldName = "Time_LogOut";
             this.Time_LogOut.Name = "Time_LogOut";
             this.Time_LogOut.Visible = true;
-            this.Time_LogOut.VisibleIndex = 5;
+            this.Time_LogOut.VisibleIndex = 4;
             this.Time_LogOut.Width = 135;
             // 
             // QuangDuongPhien
@@ -641,7 +642,7 @@
             this.QuangDuongPhien.FieldName = "QuangDuongPhien";
             this.QuangDuongPhien.Name = "QuangDuongPhien";
             this.QuangDuongPhien.Visible = true;
-            this.QuangDuongPhien.VisibleIndex = 6;
+            this.QuangDuongPhien.VisibleIndex = 5;
             this.QuangDuongPhien.Width = 135;
             // 
             // ThoiGianPhien
@@ -652,7 +653,7 @@
             this.ThoiGianPhien.FieldName = "ThoiGianPhien";
             this.ThoiGianPhien.Name = "ThoiGianPhien";
             this.ThoiGianPhien.Visible = true;
-            this.ThoiGianPhien.VisibleIndex = 7;
+            this.ThoiGianPhien.VisibleIndex = 6;
             this.ThoiGianPhien.Width = 135;
             // 
             // Note
@@ -667,7 +668,7 @@
             this.Note.FieldName = "Note";
             this.Note.Name = "Note";
             this.Note.Visible = true;
-            this.Note.VisibleIndex = 8;
+            this.Note.VisibleIndex = 7;
             this.Note.Width = 178;
             // 
             // Uc_BaoCaoTheoXe
