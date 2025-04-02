@@ -23,10 +23,10 @@ namespace DrivingCenter.App.DataProvider
         }
 
         //-------Server--------------------------
-        //private string connectionSTR = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+        private string connectionSTR = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
         //-------Server--------------------------
-        private string connectionSTR = @"Data Source=117.3.1.31,1433;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+        //private string connectionSTR = @"Data Source=117.3.1.31,1433;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
