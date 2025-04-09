@@ -101,29 +101,9 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private List<HocVien> CheckResult(List<HocVien> lst)
-        {
-            foreach (HocVien item in lst)
-            {
-                string kl = CabinEco_DAO.Instance.CheckDK(item.MaDK);
-                if (kl == "Đáp ứng quy định")
-                {
-                    item.Result = true;
-                }
-                else
-                {
-                    item.Result = false;
-                }
-            }
-
-            return lst;
-        }
-
         private void LoadLstHvByKH(int IdKhoaHoc)
         {
             _lstStudent = CabinEco_DAO.Instance.LoadLstHocVienById(IdKhoaHoc);
-
-            CheckResult(_lstStudent);
 
             grd_HocVien.DataSource = _lstStudent;
         }

@@ -43,9 +43,13 @@ namespace DrivingCenter.App.UserControl
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Result = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Result_Col = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoCheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tileBar = new DevExpress.XtraBars.Navigation.TileBar();
             this.tileBarGroupTables = new DevExpress.XtraBars.Navigation.TileBarGroup();
@@ -133,7 +137,8 @@ namespace DrivingCenter.App.UserControl
             this.NgaySinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoCMT_TK = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongThoiGian = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TotalSecond_TK = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CabinName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TotalHour = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_ViewTongHop = new System.Windows.Forms.Button();
             this.lb_ThongKe = new System.Windows.Forms.Label();
@@ -173,7 +178,7 @@ namespace DrivingCenter.App.UserControl
             this.txt_MaKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.customersNavigationPage.SuspendLayout();
@@ -245,6 +250,22 @@ namespace DrivingCenter.App.UserControl
             this.Result.Visible = true;
             this.Result.VisibleIndex = 3;
             this.Result.Width = 102;
+            // 
+            // Result_Col
+            // 
+            this.Result_Col.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.Result_Col.AppearanceHeader.Options.UseBackColor = true;
+            this.Result_Col.Caption = "Result";
+            this.Result_Col.ColumnEdit = this.repoCheckEdit;
+            this.Result_Col.FieldName = "Result";
+            this.Result_Col.Name = "Result_Col";
+            this.Result_Col.Visible = true;
+            this.Result_Col.VisibleIndex = 7;
+            // 
+            // repoCheckEdit
+            // 
+            this.repoCheckEdit.AutoHeight = false;
+            this.repoCheckEdit.Name = "repoCheckEdit";
             // 
             // Status
             // 
@@ -1310,6 +1331,8 @@ namespace DrivingCenter.App.UserControl
             this.grd_ThongKe.Location = new System.Drawing.Point(3, 53);
             this.grd_ThongKe.MainView = this.gridView_TongHop;
             this.grd_ThongKe.Name = "grd_ThongKe";
+            this.grd_ThongKe.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoCheckEdit});
             this.grd_ThongKe.Size = new System.Drawing.Size(1439, 628);
             this.grd_ThongKe.TabIndex = 0;
             this.grd_ThongKe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1317,10 +1340,20 @@ namespace DrivingCenter.App.UserControl
             // 
             // gridView_TongHop
             // 
+            this.gridView_TongHop.Appearance.GroupFooter.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_TongHop.Appearance.GroupFooter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView_TongHop.Appearance.GroupFooter.Options.UseFont = true;
+            this.gridView_TongHop.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gridView_TongHop.Appearance.GroupFooter.Options.UseTextOptions = true;
+            this.gridView_TongHop.Appearance.GroupFooter.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_TongHop.Appearance.GroupPanel.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.gridView_TongHop.Appearance.GroupPanel.Options.UseFont = true;
             this.gridView_TongHop.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridView_TongHop.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView_TongHop.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_TongHop.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView_TongHop.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView_TongHop.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_TongHop.ColumnPanelRowHeight = 32;
             this.gridView_TongHop.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.NguoiLxID_TK,
@@ -1331,13 +1364,23 @@ namespace DrivingCenter.App.UserControl
             this.NgaySinh,
             this.SoCMT_TK,
             this.TongThoiGian,
-            this.TotalSecond_TK,
-            this.gridColumn1});
+            this.CabinName,
+            this.TotalHour,
+            this.Result_Col});
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Column = this.Result_Col;
+            gridFormatRule3.Name = "Format";
+            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = "0";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            this.gridView_TongHop.FormatRules.Add(gridFormatRule3);
             this.gridView_TongHop.GridControl = this.grd_ThongKe;
             this.gridView_TongHop.GroupCount = 1;
             this.gridView_TongHop.GroupRowHeight = 32;
             this.gridView_TongHop.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSecond", this.TongThoiGian, "")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHour", this.TongThoiGian, "{0} Giờ")});
             this.gridView_TongHop.Name = "gridView_TongHop";
             this.gridView_TongHop.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_TongHop.RowHeight = 32;
@@ -1384,7 +1427,7 @@ namespace DrivingCenter.App.UserControl
             this.MaDK.FieldName = "MaDK";
             this.MaDK.Name = "MaDK";
             this.MaDK.Visible = true;
-            this.MaDK.VisibleIndex = 1;
+            this.MaDK.VisibleIndex = 2;
             this.MaDK.Width = 216;
             // 
             // TenKhoaHoc
@@ -1420,7 +1463,7 @@ namespace DrivingCenter.App.UserControl
             this.HoVaTen.FieldName = "HoVaTen";
             this.HoVaTen.Name = "HoVaTen";
             this.HoVaTen.Visible = true;
-            this.HoVaTen.VisibleIndex = 2;
+            this.HoVaTen.VisibleIndex = 3;
             this.HoVaTen.Width = 288;
             // 
             // NgaySinh
@@ -1439,7 +1482,7 @@ namespace DrivingCenter.App.UserControl
             this.NgaySinh.FieldName = "NgaySinh";
             this.NgaySinh.Name = "NgaySinh";
             this.NgaySinh.Visible = true;
-            this.NgaySinh.VisibleIndex = 3;
+            this.NgaySinh.VisibleIndex = 4;
             this.NgaySinh.Width = 250;
             // 
             // SoCMT_TK
@@ -1458,7 +1501,7 @@ namespace DrivingCenter.App.UserControl
             this.SoCMT_TK.FieldName = "SoCMT";
             this.SoCMT_TK.Name = "SoCMT_TK";
             this.SoCMT_TK.Visible = true;
-            this.SoCMT_TK.VisibleIndex = 4;
+            this.SoCMT_TK.VisibleIndex = 5;
             this.SoCMT_TK.Width = 242;
             // 
             // TongThoiGian
@@ -1477,14 +1520,24 @@ namespace DrivingCenter.App.UserControl
             this.TongThoiGian.FieldName = "TongThoiGian";
             this.TongThoiGian.Name = "TongThoiGian";
             this.TongThoiGian.Visible = true;
-            this.TongThoiGian.VisibleIndex = 5;
+            this.TongThoiGian.VisibleIndex = 6;
             this.TongThoiGian.Width = 205;
             // 
-            // TotalSecond_TK
+            // CabinName
             // 
-            this.TotalSecond_TK.Caption = "TotalSecond";
-            this.TotalSecond_TK.FieldName = "TotalSecond";
-            this.TotalSecond_TK.Name = "TotalSecond_TK";
+            this.CabinName.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.CabinName.AppearanceHeader.Options.UseBackColor = true;
+            this.CabinName.Caption = "Cabin";
+            this.CabinName.FieldName = "CabinName";
+            this.CabinName.Name = "CabinName";
+            this.CabinName.Visible = true;
+            this.CabinName.VisibleIndex = 1;
+            // 
+            // TotalHour
+            // 
+            this.TotalHour.Caption = "TotalHour";
+            this.TotalHour.FieldName = "TotalHour";
+            this.TotalHour.Name = "TotalHour";
             // 
             // panel2
             // 
@@ -1631,20 +1684,20 @@ namespace DrivingCenter.App.UserControl
             this.NgayBeGiang,
             this.HangDaoTao,
             this.Status});
-            gridFormatRule3.ApplyToRow = true;
-            gridFormatRule3.Column = this.Status;
-            gridFormatRule3.Name = "format_Status";
-            formatConditionRuleValue3.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue3.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
-            formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue3.Appearance.Options.UseFont = true;
-            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = "False";
-            formatConditionRuleValue3.Value2 = "";
-            gridFormatRule3.Rule = formatConditionRuleValue3;
-            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule3);
+            gridFormatRule4.ApplyToRow = true;
+            gridFormatRule4.Column = this.Status;
+            gridFormatRule4.Name = "format_Status";
+            formatConditionRuleValue4.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue4.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
+            formatConditionRuleValue4.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue4.Appearance.Options.UseFont = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = "False";
+            formatConditionRuleValue4.Value2 = "";
+            gridFormatRule4.Rule = formatConditionRuleValue4;
+            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule4);
             this.gridView_QLKhoaHoc.GridControl = this.grd_QuanLyKhoaHoc;
             this.gridView_QLKhoaHoc.GroupCount = 1;
             this.gridView_QLKhoaHoc.GroupRowHeight = 32;
@@ -1993,13 +2046,6 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Cabin";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 6;
-            // 
             // Uc_CabinEco
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -2011,6 +2057,7 @@ namespace DrivingCenter.App.UserControl
             this.Name = "Uc_CabinEco";
             this.Size = new System.Drawing.Size(1500, 800);
             this.Load += new System.EventHandler(this.Uc_CabinEco_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).EndInit();
             this.navigationFrame.ResumeLayout(false);
             this.customersNavigationPage.ResumeLayout(false);
@@ -2113,7 +2160,7 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraGrid.Columns.GridColumn NgaySinh;
         private DevExpress.XtraGrid.Columns.GridColumn SoCMT_TK;
         private DevExpress.XtraGrid.Columns.GridColumn TongThoiGian;
-        private DevExpress.XtraGrid.Columns.GridColumn TotalSecond_TK;
+        private DevExpress.XtraGrid.Columns.GridColumn TotalHour;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lb_ThongKe;
         private DevExpress.XtraEditors.DateEdit dtp_DayTHCabin;
@@ -2206,6 +2253,8 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem mn_HocVienKoDuDieuKien;
         private DevExpress.XtraGrid.Columns.GridColumn HangGPLX;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn CabinName;
+        private DevExpress.XtraGrid.Columns.GridColumn Result_Col;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repoCheckEdit;
     }
 }

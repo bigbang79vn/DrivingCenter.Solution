@@ -91,7 +91,8 @@ namespace DrivingCenter.App.DAO
                 SoCMT = (string)item["SoCMT"],
                 ToTalSecond = (string)item["TongThoiGianText"],
                 TenGV = item["GiaoVienID"] == DBNull.Value ? "" : (string)item["HoGiaoVien"] + " " + (string)item["TenGiaoVien"],
-                HangGPLX = item.Field<string>("HangGPLX")
+                HangGPLX = item.Field<string>("HangGPLX"),
+                Result = item.Field<bool>("KetLuan")
             }).ToList();
 
             return lstStudent;
