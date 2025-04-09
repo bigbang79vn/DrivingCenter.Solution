@@ -82,6 +82,7 @@ namespace DrivingCenter.App.UserControl
             this.SoCMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ToTalSecond = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenGV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HangGPLX = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbb_KhoaHocEco = new DevExpress.XtraEditors.LookUpEdit();
@@ -172,7 +173,6 @@ namespace DrivingCenter.App.UserControl
             this.txt_MaKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.HangGPLX = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.customersNavigationPage.SuspendLayout();
@@ -692,6 +692,12 @@ namespace DrivingCenter.App.UserControl
             this.TenGV.Name = "TenGV";
             this.TenGV.Visible = true;
             this.TenGV.VisibleIndex = 2;
+            // 
+            // HangGPLX
+            // 
+            this.HangGPLX.Caption = "HangGPLX";
+            this.HangGPLX.FieldName = "HangGPLX";
+            this.HangGPLX.Name = "HangGPLX";
             // 
             // panel1
             // 
@@ -1328,6 +1334,8 @@ namespace DrivingCenter.App.UserControl
             this.gridView_TongHop.GridControl = this.grd_ThongKe;
             this.gridView_TongHop.GroupCount = 1;
             this.gridView_TongHop.GroupRowHeight = 32;
+            this.gridView_TongHop.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSecond", this.TongThoiGian, "")});
             this.gridView_TongHop.Name = "gridView_TongHop";
             this.gridView_TongHop.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_TongHop.RowHeight = 32;
@@ -1982,12 +1990,6 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.Text = "windowsUIButtonPanelMain";
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
-            // 
-            // HangGPLX
-            // 
-            this.HangGPLX.Caption = "HangGPLX";
-            this.HangGPLX.FieldName = "HangGPLX";
-            this.HangGPLX.Name = "HangGPLX";
             // 
             // Uc_CabinEco
             // 

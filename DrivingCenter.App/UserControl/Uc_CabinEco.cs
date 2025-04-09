@@ -539,17 +539,6 @@ namespace DrivingCenter.App.UserControl
             List<ThongKe> lst = CabinEco_DAO.Instance.LstThongKe(day);
 
             grd_ThongKe.DataSource = lst;
-
-            //TimeSpan time = TimeSpan.FromSeconds(DAOCabin_Eco.Instance.SumtimeByDay(day));
-            //if (time.Days >= 1)
-            //{
-            //    int hour = time.Days * 24 + time.Hours;
-            //    lbl_SumTime.Text = string.Format("{0:D2} giờ {1:D2} phút", hour, time.Minutes);
-            //}
-            //else
-            //{
-            //    lbl_SumTime.Text = string.Format("{0:D2} giờ {1:D2} phút", time.Hours, time.Minutes);
-            //}
         }
 
         private async Task taskTongHop()
@@ -605,6 +594,7 @@ namespace DrivingCenter.App.UserControl
             else if (button.Caption == "Thêm Khóa Học")
             {
                 ThemKhoaHoc();
+                GetLstKhoaHocDDT();
             }
         }
 
@@ -705,6 +695,7 @@ namespace DrivingCenter.App.UserControl
         private void mn_ThemKhoaHoc_Click(object sender, EventArgs e)
         {
             ThemKhoaHoc();
+            GetLstKhoaHocDDT();
         }
 
         private byte[] ConvertBase64ToBytes(string base64String)
