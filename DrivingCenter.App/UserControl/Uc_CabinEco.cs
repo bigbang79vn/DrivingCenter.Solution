@@ -262,6 +262,14 @@ namespace DrivingCenter.App.UserControl
 
                     LoadInfoHocVienById(IdHocVien);
                 }
+                for (int i = 0; i < gridview_HocVien.RowCount; i++)
+                {
+                    if (gridview_HocVien.GetRowCellValue(i, "MaDK").ToString() == IdHocVien)
+                    {
+                        gridview_HocVien.FocusedRowHandle = i;
+                        break;
+                    }
+                }
             }
         }
 
