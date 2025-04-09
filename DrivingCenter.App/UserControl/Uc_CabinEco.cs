@@ -465,6 +465,12 @@ namespace DrivingCenter.App.UserControl
 
             var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(lstMaDK.ToString());
 
+            if (resultBC == null || resultBC.Rows.Count == 0)
+            {
+                XtraMessageBox.Show("Học viên chưa có kết quả học cabin điện tử!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             // Gán DataSource và hiển thị report
             new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
         }
@@ -478,12 +484,22 @@ namespace DrivingCenter.App.UserControl
         private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
         {
             var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
+            if (resultBC == null || resultBC.Rows.Count == 0)
+            {
+                XtraMessageBox.Show("Không có học viên đủ điều kiện thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
         }
 
         private void mn_HocVienKoDuDieuKien_Click(object sender, EventArgs e)
         {
             var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 2);
+            if (resultBC == null || resultBC.Rows.Count == 0)
+            {
+                XtraMessageBox.Show("Không có học viên không đủ điều kiện thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
         }
 
