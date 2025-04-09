@@ -192,15 +192,6 @@ namespace DrivingCenter.App.DAO
             string querytst = "DELETE tblThiSinhTap WHERE ID_KetQua = '" + ID_KetQua + "'";
             DataProviderCaBinEco.Instance.ExcuteNoneQuery(querytst);
         }
-
-        public string GetLstMaDK(int khoahocID)
-        {
-            string query = $"EXEC dbo.spGetLstMaDK @KhoaHocID = {khoahocID}";
-            var getValue = DataProviderCaBinEco.Instance.ExcuteScalar(query);
-            return (getValue == null) ? string.Empty : getValue.ToString();
-        }
-
-
         public DataTable GetDataReportByMaDK(string lstMaDK)
         {
             string query = $"EXEC [dbo].[spLoadDataReport] @lstMaDK = N'{lstMaDK}'";

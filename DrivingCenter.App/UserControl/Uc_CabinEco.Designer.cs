@@ -253,6 +253,8 @@ namespace DrivingCenter.App.UserControl
             // 
             // Result_Col
             // 
+            this.Result_Col.AppearanceCell.Options.UseTextOptions = true;
+            this.Result_Col.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Result_Col.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.Result_Col.AppearanceHeader.Options.UseBackColor = true;
             this.Result_Col.Caption = "Result";
@@ -1354,6 +1356,10 @@ namespace DrivingCenter.App.UserControl
             this.gridView_TongHop.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView_TongHop.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridView_TongHop.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView_TongHop.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_TongHop.Appearance.Row.Options.UseFont = true;
+            this.gridView_TongHop.Appearance.Row.Options.UseTextOptions = true;
+            this.gridView_TongHop.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_TongHop.ColumnPanelRowHeight = 32;
             this.gridView_TongHop.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.NguoiLxID_TK,
@@ -1370,17 +1376,19 @@ namespace DrivingCenter.App.UserControl
             gridFormatRule3.ApplyToRow = true;
             gridFormatRule3.Column = this.Result_Col;
             gridFormatRule3.Name = "Format";
-            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
             formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = "0";
+            formatConditionRuleValue3.Value1 = "False";
             gridFormatRule3.Rule = formatConditionRuleValue3;
             this.gridView_TongHop.FormatRules.Add(gridFormatRule3);
             this.gridView_TongHop.GridControl = this.grd_ThongKe;
             this.gridView_TongHop.GroupCount = 1;
             this.gridView_TongHop.GroupRowHeight = 32;
             this.gridView_TongHop.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHour", this.TongThoiGian, "{0} Giờ")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHour", this.TongThoiGian, "{0:N1} Giờ")});
             this.gridView_TongHop.Name = "gridView_TongHop";
             this.gridView_TongHop.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_TongHop.RowHeight = 32;
@@ -1525,6 +1533,10 @@ namespace DrivingCenter.App.UserControl
             // 
             // CabinName
             // 
+            this.CabinName.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CabinName.AppearanceCell.Options.UseFont = true;
+            this.CabinName.AppearanceCell.Options.UseTextOptions = true;
+            this.CabinName.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.CabinName.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.CabinName.AppearanceHeader.Options.UseBackColor = true;
             this.CabinName.Caption = "Cabin";

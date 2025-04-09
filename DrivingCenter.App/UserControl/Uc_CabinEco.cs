@@ -468,7 +468,30 @@ namespace DrivingCenter.App.UserControl
             // Gán DataSource và hiển thị report
             new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
         }
+        private void mn_TongHopBaoCao_Click(object sender, EventArgs e)
+        {
+            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 0);
 
+            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
+        }
+
+        private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
+        {
+            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
+            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
+        }
+
+        private void mn_HocVienKoDuDieuKien_Click(object sender, EventArgs e)
+        {
+            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 2);
+            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
+        }
+
+        private void mn_ThemKhoaHoc_Click(object sender, EventArgs e)
+        {
+            ThemKhoaHoc();
+            GetLstKhoaHocDDT();
+        }
         private void mn_SyncTeacher_Click(object sender, EventArgs e)
         {
             List<GiaoVien> lstGiaoVienDAT = DAT_DAO.Instance.GetAllGV();
@@ -653,30 +676,6 @@ namespace DrivingCenter.App.UserControl
         }
 
         #endregion Quản lý khóa học
-
-        private void mn_TongHopBaoCao_Click(object sender, EventArgs e)
-        {
-            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 0);
-            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
-        }
-
-        private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
-        {
-            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
-            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
-        }
-
-        private void mn_HocVienKoDuDieuKien_Click(object sender, EventArgs e)
-        {
-            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 2);
-            new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
-        }
-
-        private void mn_ThemKhoaHoc_Click(object sender, EventArgs e)
-        {
-            ThemKhoaHoc();
-            GetLstKhoaHocDDT();
-        }
 
         private byte[] ConvertBase64ToBytes(string base64String)
         {
