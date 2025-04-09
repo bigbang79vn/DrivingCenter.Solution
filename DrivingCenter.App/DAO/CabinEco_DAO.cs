@@ -308,23 +308,24 @@ namespace DrivingCenter.App.DAO
         }
         public List<ThongKe> LstThongKe(string day)
         {
-            string query = string.Format("SELECT  kh.Ten, hv.ID, hv.HoTen, CONVERT(varchar, hv.NgaySinh, 103) as NgaySinh, hv.SoCMT, CONVERT(varchar,DATEADD(second,SUM(TongThoiGian),0),108) AS ToTalSecond, gv.HoTenDem, gv.TenGV " +
-                "FROM v_ThongTinTap as kqt, tblHocVien as hv, tblKhoaHoc as kh, tblGiaoVien as gv " +
-                "WHERE hv.ID = kqt.ID_HocVien and CONVERT(VARCHAR, Time_In , 103) = '{0}'  and kh.ID = hv.IDKhoaHoc and gv.GiaoVienID = hv.GiaoVienID " +
-                "GROUP BY hv.HoTen, kh.Ten, hv.ID, hv.NgaySinh, hv.SoCMT, gv.HoTenDem, gv.TenGV  " +
-                "ORDER BY gv.TenGV ASC", day);
+            string query = $"EXEC [dbo].[spTongHopByDay] @Day = '{day}'";
 
             DataTable dt = DataProviderCaBinEco.Instance.ExcuteQuery(query);
+
             List<ThongKe> lst = dt.AsEnumerable().Select(item => new ThongKe
             {
-                TenKhoaHoc = (string)item["Ten"],
-                TenGV = (string)item["HoTenDem"] + " " + (string)item["TenGV"],
-                MaDK = (string)item["ID"],
-                HoVaTen = (string)item["HoTen"],
-                NgaySinh = (string)item["NgaySinh"],
-                SoCMT = (string)item["SoCMT"],
-                TongThoiGian = (string)item["ToTalSecond"]
+                TenKhoaHoc = Convert.ToString(item["TenKH"]),
+                TenGV = $"{Convert.ToString(item["HoTenDem"])} {Convert.ToString(item["TenGV"])}",
+                CabinName = Convert.ToString(item["CabinName"]),
+                MaDK = Convert.ToString(item["MaDK"]),
+                HoVaTen = Convert.ToString(item["HoVaTen"]),
+                NgaySinh = Convert.ToString(item["NgaySinh"]),
+                SoCMT = Convert.ToString(item["SoCMT"]),
+                TongThoiGian = Convert.ToString(item["ToTalSecond"]),
+                TotalHour = Convert.ToDouble(item["TongGio"]),
+                Result = Convert.ToBoolean(item["KetLuan"])
             }).ToList();
+
             return lst;
         }
 

@@ -173,6 +173,7 @@ namespace DrivingCenter.App.UserControl
             this.txt_MaKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.customersNavigationPage.SuspendLayout();
@@ -1330,7 +1331,8 @@ namespace DrivingCenter.App.UserControl
             this.NgaySinh,
             this.SoCMT_TK,
             this.TongThoiGian,
-            this.TotalSecond_TK});
+            this.TotalSecond_TK,
+            this.gridColumn1});
             this.gridView_TongHop.GridControl = this.grd_ThongKe;
             this.gridView_TongHop.GroupCount = 1;
             this.gridView_TongHop.GroupRowHeight = 32;
@@ -1991,6 +1993,13 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Cabin";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 6;
+            // 
             // Uc_CabinEco
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -2197,5 +2206,6 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem mn_HocVienKoDuDieuKien;
         private DevExpress.XtraGrid.Columns.GridColumn HangGPLX;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
