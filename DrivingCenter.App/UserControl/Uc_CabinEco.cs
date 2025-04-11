@@ -167,24 +167,8 @@ namespace DrivingCenter.App.UserControl
             }
 
             List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(MaDK);
-
             grd_Result.DataSource = lstKetQuaTap;
         }
-
-        //private void Result(string MaDK)
-        //{
-        //    lb_NoiDung.Text = DAOCabin_Eco.Instance.TotalExer(IdHocVien).ToString();
-        //    lb_time.Text = DAOCabin_Eco.Instance.TotalSeconds(IdHocVien);
-
-        //    if (dgvLstHocVien.CurrentRow != null)
-        //    {
-        //        DataGridViewRow row = dgvLstHocVien.Rows[dgvLstHocVien.CurrentRow.Index];
-        //        string ID_HocVien = row.Cells["IdHocVien"].Value.ToString();
-
-        //        string ketluan = DAOCabin_Eco.Instance.CheckDK(ID_HocVien);
-        //        lb_KetQua.Text = ketluan;
-        //    }
-        //}
 
         private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
         {
@@ -207,7 +191,6 @@ namespace DrivingCenter.App.UserControl
                     }
 
                     LoadInfoHocVienById(IdHocVien);
-                    //Result(ID_HocVien);
                     LoadLstHvByKH(IdKhoaHoc);
 
                     for (int i = 0; i < gridview_HocVien.RowCount; i++)
