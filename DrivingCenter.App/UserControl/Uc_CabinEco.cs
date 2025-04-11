@@ -605,6 +605,7 @@ namespace DrivingCenter.App.UserControl
             else if (button.Caption == "Thêm Khóa Học")
             {
                 ThemKhoaHoc();
+                GetAllKhoaHoc();
                 GetLstKhoaHocDDT();
             }
         }

@@ -366,9 +366,6 @@ namespace DrivingCenter.App.UserControl
             var focusedNode = treeList_Category.FocusedNode;
             if (focusedNode != null)
             {
-                KhoaHocId = (int)focusedNode["MonthID"] / 10000;
-                MonthId = (int)focusedNode["MonthID"];
-                //if(treeList_Category.FocusedNode.GetValue("Name"))
                 TenKhoaHoc = treeList_Category.FocusedNode.GetValue("Name");
 
                 object IDKhoaHoc = treeList_Category.FocusedNode.GetValue("KhoaHocID");
@@ -382,6 +379,16 @@ namespace DrivingCenter.App.UserControl
                 }
                 LoadDanhSachHocVien((int)KhoaHocId);
                 xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
+            }
+        }
+
+        private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
+        {
+            var focusedNode = treeList_Category.FocusedNode;
+            if (focusedNode != null)
+            {
+                KhoaHocId = (int)focusedNode["MonthID"] / 10000;
+                MonthId = (int)focusedNode["MonthID"];
             }
         }
     }

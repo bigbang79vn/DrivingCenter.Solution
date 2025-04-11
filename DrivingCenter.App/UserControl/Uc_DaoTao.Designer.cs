@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -132,6 +132,8 @@
             this.TongQuangDuongTichLuy.AppearanceCell.Options.UseForeColor = true;
             this.TongQuangDuongTichLuy.AppearanceCell.Options.UseTextOptions = true;
             this.TongQuangDuongTichLuy.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TongQuangDuongTichLuy.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.TongQuangDuongTichLuy.AppearanceHeader.Options.UseBackColor = true;
             this.TongQuangDuongTichLuy.Caption = "Quãng đường tích lũy (Km)";
             this.TongQuangDuongTichLuy.FieldName = "TongQuangDuongTichLuy";
             this.TongQuangDuongTichLuy.Name = "TongQuangDuongTichLuy";
@@ -143,6 +145,8 @@
             // 
             this.ThoiDiemChayDAT.AppearanceCell.Options.UseTextOptions = true;
             this.ThoiDiemChayDAT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ThoiDiemChayDAT.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.ThoiDiemChayDAT.AppearanceHeader.Options.UseBackColor = true;
             this.ThoiDiemChayDAT.Caption = "Ngày Bắt Đầu DAT";
             this.ThoiDiemChayDAT.FieldName = "ThoiDiemChayDAT";
             this.ThoiDiemChayDAT.Name = "ThoiDiemChayDAT";
@@ -200,19 +204,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement3.Text = "Lịch Học";
-            this.employeesTileBarItem.Elements.Add(tileItemElement3);
+            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement1.Text = "Đào Tạo";
+            this.employeesTileBarItem.Elements.Add(tileItemElement1);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement4.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement4);
+            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement2.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement2);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -355,19 +359,19 @@
             // 
             // gridView_DanhSachHocVien
             // 
-            this.gridView_DanhSachHocVien.Appearance.GroupRow.BackColor = System.Drawing.Color.SteelBlue;
+            this.gridView_DanhSachHocVien.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.gridView_DanhSachHocVien.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridView_DanhSachHocVien.Appearance.GroupRow.ForeColor = System.Drawing.Color.White;
             this.gridView_DanhSachHocVien.Appearance.GroupRow.Options.UseBackColor = true;
             this.gridView_DanhSachHocVien.Appearance.GroupRow.Options.UseFont = true;
             this.gridView_DanhSachHocVien.Appearance.GroupRow.Options.UseForeColor = true;
-            this.gridView_DanhSachHocVien.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_DanhSachHocVien.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridView_DanhSachHocVien.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView_DanhSachHocVien.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridView_DanhSachHocVien.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_DanhSachHocVien.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridView_DanhSachHocVien.Appearance.Row.Options.UseFont = true;
-            this.gridView_DanhSachHocVien.ColumnPanelRowHeight = 27;
+            this.gridView_DanhSachHocVien.ColumnPanelRowHeight = 32;
             this.gridView_DanhSachHocVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.MaDK,
             this.TenKH,
@@ -387,7 +391,7 @@
             this.TongThoiGianTichLuy});
             this.gridView_DanhSachHocVien.GridControl = this.gridCtrl_DanhSachHocVien;
             this.gridView_DanhSachHocVien.GroupCount = 1;
-            this.gridView_DanhSachHocVien.GroupRowHeight = 32;
+            this.gridView_DanhSachHocVien.GroupRowHeight = 27;
             this.gridView_DanhSachHocVien.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "GiaoVienID", null, "(Tổng:  {0} học viên)")});
             this.gridView_DanhSachHocVien.Name = "gridView_DanhSachHocVien";
@@ -407,6 +411,8 @@
             // 
             this.MaDK.AppearanceCell.Options.UseTextOptions = true;
             this.MaDK.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.MaDK.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.MaDK.AppearanceHeader.Options.UseBackColor = true;
             this.MaDK.Caption = "Mã Đăng Ký";
             this.MaDK.FieldName = "MaDK";
             this.MaDK.Name = "MaDK";
@@ -423,8 +429,8 @@
             // 
             // GiaoVienID
             // 
-            this.GiaoVienID.AppearanceCell.Options.UseTextOptions = true;
-            this.GiaoVienID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GiaoVienID.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.GiaoVienID.AppearanceHeader.Options.UseBackColor = true;
             this.GiaoVienID.Caption = "Giáo Viên";
             this.GiaoVienID.ColumnEdit = this.repoGrid_GiaoVien;
             this.GiaoVienID.FieldName = "GiaoVienID";
@@ -459,6 +465,8 @@
             // 
             // HocVien
             // 
+            this.HocVien.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.HocVien.AppearanceHeader.Options.UseBackColor = true;
             this.HocVien.Caption = "Học Viên";
             this.HocVien.FieldName = "HoVaTen";
             this.HocVien.Name = "HocVien";
@@ -470,6 +478,8 @@
             // 
             this.NgaySinh.AppearanceCell.Options.UseTextOptions = true;
             this.NgaySinh.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.NgaySinh.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.NgaySinh.AppearanceHeader.Options.UseBackColor = true;
             this.NgaySinh.Caption = "Ngày Sinh";
             this.NgaySinh.FieldName = "NgaySinh";
             this.NgaySinh.Name = "NgaySinh";
@@ -481,6 +491,8 @@
             // 
             this.GioiTinh.AppearanceCell.Options.UseTextOptions = true;
             this.GioiTinh.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GioiTinh.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.GioiTinh.AppearanceHeader.Options.UseBackColor = true;
             this.GioiTinh.Caption = "Giới Tính";
             this.GioiTinh.FieldName = "GioiTinh";
             this.GioiTinh.Name = "GioiTinh";
@@ -492,6 +504,8 @@
             // 
             this.CCCD.AppearanceCell.Options.UseTextOptions = true;
             this.CCCD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.CCCD.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.CCCD.AppearanceHeader.Options.UseBackColor = true;
             this.CCCD.Caption = "Số CMT/CCCD";
             this.CCCD.FieldName = "CCCD";
             this.CCCD.Name = "CCCD";
@@ -503,6 +517,8 @@
             // 
             this.MaXeTap.AppearanceCell.Options.UseTextOptions = true;
             this.MaXeTap.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.MaXeTap.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.MaXeTap.AppearanceHeader.Options.UseBackColor = true;
             this.MaXeTap.Caption = "Xe Tập Lái";
             this.MaXeTap.ColumnEdit = this.repoGrid_XeTapLai;
             this.MaXeTap.FieldName = "MaXeTap";
@@ -540,6 +556,8 @@
             this.MaXeTapB11.AppearanceCell.Options.UseForeColor = true;
             this.MaXeTapB11.AppearanceCell.Options.UseTextOptions = true;
             this.MaXeTapB11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.MaXeTapB11.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.MaXeTapB11.AppearanceHeader.Options.UseBackColor = true;
             this.MaXeTapB11.Caption = "Xe Số Tự Động";
             this.MaXeTapB11.ColumnEdit = this.repoGrid_XeTapLai;
             this.MaXeTapB11.FieldName = "MaXeTapB11";
@@ -552,6 +570,8 @@
             // 
             this.ThoiDiemKetThucDAT.AppearanceCell.Options.UseTextOptions = true;
             this.ThoiDiemKetThucDAT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ThoiDiemKetThucDAT.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.ThoiDiemKetThucDAT.AppearanceHeader.Options.UseBackColor = true;
             this.ThoiDiemKetThucDAT.Caption = "Ngày Kết Thúc DAT";
             this.ThoiDiemKetThucDAT.FieldName = "ThoiDiemKetThucDAT";
             this.ThoiDiemKetThucDAT.Name = "ThoiDiemKetThucDAT";
@@ -567,6 +587,8 @@
             this.TongThoiGianText.AppearanceCell.Options.UseForeColor = true;
             this.TongThoiGianText.AppearanceCell.Options.UseTextOptions = true;
             this.TongThoiGianText.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TongThoiGianText.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.TongThoiGianText.AppearanceHeader.Options.UseBackColor = true;
             this.TongThoiGianText.Caption = "Thời gian tích lũy (Giờ : Phút)";
             this.TongThoiGianText.FieldName = "TongThoiGianText";
             this.TongThoiGianText.Name = "TongThoiGianText";
@@ -650,6 +672,7 @@
             this.treeList_Category.ParentFieldName = "ParentMonthID";
             this.treeList_Category.Size = new System.Drawing.Size(231, 652);
             this.treeList_Category.TabIndex = 1;
+            this.treeList_Category.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList_Category_FocusedNodeChanged);
             this.treeList_Category.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeList_Category_CustomDrawNodeCell);
             this.treeList_Category.DoubleClick += new System.EventHandler(this.treeList_Category_DoubleClick);
             // 
