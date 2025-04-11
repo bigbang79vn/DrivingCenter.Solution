@@ -1807,7 +1807,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // check_Status
             // 
-            this.check_Status.Location = new System.Drawing.Point(111, 406);
+            this.check_Status.Location = new System.Drawing.Point(99, 406);
             this.check_Status.Name = "check_Status";
             this.check_Status.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.check_Status.Properties.Appearance.ForeColor = System.Drawing.Color.White;
@@ -1822,7 +1822,7 @@ namespace DrivingCenter.App.UserControl
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(53, 408);
+            this.label9.Location = new System.Drawing.Point(41, 408);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 17);
             this.label9.TabIndex = 19;
@@ -1830,15 +1830,19 @@ namespace DrivingCenter.App.UserControl
             // 
             // panel10
             // 
+            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel10.BackColor = System.Drawing.Color.White;
             this.panel10.Controls.Add(this.txt_HangDT);
-            this.panel10.Location = new System.Drawing.Point(111, 356);
+            this.panel10.Location = new System.Drawing.Point(99, 356);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(227, 27);
             this.panel10.TabIndex = 18;
             // 
             // txt_HangDT
             // 
+            this.txt_HangDT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_HangDT.BackColor = System.Drawing.Color.White;
             this.txt_HangDT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_HangDT.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1853,7 +1857,7 @@ namespace DrivingCenter.App.UserControl
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(53, 361);
+            this.label8.Location = new System.Drawing.Point(41, 361);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 17);
             this.label8.TabIndex = 17;
@@ -1861,15 +1865,19 @@ namespace DrivingCenter.App.UserControl
             // 
             // panel9
             // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.txt_MaBCI);
-            this.panel9.Location = new System.Drawing.Point(111, 310);
+            this.panel9.Location = new System.Drawing.Point(99, 310);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(227, 27);
             this.panel9.TabIndex = 16;
             // 
             // txt_MaBCI
             // 
+            this.txt_MaBCI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_MaBCI.BackColor = System.Drawing.Color.White;
             this.txt_MaBCI.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_MaBCI.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1884,7 +1892,7 @@ namespace DrivingCenter.App.UserControl
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(42, 315);
+            this.label7.Location = new System.Drawing.Point(30, 315);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 17);
             this.label7.TabIndex = 15;
@@ -1892,15 +1900,19 @@ namespace DrivingCenter.App.UserControl
             // 
             // panel8
             // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.date_NgayBG);
-            this.panel8.Location = new System.Drawing.Point(111, 264);
+            this.panel8.Location = new System.Drawing.Point(99, 264);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(227, 27);
             this.panel8.TabIndex = 14;
             // 
             // date_NgayBG
             // 
+            this.date_NgayBG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.date_NgayBG.EditValue = null;
             this.date_NgayBG.Location = new System.Drawing.Point(7, 3);
             this.date_NgayBG.Name = "date_NgayBG";
@@ -1919,7 +1931,7 @@ namespace DrivingCenter.App.UserControl
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(34, 269);
+            this.label6.Location = new System.Drawing.Point(22, 269);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 17);
             this.label6.TabIndex = 13;
@@ -1927,15 +1939,19 @@ namespace DrivingCenter.App.UserControl
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.date_NgayKG);
-            this.panel7.Location = new System.Drawing.Point(111, 219);
+            this.panel7.Location = new System.Drawing.Point(99, 219);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(227, 27);
             this.panel7.TabIndex = 12;
             // 
             // date_NgayKG
             // 
+            this.date_NgayKG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.date_NgayKG.EditValue = null;
             this.date_NgayKG.Location = new System.Drawing.Point(7, 3);
             this.date_NgayKG.Name = "date_NgayKG";
@@ -1954,7 +1970,7 @@ namespace DrivingCenter.App.UserControl
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(34, 224);
+            this.label5.Location = new System.Drawing.Point(22, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 17);
             this.label5.TabIndex = 11;
@@ -1962,15 +1978,19 @@ namespace DrivingCenter.App.UserControl
             // 
             // panel6
             // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.txt_TenKhoaHoc);
-            this.panel6.Location = new System.Drawing.Point(111, 174);
+            this.panel6.Location = new System.Drawing.Point(99, 174);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(227, 27);
             this.panel6.TabIndex = 8;
             // 
             // txt_TenKhoaHoc
             // 
+            this.txt_TenKhoaHoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_TenKhoaHoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_TenKhoaHoc.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_TenKhoaHoc.Location = new System.Drawing.Point(7, 5);
@@ -1983,7 +2003,7 @@ namespace DrivingCenter.App.UserControl
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(28, 179);
+            this.label4.Location = new System.Drawing.Point(16, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 7;
@@ -1991,15 +2011,19 @@ namespace DrivingCenter.App.UserControl
             // 
             // panel5
             // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.txt_MaKH);
-            this.panel5.Location = new System.Drawing.Point(111, 131);
+            this.panel5.Location = new System.Drawing.Point(99, 131);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(227, 27);
             this.panel5.TabIndex = 6;
             // 
             // txt_MaKH
             // 
+            this.txt_MaKH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_MaKH.BackColor = System.Drawing.Color.White;
             this.txt_MaKH.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_MaKH.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2014,7 +2038,7 @@ namespace DrivingCenter.App.UserControl
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(33, 136);
+            this.label3.Location = new System.Drawing.Point(21, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 17);
             this.label3.TabIndex = 5;
