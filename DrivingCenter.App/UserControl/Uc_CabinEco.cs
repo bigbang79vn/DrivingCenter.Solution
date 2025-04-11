@@ -557,7 +557,16 @@ namespace DrivingCenter.App.UserControl
 
             List<ThongKe> lst = CabinEco_DAO.Instance.LstThongKe(day);
 
-            grd_ThongKe.DataSource = lst;
+            if (grd_ThongKe.InvokeRequired)
+            {
+                grd_ThongKe.Invoke(new Action(() => {
+                    grd_ThongKe.DataSource = lst;
+                }));
+            }
+            else
+            {
+                grd_ThongKe.DataSource = lst;
+            }
         }
 
         private async Task taskTongHop()
