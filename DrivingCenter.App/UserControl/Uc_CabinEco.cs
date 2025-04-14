@@ -2,7 +2,6 @@
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using DrivingCenter.App.FReport;
 using DrivingCenter.App.Report;
 using ImageMagick;
 using System;
@@ -730,6 +729,11 @@ namespace DrivingCenter.App.UserControl
                 // Hiển thị ContextMenuStrip tại vị trí chuột
                 contextMenuStrip_DTT.Show(grd_HocVien, e.Location);
             }
+        }
+
+        private void Mn_ViewResult_Click(object sender, EventArgs e)
+        {
+            //ThongKe tk = grd_ThongKe.getfo
         }
     }
 }
