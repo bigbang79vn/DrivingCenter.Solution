@@ -733,7 +733,11 @@ namespace DrivingCenter.App.UserControl
 
         private void Mn_ViewResult_Click(object sender, EventArgs e)
         {
-            //ThongKe tk = grd_ThongKe.getfo
+            ThongKe rowData = gridView_TongHop.GetFocusedRow() as ThongKe;
+            var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(rowData.MaDK);
+
+            // Gán DataSource và hiển thị report
+            new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
         }
     }
 }
