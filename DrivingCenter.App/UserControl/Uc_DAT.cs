@@ -566,19 +566,16 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadSumTimeHV(string day)
         {
-            lstSum = DAT_DAO.Instance.TongHopGioHVByDay(day);
-
-            int stt = 0;
-            foreach (TongHopHVByDay item in lstSum)
-            {
-                int time = Convert.ToInt32((item.TongThoiGianLD_Phien.Trim()).Remove(2, 6));
-                if (time >= 4)
+            var stt = 0;
+            var lstSum = DAT_DAO.Instance.TongHopGioHVByDay(day)
+                .Select(item =>
                 {
-                    item.GhiChu = "Quá giờ!";
-                }
-                item.STT = stt + 1;
-                stt++;
-            }
+                    int time = Convert.ToInt32((item.TongThoiGianLD_Phien.Trim()).Remove(2, 6));
+                    item.GhiChu = time >= 5 ? "Quá giờ!" : "";
+                    item.STT = ++stt;
+                    return item;
+                })
+                .ToList();
 
             gridControl_TongHopHvByDay.DataSource = lstSum;
         }
