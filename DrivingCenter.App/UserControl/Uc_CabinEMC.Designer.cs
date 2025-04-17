@@ -570,7 +570,7 @@ namespace DrivingCenter.App.UserControl
             this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(22, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 15);
+            this.label1.Size = new System.Drawing.Size(66, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Khóa Học:";
             // 
@@ -645,6 +645,12 @@ namespace DrivingCenter.App.UserControl
             // 
             // gridView_TongHop
             // 
+            this.gridView_TongHop.Appearance.GroupFooter.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_TongHop.Appearance.GroupFooter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView_TongHop.Appearance.GroupFooter.Options.UseFont = true;
+            this.gridView_TongHop.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gridView_TongHop.Appearance.GroupFooter.Options.UseTextOptions = true;
+            this.gridView_TongHop.Appearance.GroupFooter.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_TongHop.Appearance.GroupPanel.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.gridView_TongHop.Appearance.GroupPanel.Options.UseFont = true;
             this.gridView_TongHop.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
@@ -663,6 +669,8 @@ namespace DrivingCenter.App.UserControl
             this.gridView_TongHop.GridControl = this.grd_ThongKe;
             this.gridView_TongHop.GroupCount = 1;
             this.gridView_TongHop.GroupRowHeight = 32;
+            this.gridView_TongHop.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHour", this.TongThoiGian, "{0:N1} Giờ")});
             this.gridView_TongHop.Name = "gridView_TongHop";
             this.gridView_TongHop.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_TongHop.RowHeight = 32;
@@ -844,7 +852,7 @@ namespace DrivingCenter.App.UserControl
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtp_DayTHCabin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtp_DayTHCabin.Size = new System.Drawing.Size(137, 22);
+            this.dtp_DayTHCabin.Size = new System.Drawing.Size(137, 24);
             this.dtp_DayTHCabin.TabIndex = 0;
             this.dtp_DayTHCabin.EditValueChanged += new System.EventHandler(this.dtp_DayTHCabin_EditValueChanged);
             // 
@@ -1085,7 +1093,7 @@ namespace DrivingCenter.App.UserControl
             "Chưa Đào Tạo",
             "Đang Đào Tạo",
             "Đã Đào Tạo"});
-            this.cbb_TrangThai.Size = new System.Drawing.Size(213, 20);
+            this.cbb_TrangThai.Size = new System.Drawing.Size(213, 22);
             this.cbb_TrangThai.TabIndex = 21;
             // 
             // label9
@@ -1095,7 +1103,7 @@ namespace DrivingCenter.App.UserControl
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(22, 409);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 15);
+            this.label9.Size = new System.Drawing.Size(69, 17);
             this.label9.TabIndex = 19;
             this.label9.Text = "Trạng Thái";
             // 
@@ -1126,7 +1134,7 @@ namespace DrivingCenter.App.UserControl
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(53, 361);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 15);
+            this.label8.Size = new System.Drawing.Size(38, 17);
             this.label8.TabIndex = 17;
             this.label8.Text = "Hạng";
             // 
@@ -1157,7 +1165,7 @@ namespace DrivingCenter.App.UserControl
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(42, 315);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 15);
+            this.label7.Size = new System.Drawing.Size(49, 17);
             this.label7.TabIndex = 15;
             this.label7.Text = "Mã BCI";
             // 
@@ -1182,7 +1190,7 @@ namespace DrivingCenter.App.UserControl
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.date_NgayBG.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgayBG.Size = new System.Drawing.Size(213, 20);
+            this.date_NgayBG.Size = new System.Drawing.Size(213, 22);
             this.date_NgayBG.TabIndex = 10;
             // 
             // label6
@@ -1192,7 +1200,7 @@ namespace DrivingCenter.App.UserControl
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(34, 269);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 15);
+            this.label6.Size = new System.Drawing.Size(57, 17);
             this.label6.TabIndex = 13;
             this.label6.Text = "Ngày KG";
             // 
@@ -1217,7 +1225,7 @@ namespace DrivingCenter.App.UserControl
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.date_NgayKG.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgayKG.Size = new System.Drawing.Size(213, 20);
+            this.date_NgayKG.Size = new System.Drawing.Size(213, 22);
             this.date_NgayKG.TabIndex = 10;
             // 
             // label5
@@ -1227,7 +1235,7 @@ namespace DrivingCenter.App.UserControl
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(34, 224);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 15);
+            this.label5.Size = new System.Drawing.Size(57, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ngày KG";
             // 
@@ -1256,7 +1264,7 @@ namespace DrivingCenter.App.UserControl
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(28, 179);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 15);
+            this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Khóa Học";
             // 
@@ -1287,7 +1295,7 @@ namespace DrivingCenter.App.UserControl
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(33, 136);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.Size = new System.Drawing.Size(58, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Mã Khóa";
             // 

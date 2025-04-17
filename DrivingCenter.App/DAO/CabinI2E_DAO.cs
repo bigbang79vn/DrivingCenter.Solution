@@ -116,7 +116,10 @@ namespace DrivingCenter.App.DAO
 
         public List<ThongKe> LstThongKe(string day)
         {
-            string query = $"EXEC [dbo].[spTongHopByDay] @Day = N'{day}'";
+            string query = $@"SELECT hv.NguoiLXID, gv.HoTenDem, gv.TenGV, hv.TenKH, hv.MaDK, hv.HoVaTen, CONVERT(varchar, hv.NgaySinh, 103) as NgaySinh, hv.SoCMT, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianPhien),0),108) AS TongThoiGian , SUM(TongThoiGianPhien) / 3600 AS TotalSecond 
+                FROM DiemDanhNguoiLx as kqt, NguoiLX as hv, GiaoVien AS gv  
+                WHERE hv.NguoiLXID = kqt.NguoiLxID and hv.GiaoVienID = gv.GiaoVienID and CONVERT(VARCHAR, ThoiDiemBatDau, 103) = '{day}' 
+                GROUP BY hv.NguoiLXID, hv.TenKH, hv.MaDK, hv.NgaySinh, hv.HoVaTen, hv.SoCMT, gv.TenGV, gv.HoTenDem";
 
             DataTable dt = DataProviderCaBinI2E.Instance.ExcuteQuery(query);
 
@@ -126,14 +129,12 @@ namespace DrivingCenter.App.DAO
                 NguoiLxID = Convert.ToInt64(item["NguoiLxID"]),
                 TenGV = item["HoTenDem"].ToString() + " " + item["TenGV"].ToString(),
                 TenKhoaHoc = item["TenKH"].ToString(),
-                CabinName = item["CabinName"].ToString(),
                 MaDK = item["MaDK"].ToString(),
                 HoVaTen = item["HoVaTen"].ToString(),
                 NgaySinh = item["NgaySinh"].ToString(),
                 SoCMT = item["SoCMT"].ToString(),
                 TongThoiGian = item["TongThoiGian"].ToString(),
                 TotalHour = Convert.ToInt64(item["TotalSecond"]),
-                Result = Convert.ToBoolean(item["KetLuan"])
             }).ToList();
 
             return lst;
