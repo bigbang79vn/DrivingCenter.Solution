@@ -116,7 +116,7 @@ namespace DrivingCenter.App.DAO
 
         public List<ThongKe> LstThongKe(string day)
         {
-            string query = $"EXEC [dbo].[spTongHopByDay] @Day = N'{day}";
+            string query = $"EXEC [dbo].[spTongHopByDay] @Day = N'{day}'";
 
             DataTable dt = DataProviderCaBinI2E.Instance.ExcuteQuery(query);
 

@@ -1,8 +1,10 @@
 ﻿using DevExpress.CodeParser;
+using DevExpress.DataProcessing.InMemoryDataProcessor;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
+using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.DTO.LyThuyet;
 using GMap.NET;
 using NPOI.SS.Formula.Functions;
@@ -10,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.DAO
 {
@@ -35,19 +38,17 @@ namespace DrivingCenter.App.DAO
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery("SELECT DISTINCT DATEPART(year, CreateDate) as Nam FROM NguoiLX ORDER BY Nam DESC");
 
             lstYear = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<int>("Nam")).ToList();
-
             return lstYear;
         }
-
         public int LoadSoHocVienByYear(int year)
         {
-            int SoHvByYear = (int)DataProviderDAT.Instance.ExcuteScalar(string.Format("SELECT COUNT(*) FROM NguoiLX where DATEPART(year, CreateDate) = {0}", year));
+            int SoHvByYear = (int)DataProviderDAT.Instance.ExcuteScalar($"SELECT COUNT(*) from NguoiLX WHERE KhoaHocID IN (SELECT KhoaHocID FROM KhoaHoc WHERE YEAR(NgayKG) = {year})");
             return SoHvByYear;
         }
 
         public int LoadSoKhoaHocByYear(int year)
         {
-            int SoKhByYear = (int)DataProviderDAT.Instance.ExcuteScalar(string.Format("SELECT COUNT(*) FROM KhoaHoc where DATEPART(year, NgayKG) = {0}", year));
+            int SoKhByYear = (int)DataProviderDAT.Instance.ExcuteScalar($"SELECT COUNT(*) FROM KhoaHoc where DATEPART(year, NgayKG) = {year}");
             return SoKhByYear;
         }
 
