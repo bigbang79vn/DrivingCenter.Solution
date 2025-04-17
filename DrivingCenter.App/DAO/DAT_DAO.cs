@@ -872,10 +872,8 @@ namespace DrivingCenter.App.DAO
 
         public DataTable GetCategory()
         {
-            DataTable dt = new DataTable();
-            //string query = "SELECT MonthID, ParentMonthID, Name FROM Categories ";
             string query = "EXEC [dbo].[spGetTreeKhoaHoc] @MaCSDT = N'66015'";
-            dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
             return dt;
         }
 
@@ -917,15 +915,14 @@ namespace DrivingCenter.App.DAO
 
         public List<Schedule> GetAllSchedule(int monthId)
         {
-            string query = $"SELECT Id, kh.KhoaHocId, kh.MaKH, kh.TenKH, lh.GiaoVienID, ThoiDiemChayDAT, ThoiDiemKetThucDAT, gv.HoTenDem, gv.TenGV, MaXeTap, MaXeTapB11, TimeInB11, TimeOutB11, HangDT, lh.Status " +
-                $"FROM LichHoc lh, GiaoVien gv, KhoaHoc kh " +
-                $"WHERE gv.GiaoVienID = lh.GiaoVienID and lh.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
+            string query = $@"SELECT DISTINCT kh.KhoaHocId, kh.MaKH, kh.TenKH, HV.GiaoVienID, ThoiDiemChayDAT, ThoiDiemKetThucDAT, gv.HoTenDem, gv.TenGV, MaXeTap, XeB11, kh.HangDaoTao
+                FROM NguoiLX HV, GiaoVien gv, KhoaHoc kh 
+                WHERE gv.GiaoVienID = hv.GiaoVienID and hv.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
+            
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
-
 
             List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule
             {
-                Id = (Guid)item["Id"],
                 KhoaHocId = (int)item["KhoaHocId"],
                 MaKH = item["MaKH"].ToString(),
                 TenKH = item["TenKH"].ToString(),
@@ -934,11 +931,8 @@ namespace DrivingCenter.App.DAO
                 ThoiDiemChayDAT = item["ThoiDiemChayDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemChayDAT"],
                 ThoiDiemKetThucDAT = item["ThoiDiemKetThucDAT"] == DBNull.Value ? (DateTime?)null : (DateTime)item["ThoiDiemKetThucDAT"],
                 MaXeTap = item["MaXeTap"] == DBNull.Value ? "" : item["MaXeTap"].ToString(),
-                MaXeTapB11 = item["MaXeTapB11"] == DBNull.Value ? "" : item["MaXeTapB11"].ToString(),
-                TimeInB11 = item["TimeInB11"] == DBNull.Value ? (DateTime?)null : (DateTime)item["TimeInB11"],
-                TimeOutB11 = item["TimeOutB11"] == DBNull.Value ? (DateTime?)null : (DateTime)item["TimeOutB11"],
-                //Status = (bool)item["Status"],
-                HangDT = item["HangDT"].ToString()
+                MaXeTapB11 = item["XeB11"] == DBNull.Value ? "" : item["XeB11"].ToString(),
+                HangDT = item["HangDaoTao"].ToString()
             }).ToList();
 
             return list;
@@ -950,13 +944,10 @@ namespace DrivingCenter.App.DAO
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
 
-        public void UpdateLichDAT(int khoahocid, string timestart, string timeend)
+        public void UpdatePhanCongDAT(int khoahocid, string timestart, string timeend)
         {
             string query = $"UPDATE NguoiLX SET ThoiDiemChayDAT = '{timestart}', ThoiDiemKetThucDAT = '{timeend}' WHERE KhoaHocID = {khoahocid}";
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
-
-            string query2 = $"UPDATE LichHoc SET ThoiDiemChayDAT = '{timestart}', ThoiDiemKetThucDAT = '{timeend}' WHERE KhoaHocID = {khoahocid}";
-            DataProviderDAT.Instance.ExcuteNoneQuery(query2);
         }
 
         #endregion
@@ -968,18 +959,6 @@ namespace DrivingCenter.App.DAO
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
 
-        public void InsertLichHoc()
-        {
-            string query = "INSERT INTO [dbo].[LichHoc] ( [KhoaHocId] ,[MaKH] ,[TenKH] ,[GiaoVienID] ,[MaXeTap] ,[MaXeTapB11] ,[HangDT]) " +
-                "SELECT distinct KH.KhoaHocID, KH.MaKH, KH.TenKH, HV.GiaoVienID, HV.MaXeTap, HV.XeB11, hv.HangDaoTao " +
-                "FROM NguoiLX HV, KhoaHoc KH " +
-                "WHERE hv.KhoaHocID = kh.KhoaHocID  and kh.KhoaHocID IN (" +
-                "   SELECT KhoaHocID " +
-                "   FROM KhoaHoc A " +
-                "   WHERE NOT EXISTS (" +
-                "       SELECT 1 FROM LichHoc B WHERE A.KhoaHocID = B.KhoaHocId))";
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
-        }
         #endregion
 
         #region Kết Quả học lý thuyết

@@ -58,7 +58,7 @@ namespace DrivingCenter.App
             Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
             string timeStart = dateEdit_Start.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
             string timeEnd = dateEdit_End.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-            DAT_DAO.Instance.UpdateLichDAT(rowData.KhoaHocId, timeStart, timeEnd);
+            DAT_DAO.Instance.UpdatePhanCongDAT(rowData.KhoaHocId, timeStart, timeEnd);
 
             LoadLichHoc(_monthId);
         }

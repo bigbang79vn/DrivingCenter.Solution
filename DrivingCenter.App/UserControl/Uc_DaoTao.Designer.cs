@@ -76,7 +76,6 @@
             this.contextMenuStrip_KhoaHoc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuItem_ThemKhoaHoc = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_BoTriXeSTD = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_PhanCong = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_CheckLyThuyet = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_XuatBaoCao = new System.Windows.Forms.ToolStripMenuItem();
@@ -697,13 +696,12 @@
             this.contextMenuStrip_KhoaHoc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_ThemKhoaHoc,
             this.MenuItem_BoTriXeSTD,
-            this.MenuItem_PhanCong,
             this.MenuItem_CheckLyThuyet,
             this.toolStripSeparator1,
             this.MenuItem_XuatBaoCao,
             this.mn_Baocaokhoahoc});
             this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 142);
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 120);
             // 
             // MenuItem_ThemKhoaHoc
             // 
@@ -719,14 +717,6 @@
             this.MenuItem_BoTriXeSTD.Size = new System.Drawing.Size(190, 22);
             this.MenuItem_BoTriXeSTD.Text = "Bố trí xe STĐ";
             this.MenuItem_BoTriXeSTD.Click += new System.EventHandler(this.MenuItem_BoTriXeSTD_Click);
-            // 
-            // MenuItem_PhanCong
-            // 
-            this.MenuItem_PhanCong.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_PhanCong.Image")));
-            this.MenuItem_PhanCong.Name = "MenuItem_PhanCong";
-            this.MenuItem_PhanCong.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_PhanCong.Text = "Cập nhật phân công";
-            this.MenuItem_PhanCong.Click += new System.EventHandler(this.MenuItem_PhanCong_Click);
             // 
             // MenuItem_CheckLyThuyet
             // 
@@ -1040,7 +1030,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_GiaoVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn HangDT;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_PhanCong;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_CheckLyThuyet;
         private System.Windows.Forms.Panel panel_Right;
         private System.Windows.Forms.Panel PanelLeft;

@@ -55,11 +55,6 @@ namespace DrivingCenter.App.UserControl
 
         #region Lịch học
 
-        private void InsertLichHoc()
-        {
-            DAT_DAO.Instance.InsertLichHoc();
-        }
-
         private void LoadCategory()
         {
             DataTable dt = DAT_DAO.Instance.GetCategory();
@@ -324,7 +319,6 @@ namespace DrivingCenter.App.UserControl
         }
         private void MenuItem_PhanCong_Click(object sender, EventArgs e)
         {
-            InsertLichHoc();
         }
         #endregion
         private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
