@@ -36,8 +36,8 @@ namespace DrivingCenter.App
             this.acc_Home = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEco = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEMC = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_DAT = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_TongHopXe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_XeTapLai = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -52,6 +52,7 @@ namespace DrivingCenter.App
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
+            this.barToggleSwitchItem = new DevExpress.XtraBars.BarToggleSwitchItem();
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -129,14 +130,6 @@ namespace DrivingCenter.App
             this.acc_CabinEMC.Text = "Cabin EMC";
             this.acc_CabinEMC.Click += new System.EventHandler(this.acc_CabinEMC_Click);
             // 
-            // acc_LichHoc
-            // 
-            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
-            this.acc_LichHoc.Name = "acc_LichHoc";
-            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_LichHoc.Text = "Đào Tạo";
-            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
-            // 
             // acc_GPLX
             // 
             this.acc_GPLX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_GPLX.ImageOptions.SvgImage")));
@@ -144,6 +137,14 @@ namespace DrivingCenter.App
             this.acc_GPLX.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acc_GPLX.Text = "G.P.L.X";
             this.acc_GPLX.Click += new System.EventHandler(this.acc_GPLX_Click);
+            // 
+            // acc_LichHoc
+            // 
+            this.acc_LichHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_LichHoc.ImageOptions.SvgImage")));
+            this.acc_LichHoc.Name = "acc_LichHoc";
+            this.acc_LichHoc.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_LichHoc.Text = "Đào Tạo";
+            this.acc_LichHoc.Click += new System.EventHandler(this.acc_LichHoc_Click);
             // 
             // acc_DAT
             // 
@@ -202,7 +203,8 @@ namespace DrivingCenter.App
             this.barButtonItem_Refresh,
             this.barSubItem1,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barToggleSwitchItem});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
@@ -210,6 +212,7 @@ namespace DrivingCenter.App
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.itemNav);
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.barToggleSwitchItem);
             // 
             // itemNav
             // 
@@ -267,8 +270,18 @@ namespace DrivingCenter.App
             this.barButtonItem_Refresh,
             this.barSubItem1,
             this.barButtonItem1,
-            this.barButtonItem2});
-            this.fluentFormDefaultManager1.MaxItemId = 10;
+            this.barButtonItem2,
+            this.barToggleSwitchItem});
+            this.fluentFormDefaultManager1.MaxItemId = 13;
+            // 
+            // barToggleSwitchItem
+            // 
+            this.barToggleSwitchItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barToggleSwitchItem.Caption = "Dark Mode";
+            this.barToggleSwitchItem.Id = 12;
+            this.barToggleSwitchItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barToggleSwitchItem1.ImageOptions.SvgImage")));
+            this.barToggleSwitchItem.Name = "barToggleSwitchItem";
+            this.barToggleSwitchItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem_ItemClick);
             // 
             // frmMain
             // 
@@ -318,6 +331,7 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XeTapLai;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_LichHoc;
+        private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem;
     }
 }
 

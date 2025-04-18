@@ -9,7 +9,6 @@ namespace DrivingCenter.App.DTO.DAT
 {
     public class PhienHoc
     {
-        public int STT { get; set; }
         public string HoTenGV { get; set; }
         public Int64 NguoiLxID { get; set; }
         public string HoTenHV { get; set; }
@@ -36,7 +35,6 @@ namespace DrivingCenter.App.DTO.DAT
         {
 
         }
-
         public PhienHoc(DataRow row)
         {
             this.HoTenGV = row["HoTenGV"].ToString();

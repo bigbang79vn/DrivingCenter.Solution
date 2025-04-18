@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.Utils.Frames;
+using DevExpress.XtraBars;
 using DrivingCenter.App.UserControl;
 using System;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace DrivingCenter.App
             InitializeComponent();
         }
 
+        bool isDarkMode = false;
         private void frmMain_Load(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -198,6 +200,20 @@ namespace DrivingCenter.App
             f.Show();
         }
 
-        
+        private void barToggleSwitchItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            isDarkMode = !isDarkMode;
+
+            if (isDarkMode)
+            {
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2019 Black");
+                barToggleSwitchItem.Caption = "Light Mode";
+            }
+            else
+            {
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Basic");
+                barToggleSwitchItem.Caption = "Dark Mode";
+            }
+        }
     }
 }

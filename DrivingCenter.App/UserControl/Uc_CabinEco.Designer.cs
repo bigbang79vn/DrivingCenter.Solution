@@ -116,7 +116,7 @@ namespace DrivingCenter.App.UserControl
             this.xtraTab_KetQua = new DevExpress.XtraTab.XtraTabPage();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.grd_Result = new DevExpress.XtraGrid.GridControl();
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView_Result = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.DiemDanhNguoiLxID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NameCabin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BaiHocCaBinID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,6 +128,8 @@ namespace DrivingCenter.App.UserControl
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ThongKe = new System.Windows.Forms.TableLayoutPanel();
             this.grd_ThongKe = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip_TongHop = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Mn_ViewResult = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_TongHop = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.NguoiLxID_TK = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTenGV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -178,8 +180,6 @@ namespace DrivingCenter.App.UserControl
             this.txt_MaKH = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.contextMenuStrip_TongHop = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Mn_ViewResult = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
@@ -205,11 +205,12 @@ namespace DrivingCenter.App.UserControl
             this.xtraTabControl1.SuspendLayout();
             this.xtraTab_KetQua.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Result)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkDanhMucBaiTap)).BeginInit();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_ThongKe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ThongKe)).BeginInit();
+            this.contextMenuStrip_TongHop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_TongHop)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_DayTHCabin.Properties.CalendarTimeProperties)).BeginInit();
@@ -232,7 +233,6 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayKG.Properties)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.contextMenuStrip_TongHop.SuspendLayout();
             this.SuspendLayout();
             // 
             // Result
@@ -398,7 +398,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage1
             // 
-            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.tblLayout_Result);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
@@ -1129,7 +1128,7 @@ namespace DrivingCenter.App.UserControl
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grd_Result.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grd_Result.Location = new System.Drawing.Point(5, 5);
-            this.grd_Result.MainView = this.gridView;
+            this.grd_Result.MainView = this.gridView_Result;
             this.grd_Result.Margin = new System.Windows.Forms.Padding(0);
             this.grd_Result.Name = "grd_Result";
             this.grd_Result.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -1137,12 +1136,12 @@ namespace DrivingCenter.App.UserControl
             this.grd_Result.Size = new System.Drawing.Size(939, 251);
             this.grd_Result.TabIndex = 1;
             this.grd_Result.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView});
+            this.gridView_Result});
             // 
-            // gridView
+            // gridView_Result
             // 
-            this.gridView.ColumnPanelRowHeight = 28;
-            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_Result.ColumnPanelRowHeight = 28;
+            this.gridView_Result.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.DiemDanhNguoiLxID,
             this.NameCabin,
             this.BaiHocCaBinID,
@@ -1150,14 +1149,14 @@ namespace DrivingCenter.App.UserControl
             this.ThoiDiemBatDau,
             this.ThoiDiemKetThuc,
             this.TongThoiGianPhien});
-            this.gridView.GridControl = this.grd_Result;
-            this.gridView.Name = "gridView";
-            this.gridView.OptionsCustomization.AllowSort = false;
-            this.gridView.OptionsSelection.CheckBoxSelectorColumnWidth = 50;
-            this.gridView.OptionsSelection.MultiSelect = true;
-            this.gridView.OptionsView.ShowGroupPanel = false;
-            this.gridView.RowHeight = 28;
-            this.gridView.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.None;
+            this.gridView_Result.GridControl = this.grd_Result;
+            this.gridView_Result.Name = "gridView_Result";
+            this.gridView_Result.OptionsCustomization.AllowSort = false;
+            this.gridView_Result.OptionsSelection.CheckBoxSelectorColumnWidth = 50;
+            this.gridView_Result.OptionsSelection.MultiSelect = true;
+            this.gridView_Result.OptionsView.ShowGroupPanel = false;
+            this.gridView_Result.RowHeight = 28;
+            this.gridView_Result.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.None;
             // 
             // DiemDanhNguoiLxID
             // 
@@ -1247,9 +1246,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // ThoiDiemBatDau
             // 
-            this.ThoiDiemBatDau.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ThoiDiemBatDau.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.ThoiDiemBatDau.AppearanceCell.Options.UseBackColor = true;
             this.ThoiDiemBatDau.AppearanceCell.Options.UseFont = true;
             this.ThoiDiemBatDau.AppearanceCell.Options.UseTextOptions = true;
             this.ThoiDiemBatDau.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -1269,9 +1266,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // ThoiDiemKetThuc
             // 
-            this.ThoiDiemKetThuc.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ThoiDiemKetThuc.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.ThoiDiemKetThuc.AppearanceCell.Options.UseBackColor = true;
             this.ThoiDiemKetThuc.AppearanceCell.Options.UseFont = true;
             this.ThoiDiemKetThuc.AppearanceCell.Options.UseTextOptions = true;
             this.ThoiDiemKetThuc.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -1311,7 +1306,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage2
             // 
-            this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.tblLayout_ThongKe);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(1500, 690);
@@ -1343,6 +1337,21 @@ namespace DrivingCenter.App.UserControl
             this.grd_ThongKe.TabIndex = 0;
             this.grd_ThongKe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_TongHop});
+            // 
+            // contextMenuStrip_TongHop
+            // 
+            this.contextMenuStrip_TongHop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Mn_ViewResult});
+            this.contextMenuStrip_TongHop.Name = "contextMenuStrip_TongHop";
+            this.contextMenuStrip_TongHop.Size = new System.Drawing.Size(144, 26);
+            // 
+            // Mn_ViewResult
+            // 
+            this.Mn_ViewResult.Image = ((System.Drawing.Image)(resources.GetObject("Mn_ViewResult.Image")));
+            this.Mn_ViewResult.Name = "Mn_ViewResult";
+            this.Mn_ViewResult.Size = new System.Drawing.Size(143, 22);
+            this.Mn_ViewResult.Text = "Xem Kết Quả";
+            this.Mn_ViewResult.Click += new System.EventHandler(this.Mn_ViewResult_Click);
             // 
             // gridView_TongHop
             // 
@@ -1783,7 +1792,7 @@ namespace DrivingCenter.App.UserControl
             this.HangDaoTao.FieldName = "HangDaoTao";
             this.HangDaoTao.Name = "HangDaoTao";
             this.HangDaoTao.Visible = true;
-            this.HangDaoTao.VisibleIndex = 4;
+            this.HangDaoTao.VisibleIndex = 1;
             // 
             // panel4
             // 
@@ -2086,21 +2095,6 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
             // 
-            // contextMenuStrip_TongHop
-            // 
-            this.contextMenuStrip_TongHop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Mn_ViewResult});
-            this.contextMenuStrip_TongHop.Name = "contextMenuStrip_TongHop";
-            this.contextMenuStrip_TongHop.Size = new System.Drawing.Size(144, 26);
-            // 
-            // Mn_ViewResult
-            // 
-            this.Mn_ViewResult.Image = ((System.Drawing.Image)(resources.GetObject("Mn_ViewResult.Image")));
-            this.Mn_ViewResult.Name = "Mn_ViewResult";
-            this.Mn_ViewResult.Size = new System.Drawing.Size(143, 22);
-            this.Mn_ViewResult.Text = "Xem Kết Quả";
-            this.Mn_ViewResult.Click += new System.EventHandler(this.Mn_ViewResult_Click);
-            // 
             // Uc_CabinEco
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -2140,11 +2134,12 @@ namespace DrivingCenter.App.UserControl
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTab_KetQua.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Result)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkDanhMucBaiTap)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_ThongKe.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ThongKe)).EndInit();
+            this.contextMenuStrip_TongHop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView_TongHop)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -2174,7 +2169,6 @@ namespace DrivingCenter.App.UserControl
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.contextMenuStrip_TongHop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2263,7 +2257,7 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTab_KetQua;
         private DevExpress.XtraGrid.GridControl grd_Result;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_Result;
         private DevExpress.XtraGrid.Columns.GridColumn DiemDanhNguoiLxID;
         private DevExpress.XtraGrid.Columns.GridColumn NameCabin;
         private DevExpress.XtraGrid.Columns.GridColumn BaiHocCaBinID;

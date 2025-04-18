@@ -9,7 +9,6 @@ namespace DrivingCenter.App.DTO.DAT
 {
     public class TongHopGV
     {
-        public int STT { get; set; }
         public string MaGv { get; set; }
         public string SHoTenGV { get; set; }
         public string NgayTap { get; set; }

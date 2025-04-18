@@ -452,6 +452,34 @@
         IC8+DQogIDwvZz4NCjwvc3ZnPgs=
 </value>
   </data>
+  <data name="barToggleSwitchItem1.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAN4EAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iUGFydGx5Q2xvdWR5RGF5IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6
+        bmV3IDAgMCAzMiAzMiI+DQogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+CgkuQmx1ZXtmaWxsOiMxMTc3
+        RDc7fQoJLlllbGxvd3tmaWxsOiNGRkIxMTU7fQo8L3N0eWxlPg0KICA8cmVjdCB4PSIyMy40IiB5PSI5
+        LjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjIiIGNsYXNzPSJZZWxsb3ciIHRyYW5zZm9ybT0ibWF0cml4KDAu
+        NzA3MSwgLTAuNzA3MSwgMC43MDcxLCAwLjcwNzEsIC0wLjA1NjMwNTE4LCAyMS4wMzU1KSIgLz4NCiAg
+        PHJlY3QgeD0iMTEuNiIgeT0iOC42IiB3aWR0aD0iMiIgaGVpZ2h0PSI0IiBjbGFzcz0iWWVsbG93IiB0
+        cmFuc2Zvcm09Im1hdHJpeCgwLjcwNzEsIC0wLjcwNzEsIDAuNzA3MSwgMC43MDcxLCAtMy44MzQ1LCAx
+        Mi4wMTQpIiAvPg0KICA8cmVjdCB4PSIxOCIgeT0iNiIgd2lkdGg9IjIiIGhlaWdodD0iNCIgY2xhc3M9
+        IlllbGxvdyIgLz4NCiAgPHJlY3QgeD0iMjYiIHk9IjE2IiB3aWR0aD0iNCIgaGVpZ2h0PSIyIiBjbGFz
+        cz0iWWVsbG93IiAvPg0KICA8cmVjdCB4PSIyNC40IiB5PSIyMS40IiB3aWR0aD0iMiIgaGVpZ2h0PSI0
+        IiBjbGFzcz0iWWVsbG93IiB0cmFuc2Zvcm09Im1hdHJpeCgwLjcwNzEsIC0wLjcwNzEsIDAuNzA3MSwg
+        MC43MDcxLCAtOS4wNzcxLCAyNC44MTQpIiAvPg0KICA8cGF0aCBkPSJNMTksMTJjLTEuNCwwLTIuNyww
+        LjYtMy42LDEuNmMwLjgsMC43LDEuNSwxLjUsMS45LDIuNWMyLjYsMC4yLDQuNywyLjMsNC43LDQuOWMx
+        LjItMC45LDItMi4zLDItNCAgQzI0LDE0LjIsMjEuOCwxMiwxOSwxMnoiIGNsYXNzPSJZZWxsb3ciIC8+
+        DQogIDxwYXRoIGQ9Ik0yMCwyMmgtMC4yYzAuMS0wLjMsMC4yLTAuNiwwLjItMWMwLTEuNy0xLjMtMy0z
+        LTNjLTAuNCwwLTAuNywwLjEtMS4xLDAuMkMxNS41LDE1LjgsMTMuNSwxNCwxMSwxNCAgYy0yLjQsMC00
+        LjQsMS43LTQuOSw0SDZjLTIuMiwwLTQsMS44LTQsNHMxLjgsNCw0LDRoNGg3aDNjMS4xLDAsMi0wLjks
+        Mi0yUzIxLjEsMjIsMjAsMjJ6IiBjbGFzcz0iQmx1ZSIgLz4NCjwvc3ZnPgs=
+</value>
+  </data>
   <metadata name="fluentFormDefaultManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

@@ -177,11 +177,11 @@ namespace DrivingCenter.App.UserControl
             {
                 if (XtraMessageBox.Show("Are you sure delete this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    int[] selectedRowHandles = gridView.GetSelectedRows();
+                    int[] selectedRowHandles = gridView_Result.GetSelectedRows();
 
                     foreach (int rowHandle in selectedRowHandles)
                     {
-                        var selectedRow = gridView.GetRow(rowHandle) as Result;
+                        var selectedRow = gridView_Result.GetRow(rowHandle) as Result;
                         if (selectedRow != null)
                         {
                             int ID = (int)selectedRow.DiemDanhNguoiLxID;
@@ -212,11 +212,11 @@ namespace DrivingCenter.App.UserControl
             }
             else if (button.Caption == "Save")
             {
-                int[] selectedRowHandles = gridView.GetSelectedRows();
+                int[] selectedRowHandles = gridView_Result.GetSelectedRows();
 
                 foreach (int rowhandle in selectedRowHandles)
                 {
-                    var selecthandle = gridView.GetRow(rowhandle) as Result;
+                    var selecthandle = gridView_Result.GetRow(rowhandle) as Result;
                     int IDBaiTap = selecthandle.BaiHocCaBinID;
                     Int64 DiemdanhnguoiLxID = selecthandle.DiemDanhNguoiLxID;
 

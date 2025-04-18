@@ -227,7 +227,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.gridControl_TongHopHvByDay = new DevExpress.XtraGrid.GridControl();
             this.gridView_TongHopHvByDay = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -247,7 +246,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.gridControl_TongHopGioDay = new DevExpress.XtraGrid.GridControl();
             this.gridView_TongHopGioDay = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -268,7 +266,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.gridControl_PhienHocLoi = new DevExpress.XtraGrid.GridControl();
             this.gridView_PhienHocLoi = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -446,7 +443,7 @@
             this.gridColumn30.FieldName = "LogOut";
             this.gridColumn30.Name = "gridColumn30";
             this.gridColumn30.Visible = true;
-            this.gridColumn30.VisibleIndex = 10;
+            this.gridColumn30.VisibleIndex = 9;
             this.gridColumn30.Width = 64;
             // 
             // repositoryItemCheckEdit4
@@ -1766,8 +1763,6 @@
             // 
             // HoTenHV_PH
             // 
-            this.HoTenHV_PH.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.HoTenHV_PH.AppearanceCell.Options.UseBackColor = true;
             this.HoTenHV_PH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.HoTenHV_PH.AppearanceHeader.Options.UseBackColor = true;
             this.HoTenHV_PH.Caption = "Học Viên";
@@ -1818,8 +1813,6 @@
             // 
             // Time_LogIn_PH
             // 
-            this.Time_LogIn_PH.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Time_LogIn_PH.AppearanceCell.Options.UseBackColor = true;
             this.Time_LogIn_PH.AppearanceCell.Options.UseTextOptions = true;
             this.Time_LogIn_PH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Time_LogIn_PH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -1835,8 +1828,6 @@
             // 
             // Time_LogOut_PH
             // 
-            this.Time_LogOut_PH.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Time_LogOut_PH.AppearanceCell.Options.UseBackColor = true;
             this.Time_LogOut_PH.AppearanceCell.Options.UseTextOptions = true;
             this.Time_LogOut_PH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Time_LogOut_PH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -1903,8 +1894,6 @@
             // 
             // TyLe_PH
             // 
-            this.TyLe_PH.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.TyLe_PH.AppearanceCell.Options.UseBackColor = true;
             this.TyLe_PH.AppearanceCell.Options.UseTextOptions = true;
             this.TyLe_PH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.TyLe_PH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -2065,7 +2054,6 @@
             this.gridView_TongHopHvByDay.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView_TongHopHvByDay.ColumnPanelRowHeight = 35;
             this.gridView_TongHopHvByDay.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
             this.gridColumn2,
             this.gridColumn4,
             this.gridColumn5,
@@ -2087,29 +2075,15 @@
             gridFormatRule2.Rule = formatConditionRuleValue2;
             this.gridView_TongHopHvByDay.FormatRules.Add(gridFormatRule2);
             this.gridView_TongHopHvByDay.GridControl = this.gridControl_TongHopHvByDay;
+            this.gridView_TongHopHvByDay.IndicatorWidth = 45;
             this.gridView_TongHopHvByDay.Name = "gridView_TongHopHvByDay";
             this.gridView_TongHopHvByDay.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_TongHopHvByDay.OptionsBehavior.ReadOnly = true;
             this.gridView_TongHopHvByDay.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView_TongHopHvByDay.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm...";
             this.gridView_TongHopHvByDay.OptionsFind.SearchInPreview = true;
-            this.gridView_TongHopHvByDay.OptionsView.ShowIndicator = false;
             this.gridView_TongHopHvByDay.RowHeight = 28;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn1.Caption = "STT";
-            this.gridColumn1.FieldName = "STT";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 59;
+            this.gridView_TongHopHvByDay.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_TongHopHvByDay_CustomDrawRowIndicator);
             // 
             // gridColumn2
             // 
@@ -2121,7 +2095,7 @@
             this.gridColumn2.FieldName = "MaDkHv";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 196;
             // 
             // gridColumn4
@@ -2134,7 +2108,7 @@
             this.gridColumn4.FieldName = "HoVaTen";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 1;
             this.gridColumn4.Width = 208;
             // 
             // gridColumn5
@@ -2147,20 +2121,18 @@
             this.gridColumn5.FieldName = "TenKHs";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 2;
             this.gridColumn5.Width = 113;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn3.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.gridColumn3.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn3.Caption = "Giáo Viên";
             this.gridColumn3.FieldName = "HoTenGVs";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.VisibleIndex = 3;
             this.gridColumn3.Width = 194;
             // 
             // gridColumn6
@@ -2173,7 +2145,7 @@
             this.gridColumn6.FieldName = "BienSoXe";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.VisibleIndex = 4;
             this.gridColumn6.Width = 119;
             // 
             // gridColumn7
@@ -2186,7 +2158,7 @@
             this.gridColumn7.FieldName = "TongQuangDuongLD_Phien";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 5;
             this.gridColumn7.Width = 166;
             // 
             // gridColumn8
@@ -2199,7 +2171,7 @@
             this.gridColumn8.FieldName = "TongThoiGianLD_Phien";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 6;
             this.gridColumn8.Width = 201;
             // 
             // gridColumn9
@@ -2216,7 +2188,7 @@
             this.gridColumn9.FieldName = "GhiChu";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 7;
             this.gridColumn9.Width = 230;
             // 
             // repositoryItemCheckEdit2
@@ -2369,7 +2341,6 @@
             this.gridView_TongHopGioDay.Appearance.Row.Options.UseFont = true;
             this.gridView_TongHopGioDay.ColumnPanelRowHeight = 35;
             this.gridView_TongHopGioDay.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn10,
             this.gridColumn11,
             this.gridColumn12,
             this.gridColumn13,
@@ -2392,29 +2363,15 @@
             gridFormatRule3.Rule = formatConditionRuleValue3;
             this.gridView_TongHopGioDay.FormatRules.Add(gridFormatRule3);
             this.gridView_TongHopGioDay.GridControl = this.gridControl_TongHopGioDay;
+            this.gridView_TongHopGioDay.IndicatorWidth = 45;
             this.gridView_TongHopGioDay.Name = "gridView_TongHopGioDay";
             this.gridView_TongHopGioDay.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_TongHopGioDay.OptionsBehavior.ReadOnly = true;
             this.gridView_TongHopGioDay.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView_TongHopGioDay.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm...";
             this.gridView_TongHopGioDay.OptionsFind.SearchInPreview = true;
-            this.gridView_TongHopGioDay.OptionsView.ShowIndicator = false;
             this.gridView_TongHopGioDay.RowHeight = 28;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn10.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.gridColumn10.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.gridColumn10.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn10.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn10.Caption = "STT";
-            this.gridColumn10.FieldName = "STT";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 0;
-            this.gridColumn10.Width = 56;
+            this.gridView_TongHopGioDay.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_TongHopGioDay_CustomDrawRowIndicator);
             // 
             // gridColumn11
             // 
@@ -2426,13 +2383,11 @@
             this.gridColumn11.FieldName = "MaGv";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.VisibleIndex = 0;
             this.gridColumn11.Width = 122;
             // 
             // gridColumn12
             // 
-            this.gridColumn12.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn12.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn12.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -2441,7 +2396,7 @@
             this.gridColumn12.FieldName = "SHoTenGV";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 2;
+            this.gridColumn12.VisibleIndex = 1;
             this.gridColumn12.Width = 229;
             // 
             // gridColumn13
@@ -2454,7 +2409,7 @@
             this.gridColumn13.FieldName = "NgayTap";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 3;
+            this.gridColumn13.VisibleIndex = 2;
             this.gridColumn13.Width = 160;
             // 
             // gridColumn19
@@ -2467,7 +2422,7 @@
             this.gridColumn19.FieldName = "TenKhoaHoc";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 4;
+            this.gridColumn19.VisibleIndex = 3;
             this.gridColumn19.Width = 149;
             // 
             // gridColumn15
@@ -2480,7 +2435,7 @@
             this.gridColumn15.FieldName = "BienSoXeGv";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 5;
+            this.gridColumn15.VisibleIndex = 4;
             this.gridColumn15.Width = 134;
             // 
             // gridColumn14
@@ -2493,7 +2448,7 @@
             this.gridColumn14.FieldName = "SoHocVienByDay";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 6;
+            this.gridColumn14.VisibleIndex = 5;
             this.gridColumn14.Width = 100;
             // 
             // gridColumn16
@@ -2506,13 +2461,11 @@
             this.gridColumn16.FieldName = "SQuangDuong";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 7;
+            this.gridColumn16.VisibleIndex = 6;
             this.gridColumn16.Width = 137;
             // 
             // gridColumn17
             // 
-            this.gridColumn17.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn17.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn17.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn17.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn17.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -2521,7 +2474,7 @@
             this.gridColumn17.FieldName = "SThoiGian";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 8;
+            this.gridColumn17.VisibleIndex = 7;
             this.gridColumn17.Width = 165;
             // 
             // gridColumn18
@@ -2538,7 +2491,7 @@
             this.gridColumn18.FieldName = "SGhiChu";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 9;
+            this.gridColumn18.VisibleIndex = 8;
             this.gridColumn18.Width = 234;
             // 
             // repositoryItemCheckEdit3
@@ -2684,7 +2637,6 @@
             this.gridView_PhienHocLoi.Appearance.Row.Options.UseFont = true;
             this.gridView_PhienHocLoi.ColumnPanelRowHeight = 35;
             this.gridView_PhienHocLoi.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn20,
             this.gridColumn21,
             this.gridColumn22,
             this.gridColumn23,
@@ -2713,28 +2665,14 @@
             gridFormatRule4.Rule = formatConditionRuleValue4;
             this.gridView_PhienHocLoi.FormatRules.Add(gridFormatRule4);
             this.gridView_PhienHocLoi.GridControl = this.gridControl_PhienHocLoi;
+            this.gridView_PhienHocLoi.IndicatorWidth = 45;
             this.gridView_PhienHocLoi.Name = "gridView_PhienHocLoi";
             this.gridView_PhienHocLoi.OptionsBehavior.ReadOnly = true;
             this.gridView_PhienHocLoi.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView_PhienHocLoi.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm...";
             this.gridView_PhienHocLoi.OptionsFind.SearchInPreview = true;
-            this.gridView_PhienHocLoi.OptionsView.ShowIndicator = false;
             this.gridView_PhienHocLoi.RowHeight = 28;
-            // 
-            // gridColumn20
-            // 
-            this.gridColumn20.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn20.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn20.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.gridColumn20.AppearanceHeader.ForeColor = System.Drawing.Color.White;
-            this.gridColumn20.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn20.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn20.Caption = "STT";
-            this.gridColumn20.FieldName = "STT";
-            this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 0;
-            this.gridColumn20.Width = 41;
+            this.gridView_PhienHocLoi.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_PhienHocLoi_CustomDrawRowIndicator);
             // 
             // gridColumn21
             // 
@@ -2744,20 +2682,18 @@
             this.gridColumn21.FieldName = "HoTenGV";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 1;
+            this.gridColumn21.VisibleIndex = 0;
             this.gridColumn21.Width = 141;
             // 
             // gridColumn22
             // 
-            this.gridColumn22.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn22.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn22.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.gridColumn22.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn22.Caption = "Học Viên";
             this.gridColumn22.FieldName = "HoTenHV";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 2;
+            this.gridColumn22.VisibleIndex = 1;
             this.gridColumn22.Width = 175;
             // 
             // gridColumn23
@@ -2770,7 +2706,7 @@
             this.gridColumn23.FieldName = "TenKH";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 3;
+            this.gridColumn23.VisibleIndex = 2;
             this.gridColumn23.Width = 68;
             // 
             // gridColumn24
@@ -2783,7 +2719,7 @@
             this.gridColumn24.FieldName = "MaPhien";
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 4;
+            this.gridColumn24.VisibleIndex = 3;
             this.gridColumn24.Width = 230;
             // 
             // gridColumn25
@@ -2796,13 +2732,11 @@
             this.gridColumn25.FieldName = "BienSoXe";
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 5;
+            this.gridColumn25.VisibleIndex = 4;
             this.gridColumn25.Width = 64;
             // 
             // gridColumn26
             // 
-            this.gridColumn26.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn26.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn26.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn26.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn26.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -2813,13 +2747,11 @@
             this.gridColumn26.FieldName = "Time_LogIn";
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 6;
+            this.gridColumn26.VisibleIndex = 5;
             this.gridColumn26.Width = 115;
             // 
             // gridColumn27
             // 
-            this.gridColumn27.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn27.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn27.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn27.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn27.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -2830,7 +2762,7 @@
             this.gridColumn27.FieldName = "Time_LogOut";
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 7;
+            this.gridColumn27.VisibleIndex = 6;
             this.gridColumn27.Width = 113;
             // 
             // gridColumn28
@@ -2843,7 +2775,7 @@
             this.gridColumn28.FieldName = "QuangDuongPhien";
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 8;
+            this.gridColumn28.VisibleIndex = 7;
             this.gridColumn28.Width = 70;
             // 
             // gridColumn29
@@ -2856,7 +2788,7 @@
             this.gridColumn29.FieldName = "ThoiGianPhien";
             this.gridColumn29.Name = "gridColumn29";
             this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 9;
+            this.gridColumn29.VisibleIndex = 8;
             // 
             // gridColumn31
             // 
@@ -2869,7 +2801,7 @@
             this.gridColumn31.FieldName = "SendTongCuc";
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Visible = true;
-            this.gridColumn31.VisibleIndex = 11;
+            this.gridColumn31.VisibleIndex = 10;
             this.gridColumn31.Width = 59;
             // 
             // gridColumn32
@@ -2882,12 +2814,10 @@
             this.gridColumn32.FieldName = "NhanDien";
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.Visible = true;
-            this.gridColumn32.VisibleIndex = 12;
+            this.gridColumn32.VisibleIndex = 11;
             // 
             // gridColumn33
             // 
-            this.gridColumn33.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridColumn33.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn33.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn33.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn33.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -2896,7 +2826,7 @@
             this.gridColumn33.FieldName = "TyLe";
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.Visible = true;
-            this.gridColumn33.VisibleIndex = 13;
+            this.gridColumn33.VisibleIndex = 12;
             this.gridColumn33.Width = 68;
             // 
             // gridColumn34
@@ -2913,7 +2843,7 @@
             this.gridColumn34.FieldName = "Error";
             this.gridColumn34.Name = "gridColumn34";
             this.gridColumn34.Visible = true;
-            this.gridColumn34.VisibleIndex = 14;
+            this.gridColumn34.VisibleIndex = 13;
             this.gridColumn34.Width = 128;
             // 
             // xtraTab_KetQua
@@ -3024,8 +2954,6 @@
             // 
             // STT_V
             // 
-            this.STT_V.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.STT_V.AppearanceCell.Options.UseBackColor = true;
             this.STT_V.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.STT_V.AppearanceHeader.Options.UseBackColor = true;
             this.STT_V.Caption = "STT";
@@ -3037,10 +2965,8 @@
             // 
             // View_MaDK
             // 
-            this.View_MaDK.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.View_MaDK.AppearanceCell.BackColor2 = System.Drawing.Color.White;
             this.View_MaDK.AppearanceCell.BorderColor = System.Drawing.Color.White;
-            this.View_MaDK.AppearanceCell.Options.UseBackColor = true;
             this.View_MaDK.AppearanceCell.Options.UseBorderColor = true;
             this.View_MaDK.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_MaDK.AppearanceHeader.Options.UseBackColor = true;
@@ -3064,11 +2990,13 @@
             // 
             // View_HoTenGV
             // 
+            this.View_HoTenGV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.View_HoTenGV.AppearanceHeader.Options.UseBackColor = true;
             this.View_HoTenGV.Caption = "Giáo Viên";
             this.View_HoTenGV.FieldName = "View_HoTenGV";
             this.View_HoTenGV.Name = "View_HoTenGV";
             this.View_HoTenGV.Visible = true;
-            this.View_HoTenGV.VisibleIndex = 3;
+            this.View_HoTenGV.VisibleIndex = 2;
             // 
             // View_HangDaoTao
             // 
@@ -3083,9 +3011,6 @@
             // 
             // View_TongQuangDuong
             // 
-            this.View_TongQuangDuong.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(214)))), ((int)(((byte)(228)))));
-            this.View_TongQuangDuong.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(243)))));
-            this.View_TongQuangDuong.AppearanceCell.Options.UseBackColor = true;
             this.View_TongQuangDuong.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongQuangDuong.AppearanceHeader.Options.UseBackColor = true;
             this.View_TongQuangDuong.Caption = "Quãng đường (Km)";
@@ -3106,9 +3031,6 @@
             // 
             // View_TongThoiGian
             // 
-            this.View_TongThoiGian.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(243)))));
-            this.View_TongThoiGian.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(249)))));
-            this.View_TongThoiGian.AppearanceCell.Options.UseBackColor = true;
             this.View_TongThoiGian.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongThoiGian.AppearanceHeader.Options.UseBackColor = true;
             this.View_TongThoiGian.Caption = "Thời gian (Giờ: Phút)";
@@ -3129,9 +3051,6 @@
             // 
             // View_TongQuangDuong_B11
             // 
-            this.View_TongQuangDuong_B11.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(249)))));
-            this.View_TongQuangDuong_B11.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(249)))));
-            this.View_TongQuangDuong_B11.AppearanceCell.Options.UseBackColor = true;
             this.View_TongQuangDuong_B11.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongQuangDuong_B11.AppearanceHeader.Options.UseBackColor = true;
             this.View_TongQuangDuong_B11.Caption = "Quãng đường STĐ";
@@ -3143,8 +3062,6 @@
             // 
             // View_TongThoiGian_B11
             // 
-            this.View_TongThoiGian_B11.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(249)))));
-            this.View_TongThoiGian_B11.AppearanceCell.Options.UseBackColor = true;
             this.View_TongThoiGian_B11.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongThoiGian_B11.AppearanceHeader.Options.UseBackColor = true;
             this.View_TongThoiGian_B11.Caption = "Thời gian STĐ";
@@ -3156,9 +3073,6 @@
             // 
             // View_TongQuangDuong_PhienDem
             // 
-            this.View_TongQuangDuong_PhienDem.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(214)))), ((int)(((byte)(228)))));
-            this.View_TongQuangDuong_PhienDem.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(249)))));
-            this.View_TongQuangDuong_PhienDem.AppearanceCell.Options.UseBackColor = true;
             this.View_TongQuangDuong_PhienDem.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongQuangDuong_PhienDem.AppearanceHeader.Options.UseBackColor = true;
             this.View_TongQuangDuong_PhienDem.Caption = "Quãng đường BĐ";
@@ -3170,9 +3084,7 @@
             // 
             // View_TongThoiGian_PhienDem
             // 
-            this.View_TongThoiGian_PhienDem.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(249)))));
             this.View_TongThoiGian_PhienDem.AppearanceCell.BackColor2 = System.Drawing.Color.White;
-            this.View_TongThoiGian_PhienDem.AppearanceCell.Options.UseBackColor = true;
             this.View_TongThoiGian_PhienDem.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.View_TongThoiGian_PhienDem.AppearanceHeader.Options.UseBackColor = true;
             this.View_TongThoiGian_PhienDem.Caption = "Thời gian BĐ";
@@ -3428,9 +3340,6 @@
             // 
             // MaKH_grd
             // 
-            this.MaKH_grd.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(216)))), ((int)(((byte)(232)))));
-            this.MaKH_grd.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.MaKH_grd.AppearanceCell.Options.UseBackColor = true;
             this.MaKH_grd.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.MaKH_grd.AppearanceHeader.Options.UseBackColor = true;
             this.MaKH_grd.Caption = "Mã KH";
@@ -3442,9 +3351,6 @@
             // 
             // TenKH_grd
             // 
-            this.TenKH_grd.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.TenKH_grd.AppearanceCell.BackColor2 = System.Drawing.Color.White;
-            this.TenKH_grd.AppearanceCell.Options.UseBackColor = true;
             this.TenKH_grd.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.TenKH_grd.AppearanceHeader.Options.UseBackColor = true;
             this.TenKH_grd.Caption = "Khóa Học";
@@ -3456,11 +3362,15 @@
             // 
             // HangDaoTao_grd
             // 
+            this.HangDaoTao_grd.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.HangDaoTao_grd.AppearanceHeader.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HangDaoTao_grd.AppearanceHeader.Options.UseBackColor = true;
+            this.HangDaoTao_grd.AppearanceHeader.Options.UseFont = true;
             this.HangDaoTao_grd.Caption = "Hạng";
             this.HangDaoTao_grd.FieldName = "HangDaoTao";
             this.HangDaoTao_grd.Name = "HangDaoTao_grd";
             this.HangDaoTao_grd.Visible = true;
-            this.HangDaoTao_grd.VisibleIndex = 2;
+            this.HangDaoTao_grd.VisibleIndex = 1;
             // 
             // btn_LoadKhoaHoc
             // 
@@ -4125,7 +4035,6 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraGrid.GridControl gridControl_TongHopHvByDay;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_TongHopHvByDay;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
@@ -4142,7 +4051,6 @@
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.GridControl gridControl_TongHopGioDay;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_TongHopGioDay;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
@@ -4160,7 +4068,6 @@
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraGrid.GridControl gridControl_PhienHocLoi;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_PhienHocLoi;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;

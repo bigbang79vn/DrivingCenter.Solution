@@ -40,6 +40,8 @@ namespace DrivingCenter.App.UserControl
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Result = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,12 +73,10 @@ namespace DrivingCenter.App.UserControl
             this.SoCMT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ToTalSecond = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenGV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbb_KhoaHocEMC = new DevExpress.XtraEditors.LookUpEdit();
-            this.LayoutPanel = new System.Windows.Forms.Panel();
+            this.LayoutPanel = new DevExpress.XtraEditors.PanelControl();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ThongKe = new System.Windows.Forms.TableLayoutPanel();
             this.grd_ThongKe = new DevExpress.XtraGrid.GridControl();
@@ -137,10 +137,9 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.grd_HocVien)).BeginInit();
             this.contextMenuStrip_DTT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_HocVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocEMC.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LayoutPanel)).BeginInit();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_ThongKe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ThongKe)).BeginInit();
@@ -171,8 +170,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // Result
             // 
-            this.Result.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.Result.AppearanceCell.Options.UseFont = true;
             this.Result.AppearanceCell.Options.UseTextOptions = true;
             this.Result.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Result.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -337,9 +334,7 @@ namespace DrivingCenter.App.UserControl
             this.grd_HocVien.Size = new System.Drawing.Size(499, 623);
             this.grd_HocVien.TabIndex = 1;
             this.grd_HocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridview_HocVien,
-            this.gridView1,
-            this.gridView2});
+            this.gridview_HocVien});
             // 
             // contextMenuStrip_DTT
             // 
@@ -436,8 +431,16 @@ namespace DrivingCenter.App.UserControl
             // 
             // gridview_HocVien
             // 
+            this.gridview_HocVien.Appearance.GroupPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridview_HocVien.Appearance.GroupPanel.Options.UseFont = true;
             this.gridview_HocVien.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridview_HocVien.Appearance.GroupRow.Options.UseFont = true;
+            this.gridview_HocVien.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridview_HocVien.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridview_HocVien.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridview_HocVien.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridview_HocVien.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridview_HocVien.Appearance.Row.Options.UseFont = true;
             this.gridview_HocVien.ColumnPanelRowHeight = 32;
             this.gridview_HocVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.NguoiLxID,
@@ -448,18 +451,30 @@ namespace DrivingCenter.App.UserControl
             this.TenGV});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Column = this.Result;
-            gridFormatRule1.Name = "Format0";
+            gridFormatRule1.Name = "FormatTrue";
             formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Navy;
             formatConditionRuleValue1.Appearance.Options.UseFont = true;
             formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
             formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
             formatConditionRuleValue1.Value1 = "True";
             gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.Result;
+            gridFormatRule2.Name = "FormatFalse";
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue2.Appearance.Options.UseFont = true;
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "False";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
             this.gridview_HocVien.FormatRules.Add(gridFormatRule1);
+            this.gridview_HocVien.FormatRules.Add(gridFormatRule2);
             this.gridview_HocVien.GridControl = this.grd_HocVien;
             this.gridview_HocVien.GroupCount = 1;
             this.gridview_HocVien.GroupRowHeight = 32;
+            this.gridview_HocVien.IndicatorWidth = 45;
             this.gridview_HocVien.Name = "gridview_HocVien";
             this.gridview_HocVien.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridview_HocVien.OptionsBehavior.AutoExpandAllGroups = true;
@@ -469,6 +484,7 @@ namespace DrivingCenter.App.UserControl
             this.gridview_HocVien.RowHeight = 32;
             this.gridview_HocVien.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TenGV, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridview_HocVien.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridview_HocVien_CustomDrawRowIndicator);
             this.gridview_HocVien.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridview_HocVien_FocusedRowChanged);
             // 
             // NguoiLxID
@@ -479,8 +495,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // HoTenHV
             // 
-            this.HoTenHV.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HoTenHV.AppearanceCell.Options.UseFont = true;
             this.HoTenHV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.HoTenHV.AppearanceHeader.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HoTenHV.AppearanceHeader.Options.UseBackColor = true;
@@ -496,8 +510,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // SoCMT
             // 
-            this.SoCMT.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.SoCMT.AppearanceCell.Options.UseFont = true;
             this.SoCMT.AppearanceCell.Options.UseTextOptions = true;
             this.SoCMT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.SoCMT.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -513,8 +525,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // ToTalSecond
             // 
-            this.ToTalSecond.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.ToTalSecond.AppearanceCell.Options.UseFont = true;
             this.ToTalSecond.AppearanceCell.Options.UseTextOptions = true;
             this.ToTalSecond.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ToTalSecond.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
@@ -532,8 +542,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // TenGV
             // 
-            this.TenGV.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenGV.AppearanceCell.Options.UseFont = true;
             this.TenGV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.TenGV.AppearanceHeader.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TenGV.AppearanceHeader.Options.UseBackColor = true;
@@ -543,16 +551,6 @@ namespace DrivingCenter.App.UserControl
             this.TenGV.Name = "TenGV";
             this.TenGV.Visible = true;
             this.TenGV.VisibleIndex = 2;
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.grd_HocVien;
-            this.gridView1.Name = "gridView1";
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.grd_HocVien;
-            this.gridView2.Name = "gridView2";
             // 
             // panel1
             // 
@@ -949,29 +947,29 @@ namespace DrivingCenter.App.UserControl
             this.NgayBeGiang,
             this.HangDaoTao,
             this.LoaiDaoTao});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.LoaiDaoTao;
-            gridFormatRule2.Name = "format_DangDaoTao";
-            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue2.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Question;
-            formatConditionRuleValue2.Appearance.Options.UseFont = true;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "Đang Đào Tạo";
-            formatConditionRuleValue2.Value2 = "";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
             gridFormatRule3.ApplyToRow = true;
             gridFormatRule3.Column = this.LoaiDaoTao;
-            gridFormatRule3.Name = "format_ChuaDaoTao";
+            gridFormatRule3.Name = "format_DangDaoTao";
             formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue3.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
+            formatConditionRuleValue3.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Question;
             formatConditionRuleValue3.Appearance.Options.UseFont = true;
             formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
             formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = "Chưa Đào Tạo";
+            formatConditionRuleValue3.Value1 = "Đang Đào Tạo";
+            formatConditionRuleValue3.Value2 = "";
             gridFormatRule3.Rule = formatConditionRuleValue3;
-            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule2);
+            gridFormatRule4.ApplyToRow = true;
+            gridFormatRule4.Column = this.LoaiDaoTao;
+            gridFormatRule4.Name = "format_ChuaDaoTao";
+            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue4.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
+            formatConditionRuleValue4.Appearance.Options.UseFont = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = "Chưa Đào Tạo";
+            gridFormatRule4.Rule = formatConditionRuleValue4;
             this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule3);
+            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule4);
             this.gridView_QLKhoaHoc.GridControl = this.grd_QuanLyKhoaHoc;
             this.gridView_QLKhoaHoc.GroupCount = 1;
             this.gridView_QLKhoaHoc.GroupRowHeight = 32;
@@ -1356,11 +1354,10 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.grd_HocVien)).EndInit();
             this.contextMenuStrip_DTT.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridview_HocVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocEMC.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LayoutPanel)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_ThongKe.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ThongKe)).EndInit();
@@ -1471,7 +1468,6 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraEditors.ComboBoxEdit cbb_TrangThai;
         private System.Windows.Forms.Label label9;
         private DevExpress.XtraGrid.Columns.GridColumn TotalSecond_TK;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.GridControl grd_HocVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridview_HocVien;
         private DevExpress.XtraGrid.Columns.GridColumn NguoiLxID;
@@ -1480,12 +1476,11 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraGrid.Columns.GridColumn ToTalSecond;
         private DevExpress.XtraGrid.Columns.GridColumn Result;
         private DevExpress.XtraGrid.Columns.GridColumn TenGV;
-        private System.Windows.Forms.Panel LayoutPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.LookUpEdit cbb_KhoaHocEMC;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private System.Windows.Forms.TableLayoutPanel tblLayout_Result;
+        private DevExpress.XtraEditors.PanelControl LayoutPanel;
     }
 }

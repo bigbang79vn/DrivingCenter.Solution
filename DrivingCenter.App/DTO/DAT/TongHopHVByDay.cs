@@ -9,7 +9,6 @@ namespace DrivingCenter.App.DTO.DAT
 {
     public class TongHopHVByDay
     {
-        public int STT { get; set; }
         public string MaDkHv { get; set; }
         public string HoTenGVs { get; set; }
         public string HoVaTen { get; set; }
@@ -18,12 +17,6 @@ namespace DrivingCenter.App.DTO.DAT
         public double TongQuangDuongLD_Phien { get; set; }
         public string TongThoiGianLD_Phien { get; set; }
         public string GhiChu { get; set; }
-
-        public TongHopHVByDay(int stt)
-        {
-            this.STT = stt;
-        }
-
         public TongHopHVByDay(DataRow row)
         {
             this.MaDkHv = row["MaDK"].ToString();

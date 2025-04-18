@@ -30,9 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReplication));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            this.Result = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.btn_InserResult = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,10 +74,10 @@
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grid_HocVien = new DevExpress.XtraGrid.GridControl();
             this.gridView_HocVien = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaoVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HocVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CCCD = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TotalSecond = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbb_KhoaHoc = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -110,17 +112,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridColumn14
+            // Result
             // 
-            this.gridColumn14.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn14.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn14.Caption = "Result";
-            this.gridColumn14.ColumnEdit = this.repositoryItemCheckEdit1;
-            this.gridColumn14.FieldName = "Result";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 3;
-            this.gridColumn14.Width = 64;
+            this.Result.AppearanceCell.Options.UseTextOptions = true;
+            this.Result.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Result.Caption = "Result";
+            this.Result.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.Result.FieldName = "Result";
+            this.Result.Name = "Result";
+            this.Result.Visible = true;
+            this.Result.VisibleIndex = 3;
+            this.Result.Width = 64;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -225,7 +227,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(182, 674);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 15);
+            this.label6.Size = new System.Drawing.Size(110, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "Thời Gian Bắt Đầu";
             // 
@@ -237,7 +239,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(20, 674);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 15);
+            this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 13;
             this.label5.Text = "Cabin";
             // 
@@ -248,7 +250,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(20, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 15);
+            this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 14;
             this.label4.Text = "Khóa Học";
             // 
@@ -395,9 +397,7 @@
             // 
             // ThoiDiemBatDau
             // 
-            this.ThoiDiemBatDau.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ThoiDiemBatDau.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.ThoiDiemBatDau.AppearanceCell.Options.UseBackColor = true;
             this.ThoiDiemBatDau.AppearanceCell.Options.UseFont = true;
             this.ThoiDiemBatDau.AppearanceCell.Options.UseTextOptions = true;
             this.ThoiDiemBatDau.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -417,9 +417,7 @@
             // 
             // ThoiDiemKetThuc
             // 
-            this.ThoiDiemKetThuc.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ThoiDiemKetThuc.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.ThoiDiemKetThuc.AppearanceCell.Options.UseBackColor = true;
             this.ThoiDiemKetThuc.AppearanceCell.Options.UseFont = true;
             this.ThoiDiemKetThuc.AppearanceCell.Options.UseTextOptions = true;
             this.ThoiDiemKetThuc.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -624,22 +622,33 @@
             this.gridView_HocVien.Appearance.Row.Options.UseFont = true;
             this.gridView_HocVien.ColumnPanelRowHeight = 28;
             this.gridView_HocVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn10,
-            this.gridColumn11,
-            this.gridColumn12,
-            this.gridColumn13,
-            this.gridColumn14});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.gridColumn14;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue2.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
-            formatConditionRuleValue2.Appearance.Options.UseFont = true;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "True";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gridView_HocVien.FormatRules.Add(gridFormatRule2);
+            this.GiaoVien,
+            this.HocVien,
+            this.CCCD,
+            this.TotalSecond,
+            this.Result});
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Column = this.Result;
+            gridFormatRule3.Name = "FormatTrue";
+            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Navy;
+            formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = "True";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            gridFormatRule4.ApplyToRow = true;
+            gridFormatRule4.Column = this.Result;
+            gridFormatRule4.Name = "FormatFalse";
+            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue4.Appearance.Options.UseFont = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = "False";
+            gridFormatRule4.Rule = formatConditionRuleValue4;
+            this.gridView_HocVien.FormatRules.Add(gridFormatRule3);
+            this.gridView_HocVien.FormatRules.Add(gridFormatRule4);
             this.gridView_HocVien.GridControl = this.grid_HocVien;
             this.gridView_HocVien.GroupCount = 1;
             this.gridView_HocVien.GroupRowHeight = 28;
@@ -648,48 +657,48 @@
             this.gridView_HocVien.OptionsBehavior.ReadOnly = true;
             this.gridView_HocVien.RowHeight = 28;
             this.gridView_HocVien.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn10, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.GiaoVien, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView_HocVien.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView_HocVien_FocusedRowChanged);
             // 
-            // gridColumn10
+            // GiaoVien
             // 
-            this.gridColumn10.Caption = "Giáo Viên";
-            this.gridColumn10.FieldName = "TenGV";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 0;
-            this.gridColumn10.Width = 129;
+            this.GiaoVien.Caption = "Giáo Viên";
+            this.GiaoVien.FieldName = "TenGV";
+            this.GiaoVien.Name = "GiaoVien";
+            this.GiaoVien.Visible = true;
+            this.GiaoVien.VisibleIndex = 0;
+            this.GiaoVien.Width = 129;
             // 
-            // gridColumn11
+            // HocVien
             // 
-            this.gridColumn11.Caption = "Học Viên";
-            this.gridColumn11.FieldName = "HoTenHV";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 0;
-            this.gridColumn11.Width = 192;
+            this.HocVien.Caption = "Học Viên";
+            this.HocVien.FieldName = "HoTenHV";
+            this.HocVien.Name = "HocVien";
+            this.HocVien.Visible = true;
+            this.HocVien.VisibleIndex = 0;
+            this.HocVien.Width = 192;
             // 
-            // gridColumn12
+            // CCCD
             // 
-            this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn12.Caption = "CMND/CCCD";
-            this.gridColumn12.FieldName = "SoCMT";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 1;
-            this.gridColumn12.Width = 125;
+            this.CCCD.AppearanceCell.Options.UseTextOptions = true;
+            this.CCCD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.CCCD.Caption = "CMND/CCCD";
+            this.CCCD.FieldName = "SoCMT";
+            this.CCCD.Name = "CCCD";
+            this.CCCD.Visible = true;
+            this.CCCD.VisibleIndex = 1;
+            this.CCCD.Width = 125;
             // 
-            // gridColumn13
+            // TotalSecond
             // 
-            this.gridColumn13.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn13.Caption = "Tổng Giờ";
-            this.gridColumn13.FieldName = "ToTalSecond";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 2;
-            this.gridColumn13.Width = 115;
+            this.TotalSecond.AppearanceCell.Options.UseTextOptions = true;
+            this.TotalSecond.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TotalSecond.Caption = "Tổng Giờ";
+            this.TotalSecond.FieldName = "ToTalSecond";
+            this.TotalSecond.Name = "TotalSecond";
+            this.TotalSecond.Visible = true;
+            this.TotalSecond.VisibleIndex = 2;
+            this.TotalSecond.Width = 115;
             // 
             // contextMenuStrip1
             // 
@@ -717,7 +726,7 @@
             this.cbb_KhoaHoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbb_KhoaHoc.Properties.PopupView = this.searchLookUpEdit1View;
-            this.cbb_KhoaHoc.Size = new System.Drawing.Size(206, 20);
+            this.cbb_KhoaHoc.Size = new System.Drawing.Size(206, 22);
             this.cbb_KhoaHoc.TabIndex = 18;
             this.cbb_KhoaHoc.EditValueChanged += new System.EventHandler(this.cbb_KhoaHoc_EditValueChanged);
             // 
@@ -816,7 +825,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GhiChu", "Ghi Chú", 65, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.cbb_Cabin.Properties.DropDownRows = 4;
             this.cbb_Cabin.Properties.NullText = "Chọn Cabin";
-            this.cbb_Cabin.Size = new System.Drawing.Size(100, 22);
+            this.cbb_Cabin.Size = new System.Drawing.Size(130, 24);
             this.cbb_Cabin.TabIndex = 20;
             // 
             // dt_TimeStart
@@ -836,7 +845,7 @@
             this.dt_TimeStart.Properties.EditFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
             this.dt_TimeStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dt_TimeStart.Properties.MaskSettings.Set("mask", "HH:mm:ss dd-MM-yyyy");
-            this.dt_TimeStart.Size = new System.Drawing.Size(186, 22);
+            this.dt_TimeStart.Size = new System.Drawing.Size(186, 24);
             this.dt_TimeStart.TabIndex = 21;
             // 
             // fReplication
@@ -929,11 +938,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.GridControl grid_HocVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_HocVien;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn GiaoVien;
+        private DevExpress.XtraGrid.Columns.GridColumn HocVien;
+        private DevExpress.XtraGrid.Columns.GridColumn CCCD;
+        private DevExpress.XtraGrid.Columns.GridColumn TotalSecond;
+        private DevExpress.XtraGrid.Columns.GridColumn Result;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.GridControl grid_Result;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_ResultByHv;

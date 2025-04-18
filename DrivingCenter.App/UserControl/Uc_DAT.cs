@@ -97,7 +97,6 @@ namespace DrivingCenter.App.UserControl
             for (int i = 0; i < sortedList.Count; i++)
             {
                 var item = sortedList[i];
-                item.STT = i + 1; // Gán STT
 
                 var sb = new StringBuilder(); // Dùng StringBuilder để tích lũy lỗi
 
@@ -579,13 +578,11 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadSumTimeHV(string day)
         {
-            var stt = 0;
-            var lstSum = DAT_DAO.Instance.TongHopGioHVByDay(day)
+            lstSum = DAT_DAO.Instance.TongHopGioHVByDay(day)
                 .Select(item =>
                 {
                     int time = Convert.ToInt32((item.TongThoiGianLD_Phien.Trim()).Remove(2, 6));
                     item.GhiChu = time >= 5 ? "Quá giờ!" : "";
-                    item.STT = ++stt;
                     return item;
                 })
                 .ToList();
@@ -605,6 +602,15 @@ namespace DrivingCenter.App.UserControl
             string day = dtp_TongHopHvByDay.DateTime.ToString("dd/MM/yyyy");
             LoadSumTimeHV(day);
             lb_Tonghophocvienbyday.Text = "TỔNG HỢP GIỜ HỌC CỦA HỌC VIÊN NGÀY " + day;
+        }
+
+        private void gridView_TongHopHvByDay_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
+                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
+            }
         }
 
         #endregion Tổng hợp giờ Học Viên trong ngày
@@ -644,7 +650,6 @@ namespace DrivingCenter.App.UserControl
             lstSumGV = DAT_DAO.Instance.TongHopGVsByDay(day, flag);
             List<string> lstMaGVs = DAT_DAO.Instance.GetLstGvTrue(day);
 
-            int stt = 0;
             foreach (TongHopGV item in lstSumGV)
             {
                 if (lstMaGVs.Contains(item.MaGv) == false)
@@ -668,13 +673,19 @@ namespace DrivingCenter.App.UserControl
                 {
                     item.SGhiChu += "Dạy 1 Hv/Ngày! ";
                 }
-                item.STT = stt + 1;
-                stt++;
             }
 
             gridControl_TongHopGioDay.DataSource = lstSumGV;
         }
 
+        private void gridView_TongHopGioDay_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
+                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
+            }
+        }
         #endregion Tổng hợp giờ dạy của giáo viên trong ngày
 
         #region Phiên học lỗi trong ngày
@@ -712,6 +723,14 @@ namespace DrivingCenter.App.UserControl
             gridControl_PhienHocLoi.DataSource = lstPhLoi;
         }
 
+        private void gridView_PhienHocLoi_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
+                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
+            }
+        }
         #endregion Phiên học lỗi trong ngày
 
         #region Phiên học sai

@@ -531,6 +531,7 @@
     <Compile Include="Helper\ExportExcelWithName.cs" />
     <Compile Include="Helper\ImageExtension.cs" />
     <Compile Include="Helper\ImageToByteArray.cs" />
+    <Compile Include="Helper\NumberOrder.cs" />
     <Compile Include="Helper\StringUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
