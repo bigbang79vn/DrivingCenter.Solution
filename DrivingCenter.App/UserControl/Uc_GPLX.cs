@@ -120,25 +120,35 @@ namespace DrivingCenter.App.UserControl
                     txtFilePath.Text = openFileDialog.FileName;
 
                     //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
-                    using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                    try
                     {
-                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                        using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                             {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
-                            });
-                            tableCollection = result.Tables;
-                            cb_SheetDataImport.Items.Clear();
+                                DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                                {
+                                    ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                                });
+                                tableCollection = result.Tables;
+                                cb_SheetDataImport.Items.Clear();
 
-                            XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
+                                XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
 
-                            foreach (DataTable table in tableCollection)
-                            {
-                                cb_SheetDataImport.Items.Add(table.TableName);
+                                foreach (DataTable table in tableCollection)
+                                {
+                                    cb_SheetDataImport.Items.Add(table.TableName);
+                                }
                             }
                         }
+                    }
+                    catch (IOException ex)
+                    {
+                        XtraMessageBox.Show($"Không thể đọc file vì đang được sử dụng bởi ứng dụng khác.\nVui lòng đóng file Excel và thử lại.\n\nChi tiết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -388,24 +398,34 @@ namespace DrivingCenter.App.UserControl
                     txtFilePathExcel.Text = openFileDialog.FileName;
 
                     //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
-                    using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                    try
                     {
-                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                        using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                             {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
-                            });
-                            tableCollection = result.Tables;
-                            cbb_SheetDataUpdate.Items.Clear();
+                                DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                                {
+                                    ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                                });
+                                tableCollection = result.Tables;
+                                cbb_SheetDataUpdate.Items.Clear();
 
-                            foreach (DataTable table in tableCollection)
-                            {
-                                cbb_SheetDataUpdate.Items.Add(table.TableName);
+                                foreach (DataTable table in tableCollection)
+                                {
+                                    cbb_SheetDataUpdate.Items.Add(table.TableName);
+                                }
+                                XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
                             }
-                            XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
                         }
+                    }
+                    catch (IOException ex)
+                    {
+                        XtraMessageBox.Show($"Không thể đọc file vì đang được sử dụng bởi ứng dụng khác.\nVui lòng đóng file Excel và thử lại.\n\nChi tiết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -466,7 +486,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLxCCTN.NgayQDTNEng = dtp_NgayQD.DateTime.ToString("dd MMMM yyyy");
                         nguoiLxCCTN.SoChungChi = "Q01/" + dt.Rows[i]["Lop"].ToString() + "/" + dt.Rows[i]["SoCNTN"].ToString();
                         nguoiLxCCTN.SoCCTN = dt.Rows[i]["SoCNTN"].ToString() + " " + "LX" + dt.Rows[i]["Lop"].ToString();
-                        nguoiLxCCTN.SoVaoSo = "Q02/" + dt.Rows[i]["SoCNTN"].ToString();
+                        nguoiLxCCTN.SoVaoSo = nguoiLxCCTN.HangGPLX == "B11" ? "Q01/" + dt.Rows[i]["SoCNTN"].ToString() : "Q02/" + dt.Rows[i]["SoCNTN"].ToString();
                         nguoiLxCCTN.HoVaTenEng = StringUtil.RemoveVietnameseSign(dt.Rows[i]["Ho"].ToString() + " " + dt.Rows[i]["Ten"].ToString());
                         if (nguoiLxCCTN.GioiTinh == "Nam")
                             nguoiLxCCTN.GioiTinhEng = "Mr";

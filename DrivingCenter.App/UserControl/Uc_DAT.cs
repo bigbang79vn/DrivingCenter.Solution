@@ -478,6 +478,11 @@ namespace DrivingCenter.App.UserControl
             ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
             exportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
         }
+
+        private void mn_TongHopTienDo_Click(object sender, EventArgs e)
+        {
+
+        }
         private void mn_ThongKeKetQuaHocVien_Click(object sender, EventArgs e)
         {
             DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 0);

@@ -444,6 +444,7 @@
     <Compile Include="DTO\DAT\NguoiLxInDAT.cs" />
     <Compile Include="DTO\DAT\PhienHoc.cs" />
     <Compile Include="DTO\DAT\SoPhien.cs" />
+    <Compile Include="DTO\DAT\TienDo.cs" />
     <Compile Include="DTO\DAT\TongHopGV.cs" />
     <Compile Include="DTO\DAT\TongHopHVByDay.cs" />
     <Compile Include="DTO\DAT\TongHopHVByKhoa.cs" />

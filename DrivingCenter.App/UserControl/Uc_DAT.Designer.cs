@@ -355,6 +355,7 @@
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.mn_TongHopTienDo = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -3310,6 +3311,7 @@
             // 
             this.menu_TongHop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mn_ContextThongKeGiaoVien,
+            this.mn_TongHopTienDo,
             this.mn_ThongKeKetQuaHocVien,
             this.mn_ThongKeHocVienHoanThanh,
             this.mn_ThongKeHocVienKhongHoanThanh,
@@ -3318,7 +3320,7 @@
             this.mn_XoaPhienHocLoginIsNull,
             this.toolStripSeparator3});
             this.menu_TongHop.Name = "contextMenuStrip1";
-            this.menu_TongHop.Size = new System.Drawing.Size(266, 148);
+            this.menu_TongHop.Size = new System.Drawing.Size(266, 192);
             // 
             // mn_ContextThongKeGiaoVien
             // 
@@ -3876,6 +3878,14 @@
             this.NhanDien_PH.FieldName = "NhanDien";
             this.NhanDien_PH.Name = "NhanDien_PH";
             // 
+            // mn_TongHopTienDo
+            // 
+            this.mn_TongHopTienDo.Image = ((System.Drawing.Image)(resources.GetObject("mn_TongHopTienDo.Image")));
+            this.mn_TongHopTienDo.Name = "mn_TongHopTienDo";
+            this.mn_TongHopTienDo.Size = new System.Drawing.Size(265, 22);
+            this.mn_TongHopTienDo.Text = "Tổng hợp tiến độ";
+            this.mn_TongHopTienDo.Click += new System.EventHandler(this.mn_TongHopTienDo_Click);
+            // 
             // Uc_DAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4211,5 +4221,6 @@
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn View_NguoilxId;
         private DevExpress.XtraEditors.ComboBoxEdit cbb_TongHopGv;
+        private System.Windows.Forms.ToolStripMenuItem mn_TongHopTienDo;
     }
 }
