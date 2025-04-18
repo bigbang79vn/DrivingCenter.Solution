@@ -313,6 +313,7 @@
             this.gridControl_KhoaHoc = new DevExpress.XtraGrid.GridControl();
             this.menu_TongHop = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mn_ContextThongKeGiaoVien = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_TongHopTienDo = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_ThongKeKetQuaHocVien = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_ThongKeHocVienHoanThanh = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_ThongKeHocVienKhongHoanThanh = new System.Windows.Forms.ToolStripMenuItem();
@@ -355,7 +356,6 @@
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.mn_TongHopTienDo = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -3320,7 +3320,7 @@
             this.mn_XoaPhienHocLoginIsNull,
             this.toolStripSeparator3});
             this.menu_TongHop.Name = "contextMenuStrip1";
-            this.menu_TongHop.Size = new System.Drawing.Size(266, 192);
+            this.menu_TongHop.Size = new System.Drawing.Size(266, 170);
             // 
             // mn_ContextThongKeGiaoVien
             // 
@@ -3329,6 +3329,14 @@
             this.mn_ContextThongKeGiaoVien.Size = new System.Drawing.Size(265, 22);
             this.mn_ContextThongKeGiaoVien.Text = "Thống kê báo cáo giáo viên";
             this.mn_ContextThongKeGiaoVien.Click += new System.EventHandler(this.mn_ContextThongKeGiaoVien_Click);
+            // 
+            // mn_TongHopTienDo
+            // 
+            this.mn_TongHopTienDo.Image = ((System.Drawing.Image)(resources.GetObject("mn_TongHopTienDo.Image")));
+            this.mn_TongHopTienDo.Name = "mn_TongHopTienDo";
+            this.mn_TongHopTienDo.Size = new System.Drawing.Size(265, 22);
+            this.mn_TongHopTienDo.Text = "Tổng hợp tiến độ DAT";
+            this.mn_TongHopTienDo.Click += new System.EventHandler(this.mn_TongHopTienDo_Click);
             // 
             // mn_ThongKeKetQuaHocVien
             // 
@@ -3877,14 +3885,6 @@
             this.NhanDien_PH.Caption = "Nhận Diện";
             this.NhanDien_PH.FieldName = "NhanDien";
             this.NhanDien_PH.Name = "NhanDien_PH";
-            // 
-            // mn_TongHopTienDo
-            // 
-            this.mn_TongHopTienDo.Image = ((System.Drawing.Image)(resources.GetObject("mn_TongHopTienDo.Image")));
-            this.mn_TongHopTienDo.Name = "mn_TongHopTienDo";
-            this.mn_TongHopTienDo.Size = new System.Drawing.Size(265, 22);
-            this.mn_TongHopTienDo.Text = "Tổng hợp tiến độ";
-            this.mn_TongHopTienDo.Click += new System.EventHandler(this.mn_TongHopTienDo_Click);
             // 
             // Uc_DAT
             // 

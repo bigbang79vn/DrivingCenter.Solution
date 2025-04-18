@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
+using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using DrivingCenter.App.Report;
@@ -56,6 +57,7 @@ namespace DrivingCenter.App.UserControl
         private List<PhienHoc> lstPH;
         private string HangDaoTao;
         private int khoahocid;
+        private string MaKH;
         private string TenKhoaHoc;
         private int flag;
 
@@ -423,9 +425,9 @@ namespace DrivingCenter.App.UserControl
 
             khoahocid = Convert.ToInt32(rowData.KhoaHocID);
             TenKhoaHoc = rowData.TenKH;
+            MaKH = rowData.MaKH.ToString();
             HangDaoTao = rowData.HangDaoTao.ToString();
-            string KhoaHoc = rowData.TenKH.ToString();
-            lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + KhoaHoc;
+            lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + TenKhoaHoc;
             HvDuDK = 0;
             ViewTongHopKQ(TongHopKQByKhoa(khoahocid), HangDaoTao);
             DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, khoahocid);
@@ -481,7 +483,13 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_TongHopTienDo_Click(object sender, EventArgs e)
         {
+            List<TienDo> lst = DAT_DAO.Instance.TongHopTienDoDatByKH(khoahocid, MaKH);
 
+            ConvertListToDataTable convert = new ConvertListToDataTable();
+            DataTable dt = convert.ToDataTable(lst);
+
+            ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
+            exportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
         }
         private void mn_ThongKeKetQuaHocVien_Click(object sender, EventArgs e)
         {

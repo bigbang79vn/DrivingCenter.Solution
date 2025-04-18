@@ -494,19 +494,21 @@ namespace DrivingCenter.App.DAO
 
         public List<TienDo> TongHopTienDoDatByKH(int khoahocid, string makh)
         {
-            string query = $"SELECT * FROM TongHop_TienDo WHERE KhoaHocID = {khoahocid} ORDER BY MaGV ASC";
+            string query = $"SELECT * FROM TongHop_TienDo WHERE KhoaHocID = {khoahocid} and MaKH = '{makh}' ORDER BY MaGV ASC, Ngay ASC ";
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
             List<TienDo> lst = dt.AsEnumerable().Select(item => new TienDo {
                 ThuOfWeek = item["Thu"].ToString(),
                 Ngay = item["Ngay"].ToString(),
-                MaGV = (int)item["MaGV"],
+                MaGV = item["MaGV"].ToString(),
                 TenGV = item["HoTenGV"].ToString(),
                 MaKH = item["MaKH"].ToString(),
                 TenKH = item["TenKH"].ToString(),
                 HangDaoTao = item["HangDaoTao"].ToString(),
                 XeTap = item["BienSoXe"].ToString(),
-                SoGioTH = (int)item["SoGioTH"],
+                TenBaiTap = item["BaiTap"].ToString(),
+                SoKmTH = (double)item["TongQuangDuong"],
+                SoGioTH = (double)item["TongThoiGian"]
             }).ToList();
 
             return lst;

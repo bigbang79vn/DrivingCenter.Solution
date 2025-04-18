@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraLayout.Filtering.Templates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace DrivingCenter.App.DTO.DAT
     {
         public string ThuOfWeek { get; set; }
         public string Ngay { get; set; }
-        public int MaGV { get; set; }
+        public string MaGV { get; set; }
         public string TenGV { get; set; }
         public string MaKH { get; set; }
         public string TenKH { get; set; }
@@ -18,8 +19,8 @@ namespace DrivingCenter.App.DTO.DAT
         public string XeTap { get; set; }
         public string TenBaiTap { get; set; }
         public string DiaDiem { get; set; }
-        public int SoGioTH { get; set; }
-        public int SoKmTH { get; set; }
+        public double SoGioTH { get; set; }
+        public double SoKmTH { get; set; }
         public float NhienLieuSD { get; set; }
     }
 }
