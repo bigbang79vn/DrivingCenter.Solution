@@ -56,13 +56,12 @@ namespace DrivingCenter.App
         private void btn_Apdunglich_Click(object sender, EventArgs e)
         {
             Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
-            string timeStart = dateEdit_Start.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-            string timeEnd = dateEdit_End.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            string timeStart = dateEdit_Start.DateTime.ToString("yyyy-MM-dd 00:00:01");
+            string timeEnd = dateEdit_End.DateTime.ToString("yyyy-MM-dd 23:59:59");
             DAT_DAO.Instance.UpdatePhanCongDAT(rowData.KhoaHocId, timeStart, timeEnd);
 
             LoadLichHoc(_monthId);
         }
-
         private void gridView_LichHoc_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;

@@ -918,7 +918,7 @@ namespace DrivingCenter.App.DAO
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
 
-        public void UpdatePhanCongDAT(int khoahocid, string timestart, DateTime timeend)
+        public void UpdatePhanCongDAT(int khoahocid, string timestart, string timeend)
         {
             string query = $"UPDATE NguoiLX SET ThoiDiemChayDAT = '{timestart}', ThoiDiemKetThucDAT = '{timeend}' WHERE KhoaHocID = {khoahocid}";
             DataProviderDAT.Instance.ExcuteNoneQuery(query);

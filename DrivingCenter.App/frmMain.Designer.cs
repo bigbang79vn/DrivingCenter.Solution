@@ -51,8 +51,8 @@ namespace DrivingCenter.App
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             this.barToggleSwitchItem = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -261,6 +261,15 @@ namespace DrivingCenter.App
             this.barButtonItem2.Id = 9;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // barToggleSwitchItem
+            // 
+            this.barToggleSwitchItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barToggleSwitchItem.Caption = "Dark Mode";
+            this.barToggleSwitchItem.Id = 12;
+            this.barToggleSwitchItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barToggleSwitchItem.ImageOptions.SvgImage")));
+            this.barToggleSwitchItem.Name = "barToggleSwitchItem";
+            this.barToggleSwitchItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem_ItemClick);
+            // 
             // fluentFormDefaultManager1
             // 
             this.fluentFormDefaultManager1.Form = this;
@@ -273,15 +282,6 @@ namespace DrivingCenter.App
             this.barButtonItem2,
             this.barToggleSwitchItem});
             this.fluentFormDefaultManager1.MaxItemId = 13;
-            // 
-            // barToggleSwitchItem
-            // 
-            this.barToggleSwitchItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barToggleSwitchItem.Caption = "Dark Mode";
-            this.barToggleSwitchItem.Id = 12;
-            this.barToggleSwitchItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barToggleSwitchItem1.ImageOptions.SvgImage")));
-            this.barToggleSwitchItem.Name = "barToggleSwitchItem";
-            this.barToggleSwitchItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem_ItemClick);
             // 
             // frmMain
             // 
