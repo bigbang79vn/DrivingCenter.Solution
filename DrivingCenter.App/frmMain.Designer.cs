@@ -48,9 +48,6 @@ namespace DrivingCenter.App
             this.itemNav = new DevExpress.XtraBars.BarStaticItem();
             this.btn_DarkLight = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barToggleSwitchItem = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
@@ -201,9 +198,6 @@ namespace DrivingCenter.App
             this.itemNav,
             this.btn_DarkLight,
             this.barButtonItem_Refresh,
-            this.barSubItem1,
-            this.barButtonItem1,
-            this.barButtonItem2,
             this.barToggleSwitchItem});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
@@ -239,28 +233,6 @@ namespace DrivingCenter.App
             this.barButtonItem_Refresh.Name = "barButtonItem_Refresh";
             this.barButtonItem_Refresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Refresh_ItemClick);
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barSubItem1.Caption = "barSubItem1";
-            this.barSubItem1.Id = 7;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 9;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
             // barToggleSwitchItem
             // 
             this.barToggleSwitchItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -277,9 +249,6 @@ namespace DrivingCenter.App
             this.itemNav,
             this.btn_DarkLight,
             this.barButtonItem_Refresh,
-            this.barSubItem1,
-            this.barButtonItem1,
-            this.barButtonItem2,
             this.barToggleSwitchItem});
             this.fluentFormDefaultManager1.MaxItemId = 13;
             // 
@@ -326,9 +295,6 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.BarButtonItem btn_DarkLight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Refresh;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_Print;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XeTapLai;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_LichHoc;
         private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem;
