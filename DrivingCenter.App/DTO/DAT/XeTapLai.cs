@@ -24,5 +24,7 @@ namespace DrivingCenter.App.DTO.DAT
         public DateTime ThoiDiem { get; set; }
         public double VanToc { get; set; }
         public bool TrangThai { get; set; }
+        public bool ThanhLy { get; set; }
+        public DateTime? SuDungDen { get; set; }
     }
 }

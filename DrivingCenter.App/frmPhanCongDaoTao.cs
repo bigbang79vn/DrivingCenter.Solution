@@ -43,7 +43,7 @@ namespace DrivingCenter.App
 
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai();
+            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai().Where(x=>x.ThanhLy == false).ToList();
             repoGrid_XeTapLai.DataSource = lst;
             repoGrid_XeTapLai.DisplayMember = "BienSoXe";
             repoGrid_XeTapLai.ValueMember = "MaXe";
@@ -51,6 +51,17 @@ namespace DrivingCenter.App
             repoGrid_XeTapLai.PopupView.Columns.AddField("BienSoXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("MaXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
+
+            List<XeTapLai> lstSTD = lst.Where(i => i.HangGPLX == "B11").ToList();
+            repoGrid_XeSTD.DataSource = lstSTD;
+            repoGrid_XeSTD.DisplayMember = "BienSoXe";
+            repoGrid_XeSTD.ValueMember = "MaXe";
+
+            repoGrid_XeSTD.PopupView.Columns.AddField("BienSoXe").Visible = true;
+            repoGrid_XeSTD.PopupView.Columns.AddField("MaXe").Visible = true;
+            repoGrid_XeSTD.PopupView.Columns.AddField("HangGPLX").Visible = true;
+
+            gridControl_XeSTD.DataSource = lstSTD;
         }
 
         private void btn_Apdunglich_Click(object sender, EventArgs e)

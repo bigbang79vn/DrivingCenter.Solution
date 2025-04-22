@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
@@ -21,7 +22,6 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
         }
 
-        private DataTable dt = new DataTable();
         private string bienso;
         private void Uc_BaoCaoTheoXe_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadlstXe()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai();
+            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai().Where(x=>x.ThanhLy == false).ToList();
 
             cbb_XeTapLai.Properties.DataSource = lst;
             cbb_XeTapLai.Properties.DisplayMember = "BienSoXe";

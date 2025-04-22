@@ -37,6 +37,7 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
 
             tblLayout_ImportData.Dock = DockStyle.Fill;
+            tblLayout_DmXeTapLai.Dock = DockStyle.Fill;
             xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
 
             LoadCategory();
@@ -87,6 +88,8 @@ namespace DrivingCenter.App.UserControl
             repoGrid_XeTapLai.PopupView.Columns.AddField("BienSoXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("MaXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
+
+            gridControl_XeTapLai.DataSource = lst;
         }
 
         private void LoadGiaoVien()

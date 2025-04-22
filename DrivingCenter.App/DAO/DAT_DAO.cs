@@ -171,7 +171,7 @@ namespace DrivingCenter.App.DAO
 
         public List<XeTapLai> GetLstXeTapLai()
         {
-            string query = string.Format("SELECT ID, MaXe, BienSoXe, HangGPLX, NamSX, SoGPXTL, NgayCapGPXTL, NgayHHGPXTL  FROM XeTapLai ORDER BY BienSoXe ASC");
+            string query = $"SELECT * FROM XeTapLai ORDER BY BienSoXe ASC";
 
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
@@ -184,7 +184,9 @@ namespace DrivingCenter.App.DAO
                 NamSX = (int)item["NamSX"],
                 SoGPXTL = (string)item["SoGPXTL"],
                 NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
-                NgayHHXTL = (DateTime)item["NgayHHGPXTL"]
+                NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
+                ThanhLy = (bool)item["ThanhLy"],
+                SuDungDen = item["SuDungDen"] == DBNull.Value ? null : (DateTime?)item["SuDungDen"],
             }).ToList();
 
             return lstXeTapLai;
