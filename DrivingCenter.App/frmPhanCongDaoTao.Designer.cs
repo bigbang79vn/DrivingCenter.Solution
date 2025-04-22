@@ -30,6 +30,9 @@
         {
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPhanCongDaoTao));
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCtrl_LichHoc = new DevExpress.XtraGrid.GridControl();
             this.gridView_LichHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -71,6 +74,7 @@
             this.MaXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SuDungDen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).BeginInit();
@@ -108,7 +112,7 @@
             this.repoDate,
             this.repoGrid_Cabin,
             this.repoGrid_XeSTD});
-            this.gridCtrl_LichHoc.Size = new System.Drawing.Size(927, 670);
+            this.gridCtrl_LichHoc.Size = new System.Drawing.Size(1024, 714);
             this.gridCtrl_LichHoc.TabIndex = 0;
             this.gridCtrl_LichHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_LichHoc});
@@ -434,9 +438,9 @@
             this.panel2.Controls.Add(this.dateEdit_Start);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 679);
+            this.panel2.Location = new System.Drawing.Point(3, 723);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(927, 65);
+            this.panel2.Size = new System.Drawing.Size(1024, 63);
             this.panel2.TabIndex = 2;
             // 
             // btn_Apdunglich
@@ -446,7 +450,7 @@
             this.btn_Apdunglich.FlatAppearance.BorderSize = 0;
             this.btn_Apdunglich.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Apdunglich.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Apdunglich.Location = new System.Drawing.Point(722, 22);
+            this.btn_Apdunglich.Location = new System.Drawing.Point(819, 22);
             this.btn_Apdunglich.Name = "btn_Apdunglich";
             this.btn_Apdunglich.Size = new System.Drawing.Size(177, 23);
             this.btn_Apdunglich.TabIndex = 2;
@@ -458,7 +462,7 @@
             // 
             this.dateEdit_End.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateEdit_End.EditValue = null;
-            this.dateEdit_End.Location = new System.Drawing.Point(527, 22);
+            this.dateEdit_End.Location = new System.Drawing.Point(624, 22);
             this.dateEdit_End.Name = "dateEdit_End";
             this.dateEdit_End.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateEdit_End.Properties.Appearance.Options.UseFont = true;
@@ -480,7 +484,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(405, 25);
+            this.label2.Location = new System.Drawing.Point(502, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 17);
             this.label2.TabIndex = 0;
@@ -490,7 +494,7 @@
             // 
             this.dateEdit_Start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateEdit_Start.EditValue = null;
-            this.dateEdit_Start.Location = new System.Drawing.Point(232, 22);
+            this.dateEdit_Start.Location = new System.Drawing.Point(329, 22);
             this.dateEdit_Start.Name = "dateEdit_Start";
             this.dateEdit_Start.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateEdit_Start.Properties.Appearance.Options.UseFont = true;
@@ -513,7 +517,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(113, 25);
+            this.label1.Location = new System.Drawing.Point(210, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 17);
             this.label1.TabIndex = 0;
@@ -524,6 +528,7 @@
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
+            this.tableLayoutPanel.Controls.Add(this.windowsUIButtonPanel, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.gridCtrl_LichHoc, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.gridControl_XeSTD, 1, 0);
@@ -532,18 +537,18 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 2;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1383, 747);
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1480, 789);
             this.tableLayoutPanel.TabIndex = 3;
             // 
             // gridControl_XeSTD
             // 
             this.gridControl_XeSTD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_XeSTD.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControl_XeSTD.Location = new System.Drawing.Point(936, 3);
+            this.gridControl_XeSTD.Location = new System.Drawing.Point(1033, 3);
             this.gridControl_XeSTD.MainView = this.gridView_XeSTD;
             this.gridControl_XeSTD.Name = "gridControl_XeSTD";
-            this.gridControl_XeSTD.Size = new System.Drawing.Size(444, 670);
+            this.gridControl_XeSTD.Size = new System.Drawing.Size(444, 714);
             this.gridControl_XeSTD.TabIndex = 3;
             this.gridControl_XeSTD.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_XeSTD});
@@ -625,11 +630,47 @@
             this.SuDungDen.VisibleIndex = 3;
             this.SuDungDen.Width = 199;
             // 
+            // windowsUIButtonPanel
+            // 
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
+            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            windowsUIButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions1.Image")));
+            windowsUIButtonImageOptions1.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions2.Image")));
+            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Sắp STD", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.windowsUIButtonPanel.EnableImageTransparency = true;
+            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
+            this.windowsUIButtonPanel.Location = new System.Drawing.Point(1034, 725);
+            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
+            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
+            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
+            this.windowsUIButtonPanel.Size = new System.Drawing.Size(442, 60);
+            this.windowsUIButtonPanel.TabIndex = 37;
+            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
+            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
+            // 
             // frmPhanCongDaoTao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 747);
+            this.ClientSize = new System.Drawing.Size(1480, 789);
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "frmPhanCongDaoTao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -701,5 +742,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn HangXe;
         private DevExpress.XtraGrid.Columns.GridColumn SuDungDen;
         private DevExpress.XtraGrid.Columns.GridColumn IdXeTap;
+        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel;
     }
 }
