@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement8 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -120,6 +120,7 @@
             this.CoQuanCapGPXTL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ChuSoHuu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhLy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repo_CheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repoToggleSwitch = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_BienSoXe = new DevExpress.XtraEditors.TextEdit();
@@ -128,6 +129,10 @@
             this.txt_NamSX = new DevExpress.XtraEditors.TextEdit();
             this.txt_SoDK = new DevExpress.XtraEditors.TextEdit();
             this.txt_Version = new DevExpress.XtraEditors.TextEdit();
+            this.cbb_HangXe = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.date_NgayHHGPXTL = new DevExpress.XtraEditors.DateEdit();
             this.date_NgayCapGPXTL = new DevExpress.XtraEditors.DateEdit();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
@@ -142,11 +147,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ColKhoaHoc = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.repo_CheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cbb_HangXe = new DevExpress.XtraEditors.SearchLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -175,6 +175,7 @@
             this.tblLayout_DmXeTapLai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_BienSoXe.Properties)).BeginInit();
@@ -183,14 +184,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_NamSX.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoDK.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Version.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_HangXe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.check_ThanhLy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_HangXe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // TongQuangDuongTichLuy
@@ -275,19 +275,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement1.Text = "Đào Tạo";
-            this.employeesTileBarItem.Elements.Add(tileItemElement1);
+            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement5.Text = "Đào Tạo";
+            this.employeesTileBarItem.Elements.Add(tileItemElement5);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement2.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement2);
+            tileItemElement6.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement6.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement6);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -295,9 +295,9 @@
             // tileBarItem1
             // 
             this.tileBarItem1.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage2")));
-            tileItemElement3.Text = "DM Xe Tập Lái";
-            this.tileBarItem1.Elements.Add(tileItemElement3);
+            tileItemElement7.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage2")));
+            tileItemElement7.Text = "DM Xe Tập Lái";
+            this.tileBarItem1.Elements.Add(tileItemElement7);
             this.tileBarItem1.Id = 5;
             this.tileBarItem1.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.tileBarItem1.Name = "tileBarItem1";
@@ -305,9 +305,9 @@
             // tileBarItem2
             // 
             this.tileBarItem2.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage3")));
-            tileItemElement4.Text = "Giáo Viên";
-            this.tileBarItem2.Elements.Add(tileItemElement4);
+            tileItemElement8.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage3")));
+            tileItemElement8.Text = "Giáo Viên";
+            this.tileBarItem2.Elements.Add(tileItemElement8);
             this.tileBarItem2.Id = 7;
             this.tileBarItem2.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.tileBarItem2.Name = "tileBarItem2";
@@ -340,6 +340,7 @@
             // navigationPage1
             // 
             this.navigationPage1.AutoScroll = true;
+            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.panel_Right);
             this.navigationPage1.Controls.Add(this.PanelLeft);
             this.navigationPage1.Name = "navigationPage1";
@@ -352,7 +353,7 @@
             this.panel_Right.Location = new System.Drawing.Point(234, 0);
             this.panel_Right.Name = "panel_Right";
             this.panel_Right.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel_Right.Size = new System.Drawing.Size(1193, 690);
+            this.panel_Right.Size = new System.Drawing.Size(1221, 690);
             this.panel_Right.TabIndex = 2;
             // 
             // panel3
@@ -365,7 +366,7 @@
             this.panel3.Location = new System.Drawing.Point(5, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1185, 29);
+            this.panel3.Size = new System.Drawing.Size(1213, 29);
             this.panel3.TabIndex = 2;
             // 
             // lb_KetquaKh
@@ -374,7 +375,7 @@
             this.lb_KetquaKh.AutoSize = true;
             this.lb_KetquaKh.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_KetquaKh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.lb_KetquaKh.Location = new System.Drawing.Point(520, 3);
+            this.lb_KetquaKh.Location = new System.Drawing.Point(534, 3);
             this.lb_KetquaKh.Name = "lb_KetquaKh";
             this.lb_KetquaKh.Size = new System.Drawing.Size(104, 23);
             this.lb_KetquaKh.TabIndex = 3;
@@ -411,7 +412,7 @@
             this.xtraTabControl.Location = new System.Drawing.Point(5, 34);
             this.xtraTabControl.Name = "xtraTabControl";
             this.xtraTabControl.SelectedTabPage = this.xtraTabPage_DetailHocVien;
-            this.xtraTabControl.Size = new System.Drawing.Size(1185, 656);
+            this.xtraTabControl.Size = new System.Drawing.Size(1213, 656);
             this.xtraTabControl.TabIndex = 2;
             this.xtraTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage_LstHocVien,
@@ -422,7 +423,7 @@
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTabPage_DetailHocVien.ImageOptions.SvgImage")));
             this.xtraTabPage_DetailHocVien.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
             this.xtraTabPage_DetailHocVien.Name = "xtraTabPage_DetailHocVien";
-            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1183, 619);
+            this.xtraTabPage_DetailHocVien.Size = new System.Drawing.Size(1211, 619);
             this.xtraTabPage_DetailHocVien.Text = "Chi tiết học viên";
             // 
             // xtraTabPage_LstHocVien
@@ -1084,6 +1085,7 @@
             this.gridView_XeTapLai.OptionsBehavior.Editable = false;
             this.gridView_XeTapLai.OptionsBehavior.ReadOnly = true;
             this.gridView_XeTapLai.RowHeight = 32;
+            this.gridView_XeTapLai.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView_XeTapLai_FocusedRowChanged);
             // 
             // MaXe
             // 
@@ -1181,6 +1183,11 @@
             this.ThanhLy.Visible = true;
             this.ThanhLy.VisibleIndex = 9;
             this.ThanhLy.Width = 83;
+            // 
+            // repo_CheckEdit
+            // 
+            this.repo_CheckEdit.AutoHeight = false;
+            this.repo_CheckEdit.Name = "repo_CheckEdit";
             // 
             // repoToggleSwitch
             // 
@@ -1296,6 +1303,65 @@
             this.txt_Version.Size = new System.Drawing.Size(249, 23);
             this.txt_Version.TabIndex = 41;
             // 
+            // cbb_HangXe
+            // 
+            this.cbb_HangXe.EditValue = "Chọn Hạng Xe";
+            this.cbb_HangXe.Location = new System.Drawing.Point(142, 69);
+            this.cbb_HangXe.Name = "cbb_HangXe";
+            this.cbb_HangXe.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_HangXe.Properties.Appearance.Options.UseFont = true;
+            this.cbb_HangXe.Properties.Appearance.Options.UseTextOptions = true;
+            this.cbb_HangXe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_HangXe.Properties.AppearanceDropDown.Options.UseTextOptions = true;
+            this.cbb_HangXe.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_HangXe.Properties.AutoHeight = false;
+            this.cbb_HangXe.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.cbb_HangXe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_HangXe.Properties.NullText = "Chọn xe tập lái";
+            this.cbb_HangXe.Properties.PopupView = this.gridView1;
+            this.cbb_HangXe.Size = new System.Drawing.Size(249, 23);
+            this.cbb_HangXe.TabIndex = 38;
+            this.cbb_HangXe.UseWaitCursor = true;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.Row.Options.UseFont = true;
+            this.gridView1.ColumnPanelRowHeight = 28;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn13,
+            this.gridColumn12});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowHeight = 28;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn13.Caption = "Hạng Xe";
+            this.gridColumn13.FieldName = "HangXe";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 1;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn12.Caption = "Tên Hạng ";
+            this.gridColumn12.FieldName = "TenHang";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 0;
+            // 
             // date_NgayHHGPXTL
             // 
             this.date_NgayHHGPXTL.EditValue = null;
@@ -1353,19 +1419,19 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions3.Image")));
-            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
-            windowsUIButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions5.Image")));
-            windowsUIButtonImageOptions5.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
+            windowsUIButtonImageOptions8.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions8.Image")));
+            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
+            windowsUIButtonImageOptions10.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions10.Image")));
+            windowsUIButtonImageOptions10.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -1500,69 +1566,6 @@
             this.ColKhoaHoc.VisibleIndex = 0;
             this.ColKhoaHoc.Width = 225;
             // 
-            // repo_CheckEdit
-            // 
-            this.repo_CheckEdit.AutoHeight = false;
-            this.repo_CheckEdit.Name = "repo_CheckEdit";
-            // 
-            // gridView1
-            // 
-            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView1.Appearance.Row.Options.UseFont = true;
-            this.gridView1.ColumnPanelRowHeight = 28;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn13,
-            this.gridColumn12});
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.RowHeight = 28;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn12.Caption = "Tên Hạng ";
-            this.gridColumn12.FieldName = "TenHang";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 0;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn13.Caption = "Hạng Xe";
-            this.gridColumn13.FieldName = "HangXe";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 1;
-            // 
-            // cbb_HangXe
-            // 
-            this.cbb_HangXe.EditValue = "Chọn Hạng Xe";
-            this.cbb_HangXe.Location = new System.Drawing.Point(142, 69);
-            this.cbb_HangXe.Name = "cbb_HangXe";
-            this.cbb_HangXe.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_HangXe.Properties.Appearance.Options.UseFont = true;
-            this.cbb_HangXe.Properties.Appearance.Options.UseTextOptions = true;
-            this.cbb_HangXe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HangXe.Properties.AppearanceDropDown.Options.UseTextOptions = true;
-            this.cbb_HangXe.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HangXe.Properties.AutoHeight = false;
-            this.cbb_HangXe.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.cbb_HangXe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbb_HangXe.Properties.NullText = "Chọn xe tập lái";
-            this.cbb_HangXe.Properties.PopupView = this.gridView1;
-            this.cbb_HangXe.Size = new System.Drawing.Size(249, 23);
-            this.cbb_HangXe.TabIndex = 38;
-            this.cbb_HangXe.UseWaitCursor = true;
-            // 
             // Uc_DaoTao
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -1604,6 +1607,7 @@
             this.tblLayout_DmXeTapLai.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1613,14 +1617,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_NamSX.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoDK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Version.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_HangXe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.check_ThanhLy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_HangXe.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

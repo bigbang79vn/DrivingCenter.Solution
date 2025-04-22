@@ -38,6 +38,7 @@ namespace DrivingCenter.App.UserControl
 
             tblLayout_ImportData.Dock = DockStyle.Fill;
             tblLayout_DmXeTapLai.Dock = DockStyle.Fill;
+            panel_Right.Dock = DockStyle.Fill;
             xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
 
             LoadCategory();
@@ -54,7 +55,7 @@ namespace DrivingCenter.App.UserControl
             navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
         }
 
-        #region Lịch học
+        #region Đào Tạo
 
         private void LoadCategory()
         {
@@ -66,10 +67,8 @@ namespace DrivingCenter.App.UserControl
                 .CopyToDataTable();
 
             treeList_Category.DataSource = filteredData;
-            //treeList_Category.ExpandAll();
             treeList_Category.ExpandToLevel(0);
         }
-
 
         public void LoadDanhSachHocVien(int KhoaHocID)
         {
@@ -136,7 +135,6 @@ namespace DrivingCenter.App.UserControl
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
             //DAT_DAO.Instance.UpdateXeTapB11(rowData);
         }
-
 
         #endregion
 
@@ -232,6 +230,14 @@ namespace DrivingCenter.App.UserControl
 
         #endregion
 
+        #region Danh mục xe tập lái
+        private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            
+        }
+
+
+        #endregion
         private void gridView_DanhSachHocVien_DoubleClick(object sender, EventArgs e)
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
@@ -388,5 +394,7 @@ namespace DrivingCenter.App.UserControl
                 MonthId = (int)focusedNode["MonthID"];
             }
         }
+
+        
     }
 }
