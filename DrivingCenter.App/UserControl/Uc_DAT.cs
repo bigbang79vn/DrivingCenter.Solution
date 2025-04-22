@@ -158,7 +158,7 @@ namespace DrivingCenter.App.UserControl
 
             return isEven
                 ? wk == DayOfWeek.Tuesday || wk == DayOfWeek.Wednesday || wk == DayOfWeek.Thursday ||
-                  (wk == DayOfWeek.Monday && (loginHour < 17 || logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)))
+                  (wk == DayOfWeek.Monday && (loginHour < 16 || logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)))
                 : wk == DayOfWeek.Friday || wk == DayOfWeek.Saturday || wk == DayOfWeek.Sunday ||
                   (wk == DayOfWeek.Monday && (loginHour < 7 || logout.Hour > 12 || (logout.Hour == 12 && logout.Minute > 30)));
         }
