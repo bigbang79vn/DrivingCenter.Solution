@@ -643,6 +643,12 @@
     <Compile Include="UserControl\Uc_CabinEMC.Designer.cs">
       <DependentUpon>Uc_CabinEMC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\Uc_CheckDataDat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Uc_CheckDataDat.Designer.cs">
+      <DependentUpon>Uc_CheckDataDat.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_DAT.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -792,6 +798,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_CabinEMC.resx">
       <DependentUpon>Uc_CabinEMC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Uc_CheckDataDat.resx">
+      <DependentUpon>Uc_CheckDataDat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_DAT.resx">
       <DependentUpon>Uc_DAT.cs</DependentUpon>
