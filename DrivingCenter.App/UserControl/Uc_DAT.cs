@@ -3,7 +3,6 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
-using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using DrivingCenter.App.Report;
@@ -127,6 +126,22 @@ namespace DrivingCenter.App.UserControl
                 {
                     sb.Append("Chưa gửi TC! ");
                     SendTC++;
+                }
+
+                // Kiểm tra trùng lặp phiên
+                for (int j = 0; j < sortedList.Count; j++)
+                {
+                    if (i == j) continue;
+                    var other = sortedList[j];
+                    if (item.NguoiLxID == other.NguoiLxID && item.TenKH == other.TenKH)
+                    {
+                        bool isOverlap = item.Time_LogIn < other.Time_LogOut && other.Time_LogIn < item.Time_LogOut;
+                        if (isOverlap)
+                        {
+                            sb.Append("Trùng phiên! ");
+                            break;
+                        }
+                    }
                 }
 
                 // Gán chuỗi lỗi
@@ -572,6 +587,13 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var NguoiLXID = Convert.ToInt64(gridView_Result.GetFocusedRowCellValue("NguoiLxID"));
+            var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(NguoiLXID);
+            new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
+        }
+
         #endregion Kết Quả
 
         #region Tổng hợp giờ Học Viên trong ngày
@@ -817,11 +839,10 @@ namespace DrivingCenter.App.UserControl
 
         #endregion Phiên học sai
 
-        private void printToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var NguoiLXID = Convert.ToInt64(gridView_Result.GetFocusedRowCellValue("NguoiLxID"));
-            var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(NguoiLXID);
-            new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
-        }
+        #region Kiểm tra chồng phiên
+
+
+        #endregion
+
     }
 }

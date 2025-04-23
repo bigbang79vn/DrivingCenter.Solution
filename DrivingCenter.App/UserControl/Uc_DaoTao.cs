@@ -233,7 +233,17 @@ namespace DrivingCenter.App.UserControl
         #region Danh mục xe tập lái
         private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            
+            var focusedRow = gridView_XeTapLai.GetFocusedRow() as XeTapLai;
+            txt_BienSoXe.Text = focusedRow.BienSoXe;
+            cbb_HangXe.Text = focusedRow.HangGPLX;
+            txt_NamSX.Text = focusedRow.NamSX.ToString();
+            txt_SoGPXTL.Text = focusedRow.SoGPXTL;
+            date_NgayCapGPXTL.EditValue = focusedRow.NgayCapGPXTL;
+            date_NgayHHGPXTL.EditValue = focusedRow.NgayHHXTL;
+            check_ThanhLy.Text = focusedRow.ThanhLy == true ? "Đã thanh lý" : "Chưa thanh lý";
+            check_ThanhLy.Checked = focusedRow.ThanhLy == true ? true : false;
+
+
         }
 
 
