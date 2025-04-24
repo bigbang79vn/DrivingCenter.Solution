@@ -916,7 +916,7 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateXeTapB11(Schedule rowdata)
         {
-            string query = $"EXEC [dbo].[sp_UpdateXeB11InNguoiLX] @KhoaHocID = {rowdata.KhoaHocId}, @GiaoVienID = {rowdata.GiaoVienId}, @MaXeB11 = N'{rowdata.MaXeTapB11}', @TimeInB11 = '{rowdata.TimeInB11}', @TimeOutB11 = '{rowdata.TimeOutB11}'";
+            string query = $"UPDATE NguoiLX SET XeB11 = {rowdata.MaXeTapB11} WHERE KhoaHocID = {rowdata.KhoaHocId} AND GiaoVienID = {rowdata.GiaoVienId}";
             DataProviderDAT.Instance.ExcuteNoneQuery(query);
         }
 
