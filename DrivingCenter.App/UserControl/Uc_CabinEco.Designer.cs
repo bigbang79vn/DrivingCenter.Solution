@@ -398,6 +398,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage1
             // 
+            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.tblLayout_Result);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
@@ -1140,7 +1141,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // gridView_Result
             // 
-            this.gridView_Result.ColumnPanelRowHeight = 28;
+            this.gridView_Result.ColumnPanelRowHeight = 32;
             this.gridView_Result.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.DiemDanhNguoiLxID,
             this.NameCabin,
@@ -1155,7 +1156,7 @@ namespace DrivingCenter.App.UserControl
             this.gridView_Result.OptionsSelection.CheckBoxSelectorColumnWidth = 50;
             this.gridView_Result.OptionsSelection.MultiSelect = true;
             this.gridView_Result.OptionsView.ShowGroupPanel = false;
-            this.gridView_Result.RowHeight = 28;
+            this.gridView_Result.RowHeight = 32;
             this.gridView_Result.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.None;
             // 
             // DiemDanhNguoiLxID
@@ -1240,7 +1241,8 @@ namespace DrivingCenter.App.UserControl
             this.lkDanhMucBaiTap.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenBaiTap", "Tên Bài Tập", 80, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lkDanhMucBaiTap.DropDownRows = 10;
+            this.lkDanhMucBaiTap.DropDownItemHeight = 32;
+            this.lkDanhMucBaiTap.DropDownRows = 8;
             this.lkDanhMucBaiTap.Name = "lkDanhMucBaiTap";
             this.lkDanhMucBaiTap.UseCtrlScroll = false;
             // 
@@ -1306,6 +1308,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage2
             // 
+            this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.tblLayout_ThongKe);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(1500, 690);
