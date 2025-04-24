@@ -50,7 +50,6 @@ namespace DrivingCenter.App
             this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.barToggleSwitchItem = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.acc_CheckSession = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -92,7 +91,6 @@ namespace DrivingCenter.App
             this.acc_DAT,
             this.acc_TongHopXe,
             this.acc_XeTapLai,
-            this.acc_CheckSession,
             this.acc_TotNghiep,
             this.acc_Print,
             this.acc_TaiKhoan});
@@ -254,14 +252,6 @@ namespace DrivingCenter.App
             this.barToggleSwitchItem});
             this.fluentFormDefaultManager1.MaxItemId = 13;
             // 
-            // acc_CheckSession
-            // 
-            this.acc_CheckSession.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_CheckSession.ImageOptions.SvgImage")));
-            this.acc_CheckSession.Name = "acc_CheckSession";
-            this.acc_CheckSession.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_CheckSession.Text = "Kiểm Tra Dữ Liệu";
-            this.acc_CheckSession.Click += new System.EventHandler(this.acc_CheckSession_Click);
-            // 
             // frmMain
             // 
             this.Appearance.Options.UseFont = true;
@@ -308,7 +298,6 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XeTapLai;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_LichHoc;
         private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement acc_CheckSession;
     }
 }
 

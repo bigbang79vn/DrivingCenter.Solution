@@ -353,6 +353,7 @@
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -3224,6 +3225,7 @@
             this.menu_TongHop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mn_ContextThongKeGiaoVien,
             this.mn_TongHopTienDo,
+            this.toolStripSeparator1,
             this.mn_ThongKeKetQuaHocVien,
             this.mn_ThongKeHocVienHoanThanh,
             this.mn_ThongKeHocVienKhongHoanThanh,
@@ -3232,7 +3234,7 @@
             this.mn_XoaPhienHocLoginIsNull,
             this.toolStripSeparator3});
             this.menu_TongHop.Name = "contextMenuStrip1";
-            this.menu_TongHop.Size = new System.Drawing.Size(266, 170);
+            this.menu_TongHop.Size = new System.Drawing.Size(266, 176);
             // 
             // mn_ContextThongKeGiaoVien
             // 
@@ -3796,6 +3798,11 @@
             this.NhanDien_PH.FieldName = "NhanDien";
             this.NhanDien_PH.Name = "NhanDien_PH";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(262, 6);
+            // 
             // Uc_DAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4129,5 +4136,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn View_NguoilxId;
         private DevExpress.XtraEditors.ComboBoxEdit cbb_TongHopGv;
         private System.Windows.Forms.ToolStripMenuItem mn_TongHopTienDo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

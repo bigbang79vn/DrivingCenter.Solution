@@ -22,6 +22,8 @@ namespace DrivingCenter.App.DTO.Cabin
         public DateTime? TimeOutB11 { get; set ; }
         public int? ThietBiID { get; set; }
         public string Cabin { get; set; }
+        public DateTime? TimeInCabin { get; set; }
+        public DateTime? TimeOutCabin { get; set; }
         public bool? Status { get; set; }
         public string HangDT { get; set; }
 

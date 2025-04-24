@@ -158,22 +158,6 @@ namespace DrivingCenter.App
             }
         }
 
-        private void acc_CheckSession_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_CheckDataDat uc = new Uc_CheckDataDat();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Kiểm Tra Dữ Liệu";
-            }
-        }
-
         private void acc_TotNghiep_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)

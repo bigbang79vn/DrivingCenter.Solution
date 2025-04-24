@@ -67,6 +67,7 @@
             this.dateEdit_Start = new DevExpress.XtraEditors.DateEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.gridControl_XeSTD = new DevExpress.XtraGrid.GridControl();
             this.gridView_XeSTD = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IdXeTap = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,7 +75,6 @@
             this.MaXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SuDungDen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).BeginInit();
@@ -119,7 +119,7 @@
             // 
             // gridView_LichHoc
             // 
-            this.gridView_LichHoc.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_LichHoc.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridView_LichHoc.Appearance.GroupRow.Options.UseFont = true;
             this.gridView_LichHoc.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.gridView_LichHoc.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,6 +160,7 @@
             this.gridView_LichHoc.FormatRules.Add(gridFormatRule1);
             this.gridView_LichHoc.GridControl = this.gridCtrl_LichHoc;
             this.gridView_LichHoc.GroupCount = 2;
+            this.gridView_LichHoc.GroupRowHeight = 32;
             this.gridView_LichHoc.Name = "gridView_LichHoc";
             this.gridView_LichHoc.OptionsView.ShowGroupPanelColumnsAsSingleRow = true;
             this.gridView_LichHoc.OptionsView.ShowIndicator = false;
@@ -541,6 +542,42 @@
             this.tableLayoutPanel.Size = new System.Drawing.Size(1480, 789);
             this.tableLayoutPanel.TabIndex = 3;
             // 
+            // windowsUIButtonPanel
+            // 
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
+            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            windowsUIButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions1.Image")));
+            windowsUIButtonImageOptions1.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions2.Image")));
+            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Sắp STD", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.windowsUIButtonPanel.EnableImageTransparency = true;
+            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
+            this.windowsUIButtonPanel.Location = new System.Drawing.Point(1034, 725);
+            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
+            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
+            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
+            this.windowsUIButtonPanel.Size = new System.Drawing.Size(442, 60);
+            this.windowsUIButtonPanel.TabIndex = 37;
+            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
+            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
+            // 
             // gridControl_XeSTD
             // 
             this.gridControl_XeSTD.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -629,42 +666,6 @@
             this.SuDungDen.Visible = true;
             this.SuDungDen.VisibleIndex = 3;
             this.SuDungDen.Width = 199;
-            // 
-            // windowsUIButtonPanel
-            // 
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions1.Image")));
-            windowsUIButtonImageOptions1.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions2.Image")));
-            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Sắp STD", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIButtonPanel.EnableImageTransparency = true;
-            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanel.Location = new System.Drawing.Point(1034, 725);
-            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
-            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
-            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
-            this.windowsUIButtonPanel.Size = new System.Drawing.Size(442, 60);
-            this.windowsUIButtonPanel.TabIndex = 37;
-            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
             // 
             // frmPhanCongDaoTao
             // 

@@ -39,6 +39,16 @@ namespace DrivingCenter.App
             lst = DAT_DAO.Instance.GetAllSchedule(_monthId);
 
             gridCtrl_LichHoc.DataSource = lst;
+
+            //Auto expandGroupRow level 1 (Hạng đào tạo)
+            for (int i = 0; i < gridView_LichHoc.DataRowCount; i++)
+            {
+                int rowHandle = gridView_LichHoc.GetVisibleRowHandle(i);
+                if (gridView_LichHoc.IsGroupRow(rowHandle) && gridView_LichHoc.GetRowLevel(rowHandle) == 0)
+                {
+                    gridView_LichHoc.ExpandGroupRow(rowHandle);
+                }
+            }
         }
 
         private void LoadXeTapLai()
