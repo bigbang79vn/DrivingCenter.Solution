@@ -16,5 +16,10 @@ namespace DrivingCenter.App.DTO.Cabin
         public DateTime NgaySinh { get; set; }
         public string SoCMT { get; set; }
         public string HangGPLX { get; set; }
+        public byte[] AnhChup { get; set; }
+        public string MaCNDT { get; set; }
+        public string TrinhDoHocVan { get; set; }
+        public bool SuDung { get; set; }
+        public DateTime DateUse { get; set; }
     }
 }

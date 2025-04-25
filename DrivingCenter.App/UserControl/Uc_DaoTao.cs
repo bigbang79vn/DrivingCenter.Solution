@@ -37,7 +37,6 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
 
             tblLayout_ImportData.Dock = DockStyle.Fill;
-            tblLayout_DmXeTapLai.Dock = DockStyle.Fill;
             panel_Right.Dock = DockStyle.Fill;
             xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
 
@@ -87,8 +86,6 @@ namespace DrivingCenter.App.UserControl
             repoGrid_XeTapLai.PopupView.Columns.AddField("BienSoXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("MaXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
-
-            gridControl_XeTapLai.DataSource = lst;
         }
 
         private void LoadGiaoVien()
@@ -106,7 +103,7 @@ namespace DrivingCenter.App.UserControl
         private void treeList_Category_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
             if (e.Node.Level == 0) // Root Level
-            { 
+            {
                 e.Appearance.Font = new Font("Roboto", 10, FontStyle.Regular);
                 e.Appearance.ForeColor = Color.White;
                 e.Appearance.BackColor = Color.FromArgb(78, 109, 156);
@@ -230,24 +227,6 @@ namespace DrivingCenter.App.UserControl
 
         #endregion
 
-        #region Danh mục xe tập lái
-        private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            var focusedRow = gridView_XeTapLai.GetFocusedRow() as XeTapLai;
-            txt_BienSoXe.Text = focusedRow.BienSoXe;
-            cbb_HangXe.Text = focusedRow.HangGPLX;
-            txt_NamSX.Text = focusedRow.NamSX.ToString();
-            txt_SoGPXTL.Text = focusedRow.SoGPXTL;
-            date_NgayCapGPXTL.EditValue = focusedRow.NgayCapGPXTL;
-            date_NgayHHGPXTL.EditValue = focusedRow.NgayHHXTL;
-            check_ThanhLy.Text = focusedRow.ThanhLy == true ? "Đã thanh lý" : "Chưa thanh lý";
-            check_ThanhLy.Checked = focusedRow.ThanhLy == true ? true : false;
-
-
-        }
-
-
-        #endregion
         private void gridView_DanhSachHocVien_DoubleClick(object sender, EventArgs e)
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
@@ -336,15 +315,10 @@ namespace DrivingCenter.App.UserControl
         {
 
         }
-        private void MenuItem_PhanCong_Click(object sender, EventArgs e)
-        {
-        }
-        #endregion
         private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
         {
             LoadCategory();
         }
-
         private void btn_Extend_Click(object sender, EventArgs e)
         {
             if (isCollapsed)
@@ -360,7 +334,6 @@ namespace DrivingCenter.App.UserControl
                 this.Refresh();
             }
         }
-
         private void btn_ExportResultToExcel_Click(object sender, EventArgs e)
         {
             string fileName = $"Danh-Sach-{TenKhoaHoc}.xlsx";
@@ -373,7 +346,6 @@ namespace DrivingCenter.App.UserControl
 
             XtraMessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void treeList_Category_DoubleClick(object sender, EventArgs e)
         {
             var focusedNode = treeList_Category.FocusedNode;
@@ -394,7 +366,6 @@ namespace DrivingCenter.App.UserControl
                 xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
             }
         }
-
         private void treeList_Category_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             var focusedNode = treeList_Category.FocusedNode;
@@ -405,6 +376,6 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        
+        #endregion
     }
 }

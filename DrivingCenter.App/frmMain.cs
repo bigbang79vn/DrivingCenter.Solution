@@ -79,6 +79,37 @@ namespace DrivingCenter.App
             }
         }
 
+        private void accChild_XeTap_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                UcChild_XeTap uc = new UcChild_XeTap();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Danh Mục Thông Tin Xe Đào Tạo";
+            }
+        }
+
+        private void accChild_GiaoVien_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                UcChild_GiaoVien uc = new UcChild_GiaoVien();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Danh Mục Giáo Viên Dạy Lái Xe";
+            }
+        }
         private void acc_GPLX_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -88,10 +119,26 @@ namespace DrivingCenter.App
             else
             {
                 MainContainer.Controls.Clear();
-                Uc_GPLX uc = new Uc_GPLX();
+                UcChild_GPLX uc = new UcChild_GPLX();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
                 this.itemNav.Caption = $"Quản Lý Cabin Điện Tử EMC";
+            }
+        }
+
+        private void accChild_SapLuuLuong_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                UcChild_SapLuuLuong uc = new UcChild_SapLuuLuong();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Sắp Xếp Lưu Lượng Xe & Giáo Viên";
             }
         }
 
@@ -215,5 +262,6 @@ namespace DrivingCenter.App
                 barToggleSwitchItem.Caption = "Dark Mode";
             }
         }
+
     }
 }

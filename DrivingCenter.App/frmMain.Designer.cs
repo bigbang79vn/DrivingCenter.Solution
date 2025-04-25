@@ -34,9 +34,13 @@ namespace DrivingCenter.App
             this.MainContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accMain = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.acc_Home = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionCtrl_VNDC = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accChild_XeTap = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accChild_GiaoVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accChild_SapLuuLuong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEco = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEMC = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_DAT = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_TongHopXe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -84,9 +88,9 @@ namespace DrivingCenter.App
             this.accMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.accMain.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.acc_Home,
+            this.accordionCtrl_VNDC,
             this.acc_CabinEco,
             this.acc_CabinEMC,
-            this.acc_GPLX,
             this.acc_LichHoc,
             this.acc_DAT,
             this.acc_TongHopXe,
@@ -111,6 +115,46 @@ namespace DrivingCenter.App
             this.acc_Home.Text = "Home";
             this.acc_Home.Click += new System.EventHandler(this.acc_Home_Click);
             // 
+            // accordionCtrl_VNDC
+            // 
+            this.accordionCtrl_VNDC.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accChild_XeTap,
+            this.accChild_GiaoVien,
+            this.acc_GPLX,
+            this.accChild_SapLuuLuong});
+            this.accordionCtrl_VNDC.Expanded = true;
+            this.accordionCtrl_VNDC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionCtrl_VNDC.ImageOptions.SvgImage")));
+            this.accordionCtrl_VNDC.Name = "accordionCtrl_VNDC";
+            this.accordionCtrl_VNDC.Text = "VNDC";
+            // 
+            // accChild_XeTap
+            // 
+            this.accChild_XeTap.Name = "accChild_XeTap";
+            this.accChild_XeTap.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accChild_XeTap.Text = "Xe Tập Lái";
+            this.accChild_XeTap.Click += new System.EventHandler(this.accChild_XeTap_Click);
+            // 
+            // accChild_GiaoVien
+            // 
+            this.accChild_GiaoVien.Name = "accChild_GiaoVien";
+            this.accChild_GiaoVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accChild_GiaoVien.Text = "Giáo Viên";
+            this.accChild_GiaoVien.Click += new System.EventHandler(this.accChild_GiaoVien_Click);
+            // 
+            // acc_GPLX
+            // 
+            this.acc_GPLX.Name = "acc_GPLX";
+            this.acc_GPLX.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_GPLX.Text = "Nhập Dữ Liệu";
+            this.acc_GPLX.Click += new System.EventHandler(this.acc_GPLX_Click);
+            // 
+            // accChild_SapLuuLuong
+            // 
+            this.accChild_SapLuuLuong.Name = "accChild_SapLuuLuong";
+            this.accChild_SapLuuLuong.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accChild_SapLuuLuong.Text = "Sắp Lưu Lượng";
+            this.accChild_SapLuuLuong.Click += new System.EventHandler(this.accChild_SapLuuLuong_Click);
+            // 
             // acc_CabinEco
             // 
             this.acc_CabinEco.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_CabinEco.ImageOptions.SvgImage")));
@@ -126,14 +170,6 @@ namespace DrivingCenter.App
             this.acc_CabinEMC.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acc_CabinEMC.Text = "Cabin EMC";
             this.acc_CabinEMC.Click += new System.EventHandler(this.acc_CabinEMC_Click);
-            // 
-            // acc_GPLX
-            // 
-            this.acc_GPLX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_GPLX.ImageOptions.SvgImage")));
-            this.acc_GPLX.Name = "acc_GPLX";
-            this.acc_GPLX.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_GPLX.Text = "G.P.L.X";
-            this.acc_GPLX.Click += new System.EventHandler(this.acc_GPLX_Click);
             // 
             // acc_LichHoc
             // 
@@ -298,6 +334,10 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XeTapLai;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_LichHoc;
         private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionCtrl_VNDC;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_XeTap;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_GiaoVien;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_SapLuuLuong;
     }
 }
 

@@ -625,6 +625,24 @@
     <Compile Include="Uc_HocVien.Designer.cs">
       <DependentUpon>Uc_HocVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UcChild_GiaoVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcChild_GiaoVien.Designer.cs">
+      <DependentUpon>UcChild_GiaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UcChild_SapLuuLuong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcChild_SapLuuLuong.Designer.cs">
+      <DependentUpon>UcChild_SapLuuLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UcChild_XeTap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcChild_XeTap.Designer.cs">
+      <DependentUpon>UcChild_XeTap.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_BaoCaoTheoXe.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -649,11 +667,11 @@
     <Compile Include="UserControl\Uc_DAT.Designer.cs">
       <DependentUpon>Uc_DAT.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\Uc_GPLX.cs">
+    <Compile Include="UserControl\UcChild_GPLX.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\Uc_GPLX.Designer.cs">
-      <DependentUpon>Uc_GPLX.cs</DependentUpon>
+    <Compile Include="UserControl\UcChild_GPLX.Designer.cs">
+      <DependentUpon>UcChild_GPLX.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Uc_Gradute.cs">
       <SubType>UserControl</SubType>
@@ -784,6 +802,15 @@
     <EmbeddedResource Include="Uc_HocVien.resx">
       <DependentUpon>Uc_HocVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcChild_GiaoVien.resx">
+      <DependentUpon>UcChild_GiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcChild_SapLuuLuong.resx">
+      <DependentUpon>UcChild_SapLuuLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcChild_XeTap.resx">
+      <DependentUpon>UcChild_XeTap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_BaoCaoTheoXe.resx">
       <DependentUpon>Uc_BaoCaoTheoXe.cs</DependentUpon>
     </EmbeddedResource>
@@ -796,8 +823,8 @@
     <EmbeddedResource Include="UserControl\Uc_DAT.resx">
       <DependentUpon>Uc_DAT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\Uc_GPLX.resx">
-      <DependentUpon>Uc_GPLX.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UcChild_GPLX.resx">
+      <DependentUpon>UcChild_GPLX.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_Gradute.resx">
       <DependentUpon>Uc_Gradute.cs</DependentUpon>

@@ -21,9 +21,9 @@ using Z.Dapper.Plus;
 
 namespace DrivingCenter.App.UserControl
 {
-    public partial class Uc_GPLX : DevExpress.XtraEditors.XtraUserControl
+    public partial class UcChild_GPLX : DevExpress.XtraEditors.XtraUserControl
     {
-        public Uc_GPLX()
+        public UcChild_GPLX()
         {
             InitializeComponent();
         }

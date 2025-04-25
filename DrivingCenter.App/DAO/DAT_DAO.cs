@@ -1,4 +1,5 @@
-﻿using DevExpress.CodeParser;
+﻿
+using DevExpress.CodeParser;
 using DevExpress.DataProcessing.InMemoryDataProcessor;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
@@ -147,7 +148,9 @@ namespace DrivingCenter.App.DAO
         public List<GiaoVien> GetAllGV()
         {
             List<GiaoVien> lstGiaoVien = new List<GiaoVien>();
-            string query = "SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX FROM GiaoVien";
+            string query = $@"SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, AnhChup, MaCNDT, hv.Ten , SuDung, DateUse 
+                        FROM GiaoVien AS gv
+                        INNER JOIN TrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma";
             DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
 
             lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
@@ -160,6 +163,11 @@ namespace DrivingCenter.App.DAO
                 NgaySinh = (DateTime)item["NgaySinh"],
                 SoCMT = (string)item["SoCMT"],
                 HangGPLX = (string)item["HangGPLX"],
+                AnhChup = (byte[])item["AnhChup"],
+                MaCNDT = (string)item["MaCNDT"],
+                TrinhDoHocVan = (string)item["Ten"],
+                SuDung = (bool)item["SuDung"],
+                DateUse = item["DateUse"] == DBNull.Value ? DateTime.Now : (DateTime)item["DateUse"]
             }).ToList();
 
             return lstGiaoVien;
@@ -186,7 +194,7 @@ namespace DrivingCenter.App.DAO
                 NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
                 NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
                 ThanhLy = (bool)item["ThanhLy"],
-                SuDungDen = item["SuDungDen"] == DBNull.Value ? null : (DateTime?)item["SuDungDen"],
+                SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
             }).ToList();
 
             return lstXeTapLai;

@@ -74,7 +74,7 @@
             this.BienSoXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangXe = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SuDungDen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DateUse = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LichHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoGrid_XeTapLai)).BeginInit();
@@ -606,7 +606,7 @@
             this.BienSoXe,
             this.MaXe,
             this.HangXe,
-            this.SuDungDen});
+            this.DateUse});
             this.gridView_XeSTD.GridControl = this.gridControl_XeSTD;
             this.gridView_XeSTD.Name = "gridView_XeSTD";
             this.gridView_XeSTD.OptionsBehavior.Editable = false;
@@ -652,20 +652,20 @@
             this.HangXe.VisibleIndex = 2;
             this.HangXe.Width = 74;
             // 
-            // SuDungDen
+            // DateUse
             // 
-            this.SuDungDen.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.SuDungDen.AppearanceCell.Options.UseForeColor = true;
-            this.SuDungDen.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.SuDungDen.AppearanceHeader.Options.UseBackColor = true;
-            this.SuDungDen.Caption = "Sử Dụng Đến";
-            this.SuDungDen.DisplayFormat.FormatString = "HH:mm - dd/MM/yyyy";
-            this.SuDungDen.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.SuDungDen.FieldName = "SuDungDen";
-            this.SuDungDen.Name = "SuDungDen";
-            this.SuDungDen.Visible = true;
-            this.SuDungDen.VisibleIndex = 3;
-            this.SuDungDen.Width = 199;
+            this.DateUse.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.DateUse.AppearanceCell.Options.UseForeColor = true;
+            this.DateUse.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.DateUse.AppearanceHeader.Options.UseBackColor = true;
+            this.DateUse.Caption = "Sử Dụng Đến";
+            this.DateUse.DisplayFormat.FormatString = "HH:mm - dd/MM/yyyy";
+            this.DateUse.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.DateUse.FieldName = "DateUse";
+            this.DateUse.Name = "DateUse";
+            this.DateUse.Visible = true;
+            this.DateUse.VisibleIndex = 3;
+            this.DateUse.Width = 199;
             // 
             // frmPhanCongDaoTao
             // 
@@ -741,7 +741,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn BienSoXe;
         private DevExpress.XtraGrid.Columns.GridColumn MaXe;
         private DevExpress.XtraGrid.Columns.GridColumn HangXe;
-        private DevExpress.XtraGrid.Columns.GridColumn SuDungDen;
+        private DevExpress.XtraGrid.Columns.GridColumn DateUse;
         private DevExpress.XtraGrid.Columns.GridColumn IdXeTap;
         private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel;
     }
