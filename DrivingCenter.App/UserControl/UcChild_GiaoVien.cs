@@ -30,5 +30,10 @@ namespace DrivingCenter.App.UserControl
             List<GiaoVien> data = DAT_DAO.Instance.GetAllGV();
             gridControl_GiaoVien.DataSource = data;
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
