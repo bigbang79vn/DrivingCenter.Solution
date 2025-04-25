@@ -12,6 +12,7 @@ using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -171,6 +172,17 @@ namespace DrivingCenter.App.DAO
             }).ToList();
 
             return lstGiaoVien;
+        }
+
+        public DataTable GetlstHocVan()
+        {
+            string query = $"SELECT * FROM TrinhDoHocVan";
+            return  DataProviderDAT.Instance.ExcuteQuery(query);
+        }
+        public DataTable GetlstHangGPLX()
+        {
+            string query = $"SELECT [ID], [MaHang], [TenHang] FROM [I2EDAT2023].[dbo].[HangGPLX]";
+            return DataProviderDAT.Instance.ExcuteQuery(query);
         }
 
         #endregion Sync GV for Cabin

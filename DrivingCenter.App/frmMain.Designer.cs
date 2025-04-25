@@ -129,6 +129,7 @@ namespace DrivingCenter.App
             // 
             // accChild_XeTap
             // 
+            this.accChild_XeTap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accChild_XeTap.ImageOptions.SvgImage")));
             this.accChild_XeTap.Name = "accChild_XeTap";
             this.accChild_XeTap.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accChild_XeTap.Text = "Xe Tập Lái";
@@ -136,6 +137,7 @@ namespace DrivingCenter.App
             // 
             // accChild_GiaoVien
             // 
+            this.accChild_GiaoVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accChild_GiaoVien.ImageOptions.SvgImage")));
             this.accChild_GiaoVien.Name = "accChild_GiaoVien";
             this.accChild_GiaoVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accChild_GiaoVien.Text = "Giáo Viên";
@@ -143,6 +145,7 @@ namespace DrivingCenter.App
             // 
             // acc_GPLX
             // 
+            this.acc_GPLX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_GPLX.ImageOptions.SvgImage")));
             this.acc_GPLX.Name = "acc_GPLX";
             this.acc_GPLX.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acc_GPLX.Text = "Nhập Dữ Liệu";
@@ -150,6 +153,7 @@ namespace DrivingCenter.App
             // 
             // accChild_SapLuuLuong
             // 
+            this.accChild_SapLuuLuong.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accChild_SapLuuLuong.ImageOptions.SvgImage")));
             this.accChild_SapLuuLuong.Name = "accChild_SapLuuLuong";
             this.accChild_SapLuuLuong.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accChild_SapLuuLuong.Text = "Sắp Lưu Lượng";

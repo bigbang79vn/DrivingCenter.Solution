@@ -13,9 +13,9 @@ using DrivingCenter.App.DAO;
 
 namespace DrivingCenter.App.UserControl
 {
-	public partial class UcChild_XeTap: DevExpress.XtraEditors.XtraUserControl
+	public partial class UcChild_XeDaoTao: DevExpress.XtraEditors.XtraUserControl
 	{
-        public UcChild_XeTap()
+        public UcChild_XeDaoTao()
 		{
             InitializeComponent();
 		}

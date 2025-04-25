@@ -637,11 +637,11 @@
     <Compile Include="UserControl\UcChild_SapLuuLuong.Designer.cs">
       <DependentUpon>UcChild_SapLuuLuong.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UcChild_XeTap.cs">
+    <Compile Include="UserControl\UcChild_XeDaoTao.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\UcChild_XeTap.Designer.cs">
-      <DependentUpon>UcChild_XeTap.cs</DependentUpon>
+    <Compile Include="UserControl\UcChild_XeDaoTao.Designer.cs">
+      <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Uc_BaoCaoTheoXe.cs">
       <SubType>UserControl</SubType>
@@ -808,8 +808,8 @@
     <EmbeddedResource Include="UserControl\UcChild_SapLuuLuong.resx">
       <DependentUpon>UcChild_SapLuuLuong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UcChild_XeTap.resx">
-      <DependentUpon>UcChild_XeTap.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UcChild_XeDaoTao.resx">
+      <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_BaoCaoTheoXe.resx">
       <DependentUpon>Uc_BaoCaoTheoXe.cs</DependentUpon>

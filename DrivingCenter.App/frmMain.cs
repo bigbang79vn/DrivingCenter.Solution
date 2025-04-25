@@ -88,7 +88,7 @@ namespace DrivingCenter.App
             else
             {
                 MainContainer.Controls.Clear();
-                UcChild_XeTap uc = new UcChild_XeTap();
+                UcChild_XeDaoTao uc = new UcChild_XeDaoTao();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
                 this.itemNav.Caption = $"Danh Mục Thông Tin Xe Đào Tạo";

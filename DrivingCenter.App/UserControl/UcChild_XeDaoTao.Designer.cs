@@ -1,6 +1,6 @@
 ﻿namespace DrivingCenter.App.UserControl
 {
-    partial class UcChild_XeTap
+    partial class UcChild_XeDaoTao
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_XeTap));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_XeDaoTao));
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_XeTapLai = new DevExpress.XtraGrid.GridControl();
             this.gridView_XeTapLai = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -49,6 +48,7 @@
             this.ChuSoHuu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_CheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.DateTime_Use = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoToggleSwitch = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_BienSoXe = new DevExpress.XtraEditors.TextEdit();
@@ -74,7 +74,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.DateTime_Use = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tblLayout_DmXeTapLai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).BeginInit();
@@ -248,7 +247,7 @@
             // ThanhLy
             // 
             this.ThanhLy.Caption = "Thanh Lý";
-            this.ThanhLy.ColumnEdit = this.repo_CheckEdit;
+            this.ThanhLy.ColumnEdit = this.repoToggleSwitch;
             this.ThanhLy.FieldName = "ThanhLy";
             this.ThanhLy.Name = "ThanhLy";
             this.ThanhLy.Visible = true;
@@ -259,6 +258,15 @@
             // 
             this.repo_CheckEdit.AutoHeight = false;
             this.repo_CheckEdit.Name = "repo_CheckEdit";
+            // 
+            // DateTime_Use
+            // 
+            this.DateTime_Use.Caption = "Sử Dụng Đến";
+            this.DateTime_Use.FieldName = "SuDungDen";
+            this.DateTime_Use.Name = "DateTime_Use";
+            this.DateTime_Use.Visible = true;
+            this.DateTime_Use.VisibleIndex = 10;
+            this.DateTime_Use.Width = 129;
             // 
             // repoToggleSwitch
             // 
@@ -495,14 +503,11 @@
             windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
             windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
             windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
-            windowsUIButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions5.Image")));
-            windowsUIButtonImageOptions5.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -628,21 +633,12 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Ngày Cấp GPXTL";
             // 
-            // DateTime_Use
-            // 
-            this.DateTime_Use.Caption = "Sử Dụng Đến";
-            this.DateTime_Use.FieldName = "SuDungDen";
-            this.DateTime_Use.Name = "DateTime_Use";
-            this.DateTime_Use.Visible = true;
-            this.DateTime_Use.VisibleIndex = 10;
-            this.DateTime_Use.Width = 129;
-            // 
-            // UcChild_XeTap
+            // UcChild_XeDaoTao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tblLayout_DmXeTapLai);
-            this.Name = "UcChild_XeTap";
+            this.Name = "UcChild_XeDaoTao";
             this.Size = new System.Drawing.Size(1500, 800);
             this.Load += new System.EventHandler(this.UcChild_XeTap_Load);
             this.tblLayout_DmXeTapLai.ResumeLayout(false);
