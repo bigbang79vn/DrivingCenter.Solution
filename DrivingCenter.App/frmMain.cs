@@ -135,7 +135,7 @@ namespace DrivingCenter.App
             else
             {
                 MainContainer.Controls.Clear();
-                UcChild_SapLuuLuong uc = new UcChild_SapLuuLuong();
+                UcChild_KhoaHoc_PhanCong uc = new UcChild_KhoaHoc_PhanCong();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
                 this.itemNav.Caption = $"Sắp Xếp Lưu Lượng Xe & Giáo Viên";

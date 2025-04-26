@@ -23,43 +23,28 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHocGPLX> GetlstKH()
         {
-            string querylstKH = "SELECT MaKH , TenKH, NgayKG FROM KhoaHoc";
-            DataTable dt1 = DataProviderGPLX.Instance.ExcuteQuery(querylstKH);
+            // Lấy danh sách khóa học
+            var dt1 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH, TenKH, HangDT, NgayKG, NgayBG FROM KhoaHoc");
+            var lstKH = dt1.AsEnumerable()
+                           .Select(row => new KhoaHocGPLX(row))
+                           .ToList();
 
-            List<KhoaHocGPLX> lstKH = new List<KhoaHocGPLX>();
+            // Lấy danh sách mã khóa học đã có trong báo cáo I
+            var dt2 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH FROM BaoCaoI");
+            var lstKHBC1 = new HashSet<string>(dt2.AsEnumerable()
+                                                  .Select(row => row.Field<string>("MaKH")));
 
-            foreach (DataRow dr in dt1.Rows)
-            {
-                KhoaHocGPLX kh = new KhoaHocGPLX(dr);
-                lstKH.Add(kh);
-            }
-
-            string querylstKHBC1 = "SELECT MaKH FROM BaoCaoI";
-            DataTable dt2 = DataProviderGPLX.Instance.ExcuteQuery(querylstKHBC1);
-
-            List<string> lstKHBC1 = new List<string>();
-
-            foreach (DataRow row in dt2.Rows)
-            {
-                lstKHBC1.Add(row["MaKH"].ToString());
-            }
-
-            foreach (KhoaHocGPLX item in lstKH.ToList())
-            {
-                foreach (var item1 in lstKHBC1)
-                {
-                    if (item.MaKHGplx == item1)
-                        lstKH.Remove(item);
-                }
-            }
+            // Loại bỏ các khóa học đã có trong báo cáo
+            lstKH = lstKH.Where(kh => !lstKHBC1.Contains(kh.MaKHGplx)).ToList();
 
             return lstKH;
         }
 
+
         //public List<HvTotNghiep> GetHvTotNghiep()
         //{
         //    List<HvTotNghiep> lst = new List<HvTotNghiep>();
-        //    DataTable dt = DataProviderGPLX.Instance.ExcuteQuery("SELECT * FROM ReportCNTN ORDER BY SoCCTN ASC");
+        //    DataTable dt = DataProviderGPLX.Instance.ExecuteQuery("SELECT * FROM ReportCNTN ORDER BY SoCCTN ASC");
 
         //    lst = dt.AsEnumerable().Select(item => new HvTotNghiep
         //    {
@@ -79,7 +64,7 @@ namespace DrivingCenter.App.DAO
         //public DataTable GetDataPrintCCTN(string lstId)
         //{
         //    string query = string.Format("SELECT * FROM ReportCNTN WHERE Id IN (SELECT itemID FROM Split('{0}', ',')) ORDER BY SoCCTN ASC", lstId);
-        //    DataTable dt = DataProviderGPLX.Instance.ExcuteQuery(query);
+        //    DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
         //    return dt;
         //}
 
@@ -88,7 +73,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("UPDATE NguoiLX_HoSo set " +
                 "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
                 nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy_Old, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
-            DataProviderGPLX.Instance.ExcuteNoneQuery(query);
+            DataProviderGPLX.Instance.ExecuteNonQuery(query);
         }
     }
 }

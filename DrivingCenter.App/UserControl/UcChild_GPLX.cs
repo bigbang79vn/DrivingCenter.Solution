@@ -54,8 +54,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadKH()
         {
-            List<KhoaHocGPLX> lst = new List<KhoaHocGPLX>();
-            lst = GPLX_DAO.Instance.GetlstKH();
+            List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
 
             cbx_KhoaHoc.DataSource = lst;
             cbx_KhoaHoc.DisplayMember = "TenKHGplx";

@@ -631,11 +631,11 @@
     <Compile Include="UserControl\UcChild_GiaoVien.Designer.cs">
       <DependentUpon>UcChild_GiaoVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UcChild_SapLuuLuong.cs">
+    <Compile Include="UserControl\UcChild_KhoaHoc_PhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\UcChild_SapLuuLuong.Designer.cs">
-      <DependentUpon>UcChild_SapLuuLuong.cs</DependentUpon>
+    <Compile Include="UserControl\UcChild_KhoaHoc_PhanCong.Designer.cs">
+      <DependentUpon>UcChild_KhoaHoc_PhanCong.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UcChild_XeDaoTao.cs">
       <SubType>UserControl</SubType>
@@ -805,8 +805,8 @@
     <EmbeddedResource Include="UserControl\UcChild_GiaoVien.resx">
       <DependentUpon>UcChild_GiaoVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UcChild_SapLuuLuong.resx">
-      <DependentUpon>UcChild_SapLuuLuong.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UcChild_KhoaHoc_PhanCong.resx">
+      <DependentUpon>UcChild_KhoaHoc_PhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcChild_XeDaoTao.resx">
       <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>

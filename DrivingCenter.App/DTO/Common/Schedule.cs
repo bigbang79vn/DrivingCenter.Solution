@@ -12,6 +12,8 @@ namespace DrivingCenter.App.DTO.Cabin
         public int KhoaHocId { get; set; }
         public string MaKH { get; set; }
         public string TenKH { get; set; }
+        public DateTime? NgayKG { get; set; }
+        public DateTime? NgayBG { get; set; }
         public int? GiaoVienId { get; set; }
         public string GiaoVien { get; set; }
         public DateTime? ThoiDiemChayDAT { get; set; }

@@ -26,7 +26,7 @@ namespace DrivingCenter.App.DAO
         public DataTable GetImgById(string diemdanhnguoilxId)
         {
             string query = string.Format("SELECT DiemDanhNguoiLxID, AnhChup, AnhChup_Logout FROM DiemDanhNguoiLx WHERE DiemDanhNguoiLxID = '{0}'", diemdanhnguoilxId);
-            DataTable dt = DataProviderIMG.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderIMG.Instance.ExecuteQuery(query);
 
             return dt;   
         }
@@ -36,7 +36,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = string.Format("DELETE ReportCNTN");
-                return status = DataProviderIMG.Instance.ExcuteNoneQuery(query);
+                return status = DataProviderIMG.Instance.ExecuteNonQuery(query);
             }
             catch
             {
@@ -47,7 +47,7 @@ namespace DrivingCenter.App.DAO
         public List<HvTotNghiep> GetHvTotNghiep()
         {
             List<HvTotNghiep> lst = new List<HvTotNghiep>();
-            DataTable dt = DataProviderIMG.Instance.ExcuteQuery("SELECT * FROM ReportCNTN ORDER BY SoCCTN ASC");
+            DataTable dt = DataProviderIMG.Instance.ExecuteQuery("SELECT * FROM ReportCNTN ORDER BY SoCCTN ASC");
 
             lst = dt.AsEnumerable().Select(item => new HvTotNghiep
             {
@@ -87,7 +87,7 @@ namespace DrivingCenter.App.DAO
                     @NgayQDTNEng = '{nguoiLx_CCTN.NgayQDTNEng}',
                     @HangGPLXEng = '{nguoiLx_CCTN.HangGPLXEng}'";
 
-            DataProviderIMG.Instance.ExcuteNoneQuery(query);
+            DataProviderIMG.Instance.ExecuteNonQuery(query);
         }
 
         public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng, string sovaoso)
@@ -100,32 +100,32 @@ namespace DrivingCenter.App.DAO
                 GioiTinhEng = '{gioitinhEng}',
                 SoVaoSo = '{sovaoso}'
                 WHERE MaDK = '{madk}'";
-            DataProviderIMG.Instance.ExcuteNoneQuery(query);
+            DataProviderIMG.Instance.ExecuteNonQuery(query);
         }
 
         public DataTable GetDataPrintCCTN(string lstId)
         {
             string query = string.Format("SELECT * FROM ReportCNTN WHERE Id IN (SELECT itemID FROM Split('{0}', ',')) ORDER BY SoCCTN ASC", lstId);
-            DataTable dt = DataProviderIMG.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderIMG.Instance.ExecuteQuery(query);
             return dt;
         }
 
         public DataTable GetDataTheHocVien(string lstNguoiLxID)
         {
             string query = $"EXEC [dbo].[usp_LoadDaTaHV] @lstNguoiLXID = N'{lstNguoiLxID}'";
-            return DataProviderIMG.Instance.ExcuteQuery(query);
+            return DataProviderIMG.Instance.ExecuteQuery(query);
         }
 
         public DataTable GetDataPhieuTheoDoi(string lstNguoiLxID)
         {
             string query = $"EXEC [dbo].[usp_LoadDataPhieuTheoDoi] @lstNguoiLXID = N'{lstNguoiLxID}'";
-            return DataProviderIMG.Instance.ExcuteQuery(query);
+            return DataProviderIMG.Instance.ExecuteQuery(query);
         }
 
         public DataTable GetDataTemTheDAT(string lstNguoiLxID)
         {
             string query = $"EXEC [dbo].[usp_LoadDaTaHvInTemDat] @lstNguoiLXID = N'{lstNguoiLxID}'";
-            return DataProviderIMG.Instance.ExcuteQuery(query);
+            return DataProviderIMG.Instance.ExecuteQuery(query);
         }
     }
 }

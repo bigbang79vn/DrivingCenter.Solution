@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions16 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_GiaoVien));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions17 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions18 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions19 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions20 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_GiaoVien = new DevExpress.XtraGrid.GridControl();
             this.gridView_GiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -56,6 +55,7 @@
             this.pictureBox_AnhChup = new System.Windows.Forms.PictureBox();
             this.toggleSwitch_TrangThai = new DevExpress.XtraEditors.ToggleSwitch();
             this.cbb_HocVan = new DevExpress.XtraEditors.LookUpEdit();
+            this.txt_GiaoVienId = new DevExpress.XtraEditors.TextEdit();
             this.txt_MaGV = new DevExpress.XtraEditors.TextEdit();
             this.txt_MaCNDT = new DevExpress.XtraEditors.TextEdit();
             this.txt_TenGV = new DevExpress.XtraEditors.TextEdit();
@@ -82,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AnhChup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_TrangThai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_HocVan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_GiaoVienId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaGV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaCNDT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TenGV.Properties)).BeginInit();
@@ -282,11 +283,12 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Controls.Add(this.memo_DiaChi);
             this.panel2.Controls.Add(this.pictureBox_AnhChup);
             this.panel2.Controls.Add(this.toggleSwitch_TrangThai);
             this.panel2.Controls.Add(this.cbb_HocVan);
+            this.panel2.Controls.Add(this.txt_GiaoVienId);
             this.panel2.Controls.Add(this.txt_MaGV);
             this.panel2.Controls.Add(this.txt_MaCNDT);
             this.panel2.Controls.Add(this.txt_TenGV);
@@ -311,11 +313,10 @@
             // 
             // memo_DiaChi
             // 
-            this.memo_DiaChi.Location = new System.Drawing.Point(118, 496);
+            this.memo_DiaChi.Location = new System.Drawing.Point(118, 524);
             this.memo_DiaChi.Name = "memo_DiaChi";
             this.memo_DiaChi.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memo_DiaChi.Properties.Appearance.Options.UseFont = true;
-            this.memo_DiaChi.Properties.ReadOnly = true;
             this.memo_DiaChi.Size = new System.Drawing.Size(357, 76);
             this.memo_DiaChi.TabIndex = 45;
             // 
@@ -329,12 +330,13 @@
             this.pictureBox_AnhChup.Size = new System.Drawing.Size(170, 200);
             this.pictureBox_AnhChup.TabIndex = 44;
             this.pictureBox_AnhChup.TabStop = false;
+            this.pictureBox_AnhChup.Click += new System.EventHandler(this.pictureBox_AnhChup_Click);
             // 
             // toggleSwitch_TrangThai
             // 
             this.toggleSwitch_TrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.toggleSwitch_TrangThai.Location = new System.Drawing.Point(118, 583);
+            this.toggleSwitch_TrangThai.Location = new System.Drawing.Point(118, 611);
             this.toggleSwitch_TrangThai.Name = "toggleSwitch_TrangThai";
             this.toggleSwitch_TrangThai.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch_TrangThai.Properties.Appearance.Options.UseFont = true;
@@ -347,7 +349,7 @@
             // 
             this.cbb_HocVan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbb_HocVan.Location = new System.Drawing.Point(118, 461);
+            this.cbb_HocVan.Location = new System.Drawing.Point(118, 489);
             this.cbb_HocVan.Name = "cbb_HocVan";
             this.cbb_HocVan.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_HocVan.Properties.Appearance.Options.UseFont = true;
@@ -356,15 +358,30 @@
             this.cbb_HocVan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbb_HocVan.Properties.NullText = "Trình Độ Học Vấn";
-            this.cbb_HocVan.Properties.ReadOnly = true;
             this.cbb_HocVan.Size = new System.Drawing.Size(207, 24);
             this.cbb_HocVan.TabIndex = 42;
+            // 
+            // txt_GiaoVienId
+            // 
+            this.txt_GiaoVienId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_GiaoVienId.Location = new System.Drawing.Point(338, 285);
+            this.txt_GiaoVienId.Name = "txt_GiaoVienId";
+            this.txt_GiaoVienId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_GiaoVienId.Properties.Appearance.Options.UseFont = true;
+            this.txt_GiaoVienId.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_GiaoVienId.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_GiaoVienId.Properties.AutoHeight = false;
+            this.txt_GiaoVienId.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txt_GiaoVienId.Size = new System.Drawing.Size(53, 23);
+            this.txt_GiaoVienId.TabIndex = 39;
+            this.txt_GiaoVienId.Visible = false;
             // 
             // txt_MaGV
             // 
             this.txt_MaGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_MaGV.Location = new System.Drawing.Point(118, 257);
+            this.txt_MaGV.Location = new System.Drawing.Point(118, 285);
             this.txt_MaGV.Name = "txt_MaGV";
             this.txt_MaGV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.txt_MaGV.Properties.Appearance.Options.UseFont = true;
@@ -372,7 +389,6 @@
             this.txt_MaGV.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_MaGV.Properties.AutoHeight = false;
             this.txt_MaGV.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txt_MaGV.Properties.ReadOnly = true;
             this.txt_MaGV.Size = new System.Drawing.Size(207, 23);
             this.txt_MaGV.TabIndex = 39;
             // 
@@ -380,7 +396,7 @@
             // 
             this.txt_MaCNDT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_MaCNDT.Location = new System.Drawing.Point(118, 427);
+            this.txt_MaCNDT.Location = new System.Drawing.Point(118, 455);
             this.txt_MaCNDT.Name = "txt_MaCNDT";
             this.txt_MaCNDT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.txt_MaCNDT.Properties.Appearance.Options.UseFont = true;
@@ -388,7 +404,6 @@
             this.txt_MaCNDT.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_MaCNDT.Properties.AutoHeight = false;
             this.txt_MaCNDT.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txt_MaCNDT.Properties.ReadOnly = true;
             this.txt_MaCNDT.Size = new System.Drawing.Size(207, 23);
             this.txt_MaCNDT.TabIndex = 40;
             // 
@@ -396,7 +411,7 @@
             // 
             this.txt_TenGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_TenGV.Location = new System.Drawing.Point(338, 291);
+            this.txt_TenGV.Location = new System.Drawing.Point(338, 319);
             this.txt_TenGV.Name = "txt_TenGV";
             this.txt_TenGV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.txt_TenGV.Properties.Appearance.Options.UseFont = true;
@@ -404,7 +419,6 @@
             this.txt_TenGV.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_TenGV.Properties.AutoHeight = false;
             this.txt_TenGV.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txt_TenGV.Properties.ReadOnly = true;
             this.txt_TenGV.Size = new System.Drawing.Size(137, 23);
             this.txt_TenGV.TabIndex = 40;
             // 
@@ -412,7 +426,7 @@
             // 
             this.txt_HoDem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_HoDem.Location = new System.Drawing.Point(118, 291);
+            this.txt_HoDem.Location = new System.Drawing.Point(118, 319);
             this.txt_HoDem.Name = "txt_HoDem";
             this.txt_HoDem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.txt_HoDem.Properties.Appearance.Options.UseFont = true;
@@ -420,7 +434,6 @@
             this.txt_HoDem.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_HoDem.Properties.AutoHeight = false;
             this.txt_HoDem.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txt_HoDem.Properties.ReadOnly = true;
             this.txt_HoDem.Size = new System.Drawing.Size(207, 23);
             this.txt_HoDem.TabIndex = 40;
             // 
@@ -428,7 +441,7 @@
             // 
             this.txt_CCCD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_CCCD.Location = new System.Drawing.Point(118, 359);
+            this.txt_CCCD.Location = new System.Drawing.Point(118, 387);
             this.txt_CCCD.Name = "txt_CCCD";
             this.txt_CCCD.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.txt_CCCD.Properties.Appearance.Options.UseFont = true;
@@ -436,7 +449,6 @@
             this.txt_CCCD.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_CCCD.Properties.AutoHeight = false;
             this.txt_CCCD.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txt_CCCD.Properties.ReadOnly = true;
             this.txt_CCCD.Size = new System.Drawing.Size(207, 23);
             this.txt_CCCD.TabIndex = 41;
             // 
@@ -445,7 +457,7 @@
             this.date_NgaySinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.date_NgaySinh.EditValue = null;
-            this.date_NgaySinh.Location = new System.Drawing.Point(118, 325);
+            this.date_NgaySinh.Location = new System.Drawing.Point(118, 353);
             this.date_NgaySinh.Name = "date_NgaySinh";
             this.date_NgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date_NgaySinh.Properties.Appearance.Options.UseFont = true;
@@ -455,13 +467,10 @@
             this.date_NgaySinh.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.date_NgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgaySinh.Properties.CalendarDateEditing = false;
-            this.date_NgaySinh.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.False;
             this.date_NgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.date_NgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.date_NgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.date_NgaySinh.Properties.ReadOnly = true;
             this.date_NgaySinh.Size = new System.Drawing.Size(207, 23);
             this.date_NgaySinh.TabIndex = 10;
             // 
@@ -482,19 +491,16 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions16.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions16.SvgImage")));
-            windowsUIButtonImageOptions17.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions17.SvgImage")));
-            windowsUIButtonImageOptions18.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions18.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions18.SvgImage")));
-            windowsUIButtonImageOptions19.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions19.Image")));
-            windowsUIButtonImageOptions20.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions20.Image")));
-            windowsUIButtonImageOptions20.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
+            windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions16, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions17, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions18, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions19, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions20, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -507,6 +513,7 @@
             this.windowsUIButtonPanel.TabIndex = 36;
             this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
             this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
+            this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
             // 
             // label3
             // 
@@ -514,8 +521,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(41, 260);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label3.Location = new System.Drawing.Point(41, 288);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 17);
             this.label3.TabIndex = 21;
@@ -527,8 +534,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(39, 506);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label6.Location = new System.Drawing.Point(39, 534);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 17);
             this.label6.TabIndex = 25;
@@ -540,8 +547,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(31, 464);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label4.Location = new System.Drawing.Point(31, 492);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 17);
             this.label4.TabIndex = 25;
@@ -553,8 +560,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(24, 430);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label10.Location = new System.Drawing.Point(24, 458);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 17);
             this.label10.TabIndex = 25;
@@ -566,8 +573,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(14, 396);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label1.Location = new System.Drawing.Point(14, 424);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 23;
@@ -579,8 +586,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(32, 362);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label7.Location = new System.Drawing.Point(32, 390);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 17);
             this.label7.TabIndex = 29;
@@ -592,8 +599,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(38, 294);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label5.Location = new System.Drawing.Point(38, 322);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 17);
             this.label5.TabIndex = 25;
@@ -605,8 +612,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(22, 328);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label2.Location = new System.Drawing.Point(22, 356);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 27;
@@ -617,7 +624,7 @@
             this.cbb_HangGPLX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbb_HangGPLX.EditValue = "Chọn Hạng Xe";
-            this.cbb_HangGPLX.Location = new System.Drawing.Point(118, 393);
+            this.cbb_HangGPLX.Location = new System.Drawing.Point(118, 421);
             this.cbb_HangGPLX.Name = "cbb_HangGPLX";
             this.cbb_HangGPLX.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_HangGPLX.Properties.Appearance.Options.UseFont = true;
@@ -632,7 +639,6 @@
             this.cbb_HangGPLX.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenHang", "Hạng GPLX")});
             this.cbb_HangGPLX.Properties.NullText = "Hạng GPLX";
-            this.cbb_HangGPLX.Properties.ReadOnly = true;
             this.cbb_HangGPLX.Size = new System.Drawing.Size(207, 23);
             this.cbb_HangGPLX.TabIndex = 38;
             this.cbb_HangGPLX.UseWaitCursor = true;
@@ -656,6 +662,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_AnhChup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_TrangThai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_HocVan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_GiaoVienId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaGV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaCNDT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TenGV.Properties)).EndInit();
@@ -708,5 +715,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox_AnhChup;
         private DevExpress.XtraEditors.MemoEdit memo_DiaChi;
+        private DevExpress.XtraEditors.TextEdit txt_GiaoVienId;
     }
 }

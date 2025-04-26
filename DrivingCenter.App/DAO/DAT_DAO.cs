@@ -37,44 +37,44 @@ namespace DrivingCenter.App.DAO
         public List<int> LstYear()
         {
             List<int> lstYear = new List<int>();
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery("SELECT DISTINCT DATEPART(year, CreateDate) as Nam FROM NguoiLX ORDER BY Nam DESC");
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery("SELECT DISTINCT DATEPART(year, CreateDate) as Nam FROM NguoiLX ORDER BY Nam DESC");
 
             lstYear = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<int>("Nam")).ToList();
             return lstYear;
         }
         public int LoadSoHocVienByYear(int year)
         {
-            int SoHvByYear = (int)DataProviderDAT.Instance.ExcuteScalar($"SELECT COUNT(*) from NguoiLX WHERE KhoaHocID IN (SELECT KhoaHocID FROM KhoaHoc WHERE YEAR(NgayKG) = {year})");
+            int SoHvByYear = (int)DataProviderDAT.Instance.ExecuteScalar($"SELECT COUNT(*) from NguoiLX WHERE KhoaHocID IN (SELECT KhoaHocID FROM KhoaHoc WHERE YEAR(NgayKG) = {year})");
             return SoHvByYear;
         }
 
         public int LoadSoKhoaHocByYear(int year)
         {
-            int SoKhByYear = (int)DataProviderDAT.Instance.ExcuteScalar($"SELECT COUNT(*) FROM KhoaHoc where DATEPART(year, NgayKG) = {year}");
+            int SoKhByYear = (int)DataProviderDAT.Instance.ExecuteScalar($"SELECT COUNT(*) FROM KhoaHoc where DATEPART(year, NgayKG) = {year}");
             return SoKhByYear;
         }
 
         public int LoadSoHocVien()
         {
-            int SoHv = (int)DataProviderDAT.Instance.ExcuteScalar("SELECT COUNT(*) FROM NguoiLX");
+            int SoHv = (int)DataProviderDAT.Instance.ExecuteScalar("SELECT COUNT(*) FROM NguoiLX");
             return SoHv;
         }
 
         public int LoadSoKhoaHoc()
         {
-            int SoKh = (int)DataProviderDAT.Instance.ExcuteScalar("SELECT COUNT(*) FROM KhoaHoc ");
+            int SoKh = (int)DataProviderDAT.Instance.ExecuteScalar("SELECT COUNT(*) FROM KhoaHoc ");
             return SoKh;
         }
 
         public int LoadSoGiaoVien()
         {
-            int SoGv = (int)DataProviderDAT.Instance.ExcuteScalar("SELECT COUNT(*) FROM GiaoVien ");
+            int SoGv = (int)DataProviderDAT.Instance.ExecuteScalar("SELECT COUNT(*) FROM GiaoVien ");
             return SoGv;
         }
 
         public int LoadSoXeTapLai()
         {
-            int SoXetl = (int)DataProviderDAT.Instance.ExcuteScalar("SELECT COUNT(*) FROM Vehicles");
+            int SoXetl = (int)DataProviderDAT.Instance.ExecuteScalar("SELECT COUNT(*) FROM Vehicles");
             return SoXetl;
         }
 
@@ -86,7 +86,7 @@ namespace DrivingCenter.App.DAO
                 "GROUP by kh.KhoaHocID, kh.TenKH, kh.HangDaoTao, kh.SoHVDuDK " +
                 "ORDER by HangDaoTao");
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<KhoaHocDangDT> lst = new List<KhoaHocDangDT>();
 
@@ -95,14 +95,14 @@ namespace DrivingCenter.App.DAO
                 KhoaHocDangDT pr = new KhoaHocDangDT(item);
                 lst.Add(pr);
                 string qrUpdate = string.Format("UPDATE [KhoaHocDangDT] set [TongHocVien] = {0} where [KhoaHocID] = {1}", pr.TongHocVien, pr.KhoaHocID);
-                DataProviderDAT.Instance.ExcuteNoneQuery(qrUpdate);
+                DataProviderDAT.Instance.ExecuteNonQuery(qrUpdate);
             }
         }
 
         public void UpdateHvDuDK(int sohvdudk, int khoahocID)
         {
             string query = string.Format("UPDATE KhoaHocDangDT SET SoHVDuDK = '{0}' where KhoaHocID = {1}", sohvdudk, khoahocID);
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         public int CountPhien(int day, int month, int year)
@@ -112,7 +112,7 @@ namespace DrivingCenter.App.DAO
                 "WHERE ActivePhien = 1 and TongQuangDuongLD_Phien >= 5 AND convert(varchar, ThoiDiem, 103) = '{0:00}/{1:00}/{2:0000}' " +
                 "GROUP BY MaCSDT", day, month, year);
 
-            var getValue = DataProviderDAT.Instance.ExcuteScalar(query);
+            var getValue = DataProviderDAT.Instance.ExecuteScalar(query);
             return getValue == null ? 0 : (int)getValue;
         }
 
@@ -122,7 +122,7 @@ namespace DrivingCenter.App.DAO
         //        "FROM DiemDanhNguoiLx " +
         //        "WHERE ActivePhien = 1 AND ThoiDiem IS NOT NULL AND TongQuangDuongLD_Phien > 5 and convert(varchar, ThoiDiem, 103) = '{0:00}/{1:00}/{2:0000}'", day, month, year);
 
-        //    var getValue = DataProviderDAT.Instance.ExcuteScalar(query);
+        //    var getValue = DataProviderDAT.Instance.ExecuteScalar(query);
         //    return getValue == null ? 0 : (float)getValue;
         //}
 
@@ -133,7 +133,7 @@ namespace DrivingCenter.App.DAO
         public List<GvCabin> GetListGvByNameKH(string TenKH)
         {
             string query = string.Format("select MaDK, GiaoVienID from NguoiLX where TenKH like '%{0}%' ORDER BY GiaoVienID", TenKH);
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<GvCabin> lst = new List<GvCabin>();
 
@@ -152,7 +152,7 @@ namespace DrivingCenter.App.DAO
             string query = $@"SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, AnhChup, MaCNDT, hv.Ten , SuDung, DateUse 
                         FROM GiaoVien AS gv
                         INNER JOIN TrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma";
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
@@ -174,15 +174,40 @@ namespace DrivingCenter.App.DAO
             return lstGiaoVien;
         }
 
+        public void UpdateGiaoVien(GiaoVien gv, int GiaoVienId)
+        {
+            string query = $@"
+                 UPDATE [dbo].[GiaoVien]
+                    SET 
+                        [MaGV] = @MaGV, [HoTenDem] = @HoTenDem, [TenGV] = @TenGV, [NgaySinh] = @NgaySinh, [SoCMT] = @SoCMT, [HangGPLX] = @HangGPLX, 
+                        [SoDienThoai] = @SoDienThoai, [DiaChi] = @DiaChi, [MaCNDT] = @MaCNDT, [MaTrinhDoHocVan] = @MaTrinhDoHocVan, [SuDung] = @SuDung
+                    WHERE GiaoVienID = @GiaoVienID";
+            DataProviderDAT.Instance.ExecuteNonQuery(query, new
+            {
+                gv.MaGV,
+                gv.HoTenDem,
+                gv.TenGV,
+                gv.NgaySinh,
+                gv.SoCMT,
+                SoDienThoai = "",
+                DiaChi = "",
+                gv.HangGPLX,
+                gv.MaCNDT,
+                MaTrinhDoHocVan = gv.TrinhDoHocVan,
+                gv.SuDung,
+                GiaoVienID = GiaoVienId
+            });
+        }
         public DataTable GetlstHocVan()
         {
             string query = $"SELECT * FROM TrinhDoHocVan";
-            return  DataProviderDAT.Instance.ExcuteQuery(query);
+            //return  DataProviderDAT.Instance.ExecuteQuery(query);
+            return DataProviderDAT.Instance.ExecuteQuery(query);
         }
         public DataTable GetlstHangGPLX()
         {
             string query = $"SELECT [ID], [MaHang], [TenHang] FROM [I2EDAT2023].[dbo].[HangGPLX]";
-            return DataProviderDAT.Instance.ExcuteQuery(query);
+            return DataProviderDAT.Instance.ExecuteQuery(query);
         }
 
         #endregion Sync GV for Cabin
@@ -193,7 +218,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"SELECT * FROM XeTapLai ORDER BY BienSoXe ASC";
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
             {
@@ -216,7 +241,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("select VehicleID, BienSoXe, MaXe, Version, HangGPLX, Imei, VanToc, UpdateTime from Vehicles where online = 1 order by BienSoXe ASC");
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<XeTapLai> lstXeOnline = dt.AsEnumerable().Select(item => new XeTapLai
             {
@@ -237,7 +262,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("SELECT VehicleID, Imei, MaXe, BienSoXe, HangGPLX, Version, TrangThai, CreateDate, UpdateTime  FROM Vehicles ORDER BY BienSoXe ASC");
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<XeTapLai> lst = dt.AsEnumerable().Select(item => new XeTapLai
             {
@@ -262,7 +287,7 @@ namespace DrivingCenter.App.DAO
         //        "WHERE ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ph.BienSo = '{0}' and CONVERT(VARCHAR, ph.ThoiDiem, 112) >= '{1}' AND CONVERT(VARCHAR, ph.ThoiDiem, 112) <= '{2}' " +
         //        "ORDER BY ThoiDiem", biensoxe, from, to);
 
-        //    DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+        //    DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
         //    List<PhienHoc> lst = new List<PhienHoc>();
         //    foreach (DataRow item in dt.Rows)
@@ -279,14 +304,14 @@ namespace DrivingCenter.App.DAO
             string ngayHHGPXTL = xeTap.NgayHHXTL.ToString("yyyy-MM-dd 00:00:00");
             string query = string.Format("EXEC [dbo].[spUpdateXeTapLai] N'66015' , {0} , N'{1}' , N'{2}' ,N'{3}', N'{4}', 1 , {5} , N'{6}' , '{7}' , '{8}'",
                 vehicleId, xeTap.MaXe, xeTap.BienSoXe, xeTap.HangGPLX, imei, xeTap.NamSX, xeTap.SoGPXTL, ngayCapGPXTL, ngayHHGPXTL);
-            int result = DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            int result = DataProviderDAT.Instance.ExecuteNonQuery(query);
             return result;
         }
 
         public int DeleteXeTapLai(int vehicleId, string imei)
         {
             string query = string.Format("DELETE FROM [dbo].[Vehicles] WHERE VehicleID = {0} AND Imei = '{1}' ", vehicleId, imei);
-            int result = DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            int result = DataProviderDAT.Instance.ExecuteNonQuery(query);
             return result;
         }
 
@@ -297,13 +322,13 @@ namespace DrivingCenter.App.DAO
         public void LockSession(string diemdanhnguoilxId, string note)
         {
             string query = string.Format("UPDATE DiemDanhNguoiLx set Note = N'{0}', ActivePhien = 0 WHERE DiemDanhNguoiLxID = '{1}'", note, diemdanhnguoilxId);
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         public void UnlockSession(string diemdanhnguoilxId)
         {
             string query = string.Format("UPDATE DiemDanhNguoiLx set Note = NULL, ActivePhien = 1 WHERE DiemDanhNguoiLxID = '{0}'", diemdanhnguoilxId);
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         public void ReLoad(string date)
@@ -311,8 +336,8 @@ namespace DrivingCenter.App.DAO
             string query1 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',0,0", date);
             string query2 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',1,0", date);
 
-            DataProviderDAT.Instance.ExcuteNoneQuery(query1);
-            DataProviderDAT.Instance.ExcuteNoneQuery(query2);
+            DataProviderDAT.Instance.ExecuteNonQuery(query1);
+            DataProviderDAT.Instance.ExecuteNonQuery(query2);
         }
 
         public List<PhienHoc> GetAllPhienHocToDay(string day)
@@ -322,7 +347,7 @@ namespace DrivingCenter.App.DAO
                 "WHERE ph.GiaoVienID = gv.GiaoVienID and hv.NguoiLXID = ph.NguoiLxID AND hv.KhoaHocID = kh.KhoaHocID and CONVERT(VARCHAR, ThoiDiem, 103) = '{0}' " +
                 "ORDER by ph.Logout, ph.SendTongCuc ASC", day);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             return dt.AsEnumerable().Select(item => new PhienHoc
             {
@@ -358,7 +383,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = "SELECT KhoaHocID, MaKH, TenKH, HangDaoTao, SoHVDuDK, TongHocVien FROM KhoaHocDangDT";
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<KhoaHocDangDT> lst = new List<KhoaHocDangDT>();
 
@@ -379,7 +404,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = "SELECT KhoaHocID, MaKH, TenKH, NgayKG, NgayBG, MaBC1, HangDaoTao FROM KhoaHoc";
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<KhoaHoc> lst = new List<KhoaHoc>();
 
@@ -412,7 +437,7 @@ namespace DrivingCenter.App.DAO
                 ORDER BY 
                     HoTenGV";
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TongHopHVByKhoa> lstResult = new List<TongHopHVByKhoa>();
 
@@ -441,7 +466,7 @@ namespace DrivingCenter.App.DAO
                 "where ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ActivePhien = 1 and HangXe = 'B11' and kh.KhoaHocID = '{0}' " +
                 "GROUP BY hv.MaDK, hv.HangDaoTao, kh.KhoaHocID, ph.HangXe", khoahocId);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TongHopHVByKhoa> lstResultB11 = new List<TongHopHVByKhoa>();
 
@@ -470,7 +495,7 @@ namespace DrivingCenter.App.DAO
                 query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B11'";
             }
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TongHopHVByKhoa> lstBD = new List<TongHopHVByKhoa>();
 
@@ -495,7 +520,7 @@ namespace DrivingCenter.App.DAO
                 "GROUP BY MaGV, HoTenGV, ThoiDiem, BienSoXe, TenKH " +
                 "ORDER BY HoTenGV", khoahoc);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TongHopGV> lstGV = dt.AsEnumerable().Select(item => new TongHopGV
             {
@@ -517,7 +542,7 @@ namespace DrivingCenter.App.DAO
         public List<TienDo> TongHopTienDoDatByKH(int khoahocid, string makh)
         {
             string query = $"SELECT * FROM TongHop_TienDo WHERE KhoaHocID = {khoahocid} and MaKH = '{makh}' ORDER BY MaGV ASC, Ngay ASC ";
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TienDo> lst = dt.AsEnumerable().Select(item => new TienDo {
                 ThuOfWeek = item["Thu"].ToString(),
@@ -540,7 +565,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"EXEC [dbo].[spQuaTrinhDaoTaoKhoaHoc] @MaCSDT = N'66015', @KhoaHocID = {KhoaHocID}, @TieuDe = N'BÁO CÁO KẾT QUẢ THỰC HÀNH LÁI XE CỦA KHÓA HỌC', @Result = {KieuKetQua}";
 
-            return DataProviderDAT.Instance.ExcuteQuery(query);
+            return DataProviderDAT.Instance.ExecuteQuery(query);
         }
 
         #endregion Menu Context Tổng hợp
@@ -550,7 +575,7 @@ namespace DrivingCenter.App.DAO
             int CountPhImgNull = 0;
             string query = string.Format("SELECT COUNT(*) AS NumImgIsNull FROM DiemDanhNguoiLx WHERE CONVERT(VARCHAR, ThoiDiem, 112) = '{0}' AND AnhChup_Logout IS NULL", day);
 
-            CountPhImgNull = (int)DataProviderIMG.Instance.ExcuteScalar(query);
+            CountPhImgNull = (int)DataProviderIMG.Instance.ExecuteScalar(query);
 
             return CountPhImgNull;
         }
@@ -559,14 +584,14 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("SELECT COUNT(AnhChup_Logout) FROM DiemDanhNguoiLx WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId);
 
-            int count = (int)DataProviderIMG.Instance.ExcuteScalar(query);
+            int count = (int)DataProviderIMG.Instance.ExecuteScalar(query);
 
             return count;
         }
 
         public void KetThucPhien(Int64 nguoiLxID, string diemdanhnguoilxId)
         {
-            DataProviderDAT.Instance.ExcuteNoneQuery(string.Format(string.Format("EXEC [dbo].[spKetThucPhienDaoTao] @NguoiLxID = {0}, @DiemDanhNguoiLxID = N'{1}' ", nguoiLxID, diemdanhnguoilxId)));
+            DataProviderDAT.Instance.ExecuteNonQuery(string.Format(string.Format("EXEC [dbo].[spKetThucPhienDaoTao] @NguoiLxID = {0}, @DiemDanhNguoiLxID = N'{1}' ", nguoiLxID, diemdanhnguoilxId)));
         }
 
         #endregion DAT
@@ -578,7 +603,7 @@ namespace DrivingCenter.App.DAO
                 "GROUP BY CONCAT(gv.HoTenDem, ' ', gv.TenGV), ph.MaDK, hv.HoVaTen, kh.TenKH, PH.BienSo " +
                 "ORDER BY HoTenGV", day);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TongHopHVByDay> LstSum = new List<TongHopHVByDay>();
             foreach (DataRow item in dt.Rows)
@@ -606,7 +631,7 @@ namespace DrivingCenter.App.DAO
                 ORDER by HoTenGV";
             }
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<TongHopGV> lstGV = dt.AsEnumerable().Select(item => new TongHopGV{
                 MaGv = item["MaGV"].ToString(),
@@ -638,7 +663,7 @@ namespace DrivingCenter.App.DAO
                 (ROUND(Lat,3,1) = '12.67' AND ROUND(Lng,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{day}') OR 
                 (ROUND(Lat_Logout,3,1) = '12.67' AND ROUND(Lng_Logout,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{day}') AND TongQuangDuongLD_Phien > 5 AND ActivePhien = 1 Order by MaGV asc ";
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<string> lst = dt.AsEnumerable()
                            .Select(r => r.Field<string>("MaGV"))
@@ -656,8 +681,8 @@ namespace DrivingCenter.App.DAO
         public void DeletePhByID(string diemdanhnguoilxID)
         {
             string query = string.Format("EXEC [dbo].[spDeletePhienHoc] @diemdanhnguoilxID = '{0}'", diemdanhnguoilxID);
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
-            DataProviderIMG.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
+            DataProviderIMG.Instance.ExecuteNonQuery(query);
         }
 
         public List<PhienHoc> TongHopPhienHocLoi(string from, string to)
@@ -667,7 +692,7 @@ namespace DrivingCenter.App.DAO
                 "where ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ActivePhien = 0 and CONVERT(VARCHAR, ph.ThoiDiem, 112) >= '{0}' AND CONVERT(VARCHAR, ph.ThoiDiem, 112) <= '{1}' " +
                 "ORDER BY HoTenGV", from, to);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<PhienHoc> lst = dt.AsEnumerable().Select(item => new PhienHoc
             {
@@ -695,7 +720,7 @@ namespace DrivingCenter.App.DAO
                 "WHERE ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ph.BienSo = '{0}' and CONVERT(VARCHAR, ph.ThoiDiem, 112) >= '{1}' AND CONVERT(VARCHAR, ph.ThoiDiem, 112) <= '{2}' " +
                 "ORDER BY ThoiDiem", biensoxe, from, to);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<PhienHoc> lst = new List<PhienHoc>();
             foreach (DataRow item in dt.Rows)
@@ -711,7 +736,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("SELECT kq.DiemDanhNguoiLxID " +
                 "FROM DiemDanhNguoiLx kq, NguoiLX hv, KhoaHoc kh " +
                 "WHERE kq.NguoiLxID = hv.NguoiLXID and kh.KhoaHocID = hv.KhoaHocID and kq.ThoiDiem is null and kh.KhoaHocID = '{0}'", khoahocid);
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<Guid> lstDiemDanhNguoiLxID = dt.AsEnumerable()
                 .Select(r => r.Field<Guid>("DiemDanhNguoiLxID"))
@@ -724,8 +749,8 @@ namespace DrivingCenter.App.DAO
             foreach (Guid item in lstDiemDanhNguoiLxID)
             {
                 string query = string.Format("EXEC [dbo].[spDeletePhienHoc] @diemdanhnguoilxID = '{0}'", item);
-                DataProviderDAT.Instance.ExcuteNoneQuery(query);
-                DataProviderIMG.Instance.ExcuteNoneQuery(query);
+                DataProviderDAT.Instance.ExecuteNonQuery(query);
+                DataProviderIMG.Instance.ExecuteNonQuery(query);
             }
         }
 
@@ -733,7 +758,7 @@ namespace DrivingCenter.App.DAO
         {
             List<PointLatLng> lstPoint = new List<PointLatLng>();
             string query = string.Format("SELECT Lat, Lng  FROM VehicleHistory WHERE DiemDanhNguoiLxId = '{0}' ORDER BY TongQuangDuongPhien asc", diemdanhnguoilxId);
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             lstPoint = dt.AsEnumerable().Select(item => new PointLatLng
             {
@@ -750,7 +775,7 @@ namespace DrivingCenter.App.DAO
                 "FROM DiemDanhNguoiLx AS dd, NguoiLX AS hv " +
                 "WHERE DiemDanhNguoiLxId = '{0}' and dd.NguoiLxID = hv.NguoiLXID", diemdanhnguoilxId);
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
             return dt;
         }
 
@@ -759,7 +784,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("SELECT dt.HistoryID, dt.ThoiDiem, dt.VanToc, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, FaceStatus, img.AnhChup " +
                 "FROM HistoryData as dt, I2EDAT_IMAGE.dbo.HistoryData as img " +
                 "WHERE dt.DiemDanhNguoiLxId = '{0}' AND dt.HistoryID = img.HistoryID", diemdanhnguoilxId);
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<ChiTietPhienHoc> lst = dt.AsEnumerable().Select(item => new ChiTietPhienHoc
             {
@@ -782,7 +807,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("SELECT CreateDate, Lat, Lng, VanToc, TongQuangDuongPhien, TongThoiGianPhien, FaceStatus " +
                 "FROM VehicleHistory " +
                 "WHERE DiemDanhNguoiLxId = '{0}' ORDER BY CreateDate ASC", diemdanhnguoilxId);
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<ChiTietPhienHoc> lst = dt.AsEnumerable().Select(item => new ChiTietPhienHoc
             {
@@ -804,7 +829,7 @@ namespace DrivingCenter.App.DAO
                 "SET AnhChup_Logout = (select AnhChup from HistoryData WHERE DiemDanhNguoiLxId = '{0}' AND HistoryID = '{1}') " +
                 "WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId, historyId);
 
-            DataProviderIMG.Instance.ExcuteNoneQuery(query);
+            DataProviderIMG.Instance.ExecuteNonQuery(query);
         }
 
         public void UpdateImageLogin(string diemdanhnguoilxId, Guid historyId)
@@ -813,7 +838,7 @@ namespace DrivingCenter.App.DAO
                 "SET AnhChup = (select AnhChup from HistoryData WHERE DiemDanhNguoiLxId = '{0}' AND HistoryID = '{1}') " +
                 "WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId, historyId);
 
-            DataProviderIMG.Instance.ExcuteNoneQuery(query);
+            DataProviderIMG.Instance.ExecuteNonQuery(query);
         }
 
         #region In thẻ học viên
@@ -823,7 +848,7 @@ namespace DrivingCenter.App.DAO
             List<HocVien> lst = new List<HocVien>();
             string query = string.Format("SELECT HV.GiaoVienID, gv.HoTenDem, GV.TenGV, NguoiLXID, MaDK, HoVaTen, HV.NgaySinh, GioiTinh, NoiCT, HV.SoCMT, NgayCapCMT " +
                 "FROM NguoiLX AS HV, GiaoVien AS GV WHERE KhoaHocID = '{0}' AND HV.GiaoVienID = GV.GiaoVienID ORDER BY GiaoVienID ASC", idKhoaHoc);
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             lst = dt.AsEnumerable().Select(item => new HocVien
             {
@@ -844,7 +869,7 @@ namespace DrivingCenter.App.DAO
         public string GetLstNguoiLxID(string khoahocID)
         {
             string query = string.Format("EXEC spGetLstNguoiLxIDByKhoaHoc @KhoaHocID = '{0}'", khoahocID);
-            string LstNguoiLxID = DataProviderDAT.Instance.ExcuteScalar(query).ToString();
+            string LstNguoiLxID = DataProviderDAT.Instance.ExecuteScalar(query).ToString();
             return LstNguoiLxID;
         }
 
@@ -853,14 +878,14 @@ namespace DrivingCenter.App.DAO
         public DateTime GetMinNgayKG()
         {
             string query = "SELECT MIN(NgayKG) FROM KhoaHocDangDT";
-            DateTime result = (DateTime)DataProviderDAT.Instance.ExcuteScalar(query);
+            DateTime result = (DateTime)DataProviderDAT.Instance.ExecuteScalar(query);
             return result;
         }
 
         public DateTime GetMaxNgayBG()
         {
             string query = "SELECT MAX(NgayBG) FROM KhoaHocDangDT";
-            DateTime result = (DateTime)DataProviderDAT.Instance.ExcuteScalar(query);
+            DateTime result = (DateTime)DataProviderDAT.Instance.ExecuteScalar(query);
             return result;
         }
 
@@ -869,7 +894,7 @@ namespace DrivingCenter.App.DAO
         public DataTable GetCategory()
         {
             string query = "EXEC [dbo].[spGetTreeKhoaHoc] @MaCSDT = N'66015'";
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
             return dt;
         }
 
@@ -877,7 +902,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"EXEC [dbo].[spGetALLNguoiLxByKhoaHocCSDT] @MaCSDT = N'66015', @KhoaHocID = {khoahocId}";
 
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<NguoiLxInDAT> lst = new List<NguoiLxInDAT>();
 
@@ -915,7 +940,7 @@ namespace DrivingCenter.App.DAO
                 FROM NguoiLX HV, GiaoVien gv, KhoaHoc kh 
                 WHERE gv.GiaoVienID = hv.GiaoVienID and hv.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
             
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule
             {
@@ -937,13 +962,13 @@ namespace DrivingCenter.App.DAO
         public void UpdateXeTapB11(Schedule rowdata)
         {
             string query = $"UPDATE NguoiLX SET XeB11 = {rowdata.MaXeTapB11} WHERE KhoaHocID = {rowdata.KhoaHocId} AND GiaoVienID = {rowdata.GiaoVienId}";
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         public void UpdatePhanCongDAT(int khoahocid, string timestart, string timeend)
         {
             string query = $"UPDATE NguoiLX SET ThoiDiemChayDAT = '{timestart}', ThoiDiemKetThucDAT = '{timeend}' WHERE KhoaHocID = {khoahocid}";
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         #endregion
@@ -952,7 +977,7 @@ namespace DrivingCenter.App.DAO
         public void Assignment(AssignmentGV ass)
         {
             string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'{2}'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
-            DataProviderDAT.Instance.ExcuteNoneQuery(query);
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         #endregion
@@ -961,7 +986,7 @@ namespace DrivingCenter.App.DAO
         public List<NguoiLxInLT> GetAllNguoiLxByKhoaHoc(int khoahocId)
         {
             string query = $"SELECT KhoaHocID, TenKH, MaDK, NguoiLXID, HoVaTen, NgaySinh, GioiTinh, SoCMT, HangDaoTao, GiaoVienID FROM NguoiLX WHERE KhoaHocID =  {khoahocId}";
-            DataTable dt = DataProviderDAT.Instance.ExcuteQuery(query);
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<NguoiLxInLT> lst = dt.AsEnumerable().Select(item => new NguoiLxInLT
             {
@@ -987,20 +1012,20 @@ namespace DrivingCenter.App.DAO
             FROM DiemDanhNguoiLx AS DAT, [I2EDAT_IMAGE].[dbo].[DiemDanhNguoiLx] AS IMG 
             WHERE DAT.DiemDanhNguoiLxID = IMG.DiemDanhNguoiLxID AND DAT.NguoiLxID = {NguoiLxId} 
             ORDER BY DAT.ThoiDiem DESC";
-            return DataProviderDAT.Instance.ExcuteQuery(query);
+            return DataProviderDAT.Instance.ExecuteQuery(query);
 
         }
 
         public DataTable GetBaoCaoHocVienByNguoilxID(Int64 NguoilxId)
         {
             string query = $"EXEC [dbo].[spTongHopDiemDanhLDByNguoiLx] @MaCSDT = N'66015', @NguoiLxID = {NguoilxId}";
-            return DataProviderDAT.Instance.ExcuteQuery(query);
+            return DataProviderDAT.Instance.ExecuteQuery(query);
         }
 
         public byte[] GetAnhChupNguoiLx(Int64 NguoiLxID)
         {
             string query = $"EXEC [dbo].[spGetAnhChupNguoiLx] @MaCSDT = N'66015', @NguoiLxID = {NguoiLxID}";
-            return (byte[])DataProviderDAT.Instance.ExcuteScalar(query);
+            return (byte[])DataProviderDAT.Instance.ExecuteScalar(query);
         }
 
         #endregion
