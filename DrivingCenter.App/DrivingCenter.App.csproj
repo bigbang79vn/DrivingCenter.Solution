@@ -415,6 +415,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\AppBee_DAO.cs" />
     <Compile Include="DAO\CabinEco_DAO.cs" />
     <Compile Include="DAO\CabinI2E_DAO.cs" />
     <Compile Include="DAO\DAT_DAO.cs" />
@@ -875,6 +876,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTO\CSDT\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

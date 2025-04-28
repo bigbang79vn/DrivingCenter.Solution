@@ -40,6 +40,13 @@ namespace DrivingCenter.App.DAO
             return lstKH;
         }
 
+        public DataRow KhoaHocSelected(string MaKH)
+        {
+            // Lấy thông tin khóa học đã chọn
+            string query = $"SELECT * FROM KhoaHoc WHERE MaKH = '{MaKH}'";
+            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            return dt.Rows[0];
+        }
 
         //public List<HvTotNghiep> GetHvTotNghiep()
         //{

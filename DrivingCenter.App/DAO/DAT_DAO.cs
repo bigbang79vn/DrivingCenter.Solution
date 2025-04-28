@@ -201,7 +201,6 @@ namespace DrivingCenter.App.DAO
         public DataTable GetlstHocVan()
         {
             string query = $"SELECT * FROM TrinhDoHocVan";
-            //return  DataProviderDAT.Instance.ExecuteQuery(query);
             return DataProviderDAT.Instance.ExecuteQuery(query);
         }
         public DataTable GetlstHangGPLX()

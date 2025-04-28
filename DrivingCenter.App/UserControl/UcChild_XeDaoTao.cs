@@ -58,7 +58,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void Get_DmHangXe()
         {
-            DataTable dt = DAT_DAO.Instance.GetlstHangGPLX();
+            DataTable dt = AppBee_DAO.Instance.GetlstHangGPLX();
             cbb_HangXe.Properties.DataSource = dt;
             cbb_HangXe.Properties.DisplayMember = "TenHang";
             cbb_HangXe.Properties.ValueMember = "MaHang";
@@ -67,7 +67,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai();
+            List<XeTapLai> lst = AppBee_DAO.Instance.GetLstXeTapLai();
             gridControl_XeTapLai.DataSource = lst;
         }
         private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

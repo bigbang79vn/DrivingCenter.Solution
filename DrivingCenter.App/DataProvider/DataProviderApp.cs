@@ -14,7 +14,7 @@ namespace DrivingCenter.App.DataProvider
         // Singleton instance
         private static readonly DataProviderApp instance = new DataProviderApp();
 
-        private readonly string connectionString = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+        private string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=BeeSolution;User ID=sa;Password=123";
 
         // Private constructor cho Singleton
         private DataProviderApp() { }

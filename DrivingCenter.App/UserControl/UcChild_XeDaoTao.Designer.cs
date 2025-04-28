@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_XeDaoTao));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_XeTapLai = new DevExpress.XtraGrid.GridControl();
             this.gridView_XeTapLai = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -73,6 +74,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.contextMenu_XeDaoTao = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mn_DongBoDuLieuXe = new System.Windows.Forms.ToolStripMenuItem();
             this.tblLayout_DmXeTapLai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).BeginInit();
@@ -92,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).BeginInit();
+            this.contextMenu_XeDaoTao.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblLayout_DmXeTapLai
@@ -111,6 +115,7 @@
             // 
             // gridControl_XeTapLai
             // 
+            this.gridControl_XeTapLai.ContextMenuStrip = this.contextMenu_XeDaoTao;
             this.gridControl_XeTapLai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_XeTapLai.Location = new System.Drawing.Point(3, 3);
             this.gridControl_XeTapLai.MainView = this.gridView_XeTapLai;
@@ -501,16 +506,16 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
-            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
+            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
+            windowsUIButtonImageOptions8.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions8.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -624,6 +629,19 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Ngày Cấp GPXTL";
             // 
+            // contextMenu_XeDaoTao
+            // 
+            this.contextMenu_XeDaoTao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mn_DongBoDuLieuXe});
+            this.contextMenu_XeDaoTao.Name = "contextMenu_XeDaoTao";
+            this.contextMenu_XeDaoTao.Size = new System.Drawing.Size(181, 48);
+            // 
+            // mn_DongBoDuLieuXe
+            // 
+            this.mn_DongBoDuLieuXe.Name = "mn_DongBoDuLieuXe";
+            this.mn_DongBoDuLieuXe.Size = new System.Drawing.Size(210, 22);
+            this.mn_DongBoDuLieuXe.Text = "Đồng bộ dữ liệu xe";
+            // 
             // UcChild_XeDaoTao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,6 +670,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).EndInit();
+            this.contextMenu_XeDaoTao.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -698,5 +717,7 @@
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.Columns.GridColumn DateTime_Use;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_TrangThai;
+        private System.Windows.Forms.ContextMenuStrip contextMenu_XeDaoTao;
+        private System.Windows.Forms.ToolStripMenuItem mn_DongBoDuLieuXe;
     }
 }

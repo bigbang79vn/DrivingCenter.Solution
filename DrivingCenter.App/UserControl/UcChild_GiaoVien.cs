@@ -30,7 +30,7 @@ namespace DrivingCenter.App.UserControl
             SetButtonPanelEnable(0,1);
         }
 
-        private int GiaoVienID;
+        private int _giaoVienID;
         private void SetControlsEnabled(bool enable)
         {
             txt_MaGV.Enabled = enable;
@@ -69,12 +69,12 @@ namespace DrivingCenter.App.UserControl
         }
         private void Get_DmGiaoVien()
         {
-            List<GiaoVien> data = DAT_DAO.Instance.GetAllGV();
+            List<GiaoVien> data = AppBee_DAO.Instance.GetAllGV();
             gridControl_GiaoVien.DataSource = data;
         }
         private void Get_DmTrinhDoHocVan()
         {
-            DataTable dt = DAT_DAO.Instance.GetlstHocVan();
+            DataTable dt = AppBee_DAO.Instance.GetlstHocVan();
             cbb_HocVan.Properties.DataSource = dt;
             cbb_HocVan.Properties.DisplayMember = "Ten";
             cbb_HocVan.Properties.ValueMember = "Ma";
@@ -83,7 +83,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void Get_DmHangGPLX()
         {
-            DataTable dt = DAT_DAO.Instance.GetlstHangGPLX();
+            DataTable dt = AppBee_DAO.Instance.GetlstHangGPLX();
 
             cbb_HangGPLX.Properties.DataSource = dt;
             cbb_HangGPLX.Properties.DisplayMember = "TenHang";
@@ -96,7 +96,7 @@ namespace DrivingCenter.App.UserControl
         {
             GiaoVien gv = gridView_GiaoVien.GetFocusedRow() as GiaoVien;
 
-            GiaoVienID = gv.GiaoVienID;
+            _giaoVienID = gv.GiaoVienID;
             txt_MaGV.Text = gv.MaGV;
             txt_HoDem.Text = gv.HoTenDem;
             txt_TenGV.Text = gv.TenGV;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_GiaoVien));
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
@@ -35,6 +36,8 @@
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_GiaoVien = new DevExpress.XtraGrid.GridControl();
+            this.contextMenu_GiaoVien = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_GiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaGV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,6 +77,7 @@
             this.cbb_HangGPLX = new DevExpress.XtraEditors.LookUpEdit();
             this.tblLayout_DmXeTapLai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).BeginInit();
+            this.contextMenu_GiaoVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
@@ -110,6 +114,7 @@
             // 
             // gridControl_GiaoVien
             // 
+            this.gridControl_GiaoVien.ContextMenuStrip = this.contextMenu_GiaoVien;
             this.gridControl_GiaoVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_GiaoVien.Location = new System.Drawing.Point(3, 3);
             this.gridControl_GiaoVien.MainView = this.gridView_GiaoVien;
@@ -121,6 +126,19 @@
             this.gridControl_GiaoVien.TabIndex = 0;
             this.gridControl_GiaoVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_GiaoVien});
+            // 
+            // contextMenu_GiaoVien
+            // 
+            this.contextMenu_GiaoVien.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenu_GiaoVien.Name = "contextMenu_GiaoVien";
+            this.contextMenu_GiaoVien.Size = new System.Drawing.Size(211, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.toolStripMenuItem1.Text = "Đồng bộ dữ liệu giáo viên";
             // 
             // gridView_GiaoVien
             // 
@@ -653,6 +671,7 @@
             this.Load += new System.EventHandler(this.UcChild_GiaoVien_Load);
             this.tblLayout_DmXeTapLai.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).EndInit();
+            this.contextMenu_GiaoVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
@@ -716,5 +735,7 @@
         private System.Windows.Forms.PictureBox pictureBox_AnhChup;
         private DevExpress.XtraEditors.MemoEdit memo_DiaChi;
         private DevExpress.XtraEditors.TextEdit txt_GiaoVienId;
+        private System.Windows.Forms.ContextMenuStrip contextMenu_GiaoVien;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
