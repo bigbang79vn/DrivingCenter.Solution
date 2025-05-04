@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DrivingCenter.App.DTO.GPLX;
+﻿using DevExpress.XtraGrid.Views.Grid;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using DevExpress.XtraGrid.Views.Grid;
+using DrivingCenter.App.DTO.DAT;
+using DrivingCenter.App.DTO.GPLX;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -24,36 +21,65 @@ namespace DrivingCenter.App.UserControl
 
         private void UcChild_KhoaHoc_PhanCong_Load(object sender, EventArgs e)
         {
+            
             GetKhoaHocDuKien();
             Get_DmGiaoVien();
+            Get_DmXeDaoTaoConTrong();
+            xeTapLais = AppBee_DAO.Instance.GetLstXeTapLai();
+
+            cbb_KhoaHocXeDaoTao.EditValueChanged += cbb_KhoaHocXeDaoTao_EditValueChanged;
+            gridViewRight.RowCellStyle += gridViewRight_RowCellStyle;
+
         }
 
+        List<XeTapLai> xeTapLais;
+        List<XeTapLai> lslistXeConTrong;
+        Dictionary<int, int?> giaoVienXe = new Dictionary<int, int?>();
+        List<Schedule> data;
         private string MaKhDuKien;
+        private int? currentGiaoVienId = null; // Biến lưu giáo viên đang focus
+
         private void GetKhoaHocDuKien()
         {
             List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
-
             cbb_KhoaHocDuKien.Properties.DataSource = lst;
             cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKHGplx";
             cbb_KhoaHocDuKien.Properties.ValueMember = "MaKHGplx";
+
+            if (lst.Count > 0)
+            {
+                cbb_KhoaHocDuKien.EditValue = lst[0].MaKHGplx;
+            }
         }
+
         private void Get_DmGiaoVien()
         {
-            var date = AppBee_DAO.Instance.GetAllGV().Where(x => x.SuDung == true).ToList();
-            listLeft = new BindingList<GiaoVien>(date);
+            var data = AppBee_DAO.Instance.GetAllGV().Where(x => x.SuDung == true).ToList();
+            listLeft = new BindingList<GiaoVien>(data);
             gridControlLeft.DataSource = listLeft;
 
             listRight = new BindingList<GiaoVien>();
             gridControlRight.DataSource = listRight;
         }
+
+        private void Get_DmXeDaoTaoConTrong()
+        {
+            lslistXeConTrong = AppBee_DAO.Instance.GetLstXeTapLai();
+            cbb_KhoaHocXeDaoTao.Properties.DataSource = lslistXeConTrong;
+            cbb_KhoaHocXeDaoTao.Properties.DisplayMember = "BienSoXe";
+            cbb_KhoaHocXeDaoTao.Properties.ValueMember = "VehicleID";
+            cbb_KhoaHocXeDaoTao.Properties.NullText = "-- Chọn giá trị --";
+        }
+
         private void cbb_KhoaHocDuKien_EditValueChanged(object sender, EventArgs e)
         {
-            MaKhDuKien = cbb_KhoaHocDuKien.EditValue.ToString();
+            MaKhDuKien = cbb_KhoaHocDuKien.EditValue?.ToString();
 
-            if (MaKhDuKien != null)
+            if (!string.IsNullOrEmpty(MaKhDuKien))
             {
                 DataRow row = GPLX_DAO.Instance.KhoaHocSelected(MaKhDuKien);
                 txt_MaKH.Text = row["MaKH"].ToString();
+
                 txt_TenKH.Text = row["TenKH"].ToString();
                 txt_HangDT.Text = row["HangDT"].ToString();
                 dateEdit_NgayKG.DateTime = (DateTime)row["NgayKG"];
@@ -61,15 +87,31 @@ namespace DrivingCenter.App.UserControl
                 txt_SoHV.Text = row["TongSoHV"].ToString();
                 txt_ThoiGianDT.Text = row["ThoiGianDT"].ToString();
                 memoEdit_GhiChu.Text = row["GhiChu"].ToString();
+
+                dateEdit_Begin.EditValue = (DateTime)row["NgayKG"];
+                dateEdit_End.EditValue = (DateTime)row["NgayBG"];
+
+                data = AppBee_DAO.Instance.GetKhoaHocDaPhanCong(MaKhDuKien);
+                gridCtrl_BoTri.DataSource = data;
+
+                giaoVienXe = data.ToDictionary(x => x.GiaoVienId, x => x.IdXeTap);
+
+                listRight.Clear();
+                var giaoViens = AppBee_DAO.Instance.Get_GiaoVienByMaKH(MaKhDuKien);
+                listRight = new BindingList<GiaoVien>(giaoViens);
+                gridControlRight.DataSource = listRight;
             }
+
+
         }
 
         BindingList<GiaoVien> listLeft = new BindingList<GiaoVien>();
         BindingList<GiaoVien> listRight = new BindingList<GiaoVien>();
+
         private void btnMoveRight_Click(object sender, EventArgs e)
         {
             var selectedRows = gridViewLeft.GetSelectedRows();
-            foreach (var rowHandle in selectedRows.Reverse()) // Reverse để xóa không lỗi index
+            foreach (var rowHandle in selectedRows.Reverse())
             {
                 var giaoVien = gridViewLeft.GetRow(rowHandle) as GiaoVien;
                 if (giaoVien != null)
@@ -96,19 +138,200 @@ namespace DrivingCenter.App.UserControl
 
         private void gridViewLeft_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
             {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                e.Info.ImageIndex = -1;
             }
         }
 
         private void gridViewRight_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
             {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                e.Info.ImageIndex = -1;
+            }
+        }
+
+        private void gridViewRight_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            GiaoVien selectedGiaoVien = gridViewRight.GetFocusedRow() as GiaoVien;
+
+            if (selectedGiaoVien != null)
+            {
+                txt_MaGV.Text = selectedGiaoVien.MaGV;
+                txt_HoTenGV.Text = selectedGiaoVien.HoTenGV;
+                date_NgaySinh.EditValue = selectedGiaoVien.NgaySinh;
+                spinEdit_SoHV.Value = spinEdit_SoHV.Value;
+
+                currentGiaoVienId = selectedGiaoVien.GiaoVienID;
+                OnFocusChange(selectedGiaoVien.GiaoVienID);
+            }
+        }
+
+        private void cbb_KhoaHocXeDaoTao_EditValueChanged(object sender, EventArgs e)
+        {
+            if (currentGiaoVienId != null && cbb_KhoaHocXeDaoTao.EditValue != null)
+            {
+                int xeId = (int)cbb_KhoaHocXeDaoTao.EditValue;
+                OnSelectXe(currentGiaoVienId.Value, xeId);
+                var xeInfo = xeTapLais.FirstOrDefault(x => x.VehicleID == xeId);
+                txtBienSoXe.Text = xeInfo.BienSoXe;
+                txt_MaXe.Text = xeInfo.MaXe;
+            }
+        }
+
+        void OnSelectXe(int giaoVienId, int xeId)
+        {
+            // Kiểm tra nếu xe đã được chọn
+            if (giaoVienXe.Values.Contains(xeId))
+            {
+                txtBienSoXe.Text = "";
+                txt_MaXe.Text = "";
+                var giaoVienKhac = giaoVienXe.FirstOrDefault(x => x.Value == xeId);
+                if (!giaoVienKhac.Equals(default(KeyValuePair<int, int>)))
+                {
+                    int? maGiaoVienDaChon = giaoVienKhac.Key;
+
+                    var xeInfo = xeTapLais.FirstOrDefault(x => x.VehicleID == xeId);
+                    txtBienSoXe.Text = xeInfo.BienSoXe.ToString();
+                    txt_MaXe.Text = xeInfo.MaXe.ToString();
+                }
+                return;
+            }
+
+
+            // Nếu giáo viên này đã có xe cũ => Trả xe cũ về lại danh sách xe trống
+            if (giaoVienXe.ContainsKey(giaoVienId))
+            {
+                int? xeCuId = giaoVienXe[giaoVienId];
+                var xeCu = xeTapLais.FirstOrDefault(x => x.VehicleID == xeCuId);
+                if (xeCu != null && !lslistXeConTrong.Any(x => x.VehicleID == xeCuId))
+                {
+                    lslistXeConTrong.Add(xeCu);
+                }
+            }
+
+            // Gán xe mới
+            giaoVienXe[giaoVienId] = xeId;
+
+            // Xóa xe mới khỏi list còn trống
+            var xeMoi = lslistXeConTrong.FirstOrDefault(x => x.VehicleID == xeId);
+            if (xeMoi != null)
+            {
+                lslistXeConTrong.Remove(xeMoi);
+            }
+
+            // Cập nhật lại DataSource cho Combobox
+            cbb_KhoaHocXeDaoTao.EditValueChanged -= cbb_KhoaHocXeDaoTao_EditValueChanged;
+            cbb_KhoaHocXeDaoTao.EditValue = null;
+            cbb_KhoaHocXeDaoTao.Properties.DataSource = null;
+            cbb_KhoaHocXeDaoTao.Properties.DataSource = lslistXeConTrong;
+            cbb_KhoaHocXeDaoTao.Properties.DisplayMember = "BienSoXe";
+            cbb_KhoaHocXeDaoTao.Properties.ValueMember = "VehicleID";
+            cbb_KhoaHocXeDaoTao.Properties.NullText = "-- Chọn xe --";
+            cbb_KhoaHocXeDaoTao.EditValueChanged += cbb_KhoaHocXeDaoTao_EditValueChanged;
+
+            // Highlight các giáo viên đã có xe
+            gridViewRight.RefreshData();
+        }
+
+        void OnFocusChange(int giaoVienId)
+        {
+            if (giaoVienXe.ContainsKey(giaoVienId))
+            {
+                cbb_KhoaHocXeDaoTao.EditValue = giaoVienXe[giaoVienId];
+                txtBienSoXe.Text = xeTapLais.FirstOrDefault(x => x.VehicleID == giaoVienXe[giaoVienId]).BienSoXe.ToString();
+                dateEdit_End.DateTime = data.FirstOrDefault(x => x.GiaoVienId == giaoVienId).NgayHetHL;
+            }
+            else
+            {
+                cbb_KhoaHocXeDaoTao.EditValue = null;
+                txtBienSoXe.Text = "";
+            }
+        }
+
+        private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        {
+            var button = e.Button as DevExpress.XtraBars.Docking2010.WindowsUIButton;
+
+            if (button.Caption == "Save")
+            {
+                foreach (var item in giaoVienXe)
+                {
+
+
+                    //int giaoVienId = item.Key;
+                    //int? xeTapId = item.Value;
+
+                    //int soHocVien = (int)spinEdit_SoHV.Value;
+                    //DateTime ngayHieuLuc = dateEdit_Begin.DateTime;
+                    //DateTime ngayHetHieuLuc = dateEdit_End.DateTime;
+
+                    //// Gọi hàm insert
+                    //AppBee_DAO.Instance.InsertKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeTapId, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+
+                    //// Gọi hàm Update
+                    ////AppBee_DAO.Instance.UpdateKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeTapId, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+
+                    ////for (int i = 0; i < gridViewRight.RowCount; i++)
+                    ////{
+                    ////    int giaoVienIDObj = (int)gridViewRight.GetRowCellValue(i, "GiaoVienID");
+                    ////    int? idxeObj = giaoVienXe.FirstOrDefault(x => x.Key == giaoVienIDObj).Value;
+
+                    ////    if (giaoVienIDObj != null && idxeObj != null &&
+                    ////        int.TryParse(giaoVienIDObj.ToString(), out int giaoVienID) &&
+                    ////        int.TryParse(idxeObj.ToString(), out int idxe))
+                    ////    {
+                    ////        giaoVienXe[giaoVienID] = idxe;
+                    ////    }
+                    ////}
+
+                    int giaoVienId = item.Key;
+                    int? xeMoi = item.Value;
+
+                    int soHocVien = (int)spinEdit_SoHV.Value;
+                    DateTime ngayHieuLuc = dateEdit_Begin.DateTime;
+                    DateTime ngayHetHieuLuc = dateEdit_End.DateTime;
+
+                    if (!giaoVienXe.ContainsKey(giaoVienId))
+                    {
+                        // ✅ GIÁO VIÊN MỚI → INSERT
+                        AppBee_DAO.Instance.InsertKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+                    }
+                    else
+                    {
+                        int? xeCu = giaoVienXe[giaoVienId];
+
+                        if (xeCu != xeMoi)
+                        {
+                            // ✅ GIÁO VIÊN ĐÃ PHÂN CÔNG → CẬP NHẬT ĐỔI XE
+                            AppBee_DAO.Instance.UpdateKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+
+                        }
+                    }
+                }
+            }
+        }
+        private void gridViewRight_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                var gv = gridViewRight.GetRow(e.RowHandle) as GiaoVien;
+                if (gv != null && giaoVienXe.ContainsKey(gv.GiaoVienID))
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                }
+            }
+        }
+
+        private void gridView_BoTri_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                e.Info.ImageIndex = -1;
             }
         }
     }

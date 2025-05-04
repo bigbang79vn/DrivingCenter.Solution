@@ -321,8 +321,17 @@ namespace DrivingCenter.App.DAO
 
         public int InsertKhoaHoc(KhoaHoc kh)
         {
-            string query = "spAddKhoaHoc @MaKH , @TenKH , @NgayKG , @NgayBG , @HangDaoTao ";
-            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, new object[] { kh.MaKhoaHoc, kh.TenKhoaHoc, kh.NgayKhaiGiang, kh.NgayBeGiang, kh.HangDaoTao });
+            string query = "EXEC spAddKhoaHoc @MaKH, @TenKH, @NgayKG, @NgayBG, @HangDaoTao";
+            object[] parameters = new object[]
+            {
+                kh.MaKhoaHoc,
+                kh.TenKhoaHoc,
+                kh.NgayKhaiGiang,
+                kh.NgayBeGiang,
+                kh.HangDaoTao
+            };
+
+            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
             return result;
         }
 
