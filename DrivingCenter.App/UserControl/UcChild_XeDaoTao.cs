@@ -67,7 +67,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = AppBee_DAO.Instance.GetLstXeTapLai();
+            List<XeTapLai> lst = AppBee_DAO.Instance.GetAllXeTapLai();
             gridControl_XeTapLai.DataSource = lst;
         }
         private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

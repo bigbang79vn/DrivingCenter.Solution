@@ -288,7 +288,7 @@
             // DateTime_Use
             // 
             this.DateTime_Use.Caption = "Sử Dụng Đến";
-            this.DateTime_Use.FieldName = "SuDungDen";
+            this.DateTime_Use.FieldName = "DateUse";
             this.DateTime_Use.Name = "DateTime_Use";
             this.DateTime_Use.Visible = true;
             this.DateTime_Use.VisibleIndex = 9;

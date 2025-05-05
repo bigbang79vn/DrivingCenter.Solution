@@ -16,7 +16,7 @@ namespace DrivingCenter.App.DTO.Cabin
         public string MaCNDT { get; set; }
         public string TrinhDoHocVan { get; set; }
         public bool SuDung { get; set; }
-        public DateTime DateUse { get; set; }
+        public DateTime? DateUse { get; set; }
 
     }
 }

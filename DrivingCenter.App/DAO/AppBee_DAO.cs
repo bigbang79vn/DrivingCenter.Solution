@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.DAO
 {
@@ -47,11 +48,43 @@ namespace DrivingCenter.App.DAO
                 MaCNDT = (string)item["MaCNDT"],
                 TrinhDoHocVan = (string)item["Ten"],
                 SuDung = (bool)item["SuDung"],
-                DateUse = item["DateUse"] == DBNull.Value ? DateTime.Now : (DateTime)item["DateUse"]
+                DateUse = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"]
             }).ToList();
 
             return lstGiaoVien;
         }
+
+        public List<GiaoVien> Get_GvTrong(string loailop)
+        {
+            string query = $@"SELECT * 
+                            FROM tblGiaoVien AS gv
+                            INNER JOIN tblTrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma
+                            WHERE gv.GiaoVienID NOT IN (
+                                SELECT GiaoVienID 
+                                FROM tblKhoaHoc_GiaoVien 
+                                WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE())";
+            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+
+            List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
+            {
+                GiaoVienID = (int)item["GiaoVienID"],
+                MaGV = (string)item["MaGV"],
+                HoTenDem = (string)item["HoTenDem"],
+                TenGV = (string)item["TenGV"],
+                HoTenGV = (string)item["HoTenDem"] + " " + (string)item["TenGV"],
+                NgaySinh = (DateTime)item["NgaySinh"],
+                SoCMT = (string)item["SoCMT"],
+                HangGPLX = (string)item["HangGPLX"],
+                AnhChup = (byte[])item["AnhChup"],
+                MaCNDT = (string)item["MaCNDT"],
+                TrinhDoHocVan = (string)item["Ten"],
+                SuDung = (bool)item["SuDung"],
+                DateUse = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"]
+            }).ToList();
+
+            return lstGiaoVien;
+        }
+
         public List<GiaoVien> Get_GiaoVienByMaKH(string makh)
         {
             List<GiaoVien> lstGiaoVien = new List<GiaoVien>();
@@ -76,13 +109,11 @@ namespace DrivingCenter.App.DAO
                 MaCNDT = (string)item["MaCNDT"],
                 TrinhDoHocVan = (string)item["Ten"],
                 SuDung = (bool)item["SuDung"],
-                DateUse = item["DateUse"] == DBNull.Value ? DateTime.Now : (DateTime)item["DateUse"],
-                //NgayHL = item["NgayHL"] == DBNull.Value ? DateTime.Now : (DateTime)item["NgayHL"],
+                DateUse = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
             }).ToList();
 
             return lstGiaoVien;
         }
-
 
         public DataTable GetlstHangGPLX()
         {
@@ -132,7 +163,6 @@ namespace DrivingCenter.App.DAO
             return result?.ToString();
         }
 
-
         public int InsertKhoaHocGiaoVien(string maKhoaHoc, int? giaoVienId, int? xeTapId, int soHocVien, DateTime ngayHieuLuc, DateTime ngayHetHieuLuc)
         {
             string query = @"EXEC dbo.usp_KhoaHoc_GiaoVien_Insert 
@@ -179,12 +209,47 @@ namespace DrivingCenter.App.DAO
             return DataProviderApp.Instance.ExecuteNonQuery(query, parameters);
         }
 
+        public int DeleteKhoaHocGiaoVien(Schedule item)
+        {
+            string query = $"DELETE FROM tblKhoaHoc_GiaoVien WHERE ID = '{item.Id}'";
+            return DataProviderApp.Instance.ExecuteNonQuery(query);
+        }
+
         #endregion
 
         #region Xe Tập Lái
-        public List<XeTapLai> GetLstXeTapLai()
+        public List<XeTapLai> Get_XeTapLaiTrong(string loailop)
         {
-            string query = $"SELECT * FROM tblXeTapLai ORDER BY BienSoXe ASC";
+            string query = $@"SELECT * 
+                            FROM tblXeTapLai AS xe
+                            WHERE xe.ID NOT IN (
+                                SELECT IdXeTap 
+                                FROM tblKhoaHoc_GiaoVien 
+                                WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE())";
+
+            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+
+            List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
+            {
+                VehicleID = (int)item["ID"],
+                BienSoXe = (string)item["BienSoXe"],
+                MaXe = (string)item["MaXe"],
+                HangGPLX = (string)item["HangGPLX"],
+                NamSX = (int)item["NamSX"],
+                SoGPXTL = (string)item["SoGPXTL"],
+                NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
+                NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
+                ThanhLy = (bool)item["ThanhLy"],
+                ChuSoHuu = (string)item["ChuSoHuu"],
+                SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
+            }).ToList();
+
+            return lstXeTapLai;
+        }
+
+        public List<XeTapLai> GetAllXeTapLai()
+        {
+            string query = $@"select * from tblXeTapLai";
 
             DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
 
