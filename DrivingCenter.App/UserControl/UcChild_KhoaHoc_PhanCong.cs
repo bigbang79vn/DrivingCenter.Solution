@@ -84,7 +84,11 @@ namespace DrivingCenter.App.UserControl
 
         private void cbb_KhoaHocDuKien_EditValueChanged(object sender, EventArgs e)
         {
-            MaKhDuKien = cbb_KhoaHocDuKien.EditValue?.ToString();
+            var obj = cbb_KhoaHocDuKien.GetSelectedDataRow() as KhoaHocGPLX;
+            MaKhDuKien = obj.MaKHGplx;
+
+            groupControl_XeSTD.Enabled = obj.HangDT != "B.01";
+
             string loailop = !string.IsNullOrEmpty(MaKhDuKien) && MaKhDuKien.Length >= 3 && int.TryParse(MaKhDuKien.Substring(MaKhDuKien.Length - 3), out int num) ? (num % 2 == 0 ? "Ngoài giờ" : "Trong giờ") : "Không xác định";
             Get_DmGvTrong(loailop);
             Get_DmXeDaoTaoConTrong(loailop);
@@ -95,6 +99,7 @@ namespace DrivingCenter.App.UserControl
             Get_DmXeB11ConTrong(loailop, ngayTH);
 
         }
+
         private void Renew(string MaKhDuKien)
         {
             if (!string.IsNullOrEmpty(MaKhDuKien))
@@ -231,7 +236,6 @@ namespace DrivingCenter.App.UserControl
                     txtBienSoXe.Text = xeInfo?.BienSoXe?.ToString();
                     txt_MaXe.Text = xeInfo?.MaXe?.ToString();
                 }
-
                 // Không cho chọn lại xe đã bị người khác lấy
                 return;
             }
@@ -265,18 +269,10 @@ namespace DrivingCenter.App.UserControl
             {
                 cbb_KhoaHocXeDaoTao.EditValue = giaoVienXe[giaoVienId];
                 txtBienSoXe.Text = xeTapLais.FirstOrDefault(x => x.VehicleID == giaoVienXe[giaoVienId]).BienSoXe.ToString();
-                //dateEdit_Begin.EditValue = data.FirstOrDefault(x => x.GiaoVienId == giaoVienId)?.NgayHetHL;
                 var result = data.FirstOrDefault(x => x.GiaoVienId == giaoVienId);
-                if (result != null)
-                {
-                    dateEdit_Begin.EditValue = result.NgayHL;
-                    dateEdit_End.EditValue = result.NgayHetHL;
-                }
-                else
-                {
-                    dateEdit_Begin.EditValue = (DateTime)row["NgayKG"];
-                    dateEdit_End.EditValue = (DateTime)row["NgayBG"];
-                }
+
+                dateEdit_Begin.EditValue = result?.NgayHL ?? (DateTime)row["NgayKG"];
+                dateEdit_End.EditValue = result?.NgayHetHL ?? (DateTime)row["NgayBG"];
             }
             else
             {
@@ -305,6 +301,7 @@ namespace DrivingCenter.App.UserControl
                 //----
             }
         }
+
         private void SaveButton(Dictionary<int, int?> giaoVienXe, List<Schedule> data)
         {
             int soHocVien = (int)spinEdit_SoHV.Value;
@@ -341,6 +338,7 @@ namespace DrivingCenter.App.UserControl
                 .ForEach(item => AppBee_DAO.Instance.DeleteKhoaHocGiaoVien(item));
 
         }
+
         private void gridViewRight_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
             if (e.RowHandle >= 0)
@@ -352,6 +350,7 @@ namespace DrivingCenter.App.UserControl
                 }
             }
         }
+
         private void gridView_BoTri_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator && e.RowHandle >= 0)
