@@ -49,6 +49,7 @@
             this.EndCabin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.groupControl = new DevExpress.XtraEditors.GroupControl();
+            this.dateEdit_NgayThucHanh = new DevExpress.XtraEditors.DateEdit();
             this.dateEdit_NgayBG = new DevExpress.XtraEditors.DateEdit();
             this.dateEdit_NgayKG = new DevExpress.XtraEditors.DateEdit();
             this.memoEdit_GhiChu = new DevExpress.XtraEditors.MemoEdit();
@@ -56,6 +57,7 @@
             this.txt_ThoiGianDT = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txt_SoHV = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -116,6 +118,35 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEdit4 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
+            this.cbb_KhoaHocCabin = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.cbb_KhoaHocXeB11 = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_BoTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_BoTri)).BeginInit();
@@ -123,6 +154,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).BeginInit();
             this.groupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayThucHanh.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayThucHanh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayBG.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayBG.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayKG.Properties.CalendarTimeProperties)).BeginInit();
@@ -163,6 +196,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaGV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocXeDaoTao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            this.tableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocCabin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocXeB11.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -374,6 +424,7 @@
             this.groupControl.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 7, 0, 5);
             this.groupControl.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl.CaptionImageOptions.SvgImage")));
             this.groupControl.CaptionImageOptions.SvgImageSize = new System.Drawing.Size(30, 30);
+            this.groupControl.Controls.Add(this.dateEdit_NgayThucHanh);
             this.groupControl.Controls.Add(this.dateEdit_NgayBG);
             this.groupControl.Controls.Add(this.dateEdit_NgayKG);
             this.groupControl.Controls.Add(this.memoEdit_GhiChu);
@@ -381,6 +432,7 @@
             this.groupControl.Controls.Add(this.txt_ThoiGianDT);
             this.groupControl.Controls.Add(this.labelControl7);
             this.groupControl.Controls.Add(this.txt_SoHV);
+            this.groupControl.Controls.Add(this.labelControl24);
             this.groupControl.Controls.Add(this.labelControl6);
             this.groupControl.Controls.Add(this.labelControl5);
             this.groupControl.Controls.Add(this.labelControl4);
@@ -402,6 +454,22 @@
             this.groupControl.Size = new System.Drawing.Size(347, 800);
             this.groupControl.TabIndex = 7;
             this.groupControl.Text = "Thông tin khóa học";
+            // 
+            // dateEdit_NgayThucHanh
+            // 
+            this.dateEdit_NgayThucHanh.EditValue = null;
+            this.dateEdit_NgayThucHanh.Location = new System.Drawing.Point(111, 494);
+            this.dateEdit_NgayThucHanh.Name = "dateEdit_NgayThucHanh";
+            this.dateEdit_NgayThucHanh.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEdit_NgayThucHanh.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit_NgayThucHanh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit_NgayThucHanh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit_NgayThucHanh.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.dateEdit_NgayThucHanh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit_NgayThucHanh.Size = new System.Drawing.Size(212, 24);
+            this.dateEdit_NgayThucHanh.TabIndex = 5;
             // 
             // dateEdit_NgayBG
             // 
@@ -477,6 +545,16 @@
             this.txt_SoHV.Properties.Appearance.Options.UseFont = true;
             this.txt_SoHV.Size = new System.Drawing.Size(212, 24);
             this.txt_SoHV.TabIndex = 3;
+            // 
+            // labelControl24
+            // 
+            this.labelControl24.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl24.Appearance.Options.UseFont = true;
+            this.labelControl24.Location = new System.Drawing.Point(17, 497);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(66, 17);
+            this.labelControl24.TabIndex = 2;
+            this.labelControl24.Text = "Thực Hành:";
             // 
             // labelControl6
             // 
@@ -719,15 +797,17 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupControl2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupControl3, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 382);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -741,7 +821,7 @@
             this.panel1.Controls.Add(this.btnMoveLeft);
             this.panel1.Controls.Add(this.btnMoveRight);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(277, 3);
+            this.panel1.Location = new System.Drawing.Point(249, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(44, 338);
             this.panel1.TabIndex = 1;
@@ -774,7 +854,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(3, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(268, 338);
+            this.groupControl1.Size = new System.Drawing.Size(240, 338);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Giáo viên chờ xếp lớp";
             // 
@@ -785,7 +865,7 @@
             this.gridControlLeft.Location = new System.Drawing.Point(2, 23);
             this.gridControlLeft.MainView = this.gridViewLeft;
             this.gridControlLeft.Name = "gridControlLeft";
-            this.gridControlLeft.Size = new System.Drawing.Size(264, 313);
+            this.gridControlLeft.Size = new System.Drawing.Size(236, 313);
             this.gridControlLeft.TabIndex = 0;
             this.gridControlLeft.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLeft});
@@ -834,7 +914,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 50;
+            this.gridColumn7.Width = 35;
             // 
             // groupControl2
             // 
@@ -842,9 +922,9 @@
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
             this.groupControl2.Controls.Add(this.gridControlRight);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(327, 3);
+            this.groupControl2.Location = new System.Drawing.Point(299, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(268, 338);
+            this.groupControl2.Size = new System.Drawing.Size(240, 338);
             this.groupControl2.TabIndex = 4;
             this.groupControl2.Text = "Giáo viên trong lớp";
             // 
@@ -855,7 +935,7 @@
             this.gridControlRight.Location = new System.Drawing.Point(2, 23);
             this.gridControlRight.MainView = this.gridViewRight;
             this.gridControlRight.Name = "gridControlRight";
-            this.gridControlRight.Size = new System.Drawing.Size(264, 313);
+            this.gridControlRight.Size = new System.Drawing.Size(236, 313);
             this.gridControlRight.TabIndex = 2;
             this.gridControlRight.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewRight});
@@ -906,7 +986,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 2;
-            this.gridColumn9.Width = 50;
+            this.gridColumn9.Width = 35;
             // 
             // groupControl3
             // 
@@ -931,30 +1011,30 @@
             this.groupControl3.Controls.Add(this.labelControl10);
             this.groupControl3.Controls.Add(this.cbb_KhoaHocXeDaoTao);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(601, 3);
+            this.groupControl3.Location = new System.Drawing.Point(545, 3);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(543, 338);
+            this.groupControl3.Size = new System.Drawing.Size(323, 338);
             this.groupControl3.TabIndex = 5;
             this.groupControl3.Text = "Thông tin chi tiết & Xe đào tạo";
             // 
             // txt_MaXe
             // 
             this.txt_MaXe.Enabled = false;
-            this.txt_MaXe.Location = new System.Drawing.Point(361, 138);
+            this.txt_MaXe.Location = new System.Drawing.Point(275, 138);
             this.txt_MaXe.Name = "txt_MaXe";
             this.txt_MaXe.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_MaXe.Properties.Appearance.Options.UseFont = true;
-            this.txt_MaXe.Size = new System.Drawing.Size(137, 24);
+            this.txt_MaXe.Size = new System.Drawing.Size(98, 24);
             this.txt_MaXe.TabIndex = 6;
             // 
             // txtBienSoXe
             // 
             this.txtBienSoXe.Enabled = false;
-            this.txtBienSoXe.Location = new System.Drawing.Point(138, 138);
+            this.txtBienSoXe.Location = new System.Drawing.Point(118, 138);
             this.txtBienSoXe.Name = "txtBienSoXe";
             this.txtBienSoXe.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBienSoXe.Properties.Appearance.Options.UseFont = true;
-            this.txtBienSoXe.Size = new System.Drawing.Size(163, 24);
+            this.txtBienSoXe.Size = new System.Drawing.Size(98, 24);
             this.txtBienSoXe.TabIndex = 6;
             // 
             // spinEdit_SoHV
@@ -964,7 +1044,7 @@
             0,
             0,
             0});
-            this.spinEdit_SoHV.Location = new System.Drawing.Point(138, 72);
+            this.spinEdit_SoHV.Location = new System.Drawing.Point(118, 72);
             this.spinEdit_SoHV.Name = "spinEdit_SoHV";
             this.spinEdit_SoHV.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spinEdit_SoHV.Properties.Appearance.Options.UseFont = true;
@@ -983,7 +1063,7 @@
             // dateEdit_End
             // 
             this.dateEdit_End.EditValue = null;
-            this.dateEdit_End.Location = new System.Drawing.Point(361, 262);
+            this.dateEdit_End.Location = new System.Drawing.Point(275, 262);
             this.dateEdit_End.Name = "dateEdit_End";
             this.dateEdit_End.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateEdit_End.Properties.Appearance.Options.UseFont = true;
@@ -991,14 +1071,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit_End.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit_End.Size = new System.Drawing.Size(137, 24);
+            this.dateEdit_End.Size = new System.Drawing.Size(98, 24);
             this.dateEdit_End.TabIndex = 4;
             // 
             // dateEdit_Begin
             // 
             this.dateEdit_Begin.EditValue = null;
             this.dateEdit_Begin.Enabled = false;
-            this.dateEdit_Begin.Location = new System.Drawing.Point(138, 262);
+            this.dateEdit_Begin.Location = new System.Drawing.Point(118, 262);
             this.dateEdit_Begin.Name = "dateEdit_Begin";
             this.dateEdit_Begin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateEdit_Begin.Properties.Appearance.Options.UseFont = true;
@@ -1006,14 +1086,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit_Begin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit_Begin.Size = new System.Drawing.Size(163, 24);
+            this.dateEdit_Begin.Size = new System.Drawing.Size(98, 24);
             this.dateEdit_Begin.TabIndex = 4;
             // 
             // date_NgaySinh
             // 
             this.date_NgaySinh.EditValue = null;
             this.date_NgaySinh.Enabled = false;
-            this.date_NgaySinh.Location = new System.Drawing.Point(138, 231);
+            this.date_NgaySinh.Location = new System.Drawing.Point(118, 231);
             this.date_NgaySinh.Name = "date_NgaySinh";
             this.date_NgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date_NgaySinh.Properties.Appearance.Options.UseFont = true;
@@ -1021,14 +1101,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.date_NgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgaySinh.Size = new System.Drawing.Size(163, 24);
+            this.date_NgaySinh.Size = new System.Drawing.Size(98, 24);
             this.date_NgaySinh.TabIndex = 4;
             // 
             // labelControl17
             // 
             this.labelControl17.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl17.Appearance.Options.UseFont = true;
-            this.labelControl17.Location = new System.Drawing.Point(317, 265);
+            this.labelControl17.Location = new System.Drawing.Point(231, 265);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(25, 17);
             this.labelControl17.TabIndex = 2;
@@ -1038,7 +1118,7 @@
             // 
             this.labelControl18.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Location = new System.Drawing.Point(317, 141);
+            this.labelControl18.Location = new System.Drawing.Point(231, 141);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(37, 17);
             this.labelControl18.TabIndex = 2;
@@ -1048,7 +1128,7 @@
             // 
             this.labelControl16.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl16.Appearance.Options.UseFont = true;
-            this.labelControl16.Location = new System.Drawing.Point(21, 265);
+            this.labelControl16.Location = new System.Drawing.Point(12, 265);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(65, 17);
             this.labelControl16.TabIndex = 2;
@@ -1060,7 +1140,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl14.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(21, 141);
+            this.labelControl14.Location = new System.Drawing.Point(12, 141);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(98, 17);
             this.labelControl14.TabIndex = 2;
@@ -1072,7 +1152,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl15.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Location = new System.Drawing.Point(21, 75);
+            this.labelControl15.Location = new System.Drawing.Point(12, 75);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(38, 17);
             this.labelControl15.TabIndex = 2;
@@ -1084,7 +1164,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl13.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(21, 234);
+            this.labelControl13.Location = new System.Drawing.Point(12, 234);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(60, 17);
             this.labelControl13.TabIndex = 2;
@@ -1093,11 +1173,11 @@
             // txt_HoTenGV
             // 
             this.txt_HoTenGV.Enabled = false;
-            this.txt_HoTenGV.Location = new System.Drawing.Point(138, 200);
+            this.txt_HoTenGV.Location = new System.Drawing.Point(118, 200);
             this.txt_HoTenGV.Name = "txt_HoTenGV";
             this.txt_HoTenGV.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HoTenGV.Properties.Appearance.Options.UseFont = true;
-            this.txt_HoTenGV.Size = new System.Drawing.Size(360, 24);
+            this.txt_HoTenGV.Size = new System.Drawing.Size(255, 24);
             this.txt_HoTenGV.TabIndex = 3;
             // 
             // labelControl12
@@ -1106,7 +1186,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Location = new System.Drawing.Point(21, 203);
+            this.labelControl12.Location = new System.Drawing.Point(12, 203);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(57, 17);
             this.labelControl12.TabIndex = 2;
@@ -1115,11 +1195,11 @@
             // txt_MaGV
             // 
             this.txt_MaGV.Enabled = false;
-            this.txt_MaGV.Location = new System.Drawing.Point(138, 169);
+            this.txt_MaGV.Location = new System.Drawing.Point(118, 169);
             this.txt_MaGV.Name = "txt_MaGV";
             this.txt_MaGV.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_MaGV.Properties.Appearance.Options.UseFont = true;
-            this.txt_MaGV.Size = new System.Drawing.Size(163, 24);
+            this.txt_MaGV.Size = new System.Drawing.Size(98, 24);
             this.txt_MaGV.TabIndex = 3;
             // 
             // labelControl11
@@ -1128,7 +1208,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(21, 172);
+            this.labelControl11.Location = new System.Drawing.Point(12, 172);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(74, 17);
             this.labelControl11.TabIndex = 2;
@@ -1140,7 +1220,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(21, 44);
+            this.labelControl10.Location = new System.Drawing.Point(12, 44);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(61, 17);
             this.labelControl10.TabIndex = 1;
@@ -1148,14 +1228,14 @@
             // 
             // cbb_KhoaHocXeDaoTao
             // 
-            this.cbb_KhoaHocXeDaoTao.Location = new System.Drawing.Point(138, 41);
+            this.cbb_KhoaHocXeDaoTao.Location = new System.Drawing.Point(118, 41);
             this.cbb_KhoaHocXeDaoTao.Name = "cbb_KhoaHocXeDaoTao";
             this.cbb_KhoaHocXeDaoTao.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_KhoaHocXeDaoTao.Properties.Appearance.Options.UseFont = true;
             this.cbb_KhoaHocXeDaoTao.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbb_KhoaHocXeDaoTao.Properties.PopupView = this.gridView3;
-            this.cbb_KhoaHocXeDaoTao.Size = new System.Drawing.Size(360, 24);
+            this.cbb_KhoaHocXeDaoTao.Size = new System.Drawing.Size(253, 24);
             this.cbb_KhoaHocXeDaoTao.TabIndex = 0;
             // 
             // gridView3
@@ -1183,6 +1263,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 0;
+            this.gridColumn11.Width = 125;
             // 
             // gridColumn12
             // 
@@ -1191,6 +1272,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 35;
             // 
             // gridColumn13
             // 
@@ -1199,6 +1281,345 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 2;
+            this.gridColumn13.Width = 217;
+            // 
+            // tableLayoutPanel
+            // 
+            this.tableLayoutPanel.ColumnCount = 1;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.Controls.Add(this.groupControl5, 0, 1);
+            this.tableLayoutPanel.Controls.Add(this.groupControl4, 0, 0);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(871, 0);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 2;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(276, 344);
+            this.tableLayoutPanel.TabIndex = 6;
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.groupControl5.AppearanceCaption.Options.UseFont = true;
+            this.groupControl5.Controls.Add(this.simpleButton3);
+            this.groupControl5.Controls.Add(this.simpleButton4);
+            this.groupControl5.Controls.Add(this.dateEdit3);
+            this.groupControl5.Controls.Add(this.dateEdit4);
+            this.groupControl5.Controls.Add(this.labelControl20);
+            this.groupControl5.Controls.Add(this.labelControl22);
+            this.groupControl5.Controls.Add(this.labelControl23);
+            this.groupControl5.Controls.Add(this.cbb_KhoaHocCabin);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl5.Location = new System.Drawing.Point(3, 175);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(270, 166);
+            this.groupControl5.TabIndex = 7;
+            this.groupControl5.Text = "Thông tin chi tiết lịch học Cabin";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(216, 129);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(91, 23);
+            this.simpleButton3.TabIndex = 5;
+            this.simpleButton3.Text = "Auto";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(118, 129);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(91, 23);
+            this.simpleButton4.TabIndex = 5;
+            this.simpleButton4.Text = "Save Cabin";
+            // 
+            // dateEdit3
+            // 
+            this.dateEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateEdit3.EditValue = null;
+            this.dateEdit3.Location = new System.Drawing.Point(118, 99);
+            this.dateEdit3.Name = "dateEdit3";
+            this.dateEdit3.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEdit3.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit3.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit3.Size = new System.Drawing.Size(139, 24);
+            this.dateEdit3.TabIndex = 4;
+            // 
+            // dateEdit4
+            // 
+            this.dateEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateEdit4.EditValue = null;
+            this.dateEdit4.Location = new System.Drawing.Point(118, 69);
+            this.dateEdit4.Name = "dateEdit4";
+            this.dateEdit4.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEdit4.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit4.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit4.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Vista;
+            this.dateEdit4.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEdit4.Size = new System.Drawing.Size(139, 24);
+            this.dateEdit4.TabIndex = 4;
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl20.Appearance.Options.UseFont = true;
+            this.labelControl20.Location = new System.Drawing.Point(12, 102);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(26, 17);
+            this.labelControl20.TabIndex = 2;
+            this.labelControl20.Text = "Đến:";
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl22.Appearance.Options.UseFont = true;
+            this.labelControl22.Location = new System.Drawing.Point(12, 72);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(62, 17);
+            this.labelControl22.TabIndex = 2;
+            this.labelControl22.Text = "Bắt đầu từ:";
+            // 
+            // labelControl23
+            // 
+            this.labelControl23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl23.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl23.Appearance.Options.UseFont = true;
+            this.labelControl23.Location = new System.Drawing.Point(12, 44);
+            this.labelControl23.Name = "labelControl23";
+            this.labelControl23.Size = new System.Drawing.Size(61, 17);
+            this.labelControl23.TabIndex = 1;
+            this.labelControl23.Text = "Xe đào tạo";
+            // 
+            // cbb_KhoaHocCabin
+            // 
+            this.cbb_KhoaHocCabin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbb_KhoaHocCabin.Location = new System.Drawing.Point(118, 41);
+            this.cbb_KhoaHocCabin.Name = "cbb_KhoaHocCabin";
+            this.cbb_KhoaHocCabin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_KhoaHocCabin.Properties.Appearance.Options.UseFont = true;
+            this.cbb_KhoaHocCabin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_KhoaHocCabin.Properties.PopupView = this.gridView2;
+            this.cbb_KhoaHocCabin.Size = new System.Drawing.Size(139, 24);
+            this.cbb_KhoaHocCabin.TabIndex = 0;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn20,
+            this.gridColumn21,
+            this.gridColumn22,
+            this.gridColumn23});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "ID";
+            this.gridColumn20.FieldName = "ID";
+            this.gridColumn20.Name = "gridColumn20";
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "Biển Số Xe";
+            this.gridColumn21.FieldName = "BienSoXe";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 0;
+            this.gridColumn21.Width = 125;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "Hạng Xe";
+            this.gridColumn22.FieldName = "HangGPLX";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 1;
+            this.gridColumn22.Width = 35;
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "Sở Hữu";
+            this.gridColumn23.FieldName = "ChuSoHuu";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 2;
+            this.gridColumn23.Width = 217;
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.groupControl4.AppearanceCaption.Options.UseFont = true;
+            this.groupControl4.Controls.Add(this.simpleButton2);
+            this.groupControl4.Controls.Add(this.simpleButton1);
+            this.groupControl4.Controls.Add(this.dateEdit1);
+            this.groupControl4.Controls.Add(this.labelControl19);
+            this.groupControl4.Controls.Add(this.labelControl21);
+            this.groupControl4.Controls.Add(this.labelControl27);
+            this.groupControl4.Controls.Add(this.cbb_KhoaHocXeB11);
+            this.groupControl4.Controls.Add(this.dateEdit2);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Location = new System.Drawing.Point(3, 3);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(270, 166);
+            this.groupControl4.TabIndex = 6;
+            this.groupControl4.Text = "Thông tin chi tiết lịch xe STĐ";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(216, 131);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(91, 23);
+            this.simpleButton2.TabIndex = 5;
+            this.simpleButton2.Text = "Auto";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(118, 131);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(91, 23);
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Text = "Save Car";
+            // 
+            // dateEdit1
+            // 
+            this.dateEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateEdit1.EditValue = null;
+            this.dateEdit1.Location = new System.Drawing.Point(118, 101);
+            this.dateEdit1.Name = "dateEdit1";
+            this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEdit1.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Size = new System.Drawing.Size(139, 24);
+            this.dateEdit1.TabIndex = 4;
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl19.Appearance.Options.UseFont = true;
+            this.labelControl19.Location = new System.Drawing.Point(12, 104);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(26, 17);
+            this.labelControl19.TabIndex = 2;
+            this.labelControl19.Text = "Đến:";
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl21.Appearance.Options.UseFont = true;
+            this.labelControl21.Location = new System.Drawing.Point(12, 72);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(65, 17);
+            this.labelControl21.TabIndex = 2;
+            this.labelControl21.Text = "Hiệu lực từ:";
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl27.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl27.Appearance.Options.UseFont = true;
+            this.labelControl27.Location = new System.Drawing.Point(12, 44);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(43, 17);
+            this.labelControl27.TabIndex = 1;
+            this.labelControl27.Text = "Xe STĐ";
+            // 
+            // cbb_KhoaHocXeB11
+            // 
+            this.cbb_KhoaHocXeB11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbb_KhoaHocXeB11.Location = new System.Drawing.Point(118, 41);
+            this.cbb_KhoaHocXeB11.Name = "cbb_KhoaHocXeB11";
+            this.cbb_KhoaHocXeB11.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_KhoaHocXeB11.Properties.Appearance.Options.UseFont = true;
+            this.cbb_KhoaHocXeB11.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_KhoaHocXeB11.Properties.PopupView = this.gridView1;
+            this.cbb_KhoaHocXeB11.Size = new System.Drawing.Size(139, 24);
+            this.cbb_KhoaHocXeB11.TabIndex = 0;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn16,
+            this.gridColumn17,
+            this.gridColumn18,
+            this.gridColumn19});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "ID";
+            this.gridColumn16.FieldName = "ID";
+            this.gridColumn16.Name = "gridColumn16";
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Biển Số Xe";
+            this.gridColumn17.FieldName = "BienSoXe";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 0;
+            this.gridColumn17.Width = 125;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Hạng Xe";
+            this.gridColumn18.FieldName = "HangGPLX";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 1;
+            this.gridColumn18.Width = 35;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Sở Hữu";
+            this.gridColumn19.FieldName = "ChuSoHuu";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 2;
+            this.gridColumn19.Width = 217;
+            // 
+            // dateEdit2
+            // 
+            this.dateEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateEdit2.EditValue = null;
+            this.dateEdit2.Location = new System.Drawing.Point(118, 71);
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEdit2.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.DisplayFormat.FormatString = "HH:mm dd/MM/yyyy";
+            this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit2.Properties.MaskSettings.Set("mask", "HH:mm dd/MM/yyyy");
+            this.dateEdit2.Properties.UseMaskAsDisplayFormat = true;
+            this.dateEdit2.Size = new System.Drawing.Size(139, 24);
+            this.dateEdit2.TabIndex = 4;
             // 
             // panelControl1
             // 
@@ -1224,6 +1645,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).EndInit();
             this.groupControl.ResumeLayout(false);
             this.groupControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayThucHanh.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayThucHanh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayBG.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayBG.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NgayKG.Properties.CalendarTimeProperties)).EndInit();
@@ -1265,6 +1688,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaGV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocXeDaoTao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            this.tableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocCabin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocXeB11.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1355,5 +1797,36 @@
         private DevExpress.XtraGrid.Columns.GridColumn SoHV;
         private DevExpress.XtraEditors.TextEdit txt_MaXe;
         private DevExpress.XtraEditors.LabelControl labelControl18;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.LabelControl labelControl27;
+        private DevExpress.XtraEditors.SearchLookUpEdit cbb_KhoaHocXeB11;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.DateEdit dateEdit3;
+        private DevExpress.XtraEditors.DateEdit dateEdit4;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.LabelControl labelControl23;
+        private DevExpress.XtraEditors.SearchLookUpEdit cbb_KhoaHocCabin;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.DateEdit dateEdit_NgayThucHanh;
+        private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraEditors.DateEdit dateEdit2;
     }
 }

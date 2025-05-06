@@ -440,6 +440,7 @@
     <Compile Include="DTO\Cabin\Result.cs" />
     <Compile Include="DTO\Common\AssignmentGV.cs" />
     <Compile Include="DTO\Common\Category.cs" />
+    <Compile Include="DTO\CSDT\LichB11.cs" />
     <Compile Include="DTO\DAT\ChiTietPhienHoc.cs" />
     <Compile Include="DTO\DAT\KhoaHocDDT.cs" />
     <Compile Include="DTO\DAT\NguoiLxInDAT.cs" />
@@ -877,9 +878,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\CSDT\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -4,6 +4,7 @@ using DrivingCenter.App.DTO.DAT;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -186,9 +187,10 @@ namespace DrivingCenter.App.DAO
             return DataProviderApp.Instance.ExecuteNonQuery(query, parameters);
         }
 
-        public int UpdateKhoaHocGiaoVien(string maKhoaHoc, int? giaoVienId, int? xeTapId, int soHocVien, DateTime ngayHieuLuc, DateTime ngayHetHieuLuc)
+        public int UpdateKhoaHocGiaoVien(int Id, string maKhoaHoc, int? giaoVienId, int? xeTapId, int soHocVien, DateTime ngayHieuLuc, DateTime ngayHetHieuLuc)
         {
-            string query = @"EXEC dbo.usp_KhoaHoc_GiaoVien_Insert 
+            string query = @"EXEC dbo.usp_KhoaHoc_GiaoVien_Update
+                        @Id,
                         @MaKH, 
                         @GiaoVienID, 
                         @IdXeTap,
@@ -198,6 +200,7 @@ namespace DrivingCenter.App.DAO
 
             var parameters = new
             {
+                Id = Id,
                 MaKH = maKhoaHoc,
                 GiaoVienID = giaoVienId,
                 IdXeTap = xeTapId,
@@ -243,6 +246,43 @@ namespace DrivingCenter.App.DAO
                 ChuSoHuu = (string)item["ChuSoHuu"],
                 SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
             }).ToList();
+
+            return lstXeTapLai;
+        }
+
+        public List<XeTapLai> Get_XeB11ConTrong(string loailop, DateTime ngayTH)
+        {
+            string ngaySql = ngayTH.ToString("yyyy-MM-dd HH:mm:ss");
+
+            string query = $@"
+                    SELECT * 
+                    FROM tblXeTapLai AS xe
+                    WHERE xe.ID NOT IN (
+                        SELECT IdXeTap 
+                        FROM tblKhoaHoc_GiaoVien 
+                        WHERE LoaiLop = N'{loailop}' 
+                            AND HetHieuLuc > GETDATE() 
+                            AND (DateEndB11 IS NULL OR DateEndB11 > '{ngaySql}')
+                    ) 
+                    AND xe.HangGPLX = 'B11'";
+
+            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+
+            List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
+            {
+                VehicleID = (int)item["ID"],
+                BienSoXe = (string)item["BienSoXe"],
+                MaXe = (string)item["MaXe"],
+                HangGPLX = (string)item["HangGPLX"],
+                NamSX = (int)item["NamSX"],
+                SoGPXTL = (string)item["SoGPXTL"],
+                NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
+                NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
+                ThanhLy = (bool)item["ThanhLy"],
+                ChuSoHuu = (string)item["ChuSoHuu"],
+                SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
+            }).Where(x=>x.ThanhLy == false)
+            .ToList();
 
             return lstXeTapLai;
         }

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
+using DrivingCenter.App.DTO.CSDT;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.GPLX;
 using NPOI.HSSF.Record.Chart;
@@ -22,9 +23,8 @@ namespace DrivingCenter.App.UserControl
 
         private void UcChild_KhoaHoc_PhanCong_Load(object sender, EventArgs e)
         {
-            GetKhoaHocDuKien();
-
             xeTapLais = AppBee_DAO.Instance.GetAllXeTapLai();
+            GetKhoaHocDuKien();
 
             cbb_KhoaHocXeDaoTao.EditValueChanged += cbb_KhoaHocXeDaoTao_EditValueChanged;
             gridViewRight.RowCellStyle += gridViewRight_RowCellStyle;
@@ -33,8 +33,10 @@ namespace DrivingCenter.App.UserControl
 
         List<XeTapLai> xeTapLais;
         List<XeTapLai> lslistXeConTrong;
+        List<XeTapLai> xeB11ConTrong;
         Dictionary<int, int?> giaoVienXe = new Dictionary<int, int?>();
         List<Schedule> data;
+        List<LichB11> lichB11s;
         DataRow row;
         private string MaKhDuKien;
         private int? currentGiaoVienId = null; // Biến lưu giáo viên đang focus
@@ -71,6 +73,15 @@ namespace DrivingCenter.App.UserControl
             cbb_KhoaHocXeDaoTao.Properties.NullText = "-- Chọn giá trị --";
         }
 
+        private void Get_DmXeB11ConTrong(string loailop, DateTime ngayTH)
+        {
+            xeB11ConTrong = AppBee_DAO.Instance.Get_XeB11ConTrong(loailop, ngayTH);
+            cbb_KhoaHocXeB11.Properties.DataSource = xeB11ConTrong;
+            cbb_KhoaHocXeB11.Properties.DisplayMember = "BienSoXe";
+            cbb_KhoaHocXeB11.Properties.ValueMember = "VehicleID";
+            cbb_KhoaHocXeB11.Properties.NullText = "-- Chọn giá trị --";
+        }
+
         private void cbb_KhoaHocDuKien_EditValueChanged(object sender, EventArgs e)
         {
             MaKhDuKien = cbb_KhoaHocDuKien.EditValue?.ToString();
@@ -78,6 +89,11 @@ namespace DrivingCenter.App.UserControl
             Get_DmGvTrong(loailop);
             Get_DmXeDaoTaoConTrong(loailop);
             Renew(MaKhDuKien);
+
+            DateTime ngayTH = ((DateTime)row["NgayKG"]).AddDays(25);
+            dateEdit_NgayThucHanh.DateTime = ngayTH;
+            Get_DmXeB11ConTrong(loailop, ngayTH);
+
         }
         private void Renew(string MaKhDuKien)
         {
@@ -189,57 +205,58 @@ namespace DrivingCenter.App.UserControl
 
         void OnSelectXe(int giaoVienId, int xeId)
         {
-            // Kiểm tra nếu xe đã được chọn
+            // Nếu giáo viên này đã có xe cũ => Trả xe cũ về lại danh sách xe trống
+            if (giaoVienXe.TryGetValue(giaoVienId, out int? xeCuId) && xeCuId != null)
+            {
+                // Nếu xe cũ khác xe mới thì trả lại xe cũ
+                if (xeCuId != xeId)
+                {
+                    var xeCu = xeTapLais.FirstOrDefault(x => x.VehicleID == xeCuId);
+                    if (xeCu != null && !lslistXeConTrong.Any(x => x.VehicleID == xeCuId))
+                    {
+                        lslistXeConTrong.Add(xeCu);
+                    }
+                }
+            }
+
+            // Kiểm tra nếu xe mới đã được chọn bởi giáo viên khác
             if (giaoVienXe.Values.Contains(xeId))
             {
-                txtBienSoXe.Text = "";
-                txt_MaXe.Text = "";
                 var giaoVienKhac = giaoVienXe.FirstOrDefault(x => x.Value == xeId);
                 if (!giaoVienKhac.Equals(default(KeyValuePair<int, int>)))
                 {
                     int? maGiaoVienDaChon = giaoVienKhac.Key;
 
                     var xeInfo = xeTapLais.FirstOrDefault(x => x.VehicleID == xeId);
-                    txtBienSoXe.Text = xeInfo.BienSoXe.ToString();
-                    txt_MaXe.Text = xeInfo.MaXe.ToString();
+                    txtBienSoXe.Text = xeInfo?.BienSoXe?.ToString();
+                    txt_MaXe.Text = xeInfo?.MaXe?.ToString();
                 }
+
+                // Không cho chọn lại xe đã bị người khác lấy
                 return;
-            }
-
-
-            // Nếu giáo viên này đã có xe cũ => Trả xe cũ về lại danh sách xe trống
-            if (giaoVienXe.ContainsKey(giaoVienId))
-            {
-                int? xeCuId = giaoVienXe[giaoVienId];
-                var xeCu = xeTapLais.FirstOrDefault(x => x.VehicleID == xeCuId);
-                if (xeCu != null && !lslistXeConTrong.Any(x => x.VehicleID == xeCuId))
-                {
-                    lslistXeConTrong.Add(xeCu);
-                }
             }
 
             // Gán xe mới
             giaoVienXe[giaoVienId] = xeId;
 
-            // Xóa xe mới khỏi list còn trống
-            var xeMoi = lslistXeConTrong.FirstOrDefault(x => x.VehicleID == xeId);
-            if (xeMoi != null)
-            {
-                lslistXeConTrong.Remove(xeMoi);
-            }
+            // Xóa xe mới khỏi danh sách xe còn trống
+            lslistXeConTrong.RemoveAll(x => x.VehicleID == xeId);
 
-            // Cập nhật lại DataSource cho Combobox
+            // Cập nhật lại ComboBox datasource
             cbb_KhoaHocXeDaoTao.EditValueChanged -= cbb_KhoaHocXeDaoTao_EditValueChanged;
+
             cbb_KhoaHocXeDaoTao.EditValue = null;
             cbb_KhoaHocXeDaoTao.Properties.DataSource = null;
             cbb_KhoaHocXeDaoTao.Properties.DataSource = lslistXeConTrong;
             cbb_KhoaHocXeDaoTao.Properties.DisplayMember = "BienSoXe";
             cbb_KhoaHocXeDaoTao.Properties.ValueMember = "VehicleID";
             cbb_KhoaHocXeDaoTao.Properties.NullText = "-- Chọn xe --";
+
             cbb_KhoaHocXeDaoTao.EditValueChanged += cbb_KhoaHocXeDaoTao_EditValueChanged;
 
-            // Highlight các giáo viên đã có xe
+            // Cập nhật lại giao diện
             gridViewRight.RefreshData();
+
         }
 
         void OnFocusChange(int giaoVienId)
@@ -290,8 +307,9 @@ namespace DrivingCenter.App.UserControl
         }
         private void SaveButton(Dictionary<int, int?> giaoVienXe, List<Schedule> data)
         {
-            // Tạo danh sách các IDGiaoVien hiện có trong data
-            var existingIds = data.Select(s => s.GiaoVienId).ToHashSet();
+            int soHocVien = (int)spinEdit_SoHV.Value;
+            DateTime ngayHieuLuc = dateEdit_Begin.DateTime;
+            DateTime ngayHetHieuLuc = dateEdit_End.DateTime;
 
             // Cập nhật hoặc thêm mới
             foreach (var item in giaoVienXe)
@@ -301,17 +319,13 @@ namespace DrivingCenter.App.UserControl
                 int giaoVienId = item.Key;
                 int? xeMoi = item.Value;
 
-                int soHocVien = (int)spinEdit_SoHV.Value;
-                DateTime ngayHieuLuc = dateEdit_Begin.DateTime;
-                DateTime ngayHetHieuLuc = dateEdit_End.DateTime;
-
                 if (existing != null)
                 {
-                    int? xeCu = giaoVienXe[giaoVienId];
-                    if (xeCu != xeMoi)
+                    //int? xeCu = giaoVienXe[giaoVienId];
+                    if (existing.IdXeTap != xeMoi)
                     {
                         // Update
-                        AppBee_DAO.Instance.UpdateKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+                        AppBee_DAO.Instance.UpdateKhoaHocGiaoVien(existing.Id, MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
                     }
                 }
                 else
