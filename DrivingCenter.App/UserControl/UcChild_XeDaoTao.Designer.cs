@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_XeDaoTao));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions11 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions12 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_XeTapLai = new DevExpress.XtraGrid.GridControl();
+            this.contextMenu_XeDaoTao = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mn_DongBoDuLieuXe = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_XeTapLai = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,10 +76,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.contextMenu_XeDaoTao = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mn_DongBoDuLieuXe = new System.Windows.Forms.ToolStripMenuItem();
             this.tblLayout_DmXeTapLai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).BeginInit();
+            this.contextMenu_XeDaoTao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
@@ -95,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).BeginInit();
-            this.contextMenu_XeDaoTao.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblLayout_DmXeTapLai
@@ -127,6 +127,20 @@
             this.gridControl_XeTapLai.TabIndex = 0;
             this.gridControl_XeTapLai.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_XeTapLai});
+            // 
+            // contextMenu_XeDaoTao
+            // 
+            this.contextMenu_XeDaoTao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mn_DongBoDuLieuXe});
+            this.contextMenu_XeDaoTao.Name = "contextMenu_XeDaoTao";
+            this.contextMenu_XeDaoTao.Size = new System.Drawing.Size(174, 26);
+            // 
+            // mn_DongBoDuLieuXe
+            // 
+            this.mn_DongBoDuLieuXe.Name = "mn_DongBoDuLieuXe";
+            this.mn_DongBoDuLieuXe.Size = new System.Drawing.Size(180, 22);
+            this.mn_DongBoDuLieuXe.Text = "Đồng bộ dữ liệu xe";
+            this.mn_DongBoDuLieuXe.Click += new System.EventHandler(this.mn_DongBoDuLieuXe_Click);
             // 
             // gridView_XeTapLai
             // 
@@ -245,12 +259,14 @@
             // 
             // ChuSoHuu
             // 
+            this.ChuSoHuu.AppearanceCell.Options.UseTextOptions = true;
+            this.ChuSoHuu.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.ChuSoHuu.Caption = "Chủ Sở Hữu";
             this.ChuSoHuu.FieldName = "ChuSoHuu";
             this.ChuSoHuu.Name = "ChuSoHuu";
             this.ChuSoHuu.Visible = true;
             this.ChuSoHuu.VisibleIndex = 7;
-            this.ChuSoHuu.Width = 102;
+            this.ChuSoHuu.Width = 139;
             // 
             // ThanhLy
             // 
@@ -260,7 +276,7 @@
             this.ThanhLy.Name = "ThanhLy";
             this.ThanhLy.Visible = true;
             this.ThanhLy.VisibleIndex = 8;
-            this.ThanhLy.Width = 61;
+            this.ThanhLy.Width = 55;
             // 
             // repoToggleSwitch
             // 
@@ -506,16 +522,16 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
-            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
-            windowsUIButtonImageOptions8.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions8.SvgImage")));
+            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
+            windowsUIButtonImageOptions10.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions10.SvgImage")));
+            windowsUIButtonImageOptions11.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions11.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions11.SvgImage")));
+            windowsUIButtonImageOptions12.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions12.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -629,19 +645,6 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Ngày Cấp GPXTL";
             // 
-            // contextMenu_XeDaoTao
-            // 
-            this.contextMenu_XeDaoTao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mn_DongBoDuLieuXe});
-            this.contextMenu_XeDaoTao.Name = "contextMenu_XeDaoTao";
-            this.contextMenu_XeDaoTao.Size = new System.Drawing.Size(181, 48);
-            // 
-            // mn_DongBoDuLieuXe
-            // 
-            this.mn_DongBoDuLieuXe.Name = "mn_DongBoDuLieuXe";
-            this.mn_DongBoDuLieuXe.Size = new System.Drawing.Size(210, 22);
-            this.mn_DongBoDuLieuXe.Text = "Đồng bộ dữ liệu xe";
-            // 
             // UcChild_XeDaoTao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,6 +655,7 @@
             this.Load += new System.EventHandler(this.UcChild_XeTap_Load);
             this.tblLayout_DmXeTapLai.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).EndInit();
+            this.contextMenu_XeDaoTao.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
@@ -670,7 +674,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).EndInit();
-            this.contextMenu_XeDaoTao.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -485,7 +485,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLxCCTN.NgayQDTNEng = dtp_NgayQD.DateTime.ToString("dd MMMM yyyy");
                         nguoiLxCCTN.SoChungChi = "Q01/" + dt.Rows[i]["Lop"].ToString() + "/" + dt.Rows[i]["SoCNTN"].ToString();
                         nguoiLxCCTN.SoCCTN = dt.Rows[i]["SoCNTN"].ToString() + " " + "LX" + dt.Rows[i]["Lop"].ToString();
-                        nguoiLxCCTN.SoVaoSo = nguoiLxCCTN.HangGPLX == "B11" ? "Q01/" + dt.Rows[i]["SoCNTN"].ToString() : "Q02/" + dt.Rows[i]["SoCNTN"].ToString();
+                        nguoiLxCCTN.SoVaoSo = $"Q{txt_SoSoCNTN.Text}/{dt.Rows[i]["SoCNTN"].ToString()}";
                         nguoiLxCCTN.HoVaTenEng = StringUtil.RemoveVietnameseSign(dt.Rows[i]["Ho"].ToString() + " " + dt.Rows[i]["Ten"].ToString());
                         if (nguoiLxCCTN.GioiTinh == "Nam")
                             nguoiLxCCTN.GioiTinhEng = "Mr";
@@ -637,28 +637,31 @@ namespace DrivingCenter.App.UserControl
                 // Get the focused row handle
                 int focusedRowHandle = gridView_Certificate.FocusedRowHandle;
 
-                string HoVaTen = gridView_Certificate.GetRowCellValue(focusedRowHandle, "HoVaTen").ToString();
-                string NgaySinh = gridView_Certificate.GetRowCellValue(focusedRowHandle, "NgaySinh").ToString();
-                string GioiTinh = gridView_Certificate.GetRowCellValue(focusedRowHandle, "GioiTinh").ToString();
-                string SoVaoSo = gridView_Certificate.GetRowCellValue(focusedRowHandle, "SoVaoSo").ToString();
-
-                string MaDK = gridView_Certificate.GetRowCellValue(focusedRowHandle, "MaDK").ToString();
-
-                string HoVaTenEng = StringUtil.RemoveVietnameseSign(HoVaTen);
-                string GioiTinhEng;
-                if (GioiTinh == "Nam")
-                    GioiTinhEng = "Mr";
-                else
-                    GioiTinhEng = "Ms";
-                var ngaysinh = Convert.ToDateTime(NgaySinh);
-                string NgaySinhEng = ngaysinh.ToString("dd MMMM yyyy");
-
-                var result = XtraMessageBox.Show(string.Format("Cập nhật thông tin học viên {0}?", HoVaTen), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result == DialogResult.OK)
+                if (focusedRowHandle != -1)
                 {
-                    IMG_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng, SoVaoSo);
+                    string HoVaTen = gridView_Certificate.GetRowCellValue(focusedRowHandle, "HoVaTen").ToString();
+                    string NgaySinh = gridView_Certificate.GetRowCellValue(focusedRowHandle, "NgaySinh").ToString();
+                    string GioiTinh = gridView_Certificate.GetRowCellValue(focusedRowHandle, "GioiTinh").ToString();
+                    string SoVaoSo = gridView_Certificate.GetRowCellValue(focusedRowHandle, "SoVaoSo").ToString();
+
+                    string MaDK = gridView_Certificate.GetRowCellValue(focusedRowHandle, "MaDK").ToString();
+
+                    string HoVaTenEng = StringUtil.RemoveVietnameseSign(HoVaTen);
+                    string GioiTinhEng;
+                    if (GioiTinh == "Nam")
+                        GioiTinhEng = "Mr";
+                    else
+                        GioiTinhEng = "Ms";
+                    var ngaysinh = Convert.ToDateTime(NgaySinh);
+                    string NgaySinhEng = ngaysinh.ToString("dd MMMM yyyy");
+
+                    var result = XtraMessageBox.Show(string.Format("Cập nhật thông tin học viên {0}?", HoVaTen), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
+                    {
+                        IMG_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng, SoVaoSo);
+                    }
+                    LoadlstStudentInReportCNTN();
                 }
-                LoadlstStudentInReportCNTN();
             }
         }
 

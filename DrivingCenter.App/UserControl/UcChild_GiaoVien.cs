@@ -159,7 +159,7 @@ namespace DrivingCenter.App.UserControl
                 gv.MaCNDT = txt_MaCNDT.Text;
                 gv.NgaySinh = date_NgaySinh.DateTime;
                 gv.SuDung = toggleSwitch_TrangThai.IsOn;
-               // DAT_DAO.Instance.UpdateGiaoVien(gv, GiaoVienID);
+                AppBee_DAO.Instance.UpdateGiaoVien(gv, _giaoVienID);
                 Get_DmGiaoVien();
                 SetControlsEnabled(false);
                 DisableAllButtons();
@@ -176,6 +176,12 @@ namespace DrivingCenter.App.UserControl
         private void pictureBox_AnhChup_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mn_SynsGiaoVien_Click(object sender, EventArgs e)
+        {
+            int result = AppBee_DAO.Instance.SynsGiaoVien();
+            //XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

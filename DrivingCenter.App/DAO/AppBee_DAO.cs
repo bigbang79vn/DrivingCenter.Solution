@@ -1,6 +1,7 @@
 ﻿using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
+using NPOI.HSSF.Record.Chart;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -63,7 +64,7 @@ namespace DrivingCenter.App.DAO
                             WHERE gv.GiaoVienID NOT IN (
                                 SELECT GiaoVienID 
                                 FROM tblKhoaHoc_GiaoVien 
-                                WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE())";
+                                WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE()) AND SuDung = 1";
             DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
 
             List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
@@ -126,6 +127,19 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"SELECT * FROM tblTrinhDoHocVan";
             return DataProviderApp.Instance.ExecuteQuery(query);
+        }
+
+        public int SynsGiaoVien()
+        {
+            string query = $@"EXEC dbo.usp_SyncGiaoVien";
+            return DataProviderApp.Instance.ExecuteNonQuery(query);
+        }
+
+        public int UpdateGiaoVien(GiaoVien gv, int idgiaovien)
+        {
+            var sudung = gv.SuDung ? 1 : 0;
+            string query = $"Update tblGiaoVien set SuDung = {sudung} Where GiaoVienID = {idgiaovien}";
+            return DataProviderApp.Instance.ExecuteNonQuery(query);
         }
 
         public List<Schedule> GetKhoaHocDaPhanCong(string maKh)
@@ -228,7 +242,7 @@ namespace DrivingCenter.App.DAO
                             WHERE xe.ID NOT IN (
                                 SELECT IdXeTap 
                                 FROM tblKhoaHoc_GiaoVien 
-                                WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE())";
+                                WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE()) AND ThanhLy = 0";
 
             DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
 
@@ -281,7 +295,7 @@ namespace DrivingCenter.App.DAO
                 ThanhLy = (bool)item["ThanhLy"],
                 ChuSoHuu = (string)item["ChuSoHuu"],
                 SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
-            }).Where(x=>x.ThanhLy == false)
+            }).Where(x => x.ThanhLy == false)
             .ToList();
 
             return lstXeTapLai;
@@ -303,12 +317,25 @@ namespace DrivingCenter.App.DAO
                 SoGPXTL = (string)item["SoGPXTL"],
                 NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
                 NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
-                ThanhLy = (bool)item["ThanhLy"],
+                ThanhLy = item["ThanhLy"] == DBNull.Value ? true : (bool)item["ThanhLy"],
                 ChuSoHuu = (string)item["ChuSoHuu"],
                 SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
             }).ToList();
 
             return lstXeTapLai;
+        }
+
+        public int UpdateXeTapLai(XeTapLai xe, int idxetap)
+        {
+            var thanhly = xe.ThanhLy ? 1 : 0;
+            string query = $"Update tblXeTapLai set ChuSoHuu = N'{xe.ChuSoHuu}', ThanhLy = {thanhly} Where ID = {idxetap}";
+            return DataProviderApp.Instance.ExecuteNonQuery(query);
+        }
+
+        public int SyncXeTapLai()
+        {
+            string query = $@"EXEC dbo.usp_SyncXeTapLai";
+            return DataProviderApp.Instance.ExecuteNonQuery(query);
         }
         #endregion
     }

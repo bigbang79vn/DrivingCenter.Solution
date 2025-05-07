@@ -29,6 +29,7 @@ namespace DrivingCenter.App.UserControl
             LoadXeTapLai();
         }
 
+        private int _IdXeTapLai;
         private void SetControlsEnabled(bool enable)
         {
             txt_BienSoXe.Enabled = enable;
@@ -67,18 +68,23 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = AppBee_DAO.Instance.GetAllXeTapLai();
+            List<XeTapLai> lst = AppBee_DAO.Instance.GetAllXeTapLai()
+                .OrderBy(o => o.BienSoXe)
+                .ToList();
             gridControl_XeTapLai.DataSource = lst;
         }
         private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             var focusedRow = gridView_XeTapLai.GetFocusedRow() as XeTapLai;
+            if(focusedRow == null) return;
+            _IdXeTapLai = focusedRow.VehicleID;
             txt_BienSoXe.Text = focusedRow.BienSoXe;
             cbb_HangXe.Text = focusedRow.HangGPLX;
             txt_NamSX.Text = focusedRow.NamSX.ToString();
             txt_SoGPXTL.Text = focusedRow.SoGPXTL;
             date_NgayCapGPXTL.EditValue = focusedRow.NgayCapGPXTL;
             date_NgayHHGPXTL.EditValue = focusedRow.NgayHHXTL;
+            txt_SoHuu.Text = focusedRow.ChuSoHuu;
             toggleSwitch_TrangThai.IsOn = focusedRow.ThanhLy == true ? true : false;
         }
         private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
@@ -117,14 +123,23 @@ namespace DrivingCenter.App.UserControl
                 xe.NgayCapGPXTL = date_NgayCapGPXTL.DateTime;
                 xe.NgayHHXTL = date_NgayHHGPXTL.DateTime;
                 xe.ThanhLy = toggleSwitch_TrangThai.IsOn;
-                //DAT_DAO.Instance.UpdateXeTapLai(xe);
+                xe.ChuSoHuu = txt_SoHuu.Text;
+                AppBee_DAO.Instance.UpdateXeTapLai(xe, _IdXeTapLai);
                 LoadXeTapLai();
+                SetControlsEnabled(false);
+                SetButtonPanelEnable(0, 1);
             }
             else if (button.Caption == "Cancel")
             {
                 SetControlsEnabled(false);
                 SetButtonPanelEnable(0, 1);
             }
+        }
+
+        private void mn_DongBoDuLieuXe_Click(object sender, EventArgs e)
+        {
+            int result = AppBee_DAO.Instance.SyncXeTapLai();
+            XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

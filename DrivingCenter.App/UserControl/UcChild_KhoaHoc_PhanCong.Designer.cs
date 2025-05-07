@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_KhoaHoc_PhanCong));
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCtrl_BoTri = new DevExpress.XtraGrid.GridControl();
             this.gridView_BoTri = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -148,6 +148,7 @@
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dateEdit_StartB11 = new DevExpress.XtraEditors.DateEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lbl_ThongTinPhanCong = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrl_BoTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_BoTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoDate)).BeginInit();
@@ -214,6 +215,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_StartB11.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_StartB11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Status
@@ -444,9 +446,9 @@
             this.groupControl.Controls.Add(this.labelControl2);
             this.groupControl.Controls.Add(this.labelControl1);
             this.groupControl.Controls.Add(this.cbb_KhoaHocDuKien);
-            buttonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions2.SvgImage")));
+            buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
             this.groupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Expand", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
             this.groupControl.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl.Location = new System.Drawing.Point(0, 0);
@@ -772,15 +774,15 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions4.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
-            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
-            windowsUIButtonImageOptions6.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
+            windowsUIButtonImageOptions8.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions8.SvgImage")));
+            windowsUIButtonImageOptions9.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Export", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Export", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -1272,7 +1274,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
-            this.gridColumn12.Width = 35;
+            this.gridColumn12.Width = 50;
             // 
             // gridColumn13
             // 
@@ -1281,7 +1283,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 2;
-            this.gridColumn13.Width = 217;
+            this.gridColumn13.Width = 202;
             // 
             // tableLayoutPanel
             // 
@@ -1623,11 +1625,26 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.lbl_ThongTinPhanCong);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 3);
+            this.panelControl1.Location = new System.Drawing.Point(3, 0);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1147, 36);
+            this.panelControl1.Size = new System.Drawing.Size(1147, 39);
             this.panelControl1.TabIndex = 8;
+            // 
+            // lbl_ThongTinPhanCong
+            // 
+            this.lbl_ThongTinPhanCong.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_ThongTinPhanCong.Appearance.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ThongTinPhanCong.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.lbl_ThongTinPhanCong.Appearance.Options.UseFont = true;
+            this.lbl_ThongTinPhanCong.Appearance.Options.UseForeColor = true;
+            this.lbl_ThongTinPhanCong.Location = new System.Drawing.Point(408, 9);
+            this.lbl_ThongTinPhanCong.Name = "lbl_ThongTinPhanCong";
+            this.lbl_ThongTinPhanCong.Size = new System.Drawing.Size(273, 23);
+            this.lbl_ThongTinPhanCong.TabIndex = 0;
+            this.lbl_ThongTinPhanCong.Text = "THÔNG TIN PHÂN CÔNG KHÓA ";
             // 
             // UcChild_KhoaHoc_PhanCong
             // 
@@ -1708,6 +1725,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_StartB11.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_StartB11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1828,5 +1847,6 @@
         private DevExpress.XtraEditors.DateEdit dateEdit_NgayThucHanh;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.DateEdit dateEdit_StartB11;
+        private DevExpress.XtraEditors.LabelControl lbl_ThongTinPhanCong;
     }
 }

@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_GiaoVien));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_GiaoVien = new DevExpress.XtraGrid.GridControl();
             this.contextMenu_GiaoVien = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_GiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaGV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,6 +74,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_HangGPLX = new DevExpress.XtraEditors.LookUpEdit();
+            this.mn_SynsGiaoVien = new System.Windows.Forms.ToolStripMenuItem();
             this.tblLayout_DmXeTapLai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).BeginInit();
             this.contextMenu_GiaoVien.SuspendLayout();
@@ -130,15 +130,9 @@
             // contextMenu_GiaoVien
             // 
             this.contextMenu_GiaoVien.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.mn_SynsGiaoVien});
             this.contextMenu_GiaoVien.Name = "contextMenu_GiaoVien";
-            this.contextMenu_GiaoVien.Size = new System.Drawing.Size(211, 26);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.toolStripMenuItem1.Text = "Đồng bộ dữ liệu giáo viên";
+            this.contextMenu_GiaoVien.Size = new System.Drawing.Size(211, 48);
             // 
             // gridView_GiaoVien
             // 
@@ -509,16 +503,16 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
-            windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
+            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
+            windowsUIButtonImageOptions8.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions8.Image")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -661,6 +655,13 @@
             this.cbb_HangGPLX.TabIndex = 38;
             this.cbb_HangGPLX.UseWaitCursor = true;
             // 
+            // mn_SynsGiaoVien
+            // 
+            this.mn_SynsGiaoVien.Name = "mn_SynsGiaoVien";
+            this.mn_SynsGiaoVien.Size = new System.Drawing.Size(210, 22);
+            this.mn_SynsGiaoVien.Text = "Đồng bộ dữ liệu giáo viên";
+            this.mn_SynsGiaoVien.Click += new System.EventHandler(this.mn_SynsGiaoVien_Click);
+            // 
             // UcChild_GiaoVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -736,6 +737,6 @@
         private DevExpress.XtraEditors.MemoEdit memo_DiaChi;
         private DevExpress.XtraEditors.TextEdit txt_GiaoVienId;
         private System.Windows.Forms.ContextMenuStrip contextMenu_GiaoVien;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mn_SynsGiaoVien;
     }
 }

@@ -1,0 +1,12 @@
+﻿EXEC sp_addlinkedserver 
+    @server = 'REMOTE_SQL', -- tên bạn đặt cho linked server
+    @srvproduct = '',
+    @provider = 'SQLNCLI',
+    @datasrc = '192.168.50.253'; -- IP của máy chứa database
+
+
+EXEC sp_addlinkedsrvlogin 
+    @rmtsrvname = 'REMOTE_SQL',
+    @useself = 'false',
+    @rmtuser = 'it',  -- tài khoản SQL Server ở IP kia
+    @rmtpassword = '@97UiLYW0Fwkl3qQWK($4My^';

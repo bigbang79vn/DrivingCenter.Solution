@@ -77,7 +77,10 @@ namespace DrivingCenter.App.DAO
         public void UpdateTimeExerToNguoiLx(Int64 NguoilxId)
         {
             string query = "sp_UpdateTimeExer @ID_HocVien";
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query, new object[] { NguoilxId });
+            var para = new {
+                ID_HocVien = NguoilxId
+            };
+            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query, para);
         }
 
         public List<HocVien> GetlstHocVienByIdKhoaHoc(int IdKhoaHoc)

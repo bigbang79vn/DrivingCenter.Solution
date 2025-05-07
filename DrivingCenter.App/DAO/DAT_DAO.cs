@@ -229,7 +229,7 @@ namespace DrivingCenter.App.DAO
                 SoGPXTL = (string)item["SoGPXTL"],
                 NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
                 NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
-                ThanhLy = (bool)item["ThanhLy"],
+                ThanhLy = item["ThanhLy"] == DBNull.Value ? true : (bool)item["ThanhLy"],
                 SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
             }).ToList();
 

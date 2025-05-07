@@ -864,6 +864,7 @@
   <ItemGroup>
     <None Include="Resources\Null.jpg" />
     <Content Include="Bee.Icon.ico" />
+    <Content Include="Script\REMOTE_SQL.txt" />
     <Content Include="Script\VNDC_spGetLstHvByKhoaHoc.txt" />
   </ItemGroup>
   <ItemGroup>

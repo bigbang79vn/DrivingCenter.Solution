@@ -92,6 +92,8 @@ namespace DrivingCenter.App.UserControl
             string loailop = !string.IsNullOrEmpty(MaKhDuKien) && MaKhDuKien.Length >= 3 && int.TryParse(MaKhDuKien.Substring(MaKhDuKien.Length - 3), out int num) ? (num % 2 == 0 ? "Ngoài giờ" : "Trong giờ") : "Không xác định";
             Get_DmGvTrong(loailop);
             Get_DmXeDaoTaoConTrong(loailop);
+            
+            lbl_ThongTinPhanCong.Text = $"THÔNG TIN PHÂN CÔNG ({obj.TenKHGplx})";
             Renew(MaKhDuKien);
 
             DateTime ngayTH = ((DateTime)row["NgayKG"]).AddDays(25);
