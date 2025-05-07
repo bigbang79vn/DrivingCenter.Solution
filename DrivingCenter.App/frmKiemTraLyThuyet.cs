@@ -35,7 +35,7 @@ namespace DrivingCenter.App
             LoadGiaoVien();
             List<NguoiLxInLT> lst = DAT_DAO.Instance.GetAllNguoiLxByKhoaHoc(_khoahocId);
 
-            int[] columnsToSelect = { 1, 4, 5, 7, 9, 11, 13, 15, 17, 19, 20 };
+            int[] columnsToSelect = { 1, 9, 10, 12, 14, 16, 18, 20, 22, 26, 27 };
 
             var result = _data.AsEnumerable()
                        .Skip(4) // Bỏ 5 dòng đầu, lấy từ dòng thứ 6
