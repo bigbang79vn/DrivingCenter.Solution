@@ -780,9 +780,10 @@ namespace DrivingCenter.App.DAO
 
         public List<ChiTietPhienHoc> GetHistoryData(string diemdanhnguoilxId)
         {
-            string query = string.Format("SELECT dt.HistoryID, dt.ThoiDiem, dt.VanToc, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, FaceStatus, img.AnhChup " +
-                "FROM HistoryData as dt, I2EDAT_IMAGE.dbo.HistoryData as img " +
-                "WHERE dt.DiemDanhNguoiLxId = '{0}' AND dt.HistoryID = img.HistoryID", diemdanhnguoilxId);
+            string query = $@"SELECT dt.HistoryID, dt.ThoiDiem, dt.VanToc, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, FaceStatus, img.AnhChup 
+                FROM HistoryData as dt, I2EDAT_IMAGE.dbo.HistoryData as img 
+                WHERE dt.DiemDanhNguoiLxId = '{diemdanhnguoilxId}' AND dt.HistoryID = img.HistoryID";
+
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<ChiTietPhienHoc> lst = dt.AsEnumerable().Select(item => new ChiTietPhienHoc
