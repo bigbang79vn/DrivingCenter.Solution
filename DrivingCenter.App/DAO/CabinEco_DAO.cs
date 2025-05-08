@@ -1,5 +1,6 @@
 ﻿using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -162,7 +163,22 @@ namespace DrivingCenter.App.DAO
         public int CreateResult(int idthietbi, string ghichu, string idhocvien, int idbaitap, string datecreate, int idkhoahoc, int lantap, int lantapcabin, int minute)
         {
             string query = "spResult @IdThietBi , @Cabin ,  @IdHocVien , @IdBaiTap , @DateCreate , @IdKhoaHoc , @LanTap , @LanTapCaBin , @Minute ";
-            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, new object[] { idthietbi, ghichu, idhocvien, idbaitap, datecreate, idkhoahoc, lantap, lantapcabin, minute });
+            
+            var parameters = new
+            {
+                IdThietBi = idthietbi,
+                Cabin = ghichu,
+                IdHocVien = idhocvien,
+                IdBaiTap = idbaitap,
+                DateCreate = datecreate,
+                IdKhoaHoc = idkhoahoc,
+                LanTap = lantap,
+                LanTapCaBin = lantapcabin,
+                Minute = minute
+            };
+
+            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
+            
             return result;
         }
 
@@ -322,13 +338,13 @@ namespace DrivingCenter.App.DAO
         public int InsertKhoaHoc(KhoaHoc kh)
         {
             string query = "EXEC spAddKhoaHoc @MaKH, @TenKH, @NgayKG, @NgayBG, @HangDaoTao";
-            object[] parameters = new object[]
+            var parameters = new
             {
-                kh.MaKhoaHoc,
-                kh.TenKhoaHoc,
-                kh.NgayKhaiGiang,
-                kh.NgayBeGiang,
-                kh.HangDaoTao
+                MaKH = kh.MaKhoaHoc,
+                TenKH = kh.TenKhoaHoc,
+                NgayKG = kh.NgayKhaiGiang,
+                NgayBG = kh.NgayBeGiang,
+                HangDaoTao = kh.HangDaoTao
             };
 
             int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
@@ -339,7 +355,7 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = $"select ID from tblKhoaHoc WHERE MaKhoaHoc = '{MaKH}'";
+                string query = $"SELECT ID FROM tblKhoaHoc WHERE MaKhoaHoc = '{MaKH}'";
                 return (int)DataProviderCaBinEco.Instance.ExecuteScalar(query);
             }
             catch
@@ -352,20 +368,19 @@ namespace DrivingCenter.App.DAO
         {
             string query = "spAddBaseNguoiLx @ID , @STT , @HoTen , @SoCMT , @IDKhoaHoc , @NgaySinh , @HangGPLX , @HangDaoTao , @Images , @GioiTinh , @Ho , @Ten ";
 
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@ID", SqlDbType.NVarChar) { Value = hv.MaDK},
-                new SqlParameter("@STT", SqlDbType.Int) { Value = stt },
-                new SqlParameter("@HoTen", SqlDbType.NVarChar) { Value = hv.HoTenHV },
-                new SqlParameter("@SoCMT", SqlDbType.NVarChar) { Value = hv.SoCMT },
-                new SqlParameter("@IDKhoaHoc", SqlDbType.NVarChar) { Value = khoahocId },
-                new SqlParameter("@NgaySinh", SqlDbType.DateTime) { Value = hv.NgaySinh },
-                new SqlParameter("@HangGPLX", SqlDbType.VarChar) { Value = hv.HangGPLX },
-                new SqlParameter("@HangDaoTao", SqlDbType.VarChar) { Value = hv.HangGPLX },
-                new SqlParameter("@Images" , SqlDbType.VarBinary) { Value = bytesImg },
-                new SqlParameter("@GioiTinh" , SqlDbType.NVarChar) { Value = hv.GioiTinh },
-                new SqlParameter("@Ho" , SqlDbType.NVarChar) { Value = hv.HoTenDem },
-                new SqlParameter("@Ten" , SqlDbType.NVarChar) { Value = hv.Ten }
+            var parameters = new {
+                ID = hv.MaDK,
+                STT = stt,
+                HoTen = hv.HoTenHV ,
+                SoCMT = hv.SoCMT ,
+                IDKhoaHoc = khoahocId ,
+                NgaySinh = hv.NgaySinh ,
+                HangGPLX = hv.HangGPLX ,
+                HangDaoTao = hv.HangGPLX ,
+                Images = bytesImg ,
+                GioiTinh = hv.GioiTinh ,
+                Ho = hv.HoTenDem ,
+                Ten = hv.Ten 
             };
 
             int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);

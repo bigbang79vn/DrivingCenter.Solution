@@ -99,7 +99,7 @@
             this.KetQua_LT.FieldName = "Result_LT";
             this.KetQua_LT.Name = "KetQua_LT";
             this.KetQua_LT.Visible = true;
-            this.KetQua_LT.VisibleIndex = 8;
+            this.KetQua_LT.VisibleIndex = 7;
             this.KetQua_LT.Width = 121;
             // 
             // Tab_Control
@@ -371,13 +371,14 @@
             gridFormatRule1.Rule = formatConditionRuleValue1;
             this.gridView_ThiSinh.FormatRules.Add(gridFormatRule1);
             this.gridView_ThiSinh.GridControl = this.gridControl_ThiSinh;
+            this.gridView_ThiSinh.IndicatorWidth = 45;
             this.gridView_ThiSinh.Name = "gridView_ThiSinh";
             this.gridView_ThiSinh.OptionsBehavior.ReadOnly = true;
             this.gridView_ThiSinh.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView_ThiSinh.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm...";
             this.gridView_ThiSinh.OptionsFind.SearchInPreview = true;
-            this.gridView_ThiSinh.OptionsView.ShowIndicator = false;
             this.gridView_ThiSinh.RowHeight = 28;
+            this.gridView_ThiSinh.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_ThiSinh_CustomDrawRowIndicator);
             // 
             // STT
             // 
@@ -390,8 +391,6 @@
             this.STT.Caption = "STT";
             this.STT.FieldName = "STT";
             this.STT.Name = "STT";
-            this.STT.Visible = true;
-            this.STT.VisibleIndex = 0;
             this.STT.Width = 40;
             // 
             // IDThiSinh
@@ -410,7 +409,7 @@
             this.MaDK.FieldName = "MaDK";
             this.MaDK.Name = "MaDK";
             this.MaDK.Visible = true;
-            this.MaDK.VisibleIndex = 1;
+            this.MaDK.VisibleIndex = 0;
             this.MaDK.Width = 182;
             // 
             // SoBaoDanh
@@ -423,7 +422,7 @@
             this.SoBaoDanh.FieldName = "SoBaoDanh";
             this.SoBaoDanh.Name = "SoBaoDanh";
             this.SoBaoDanh.Visible = true;
-            this.SoBaoDanh.VisibleIndex = 2;
+            this.SoBaoDanh.VisibleIndex = 1;
             this.SoBaoDanh.Width = 59;
             // 
             // HocVien
@@ -434,7 +433,7 @@
             this.HocVien.FieldName = "HoVaTen";
             this.HocVien.Name = "HocVien";
             this.HocVien.Visible = true;
-            this.HocVien.VisibleIndex = 3;
+            this.HocVien.VisibleIndex = 2;
             this.HocVien.Width = 214;
             // 
             // NgaySinh
@@ -447,7 +446,7 @@
             this.NgaySinh.FieldName = "NgaySinh";
             this.NgaySinh.Name = "NgaySinh";
             this.NgaySinh.Visible = true;
-            this.NgaySinh.VisibleIndex = 4;
+            this.NgaySinh.VisibleIndex = 3;
             this.NgaySinh.Width = 99;
             // 
             // CCCD
@@ -460,7 +459,7 @@
             this.CCCD.FieldName = "SoCMT";
             this.CCCD.Name = "CCCD";
             this.CCCD.Visible = true;
-            this.CCCD.VisibleIndex = 5;
+            this.CCCD.VisibleIndex = 4;
             this.CCCD.Width = 99;
             // 
             // HangGPLX
@@ -473,7 +472,7 @@
             this.HangGPLX.FieldName = "HangGPLX";
             this.HangGPLX.Name = "HangGPLX";
             this.HangGPLX.Visible = true;
-            this.HangGPLX.VisibleIndex = 6;
+            this.HangGPLX.VisibleIndex = 5;
             this.HangGPLX.Width = 77;
             // 
             // DiemLyThuyet
@@ -486,7 +485,7 @@
             this.DiemLyThuyet.FieldName = "DiemLT";
             this.DiemLyThuyet.Name = "DiemLyThuyet";
             this.DiemLyThuyet.Visible = true;
-            this.DiemLyThuyet.VisibleIndex = 7;
+            this.DiemLyThuyet.VisibleIndex = 6;
             this.DiemLyThuyet.Width = 111;
             // 
             // DiemMoPhong
@@ -499,7 +498,7 @@
             this.DiemMoPhong.FieldName = "DiemMP";
             this.DiemMoPhong.Name = "DiemMoPhong";
             this.DiemMoPhong.Visible = true;
-            this.DiemMoPhong.VisibleIndex = 9;
+            this.DiemMoPhong.VisibleIndex = 8;
             this.DiemMoPhong.Width = 115;
             // 
             // KetQua_MP
@@ -512,7 +511,7 @@
             this.KetQua_MP.FieldName = "Result_MP";
             this.KetQua_MP.Name = "KetQua_MP";
             this.KetQua_MP.Visible = true;
-            this.KetQua_MP.VisibleIndex = 10;
+            this.KetQua_MP.VisibleIndex = 9;
             this.KetQua_MP.Width = 115;
             // 
             // repositoryItemCheckEdit1

@@ -241,10 +241,7 @@ namespace DrivingCenter.App.UserControl
             foreach (PhienHoc item in lstPH.ToList())
             {
                 int check = DAT_DAO.Instance.CheckImgNullNew(item.MaPhien.ToString());
-                if (check == 1)
-                {
-                    lstPH.Remove(item);
-                }
+                if (check == 1) lstPH.Remove(item);
             }
 
             gridControl_PhienHoc.DataSource = lstPH;

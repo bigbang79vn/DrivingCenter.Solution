@@ -24,22 +24,22 @@ namespace DrivingCenter.App.DAO
         public List<KhoaHocGPLX> GetlstKH()
         {
             // Lấy danh sách khóa học
-            var dt1 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH, TenKH, HangDT, NgayKG, NgayBG FROM KhoaHoc");
+            var dt1 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH, TenKH, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE MaKH NOT IN (SELECT MaKH FROM BaoCaoI)");
             var lstKH = dt1.AsEnumerable()
                            .Select(row => new KhoaHocGPLX(row))
                            .ToList();
-
-            // Lấy danh sách mã khóa học đã có trong báo cáo I
-            var dt2 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH FROM BaoCaoI");
-            var lstKHBC1 = new HashSet<string>(dt2.AsEnumerable()
-                                                  .Select(row => row.Field<string>("MaKH")));
-
-            // Loại bỏ các khóa học đã có trong báo cáo
-            lstKH = lstKH.Where(kh => !lstKHBC1.Contains(kh.MaKHGplx)).ToList();
-
             return lstKH;
         }
 
+        public List<KhoaHocGPLX> GetAllKhoaHoc()
+        {
+            // Lấy danh sách khóa học
+            var dt1 = DataProviderGPLX.Instance.ExecuteQuery($"SELECT MaKH, TenKH, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE YEAR(NgayKG) >= 2025");
+            var lstKH = dt1.AsEnumerable()
+                           .Select(row => new KhoaHocGPLX(row))
+                           .ToList();
+            return lstKH;
+        }
         public DataRow KhoaHocSelected(string MaKH)
         {
             // Lấy thông tin khóa học đã chọn

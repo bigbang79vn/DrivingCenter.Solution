@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_KhoaHoc_PhanCong));
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCtrl_BoTri = new DevExpress.XtraGrid.GridControl();
             this.gridView_BoTri = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -446,9 +446,9 @@
             this.groupControl.Controls.Add(this.labelControl2);
             this.groupControl.Controls.Add(this.labelControl1);
             this.groupControl.Controls.Add(this.cbb_KhoaHocDuKien);
-            buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
+            buttonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions2.SvgImage")));
             this.groupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Expand", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Expand", false, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
             this.groupControl.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl.Location = new System.Drawing.Point(0, 0);
@@ -774,15 +774,15 @@
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
+            windowsUIButtonImageOptions4.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
+            windowsUIButtonImageOptions6.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Export", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Export", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -886,6 +886,7 @@
             this.gridViewLeft.OptionsBehavior.Editable = false;
             this.gridViewLeft.OptionsFind.AlwaysVisible = true;
             this.gridViewLeft.OptionsFind.FindNullPrompt = "Nhập từ khóa tìm kiếm...";
+            this.gridViewLeft.OptionsFind.HighlightFindResults = false;
             this.gridViewLeft.OptionsSelection.CheckBoxSelectorColumnWidth = 35;
             this.gridViewLeft.OptionsSelection.MultiSelect = true;
             this.gridViewLeft.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
@@ -1079,7 +1080,6 @@
             // dateEdit_Begin
             // 
             this.dateEdit_Begin.EditValue = null;
-            this.dateEdit_Begin.Enabled = false;
             this.dateEdit_Begin.Location = new System.Drawing.Point(118, 262);
             this.dateEdit_Begin.Name = "dateEdit_Begin";
             this.dateEdit_Begin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1398,9 +1398,9 @@
             this.labelControl23.Appearance.Options.UseFont = true;
             this.labelControl23.Location = new System.Drawing.Point(12, 44);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(61, 17);
+            this.labelControl23.Size = new System.Drawing.Size(35, 17);
             this.labelControl23.TabIndex = 1;
-            this.labelControl23.Text = "Xe đào tạo";
+            this.labelControl23.Text = "Cabin:";
             // 
             // cbb_KhoaHocCabin
             // 
@@ -1540,9 +1540,9 @@
             this.labelControl27.Appearance.Options.UseFont = true;
             this.labelControl27.Location = new System.Drawing.Point(12, 44);
             this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(43, 17);
+            this.labelControl27.Size = new System.Drawing.Size(46, 17);
             this.labelControl27.TabIndex = 1;
-            this.labelControl27.Text = "Xe STĐ";
+            this.labelControl27.Text = "Xe STĐ:";
             // 
             // cbb_KhoaHocXeB11
             // 
@@ -1628,9 +1628,9 @@
             this.panelControl1.Controls.Add(this.lbl_ThongTinPhanCong);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 0);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1147, 39);
+            this.panelControl1.Size = new System.Drawing.Size(1147, 42);
             this.panelControl1.TabIndex = 8;
             // 
             // lbl_ThongTinPhanCong

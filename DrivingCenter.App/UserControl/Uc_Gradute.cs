@@ -227,5 +227,14 @@ namespace DrivingCenter.App.UserControl
         {
             btn_Insert.Enabled = !string.IsNullOrEmpty(txtFilePath.Text);
         }
+
+        private void gridView_ThiSinh_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                e.Info.ImageIndex = -1;
+            }
+        }
     }
 }

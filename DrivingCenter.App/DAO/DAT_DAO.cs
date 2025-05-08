@@ -484,14 +484,20 @@ namespace DrivingCenter.App.DAO
 
         public List<TongHopHVByKhoa> TongHopPhBD(int khoahocId, string hangdaotao)
         {
-            string query = $"";
+            string query;
             if (hangdaotao == "B2" || hangdaotao == "B")
             {
-                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B2'";
+                query = $@"
+                    SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien 
+                    FROM vGioBanDemGroup 
+                    WHERE KhoaHocID = '{khoahocId}' AND (HangXe = '{hangdaotao}' OR HangXe = 'B2')";
             }
             else
             {
-                query = $"SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien FROM vGioBanDemGroup WHERE KhoaHocID = '{khoahocId}' and HangXe = '{hangdaotao}' or HangXe = 'B11'";
+                query = $@"
+                    SELECT MaDK, TongQuangDuongLD_Phien, TongThoiGianLD_Phien 
+                    FROM vGioBanDemGroup 
+                    WHERE KhoaHocID = '{khoahocId}' AND (HangXe = '{hangdaotao}' OR HangXe = 'B11')";
             }
 
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
@@ -507,6 +513,7 @@ namespace DrivingCenter.App.DAO
 
             return lstBD;
         }
+
 
         #region Menu Context Tổng hợp
 
@@ -569,19 +576,9 @@ namespace DrivingCenter.App.DAO
 
         #endregion Menu Context Tổng hợp
 
-        public int CheckImgNull(string day)
-        {
-            int CountPhImgNull = 0;
-            string query = string.Format("SELECT COUNT(*) AS NumImgIsNull FROM DiemDanhNguoiLx WHERE CONVERT(VARCHAR, ThoiDiem, 112) = '{0}' AND AnhChup_Logout IS NULL", day);
-
-            CountPhImgNull = (int)DataProviderIMG.Instance.ExecuteScalar(query);
-
-            return CountPhImgNull;
-        }
-
         public int CheckImgNullNew(string diemdanhnguoilxId)
         {
-            string query = string.Format("SELECT COUNT(AnhChup_Logout) FROM DiemDanhNguoiLx WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId);
+            string query = $"SELECT COUNT(AnhChup_Logout) FROM DiemDanhNguoiLx WHERE DiemDanhNguoiLxId = '{diemdanhnguoilxId}'";
 
             int count = (int)DataProviderIMG.Instance.ExecuteScalar(query);
 
@@ -593,7 +590,6 @@ namespace DrivingCenter.App.DAO
             DataProviderDAT.Instance.ExecuteNonQuery(string.Format(string.Format("EXEC [dbo].[spKetThucPhienDaoTao] @NguoiLxID = {0}, @DiemDanhNguoiLxID = N'{1}' ", nguoiLxID, diemdanhnguoilxId)));
         }
 
-        #endregion DAT
         public List<TongHopHVByDay> TongHopGioHVByDay(string day)
         {
             string query = string.Format("SELECT ph.MaDK, CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, hv.HoVaTen, kh.TenKH, pH.BienSo as BienSoXe, ROUND(SUM(ph.TongQuangDuongLD_Phien), 1) AS TongQuangDuongLD_Phien, CONVERT(varchar, DATEADD(second, SUM(ph.TongThoiGianLD_Phien), 0), 108) AS TongThoiGianLD_Phien " +
@@ -650,14 +646,6 @@ namespace DrivingCenter.App.DAO
 
         public List<string> GetLstGvTrue(string day)
         {
-            //string query = string.Format("SELECT DISTINCT MaGV FROM DiemDanhNguoiLx " +
-            //    "WHERE (ROUND(Lat,3,1) = '12.67' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-            //    "OR (ROUND(Lat_Logout,3,1) = '12.67' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-            //    "OR (ROUND(Lng,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-            //    "OR (ROUND(Lng_Logout,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{0}') " +
-            //    "AND TongQuangDuongLD_Phien > 5 AND ActivePhien = 1 " +
-            //    "Order by MaGV asc ", day);
-
             string query = $@"SELECT DISTINCT MaGV FROM DiemDanhNguoiLx WHERE 
                 (ROUND(Lat,3,1) = '12.67' AND ROUND(Lng,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{day}') OR 
                 (ROUND(Lat_Logout,3,1) = '12.67' AND ROUND(Lng_Logout,3,1) = '108.096' AND CONVERT(VARCHAR, ThoiDiem, 103) = '{day}') AND TongQuangDuongLD_Phien > 5 AND ActivePhien = 1 Order by MaGV asc ";
@@ -668,6 +656,20 @@ namespace DrivingCenter.App.DAO
                            .Select(r => r.Field<string>("MaGV"))
                            .ToList();
             return lst;
+        }
+
+        public DateTime GetMinNgayKG()
+        {
+            string query = "SELECT MIN(NgayKG) FROM KhoaHocDangDT";
+            DateTime result = (DateTime)DataProviderDAT.Instance.ExecuteScalar(query);
+            return result;
+        }
+
+        public DateTime GetMaxNgayBG()
+        {
+            string query = "SELECT MAX(NgayBG) FROM KhoaHocDangDT";
+            DateTime result = (DateTime)DataProviderDAT.Instance.ExecuteScalar(query);
+            return result;
         }
 
         public List<PhienHoc> GetLstPhienLoiByDate(string day)
@@ -841,6 +843,8 @@ namespace DrivingCenter.App.DAO
             DataProviderIMG.Instance.ExecuteNonQuery(query);
         }
 
+        #endregion DAT
+
         #region In thẻ học viên
 
         public List<HocVien> GetlstHocVienByKhoaHoc(int idKhoaHoc)
@@ -874,20 +878,6 @@ namespace DrivingCenter.App.DAO
         }
 
         #endregion In thẻ học viên
-
-        public DateTime GetMinNgayKG()
-        {
-            string query = "SELECT MIN(NgayKG) FROM KhoaHocDangDT";
-            DateTime result = (DateTime)DataProviderDAT.Instance.ExecuteScalar(query);
-            return result;
-        }
-
-        public DateTime GetMaxNgayBG()
-        {
-            string query = "SELECT MAX(NgayBG) FROM KhoaHocDangDT";
-            DateTime result = (DateTime)DataProviderDAT.Instance.ExecuteScalar(query);
-            return result;
-        }
 
         #region Lịch học Cabin + STD
 
@@ -961,7 +951,7 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateXeTapB11(Schedule rowdata)
         {
-            string query = $"UPDATE NguoiLX SET XeB11 = {rowdata.MaXeTapB11} WHERE KhoaHocID = {rowdata.KhoaHocId} AND GiaoVienID = {rowdata.GiaoVienId}";
+            string query = $"UPDATE NguoiLX SET XeB11 = '{rowdata.MaXeTapB11}' WHERE KhoaHocID = {rowdata.KhoaHocId} AND GiaoVienID = {rowdata.GiaoVienId}";
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
@@ -976,7 +966,7 @@ namespace DrivingCenter.App.DAO
         #region Phân Công đào tạo
         public void Assignment(AssignmentGV ass)
         {
-            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'{2}'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
+            string query = string.Format("UPDATE NguoiLX SET GiaoVienID = (SELECT TOP 1 GiaoVienID FROM GiaoVien WHERE HoTenDem  LIKE N'%{1}%' and TenGV like N'{2}'), MaXeTap = '{3}' WHERE MaDK = '{0}'", ass.MaDK, ass.HoTenDem, ass.TenGV, ass.MaXeTap);
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 

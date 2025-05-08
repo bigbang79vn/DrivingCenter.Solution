@@ -24,7 +24,7 @@ namespace DrivingCenter.App.UserControl
         private void UcChild_KhoaHoc_PhanCong_Load(object sender, EventArgs e)
         {
             xeTapLais = AppBee_DAO.Instance.GetAllXeTapLai();
-            GetKhoaHocDuKien();
+            GetAllKhoaHoc();
 
             cbb_KhoaHocXeDaoTao.EditValueChanged += cbb_KhoaHocXeDaoTao_EditValueChanged;
             gridViewRight.RowCellStyle += gridViewRight_RowCellStyle;
@@ -41,9 +41,19 @@ namespace DrivingCenter.App.UserControl
         private string MaKhDuKien;
         private int? currentGiaoVienId = null; // Biến lưu giáo viên đang focus
 
-        private void GetKhoaHocDuKien()
+        //private void GetKhoaHocDuKien()
+        //{
+        //    List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
+        //    cbb_KhoaHocDuKien.Properties.DataSource = lst;
+        //    cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKHGplx";
+        //    cbb_KhoaHocDuKien.Properties.ValueMember = "MaKHGplx";
+
+        //    if (lst.Count > 0) cbb_KhoaHocDuKien.EditValue = lst[0].MaKHGplx;
+        //}
+
+        private void GetAllKhoaHoc()
         {
-            List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
+            List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetAllKhoaHoc();
             cbb_KhoaHocDuKien.Properties.DataSource = lst;
             cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKHGplx";
             cbb_KhoaHocDuKien.Properties.ValueMember = "MaKHGplx";
@@ -117,7 +127,7 @@ namespace DrivingCenter.App.UserControl
                 txt_ThoiGianDT.Text = row["ThoiGianDT"].ToString();
                 memoEdit_GhiChu.Text = row["GhiChu"].ToString();
 
-                dateEdit_Begin.EditValue = (DateTime)row["NgayKG"];
+                dateEdit_Begin.EditValue = ((DateTime)row["NgayKG"]).AddDays(25);
                 dateEdit_End.EditValue = (DateTime)row["NgayBG"];
 
                 data = AppBee_DAO.Instance.GetKhoaHocDaPhanCong(MaKhDuKien);
@@ -321,11 +331,10 @@ namespace DrivingCenter.App.UserControl
                 if (existing != null)
                 {
                     //int? xeCu = giaoVienXe[giaoVienId];
-                    if (existing.IdXeTap != xeMoi)
-                    {
+                    //if (existing.IdXeTap != xeMoi)
                         // Update
                         AppBee_DAO.Instance.UpdateKhoaHocGiaoVien(existing.Id, MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
-                    }
+                    
                 }
                 else
                 {
