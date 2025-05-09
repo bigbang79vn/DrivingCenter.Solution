@@ -36,11 +36,10 @@ namespace DrivingCenter.App.DAO
 
         public List<int> LstYear()
         {
-            List<int> lstYear = new List<int>();
-            DataTable dt = DataProviderDAT.Instance.ExecuteQuery("SELECT DISTINCT DATEPART(year, CreateDate) as Nam FROM NguoiLX ORDER BY Nam DESC");
-
-            lstYear = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<int>("Nam")).ToList();
-            return lstYear;
+            return DataProviderDAT.Instance.ExecuteQuery("SELECT DISTINCT DATEPART(year, CreateDate) as Nam FROM NguoiLX ORDER BY Nam DESC")
+                .AsEnumerable()
+                .Select(row => row.Field<int>("Nam"))
+                .ToList();
         }
         public int LoadSoHocVienByYear(int year)
         {
