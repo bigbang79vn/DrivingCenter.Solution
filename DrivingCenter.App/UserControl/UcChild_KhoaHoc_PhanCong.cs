@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.CSDT;
@@ -11,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -369,6 +371,12 @@ namespace DrivingCenter.App.UserControl
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
                 e.Info.ImageIndex = -1;
             }
+        }
+
+        private void groupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            XtraMessageBox.Show("Đang phát triển", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }
