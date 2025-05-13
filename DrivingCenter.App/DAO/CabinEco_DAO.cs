@@ -298,11 +298,24 @@ namespace DrivingCenter.App.DAO
 
         public void InsertTeacherNew(GiaoVien GV)
         {
-            string query = string.Format("INSERT INTO [dbo].[tblGiaoVien] " +
-                "([GiaoVienID], [MaGV],[HoTenDem],[TenGV],[NgaySinh],[SoCMT],[HangGPLX],[SuDung]) " +
-                "VALUES " +
-                "('{0}' , '{1}' , N'{2}' , N'{3}', '{4}', '{5}', '{6}' ,'1')", GV.GiaoVienID, GV.MaGV, GV.HoTenDem, GV.TenGV, GV.NgaySinh.ToString("yyyy-MM-dd HH:mm:ss.fff"), GV.SoCMT, GV.HangGPLX);
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query);
+            string query = @"
+                        INSERT INTO [dbo].[tblGiaoVien] 
+                        ([GiaoVienID], [MaGV], [HoTenDem], [TenGV], [NgaySinh], [SoCMT], [HangGPLX], [SuDung]) 
+                        VALUES 
+                        (@GiaoVienID, @MaGV, @HoTenDem, @TenGV, @NgaySinh, @SoCMT, @HangGPLX, 1);";
+
+            var parameters = new
+            {
+                GiaoVienID = GV.GiaoVienID,
+                MaGV = GV.MaGV,
+                HoTenDem = GV.HoTenDem,
+                TenGV = GV.TenGV,
+                NgaySinh = GV.NgaySinh,
+                SoCMT = GV.SoCMT,
+                HangGPLX = GV.HangGPLX
+            };
+
+            DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
         }
 
         public void UpdateKhoaHoc(int id, string Ten, string hangdaotao, int status)
