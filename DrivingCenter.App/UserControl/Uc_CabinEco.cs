@@ -573,6 +573,29 @@ namespace DrivingCenter.App.UserControl
         {
             _lstKhoaHoc = CabinEco_DAO.Instance.GetAllKhoaHoc();
             grd_QuanLyKhoaHoc.DataSource = _lstKhoaHoc;
+
+            if (gridView_QLKhoaHoc.GroupCount > 0)
+            {
+                for (int i = 0; i < gridView_QLKhoaHoc.DataRowCount; i++)
+                {
+                    int rowHandle = gridView_QLKhoaHoc.GetVisibleRowHandle(i);
+
+                    if (gridView_QLKhoaHoc.IsGroupRow(rowHandle))
+                    {
+                        object groupValue = gridView_QLKhoaHoc.GetGroupRowValue(rowHandle);
+
+                        if (groupValue != null)
+                        {
+                            string groupText = groupValue.ToString().Trim();
+
+                            if (groupText == "B" || groupText == "B.01")
+                                gridView_QLKhoaHoc.ExpandGroupRow(rowHandle); // Chỉ mở nhóm B và B.01
+                            else
+                                gridView_QLKhoaHoc.CollapseGroupRow(rowHandle); // Thu nhóm khác
+                        }
+                    }
+                }
+            }
         }
 
         private void gridView_QLKhoaHoc_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
