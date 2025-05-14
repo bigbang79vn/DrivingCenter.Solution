@@ -26,9 +26,10 @@ namespace DrivingCenter.App.DAO
         public List<KhoaHoc> GetAllKhoaHoc()
         {
             List<KhoaHoc> lstKhoaHoc = new List<KhoaHoc>();
-            string query = "SELECT ID, MaKhoaHoc, Ten, NgayKhaiGiang, NgayBeGiang, HangDaoTao, Status " +
-                "FROM tblKhoaHoc " +
-                "ORDER BY MaKhoaHoc ASC";
+            string query = @"SELECT ID, MaKhoaHoc, Ten, NgayKhaiGiang, NgayBeGiang, HangDaoTao, Status 
+                FROM tblKhoaHoc 
+                ORDER BY MaKhoaHoc ASC";
+
             DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
 
             lstKhoaHoc = dt.AsEnumerable().Select(item => new KhoaHoc

@@ -354,6 +354,28 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="groupControl_KhoaHoc.CaptionImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAH0DAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iVmlld01lcmdlZERhdGEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpu
+        ZXcgMCAwIDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxsOiM3Mjcy
+        NzI7fQoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KCS5ZZWxsb3d7ZmlsbDojRkZCMTE1O30KPC9zdHlsZT4N
+        CiAgPHBhdGggZD0iTTYsNmgxOHYySDZWNnogTTIxLjQsMjhINFYyaDIydjIxLjRsMiwyVjFjMC0wLjUt
+        MC41LTEtMS0xSDNDMi41LDAsMiwwLjUsMiwxdjI4YzAsMC41LDAuNSwxLDEsMWgyMC40ICBMMjEuNCwy
+        OHogTTEyLDE0SDZ2Mmg2VjE0eiBNMTAsMThINnYyaDRWMTh6IE0xMCwyMkg2djJoNFYyMnoiIGNsYXNz
+        PSJCbGFjayIgLz4NCiAgPHJlY3QgeD0iNiIgeT0iMTAiIHdpZHRoPSIxOCIgaGVpZ2h0PSIyIiBjbGFz
+        cz0iWWVsbG93IiAvPg0KICA8cGF0aCBkPSJNMjcuNiwyNy45TDIzLDIzLjNjMC42LTAuOSwxLTIuMSwx
+        LTMuM2MwLTMuMy0yLjctNi02LTZjLTMuMywwLTYsMi43LTYsNnMyLjcsNiw2LDZjMS4yLDAsMi4zLTAu
+        NCwzLjMtMSAgbDQuNiw0LjZjMC41LDAuNSwxLjMsMC41LDEuNywwQzI4LjEsMjkuMiwyOC4xLDI4LjQs
+        MjcuNiwyNy45eiBNMTgsMjRjLTIuMiwwLTQtMS44LTQtNGMwLTIuMiwxLjgtNCw0LTRzNCwxLjgsNCw0
+        ICBDMjIsMjIuMiwyMC4yLDI0LDE4LDI0eiIgY2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
+</value>
+  </data>
   <data name="windowsUIButtonImageOptions4.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v22.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIyLjEsIFZlcnNpb249MjIuMS4z

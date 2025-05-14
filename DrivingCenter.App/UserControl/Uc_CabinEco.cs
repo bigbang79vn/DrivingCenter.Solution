@@ -571,7 +571,9 @@ namespace DrivingCenter.App.UserControl
 
         private void GetAllKhoaHoc()
         {
-            _lstKhoaHoc = CabinEco_DAO.Instance.GetAllKhoaHoc();
+            _lstKhoaHoc = CabinEco_DAO.Instance.GetAllKhoaHoc()
+                .OrderBy(t => t.Status)
+                .ToList();
             grd_QuanLyKhoaHoc.DataSource = _lstKhoaHoc;
 
             if (gridView_QLKhoaHoc.GroupCount > 0)
@@ -606,14 +608,18 @@ namespace DrivingCenter.App.UserControl
 
             if (rowData != null)
             {
-                txt_MaKH.Text = rowData.MaKhoaHoc;
-                txt_TenKhoaHoc.Text = rowData.TenKhoaHoc;
+                txt_MaKH.Text = rowData.MaKhoaHoc ?? string.Empty;
+                txt_TenKhoaHoc.Text = rowData.TenKhoaHoc ?? string.Empty;
+
                 date_NgayKG.Text = rowData.NgayKhaiGiang.ToString("dd/MM/yyyy");
                 date_NgayBG.Text = rowData.NgayBeGiang.ToString("dd/MM/yyyy");
-                txt_MaBCI.Text = rowData.MaBC1;
-                txt_HangDT.Text = rowData.HangDaoTao;
-                check_Status.EditValue = rowData.Status;
+
+                txt_MaBCI.Text = rowData.MaBC1 ?? string.Empty;
+                txt_HangDT.Text = rowData.HangDaoTao ?? string.Empty;
+
+                toggleSwitch_Status.IsOn = rowData.Status;
             }
+
         }
 
         private void windowsUIButtonPanelMain_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
@@ -636,7 +642,7 @@ namespace DrivingCenter.App.UserControl
         {
             string tenkhoahoc = txt_TenKhoaHoc.Text;
             string hangdaotao = txt_HangDT.Text;
-            int status = check_Status.Checked ? status = 1 : status = 0;
+            int status = toggleSwitch_Status.IsOn ? status = 1 : status = 0;
 
             CabinEco_DAO.Instance.UpdateKhoaHoc(Idtemp, tenkhoahoc, hangdaotao, status);
             GetAllKhoaHoc();
@@ -759,7 +765,6 @@ namespace DrivingCenter.App.UserControl
             ThongKe rowData = gridView_TongHop.GetFocusedRow() as ThongKe;
             var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(rowData.MaDK);
 
-            // Gán DataSource và hiển thị report
             new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
         }
     }
