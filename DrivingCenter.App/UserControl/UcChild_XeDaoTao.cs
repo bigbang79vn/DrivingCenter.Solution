@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DrivingCenter.App.DTO.DAT;
+﻿using DevExpress.XtraEditors;
 using DrivingCenter.App.DAO;
-using NPOI.SS.Formula.Functions;
+using DrivingCenter.App.DTO.DAT;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -79,7 +74,7 @@ namespace DrivingCenter.App.UserControl
             if(focusedRow == null) return;
             _IdXeTapLai = focusedRow.VehicleID;
             txt_BienSoXe.Text = focusedRow.BienSoXe;
-            cbb_HangXe.Text = focusedRow.HangGPLX;
+            cbb_HangXe.EditValue = focusedRow.HangGPLX;
             txt_NamSX.Text = focusedRow.NamSX.ToString();
             txt_SoGPXTL.Text = focusedRow.SoGPXTL;
             date_NgayCapGPXTL.EditValue = focusedRow.NgayCapGPXTL;
