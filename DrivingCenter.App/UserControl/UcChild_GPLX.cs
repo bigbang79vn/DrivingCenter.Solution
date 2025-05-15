@@ -55,27 +55,40 @@ namespace DrivingCenter.App.UserControl
         private void LoadKH()
         {
             List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
+            cbx_KhoaHoc.Properties.DataSource = lst;
+            cbx_KhoaHoc.Properties.DisplayMember = "TenKHGplx";
+            cbx_KhoaHoc.Properties.ValueMember = "MaKHGplx";
 
-            cbx_KhoaHoc.DataSource = lst;
-            cbx_KhoaHoc.DisplayMember = "TenKHGplx";
+            if (lst.Count > 0)
+            {
+                cbx_KhoaHoc.EditValue = lst[0].MaKHGplx;
+            }
         }
 
         public string MaDK()
         {
-            string MaDK = "66015-";
-            var dt = DateTime.Now.ToString("yyyyMMddhhmmssfff").ToString();
-            MaDK += dt;
-            return MaDK;
+            string prefix = "66015-";
+            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            return prefix + timestamp;
         }
+
+        //public string ConvertNgaySinh(string birthday)
+        //{
+        //    DateTime ngaysinh = DateTime.Parse(birthday, CultureInfo.GetCultureInfo("vi-VN"));
+        //    string Dob;
+        //    Dob = string.Format("{0:0000}", ngaysinh.Year.ToString());
+        //    Dob = Dob + string.Format("{0:00}", (int)ngaysinh.Month);
+        //    Dob = Dob + string.Format("{0:00}", (int)ngaysinh.Day);
+        //    return Dob;
+        //}
 
         public string ConvertNgaySinh(string birthday)
         {
-            DateTime ngaysinh = DateTime.Parse(birthday, CultureInfo.GetCultureInfo("vi-VN"));
-            string Dob;
-            Dob = string.Format("{0:0000}", ngaysinh.Year.ToString());
-            Dob = Dob + string.Format("{0:00}", (int)ngaysinh.Month);
-            Dob = Dob + string.Format("{0:00}", (int)ngaysinh.Day);
-            return Dob;
+            if (DateTime.TryParse(birthday, CultureInfo.GetCultureInfo("vi-VN"), DateTimeStyles.None, out DateTime ngaysinh))
+            {
+                return ngaysinh.ToString("yyyyMMdd");
+            }
+            return string.Empty;
         }
 
         private void Delay(double delay)
@@ -87,29 +100,6 @@ namespace DrivingCenter.App.UserControl
                 delayTime++;
             }
         }
-
-        public string GetHangDaoTaoByMaKH()
-        {
-            string HangDaoTao = "";
-            kh = cbx_KhoaHoc.SelectedItem as KhoaHocGPLX;
-            if (kh.MaKHGplx.Length == 12)
-                HangDaoTao = "B";
-            else if (kh.MaKHGplx.Length == 13)
-                HangDaoTao = "B.01";
-            return HangDaoTao;
-        }
-
-        public string GetHangGPLXByMaKH()
-        {
-            string HangGPLX = "";
-            kh = cbx_KhoaHoc.SelectedItem as KhoaHocGPLX;
-            if (kh.MaKHGplx.Length == 12)
-                HangGPLX = "B1";
-            else if (kh.MaKHGplx.Length == 13)
-                HangGPLX = "B11";
-            return HangGPLX;
-        }
-
         private void btn_ReadData_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
@@ -118,7 +108,6 @@ namespace DrivingCenter.App.UserControl
                 {
                     txtFilePath.Text = openFileDialog.FileName;
 
-                    //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
                     try
                     {
                         using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
@@ -130,14 +119,16 @@ namespace DrivingCenter.App.UserControl
                                     ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
                                 });
                                 tableCollection = result.Tables;
-                                cb_SheetDataImport.Items.Clear();
+                                cb_SheetDataImport.Properties.Items.Clear();
 
-                                XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
+                                //XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
 
                                 foreach (DataTable table in tableCollection)
                                 {
-                                    cb_SheetDataImport.Items.Add(table.TableName);
+                                    cb_SheetDataImport.Properties.Items.Add(table.TableName);
                                 }
+
+                                cb_SheetDataImport.EditValue = tableCollection[0].TableName;
                             }
                         }
                     }
@@ -161,7 +152,10 @@ namespace DrivingCenter.App.UserControl
 
         private void cbx_KhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtHangDaoTao.Text = GetHangDaoTaoByMaKH();
+            string selectedMaKH = cbx_KhoaHoc.EditValue.ToString();
+            kh = GPLX_DAO.Instance.GetlstKH().FirstOrDefault(x => x.MaKHGplx == selectedMaKH);
+
+            txtHangDaoTao.Text = kh.HangDT;
         }
 
         private void btn_Import_Click_1(object sender, EventArgs e)
@@ -242,7 +236,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLX_HoSo.NgayHHGPLXDaCo = "";
                         nguoiLX_HoSo.NgayTTGPLXDaCo = dt.Rows[i]["NgayTTGPLXDaCo"].ToString();
                         nguoiLX_HoSo.DonViHocLX = null;
-                        nguoiLX_HoSo.HangGPLX = GetHangGPLXByMaKH();
+                        nguoiLX_HoSo.HangGPLX = kh.HangGPLX;
                         nguoiLX_HoSo.SoNamLX = 0;
                         nguoiLX_HoSo.SoKmLXAnToan = 0;
                         nguoiLX_HoSo.GiayCNSK = true;
@@ -250,7 +244,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLX_HoSo.MucDichCapDoi = null;
                         //nguoiLX_HoSo.NoiDungSH = null;
                         nguoiLX_HoSo.MaKhoaHoc = kh.MaKHGplx;
-                        nguoiLX_HoSo.HangDaoTao = GetHangDaoTaoByMaKH();
+                        nguoiLX_HoSo.HangDaoTao = kh.HangDT;
                         nguoiLX_HoSo.SoGiayCNTN = null;
                         nguoiLX_HoSo.SoCCN = null;
                         nguoiLX_HoSo.MaBC1 = null;
@@ -369,7 +363,9 @@ namespace DrivingCenter.App.UserControl
 
                         string KhoaHoc = kh.TenKHGplx;
 
-                        XtraMessageBox.Show(string.Format("Import thành công {0} học viên cho khóa {1}!", lstNguoiLX.Count, KhoaHoc));
+                        XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {KhoaHoc}!");
+
+                        lbStatus.Text = "Done...";
                     }
                     else if (dialogResult == DialogResult.No)
                     {

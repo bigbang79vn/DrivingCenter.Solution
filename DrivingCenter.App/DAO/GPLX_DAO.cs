@@ -24,7 +24,7 @@ namespace DrivingCenter.App.DAO
         public List<KhoaHocGPLX> GetlstKH()
         {
             // Lấy danh sách khóa học
-            var dt1 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH, TenKH, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE MaKH NOT IN (SELECT MaKH FROM BaoCaoI)");
+            var dt1 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH, TenKH, HangGPLX, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE MaKH NOT IN (SELECT MaKH FROM BaoCaoI)");
             var lstKH = dt1.AsEnumerable()
                            .Select(row => new KhoaHocGPLX(row))
                            .ToList();

@@ -29,15 +29,15 @@ namespace DrivingCenter.App.UserControl
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_GPLX));
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.cbb_SheetData = new DevExpress.XtraBars.Navigation.TileBar();
             this.tileBarGroupTables = new DevExpress.XtraBars.Navigation.TileBarGroup();
             this.tileBar_NhapHoSo = new DevExpress.XtraBars.Navigation.TileBarItem();
@@ -49,24 +49,19 @@ namespace DrivingCenter.App.UserControl
             this.grd_ImportData = new DevExpress.XtraGrid.GridControl();
             this.gridView_ImportData = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.nbmSoHS = new DevExpress.XtraEditors.SpinEdit();
+            this.txtHangDaoTao = new DevExpress.XtraEditors.TextEdit();
+            this.cb_SheetDataImport = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtFilePath = new DevExpress.XtraEditors.TextEdit();
             this.lbStatus = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.cbx_KhoaHoc = new System.Windows.Forms.ComboBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.cb_SheetDataImport = new System.Windows.Forms.ComboBox();
             this.btn_Import = new System.Windows.Forms.Button();
             this.btn_ReadData = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtHangDaoTao = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.nbmSoHS = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.txtFilePath = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbx_KhoaHoc = new DevExpress.XtraEditors.LookUpEdit();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_UpdateResult = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl_UpdateResult = new DevExpress.XtraGrid.GridControl();
@@ -126,12 +121,11 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.grd_ImportData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_ImportData)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nbmSoHS)).BeginInit();
-            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbmSoHS.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHangDaoTao.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_SheetDataImport.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilePath.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbx_KhoaHoc.Properties)).BeginInit();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_UpdateResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_UpdateResult)).BeginInit();
@@ -203,18 +197,18 @@ namespace DrivingCenter.App.UserControl
             this.tileBar_NhapHoSo.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.tileBar_NhapHoSo.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileBar_NhapHoSo.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement1.Text = "Import Data";
-            this.tileBar_NhapHoSo.Elements.Add(tileItemElement1);
+            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement4.Text = "Import Data";
+            this.tileBar_NhapHoSo.Elements.Add(tileItemElement4);
             this.tileBar_NhapHoSo.Name = "tileBar_NhapHoSo";
             // 
             // tileBar_UpdateResult
             // 
             this.tileBar_UpdateResult.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement2.Text = "Cập Nhật Kết Quả";
-            this.tileBar_UpdateResult.Elements.Add(tileItemElement2);
+            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement5.Text = "Cập Nhật Kết Quả";
+            this.tileBar_UpdateResult.Elements.Add(tileItemElement5);
             this.tileBar_UpdateResult.Id = 2;
             this.tileBar_UpdateResult.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.tileBar_UpdateResult.Name = "tileBar_UpdateResult";
@@ -222,9 +216,9 @@ namespace DrivingCenter.App.UserControl
             // tileBar_Certificate
             // 
             this.tileBar_Certificate.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement3.Text = "In Chứng Chỉ";
-            this.tileBar_Certificate.Elements.Add(tileItemElement3);
+            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement6.Text = "In Chứng Chỉ";
+            this.tileBar_Certificate.Elements.Add(tileItemElement6);
             this.tileBar_Certificate.Id = 3;
             this.tileBar_Certificate.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.tileBar_Certificate.Name = "tileBar_Certificate";
@@ -264,7 +258,7 @@ namespace DrivingCenter.App.UserControl
             this.tblLayout_ImportData.Name = "tblLayout_ImportData";
             this.tblLayout_ImportData.RowCount = 2;
             this.tblLayout_ImportData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayout_ImportData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tblLayout_ImportData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tblLayout_ImportData.Size = new System.Drawing.Size(1478, 690);
             this.tblLayout_ImportData.TabIndex = 1;
             // 
@@ -274,7 +268,7 @@ namespace DrivingCenter.App.UserControl
             this.grd_ImportData.Location = new System.Drawing.Point(3, 3);
             this.grd_ImportData.MainView = this.gridView_ImportData;
             this.grd_ImportData.Name = "grd_ImportData";
-            this.grd_ImportData.Size = new System.Drawing.Size(1472, 509);
+            this.grd_ImportData.Size = new System.Drawing.Size(1472, 554);
             this.grd_ImportData.TabIndex = 0;
             this.grd_ImportData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_ImportData});
@@ -287,91 +281,103 @@ namespace DrivingCenter.App.UserControl
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panel1.Controls.Add(this.nbmSoHS);
+            this.panel1.Controls.Add(this.txtHangDaoTao);
+            this.panel1.Controls.Add(this.cb_SheetDataImport);
+            this.panel1.Controls.Add(this.txtFilePath);
             this.panel1.Controls.Add(this.lbStatus);
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.btn_Import);
             this.panel1.Controls.Add(this.btn_ReadData);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.panel11);
             this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.cbx_KhoaHoc);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 518);
+            this.panel1.Location = new System.Drawing.Point(3, 563);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1472, 169);
+            this.panel1.Size = new System.Drawing.Size(1472, 124);
             this.panel1.TabIndex = 1;
+            // 
+            // nbmSoHS
+            // 
+            this.nbmSoHS.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nbmSoHS.Location = new System.Drawing.Point(736, 67);
+            this.nbmSoHS.Name = "nbmSoHS";
+            this.nbmSoHS.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nbmSoHS.Properties.Appearance.Options.UseFont = true;
+            this.nbmSoHS.Properties.Appearance.Options.UseTextOptions = true;
+            this.nbmSoHS.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.nbmSoHS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nbmSoHS.Size = new System.Drawing.Size(61, 22);
+            this.nbmSoHS.TabIndex = 29;
+            // 
+            // txtHangDaoTao
+            // 
+            this.txtHangDaoTao.Location = new System.Drawing.Point(615, 67);
+            this.txtHangDaoTao.Name = "txtHangDaoTao";
+            this.txtHangDaoTao.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHangDaoTao.Properties.Appearance.Options.UseFont = true;
+            this.txtHangDaoTao.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtHangDaoTao.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txtHangDaoTao.Size = new System.Drawing.Size(58, 22);
+            this.txtHangDaoTao.TabIndex = 28;
+            // 
+            // cb_SheetDataImport
+            // 
+            this.cb_SheetDataImport.Location = new System.Drawing.Point(116, 67);
+            this.cb_SheetDataImport.Name = "cb_SheetDataImport";
+            this.cb_SheetDataImport.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_SheetDataImport.Properties.Appearance.Options.UseFont = true;
+            this.cb_SheetDataImport.Properties.Appearance.Options.UseTextOptions = true;
+            this.cb_SheetDataImport.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cb_SheetDataImport.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_SheetDataImport.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.cb_SheetDataImport.Properties.AppearanceDropDown.Options.UseTextOptions = true;
+            this.cb_SheetDataImport.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cb_SheetDataImport.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cb_SheetDataImport.Size = new System.Drawing.Size(139, 22);
+            this.cb_SheetDataImport.TabIndex = 26;
+            this.cb_SheetDataImport.SelectedIndexChanged += new System.EventHandler(this.cb_SheetDataImport_SelectedIndexChanged);
+            // 
+            // txtFilePath
+            // 
+            this.txtFilePath.Location = new System.Drawing.Point(116, 29);
+            this.txtFilePath.Name = "txtFilePath";
+            this.txtFilePath.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilePath.Properties.Appearance.Options.UseFont = true;
+            this.txtFilePath.Size = new System.Drawing.Size(681, 24);
+            this.txtFilePath.TabIndex = 25;
             // 
             // lbStatus
             // 
-            this.lbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbStatus.AutoSize = true;
             this.lbStatus.Font = new System.Drawing.Font("Roboto", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatus.ForeColor = System.Drawing.Color.White;
-            this.lbStatus.Location = new System.Drawing.Point(1008, 57);
+            this.lbStatus.Location = new System.Drawing.Point(1035, 42);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(100, 35);
             this.lbStatus.TabIndex = 24;
             this.lbStatus.Text = "Status";
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Controls.Add(this.cbx_KhoaHoc);
-            this.panel6.Location = new System.Drawing.Point(322, 81);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(242, 26);
-            this.panel6.TabIndex = 23;
-            // 
-            // cbx_KhoaHoc
-            // 
-            this.cbx_KhoaHoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbx_KhoaHoc.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbx_KhoaHoc.FormattingEnabled = true;
-            this.cbx_KhoaHoc.Location = new System.Drawing.Point(5, 2);
-            this.cbx_KhoaHoc.Name = "cbx_KhoaHoc";
-            this.cbx_KhoaHoc.Size = new System.Drawing.Size(233, 25);
-            this.cbx_KhoaHoc.TabIndex = 5;
-            this.cbx_KhoaHoc.SelectedIndexChanged += new System.EventHandler(this.cbx_KhoaHoc_SelectedIndexChanged);
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.cb_SheetDataImport);
-            this.panel5.Location = new System.Drawing.Point(120, 81);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(140, 26);
-            this.panel5.TabIndex = 22;
-            // 
-            // cb_SheetDataImport
-            // 
-            this.cb_SheetDataImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_SheetDataImport.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_SheetDataImport.FormattingEnabled = true;
-            this.cb_SheetDataImport.Location = new System.Drawing.Point(3, 2);
-            this.cb_SheetDataImport.Name = "cb_SheetDataImport";
-            this.cb_SheetDataImport.Size = new System.Drawing.Size(133, 25);
-            this.cb_SheetDataImport.TabIndex = 5;
-            this.cb_SheetDataImport.SelectedIndexChanged += new System.EventHandler(this.cb_SheetDataImport_SelectedIndexChanged);
-            // 
             // btn_Import
             // 
-            this.btn_Import.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btn_Import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(60)))), ((int)(((byte)(94)))));
             this.btn_Import.FlatAppearance.BorderSize = 0;
             this.btn_Import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Import.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Import.ForeColor = System.Drawing.Color.White;
-            this.btn_Import.Location = new System.Drawing.Point(780, 38);
+            this.btn_Import.Location = new System.Drawing.Point(832, 65);
             this.btn_Import.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(140, 30);
+            this.btn_Import.Size = new System.Drawing.Size(140, 27);
             this.btn_Import.TabIndex = 20;
             this.btn_Import.Text = "Import";
             this.btn_Import.UseVisualStyleBackColor = false;
@@ -379,73 +385,26 @@ namespace DrivingCenter.App.UserControl
             // 
             // btn_ReadData
             // 
-            this.btn_ReadData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btn_ReadData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(60)))), ((int)(((byte)(94)))));
             this.btn_ReadData.FlatAppearance.BorderSize = 0;
             this.btn_ReadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ReadData.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ReadData.ForeColor = System.Drawing.Color.White;
-            this.btn_ReadData.Location = new System.Drawing.Point(617, 38);
+            this.btn_ReadData.Location = new System.Drawing.Point(832, 28);
             this.btn_ReadData.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ReadData.Name = "btn_ReadData";
-            this.btn_ReadData.Size = new System.Drawing.Size(140, 30);
+            this.btn_ReadData.Size = new System.Drawing.Size(140, 27);
             this.btn_ReadData.TabIndex = 21;
             this.btn_ReadData.Text = "Read Data";
             this.btn_ReadData.UseVisualStyleBackColor = false;
             this.btn_ReadData.Click += new System.EventHandler(this.btn_ReadData_Click);
             // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.txtHangDaoTao);
-            this.panel4.Location = new System.Drawing.Point(678, 81);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(79, 26);
-            this.panel4.TabIndex = 18;
-            // 
-            // txtHangDaoTao
-            // 
-            this.txtHangDaoTao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtHangDaoTao.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHangDaoTao.Location = new System.Drawing.Point(15, 5);
-            this.txtHangDaoTao.Name = "txtHangDaoTao";
-            this.txtHangDaoTao.Size = new System.Drawing.Size(47, 16);
-            this.txtHangDaoTao.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.nbmSoHS);
-            this.panel3.Location = new System.Drawing.Point(844, 81);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(75, 26);
-            this.panel3.TabIndex = 19;
-            // 
-            // nbmSoHS
-            // 
-            this.nbmSoHS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nbmSoHS.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nbmSoHS.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nbmSoHS.Location = new System.Drawing.Point(3, 4);
-            this.nbmSoHS.Name = "nbmSoHS";
-            this.nbmSoHS.Size = new System.Drawing.Size(69, 19);
-            this.nbmSoHS.TabIndex = 7;
-            this.nbmSoHS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nbmSoHS.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(780, 87);
+            this.label5.Location = new System.Drawing.Point(687, 70);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 14;
@@ -453,11 +412,10 @@ namespace DrivingCenter.App.UserControl
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(614, 87);
+            this.label3.Location = new System.Drawing.Point(555, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 17);
             this.label3.TabIndex = 15;
@@ -465,11 +423,10 @@ namespace DrivingCenter.App.UserControl
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(275, 87);
+            this.label2.Location = new System.Drawing.Point(274, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 16;
@@ -477,46 +434,44 @@ namespace DrivingCenter.App.UserControl
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(33, 87);
+            this.label4.Location = new System.Drawing.Point(29, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "Sheet data";
             // 
-            // panel11
-            // 
-            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Controls.Add(this.txtFilePath);
-            this.panel11.Location = new System.Drawing.Point(120, 40);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(444, 26);
-            this.panel11.TabIndex = 11;
-            // 
-            // txtFilePath
-            // 
-            this.txtFilePath.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtFilePath.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilePath.Location = new System.Drawing.Point(8, 5);
-            this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(426, 16);
-            this.txtFilePath.TabIndex = 0;
-            // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(32, 46);
+            this.label6.Location = new System.Drawing.Point(28, 33);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "File name";
+            // 
+            // cbx_KhoaHoc
+            // 
+            this.cbx_KhoaHoc.Location = new System.Drawing.Point(317, 67);
+            this.cbx_KhoaHoc.Name = "cbx_KhoaHoc";
+            this.cbx_KhoaHoc.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_KhoaHoc.Properties.Appearance.Options.UseFont = true;
+            this.cbx_KhoaHoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbx_KhoaHoc.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKHGplx", "Mã Khóa Học", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKHGplx", "Tên Khóa Học", 150, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HangDT", "Hạng ĐT", 95, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cbx_KhoaHoc.Properties.NullText = "";
+            this.cbx_KhoaHoc.Properties.PopupSizeable = false;
+            this.cbx_KhoaHoc.Properties.PopupWidth = 480;
+            this.cbx_KhoaHoc.Size = new System.Drawing.Size(220, 22);
+            this.cbx_KhoaHoc.TabIndex = 27;
+            this.cbx_KhoaHoc.EditValueChanged += new System.EventHandler(this.cbx_KhoaHoc_SelectedIndexChanged);
             // 
             // navigationPage2
             // 
@@ -1121,19 +1076,19 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
-            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
-            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
+            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
+            windowsUIButtonImageOptions8.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions8.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions8.SvgImage")));
+            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
+            windowsUIButtonImageOptions10.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions10.SvgImage")));
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B11", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B2", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B11", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B2", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
@@ -1148,7 +1103,7 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
             // 
-            // Uc_GPLX
+            // UcChild_GPLX
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
@@ -1156,7 +1111,7 @@ namespace DrivingCenter.App.UserControl
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.navigationFrame);
             this.Controls.Add(this.cbb_SheetData);
-            this.Name = "Uc_GPLX";
+            this.Name = "UcChild_GPLX";
             this.Size = new System.Drawing.Size(1500, 800);
             this.Load += new System.EventHandler(this.Uc_GPLX_Load);
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).EndInit();
@@ -1167,14 +1122,11 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.gridView_ImportData)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nbmSoHS)).EndInit();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbmSoHS.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHangDaoTao.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_SheetDataImport.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFilePath.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbx_KhoaHoc.Properties)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_UpdateResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_UpdateResult)).EndInit();
@@ -1222,22 +1174,12 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraGrid.GridControl grd_ImportData;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_ImportData;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.ComboBox cbx_KhoaHoc;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ComboBox cb_SheetDataImport;
         private System.Windows.Forms.Button btn_Import;
         private System.Windows.Forms.Button btn_ReadData;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtHangDaoTao;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.NumericUpDown nbmSoHS;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Label label6;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage2;
         private System.Windows.Forms.TableLayoutPanel tblLayout_UpdateResult;
@@ -1292,5 +1234,10 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraEditors.DateEdit dtp_NgayVaoSo;
         private System.Windows.Forms.Label lbStatusUpdate;
         private System.Windows.Forms.Label lbStatus;
+        private DevExpress.XtraEditors.ComboBoxEdit cb_SheetDataImport;
+        private DevExpress.XtraEditors.TextEdit txtFilePath;
+        private DevExpress.XtraEditors.SpinEdit nbmSoHS;
+        private DevExpress.XtraEditors.TextEdit txtHangDaoTao;
+        private DevExpress.XtraEditors.LookUpEdit cbx_KhoaHoc;
     }
 }
