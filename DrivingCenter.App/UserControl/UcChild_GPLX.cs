@@ -404,13 +404,15 @@ namespace DrivingCenter.App.UserControl
                                     ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
                                 });
                                 tableCollection = result.Tables;
-                                cbb_SheetDataUpdate.Items.Clear();
+                                cbb_SheetDataUpdate.Properties.Items.Clear();
 
                                 foreach (DataTable table in tableCollection)
                                 {
-                                    cbb_SheetDataUpdate.Items.Add(table.TableName);
+                                    cbb_SheetDataUpdate.Properties.Items.Add(table.TableName);
                                 }
                                 XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần import", "Thông báo", MessageBoxButtons.OK);
+
+                                cbb_SheetDataUpdate.EditValue = tableCollection[0].TableName;
                             }
                         }
                     }
@@ -440,10 +442,10 @@ namespace DrivingCenter.App.UserControl
 
         private void btn_UpdateResult_Click(object sender, EventArgs e)
         {
-            if (cbb_SheetData.SelectedItem is null)
+            if (cbb_SheetDataUpdate.SelectedItem is null)
             {
                 MessageBox.Show(string.Format("Bạn chưa chọn Sheet chứa Data!"));
-                cbb_SheetData.Focus();
+                cbb_SheetDataUpdate.Focus();
             }
             else
             {
@@ -512,7 +514,7 @@ namespace DrivingCenter.App.UserControl
                     DialogResult dialogResult = XtraMessageBox.Show("Bạn chắc chắn đúng cập nhật kết quả?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        if (cb_CapNhatKQ.Checked)
+                        if (toggleSwitch_UpdateResult.IsOn)
                         {
                             if (lstNguoiLxUpdates != null)
                             {
