@@ -90,14 +90,13 @@ namespace DrivingCenter.App.UserControl
         public int ProcessPhienHoc(List<PhienHoc> lstPH)
         {
             int SendTC = 0;
-            // Sắp xếp theo Time_LogOut để kiểm tra nghỉ thiếu hiệu quả hơn
             var sortedList = lstPH.OrderBy(x => x.Time_LogOut).ToList();
 
             for (int i = 0; i < sortedList.Count; i++)
             {
                 var item = sortedList[i];
 
-                var sb = new StringBuilder(); // Dùng StringBuilder để tích lũy lỗi
+                var sb = new StringBuilder();
 
                 // Tỷ lệ nhận diện
                 item.TyLe = item.SoLanNhanDien > 0 ? Math.Round((double)item.SoLanNhanDienThanhCong / item.SoLanNhanDien * 100, 1) : 0;
@@ -186,6 +185,7 @@ namespace DrivingCenter.App.UserControl
             dt = convert.ToDataTable(lstPH);
 
             gridControl_PhienHoc.DataSource = lstPH;
+            GridHelper.EnableRowNumbering(gridView_PhienHoc);
         }
 
         private void btn_ExportPH_Click(object sender, EventArgs e)
@@ -204,15 +204,6 @@ namespace DrivingCenter.App.UserControl
             if (result == DialogResult.OK)
             {
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
-            }
-        }
-
-        private void gridView_PhienHoc_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
             }
         }
 
@@ -302,13 +293,13 @@ namespace DrivingCenter.App.UserControl
         {
             if (isCollapsed)
             {
-                PanelLeft.Width = PanelLeft.Width + 210;
+                PanelLeft.Width = PanelLeft.Width + 220;
                 isCollapsed = false;
                 this.Refresh();
             }
             else
             {
-                PanelLeft.Width = PanelLeft.Width - 210;
+                PanelLeft.Width = PanelLeft.Width - 220;
                 isCollapsed = true;
                 this.Refresh();
             }
@@ -411,7 +402,7 @@ namespace DrivingCenter.App.UserControl
                 case "B11":
                     return baseCondition && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 6;
                 case "B":
-                    return item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 && 
+                    return item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 &&
                            item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 6;
                 case "B.01":
                     return baseCondition && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4;
@@ -488,8 +479,7 @@ namespace DrivingCenter.App.UserControl
             ConvertListToDataTable convert = new ConvertListToDataTable();
             DataTable dt = convert.ToDataTable(lstSumGV);
 
-            ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
-            exportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
+            ExportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
         }
 
         private void mn_TongHopTienDo_Click(object sender, EventArgs e)
@@ -499,8 +489,7 @@ namespace DrivingCenter.App.UserControl
             ConvertListToDataTable convert = new ConvertListToDataTable();
             DataTable dt = convert.ToDataTable(lst);
 
-            ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
-            exportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
+            ExportExcelWithName.ExportToExcel(dt, "Giờ dạy", TenKhoaHoc);
         }
         private void mn_ThongKeKetQuaHocVien_Click(object sender, EventArgs e)
         {
@@ -579,8 +568,7 @@ namespace DrivingCenter.App.UserControl
             }
             else
             {
-                ExportExcelWithName exportExcelWithName = new ExportExcelWithName();
-                exportExcelWithName.ExportToExcel(dt, TenKhoaHoc, TenKhoaHoc);
+                ExportExcelWithName.ExportToExcel(dt, TenKhoaHoc, TenKhoaHoc);
             }
         }
 
@@ -607,6 +595,7 @@ namespace DrivingCenter.App.UserControl
                 .ToList();
 
             gridControl_TongHopHvByDay.DataSource = lstSum;
+            GridHelper.EnableRowNumbering(gridView_TongHopHvByDay);
         }
 
         private void btn_ViewTongHopHv_Click(object sender, EventArgs e)
@@ -621,15 +610,6 @@ namespace DrivingCenter.App.UserControl
             string day = dtp_TongHopHvByDay.DateTime.ToString("dd/MM/yyyy");
             LoadSumTimeHV(day);
             lb_Tonghophocvienbyday.Text = "TỔNG HỢP GIỜ HỌC CỦA HỌC VIÊN NGÀY " + day;
-        }
-
-        private void gridView_TongHopHvByDay_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
-            }
         }
 
         #endregion Tổng hợp giờ Học Viên trong ngày
@@ -660,11 +640,11 @@ namespace DrivingCenter.App.UserControl
             }
             else
             {
-                Console.WriteLine("Ngày không hợp lệ!");
+                XtraMessageBox.Show("Ngày không hợp lệ!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY GV NGÀY " + day;
         }
-        private void LoadTongHopGV(string day,  int flag)
+        private void LoadTongHopGV(string day, int flag)
         {
             lstSumGV = DAT_DAO.Instance.TongHopGVsByDay(day, flag);
             List<string> lstMaGVs = DAT_DAO.Instance.GetLstGvTrue(day);
@@ -695,16 +675,9 @@ namespace DrivingCenter.App.UserControl
             }
 
             gridControl_TongHopGioDay.DataSource = lstSumGV;
+            GridHelper.EnableRowNumbering(gridView_TongHopGioDay);
         }
 
-        private void gridView_TongHopGioDay_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
-            }
-        }
         #endregion Tổng hợp giờ dạy của giáo viên trong ngày
 
         #region Phiên học lỗi trong ngày
@@ -740,16 +713,9 @@ namespace DrivingCenter.App.UserControl
             List<PhienHoc> lstPhLoi = DAT_DAO.Instance.GetLstPhienLoiByDate(day);
             CheckPhInList(lstPhLoi);
             gridControl_PhienHocLoi.DataSource = lstPhLoi;
+            GridHelper.EnableRowNumbering(gridView_PhienHocLoi);
         }
 
-        private void gridView_PhienHocLoi_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
-            }
-        }
         #endregion Phiên học lỗi trong ngày
 
         #region Phiên học sai

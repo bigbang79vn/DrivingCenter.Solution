@@ -38,7 +38,6 @@ namespace DrivingCenter.App.UserControl
         List<XeTapLai> xeB11ConTrong;
         Dictionary<int, int?> giaoVienXe = new Dictionary<int, int?>();
         List<Schedule> data;
-        List<LichB11> lichB11s;
         DataRow row;
         private string MaKhDuKien;
         private int? currentGiaoVienId = null; // Biến lưu giáo viên đang focus

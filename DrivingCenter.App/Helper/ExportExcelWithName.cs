@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DrivingCenter.App.Helper
 {
-    public class ExportExcelWithName
+    public static class ExportExcelWithName
     {
-        public void ExportToExcel(DataTable dt, string worksheet, string TenKhoaHoc)
+        public static void ExportToExcel(DataTable dt, string worksheet, string TenKhoaHoc)
         {
             string fileName = $"{TenKhoaHoc}.xlsx";
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
