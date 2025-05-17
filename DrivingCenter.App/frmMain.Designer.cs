@@ -54,6 +54,7 @@ namespace DrivingCenter.App
             this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.barToggleSwitchItem = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
+            this.acc_XepLop = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -121,7 +122,8 @@ namespace DrivingCenter.App
             this.accChild_XeTap,
             this.accChild_GiaoVien,
             this.acc_GPLX,
-            this.accChild_SapLuuLuong});
+            this.accChild_SapLuuLuong,
+            this.acc_XepLop});
             this.accordionCtrl_VNDC.Expanded = true;
             this.accordionCtrl_VNDC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionCtrl_VNDC.ImageOptions.SvgImage")));
             this.accordionCtrl_VNDC.Name = "accordionCtrl_VNDC";
@@ -292,6 +294,14 @@ namespace DrivingCenter.App
             this.barToggleSwitchItem});
             this.fluentFormDefaultManager1.MaxItemId = 13;
             // 
+            // acc_XepLop
+            // 
+            this.acc_XepLop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_XepLop.ImageOptions.SvgImage")));
+            this.acc_XepLop.Name = "acc_XepLop";
+            this.acc_XepLop.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_XepLop.Text = "Xếp Lớp";
+            this.acc_XepLop.Click += new System.EventHandler(this.acc_XepLop_Click);
+            // 
             // frmMain
             // 
             this.Appearance.Options.UseFont = true;
@@ -342,6 +352,7 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_XeTap;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_GiaoVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_SapLuuLuong;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XepLop;
     }
 }
 

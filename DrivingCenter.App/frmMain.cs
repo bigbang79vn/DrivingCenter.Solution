@@ -142,6 +142,21 @@ namespace DrivingCenter.App
             }
         }
 
+        private void acc_XepLop_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                UcChild_XepLop uc = new UcChild_XepLop();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Xếp Lớp";
+            }
+        }
         private void acc_DAT_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -262,6 +277,5 @@ namespace DrivingCenter.App
                 barToggleSwitchItem.Caption = "Dark Mode";
             }
         }
-
     }
 }

@@ -15,6 +15,7 @@ namespace DrivingCenter.App.DTO.GPLX
         public string HoVaTen { get; set; }
         public string MaQuocTich { get; set; }
         public string NgaySinh { get; set; }
+        public DateTime NgaySinhDateTime { get; set; }
         public string NoiTT { get; set; }
         public string NoiTT_MaDVHC { get; set; }
         public string NoiTT_MaDVQL { get; set; }

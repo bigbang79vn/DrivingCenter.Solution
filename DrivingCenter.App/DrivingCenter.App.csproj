@@ -645,6 +645,12 @@
     <Compile Include="UserControl\UcChild_XeDaoTao.Designer.cs">
       <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UcChild_XepLop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcChild_XepLop.Designer.cs">
+      <DependentUpon>UcChild_XepLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_BaoCaoTheoXe.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -812,6 +818,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcChild_XeDaoTao.resx">
       <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcChild_XepLop.resx">
+      <DependentUpon>UcChild_XepLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_BaoCaoTheoXe.resx">
       <DependentUpon>Uc_BaoCaoTheoXe.cs</DependentUpon>

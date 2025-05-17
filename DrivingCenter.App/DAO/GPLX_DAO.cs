@@ -1,6 +1,8 @@
 ﻿using DrivingCenter.App.DTO.GPLX;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +25,6 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHocGPLX> GetlstKH()
         {
-            // Lấy danh sách khóa học
             var dt1 = DataProviderGPLX.Instance.ExecuteQuery("SELECT MaKH, TenKH, HangGPLX, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE MaKH NOT IN (SELECT MaKH FROM BaoCaoI)");
             var lstKH = dt1.AsEnumerable()
                            .Select(row => new KhoaHocGPLX(row))
@@ -82,5 +83,59 @@ namespace DrivingCenter.App.DAO
                 nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy_Old, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
             DataProviderGPLX.Instance.ExecuteNonQuery(query);
         }
+
+        #region Xếp Lớp
+        public List<NguoiLX> Get_lstNguoiLxChuaXepLop()
+        {
+            List<NguoiLX> lst = new List<NguoiLX>();
+            string query = @"select * from NguoiLX AS nlx
+                                INNER JOIN NguoiLX_HoSo AS hs ON nlx.MaDK = HS.MaDK
+                                INNER JOIN KhoaHoc AS kh ON hs.MaKhoaHoc = kh.MaKH
+                                where kh.MaKH = '66015K22DB001'";
+
+            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            lst = dt.AsEnumerable().Select(item => new NguoiLX
+            {
+                MaDK = item["MaDK"].ToString(),
+                HoVaTen = item["HoVaTen"].ToString(),
+                NgaySinh = item["NgaySinh"].ToString(),
+                NgaySinhDateTime = DateTime.ParseExact(item["NgaySinh"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture),
+                GioiTinh = item["GioiTinh"].ToString() == "F" ? "Nữ" : "Nam",
+                SoCMT = item["SoCMT"].ToString(),
+                NgayCapCMT = item["NgayCapCMT"].ToString()
+            }).OrderBy(x => x.MaDK).ToList();
+            return lst;
+        }
+
+        public List<KhoaHocGPLX> Get_lstKhoaHoc()
+        {
+            string query = @"SELECT 
+                    MaKH + ' - ' + TenKH + 
+                        CASE 
+                            WHEN NgayKG IS NOT NULL AND CHARINDEX('DB', MaKH) <= 0 THEN
+                                N' (ngày KG: ' + CONVERT(VARCHAR(10), NgayKG, 103) + ')'
+                            ELSE
+                                ''
+                        END AS KhoaHoc,
+                    MaKH,
+                    TenKH,
+                    HangGPLX,
+                    HangDT,
+                    CONVERT(VARCHAR(10), NgayKG, 103) AS NgayKG,
+                    CONVERT(VARCHAR(10), NgayBG, 103) AS NgayBG
+                FROM 
+                    KhoaHoc
+                WHERE 
+                    MaKH NOT IN (SELECT MaKH FROM BaoCaoI) AND TongSoHV IS NOT NULL";
+
+            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+
+            var lstKH = dt.AsEnumerable()
+               .Select(row => new KhoaHocGPLX(row))
+               .ToList();
+            return lstKH;
+        }
+
+        #endregion
     }
 }
