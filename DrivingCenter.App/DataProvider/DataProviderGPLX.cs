@@ -23,9 +23,9 @@ namespace DrivingCenter.App.DAO
         {
         }
 
-        //private string connectionString = @"Data Source=192.168.50.254;Initial Catalog=gplx_csdt;User ID=sa;Password=vNdc@123";
+        private string connectionString = @"Data Source=192.168.50.254;Initial Catalog=gplx_csdt;User ID=sa;Password=vNdc@123";
 
-        private string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=gplx_csdt;User ID=sa;Password=123";
+        //private string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=gplx_csdt;User ID=sa;Password=123";
 
         // Thực thi query trả về DataTable
         public DataTable ExecuteQuery(string query, object parameters = null)
