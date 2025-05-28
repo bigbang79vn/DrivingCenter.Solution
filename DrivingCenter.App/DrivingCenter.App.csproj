@@ -456,7 +456,7 @@
     <Compile Include="DTO\DAT\ViewTongHopHvByKhoa.cs" />
     <Compile Include="DTO\DAT\XeTapLai.cs" />
     <Compile Include="DTO\GPLX\HvTotNghiep.cs" />
-    <Compile Include="DTO\GPLX\KhoaHocGPLX.cs" />
+    <Compile Include="DTO\GPLX\KhoaHoc.cs" />
     <Compile Include="DTO\GPLX\NguoiLX.cs" />
     <Compile Include="DTO\GPLX\NguoiLXHS_GT.cs" />
     <Compile Include="DTO\GPLX\NguoiLX_HoSo.cs" />

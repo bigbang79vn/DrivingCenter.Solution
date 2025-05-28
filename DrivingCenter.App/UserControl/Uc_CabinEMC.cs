@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.FReport;
 using ImageMagick;
 using System;
@@ -9,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace DrivingCenter.App.UserControl

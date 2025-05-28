@@ -54,14 +54,14 @@ namespace DrivingCenter.App.UserControl
 
         private void GetAllKhoaHoc()
         {
-            List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetAllKhoaHoc();
+            List<DTO.GPLX.KhoaHoc> lst = GPLX_DAO.Instance.GetAllKhoaHoc();
             cbb_KhoaHocDuKien.Properties.DataSource = lst;
-            cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKHGplx";
-            cbb_KhoaHocDuKien.Properties.ValueMember = "MaKHGplx";
+            cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKH";
+            cbb_KhoaHocDuKien.Properties.ValueMember = "MaKH";
 
             if (lst.Count > 0)
             {
-                cbb_KhoaHocDuKien.EditValue = lst[0].MaKHGplx;
+                cbb_KhoaHocDuKien.EditValue = lst[0].MaKH;
             }
         }
 
@@ -95,8 +95,9 @@ namespace DrivingCenter.App.UserControl
 
         private void cbb_KhoaHocDuKien_EditValueChanged(object sender, EventArgs e)
         {
-            var obj = cbb_KhoaHocDuKien.GetSelectedDataRow() as KhoaHocGPLX;
-            MaKhDuKien = obj.MaKHGplx;
+            var obj = cbb_KhoaHocDuKien.GetSelectedDataRow() as DTO.GPLX.KhoaHoc;
+            if (obj == null) return;
+            MaKhDuKien = obj.MaKH;
 
             groupControl_XeSTD.Enabled = obj.HangDT != "B.01";
 
@@ -104,7 +105,7 @@ namespace DrivingCenter.App.UserControl
             Get_DmGvTrong(loailop);
             Get_DmXeDaoTaoConTrong(loailop);
             
-            lbl_ThongTinPhanCong.Text = $"THÔNG TIN PHÂN CÔNG ({obj.TenKHGplx})";
+            lbl_ThongTinPhanCong.Text = $"THÔNG TIN PHÂN CÔNG ({obj.TenKH})";
             Renew(MaKhDuKien);
 
             DateTime ngayTH = ((DateTime)row["NgayKG"]).AddDays(25);

@@ -31,7 +31,7 @@ namespace DrivingCenter.App.UserControl
             navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
         }
 
-        private KhoaHocGPLX kh;
+        private KhoaHoc kh;
         public List<string> lstMaDK;
         private DataTable dt;
         public DataTableCollection tableCollection;
@@ -52,14 +52,14 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadKH()
         {
-            List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
+            List<KhoaHoc> lst = GPLX_DAO.Instance.GetlstKh();
             cbx_KhoaHoc.Properties.DataSource = lst;
-            cbx_KhoaHoc.Properties.DisplayMember = "TenKHGplx";
-            cbx_KhoaHoc.Properties.ValueMember = "MaKHGplx";
+            cbx_KhoaHoc.Properties.DisplayMember = "TenKH";
+            cbx_KhoaHoc.Properties.ValueMember = "MaKH";
 
             if (lst.Count > 0)
             {
-                cbx_KhoaHoc.EditValue = lst[0].MaKHGplx;
+                cbx_KhoaHoc.EditValue = lst[0].MaKH;
             }
         }
 
@@ -151,7 +151,7 @@ namespace DrivingCenter.App.UserControl
         private void cbx_KhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedMaKH = cbx_KhoaHoc.EditValue.ToString();
-            kh = GPLX_DAO.Instance.GetlstKH().FirstOrDefault(x => x.MaKHGplx == selectedMaKH);
+            kh = GPLX_DAO.Instance.GetlstKh().FirstOrDefault(x => x.MaKH == selectedMaKH);
 
             txtHangDaoTao.Text = kh.HangDT;
         }
@@ -241,7 +241,7 @@ namespace DrivingCenter.App.UserControl
                         nguoiLX_HoSo.LyDoCapDoi = null;
                         nguoiLX_HoSo.MucDichCapDoi = null;
                         //nguoiLX_HoSo.NoiDungSH = null;
-                        nguoiLX_HoSo.MaKhoaHoc = kh.MaKHGplx;
+                        nguoiLX_HoSo.MaKhoaHoc = kh.MaKH;
                         nguoiLX_HoSo.HangDaoTao = kh.HangDT;
                         nguoiLX_HoSo.SoGiayCNTN = null;
                         nguoiLX_HoSo.SoCCN = null;
@@ -361,7 +361,7 @@ namespace DrivingCenter.App.UserControl
 
                         lbStatus.Text = "Done";
 
-                        string KhoaHoc = kh.TenKHGplx;
+                        string KhoaHoc = kh.TenKH;
 
                         XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {KhoaHoc}!");
 
