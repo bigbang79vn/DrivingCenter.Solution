@@ -38,7 +38,9 @@ namespace DrivingCenter.App
             this.accChild_XeTap = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accChild_GiaoVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_GPLX = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acc_XepLop = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accChild_SapLuuLuong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accChild_PhanCongGiaoVien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEco = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_CabinEMC = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acc_LichHoc = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -54,7 +56,6 @@ namespace DrivingCenter.App
             this.barButtonItem_Refresh = new DevExpress.XtraBars.BarButtonItem();
             this.barToggleSwitchItem = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.acc_XepLop = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -122,8 +123,9 @@ namespace DrivingCenter.App
             this.accChild_XeTap,
             this.accChild_GiaoVien,
             this.acc_GPLX,
+            this.acc_XepLop,
             this.accChild_SapLuuLuong,
-            this.acc_XepLop});
+            this.accChild_PhanCongGiaoVien});
             this.accordionCtrl_VNDC.Expanded = true;
             this.accordionCtrl_VNDC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionCtrl_VNDC.ImageOptions.SvgImage")));
             this.accordionCtrl_VNDC.Name = "accordionCtrl_VNDC";
@@ -153,6 +155,14 @@ namespace DrivingCenter.App
             this.acc_GPLX.Text = "Nhập Dữ Liệu";
             this.acc_GPLX.Click += new System.EventHandler(this.acc_GPLX_Click);
             // 
+            // acc_XepLop
+            // 
+            this.acc_XepLop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_XepLop.ImageOptions.SvgImage")));
+            this.acc_XepLop.Name = "acc_XepLop";
+            this.acc_XepLop.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acc_XepLop.Text = "Xếp Lớp";
+            this.acc_XepLop.Click += new System.EventHandler(this.acc_XepLop_Click);
+            // 
             // accChild_SapLuuLuong
             // 
             this.accChild_SapLuuLuong.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accChild_SapLuuLuong.ImageOptions.SvgImage")));
@@ -160,6 +170,14 @@ namespace DrivingCenter.App
             this.accChild_SapLuuLuong.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accChild_SapLuuLuong.Text = "Sắp Lưu Lượng";
             this.accChild_SapLuuLuong.Click += new System.EventHandler(this.accChild_SapLuuLuong_Click);
+            // 
+            // accChild_PhanCongGiaoVien
+            // 
+            this.accChild_PhanCongGiaoVien.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accChild_PhanCongGiaoVien.ImageOptions.SvgImage")));
+            this.accChild_PhanCongGiaoVien.Name = "accChild_PhanCongGiaoVien";
+            this.accChild_PhanCongGiaoVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accChild_PhanCongGiaoVien.Text = "Phân Công";
+            this.accChild_PhanCongGiaoVien.Click += new System.EventHandler(this.accChild_PhanCongGiaoVien_Click);
             // 
             // acc_CabinEco
             // 
@@ -294,18 +312,10 @@ namespace DrivingCenter.App
             this.barToggleSwitchItem});
             this.fluentFormDefaultManager1.MaxItemId = 13;
             // 
-            // acc_XepLop
-            // 
-            this.acc_XepLop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acc_XepLop.ImageOptions.SvgImage")));
-            this.acc_XepLop.Name = "acc_XepLop";
-            this.acc_XepLop.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acc_XepLop.Text = "Xếp Lớp";
-            this.acc_XepLop.Click += new System.EventHandler(this.acc_XepLop_Click);
-            // 
             // frmMain
             // 
             this.Appearance.Options.UseFont = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1586, 764);
             this.ControlContainer = this.MainContainer;
@@ -353,6 +363,7 @@ namespace DrivingCenter.App
         private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_GiaoVien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_SapLuuLuong;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acc_XepLop;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accChild_PhanCongGiaoVien;
     }
 }
 

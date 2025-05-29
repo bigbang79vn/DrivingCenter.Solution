@@ -126,6 +126,21 @@ namespace DrivingCenter.App
             }
         }
 
+        private void acc_XepLop_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                UcChild_XepLop uc = new UcChild_XepLop();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Xếp Lớp";
+            }
+        }
         private void accChild_SapLuuLuong_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -142,7 +157,7 @@ namespace DrivingCenter.App
             }
         }
 
-        private void acc_XepLop_Click(object sender, EventArgs e)
+        private void accChild_PhanCongGiaoVien_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
             {
@@ -151,10 +166,10 @@ namespace DrivingCenter.App
             else
             {
                 MainContainer.Controls.Clear();
-                UcChild_XepLop uc = new UcChild_XepLop();
+                UcChild_PhanCongDaoTao uc = new UcChild_PhanCongDaoTao();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Xếp Lớp";
+                this.itemNav.Caption = $"Phân Công Giáo Viên";
             }
         }
         private void acc_DAT_Click(object sender, EventArgs e)

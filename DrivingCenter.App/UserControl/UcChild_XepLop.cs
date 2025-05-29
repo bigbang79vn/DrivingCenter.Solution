@@ -37,8 +37,8 @@ namespace DrivingCenter.App.UserControl
             listLeft = new BindingList<NguoiLX>(data);
             gridControlLeft.DataSource = listLeft;
 
-            listRight = new BindingList<NguoiLX>();
-            gridControlRight.DataSource = listRight;
+            //listRight = new BindingList<NguoiLX>();
+            //gridControlRight.DataSource = listRight;
 
             var khoaHoc = GPLX_DAO.Instance.GetlstKh();
             SlookUpEdit_KhoaHoc.Properties.DataSource = khoaHoc;
@@ -61,6 +61,7 @@ namespace DrivingCenter.App.UserControl
                 {
                     listRight.Add(nguoiLx);
                     listLeft.Remove(nguoiLx);
+                    GPLX_DAO.Instance.UpdateNguoiLxToKhoaHoc(nguoiLx, SlookUpEdit_KhoaHoc.EditValue.ToString());
                 }
             }
         }
@@ -75,6 +76,7 @@ namespace DrivingCenter.App.UserControl
                 {
                     listLeft.Add(nguoiLx);
                     listRight.Remove(nguoiLx);
+                    GPLX_DAO.Instance.UpdateNguoiLxToKhoaHoc(nguoiLx, "66015K22DB001"); // Trả về khóa học mặc định
                 }
             }
         }
@@ -90,34 +92,8 @@ namespace DrivingCenter.App.UserControl
 
                 var data = GPLX_DAO.Instance.Get_lstNguoiLxByMaKh(obj.MaKH);
                 listRight = new BindingList<NguoiLX>(data);
+                gridControlRight.DataSource = listRight;
             }
-        }
-
-        private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
-        {
-            var button = e.Button as DevExpress.XtraBars.Docking2010.WindowsUIButton;
-
-            if (button.Caption == "Save")
-            {
-                //SaveButton(giaoVienXe, data);
-                //MaKhDuKien = cbb_KhoaHocDuKien.EditValue?.ToString();
-                //Renew(MaKhDuKien);
-            }
-            else if (button.Caption == "Refresh")
-            {
-                //MaKhDuKien = cbb_KhoaHocDuKien.EditValue?.ToString();
-                //Renew(MaKhDuKien);
-            }
-            else if (button.Caption == "Export")
-            {
-                //----
-            }
-        }
-
-        private void SaveButton(string makhoahoc, List<NguoiLX> data)
-        {
-            //GPLX_DAO.Instance.SaveNguoiLxToKhoaHoc(listRight, SlookUpEdit_KhoaHoc.EditValue.ToString());
-            //XtraMessageBox.Show("Dữ liệu đã được lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     } 
 }

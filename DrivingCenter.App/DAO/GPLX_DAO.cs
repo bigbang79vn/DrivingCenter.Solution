@@ -1,12 +1,15 @@
-﻿using DevExpress.Pdf.Native.BouncyCastle.Asn1.GM;
+﻿using DevExpress.Pdf.Native;
+using DevExpress.Pdf.Native.BouncyCastle.Asn1.GM;
 using DrivingCenter.App.DTO.GPLX;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.DAO
 {
@@ -65,7 +68,8 @@ namespace DrivingCenter.App.DAO
             // Lấy danh sách khóa học
             var dt1 = DataProviderGPLX.Instance.ExecuteQuery($"SELECT MaKH, TenKH, HangGPLX, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE YEAR(NgayKG) >= 2025");
             var lstKH = dt1.AsEnumerable()
-                           .Select(row => new KhoaHoc{
+                           .Select(row => new KhoaHoc
+                           {
                                MaKH = row.Field<string>("MaKH"),
                                TenKH = row.Field<string>("TenKH"),
                                HangGPLX = row.Field<string>("HangGPLX"),
@@ -121,14 +125,14 @@ namespace DrivingCenter.App.DAO
         #region Xếp Lớp
         public List<NguoiLX> Get_lstNguoiLxByMaKh(string MaKH)
         {
-            List<NguoiLX> lst = new List<NguoiLX>();
-            string query = @"select * from NguoiLX AS nlx
+            string query = $@"SELECT * FROM NguoiLX AS nlx
                         INNER JOIN NguoiLX_HoSo AS hs ON nlx.MaDK = HS.MaDK
                         INNER JOIN KhoaHoc AS kh ON hs.MaKhoaHoc = kh.MaKH
-                        where kh.MaKH = '66015K22DB001'";
+                        where kh.MaKH = '{MaKH}'";
 
             DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
-            lst = dt.AsEnumerable().Select(item => new NguoiLX
+
+            List<NguoiLX> lst = dt.AsEnumerable().Select(item => new NguoiLX
             {
                 MaDK = item["MaDK"].ToString(),
                 HoVaTen = item["HoVaTen"].ToString(),
@@ -136,12 +140,72 @@ namespace DrivingCenter.App.DAO
                 NgaySinhDateTime = DateTime.ParseExact(item["NgaySinh"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture),
                 GioiTinh = item["GioiTinh"].ToString() == "F" ? "Nữ" : "Nam",
                 SoCMT = item["SoCMT"].ToString(),
-                NgayCapCMT = item["NgayCapCMT"].ToString().Substring(0, 10)
+                NgayCapCMT = item["NgayCapCMT"]?.ToString() is string s && s.Length >= 10 ? s.Substring(0, 10) : item["NgayCapCMT"]?.ToString()
             }).OrderBy(x => x.MaDK).ToList();
 
             return lst;
         }
 
+        public string GetImgPath()
+        {
+            string query = "SELECT GiaTriTS FROM QTHT_ThamSoHT where TenTS = 'IMG_PATH_CSDT'";
+            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            return result != null ? result.ToString() : string.Empty;
+
+        }
+
+        public string GetImgPathByMaDK(string maDK)
+        {
+            string query = $"SELECT DuongDanAnh FROM NguoiLX_HoSo WHERE MaDK = '{maDK}'";
+            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            return result != null ? result.ToString() : string.Empty;
+        }
+
+        public string GetMaxSoHSByMaKKH(string makh)
+        {
+            string query = $"SELECT MAX(SoHoSo) FROM NguoiLX_HoSo WHERE MaKhoaHoc = '{makh}'";
+            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            return result != null ? result.ToString() : "0";
+        }
+
+        public void UpdateNguoiLxToKhoaHoc(NguoiLX nguoiLx, string MaKH)
+        {
+            int maxSoHS = int.TryParse(GetMaxSoHSByMaKKH(MaKH), out int val) ? val : 0;
+            string soHS = (maxSoHS + 1).ToString("D3");
+
+            string oldImagePath = GetImgPathByMaDK(nguoiLx.MaDK);
+            string newImagePath = null;
+
+            if (!string.IsNullOrEmpty(oldImagePath) && File.Exists(oldImagePath))
+            {
+                string fileName = Path.GetFileName(oldImagePath);
+                string newFolder = Path.Combine(GetImgPath(), MaKH);
+                newImagePath = Path.Combine(newFolder, fileName);
+
+                try
+                {
+                    Directory.CreateDirectory(newFolder); // Tự kiểm tra tồn tại
+
+                    if (File.Exists(newImagePath))
+                        File.Delete(newImagePath);
+
+                    File.Move(oldImagePath, newImagePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi di chuyển ảnh: " + ex.Message);
+                    newImagePath = null;
+                }
+            }
+
+            string query = newImagePath != null
+                ? $@"UPDATE NguoiLX_HoSo SET MaKhoaHoc = '{MaKH}', SoHoSo = '{soHS}', DuongDanAnh = '{newImagePath}' WHERE MaDK = '{nguoiLx.MaDK}'"
+                : $@"UPDATE NguoiLX_HoSo SET MaKhoaHoc = '{MaKH}', SoHoSo = '{soHS}' WHERE MaDK = '{nguoiLx.MaDK}'";
+
+            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+
+        }
+
         #endregion
-    }
+    }    
 }

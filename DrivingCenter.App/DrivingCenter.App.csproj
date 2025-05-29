@@ -642,6 +642,12 @@
     <Compile Include="UserControl\UcChild_KhoaHoc_PhanCong.Designer.cs">
       <DependentUpon>UcChild_KhoaHoc_PhanCong.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UcChild_PhanCongDaoTao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcChild_PhanCongDaoTao.Designer.cs">
+      <DependentUpon>UcChild_PhanCongDaoTao.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UcChild_XeDaoTao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -818,6 +824,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcChild_KhoaHoc_PhanCong.resx">
       <DependentUpon>UcChild_KhoaHoc_PhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcChild_PhanCongDaoTao.resx">
+      <DependentUpon>UcChild_PhanCongDaoTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcChild_XeDaoTao.resx">
       <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>
