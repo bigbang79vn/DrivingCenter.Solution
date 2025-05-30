@@ -517,7 +517,7 @@
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Location = new System.Drawing.Point(17, 367);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(46, 17);
+            this.labelControl8.Size = new System.Drawing.Size(46, 18);
             this.labelControl8.TabIndex = 2;
             this.labelControl8.Text = "Ghi chú:";
             // 
@@ -536,7 +536,7 @@
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Location = new System.Drawing.Point(17, 330);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(75, 17);
+            this.labelControl7.Size = new System.Drawing.Size(73, 18);
             this.labelControl7.TabIndex = 2;
             this.labelControl7.Text = "Thời gian ĐT:";
             // 
@@ -555,7 +555,7 @@
             this.labelControl24.Appearance.Options.UseFont = true;
             this.labelControl24.Location = new System.Drawing.Point(17, 497);
             this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(66, 17);
+            this.labelControl24.Size = new System.Drawing.Size(66, 18);
             this.labelControl24.TabIndex = 2;
             this.labelControl24.Text = "Thực Hành:";
             // 
@@ -565,7 +565,7 @@
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Location = new System.Drawing.Point(17, 292);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(68, 17);
+            this.labelControl6.Size = new System.Drawing.Size(69, 18);
             this.labelControl6.TabIndex = 2;
             this.labelControl6.Text = "Số học viên:";
             // 
@@ -575,7 +575,7 @@
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Location = new System.Drawing.Point(17, 254);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(52, 17);
+            this.labelControl5.Size = new System.Drawing.Size(53, 18);
             this.labelControl5.TabIndex = 2;
             this.labelControl5.Text = "Ngày BG:";
             // 
@@ -585,7 +585,7 @@
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(17, 216);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(52, 17);
+            this.labelControl4.Size = new System.Drawing.Size(53, 18);
             this.labelControl4.TabIndex = 2;
             this.labelControl4.Text = "Ngày KG:";
             // 
@@ -604,7 +604,7 @@
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Location = new System.Drawing.Point(17, 178);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(53, 17);
+            this.labelControl9.Size = new System.Drawing.Size(51, 18);
             this.labelControl9.TabIndex = 2;
             this.labelControl9.Text = "Hạng ĐT:";
             // 
@@ -623,7 +623,7 @@
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(17, 140);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(56, 17);
+            this.labelControl3.Size = new System.Drawing.Size(56, 18);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "Khóa học:";
             // 
@@ -642,7 +642,7 @@
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(17, 102);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(79, 17);
+            this.labelControl2.Size = new System.Drawing.Size(79, 18);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Mã Khóa Học:";
             // 
@@ -652,7 +652,7 @@
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(17, 64);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 17);
+            this.labelControl1.Size = new System.Drawing.Size(48, 18);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Dự Kiến:";
             // 
@@ -1113,7 +1113,7 @@
             this.labelControl17.Appearance.Options.UseFont = true;
             this.labelControl17.Location = new System.Drawing.Point(231, 265);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(25, 17);
+            this.labelControl17.Size = new System.Drawing.Size(25, 18);
             this.labelControl17.TabIndex = 2;
             this.labelControl17.Text = "đến:";
             // 
@@ -1123,7 +1123,7 @@
             this.labelControl18.Appearance.Options.UseFont = true;
             this.labelControl18.Location = new System.Drawing.Point(231, 141);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(37, 17);
+            this.labelControl18.Size = new System.Drawing.Size(38, 18);
             this.labelControl18.TabIndex = 2;
             this.labelControl18.Text = "Mã xe:";
             // 
@@ -1133,7 +1133,7 @@
             this.labelControl16.Appearance.Options.UseFont = true;
             this.labelControl16.Location = new System.Drawing.Point(12, 265);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(65, 17);
+            this.labelControl16.Size = new System.Drawing.Size(66, 18);
             this.labelControl16.TabIndex = 2;
             this.labelControl16.Text = "Hiệu lực từ:";
             // 
@@ -1145,7 +1145,7 @@
             this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Location = new System.Drawing.Point(12, 141);
             this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(98, 17);
+            this.labelControl14.Size = new System.Drawing.Size(98, 18);
             this.labelControl14.TabIndex = 2;
             this.labelControl14.Text = "Xe đã phân công:";
             // 
@@ -1157,7 +1157,7 @@
             this.labelControl15.Appearance.Options.UseFont = true;
             this.labelControl15.Location = new System.Drawing.Point(12, 75);
             this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(38, 17);
+            this.labelControl15.Size = new System.Drawing.Size(37, 18);
             this.labelControl15.TabIndex = 2;
             this.labelControl15.Text = "Số HV:";
             // 
@@ -1169,7 +1169,7 @@
             this.labelControl13.Appearance.Options.UseFont = true;
             this.labelControl13.Location = new System.Drawing.Point(12, 234);
             this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(60, 17);
+            this.labelControl13.Size = new System.Drawing.Size(61, 18);
             this.labelControl13.TabIndex = 2;
             this.labelControl13.Text = "Ngày Sinh:";
             // 
@@ -1191,7 +1191,7 @@
             this.labelControl12.Appearance.Options.UseFont = true;
             this.labelControl12.Location = new System.Drawing.Point(12, 203);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(57, 17);
+            this.labelControl12.Size = new System.Drawing.Size(57, 18);
             this.labelControl12.TabIndex = 2;
             this.labelControl12.Text = "Giáo Viên:";
             // 
@@ -1213,7 +1213,7 @@
             this.labelControl11.Appearance.Options.UseFont = true;
             this.labelControl11.Location = new System.Drawing.Point(12, 172);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(74, 17);
+            this.labelControl11.Size = new System.Drawing.Size(75, 18);
             this.labelControl11.TabIndex = 2;
             this.labelControl11.Text = "Mã giáo viên:";
             // 
@@ -1225,7 +1225,7 @@
             this.labelControl10.Appearance.Options.UseFont = true;
             this.labelControl10.Location = new System.Drawing.Point(12, 44);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(61, 17);
+            this.labelControl10.Size = new System.Drawing.Size(62, 18);
             this.labelControl10.TabIndex = 1;
             this.labelControl10.Text = "Xe đào tạo";
             // 
@@ -1377,7 +1377,7 @@
             this.labelControl20.Appearance.Options.UseFont = true;
             this.labelControl20.Location = new System.Drawing.Point(12, 102);
             this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(26, 17);
+            this.labelControl20.Size = new System.Drawing.Size(26, 18);
             this.labelControl20.TabIndex = 2;
             this.labelControl20.Text = "Đến:";
             // 
@@ -1387,7 +1387,7 @@
             this.labelControl22.Appearance.Options.UseFont = true;
             this.labelControl22.Location = new System.Drawing.Point(12, 72);
             this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(62, 17);
+            this.labelControl22.Size = new System.Drawing.Size(64, 18);
             this.labelControl22.TabIndex = 2;
             this.labelControl22.Text = "Bắt đầu từ:";
             // 
@@ -1399,7 +1399,7 @@
             this.labelControl23.Appearance.Options.UseFont = true;
             this.labelControl23.Location = new System.Drawing.Point(12, 44);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(35, 17);
+            this.labelControl23.Size = new System.Drawing.Size(35, 18);
             this.labelControl23.TabIndex = 1;
             this.labelControl23.Text = "Cabin:";
             // 
@@ -1519,7 +1519,7 @@
             this.labelControl19.Appearance.Options.UseFont = true;
             this.labelControl19.Location = new System.Drawing.Point(12, 104);
             this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(26, 17);
+            this.labelControl19.Size = new System.Drawing.Size(26, 18);
             this.labelControl19.TabIndex = 2;
             this.labelControl19.Text = "Đến:";
             // 
@@ -1529,7 +1529,7 @@
             this.labelControl21.Appearance.Options.UseFont = true;
             this.labelControl21.Location = new System.Drawing.Point(12, 72);
             this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(65, 17);
+            this.labelControl21.Size = new System.Drawing.Size(66, 18);
             this.labelControl21.TabIndex = 2;
             this.labelControl21.Text = "Hiệu lực từ:";
             // 
@@ -1541,7 +1541,7 @@
             this.labelControl27.Appearance.Options.UseFont = true;
             this.labelControl27.Location = new System.Drawing.Point(12, 44);
             this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(46, 17);
+            this.labelControl27.Size = new System.Drawing.Size(46, 18);
             this.labelControl27.TabIndex = 1;
             this.labelControl27.Text = "Xe STĐ:";
             // 
@@ -1584,7 +1584,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 0;
-            this.gridColumn17.Width = 125;
+            this.gridColumn17.Width = 132;
             // 
             // gridColumn18
             // 
@@ -1593,7 +1593,7 @@
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 1;
-            this.gridColumn18.Width = 35;
+            this.gridColumn18.Width = 50;
             // 
             // gridColumn19
             // 
@@ -1602,7 +1602,7 @@
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 2;
-            this.gridColumn19.Width = 217;
+            this.gridColumn19.Width = 195;
             // 
             // dateEdit_StartB11
             // 
@@ -1643,7 +1643,7 @@
             this.lbl_ThongTinPhanCong.Appearance.Options.UseForeColor = true;
             this.lbl_ThongTinPhanCong.Location = new System.Drawing.Point(408, 9);
             this.lbl_ThongTinPhanCong.Name = "lbl_ThongTinPhanCong";
-            this.lbl_ThongTinPhanCong.Size = new System.Drawing.Size(273, 23);
+            this.lbl_ThongTinPhanCong.Size = new System.Drawing.Size(269, 25);
             this.lbl_ThongTinPhanCong.TabIndex = 0;
             this.lbl_ThongTinPhanCong.Text = "THÔNG TIN PHÂN CÔNG KHÓA ";
             // 
