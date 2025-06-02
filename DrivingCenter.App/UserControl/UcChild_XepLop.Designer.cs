@@ -186,38 +186,32 @@
             // dtNgayBG
             // 
             this.dtNgayBG.EditValue = null;
-            this.dtNgayBG.Location = new System.Drawing.Point(559, 92);
+            this.dtNgayBG.Location = new System.Drawing.Point(559, 82);
             this.dtNgayBG.Name = "dtNgayBG";
-            this.dtNgayBG.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtNgayBG.Properties.Appearance.Options.UseFont = true;
             this.dtNgayBG.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtNgayBG.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgayBG.Size = new System.Drawing.Size(131, 24);
+            this.dtNgayBG.Size = new System.Drawing.Size(131, 20);
             this.dtNgayBG.TabIndex = 7;
             // 
             // dtNgayKG
             // 
             this.dtNgayKG.EditValue = null;
-            this.dtNgayKG.Location = new System.Drawing.Point(323, 92);
+            this.dtNgayKG.Location = new System.Drawing.Point(323, 82);
             this.dtNgayKG.Name = "dtNgayKG";
-            this.dtNgayKG.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtNgayKG.Properties.Appearance.Options.UseFont = true;
             this.dtNgayKG.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtNgayKG.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgayKG.Size = new System.Drawing.Size(131, 24);
+            this.dtNgayKG.Size = new System.Drawing.Size(131, 20);
             this.dtNgayKG.TabIndex = 7;
             // 
             // txtHangDT
             // 
-            this.txtHangDT.Location = new System.Drawing.Point(132, 92);
+            this.txtHangDT.Location = new System.Drawing.Point(132, 82);
             this.txtHangDT.Name = "txtHangDT";
-            this.txtHangDT.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHangDT.Properties.Appearance.Options.UseFont = true;
-            this.txtHangDT.Size = new System.Drawing.Size(84, 24);
+            this.txtHangDT.Size = new System.Drawing.Size(84, 20);
             this.txtHangDT.TabIndex = 6;
             // 
             // gridControlRight
@@ -226,18 +220,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControlRight.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControlRight.Location = new System.Drawing.Point(2, 133);
+            this.gridControlRight.Location = new System.Drawing.Point(2, 110);
             this.gridControlRight.MainView = this.gridViewRight;
             this.gridControlRight.Name = "gridControlRight";
-            this.gridControlRight.Size = new System.Drawing.Size(709, 333);
+            this.gridControlRight.Size = new System.Drawing.Size(709, 356);
             this.gridControlRight.TabIndex = 5;
             this.gridControlRight.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewRight});
             // 
             // gridViewRight
             // 
-            this.gridViewRight.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridViewRight.Appearance.Row.Options.UseFont = true;
+            this.gridViewRight.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridViewRight.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridViewRight.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridViewRight.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridViewRight.ColumnPanelRowHeight = 27;
             this.gridViewRight.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn4,
             this.gridColumn5,
@@ -311,54 +308,44 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(501, 96);
+            this.labelControl4.Location = new System.Drawing.Point(501, 86);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(53, 18);
+            this.labelControl4.Size = new System.Drawing.Size(45, 13);
             this.labelControl4.TabIndex = 4;
             this.labelControl4.Text = "Ngày BG:";
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(265, 96);
+            this.labelControl3.Location = new System.Drawing.Point(265, 86);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(53, 18);
+            this.labelControl3.Size = new System.Drawing.Size(45, 13);
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Ngày KG:";
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(27, 96);
+            this.labelControl2.Location = new System.Drawing.Point(27, 86);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(83, 18);
+            this.labelControl2.Size = new System.Drawing.Size(73, 13);
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "Hạng Đào Tạo:";
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(27, 59);
+            this.labelControl1.Location = new System.Drawing.Point(27, 57);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(58, 18);
+            this.labelControl1.Size = new System.Drawing.Size(49, 13);
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "Khóa Học:";
             // 
             // SlookUpEdit_KhoaHoc
             // 
-            this.SlookUpEdit_KhoaHoc.Location = new System.Drawing.Point(132, 55);
+            this.SlookUpEdit_KhoaHoc.Location = new System.Drawing.Point(132, 53);
             this.SlookUpEdit_KhoaHoc.Name = "SlookUpEdit_KhoaHoc";
-            this.SlookUpEdit_KhoaHoc.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SlookUpEdit_KhoaHoc.Properties.Appearance.Options.UseFont = true;
             this.SlookUpEdit_KhoaHoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.SlookUpEdit_KhoaHoc.Properties.PopupView = this.searchLookUpEdit1View;
-            this.SlookUpEdit_KhoaHoc.Size = new System.Drawing.Size(558, 24);
+            this.SlookUpEdit_KhoaHoc.Size = new System.Drawing.Size(558, 20);
             this.SlookUpEdit_KhoaHoc.TabIndex = 3;
             this.SlookUpEdit_KhoaHoc.EditValueChanged += new System.EventHandler(this.SlookUpEdit_KhoaHoc_EditValueChanged);
             // 
@@ -480,12 +467,11 @@
             // 
             // gridViewLeft
             // 
-            this.gridViewLeft.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewLeft.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.gridViewLeft.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridViewLeft.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridViewLeft.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridViewLeft.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridViewLeft.Appearance.Row.Options.UseFont = true;
+            this.gridViewLeft.ColumnPanelRowHeight = 27;
             this.gridViewLeft.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn14,
             this.gridColumn6,
