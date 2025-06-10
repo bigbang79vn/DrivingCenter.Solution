@@ -864,5 +864,25 @@ namespace DrivingCenter.App.UserControl
 
 
         #endregion
+
+        private void OnOffReload_CheckedChanged(object sender, EventArgs e)
+        {
+            if (OnOffReload.Checked)
+            {
+                OnOffReload.Text = "On";
+                countdownTimer.Stop();
+                refreshTimer.Stop();
+                lblCountdown.Visible = false;
+                label7.Visible = false;
+            }
+            else
+            {
+                OnOffReload.Text = "Off";
+                countdownTimer.Start();
+                refreshTimer.Start();
+                lblCountdown.Visible = true;
+                label7.Visible = true;
+            }
+        }
     }
 }
