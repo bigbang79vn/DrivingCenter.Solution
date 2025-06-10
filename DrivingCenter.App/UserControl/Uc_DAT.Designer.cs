@@ -186,10 +186,9 @@
             this.panelHead = new System.Windows.Forms.Panel();
             this.lblCountdown = new System.Windows.Forms.Label();
             this.btn_Reload = new System.Windows.Forms.Button();
-            this.btn_ExportPH = new System.Windows.Forms.Button();
             this.btn_ViewPhByDay = new System.Windows.Forms.Button();
             this.dtp_PhByDay = new DevExpress.XtraEditors.DateEdit();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.lb_CountUnSendTC = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -201,6 +200,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_SessionLock = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.EndSession = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_PhienHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -1476,10 +1476,9 @@
             this.panelHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.panelHead.Controls.Add(this.lblCountdown);
             this.panelHead.Controls.Add(this.btn_Reload);
-            this.panelHead.Controls.Add(this.btn_ExportPH);
             this.panelHead.Controls.Add(this.btn_ViewPhByDay);
             this.panelHead.Controls.Add(this.dtp_PhByDay);
-            this.panelHead.Controls.Add(this.checkBox1);
+            this.panelHead.Controls.Add(this.label7);
             this.panelHead.Controls.Add(this.lb_CountUnSendTC);
             this.panelHead.Controls.Add(this.label11);
             this.panelHead.Controls.Add(this.label12);
@@ -1492,13 +1491,16 @@
             // 
             // lblCountdown
             // 
+            this.lblCountdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCountdown.AutoSize = true;
-            this.lblCountdown.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountdown.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountdown.ForeColor = System.Drawing.Color.White;
-            this.lblCountdown.Location = new System.Drawing.Point(410, 16);
+            this.lblCountdown.Location = new System.Drawing.Point(1343, 13);
             this.lblCountdown.Name = "lblCountdown";
-            this.lblCountdown.Size = new System.Drawing.Size(0, 20);
+            this.lblCountdown.Size = new System.Drawing.Size(66, 28);
             this.lblCountdown.TabIndex = 21;
+            this.lblCountdown.Text = "00:00";
+            this.lblCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_Reload
             // 
@@ -1514,22 +1516,6 @@
             this.btn_Reload.TabIndex = 20;
             this.btn_Reload.UseVisualStyleBackColor = false;
             this.btn_Reload.Click += new System.EventHandler(this.btn_Reload_Click);
-            // 
-            // btn_ExportPH
-            // 
-            this.btn_ExportPH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ExportPH.BackColor = System.Drawing.Color.White;
-            this.btn_ExportPH.FlatAppearance.BorderSize = 0;
-            this.btn_ExportPH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ExportPH.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ExportPH.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(60)))), ((int)(((byte)(94)))));
-            this.btn_ExportPH.Location = new System.Drawing.Point(1353, 14);
-            this.btn_ExportPH.Name = "btn_ExportPH";
-            this.btn_ExportPH.Size = new System.Drawing.Size(119, 23);
-            this.btn_ExportPH.TabIndex = 17;
-            this.btn_ExportPH.Text = "Export";
-            this.btn_ExportPH.UseVisualStyleBackColor = false;
-            this.btn_ExportPH.Click += new System.EventHandler(this.btn_ExportPH_Click);
             // 
             // btn_ViewPhByDay
             // 
@@ -1564,18 +1550,18 @@
             this.dtp_PhByDay.TabIndex = 9;
             this.dtp_PhByDay.EditValueChanged += new System.EventHandler(this.dtp_PhByDay_EditValueChanged);
             // 
-            // checkBox1
+            // label7
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(1228, 16);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 22);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "SendTC";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(1409, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 28);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "-";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_CountUnSendTC
             // 
@@ -1583,12 +1569,12 @@
             this.lb_CountUnSendTC.AutoSize = true;
             this.lb_CountUnSendTC.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold);
             this.lb_CountUnSendTC.ForeColor = System.Drawing.Color.White;
-            this.lb_CountUnSendTC.Location = new System.Drawing.Point(1307, 13);
+            this.lb_CountUnSendTC.Location = new System.Drawing.Point(1429, 13);
             this.lb_CountUnSendTC.Name = "lb_CountUnSendTC";
             this.lb_CountUnSendTC.Size = new System.Drawing.Size(36, 28);
             this.lb_CountUnSendTC.TabIndex = 7;
             this.lb_CountUnSendTC.Text = "00";
-            this.lb_CountUnSendTC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_CountUnSendTC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
@@ -1608,7 +1594,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(19, 18);
+            this.label12.Location = new System.Drawing.Point(19, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 18);
             this.label12.TabIndex = 4;
@@ -1639,16 +1625,17 @@
             this.toolStripSeparator5,
             this.deleteSToolStripMenuItem,
             this.mn_SessionLock,
+            this.toolStripMenuItem1,
             this.toolStripSeparator6,
             this.EndSession});
             this.menu_Phienhoc.Name = "contextMenuStrip2";
-            this.menu_Phienhoc.Size = new System.Drawing.Size(173, 148);
+            this.menu_Phienhoc.Size = new System.Drawing.Size(189, 170);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("refreshToolStripMenuItem.Image")));
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
@@ -1656,7 +1643,7 @@
             // 
             this.DetailSession.Image = ((System.Drawing.Image)(resources.GetObject("DetailSession.Image")));
             this.DetailSession.Name = "DetailSession";
-            this.DetailSession.Size = new System.Drawing.Size(172, 22);
+            this.DetailSession.Size = new System.Drawing.Size(188, 22);
             this.DetailSession.Text = "Detail Session";
             this.DetailSession.Click += new System.EventHandler(this.DetailSession_Click);
             // 
@@ -1664,20 +1651,20 @@
             // 
             this.CheckImgNull.Image = ((System.Drawing.Image)(resources.GetObject("CheckImgNull.Image")));
             this.CheckImgNull.Name = "CheckImgNull";
-            this.CheckImgNull.Size = new System.Drawing.Size(172, 22);
+            this.CheckImgNull.Size = new System.Drawing.Size(188, 22);
             this.CheckImgNull.Text = "Check Img Logout";
             this.CheckImgNull.Click += new System.EventHandler(this.CheckImgNull_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(185, 6);
             // 
             // deleteSToolStripMenuItem
             // 
             this.deleteSToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteSToolStripMenuItem.Image")));
             this.deleteSToolStripMenuItem.Name = "deleteSToolStripMenuItem";
-            this.deleteSToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.deleteSToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.deleteSToolStripMenuItem.Text = "Delete Session";
             this.deleteSToolStripMenuItem.Click += new System.EventHandler(this.deleteSToolStripMenuItem_Click);
             // 
@@ -1685,20 +1672,28 @@
             // 
             this.mn_SessionLock.Image = ((System.Drawing.Image)(resources.GetObject("mn_SessionLock.Image")));
             this.mn_SessionLock.Name = "mn_SessionLock";
-            this.mn_SessionLock.Size = new System.Drawing.Size(172, 22);
+            this.mn_SessionLock.Size = new System.Drawing.Size(188, 22);
             this.mn_SessionLock.Text = "Session Lock";
             this.mn_SessionLock.Click += new System.EventHandler(this.mn_SessionLock_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.toolStripMenuItem1.Text = "Export Session By Day";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(185, 6);
             // 
             // EndSession
             // 
             this.EndSession.Image = ((System.Drawing.Image)(resources.GetObject("EndSession.Image")));
             this.EndSession.Name = "EndSession";
-            this.EndSession.Size = new System.Drawing.Size(172, 22);
+            this.EndSession.Size = new System.Drawing.Size(188, 22);
             this.EndSession.Text = "End Session";
             this.EndSession.Click += new System.EventHandler(this.EndSession_Click);
             // 
@@ -3984,7 +3979,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTab_PhienHocBo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private DevExpress.XtraEditors.DateEdit dtp_PhByDay;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lb_CountUnSendTC;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -4125,7 +4119,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn NhanDien_PH;
         private System.Windows.Forms.ToolStripMenuItem mn_SessionLock;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.Button btn_ExportPH;
         private System.Windows.Forms.Button btn_ViewPhByDay;
         private System.Windows.Forms.Button btn_ViewPhienHocSai;
         private System.Windows.Forms.Button btn_ViewTongHopHv;
@@ -4158,5 +4151,7 @@
         private System.Windows.Forms.Label lblCountdown;
         private System.Windows.Forms.Timer countdownTimer;
         private System.Windows.Forms.Timer refreshTimer;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Label label7;
     }
 }

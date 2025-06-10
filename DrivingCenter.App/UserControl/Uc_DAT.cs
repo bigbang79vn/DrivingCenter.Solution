@@ -42,7 +42,6 @@ namespace DrivingCenter.App.UserControl
 
             LoadKhDangDaoTao();
 
-            refreshTimer = new Timer();
             refreshTimer.Interval = 2 * 60 * 1000;
             refreshTimer.Tick += async (s, ev) => await ReloadClick();
             refreshTimer.Start();
@@ -59,7 +58,7 @@ namespace DrivingCenter.App.UserControl
         private List<KhoaHocDangDT> lstKhoaHoc;
         private List<PhienHoc> lstPH;
         private string HangDaoTao;
-        private int khoahocid;
+        private int KhoaHocID;
         private string MaKH;
         private string TenKhoaHoc;
         private int flag;
@@ -128,10 +127,6 @@ namespace DrivingCenter.App.UserControl
                 countdownTime = countdownTime.Subtract(TimeSpan.FromSeconds(1));
                 UpdateCountdownLabel();
             }
-            else
-            {
-                countdownTimer.Stop();
-            }
         }
 
         private void UpdateCountdownLabel()
@@ -146,9 +141,6 @@ namespace DrivingCenter.App.UserControl
 
         private async void btn_Reload_Click(object sender, EventArgs e)
         {
-            //string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-            //DAT_DAO.Instance.ReLoad(datetime);
-            //LoadPhienHoc();
             await ReloadClick();
         }
 
@@ -253,25 +245,6 @@ namespace DrivingCenter.App.UserControl
             GridHelper.EnableRowNumbering(gridView_PhienHoc);
         }
 
-        private void btn_ExportPH_Click(object sender, EventArgs e)
-        {
-            string day = dtp_PhByDay.DateTime.ToString("dd-MM-yyyy");
-
-            string fileName = $"Phien DAT - {day}.xlsx";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
-
-            gridControl_PhienHoc.ExportToXlsx(filePath, new XlsxExportOptionsEx()
-            {
-                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
-            });
-
-            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (result == DialogResult.OK)
-            {
-                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
-            }
-        }
-
         #region Context Menustrip Phiên học
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -348,6 +321,25 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string day = dtp_PhByDay.DateTime.ToString("dd-MM-yyyy");
+
+            string fileName = $"Phien DAT - {day}.xlsx";
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+
+            gridControl_PhienHoc.ExportToXlsx(filePath, new XlsxExportOptionsEx()
+            {
+                ExportType = ExportType.WYSIWYG  // Giữ nguyên định dạng
+            });
+
+            var result = XtraMessageBox.Show("Xuất Excel thành công! Mở file", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+        }
+
         #endregion Context Menustrip Phiên học
 
         #endregion Phiên Học
@@ -381,13 +373,13 @@ namespace DrivingCenter.App.UserControl
             LoadKhDangDaoTao();
         }
 
-        public List<TongHopHVByKhoa> TongHopKQByKhoa(int khoahocid)
+        public List<TongHopHVByKhoa> TongHopKQByKhoa(int KhoaHocID)
         {
-            List<TongHopHVByKhoa> lst = DAT_DAO.Instance.TongHopHvByKhoa(khoahocid);
+            List<TongHopHVByKhoa> lst = DAT_DAO.Instance.TongHopHvByKhoa(KhoaHocID);
 
-            List<TongHopHVByKhoa> lstB1 = DAT_DAO.Instance.TongHopPhB11(khoahocid);
+            List<TongHopHVByKhoa> lstB1 = DAT_DAO.Instance.TongHopPhB11(KhoaHocID);
 
-            List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(khoahocid, HangDaoTao);
+            List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(KhoaHocID, HangDaoTao);
 
             if (HangDaoTao == "B2" || HangDaoTao == "B")
             {
@@ -490,14 +482,14 @@ namespace DrivingCenter.App.UserControl
         {
             KhoaHocDangDT rowData = gridView_KhoaHocDDT.GetFocusedRow() as KhoaHocDangDT;
 
-            khoahocid = Convert.ToInt32(rowData.KhoaHocID);
+            KhoaHocID = Convert.ToInt32(rowData.KhoaHocID);
             TenKhoaHoc = rowData.TenKH;
             MaKH = rowData.MaKH.ToString();
             HangDaoTao = rowData.HangDaoTao.ToString();
             lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + TenKhoaHoc;
             HvDuDK = 0;
-            ViewTongHopKQ(TongHopKQByKhoa(khoahocid), HangDaoTao);
-            DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, khoahocid);
+            ViewTongHopKQ(TongHopKQByKhoa(KhoaHocID), HangDaoTao);
+            DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, KhoaHocID);
         }
 
         private void cb_ShowSendTC_CheckedChanged(object sender, EventArgs e)
@@ -549,7 +541,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_TongHopTienDo_Click(object sender, EventArgs e)
         {
-            List<TienDo> lst = DAT_DAO.Instance.TongHopTienDoDatByKH(khoahocid, MaKH);
+            List<TienDo> lst = DAT_DAO.Instance.TongHopTienDoDatByKH(KhoaHocID, MaKH);
 
             ConvertListToDataTable convert = new ConvertListToDataTable();
             DataTable dt = convert.ToDataTable(lst);
@@ -558,7 +550,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_ThongKeKetQuaHocVien_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 0);
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocID, 0);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -571,7 +563,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_ThongKeHocVienHoanThanh_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 1);
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocID, 1);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -584,7 +576,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_ThongKeHocVienKhongHoanThanh_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(khoahocid, 2);
+            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocID, 2);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -598,7 +590,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_XoaPhienHocLoginIsNull_Click(object sender, EventArgs e)
         {
-            List<Guid> list = DAT_DAO.Instance.GetlstPhienHocLoginIsNull(khoahocid);
+            List<Guid> list = DAT_DAO.Instance.GetlstPhienHocLoginIsNull(KhoaHocID);
             int sophienhocLoginIsNull = list.Count();
             if (sophienhocLoginIsNull == 0)
             {
@@ -865,12 +857,12 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+
         #endregion Phiên học sai
 
         #region Kiểm tra chồng phiên
 
 
         #endregion
-
     }
 }
