@@ -184,7 +184,7 @@
             this.xtraTab_PhienHoc = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panelHead = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Reload = new System.Windows.Forms.Button();
             this.btn_ExportPH = new System.Windows.Forms.Button();
             this.btn_ViewPhByDay = new System.Windows.Forms.Button();
             this.dtp_PhByDay = new DevExpress.XtraEditors.DateEdit();
@@ -1471,7 +1471,7 @@
             // panelHead
             // 
             this.panelHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.panelHead.Controls.Add(this.button2);
+            this.panelHead.Controls.Add(this.btn_Reload);
             this.panelHead.Controls.Add(this.btn_ExportPH);
             this.panelHead.Controls.Add(this.btn_ViewPhByDay);
             this.panelHead.Controls.Add(this.dtp_PhByDay);
@@ -1486,20 +1486,20 @@
             this.panelHead.Size = new System.Drawing.Size(1488, 50);
             this.panelHead.TabIndex = 0;
             // 
-            // button2
+            // btn_Reload
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(358, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(33, 23);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btn_Reload_Click);
+            this.btn_Reload.BackColor = System.Drawing.Color.White;
+            this.btn_Reload.FlatAppearance.BorderSize = 0;
+            this.btn_Reload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Reload.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Reload.ForeColor = System.Drawing.Color.White;
+            this.btn_Reload.Image = ((System.Drawing.Image)(resources.GetObject("btn_Reload.Image")));
+            this.btn_Reload.Location = new System.Drawing.Point(358, 14);
+            this.btn_Reload.Name = "btn_Reload";
+            this.btn_Reload.Size = new System.Drawing.Size(33, 23);
+            this.btn_Reload.TabIndex = 20;
+            this.btn_Reload.UseVisualStyleBackColor = false;
+            this.btn_Reload.Click += new System.EventHandler(this.btn_Reload_Click);
             // 
             // btn_ExportPH
             // 
@@ -1558,7 +1558,7 @@
             this.checkBox1.ForeColor = System.Drawing.Color.White;
             this.checkBox1.Location = new System.Drawing.Point(1228, 16);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 21);
+            this.checkBox1.Size = new System.Drawing.Size(72, 22);
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "SendTC";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -1571,7 +1571,7 @@
             this.lb_CountUnSendTC.ForeColor = System.Drawing.Color.White;
             this.lb_CountUnSendTC.Location = new System.Drawing.Point(1307, 13);
             this.lb_CountUnSendTC.Name = "lb_CountUnSendTC";
-            this.lb_CountUnSendTC.Size = new System.Drawing.Size(36, 25);
+            this.lb_CountUnSendTC.Size = new System.Drawing.Size(36, 28);
             this.lb_CountUnSendTC.TabIndex = 7;
             this.lb_CountUnSendTC.Text = "00";
             this.lb_CountUnSendTC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1584,7 +1584,7 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(572, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(247, 25);
+            this.label11.Size = new System.Drawing.Size(242, 28);
             this.label11.TabIndex = 7;
             this.label11.Text = "DANH SÁCH PHIÊN HỌC";
             // 
@@ -1596,7 +1596,7 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(19, 18);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 17);
+            this.label12.Size = new System.Drawing.Size(38, 18);
             this.label12.TabIndex = 4;
             this.label12.Text = "Ngày";
             // 
@@ -1614,6 +1614,7 @@
             this.gridControl_PhienHoc.TabIndex = 1;
             this.gridControl_PhienHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_PhienHoc});
+            this.gridControl_PhienHoc.Click += new System.EventHandler(this.btn_Reload_Click);
             // 
             // menu_Phienhoc
             // 
@@ -2007,7 +2008,7 @@
             this.lb_Tonghophocvienbyday.ForeColor = System.Drawing.Color.White;
             this.lb_Tonghophocvienbyday.Location = new System.Drawing.Point(574, 13);
             this.lb_Tonghophocvienbyday.Name = "lb_Tonghophocvienbyday";
-            this.lb_Tonghophocvienbyday.Size = new System.Drawing.Size(355, 25);
+            this.lb_Tonghophocvienbyday.Size = new System.Drawing.Size(346, 28);
             this.lb_Tonghophocvienbyday.TabIndex = 7;
             this.lb_Tonghophocvienbyday.Text = "TỔNG HỢP GIỜ HỌC CỦA HỌC VIÊN";
             // 
@@ -2019,7 +2020,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(19, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 17);
+            this.label3.Size = new System.Drawing.Size(38, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Ngày";
             // 
@@ -2294,7 +2295,7 @@
             this.lb_TongHopGvByDay.ForeColor = System.Drawing.Color.White;
             this.lb_TongHopGvByDay.Location = new System.Drawing.Point(574, 13);
             this.lb_TongHopGvByDay.Name = "lb_TongHopGvByDay";
-            this.lb_TongHopGvByDay.Size = new System.Drawing.Size(355, 25);
+            this.lb_TongHopGvByDay.Size = new System.Drawing.Size(349, 28);
             this.lb_TongHopGvByDay.TabIndex = 7;
             this.lb_TongHopGvByDay.Text = "TỔNG HỢP GIỜ DẠY CỦA GIÁO VIÊN";
             // 
@@ -2306,7 +2307,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(19, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 17);
+            this.label2.Size = new System.Drawing.Size(38, 18);
             this.label2.TabIndex = 4;
             this.label2.Text = "Ngày";
             // 
@@ -2590,7 +2591,7 @@
             this.lbl_PhienHocLoi.ForeColor = System.Drawing.Color.White;
             this.lbl_PhienHocLoi.Location = new System.Drawing.Point(574, 13);
             this.lbl_PhienHocLoi.Name = "lbl_PhienHocLoi";
-            this.lbl_PhienHocLoi.Size = new System.Drawing.Size(283, 25);
+            this.lbl_PhienHocLoi.Size = new System.Drawing.Size(277, 28);
             this.lbl_PhienHocLoi.TabIndex = 7;
             this.lbl_PhienHocLoi.Text = "DANH SÁCH PHIÊN HỌC LỖI";
             // 
@@ -2602,7 +2603,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(19, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 17);
+            this.label5.Size = new System.Drawing.Size(38, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Ngày";
             // 
@@ -3154,7 +3155,7 @@
             this.lb_KetquaKh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_KetquaKh.Location = new System.Drawing.Point(465, 3);
             this.lb_KetquaKh.Name = "lb_KetquaKh";
-            this.lb_KetquaKh.Size = new System.Drawing.Size(265, 25);
+            this.lb_KetquaKh.Size = new System.Drawing.Size(261, 28);
             this.lb_KetquaKh.TabIndex = 3;
             this.lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA ";
             // 
@@ -3469,7 +3470,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(177, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(12, 17);
+            this.label6.Size = new System.Drawing.Size(12, 18);
             this.label6.TabIndex = 14;
             this.label6.Text = "-";
             // 
@@ -3515,7 +3516,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(589, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 25);
+            this.label1.Size = new System.Drawing.Size(279, 28);
             this.label1.TabIndex = 7;
             this.label1.Text = "DANH SÁCH PHIÊN HỌC SAI";
             // 
@@ -3527,7 +3528,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(19, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 17);
+            this.label4.Size = new System.Drawing.Size(24, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "Từ";
             // 
@@ -4111,7 +4112,7 @@
         private System.Windows.Forms.Button btn_ExportPhSai;
         private System.Windows.Forms.ToolStripMenuItem mn_UnlockSession;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Reload;
         private System.Windows.Forms.ToolStripMenuItem mn_DeletePhienHoc;
         private System.Windows.Forms.ToolStripMenuItem DetailSession;
         private System.Windows.Forms.CheckBox cb_StyleExport;

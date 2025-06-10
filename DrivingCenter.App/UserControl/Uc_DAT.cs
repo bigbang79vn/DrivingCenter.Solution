@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
@@ -24,6 +25,7 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
         }
 
+        private Timer refreshTimer;
         private void Uc_DAT_Load(object sender, EventArgs e)
         {
             cbb_TongHopGv.Properties.Items.AddRange(new string[] { "Theo Giáo Viên", "Theo Xe" });
@@ -42,6 +44,12 @@ namespace DrivingCenter.App.UserControl
             //dtp_To.DateTime = lastDayOfMonth;
 
             LoadKhDangDaoTao();
+
+            refreshTimer = new Timer();
+            refreshTimer.Interval = 2 * 60 * 1000;
+            refreshTimer.Tick += async (s, ev) =>
+            ReloadClick();
+            refreshTimer.Start();
         }
 
         //-----------Panel Left------------
@@ -75,16 +83,54 @@ namespace DrivingCenter.App.UserControl
             LoadPhienHoc();
         }
 
+        private async Task ReloadDataAsync()
+        {
+            string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+            await Task.Run(() =>
+            {
+                DAT_DAO.Instance.ReLoad(datetime);
+            });
+
+            // Đảm bảo chạy trên UI thread
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)(() => LoadPhienHoc()));
+            }
+            else
+            {
+                LoadPhienHoc();
+            }
+        }
+
+        private void ReloadClick()
+        {
+            btn_Reload.Enabled = false;
+            try
+            {
+                ReloadDataAsync().Wait();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi reload: " + ex.Message);
+            }
+            finally
+            {
+                btn_Reload.Enabled = true;
+            }
+        }
+
         private void dtp_PhByDay_EditValueChanged(object sender, EventArgs e)
         {
             LoadPhienHoc();
         }
 
-        private void btn_Reload_Click(object sender, EventArgs e)
+        private async void btn_Reload_Click(object sender, EventArgs e)
         {
-            string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-            DAT_DAO.Instance.ReLoad(datetime);
-            LoadPhienHoc();
+            //string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            //DAT_DAO.Instance.ReLoad(datetime);
+            //LoadPhienHoc();
+            ReloadClick();
         }
 
         public int ProcessPhienHoc(List<PhienHoc> lstPH)
