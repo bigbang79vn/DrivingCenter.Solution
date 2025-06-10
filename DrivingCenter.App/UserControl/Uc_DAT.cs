@@ -25,7 +25,8 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
         }
 
-        private Timer refreshTimer;
+        //private Timer refreshTimer;
+        private TimeSpan countdownTime;
         private void Uc_DAT_Load(object sender, EventArgs e)
         {
             cbb_TongHopGv.Properties.Items.AddRange(new string[] { "Theo Giáo Viên", "Theo Xe" });
@@ -39,16 +40,11 @@ namespace DrivingCenter.App.UserControl
             dtp_From.DateTime = DAT_DAO.Instance.GetMinNgayKG();
             dtp_To.DateTime = DAT_DAO.Instance.GetMaxNgayBG();
 
-            //DateTime now = DateTime.Now;
-            //DateTime lastDayOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month));
-            //dtp_To.DateTime = lastDayOfMonth;
-
             LoadKhDangDaoTao();
 
             refreshTimer = new Timer();
             refreshTimer.Interval = 2 * 60 * 1000;
-            refreshTimer.Tick += async (s, ev) =>
-            ReloadClick();
+            refreshTimer.Tick += async (s, ev) => await ReloadClick();
             refreshTimer.Start();
         }
 
@@ -101,14 +97,19 @@ namespace DrivingCenter.App.UserControl
             {
                 LoadPhienHoc();
             }
+
+            // Khởi tạo bộ đếm ngược
+            countdownTime = TimeSpan.FromMinutes(2);
+            countdownTimer.Start();
+            UpdateCountdownLabel();
         }
 
-        private void ReloadClick()
+        private async Task ReloadClick()
         {
             btn_Reload.Enabled = false;
             try
             {
-                ReloadDataAsync().Wait();
+                await ReloadDataAsync();
             }
             catch (Exception ex)
             {
@@ -118,6 +119,24 @@ namespace DrivingCenter.App.UserControl
             {
                 btn_Reload.Enabled = true;
             }
+        }
+
+        private void countdownTimer_Tick(object sender, EventArgs e)
+        {
+            if (countdownTime.TotalSeconds > 0)
+            {
+                countdownTime = countdownTime.Subtract(TimeSpan.FromSeconds(1));
+                UpdateCountdownLabel();
+            }
+            else
+            {
+                countdownTimer.Stop();
+            }
+        }
+
+        private void UpdateCountdownLabel()
+        {
+            lblCountdown.Text = countdownTime.ToString(@"mm\:ss");
         }
 
         private void dtp_PhByDay_EditValueChanged(object sender, EventArgs e)
@@ -130,7 +149,7 @@ namespace DrivingCenter.App.UserControl
             //string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
             //DAT_DAO.Instance.ReLoad(datetime);
             //LoadPhienHoc();
-            ReloadClick();
+            await ReloadClick();
         }
 
         public int ProcessPhienHoc(List<PhienHoc> lstPH)

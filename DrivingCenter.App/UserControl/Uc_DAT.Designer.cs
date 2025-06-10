@@ -184,6 +184,7 @@
             this.xtraTab_PhienHoc = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panelHead = new System.Windows.Forms.Panel();
+            this.lblCountdown = new System.Windows.Forms.Label();
             this.btn_Reload = new System.Windows.Forms.Button();
             this.btn_ExportPH = new System.Windows.Forms.Button();
             this.btn_ViewPhByDay = new System.Windows.Forms.Button();
@@ -354,6 +355,8 @@
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.countdownTimer = new System.Windows.Forms.Timer(this.components);
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -1471,6 +1474,7 @@
             // panelHead
             // 
             this.panelHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panelHead.Controls.Add(this.lblCountdown);
             this.panelHead.Controls.Add(this.btn_Reload);
             this.panelHead.Controls.Add(this.btn_ExportPH);
             this.panelHead.Controls.Add(this.btn_ViewPhByDay);
@@ -1485,6 +1489,16 @@
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(1488, 50);
             this.panelHead.TabIndex = 0;
+            // 
+            // lblCountdown
+            // 
+            this.lblCountdown.AutoSize = true;
+            this.lblCountdown.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountdown.ForeColor = System.Drawing.Color.White;
+            this.lblCountdown.Location = new System.Drawing.Point(410, 16);
+            this.lblCountdown.Name = "lblCountdown";
+            this.lblCountdown.Size = new System.Drawing.Size(0, 20);
+            this.lblCountdown.TabIndex = 21;
             // 
             // btn_Reload
             // 
@@ -3798,6 +3812,15 @@
             this.NhanDien_PH.FieldName = "NhanDien";
             this.NhanDien_PH.Name = "NhanDien_PH";
             // 
+            // countdownTimer
+            // 
+            this.countdownTimer.Interval = 1000;
+            this.countdownTimer.Tick += new System.EventHandler(this.countdownTimer_Tick);
+            // 
+            // refreshTimer
+            // 
+            this.refreshTimer.Interval = 1000;
+            // 
             // Uc_DAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4132,5 +4155,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn HangDaoTao_grd;
         private System.Windows.Forms.Panel PanelLeft;
         private System.Windows.Forms.Button btn_LoadKhoaHoc;
+        private System.Windows.Forms.Label lblCountdown;
+        private System.Windows.Forms.Timer countdownTimer;
+        private System.Windows.Forms.Timer refreshTimer;
     }
 }
