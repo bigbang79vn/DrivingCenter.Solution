@@ -38,7 +38,7 @@ namespace DrivingCenter.App.UserControl
             dtp_DayTHCabin.DateTime = DateTime.Now;
             dt_TimeStart.DateTime = DateTime.Now;
 
-            Task taskThongKe = taskTongHop();
+            Task taskThongKe = LoadThCabinAsync();
 
             GetLstKhoaHocDDT();
             LoadBaiTapCabin();
@@ -531,13 +531,13 @@ namespace DrivingCenter.App.UserControl
 
         #region Tổng hợp theo ngày
 
-        private void LoadThCabin()
+        private async Task LoadThCabinAsync()
         {
             string day = dtp_DayTHCabin.DateTime.ToString("dd/MM/yyyy");
 
             lb_ThongKe.Text = "THỐNG KÊ KẾT QUẢ CABIN NGÀY " + day;
 
-            List<ThongKe> lst = CabinEco_DAO.Instance.LstThongKe(day);
+            var lst = await Task.Run(() => CabinEco_DAO.Instance.LstThongKe(day));
 
             if (grd_ThongKe.InvokeRequired)
             {
@@ -551,18 +551,9 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private async Task taskTongHop()
-        {
-            Task task = new Task(
-                () => { LoadThCabin(); }
-            );
-            task.Start();
-            await task;
-        }
-
         private void btn_ViewTongHop_Click(object sender, EventArgs e)
         {
-            LoadThCabin();
+            LoadThCabinAsync();
         }
 
         #endregion Tổng hợp theo ngày
