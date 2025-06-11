@@ -371,14 +371,12 @@
             gridFormatRule1.Rule = formatConditionRuleValue1;
             this.gridView_ThiSinh.FormatRules.Add(gridFormatRule1);
             this.gridView_ThiSinh.GridControl = this.gridControl_ThiSinh;
-            this.gridView_ThiSinh.IndicatorWidth = 45;
             this.gridView_ThiSinh.Name = "gridView_ThiSinh";
             this.gridView_ThiSinh.OptionsBehavior.ReadOnly = true;
             this.gridView_ThiSinh.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView_ThiSinh.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm...";
             this.gridView_ThiSinh.OptionsFind.SearchInPreview = true;
             this.gridView_ThiSinh.RowHeight = 28;
-            this.gridView_ThiSinh.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_ThiSinh_CustomDrawRowIndicator);
             // 
             // STT
             // 
@@ -590,7 +588,7 @@
             this.txtFilePath.Location = new System.Drawing.Point(13, 6);
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.ReadOnly = true;
-            this.txtFilePath.Size = new System.Drawing.Size(733, 19);
+            this.txtFilePath.Size = new System.Drawing.Size(733, 20);
             this.txtFilePath.TabIndex = 0;
             this.txtFilePath.TextChanged += new System.EventHandler(this.txtFilePath_TextChanged);
             // 
@@ -601,7 +599,7 @@
             this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(39, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
+            this.label1.Size = new System.Drawing.Size(59, 18);
             this.label1.TabIndex = 6;
             this.label1.Text = "File Path";
             // 

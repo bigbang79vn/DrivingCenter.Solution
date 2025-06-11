@@ -38,7 +38,7 @@ namespace DrivingCenter.App.UserControl
         private void LoadListKhoaHoc()
         {
             DataTable dt = MySQL_DAO.GetlistKhoaHoc();
-            dtgv_khoahocdangthi.DataSource = dt;
+            dtgv_khoahocdangthi.DataSource = dt; 
         }
         private void btn_ReadData_Click(object sender, EventArgs e)
         {
@@ -109,15 +109,8 @@ namespace DrivingCenter.App.UserControl
                 string IDKhoaHoc = row.Cells["IDKhoaHoc"].Value.ToString();
                 lstThiSinh = MySQL_DAO.LoadlstThiSinhByKHTN(IDKhoaHoc);
 
-                //Them STT
-                int STT = 0;
-                foreach (ThiSinh item in lstThiSinh)
-                {
-                    item.STT = STT + 1;
-                    STT++;
-                }
-
                 gridControl_ThiSinh.DataSource = lstThiSinh;
+                GridHelper.EnableRowNumbering(gridView_ThiSinh);
 
                 //----Format datetime ----------
 
@@ -212,21 +205,11 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-
         #endregion
 
         private void txtFilePath_TextChanged(object sender, EventArgs e)
         {
             btn_Insert.Enabled = !string.IsNullOrEmpty(txtFilePath.Text);
-        }
-
-        private void gridView_ThiSinh_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-                e.Info.ImageIndex = -1;
-            }
         }
     }
 }
