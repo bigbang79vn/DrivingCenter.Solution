@@ -77,37 +77,34 @@ namespace DrivingCenter.App.UserControl
             LoadPhienHoc();
         }
 
-        private async Task ReloadDataAsync()
-        {
-            string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
-
-            await Task.Run(() =>
-            {
-                DAT_DAO.Instance.ReLoad(datetime);
-            });
-
-            // Đảm bảo chạy trên UI thread
-            if (this.InvokeRequired)
-            {
-                this.Invoke((MethodInvoker)(() => LoadPhienHoc()));
-            }
-            else
-            {
-                LoadPhienHoc();
-            }
-
-            // Khởi tạo bộ đếm ngược
-            countdownTime = TimeSpan.FromMinutes(2);
-            countdownTimer.Start();
-            UpdateCountdownLabel();
-        }
-
         private async Task ReloadClick()
         {
+            string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
             btn_Reload.Enabled = false;
+
             try
             {
-                await ReloadDataAsync();
+                await Task.Run(() =>
+                {
+                    DAT_DAO.Instance.ReLoad(datetime);
+                });
+
+                // await DAT_DAO.Instance.ReLoad(datetime);
+
+                // Đảm bảo chạy trên UI thread
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((MethodInvoker)(() => LoadPhienHoc()));
+                }
+                else
+                {
+                    LoadPhienHoc();
+                }
+
+                // Khởi tạo bộ đếm ngược
+                countdownTime = TimeSpan.FromMinutes(2);
+                countdownTimer.Start();
+                UpdateCountdownLabel();
             }
             catch (Exception ex)
             {

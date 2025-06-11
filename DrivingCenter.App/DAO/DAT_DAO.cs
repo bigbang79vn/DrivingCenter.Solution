@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DAO
 {
@@ -322,13 +323,15 @@ namespace DrivingCenter.App.DAO
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
-        public void ReLoad(string date)
+        public async Task ReLoad(string date)
         {
             string query1 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',0,0", date);
             string query2 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',1,0", date);
 
-            DataProviderDAT.Instance.ExecuteNonQuery(query1);
-            DataProviderDAT.Instance.ExecuteNonQuery(query2);
+            var task1 = DataProviderDAT.Instance.ExecuteNonQueryAsync(query1);
+            var task2 = DataProviderDAT.Instance.ExecuteNonQueryAsync(query2);
+
+            await Task.WhenAll(task1, task2);
         }
 
         public List<PhienHoc> GetAllPhienHocToDay(string day)
@@ -366,6 +369,7 @@ namespace DrivingCenter.App.DAO
 
         public List<PhienHoc> GetLstPhienByDateTrue(string day)
         {
+
             List<PhienHoc> lstPhienHoc = GetAllPhienHocToDay(day).Where(x => x.QuangDuongPhien >= 1).ToList();
             return lstPhienHoc;
         }
