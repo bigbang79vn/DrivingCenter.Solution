@@ -25,7 +25,6 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
         }
 
-        //private Timer refreshTimer;
         private TimeSpan countdownTime;
         private void Uc_DAT_Load(object sender, EventArgs e)
         {
@@ -258,8 +257,6 @@ namespace DrivingCenter.App.UserControl
             ProcessPhienHoc(lstPH);
 
             lb_CountUnSendTC.Text = ProcessPhienHoc(lstPH).ToString();
-            ConvertListToDataTable convert = new ConvertListToDataTable();
-            dt = convert.ToDataTable(lstPH);
 
             gridControl_PhienHoc.DataSource = lstPH;
             GridHelper.EnableRowNumbering(gridView_PhienHoc);

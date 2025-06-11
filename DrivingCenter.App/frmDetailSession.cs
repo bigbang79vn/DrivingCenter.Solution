@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App
@@ -130,7 +131,7 @@ namespace DrivingCenter.App
             // Thêm marker đầu
             GMarkerGoogle startMarker = new GMarkerGoogle(new PointLatLng(firstPoint.Lat, firstPoint.Lng), GMarkerGoogleType.blue_dot)
             {
-                ToolTipText = $"{timeStart}",
+                ToolTipText = $"Bắt đầu: {timeStart:HH:mm:ss}",
                 ToolTipMode = MarkerTooltipMode.Always
             };
             startMarker.ToolTip = new CustomToolTip(startMarker);
@@ -140,7 +141,7 @@ namespace DrivingCenter.App
             // Thêm marker cuối
             GMarkerGoogle endMarker = new GMarkerGoogle(new PointLatLng(lastPoint.Lat, lastPoint.Lng), GMarkerGoogleType.red_dot)
             {
-                ToolTipText = $"{timeEnd}",
+                ToolTipText = $"Kết thúc: {timeEnd:HH:mm:ss}",
                 ToolTipMode = MarkerTooltipMode.Always
             };
             endMarker.ToolTip = new CustomToolTip(endMarker);
