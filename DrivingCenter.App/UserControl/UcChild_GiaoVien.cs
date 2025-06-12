@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DrivingCenter.App.DAO;
+﻿using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using Google.Protobuf.WellKnownTypes;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -71,6 +66,7 @@ namespace DrivingCenter.App.UserControl
         {
             List<GiaoVien> data = AppBee_DAO.Instance.GetAllGV();
             gridControl_GiaoVien.DataSource = data;
+            GridHelper.EnableRowNumbering(gridView_GiaoVien);
         }
         private void Get_DmTrinhDoHocVan()
         {
@@ -171,11 +167,6 @@ namespace DrivingCenter.App.UserControl
                 DisableAllButtons();
                 SetButtonPanelEnable(0, 1);
             }
-        }
-
-        private void pictureBox_AnhChup_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void mn_SynsGiaoVien_Click(object sender, EventArgs e)

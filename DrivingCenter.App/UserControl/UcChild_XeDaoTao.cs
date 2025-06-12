@@ -67,6 +67,7 @@ namespace DrivingCenter.App.UserControl
                 .OrderBy(o => o.BienSoXe)
                 .ToList();
             gridControl_XeTapLai.DataSource = lst;
+            GridHelper.EnableRowNumbering(gridView_XeTapLai);
         }
         private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -131,10 +132,14 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private void mn_DongBoDuLieuXe_Click(object sender, EventArgs e)
+        private void groupControl_XeTapLai_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            int result = AppBee_DAO.Instance.SyncXeTapLai();
-            XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var result = XtraMessageBox.Show("Đang phát triển", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                int InsertResult = AppBee_DAO.Instance.SyncXeTapLai();
+                XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
