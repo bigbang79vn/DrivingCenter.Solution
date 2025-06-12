@@ -174,6 +174,9 @@ namespace DrivingCenter.App.UserControl
             this.NgayKhaiGiang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayBeGiang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDaoTao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lblTieuDe = new System.Windows.Forms.Label();
+            this.lblBaiTap = new System.Windows.Forms.Label();
+            this.xtraTab_BaiTapChuaHoanThanh = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ToggleSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
@@ -227,6 +230,7 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaKH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_QuanLyKhoaHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_QLKhoaHoc)).BeginInit();
+            this.xtraTab_BaiTapChuaHoanThanh.SuspendLayout();
             this.SuspendLayout();
             // 
             // Result
@@ -400,7 +404,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage1
             // 
-            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.tblLayout_Result);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
@@ -1071,7 +1074,8 @@ namespace DrivingCenter.App.UserControl
             this.xtraTabControl1.Size = new System.Drawing.Size(951, 370);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTab_KetQua});
+            this.xtraTab_KetQua,
+            this.xtraTab_BaiTapChuaHoanThanh});
             // 
             // xtraTab_KetQua
             // 
@@ -2021,6 +2025,37 @@ namespace DrivingCenter.App.UserControl
             this.HangDaoTao.Visible = true;
             this.HangDaoTao.VisibleIndex = 1;
             // 
+            // lblTieuDe
+            // 
+            this.lblTieuDe.AutoSize = true;
+            this.lblTieuDe.Font = new System.Drawing.Font("Roboto Condensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTieuDe.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTieuDe.Location = new System.Drawing.Point(33, 45);
+            this.lblTieuDe.Name = "lblTieuDe";
+            this.lblTieuDe.Size = new System.Drawing.Size(183, 26);
+            this.lblTieuDe.TabIndex = 12;
+            this.lblTieuDe.Text = "BÀI TẬP CHƯA HỌC";
+            // 
+            // lblBaiTap
+            // 
+            this.lblBaiTap.AutoSize = true;
+            this.lblBaiTap.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaiTap.ForeColor = System.Drawing.Color.DimGray;
+            this.lblBaiTap.Location = new System.Drawing.Point(37, 84);
+            this.lblBaiTap.Name = "lblBaiTap";
+            this.lblBaiTap.Size = new System.Drawing.Size(84, 21);
+            this.lblBaiTap.TabIndex = 16;
+            this.lblBaiTap.Text = "TenBaiTap";
+            // 
+            // xtraTab_BaiTapChuaHoanThanh
+            // 
+            this.xtraTab_BaiTapChuaHoanThanh.Controls.Add(this.lblBaiTap);
+            this.xtraTab_BaiTapChuaHoanThanh.Controls.Add(this.lblTieuDe);
+            this.xtraTab_BaiTapChuaHoanThanh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTab_BaiTapChuaHoanThanh.ImageOptions.SvgImage")));
+            this.xtraTab_BaiTapChuaHoanThanh.Name = "xtraTab_BaiTapChuaHoanThanh";
+            this.xtraTab_BaiTapChuaHoanThanh.Size = new System.Drawing.Size(949, 326);
+            this.xtraTab_BaiTapChuaHoanThanh.Text = "Ghi Chú";
+            // 
             // Uc_CabinEco
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -2091,6 +2126,8 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaKH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_QuanLyKhoaHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_QLKhoaHoc)).EndInit();
+            this.xtraTab_BaiTapChuaHoanThanh.ResumeLayout(false);
+            this.xtraTab_BaiTapChuaHoanThanh.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2224,5 +2261,8 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraEditors.TextEdit txt_TenKhoaHoc;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_Status;
         private DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch repo_ToggleSwitch;
+        private System.Windows.Forms.Label lblBaiTap;
+        private System.Windows.Forms.Label lblTieuDe;
+        private DevExpress.XtraTab.XtraTabPage xtraTab_BaiTapChuaHoanThanh;
     }
 }

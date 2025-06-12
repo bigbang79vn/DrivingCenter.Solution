@@ -166,6 +166,32 @@ namespace DrivingCenter.App.UserControl
             }
 
             List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(MaDK);
+
+            //Lấy danh sách các bài tập chưa hoàn thành
+            List<int> IdBaiThieu = lstKetQuaTap
+                .Where(x=> x.TotalSecond >=60)
+                .Select(t => t.BaiHocCaBinID)
+                .ToList();
+
+            List<Exercise> lstBaiTap = CabinEco_DAO.Instance.GetListBaiTap();
+
+            List<Exercise> lstBaiTapChuaLam = lstBaiTap.Where(t => !IdBaiThieu.Contains(t.ID)).ToList();
+
+            if (lstBaiTapChuaLam.Count == 0)
+            {
+                lblTieuDe.Text = "HỌC VIÊN ĐÃ HOÀN THÀNH TẤT CẢ BÀI TẬP!";
+                lblBaiTap.Visible = false;
+            }
+            else
+            {
+                lblTieuDe.Text = "BÀI TẬP CÒN THIẾU:";
+                lblBaiTap.Visible = true;
+                lblBaiTap.Text = string.Empty;
+                foreach (var item in lstBaiTapChuaLam)
+                {
+                    lblBaiTap.Text += item.TenBaiTap + Environment.NewLine;
+                }
+            }
             grd_Result.DataSource = lstKetQuaTap;
         }
 
@@ -488,6 +514,7 @@ namespace DrivingCenter.App.UserControl
         private void mn_ThemKhoaHoc_Click(object sender, EventArgs e)
         {
             ThemKhoaHoc();
+            GetAllKhoaHoc();
             GetLstKhoaHocDDT();
         }
         private void mn_SyncTeacher_Click(object sender, EventArgs e)

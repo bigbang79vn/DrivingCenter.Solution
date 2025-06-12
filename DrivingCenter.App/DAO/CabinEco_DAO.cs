@@ -25,14 +25,13 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHoc> GetAllKhoaHoc()
         {
-            List<KhoaHoc> lstKhoaHoc = new List<KhoaHoc>();
             string query = @"SELECT ID, MaKhoaHoc, Ten, NgayKhaiGiang, NgayBeGiang, HangDaoTao, Status 
                 FROM tblKhoaHoc 
                 ORDER BY MaKhoaHoc ASC";
 
             DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
 
-            lstKhoaHoc = dt.AsEnumerable().Select(item => new KhoaHoc
+            List<KhoaHoc> lstKhoaHoc = dt.AsEnumerable().Select(item => new KhoaHoc
             {
                 KhoaHocID = (int)item["ID"],
                 MaKhoaHoc = (string)item["MaKhoaHoc"],
@@ -48,9 +47,7 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHoc> GetKHDangDT()
         {
-            List<KhoaHoc> lstKhoaHoc = new List<KhoaHoc>();
-
-            lstKhoaHoc = GetAllKhoaHoc()
+            List<KhoaHoc> lstKhoaHoc = GetAllKhoaHoc()
                 .Where(x => x.Status == false)
                 .OrderBy(C => C.TenKhoaHoc)
                 .ToList();
@@ -62,9 +59,8 @@ namespace DrivingCenter.App.DAO
         {
             string query = "SELECT ID, Name, GhiChu FROM tblThietBi";
             DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
-            List<Cabin> lstCabin = new List<Cabin>();
 
-            lstCabin = dt.AsEnumerable().Select(item => new Cabin
+            List<Cabin> lstCabin = dt.AsEnumerable().Select(item => new Cabin
             {
                 IdThietBi = (int)(item["ID"]),
                 NameCabin = (string)(item["Name"]),
@@ -76,13 +72,11 @@ namespace DrivingCenter.App.DAO
 
         public List<HocVien> LoadLstHocVienById(int IdKhoaHoc)
         {
-            List<HocVien> lstStudent = new List<HocVien>();
-
-            string query = string.Format("EXEC [dbo].[spGetLstHvByKhoaHoc] @ID_KhoaHoc = {0}", IdKhoaHoc);
+            string query = $"EXEC [dbo].[spGetLstHvByKhoaHoc] @ID_KhoaHoc = {IdKhoaHoc}";
 
             DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
 
-            lstStudent = dt.AsEnumerable().Select(item => new HocVien
+            List<HocVien> lstStudent = dt.AsEnumerable().Select(item => new HocVien
             {
                 MaDK = (string)item["ID"],
                 HoTenHV = (string)item["HoTen"],
@@ -105,15 +99,13 @@ namespace DrivingCenter.App.DAO
 
         public List<Result> lstResultById(string idHocVien)
         {
-            string query = string.Format("SELECT TB.Name AS Cabin, KQ.ID_BaiTap, ID_KetQuaTap, KQ.Name, Time_In, Time_Out, CONVERT(CHAR(8),DATEADD(second,TongThoiGian,0),108) AS ToTalSecond, LanTap " +
+            string query = string.Format("SELECT TB.Name AS Cabin, KQ.ID_BaiTap, ID_KetQuaTap, KQ.Name, Time_In, Time_Out, CONVERT(CHAR(8),DATEADD(second,TongThoiGian,0),108) AS TongThoiGianPhien, TongThoiGian AS TotalSecond, LanTap " +
                 "FROM v_ThongTinTap KQ, tblThietBi TB " +
                 "WHERE ID_HocVien = '{0}' AND KQ.ID_ThietBi = TB.ID", idHocVien);
 
             DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
 
-            List<Result> lstKetQuaTap = new List<Result>();
-
-            lstKetQuaTap = dt.AsEnumerable().Select(item => new Result
+            List<Result> lstKetQuaTap =  dt.AsEnumerable().Select(item => new Result
             {
                 NameCabin = (string)item["Cabin"],
                 DiemDanhNguoiLxID = (int)item["ID_KetQuaTap"],
@@ -121,7 +113,8 @@ namespace DrivingCenter.App.DAO
                 TenBaiTapCaBin = (string)item["Name"],
                 ThoiDiemBatDau = (DateTime)item["Time_In"],
                 ThoiDiemKetThuc = (DateTime)item["Time_Out"],
-                TongThoiGianPhien = (string)item["TotalSecond"],
+                TongThoiGianPhien = (string)item["TongThoiGianPhien"],
+                TotalSecond = Convert.ToDouble(item["TotalSecond"])
             }).ToList();
 
             return lstKetQuaTap;
@@ -132,12 +125,10 @@ namespace DrivingCenter.App.DAO
             string query = "SELECT ID_BaiTap, Name from tblExam";
             DataTable data = DataProviderCaBinEco.Instance.ExecuteQuery(query);
 
-            List<Exercise> lst = new List<Exercise>();
-
-            lst = data.AsEnumerable().Select(item => new Exercise
+            List<Exercise> lst = data.AsEnumerable().Select(item => new Exercise
             {
-                ID = (int)item["ID_BaiTap"],
-                TenBaiTap = (string)item["Name"],
+                ID = item.Field<int>("ID_BaiTap"),
+                TenBaiTap = item.Field<string>("Name") ?? string.Empty
             }).ToList();
 
             return lst;
@@ -149,9 +140,7 @@ namespace DrivingCenter.App.DAO
                 "FROM tblHocVien AS hv INNER JOIN tblKhoaHoc AS kh ON hv.IDKhoaHoc = kh.ID " +
                 "WHERE hv.ID = '{0}'", MaDK);
 
-            DataTable data = DataProviderCaBinEco.Instance.ExecuteQuery(query);
-
-            return data;
+            return DataProviderCaBinEco.Instance.ExecuteQuery(query);
         }
 
         public string GetMaDKNew(int Id_KhoaHoc, string SoCMT)
@@ -178,9 +167,7 @@ namespace DrivingCenter.App.DAO
                 Minute = minute
             };
 
-            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
-            
-            return result;
+            return DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
         }
 
         public int GetIdMaxByIdHocVien(string IdHocVien)
@@ -278,11 +265,10 @@ namespace DrivingCenter.App.DAO
 
         public List<GiaoVien> GetAllGV()
         {
-            List<GiaoVien> lstGiaoVien = new List<GiaoVien>();
             string query = "SELECT * FROM tblGiaoVien";
             DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
 
-            lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
+            List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
                 GiaoVienID = (int)item["GiaoVienID"],
                 MaGV = (string)item["MaGV"],
