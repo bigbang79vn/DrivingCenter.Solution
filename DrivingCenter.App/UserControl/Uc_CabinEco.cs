@@ -189,7 +189,7 @@ namespace DrivingCenter.App.UserControl
                 lblBaiTap.Text = string.Empty;
                 foreach (var item in lstBaiTapChuaLam)
                 {
-                    lblBaiTap.Text += item.TenBaiTap + Environment.NewLine;
+                    lblBaiTap.Text += "→ " + item.TenBaiTap + Environment.NewLine;
                 }
             }
             grd_Result.DataSource = lstKetQuaTap;
@@ -578,9 +578,9 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private void btn_ViewTongHop_Click(object sender, EventArgs e)
+        private async void btn_ViewTongHop_Click(object sender, EventArgs e)
         {
-            LoadThCabinAsync();
+            await LoadThCabinAsync();
         }
 
         #endregion Tổng hợp theo ngày
