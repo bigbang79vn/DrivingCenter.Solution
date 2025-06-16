@@ -68,6 +68,7 @@ namespace DrivingCenter.App
 
         private void GetHistoryData(string _diemdanhnguoilxId)
         {
+
             List<ChiTietPhienHoc> lst = DAT_DAO.Instance.GetHistoryData(_diemdanhnguoilxId);
 
             foreach (var item in lst)
