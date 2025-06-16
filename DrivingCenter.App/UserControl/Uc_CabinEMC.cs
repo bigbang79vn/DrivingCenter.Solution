@@ -64,8 +64,7 @@ namespace DrivingCenter.App.UserControl
         {
             foreach (HocVien item in lst)
             {
-                NguoiLx = item.NguoiLxID;
-                string kl = CabinI2E_DAO.Instance.CheckDK(NguoiLx);
+                string kl = CabinI2E_DAO.Instance.CheckDK(item.NguoiLxID, item.MaKH);
                 if (kl == "Đáp ứng quy định")
                 {
                     item.Result = true;

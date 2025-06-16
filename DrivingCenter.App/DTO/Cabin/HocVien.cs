@@ -11,6 +11,8 @@ namespace DrivingCenter.App.DTO.Cabin
         public int STT { get; set; }
         public string MaDK { get; set; }
         public long NguoiLxID { get; set; }
+        public string MaKH { get; set; }
+        public DateTime NgayKG { get; set; }
         public string HoTenDem { get; set; }
         public string Ten { get; set; }
         public string HoTenHV { get; set; }

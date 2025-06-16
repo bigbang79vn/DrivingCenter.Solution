@@ -78,9 +78,9 @@ namespace DrivingCenter.App
             grid_BaiTapNguon.DataSource = lst;
         }
 
-        private void LoadResultByNguoiLxID(Int64 NguoiLxID)
+        private void LoadResultByNguoiLxID(HocVien hv)
         {
-            List<Result> lstKetQuaTap = CabinI2E_DAO.Instance.GetResultByNguoiLxID(NguoiLxID);
+            List<Result> lstKetQuaTap = CabinI2E_DAO.Instance.GetResultByNguoiLxID(hv.NguoiLxID);
 
             grid_Result.DataSource = lstKetQuaTap;
 
@@ -88,8 +88,7 @@ namespace DrivingCenter.App
             TimeSpan t = TimeSpan.FromSeconds(totalsecond);
             lb_time.Text = t.ToString(@"hh\:mm\:ss");
 
-            string ketluan = CabinI2E_DAO.Instance.CheckDK(NguoiLxId);
-            lb_KetQua.Text = ketluan;
+            lb_KetQua.Text = CabinI2E_DAO.Instance.CheckDK(hv.NguoiLxID, hv.MaKH);
 
         }
 
@@ -103,16 +102,13 @@ namespace DrivingCenter.App
         private void gridView_HocVien_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             HocVien rowData = gridView_HocVien.GetFocusedRow() as HocVien;
-            NguoiLxId = Convert.ToInt64(rowData.NguoiLxID);
 
-            LoadResultByNguoiLxID(NguoiLxId);
+            LoadResultByNguoiLxID(rowData);
         }
 
         private void btn_InserResult_Click(object sender, EventArgs e)
         {
-            HocVien rowData = gridView_HocVien.GetFocusedRow() as HocVien;
-            Int64 NguoiLxID = rowData.NguoiLxID;
-            string MaDK = rowData.MaDK;
+            HocVien hv = gridView_HocVien.GetFocusedRow() as HocVien;
 
             // Lấy các chỉ số của các hàng được chọn
             int[] selectedRowHandles = gridView_BaiTapNguon.GetSelectedRows();
@@ -126,8 +122,8 @@ namespace DrivingCenter.App
                 {
                     Result re = new Result();
                     re.BaiHocCaBinID = (int)gridView_BaiTapNguon.GetRowCellValue(rowHandle, "BaiHocCaBinID");
-                    Int64 diemdanhnguoilxId = CabinI2E_DAO.Instance.GetMaxDiemdanhnguoilxByNguoiLxID(NguoiLxID);
-                    int dayOld = CabinI2E_DAO.Instance.GetDayDiemdanhnguoilxByNguoiLxID(NguoiLxID);
+                    Int64 diemdanhnguoilxId = CabinI2E_DAO.Instance.GetMaxDiemdanhnguoilxByNguoiLxID(hv.NguoiLxID);
+                    int dayOld = CabinI2E_DAO.Instance.GetDayDiemdanhnguoilxByNguoiLxID(hv.NguoiLxID);
                     int dayNew = (dt_TimeStart.DateTime).Day;
                     if (diemdanhnguoilxId == 0)
                     {
@@ -139,17 +135,17 @@ namespace DrivingCenter.App
                     }
                     else
                     {
-                        re.ThoiDiemBatDau = CabinI2E_DAO.Instance.GetTimeOut(diemdanhnguoilxId, NguoiLxID);
+                        re.ThoiDiemBatDau = CabinI2E_DAO.Instance.GetTimeOut(diemdanhnguoilxId, hv.NguoiLxID);
                     }
                     re.TotalSecond = (double)gridView_BaiTapNguon.GetRowCellValue(rowHandle, "TotalSecond");
                     re.QuangDuong = (double)gridView_BaiTapNguon.GetRowCellValue(rowHandle, "QuangDuong");
                     re.PathVideo = gridView_BaiTapNguon.GetRowCellValue(rowHandle, "PathVideo").ToString();
                     int IdThietBi = (int)cbb_Cabin.EditValue;
 
-                    CabinI2E_DAO.Instance.InsertData(re, NguoiLxID, IdThietBi, KhoaHocID);
+                    CabinI2E_DAO.Instance.InsertData(re, hv.NguoiLxID, IdThietBi, KhoaHocID);
 
                     CabinI2E_DAO.Instance.UpdateTimeExerToNguoiLx(NguoiLxId);
-                    LoadResultByNguoiLxID(NguoiLxId);
+                    LoadResultByNguoiLxID(hv);
                 }
                 XtraMessageBox.Show("Cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
             }

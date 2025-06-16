@@ -1,15 +1,10 @@
-﻿using DevExpress.CodeParser;
-using DrivingCenter.App.DataProvider;
+﻿using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DAO
 {
@@ -96,6 +91,7 @@ namespace DrivingCenter.App.DAO
             {
                 MaDK = item["MaDK"].ToString(),
                 NguoiLxID = (long)item["NguoiLXID"],
+                MaKH = item["MaKH"].ToString(),
                 HoTenHV = item["HoVaTen"].ToString(),
                 NgaySinh = (DateTime)item["NgaySinh"],
                 GioiTinh = item["GioiTinh"].ToString(),
@@ -110,9 +106,9 @@ namespace DrivingCenter.App.DAO
             return lstStudent;
         }
 
-        public string CheckDK(Int64? NguoiLxID)
+        public string CheckDK(Int64? NguoiLxID, string makh)
         {
-            string query = "sp_KTDieuKien @Id_HocVien = " + "'" + NguoiLxID + "'";
+            string query = $"EXEC sp_KTDieuKien @Id_HocVien = {NguoiLxID}, @MaKH = '{makh}'";
             string KetLuan = DataProviderCaBinI2E.Instance.ExecuteScalar(query).ToString();
             return KetLuan;
         }

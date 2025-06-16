@@ -1,21 +1,9 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraLayout;
-using DevExpress.XtraLayout.Helpers;
-using DrivingCenter.App.DAO;
+﻿using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.FReport;
 using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DrivingCenter.App
 {
@@ -73,7 +61,7 @@ namespace DrivingCenter.App
                 pictureBox2.Image = image;
 
                 lb_KetQua.Text = CabinI2E_DAO.Instance.CountBaiTap(_NguoiLxId).ToString() + " / " + hv.ToTalSecond;
-                lb_KetLuan.Text = CabinI2E_DAO.Instance.CheckDK(_NguoiLxId);
+                lb_KetLuan.Text = CabinI2E_DAO.Instance.CheckDK(hv.NguoiLxID, hv.MaKH);
 
                 List<Result> lstKetQuaTap = CabinI2E_DAO.Instance.GetResultByNguoiLxID(NguoiLxID);
 
