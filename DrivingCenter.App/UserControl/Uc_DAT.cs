@@ -41,7 +41,7 @@ namespace DrivingCenter.App.UserControl
 
             LoadKhDangDaoTao();
 
-            refreshTimer.Interval = 2 * 60 * 1000;
+            refreshTimer.Interval = 5 * 60 * 1000;
             refreshTimer.Tick += async (s, ev) => await ReloadClick();
             refreshTimer.Start();
         }
@@ -102,7 +102,7 @@ namespace DrivingCenter.App.UserControl
                 }
 
                 // Khởi tạo bộ đếm ngược
-                countdownTime = TimeSpan.FromMinutes(2);
+                countdownTime = TimeSpan.FromMinutes(5);
                 countdownTimer.Start();
                 UpdateCountdownLabel();
             }
