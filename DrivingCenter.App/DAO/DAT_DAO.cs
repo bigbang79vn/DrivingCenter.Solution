@@ -323,7 +323,7 @@ namespace DrivingCenter.App.DAO
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
-        public async void ReLoad(string date)
+        public async Task ReLoad(string date)
         {
             string query1 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',0,0", date);
             string query2 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',1,0", date);

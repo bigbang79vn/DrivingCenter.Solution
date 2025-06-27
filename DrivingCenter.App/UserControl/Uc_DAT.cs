@@ -84,12 +84,7 @@ namespace DrivingCenter.App.UserControl
 
             try
             {
-                await Task.Run(() =>
-                {
-                    DAT_DAO.Instance.ReLoad(datetime);
-                });
-
-                //DAT_DAO.Instance.ReLoad(datetime);
+                await DAT_DAO.Instance.ReLoad(datetime);
 
                 // Đảm bảo chạy trên UI thread
                 if (this.InvokeRequired)
