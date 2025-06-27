@@ -328,10 +328,8 @@ namespace DrivingCenter.App.DAO
             string query1 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',0,0", date);
             string query2 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',1,0", date);
 
-            var task1 = DataProviderDAT.Instance.ExecuteNonQueryAsync(query1);
-            var task2 = DataProviderDAT.Instance.ExecuteNonQueryAsync(query2);
-
-            await Task.WhenAll(task1, task2);
+            await DataProviderDAT.Instance.ExecuteNonQueryAsync(query1);
+            await DataProviderDAT.Instance.ExecuteNonQueryAsync(query2);
         }
 
         public List<PhienHoc> GetAllPhienHocToDay(string day)

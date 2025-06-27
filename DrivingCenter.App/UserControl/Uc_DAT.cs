@@ -25,6 +25,7 @@ namespace DrivingCenter.App.UserControl
             InitializeComponent();
         }
 
+        const int minuteInterval = 5; // Khoảng thời gian giữa các lần làm mới (phút)
         private TimeSpan countdownTime;
         private void Uc_DAT_Load(object sender, EventArgs e)
         {
@@ -41,8 +42,9 @@ namespace DrivingCenter.App.UserControl
 
             LoadKhDangDaoTao();
 
-            refreshTimer.Interval = 5 * 60 * 1000;
-            refreshTimer.Tick += async (s, ev) => await ReloadClick();
+            refreshTimer = new System.Windows.Forms.Timer();
+            refreshTimer.Interval = minuteInterval * 60 * 1000;
+            refreshTimer.Tick += refreshTimer_Tick;
             refreshTimer.Start();
         }
 
@@ -97,7 +99,7 @@ namespace DrivingCenter.App.UserControl
                 }
 
                 // Khởi tạo bộ đếm ngược
-                countdownTime = TimeSpan.FromMinutes(5);
+                countdownTime = TimeSpan.FromMinutes(minuteInterval);
                 countdownTimer.Start();
                 UpdateCountdownLabel();
             }
@@ -109,6 +111,11 @@ namespace DrivingCenter.App.UserControl
             {
                 btn_Reload.Enabled = true;
             }
+        }
+
+        private async void refreshTimer_Tick(object sender, EventArgs e)
+        {
+            await ReloadClick();
         }
 
         private void countdownTimer_Tick(object sender, EventArgs e)
