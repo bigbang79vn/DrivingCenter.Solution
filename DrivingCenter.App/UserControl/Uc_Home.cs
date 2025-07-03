@@ -20,20 +20,19 @@ namespace DrivingCenter.App.UserControl
         public Uc_Home()
         {
             InitializeComponent();
-
-            Task tsk = TaskChart();
-            Task xeonline = TaskXeOnline();
         }
 
         private List<ChartSoPhien> lst;
         private int year = DateTime.Now.Year;
         private int month = DateTime.Now.Month;
 
-        private void Uc_Home_Load(object sender, EventArgs e)
+        private async void Uc_Home_Load(object sender, EventArgs e)
         {
             AddItemYearToCombobox();
             LoadKhoaHocDDT();
             LoadDashboarByYear(year);
+
+            await Task.WhenAll(TaskChart(), TaskXeOnline());
         }
 
         private void AddItemYearToCombobox()
@@ -46,87 +45,66 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadDashboarByYear(int year)
         {
-
-                int SoHvByYear = DAT_DAO.Instance.LoadSoHocVienByYear(year);
-                lb_SoHocVienByNam.Text = SoHvByYear.ToString();
-
-                int SoKhByYear = DAT_DAO.Instance.LoadSoKhoaHocByYear(year);
-                lb_SoKhoaHocByNam.Text = SoKhByYear.ToString();
-
-                int SoHv = DAT_DAO.Instance.LoadSoHocVien();
-                lb_SumSoHocVien.Text = SoHv.ToString();
-
-                int SoKH = DAT_DAO.Instance.LoadSoKhoaHoc();
-                lb_SumSoKhoaHoc.Text = SoKH.ToString();
-
-                int SoGv = DAT_DAO.Instance.LoadSoGiaoVien();
-                lb_SoGiaoVien.Text = SoGv.ToString();
-
-                int SoXeTl = DAT_DAO.Instance.LoadSoXeTapLai();
-                lb_SoXeTapLai.Text = SoXeTl.ToString();
-
+            lb_SoHocVienByNam.Text = DAT_DAO.Instance.LoadSoHocVienByYear(year).ToString();
+            lb_SoKhoaHocByNam.Text = DAT_DAO.Instance.LoadSoKhoaHocByYear(year).ToString();
+            lb_SumSoHocVien.Text = DAT_DAO.Instance.LoadSoHocVien().ToString();
+            lb_SumSoKhoaHoc.Text = DAT_DAO.Instance.LoadSoKhoaHoc().ToString();
+            lb_SoGiaoVien.Text = DAT_DAO.Instance.LoadSoGiaoVien().ToString();
+            lb_SoXeTapLai.Text = DAT_DAO.Instance.LoadSoXeTapLai().ToString();
         }
 
         private async Task TaskXeOnline()
         {
-            Task tsk = Task.Run(() =>
+            // Chạy tác vụ nặng trong thread pool
+            var lstXe = await Task.Run(() => DAT_DAO.Instance.GetLstXeTapLaiOnline());
+
+            // Cập nhật giao diện trên UI thread
+            gridControl_XeOnline.Invoke(new Action(() =>
             {
-                List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLaiOnline();
-                int stt = 0;
-                foreach (XeTapLai item in lst)
-                {
-                    item.STT = stt + 1;
-                    stt++;
-                }
-                gridControl_XeOnline.DataSource = lst;
-            });
-            await tsk;
+                gridControl_XeOnline.DataSource = lstXe;
+                GridHelper.EnableRowNumbering(gridView_XeOnline);
+            }));
         }
 
         private void LoadKhoaHocDDT()
         {
-
-                DAT_DAO.Instance.UpdateKhoaHocDangDT();
-
-                List<KhoaHocDangDT> lst = DAT_DAO.Instance.GetAllKhoaHocDDT();
-
-                gridControl_KhoaHocDDT.DataSource = lst;
-
+            DAT_DAO.Instance.UpdateKhoaHocDangDT();
+            List<KhoaHocDangDT> lst = DAT_DAO.Instance.GetAllKhoaHocDDT();
+            gridControl_KhoaHocDDT.DataSource = lst;
         }
 
         private async Task TaskChart()
         {
-            Task tsk = Task.Run(() =>
+            // Tính toán dữ liệu trong thread pool
+            var result = await Task.Run(() =>
             {
-                lb_Month.Text = lb_Month.Text + " " + month.ToString();
-                lst = new List<ChartSoPhien>();
-
+                var tempList = new List<ChartSoPhien>();
                 int numDay = DateTime.DaysInMonth(year, month);
 
                 for (int i = 1; i <= numDay; i++)
                 {
                     int Sophien = DAT_DAO.Instance.CountPhien(i, month, year);
-                    //float TongKm = DAT_DAO.Instance.SumKmByDay(i, month, year);
-                    float TongKm = 2323;
-                    ChartSoPhien day = new ChartSoPhien(i.ToString(), Sophien.ToString(), TongKm.ToString());
-                    lst.Add(day);
+                    float TongKm = 2323; // Hoặc tính đúng ở đây
+                    tempList.Add(new ChartSoPhien(i.ToString(), Sophien.ToString(), TongKm.ToString()));
                 }
 
-                //Tạo chart
-                Series chartSoPhien = new Series("Số Phiên", ViewType.Area);
-                //Series chartSoKm = new Series("Số Km", ViewType.Line);
-
-                foreach (var point in lst)
-                {
-                    chartSoPhien.Points.Add(new SeriesPoint(point.Day, point.SoPhien));
-                    //chartSoKm.Points.Add(new SeriesPoint(point.Day, point.TongSoKm));
-                }
-
-                cc_Chart.Series.Clear();
-                cc_Chart.Series.Add(chartSoPhien);
-                //cc_Chart.Series.Add(chartSoKm);
+                return tempList;
             });
-            await tsk;
+
+            // Cập nhật UI trên UI thread
+            lst = result;
+
+            lb_Month.Text = "Tháng " + month.ToString();
+
+            Series chartSoPhien = new Series("Số Phiên", ViewType.Area);
+
+            foreach (var point in lst)
+            {
+                chartSoPhien.Points.Add(new SeriesPoint(point.Day, point.SoPhien));
+            }
+
+            cc_Chart.Series.Clear();
+            cc_Chart.Series.Add(chartSoPhien);
         }
 
         private void cbb_Year_SelectedIndexChanged(object sender, EventArgs e)
