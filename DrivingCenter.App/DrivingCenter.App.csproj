@@ -16,6 +16,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -867,7 +867,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Null.jpg" />
-    <Content Include="Bee.Icon.ico" />
     <Content Include="favicon.ico" />
     <Content Include="Script\REMOTE_SQL.txt" />
     <Content Include="Script\VNDC_spGetLstHvByKhoaHoc.txt" />
