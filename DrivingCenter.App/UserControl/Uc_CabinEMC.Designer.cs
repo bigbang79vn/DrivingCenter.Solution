@@ -351,7 +351,7 @@ namespace DrivingCenter.App.UserControl
             this.toolStripSeparator2,
             this.mn_SyncTeacher});
             this.contextMenuStrip_DTT.Name = "contextMenuStrip_DTT";
-            this.contextMenuStrip_DTT.Size = new System.Drawing.Size(249, 176);
+            this.contextMenuStrip_DTT.Size = new System.Drawing.Size(249, 198);
             // 
             // mn_refresh
             // 
@@ -568,7 +568,7 @@ namespace DrivingCenter.App.UserControl
             this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(22, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 17);
+            this.label1.Size = new System.Drawing.Size(66, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Khóa Học:";
             // 
@@ -835,7 +835,7 @@ namespace DrivingCenter.App.UserControl
             this.lb_ThongKe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_ThongKe.Location = new System.Drawing.Point(464, 8);
             this.lb_ThongKe.Name = "lb_ThongKe";
-            this.lb_ThongKe.Size = new System.Drawing.Size(379, 29);
+            this.lb_ThongKe.Size = new System.Drawing.Size(378, 32);
             this.lb_ThongKe.TabIndex = 1;
             this.lb_ThongKe.Text = "THỐNG KÊ KẾT QUẢ CABIN NGÀY";
             // 
@@ -892,7 +892,7 @@ namespace DrivingCenter.App.UserControl
             this.label2.ForeColor = System.Drawing.Color.Gray;
             this.label2.Location = new System.Drawing.Point(592, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(276, 29);
+            this.label2.Size = new System.Drawing.Size(271, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "DANH SÁCH KHÓA HỌC";
             // 
@@ -1101,7 +1101,7 @@ namespace DrivingCenter.App.UserControl
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(22, 409);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 17);
+            this.label9.Size = new System.Drawing.Size(69, 18);
             this.label9.TabIndex = 19;
             this.label9.Text = "Trạng Thái";
             // 
@@ -1132,7 +1132,7 @@ namespace DrivingCenter.App.UserControl
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(53, 361);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 17);
+            this.label8.Size = new System.Drawing.Size(38, 18);
             this.label8.TabIndex = 17;
             this.label8.Text = "Hạng";
             // 
@@ -1163,7 +1163,7 @@ namespace DrivingCenter.App.UserControl
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(42, 315);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 17);
+            this.label7.Size = new System.Drawing.Size(49, 18);
             this.label7.TabIndex = 15;
             this.label7.Text = "Mã BCI";
             // 
@@ -1198,7 +1198,7 @@ namespace DrivingCenter.App.UserControl
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(34, 269);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 17);
+            this.label6.Size = new System.Drawing.Size(58, 18);
             this.label6.TabIndex = 13;
             this.label6.Text = "Ngày KG";
             // 
@@ -1233,7 +1233,7 @@ namespace DrivingCenter.App.UserControl
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(34, 224);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 17);
+            this.label5.Size = new System.Drawing.Size(58, 18);
             this.label5.TabIndex = 11;
             this.label5.Text = "Ngày KG";
             // 
@@ -1262,7 +1262,7 @@ namespace DrivingCenter.App.UserControl
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(28, 179);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 17);
+            this.label4.Size = new System.Drawing.Size(63, 18);
             this.label4.TabIndex = 7;
             this.label4.Text = "Khóa Học";
             // 
@@ -1293,7 +1293,7 @@ namespace DrivingCenter.App.UserControl
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(33, 136);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 17);
+            this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 5;
             this.label3.Text = "Mã Khóa";
             // 

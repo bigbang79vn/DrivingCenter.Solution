@@ -35,7 +35,6 @@ namespace DrivingCenter.App
             dt_TimeStart.DateTime = DateTime.Now;
         }
 
-        private Int64 NguoiLxId;
         private int KhoaHocID;
         private void GetLstKhoaHoc()
         {
@@ -84,7 +83,7 @@ namespace DrivingCenter.App
 
             grid_Result.DataSource = lstKetQuaTap;
 
-            int totalsecond = (int)CabinI2E_DAO.Instance.GetTongThoiGianByNguoiLxID(NguoiLxId);
+            int totalsecond = (int)CabinI2E_DAO.Instance.GetTongThoiGianByNguoiLxID(hv.NguoiLxID);
             TimeSpan t = TimeSpan.FromSeconds(totalsecond);
             lb_time.Text = t.ToString(@"hh\:mm\:ss");
 
@@ -144,7 +143,7 @@ namespace DrivingCenter.App
 
                     CabinI2E_DAO.Instance.InsertData(re, hv.NguoiLxID, IdThietBi, KhoaHocID);
 
-                    CabinI2E_DAO.Instance.UpdateTimeExerToNguoiLx(NguoiLxId);
+                    CabinI2E_DAO.Instance.UpdateTimeExerToNguoiLx(hv.NguoiLxID);
                     LoadResultByNguoiLxID(hv);
                 }
                 XtraMessageBox.Show("Cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);

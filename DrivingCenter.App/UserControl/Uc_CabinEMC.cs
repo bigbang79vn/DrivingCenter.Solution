@@ -24,7 +24,6 @@ namespace DrivingCenter.App.UserControl
             navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
         }
 
-        private Int64 NguoiLx;
         private string TenKH;
         private List<KhoaHoc> lstKhoaHoc;
         private List<ThongKe> _lstThongKe;
