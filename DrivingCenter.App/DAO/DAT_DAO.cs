@@ -128,9 +128,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("select MaDK, GiaoVienID from NguoiLX where TenKH like '%{0}%' ORDER BY GiaoVienID", TenKH);
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
-            List<GvCabin> lst = new List<GvCabin>();
-
-            lst = dt.AsEnumerable().Select(item => new GvCabin
+            List<GvCabin>  lst = dt.AsEnumerable().Select(item => new GvCabin
             {
                 MaDK = (string)(item)["MaDK"],
                 GiaoVienID = (int)(item)["GiaoVienID"]
@@ -141,13 +139,12 @@ namespace DrivingCenter.App.DAO
 
         public List<GiaoVien> GetAllGV()
         {
-            List<GiaoVien> lstGiaoVien = new List<GiaoVien>();
             string query = $@"SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, AnhChup, MaCNDT, hv.Ten , SuDung, DateUse 
                         FROM GiaoVien AS gv
                         INNER JOIN TrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma";
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
-            lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
+            List<GiaoVien>  lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
                 GiaoVienID = (int)item["GiaoVienID"],
                 MaGV = (string)item["MaGV"],
@@ -175,7 +172,7 @@ namespace DrivingCenter.App.DAO
                         [MaGV] = @MaGV, [HoTenDem] = @HoTenDem, [TenGV] = @TenGV, [NgaySinh] = @NgaySinh, [SoCMT] = @SoCMT, [HangGPLX] = @HangGPLX, 
                         [SoDienThoai] = @SoDienThoai, [DiaChi] = @DiaChi, [MaCNDT] = @MaCNDT, [MaTrinhDoHocVan] = @MaTrinhDoHocVan, [SuDung] = @SuDung
                     WHERE GiaoVienID = @GiaoVienID";
-            DataProviderDAT.Instance.ExecuteNonQuery(query, new
+            var para = new
             {
                 gv.MaGV,
                 gv.HoTenDem,
@@ -189,7 +186,9 @@ namespace DrivingCenter.App.DAO
                 MaTrinhDoHocVan = gv.TrinhDoHocVan,
                 gv.SuDung,
                 GiaoVienID = GiaoVienId
-            });
+            };
+
+            DataProviderDAT.Instance.ExecuteNonQuery(query, para);
         }
         public DataTable GetlstHocVan()
         {
