@@ -36,24 +36,6 @@
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
-            this.gridControl_GiaoVien = new DevExpress.XtraGrid.GridControl();
-            this.contextMenu_GiaoVien = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mn_SynsGiaoVien = new System.Windows.Forms.ToolStripMenuItem();
-            this.gridView_GiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaGV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.HoTenDem = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenGV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgaySinh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoCMT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.HangGPLX = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaCNDT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TrinhDoHocVan = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoToggleSwitch = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
-            this.DateTime_Use = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repo_CheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.groupControl_GiaoVien = new DevExpress.XtraEditors.GroupControl();
             this.txt_MaGV = new DevExpress.XtraEditors.TextEdit();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
@@ -76,12 +58,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_CCCD = new DevExpress.XtraEditors.TextEdit();
             this.date_NgaySinh = new DevExpress.XtraEditors.DateEdit();
+            this.gridControl_GiaoVien = new DevExpress.XtraGrid.GridControl();
+            this.contextMenu_GiaoVien = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mn_SynsGiaoVien = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridView_GiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaGV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HoTenDem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenGV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgaySinh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoCMT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HangGPLX = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaCNDT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TrinhDoHocVan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoToggleSwitch = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
+            this.DateTime_Use = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repo_CheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.tblLayout_DmXeTapLai.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).BeginInit();
-            this.contextMenu_GiaoVien.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl_GiaoVien)).BeginInit();
             this.groupControl_GiaoVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaGV.Properties)).BeginInit();
@@ -97,6 +92,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_CCCD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).BeginInit();
+            this.contextMenu_GiaoVien.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // tblLayout_DmXeTapLai
@@ -113,6 +113,347 @@
             this.tblLayout_DmXeTapLai.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLayout_DmXeTapLai.Size = new System.Drawing.Size(1493, 808);
             this.tblLayout_DmXeTapLai.TabIndex = 4;
+            // 
+            // groupControl_GiaoVien
+            // 
+            this.groupControl_GiaoVien.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.groupControl_GiaoVien.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl_GiaoVien.CaptionImageOptions.SvgImage")));
+            this.groupControl_GiaoVien.Controls.Add(this.txt_MaGV);
+            this.groupControl_GiaoVien.Controls.Add(this.windowsUIButtonPanel);
+            this.groupControl_GiaoVien.Controls.Add(this.pictureBox_AnhChup);
+            this.groupControl_GiaoVien.Controls.Add(this.memo_DiaChi);
+            this.groupControl_GiaoVien.Controls.Add(this.cbb_HangGPLX);
+            this.groupControl_GiaoVien.Controls.Add(this.label2);
+            this.groupControl_GiaoVien.Controls.Add(this.toggleSwitch_TrangThai);
+            this.groupControl_GiaoVien.Controls.Add(this.label5);
+            this.groupControl_GiaoVien.Controls.Add(this.cbb_HocVan);
+            this.groupControl_GiaoVien.Controls.Add(this.label7);
+            this.groupControl_GiaoVien.Controls.Add(this.txt_GiaoVienId);
+            this.groupControl_GiaoVien.Controls.Add(this.label1);
+            this.groupControl_GiaoVien.Controls.Add(this.label10);
+            this.groupControl_GiaoVien.Controls.Add(this.txt_MaCNDT);
+            this.groupControl_GiaoVien.Controls.Add(this.label4);
+            this.groupControl_GiaoVien.Controls.Add(this.txt_TenGV);
+            this.groupControl_GiaoVien.Controls.Add(this.label6);
+            this.groupControl_GiaoVien.Controls.Add(this.txt_HoDem);
+            this.groupControl_GiaoVien.Controls.Add(this.label3);
+            this.groupControl_GiaoVien.Controls.Add(this.txt_CCCD);
+            this.groupControl_GiaoVien.Controls.Add(this.date_NgaySinh);
+            buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
+            this.groupControl_GiaoVien.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Synchronize", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            this.groupControl_GiaoVien.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.groupControl_GiaoVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl_GiaoVien.Location = new System.Drawing.Point(996, 3);
+            this.groupControl_GiaoVien.Name = "groupControl_GiaoVien";
+            this.groupControl_GiaoVien.Size = new System.Drawing.Size(494, 802);
+            this.groupControl_GiaoVien.TabIndex = 47;
+            this.groupControl_GiaoVien.Text = "Thông tin giáo viên";
+            this.groupControl_GiaoVien.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControl_GiaoVien_CustomButtonClick);
+            // 
+            // txt_MaGV
+            // 
+            this.txt_MaGV.Location = new System.Drawing.Point(117, 84);
+            this.txt_MaGV.Name = "txt_MaGV";
+            this.txt_MaGV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_MaGV.Properties.Appearance.Options.UseFont = true;
+            this.txt_MaGV.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_MaGV.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_MaGV.Properties.AutoHeight = false;
+            this.txt_MaGV.Size = new System.Drawing.Size(207, 23);
+            this.txt_MaGV.TabIndex = 39;
+            // 
+            // windowsUIButtonPanel
+            // 
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
+            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
+            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
+            windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
+            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.windowsUIButtonPanel.EnableImageTransparency = true;
+            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
+            this.windowsUIButtonPanel.Location = new System.Drawing.Point(2, 740);
+            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
+            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
+            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
+            this.windowsUIButtonPanel.Size = new System.Drawing.Size(490, 60);
+            this.windowsUIButtonPanel.TabIndex = 36;
+            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
+            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
+            this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
+            // 
+            // pictureBox_AnhChup
+            // 
+            this.pictureBox_AnhChup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_AnhChup.Location = new System.Drawing.Point(337, 147);
+            this.pictureBox_AnhChup.Name = "pictureBox_AnhChup";
+            this.pictureBox_AnhChup.Size = new System.Drawing.Size(137, 165);
+            this.pictureBox_AnhChup.TabIndex = 44;
+            this.pictureBox_AnhChup.TabStop = false;
+            // 
+            // memo_DiaChi
+            // 
+            this.memo_DiaChi.Location = new System.Drawing.Point(117, 323);
+            this.memo_DiaChi.Name = "memo_DiaChi";
+            this.memo_DiaChi.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memo_DiaChi.Properties.Appearance.Options.UseFont = true;
+            this.memo_DiaChi.Size = new System.Drawing.Size(357, 76);
+            this.memo_DiaChi.TabIndex = 45;
+            // 
+            // cbb_HangGPLX
+            // 
+            this.cbb_HangGPLX.EditValue = "Chọn Hạng Xe";
+            this.cbb_HangGPLX.Location = new System.Drawing.Point(117, 220);
+            this.cbb_HangGPLX.Name = "cbb_HangGPLX";
+            this.cbb_HangGPLX.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_HangGPLX.Properties.Appearance.Options.UseFont = true;
+            this.cbb_HangGPLX.Properties.Appearance.Options.UseTextOptions = true;
+            this.cbb_HangGPLX.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_HangGPLX.Properties.AppearanceDropDown.Options.UseTextOptions = true;
+            this.cbb_HangGPLX.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_HangGPLX.Properties.AutoHeight = false;
+            this.cbb_HangGPLX.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.cbb_HangGPLX.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_HangGPLX.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenHang", "Hạng GPLX")});
+            this.cbb_HangGPLX.Properties.NullText = "Hạng GPLX";
+            this.cbb_HangGPLX.Size = new System.Drawing.Size(207, 23);
+            this.cbb_HangGPLX.TabIndex = 38;
+            this.cbb_HangGPLX.UseWaitCursor = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label2.Location = new System.Drawing.Point(21, 155);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 18);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Ngày Sinh (*)";
+            // 
+            // toggleSwitch_TrangThai
+            // 
+            this.toggleSwitch_TrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toggleSwitch_TrangThai.Location = new System.Drawing.Point(117, 415);
+            this.toggleSwitch_TrangThai.Name = "toggleSwitch_TrangThai";
+            this.toggleSwitch_TrangThai.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch_TrangThai.Properties.Appearance.Options.UseFont = true;
+            this.toggleSwitch_TrangThai.Properties.OffText = "Off";
+            this.toggleSwitch_TrangThai.Properties.OnText = "On";
+            this.toggleSwitch_TrangThai.Size = new System.Drawing.Size(112, 22);
+            this.toggleSwitch_TrangThai.TabIndex = 43;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label5.Location = new System.Drawing.Point(37, 121);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 18);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Họ Tên (*)";
+            // 
+            // cbb_HocVan
+            // 
+            this.cbb_HocVan.Location = new System.Drawing.Point(117, 288);
+            this.cbb_HocVan.Name = "cbb_HocVan";
+            this.cbb_HocVan.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_HocVan.Properties.Appearance.Options.UseFont = true;
+            this.cbb_HocVan.Properties.Appearance.Options.UseTextOptions = true;
+            this.cbb_HocVan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_HocVan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_HocVan.Properties.NullText = "Trình Độ Học Vấn";
+            this.cbb_HocVan.Size = new System.Drawing.Size(207, 24);
+            this.cbb_HocVan.TabIndex = 42;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label7.Location = new System.Drawing.Point(31, 189);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 18);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "CMT/CCCD";
+            // 
+            // txt_GiaoVienId
+            // 
+            this.txt_GiaoVienId.Location = new System.Drawing.Point(337, 84);
+            this.txt_GiaoVienId.Name = "txt_GiaoVienId";
+            this.txt_GiaoVienId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_GiaoVienId.Properties.Appearance.Options.UseFont = true;
+            this.txt_GiaoVienId.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_GiaoVienId.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_GiaoVienId.Properties.AutoHeight = false;
+            this.txt_GiaoVienId.Size = new System.Drawing.Size(53, 23);
+            this.txt_GiaoVienId.TabIndex = 39;
+            this.txt_GiaoVienId.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label1.Location = new System.Drawing.Point(13, 223);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 18);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Hạng GPLX (*)";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label10.Location = new System.Drawing.Point(23, 257);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 18);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Mã CNDT (*)";
+            // 
+            // txt_MaCNDT
+            // 
+            this.txt_MaCNDT.Location = new System.Drawing.Point(117, 254);
+            this.txt_MaCNDT.Name = "txt_MaCNDT";
+            this.txt_MaCNDT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_MaCNDT.Properties.Appearance.Options.UseFont = true;
+            this.txt_MaCNDT.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_MaCNDT.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_MaCNDT.Properties.AutoHeight = false;
+            this.txt_MaCNDT.Size = new System.Drawing.Size(207, 23);
+            this.txt_MaCNDT.TabIndex = 40;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label4.Location = new System.Drawing.Point(30, 291);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 18);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Học Vấn (*)";
+            // 
+            // txt_TenGV
+            // 
+            this.txt_TenGV.Location = new System.Drawing.Point(337, 118);
+            this.txt_TenGV.Name = "txt_TenGV";
+            this.txt_TenGV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_TenGV.Properties.Appearance.Options.UseFont = true;
+            this.txt_TenGV.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_TenGV.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_TenGV.Properties.AutoHeight = false;
+            this.txt_TenGV.Size = new System.Drawing.Size(137, 23);
+            this.txt_TenGV.TabIndex = 40;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label6.Location = new System.Drawing.Point(38, 333);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 18);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Địa Chỉ (*)";
+            // 
+            // txt_HoDem
+            // 
+            this.txt_HoDem.Location = new System.Drawing.Point(117, 118);
+            this.txt_HoDem.Name = "txt_HoDem";
+            this.txt_HoDem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_HoDem.Properties.Appearance.Options.UseFont = true;
+            this.txt_HoDem.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_HoDem.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_HoDem.Properties.AutoHeight = false;
+            this.txt_HoDem.Size = new System.Drawing.Size(207, 23);
+            this.txt_HoDem.TabIndex = 40;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label3.Location = new System.Drawing.Point(40, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 18);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Mã GV (*)";
+            // 
+            // txt_CCCD
+            // 
+            this.txt_CCCD.Location = new System.Drawing.Point(117, 186);
+            this.txt_CCCD.Name = "txt_CCCD";
+            this.txt_CCCD.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_CCCD.Properties.Appearance.Options.UseFont = true;
+            this.txt_CCCD.Properties.Appearance.Options.UseTextOptions = true;
+            this.txt_CCCD.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txt_CCCD.Properties.AutoHeight = false;
+            this.txt_CCCD.Size = new System.Drawing.Size(207, 23);
+            this.txt_CCCD.TabIndex = 41;
+            // 
+            // date_NgaySinh
+            // 
+            this.date_NgaySinh.EditValue = null;
+            this.date_NgaySinh.Location = new System.Drawing.Point(117, 152);
+            this.date_NgaySinh.Name = "date_NgaySinh";
+            this.date_NgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_NgaySinh.Properties.Appearance.Options.UseFont = true;
+            this.date_NgaySinh.Properties.Appearance.Options.UseTextOptions = true;
+            this.date_NgaySinh.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.date_NgaySinh.Properties.AutoHeight = false;
+            this.date_NgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.date_NgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.date_NgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.date_NgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.date_NgaySinh.Size = new System.Drawing.Size(207, 23);
+            this.date_NgaySinh.TabIndex = 10;
             // 
             // gridControl_GiaoVien
             // 
@@ -302,346 +643,6 @@
             this.repo_CheckEdit.AutoHeight = false;
             this.repo_CheckEdit.Name = "repo_CheckEdit";
             // 
-            // groupControl_GiaoVien
-            // 
-            this.groupControl_GiaoVien.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.groupControl_GiaoVien.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl_GiaoVien.CaptionImageOptions.SvgImage")));
-            this.groupControl_GiaoVien.Controls.Add(this.txt_MaGV);
-            this.groupControl_GiaoVien.Controls.Add(this.windowsUIButtonPanel);
-            this.groupControl_GiaoVien.Controls.Add(this.pictureBox_AnhChup);
-            this.groupControl_GiaoVien.Controls.Add(this.memo_DiaChi);
-            this.groupControl_GiaoVien.Controls.Add(this.cbb_HangGPLX);
-            this.groupControl_GiaoVien.Controls.Add(this.label2);
-            this.groupControl_GiaoVien.Controls.Add(this.toggleSwitch_TrangThai);
-            this.groupControl_GiaoVien.Controls.Add(this.label5);
-            this.groupControl_GiaoVien.Controls.Add(this.cbb_HocVan);
-            this.groupControl_GiaoVien.Controls.Add(this.label7);
-            this.groupControl_GiaoVien.Controls.Add(this.txt_GiaoVienId);
-            this.groupControl_GiaoVien.Controls.Add(this.label1);
-            this.groupControl_GiaoVien.Controls.Add(this.label10);
-            this.groupControl_GiaoVien.Controls.Add(this.txt_MaCNDT);
-            this.groupControl_GiaoVien.Controls.Add(this.label4);
-            this.groupControl_GiaoVien.Controls.Add(this.txt_TenGV);
-            this.groupControl_GiaoVien.Controls.Add(this.label6);
-            this.groupControl_GiaoVien.Controls.Add(this.txt_HoDem);
-            this.groupControl_GiaoVien.Controls.Add(this.label3);
-            this.groupControl_GiaoVien.Controls.Add(this.txt_CCCD);
-            this.groupControl_GiaoVien.Controls.Add(this.date_NgaySinh);
-            buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
-            this.groupControl_GiaoVien.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Synchronize", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
-            this.groupControl_GiaoVien.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            this.groupControl_GiaoVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl_GiaoVien.Location = new System.Drawing.Point(996, 3);
-            this.groupControl_GiaoVien.Name = "groupControl_GiaoVien";
-            this.groupControl_GiaoVien.Size = new System.Drawing.Size(494, 802);
-            this.groupControl_GiaoVien.TabIndex = 47;
-            this.groupControl_GiaoVien.Text = "Thông tin giáo viên";
-            // 
-            // txt_MaGV
-            // 
-            this.txt_MaGV.Location = new System.Drawing.Point(117, 84);
-            this.txt_MaGV.Name = "txt_MaGV";
-            this.txt_MaGV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_MaGV.Properties.Appearance.Options.UseFont = true;
-            this.txt_MaGV.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_MaGV.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_MaGV.Properties.AutoHeight = false;
-            this.txt_MaGV.Size = new System.Drawing.Size(207, 23);
-            this.txt_MaGV.TabIndex = 39;
-            // 
-            // windowsUIButtonPanel
-            // 
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
-            windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
-            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIButtonPanel.EnableImageTransparency = true;
-            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanel.Location = new System.Drawing.Point(2, 740);
-            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
-            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
-            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
-            this.windowsUIButtonPanel.Size = new System.Drawing.Size(490, 60);
-            this.windowsUIButtonPanel.TabIndex = 36;
-            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
-            this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
-            // 
-            // pictureBox_AnhChup
-            // 
-            this.pictureBox_AnhChup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_AnhChup.Location = new System.Drawing.Point(337, 147);
-            this.pictureBox_AnhChup.Name = "pictureBox_AnhChup";
-            this.pictureBox_AnhChup.Size = new System.Drawing.Size(137, 165);
-            this.pictureBox_AnhChup.TabIndex = 44;
-            this.pictureBox_AnhChup.TabStop = false;
-            // 
-            // memo_DiaChi
-            // 
-            this.memo_DiaChi.Location = new System.Drawing.Point(117, 323);
-            this.memo_DiaChi.Name = "memo_DiaChi";
-            this.memo_DiaChi.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memo_DiaChi.Properties.Appearance.Options.UseFont = true;
-            this.memo_DiaChi.Size = new System.Drawing.Size(357, 76);
-            this.memo_DiaChi.TabIndex = 45;
-            // 
-            // cbb_HangGPLX
-            // 
-            this.cbb_HangGPLX.EditValue = "Chọn Hạng Xe";
-            this.cbb_HangGPLX.Location = new System.Drawing.Point(117, 220);
-            this.cbb_HangGPLX.Name = "cbb_HangGPLX";
-            this.cbb_HangGPLX.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_HangGPLX.Properties.Appearance.Options.UseFont = true;
-            this.cbb_HangGPLX.Properties.Appearance.Options.UseTextOptions = true;
-            this.cbb_HangGPLX.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HangGPLX.Properties.AppearanceDropDown.Options.UseTextOptions = true;
-            this.cbb_HangGPLX.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HangGPLX.Properties.AutoHeight = false;
-            this.cbb_HangGPLX.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.cbb_HangGPLX.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbb_HangGPLX.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenHang", "Hạng GPLX")});
-            this.cbb_HangGPLX.Properties.NullText = "Hạng GPLX";
-            this.cbb_HangGPLX.Size = new System.Drawing.Size(207, 23);
-            this.cbb_HangGPLX.TabIndex = 38;
-            this.cbb_HangGPLX.UseWaitCursor = true;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label2.Location = new System.Drawing.Point(21, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 17);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "Ngày Sinh (*)";
-            // 
-            // toggleSwitch_TrangThai
-            // 
-            this.toggleSwitch_TrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.toggleSwitch_TrangThai.Location = new System.Drawing.Point(117, 415);
-            this.toggleSwitch_TrangThai.Name = "toggleSwitch_TrangThai";
-            this.toggleSwitch_TrangThai.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch_TrangThai.Properties.Appearance.Options.UseFont = true;
-            this.toggleSwitch_TrangThai.Properties.OffText = "Off";
-            this.toggleSwitch_TrangThai.Properties.OnText = "On";
-            this.toggleSwitch_TrangThai.Size = new System.Drawing.Size(112, 21);
-            this.toggleSwitch_TrangThai.TabIndex = 43;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label5.Location = new System.Drawing.Point(37, 121);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Họ Tên (*)";
-            // 
-            // cbb_HocVan
-            // 
-            this.cbb_HocVan.Location = new System.Drawing.Point(117, 288);
-            this.cbb_HocVan.Name = "cbb_HocVan";
-            this.cbb_HocVan.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_HocVan.Properties.Appearance.Options.UseFont = true;
-            this.cbb_HocVan.Properties.Appearance.Options.UseTextOptions = true;
-            this.cbb_HocVan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HocVan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbb_HocVan.Properties.NullText = "Trình Độ Học Vấn";
-            this.cbb_HocVan.Size = new System.Drawing.Size(207, 24);
-            this.cbb_HocVan.TabIndex = 42;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label7.Location = new System.Drawing.Point(31, 189);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 17);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "CMT/CCCD";
-            // 
-            // txt_GiaoVienId
-            // 
-            this.txt_GiaoVienId.Location = new System.Drawing.Point(337, 84);
-            this.txt_GiaoVienId.Name = "txt_GiaoVienId";
-            this.txt_GiaoVienId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_GiaoVienId.Properties.Appearance.Options.UseFont = true;
-            this.txt_GiaoVienId.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_GiaoVienId.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_GiaoVienId.Properties.AutoHeight = false;
-            this.txt_GiaoVienId.Size = new System.Drawing.Size(53, 23);
-            this.txt_GiaoVienId.TabIndex = 39;
-            this.txt_GiaoVienId.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label1.Location = new System.Drawing.Point(13, 223);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Hạng GPLX (*)";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label10.Location = new System.Drawing.Point(23, 257);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 17);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Mã CNDT (*)";
-            // 
-            // txt_MaCNDT
-            // 
-            this.txt_MaCNDT.Location = new System.Drawing.Point(117, 254);
-            this.txt_MaCNDT.Name = "txt_MaCNDT";
-            this.txt_MaCNDT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_MaCNDT.Properties.Appearance.Options.UseFont = true;
-            this.txt_MaCNDT.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_MaCNDT.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_MaCNDT.Properties.AutoHeight = false;
-            this.txt_MaCNDT.Size = new System.Drawing.Size(207, 23);
-            this.txt_MaCNDT.TabIndex = 40;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label4.Location = new System.Drawing.Point(30, 291);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 17);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Học Vấn (*)";
-            // 
-            // txt_TenGV
-            // 
-            this.txt_TenGV.Location = new System.Drawing.Point(337, 118);
-            this.txt_TenGV.Name = "txt_TenGV";
-            this.txt_TenGV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_TenGV.Properties.Appearance.Options.UseFont = true;
-            this.txt_TenGV.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_TenGV.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_TenGV.Properties.AutoHeight = false;
-            this.txt_TenGV.Size = new System.Drawing.Size(137, 23);
-            this.txt_TenGV.TabIndex = 40;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label6.Location = new System.Drawing.Point(38, 333);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 17);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Địa Chỉ (*)";
-            // 
-            // txt_HoDem
-            // 
-            this.txt_HoDem.Location = new System.Drawing.Point(117, 118);
-            this.txt_HoDem.Name = "txt_HoDem";
-            this.txt_HoDem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_HoDem.Properties.Appearance.Options.UseFont = true;
-            this.txt_HoDem.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_HoDem.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_HoDem.Properties.AutoHeight = false;
-            this.txt_HoDem.Size = new System.Drawing.Size(207, 23);
-            this.txt_HoDem.TabIndex = 40;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label3.Location = new System.Drawing.Point(40, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 17);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Mã GV (*)";
-            // 
-            // txt_CCCD
-            // 
-            this.txt_CCCD.Location = new System.Drawing.Point(117, 186);
-            this.txt_CCCD.Name = "txt_CCCD";
-            this.txt_CCCD.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_CCCD.Properties.Appearance.Options.UseFont = true;
-            this.txt_CCCD.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_CCCD.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_CCCD.Properties.AutoHeight = false;
-            this.txt_CCCD.Size = new System.Drawing.Size(207, 23);
-            this.txt_CCCD.TabIndex = 41;
-            // 
-            // date_NgaySinh
-            // 
-            this.date_NgaySinh.EditValue = null;
-            this.date_NgaySinh.Location = new System.Drawing.Point(117, 152);
-            this.date_NgaySinh.Name = "date_NgaySinh";
-            this.date_NgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date_NgaySinh.Properties.Appearance.Options.UseFont = true;
-            this.date_NgaySinh.Properties.Appearance.Options.UseTextOptions = true;
-            this.date_NgaySinh.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_NgaySinh.Properties.AutoHeight = false;
-            this.date_NgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.date_NgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.date_NgaySinh.Size = new System.Drawing.Size(207, 23);
-            this.date_NgaySinh.TabIndex = 10;
-            // 
             // UcChild_GiaoVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -651,11 +652,6 @@
             this.Size = new System.Drawing.Size(1493, 808);
             this.Load += new System.EventHandler(this.UcChild_GiaoVien_Load);
             this.tblLayout_DmXeTapLai.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).EndInit();
-            this.contextMenu_GiaoVien.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl_GiaoVien)).EndInit();
             this.groupControl_GiaoVien.ResumeLayout(false);
             this.groupControl_GiaoVien.PerformLayout();
@@ -672,6 +668,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_CCCD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).EndInit();
+            this.contextMenu_GiaoVien.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
             this.ResumeLayout(false);
 
         }

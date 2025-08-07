@@ -174,5 +174,18 @@ namespace DrivingCenter.App.UserControl
             int result = AppBee_DAO.Instance.SynsGiaoVien();
             //XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void groupControl_GiaoVien_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Đồng bộ lại giáo viên từ hệ thống DAT?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //AppBee_DAO.Instance.Synchronize();
+                Get_DmGiaoVien();
+                SetControlsEnabled(false);
+                DisableAllButtons();
+                SetButtonPanelEnable(0, 1);
+            }
+        }
     }
 }
