@@ -1,32 +1,21 @@
 ﻿using DevExpress.Export;
-using DevExpress.Map.Kml.Model;
 using DevExpress.XtraEditors;
-using DevExpress.XtraLayout.Filtering.Templates;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Nodes;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.DTO.GPLX;
-using DrivingCenter.App.DTO.LyThuyet;
-using DrivingCenter.App.Helper;
 using DrivingCenter.App.Report;
 using ExcelDataReader;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace DrivingCenter.App.UserControl
 {
