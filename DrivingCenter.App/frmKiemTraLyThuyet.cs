@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
-using DrivingCenter.App.DTO.LyThuyet;
+using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using DevExpress.Export;
-using DevExpress.XtraPrinting;
+using DrivingCenter.App.DTO.LyThuyet;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App
 {
