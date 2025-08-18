@@ -118,7 +118,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("UPDATE NguoiLX_HoSo set " +
                 "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
-                nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy_Old, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
+                nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
             DataProviderGPLX.Instance.ExecuteNonQuery(query);
         }
 

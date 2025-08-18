@@ -10,7 +10,7 @@ namespace DrivingCenter.App.DTO.GPLX
     {
         public string MaDK { get; set; }
         public string SoGiayCNTN { get; set; }
-        public string TT_XuLy_Old { get; set; }
+        public string TT_XuLy { get; set; }
         public string SoQuyetDinhTN { get; set; }
         public string NgayRaQDTN { get; set; }
         public string SoSoTN { get; set; }

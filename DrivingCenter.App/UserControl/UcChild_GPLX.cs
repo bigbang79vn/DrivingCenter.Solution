@@ -462,7 +462,7 @@ namespace DrivingCenter.App.UserControl
                         NguoiLX_HoSo_Update nguoiLx = new NguoiLX_HoSo_Update();
                         nguoiLx.MaDK = dt.Rows[i]["MaDK"].ToString().ToUpper().Trim();
                         nguoiLx.SoGiayCNTN = txt_SoCNTN.Text + "|" + dt.Rows[i]["SoCNTN"].ToString().ToUpper().Trim();
-                        nguoiLx.TT_XuLy_Old = "09";
+                        nguoiLx.TT_XuLy = "09";
                         nguoiLx.SoQuyetDinhTN = txt_SoQD.Text;
                         nguoiLx.NgayRaQDTN = dtp_NgayQD.DateTime.ToString("yyyy-MM-dd 00:00:00.000");
                         nguoiLx.SoSoTN = txt_SoSoCNTN.Text;
