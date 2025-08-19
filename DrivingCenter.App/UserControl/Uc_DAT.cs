@@ -175,7 +175,7 @@ namespace DrivingCenter.App.UserControl
 
                 // Tỷ lệ nhận diện
                 item.TyLe = item.SoLanNhanDien > 0 ? Math.Round((double)item.SoLanNhanDienThanhCong / item.SoLanNhanDien * 100, 1) : 0;
-                if (item.TyLe < 90) sb.Append("Nhận Diện! ");
+                if (item.TyLe < 75) sb.Append("Nhận Diện! ");
 
                 // Quãng đường
                 if (item.QuangDuongPhien < 5 && item.LogOut) sb.Append("Quãng đường <5! ");
@@ -198,7 +198,7 @@ namespace DrivingCenter.App.UserControl
                 // Gửi Tổng cục
                 if (item.LogOut && !item.SendTongCuc)
                 {
-                    sb.Append("Chưa gửi TC! ");
+                    sb.Append("... ");
                     SendTC++;
                 }
 
@@ -662,7 +662,7 @@ namespace DrivingCenter.App.UserControl
                 .Select(item =>
                 {
                     int time = Convert.ToInt32((item.TongThoiGianLD_Phien.Trim()).Remove(2, 6));
-                    item.GhiChu = time >= 5 ? "Quá giờ!" : "";
+                    item.GhiChu = time >= 10 ? "Quá giờ!" : "";
                     return item;
                 })
                 .ToList();
@@ -724,10 +724,10 @@ namespace DrivingCenter.App.UserControl
 
             foreach (TongHopGV item in lstSumGV)
             {
-                if (lstMaGVs.Contains(item.MaGv) == false)
-                {
-                    item.SGhiChu += "Không ĐN/ĐX! ";
-                }
+                //if (lstMaGVs.Contains(item.MaGv) == false)
+                //{
+                //    item.SGhiChu += "Không ĐN/ĐX! ";
+                //}
 
                 int hour = Convert.ToInt32(item.SThoiGian.Trim().Remove(2, 6));
                 int minute = Convert.ToInt32((item.SThoiGian.Trim().Substring(3)).Remove(2, 3));
@@ -741,10 +741,10 @@ namespace DrivingCenter.App.UserControl
                     item.SGhiChu = "Quá Giờ! ";
                 }
 
-                if (item.SoHocVienByDay == 1)
-                {
-                    item.SGhiChu += "Dạy 1 Hv/Ngày! ";
-                }
+                //if (item.SoHocVienByDay == 1)
+                //{
+                //    item.SGhiChu += "Dạy 1 Hv/Ngày! ";
+                //}
             }
 
             gridControl_TongHopGioDay.DataSource = lstSumGV;
