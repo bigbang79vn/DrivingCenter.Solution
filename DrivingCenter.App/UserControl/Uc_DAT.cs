@@ -469,18 +469,18 @@ namespace DrivingCenter.App.UserControl
 
         private bool CheckDatNewCondition(TongHopHVByKhoa item, string hangDaoTao)
         {
-            bool baseCondition = item.TongQuangDuongTichLuy > 710 && item.TongThoiGianTichLuy > 43200;
+            bool baseCondition = item.TongQuangDuongTichLuy > 712 && item.TongThoiGianTichLuy > 43200;
             switch (hangDaoTao)
             {
                 case "B11":
                     return baseCondition && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 6;
                 case "B":
-                    return item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 &&
-                           item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 6;
+                    return item.TongQuangDuongTichLuy > 812 && item.TongThoiGianTichLuy > 72480 &&
+                           item.TongThoiGian_PhienDem > 7500 && item.TongThoiGian_B1 > 7500;
                 case "B.01":
-                    return baseCondition && item.TongThoiGian_PhienDem > 7500 && item.SoNgayHocKQ >= 4;
+                    return baseCondition && item.TongThoiGian_PhienDem > 7500;
                 default:
-                    return item.TongQuangDuongTichLuy > 810 && item.TongThoiGianTichLuy > 72480 &&
+                    return item.TongQuangDuongTichLuy > 812 && item.TongThoiGianTichLuy > 72480 &&
                            item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8;
             }
         }
