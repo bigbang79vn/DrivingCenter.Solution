@@ -167,10 +167,12 @@ namespace DrivingCenter.App.UserControl
             int SendTC = 0;
             var sortedList = lstPH.OrderBy(x => x.Time_LogOut).ToList();
 
+            var errorMap = new Dictionary<PhienHoc, HashSet<string>>();
+
             // Gắn sẵn ErrorList để tránh trùng lặp
             foreach (var item in sortedList)
             {
-                item.ErrorList = new HashSet<string>();
+                errorMap[item] = new HashSet<string>();
             }
 
             // PASS 1: Nghỉ thiếu & Trùng phiên
@@ -185,14 +187,14 @@ namespace DrivingCenter.App.UserControl
 
                     if (prev.Time_LogOut > curr.Time_LogIn)
                     {
-                        curr.ErrorList.Add("Trùng phiên!");
+                        errorMap[curr].Add("Trùng phiên!");
                         continue;
                     }
 
                     var gap = curr.Time_LogIn - prev.Time_LogOut;
                     if (gap.TotalSeconds > 0 && gap.TotalSeconds < 900)
                     {
-                        curr.ErrorList.Add("Nghỉ Thiếu!");
+                        errorMap[curr].Add("Nghỉ Thiếu!");
                     }
                 }
             }
@@ -204,40 +206,38 @@ namespace DrivingCenter.App.UserControl
                 item.TyLe = item.SoLanNhanDien > 0
                     ? Math.Round((double)item.SoLanNhanDienThanhCong / item.SoLanNhanDien * 100, 1)
                     : 0;
-                if (item.TyLe < 75) item.ErrorList.Add("Nhận Diện!");
+                if (item.TyLe < 75) errorMap[item].Add("Nhận Diện!");
 
                 // Quãng đường
-                if (item.QuangDuongPhien < 5 && item.LogOut) item.ErrorList.Add("Quãng đường <5!");
+                if (item.QuangDuongPhien < 5 && item.LogOut) errorMap[item].Add("Quãng đường <5!");
 
                 // Vận tốc
                 double vantoc = item.dbTime > 0 ? item.QuangDuongPhien / (item.dbTime / 3600) : 0;
-                if (vantoc < 20) item.ErrorList.Add("Vận Tốc!");
+                if (vantoc < 20) errorMap[item].Add("Vận Tốc!");
 
                 // Đăng nhập sớm
-                if (item.Time_LogIn.Hour < 7) item.ErrorList.Add("ĐN Sớm!");
+                if (item.Time_LogIn.Hour < 7) errorMap[item].Add("ĐN Sớm!");
 
                 // Quá giờ
                 var logout = item.Time_LogOut;
-                if (logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)) item.ErrorList.Add("Quá Giờ!");
+                if (logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)) errorMap[item].Add("Quá Giờ!");
 
                 // Sai ngày giờ theo khóa học
                 int khoahoc = int.Parse(item.TenKH.Substring(item.TenKH.IndexOf("K") + 1));
-                if (IsInvalidCourseTime(item, khoahoc)) item.ErrorList.Add("Sai ngày giờ!");
+                if (IsInvalidCourseTime(item, khoahoc)) errorMap[item].Add("Sai ngày giờ!");
 
                 // Gửi Tổng cục
                 if (item.LogOut && !item.SendTongCuc)
                 {
-                    item.ErrorList.Add("...");
+                    errorMap[item].Add("...");
                     SendTC++;
                 }
 
-                // Cuối cùng join lỗi lại thành chuỗi
-                item.Error = string.Join(" ", item.ErrorList);
+                // Join tất cả lỗi duy nhất thành chuỗi
+                item.Error = string.Join(" ", errorMap[item]);
             }
 
             return SendTC;
-
-
         }
 
         private bool IsInvalidCourseTime(PhienHoc item, int khoahoc)
