@@ -167,75 +167,77 @@ namespace DrivingCenter.App.UserControl
             int SendTC = 0;
             var sortedList = lstPH.OrderBy(x => x.Time_LogOut).ToList();
 
-            for (int i = 0; i < sortedList.Count; i++)
+            // Gắn sẵn ErrorList để tránh trùng lặp
+            foreach (var item in sortedList)
             {
-                var item = sortedList[i];
+                item.ErrorList = new HashSet<string>();
+            }
 
-                var sb = new StringBuilder();
+            // PASS 1: Nghỉ thiếu & Trùng phiên
+            foreach (var grp in sortedList.GroupBy(x => new { x.NguoiLxID, x.TenKH }))
+            {
+                var sessions = grp.OrderBy(x => x.Time_LogIn).ToList();
 
+                for (int k = 1; k < sessions.Count; k++)
+                {
+                    var prev = sessions[k - 1];
+                    var curr = sessions[k];
+
+                    if (prev.Time_LogOut > curr.Time_LogIn)
+                    {
+                        curr.ErrorList.Add("Trùng phiên!");
+                        continue;
+                    }
+
+                    var gap = curr.Time_LogIn - prev.Time_LogOut;
+                    if (gap.TotalSeconds > 0 && gap.TotalSeconds < 900)
+                    {
+                        curr.ErrorList.Add("Nghỉ Thiếu!");
+                    }
+                }
+            }
+
+            // PASS 2: Các cảnh báo khác
+            foreach (var item in sortedList)
+            {
                 // Tỷ lệ nhận diện
-                item.TyLe = item.SoLanNhanDien > 0 ? Math.Round((double)item.SoLanNhanDienThanhCong / item.SoLanNhanDien * 100, 1) : 0;
-                if (item.TyLe < 75) sb.Append("Nhận Diện! ");
+                item.TyLe = item.SoLanNhanDien > 0
+                    ? Math.Round((double)item.SoLanNhanDienThanhCong / item.SoLanNhanDien * 100, 1)
+                    : 0;
+                if (item.TyLe < 75) item.ErrorList.Add("Nhận Diện!");
 
                 // Quãng đường
-                if (item.QuangDuongPhien < 5 && item.LogOut) sb.Append("Quãng đường <5! ");
+                if (item.QuangDuongPhien < 5 && item.LogOut) item.ErrorList.Add("Quãng đường <5!");
 
                 // Vận tốc
                 double vantoc = item.dbTime > 0 ? item.QuangDuongPhien / (item.dbTime / 3600) : 0;
-                if (vantoc < 20) sb.Append("Vận Tốc! ");
+                if (vantoc < 20) item.ErrorList.Add("Vận Tốc!");
 
                 // Đăng nhập sớm
-                if (item.Time_LogIn.Hour < 7) sb.Append("ĐN Sớm! ");
+                if (item.Time_LogIn.Hour < 7) item.ErrorList.Add("ĐN Sớm!");
 
-                // Chạy quá giờ
+                // Quá giờ
                 var logout = item.Time_LogOut;
-                if (logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)) sb.Append("Quá Giờ! ");
+                if (logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)) item.ErrorList.Add("Quá Giờ!");
 
-                // Kiểm tra ngày giờ theo khóa học
+                // Sai ngày giờ theo khóa học
                 int khoahoc = int.Parse(item.TenKH.Substring(item.TenKH.IndexOf("K") + 1));
-                if (IsInvalidCourseTime(item, khoahoc)) sb.Append("Sai ngày giờ! ");
+                if (IsInvalidCourseTime(item, khoahoc)) item.ErrorList.Add("Sai ngày giờ!");
 
                 // Gửi Tổng cục
                 if (item.LogOut && !item.SendTongCuc)
                 {
-                    sb.Append("... ");
+                    item.ErrorList.Add("...");
                     SendTC++;
                 }
 
-                // Kiểm tra trùng lặp phiên
-                for (int j = 0; j < sortedList.Count; j++)
-                {
-                    if (i == j) continue;
-                    var other = sortedList[j];
-                    if (item.NguoiLxID == other.NguoiLxID && item.TenKH == other.TenKH)
-                    {
-                        bool isOverlap = item.Time_LogIn < other.Time_LogOut && other.Time_LogIn < item.Time_LogOut;
-                        if (isOverlap)
-                        {
-                            sb.Append("Trùng phiên! ");
-                            break;
-                        }
-                    }
-                }
-
-                // Gán chuỗi lỗi
-                item.Error = sb.ToString();
-
-                // Kiểm tra nghỉ thiếu với phần tử tiếp theo (nếu có)
-                if (i < sortedList.Count - 1)
-                {
-                    var nextItem = sortedList[i + 1];
-                    if (nextItem.NguoiLxID == item.NguoiLxID && nextItem.TenKH == item.TenKH)
-                    {
-                        TimeSpan tp = nextItem.Time_LogIn - item.Time_LogOut;
-                        if (tp.TotalSeconds > 0 && tp.TotalSeconds < 900)
-                        {
-                            nextItem.Error += "Nghỉ Thiếu! ";
-                        }
-                    }
-                }
+                // Cuối cùng join lỗi lại thành chuỗi
+                item.Error = string.Join(" ", item.ErrorList);
             }
+
             return SendTC;
+
+
         }
 
         private bool IsInvalidCourseTime(PhienHoc item, int khoahoc)
