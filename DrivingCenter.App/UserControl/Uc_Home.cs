@@ -1,17 +1,9 @@
 ﻿using DevExpress.XtraCharts;
-using DevExpress.XtraEditors;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -84,8 +76,9 @@ namespace DrivingCenter.App.UserControl
                 for (int i = 1; i <= numDay; i++)
                 {
                     int Sophien = DAT_DAO.Instance.CountPhien(i, month, year);
-                    float TongKm = 2323; // Hoặc tính đúng ở đây
-                    tempList.Add(new ChartSoPhien(i.ToString(), Sophien.ToString(), TongKm.ToString()));
+                    //decimal TongKm = DAT_DAO.Instance.SumKmByDay(i, month, year);
+                    int TongSoKm = 1212;
+                    tempList.Add(new ChartSoPhien(i.ToString(), Sophien.ToString(), TongSoKm.ToString()));
                 }
 
                 return tempList;

@@ -253,6 +253,7 @@ namespace DrivingCenter.App.UserControl
                 : wk == DayOfWeek.Friday || wk == DayOfWeek.Saturday || wk == DayOfWeek.Sunday ||
                   (wk == DayOfWeek.Monday && (loginHour < 7 || logout.Hour > 12 || (logout.Hour == 12 && logout.Minute > 30)));
         }
+
         private void CheckPhInList(List<PhienHoc> lstPH)
         {
             ProcessPhienHoc(lstPH);
@@ -612,11 +613,11 @@ namespace DrivingCenter.App.UserControl
             int sophienhocLoginIsNull = list.Count();
             if (sophienhocLoginIsNull == 0)
             {
-                XtraMessageBox.Show(string.Format("Không có phiên học Login Is Null !"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Không có phiên học Login Is Null !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if (XtraMessageBox.Show(string.Format("Có {0} phiên học Login Is Null ! \n Bạn có chắc muốn xóa {0} phiên học Login Is Null? ", sophienhocLoginIsNull), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (XtraMessageBox.Show($"Có {sophienhocLoginIsNull} phiên học Login Is Null ! \n Bạn có chắc muốn xóa {sophienhocLoginIsNull} phiên học Login Is Null? " , "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     DAT_DAO.Instance.DeletePhienHocLoginIsNull(list);
                 }

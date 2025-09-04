@@ -1,4 +1,5 @@
-﻿using DrivingCenter.App.DataProvider;
+﻿using DevExpress.XtraCharts.Native;
+using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
@@ -109,15 +110,18 @@ namespace DrivingCenter.App.DAO
             return getValue == null ? 0 : (int)getValue;
         }
 
-        //public float SumKmByDay(int day, int month, int year)
-        //{
-        //    string query = string.Format("SELECT ROUND(SUM(TongQuangDuongLD_Phien),0) AS SoKm " +
-        //        "FROM DiemDanhNguoiLx " +
-        //        "WHERE ActivePhien = 1 AND ThoiDiem IS NOT NULL AND TongQuangDuongLD_Phien > 5 and convert(varchar, ThoiDiem, 103) = '{0:00}/{1:00}/{2:0000}'", day, month, year);
+        public decimal SumKmByDay(int day, int month, int year)
+        {
+            string query = string.Format("SELECT ROUND(SUM(TongQuangDuongLD_Phien),0) AS SoKm " +
+                "FROM DiemDanhNguoiLx " +
+                "WHERE ActivePhien = 1 AND ThoiDiem IS NOT NULL AND TongQuangDuongLD_Phien > 5 and convert(varchar, ThoiDiem, 103) = '{0:00}/{1:00}/{2:0000}'", day, month, year);
 
-        //    var getValue = DataProviderDAT.Instance.ExecuteScalar(query);
-        //    return getValue == null ? 0 : (float)getValue;
-        //}
+            var result = DataProviderDAT.Instance.ExecuteScalar(query);
+            if (result == null || result == DBNull.Value)
+                return 0;
+
+            return Convert.ToDecimal(result);
+        }
 
         #endregion Trang Home
 

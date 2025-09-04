@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DTO.DAT
 {
@@ -30,8 +26,6 @@ namespace DrivingCenter.App.DTO.DAT
         public string Error { get; set; }
         public bool Active { get; set; }
         public string Note { get; set; }
-        public HashSet<string> ErrorList { get; set; } = new HashSet<string>();
-
         public PhienHoc()
         {
 
