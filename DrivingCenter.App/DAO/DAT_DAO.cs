@@ -8,6 +8,7 @@ using GMap.NET;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -325,14 +326,30 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("UPDATE DiemDanhNguoiLx set Note = NULL, ActivePhien = 1 WHERE DiemDanhNguoiLxID = '{0}'", diemdanhnguoilxId);
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
-
+        private async Task SafeExecuteAsync(string query)
+        {
+            int retryCount = 3;
+            for (int i = 0; i < retryCount; i++)
+            {
+                try
+                {
+                    await DataProviderDAT.Instance.ExecuteNonQueryAsync(query);
+                    break; // thành công thì thoát
+                }
+                catch (SqlException ex) when (ex.Number == 1205) // Deadlock
+                {
+                    if (i == retryCount - 1) throw; // hết retry vẫn lỗi thì throw ra
+                    await Task.Delay(200); // đợi chút rồi chạy lại
+                }
+            }
+        }
         public async Task ReLoad(string date)
         {
             string query1 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',0,0", date);
             string query2 = string.Format("Exec spGetDiemDanhNguoiLxByDay '{0}',1,0", date);
 
-            await DataProviderDAT.Instance.ExecuteNonQueryAsync(query1);
-            await DataProviderDAT.Instance.ExecuteNonQueryAsync(query2);
+            await SafeExecuteAsync(query1);
+            await SafeExecuteAsync(query2);
         }
 
         public List<PhienHoc> GetAllPhienHocToDay(string day)

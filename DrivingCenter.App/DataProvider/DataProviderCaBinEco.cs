@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrivingCenter.App.Common;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,6 +14,7 @@ namespace DrivingCenter.App.DataProvider
     {
         private static DataProviderCaBinEco instance;
 
+        private string connectionString = AppConstants.connectionStringCabinEco;
         public static DataProviderCaBinEco Instance
         {
             get { if (instance == null) instance = new DataProviderCaBinEco(); return DataProviderCaBinEco.instance; }
@@ -22,12 +24,6 @@ namespace DrivingCenter.App.DataProvider
         public DataProviderCaBinEco()
         {
         }
-
-        //----Data test----
-        //private string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=EDS_CT;User ID=sa;Password=hieu*123";
-
-        //----Data Cabin----
-        private string connectionString = @"Data Source=192.168.10.19;Initial Catalog=EDS_CT;User ID=it;Password=hieu*123";
 
         // Thực thi query trả về DataTable
         public DataTable ExecuteQuery(string query, object parameters = null)

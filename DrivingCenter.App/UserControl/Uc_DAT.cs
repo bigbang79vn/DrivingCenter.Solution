@@ -12,7 +12,6 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,7 +41,7 @@ namespace DrivingCenter.App.UserControl
 
             LoadKhDangDaoTao();
 
-            refreshTimer = new System.Windows.Forms.Timer();
+            refreshTimer = new Timer();
             refreshTimer.Interval = minuteInterval * 60 * 1000;
             refreshTimer.Tick += refreshTimer_Tick;
             refreshTimer.Start();

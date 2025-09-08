@@ -404,6 +404,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AppConstants.cs" />
     <Compile Include="DAO\AppBee_DAO.cs" />
     <Compile Include="DAO\CabinEco_DAO.cs" />
     <Compile Include="DAO\CabinI2E_DAO.cs" />

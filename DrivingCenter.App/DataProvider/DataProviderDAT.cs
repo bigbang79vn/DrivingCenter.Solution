@@ -1,7 +1,8 @@
-﻿using System;
+﻿using DrivingCenter.App.Common;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -11,12 +12,11 @@ namespace DrivingCenter.App.DataProvider
 {
     public class DataProviderDAT
     {
+        // Chuỗi kết nối đến cơ sở dữ liệu
+        private readonly string connectionString = AppConstants.connectionStringDAT;
+
         // Singleton instance
         private static readonly DataProviderDAT instance = new DataProviderDAT();
-
-        private readonly string connectionString = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
-
-        //private readonly string connectionString = @"Data Source=117.3.1.31,1433;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
         // Private constructor cho Singleton
         private DataProviderDAT() { }

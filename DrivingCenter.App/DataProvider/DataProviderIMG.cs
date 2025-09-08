@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrivingCenter.App.Common;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
@@ -20,11 +21,8 @@ namespace DrivingCenter.App.DataProvider
         {
         }
 
-        //-------Server--------------------------
-        private string connectionString = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
-
-        //-------Server--------------------------
-        //private string connectionString = @"Data Source=117.3.1.31,1433;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+        // Chuỗi kết nối đến cơ sở dữ liệu
+        private string connectionString = AppConstants.connectionStringDatImg;
 
         public DataTable ExecuteQuery(string query, object parameters = null)
         {

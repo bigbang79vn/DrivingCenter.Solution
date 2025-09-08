@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraCharts.Native;
+using DrivingCenter.App.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,11 +25,8 @@ namespace DrivingCenter.App.DataProvider
         {
         }
 
-        //----Data test----
-        //private string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=I2ECABIN3D;User ID=sa;Password=hieu*123";
-
-        //----Data Cabin----
-        private string connectionString = @"Data Source=192.168.10.19;Initial Catalog=I2ECABIN3D;User ID=it;Password=hieu*123";
+        // Chuỗi kết nối đến cơ sở dữ liệu
+        private string connectionString = AppConstants.connectionStringCaBinEMC;
 
         // Thực thi query trả về DataTable
         public DataTable ExecuteQuery(string query, object parameters = null)
