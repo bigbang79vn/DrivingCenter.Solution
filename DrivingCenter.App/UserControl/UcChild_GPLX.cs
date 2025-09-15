@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DrivingCenter.App.Common;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.FReport;
@@ -341,17 +342,13 @@ namespace DrivingCenter.App.UserControl
                     DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn đúng Hạng Đào Tạo?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        string connectionString = @"Data Source=192.168.50.254;Initial Catalog=gplx_csdt;User ID=sa;Password=vNdc@123";
-
-                        //string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=gplx_csdt;User ID=sa;Password=123";
-
                         DapperPlusManager.Entity<NguoiLX>().Table("NguoiLX");
                         DapperPlusManager.Entity<NguoiLX_HoSo>().Table("NguoiLX_HoSo");
                         DapperPlusManager.Entity<NguoiLXHS_GT>().Table("[NguoiLXHS_GiayTo]");
 
                         if (lstNguoiLX != null && lstnguoiLX_HoSo != null && lstnguoiLXHS_GT != null)
                         {
-                            using (IDbConnection db = new SqlConnection(connectionString))
+                            using (IDbConnection db = new SqlConnection(AppConstants.connectionStringGplx))
                             {
                                 db.BulkInsert(lstNguoiLX);
                                 db.BulkInsert(lstnguoiLX_HoSo);

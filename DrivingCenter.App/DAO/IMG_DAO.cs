@@ -105,7 +105,7 @@ namespace DrivingCenter.App.DAO
 
         public DataTable GetDataPrintCCTN(string lstId)
         {
-            string query = string.Format("SELECT * FROM ReportCNTN WHERE Id IN (SELECT itemID FROM Split('{0}', ',')) ORDER BY SoCCTN ASC", lstId);
+            string query = $"SELECT * FROM ReportCNTN WHERE Id IN (SELECT itemID FROM Split('{lstId}', ',')) ORDER BY SoCCTN ASC";
             DataTable dt = DataProviderIMG.Instance.ExecuteQuery(query);
             return dt;
         }
