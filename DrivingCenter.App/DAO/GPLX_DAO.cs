@@ -1,4 +1,5 @@
-﻿using DevExpress.Pdf.Native;
+﻿using DevExpress.DataProcessing.InMemoryDataProcessor;
+using DevExpress.Pdf.Native;
 using DevExpress.Pdf.Native.BouncyCastle.Asn1.GM;
 using DrivingCenter.App.DTO.GPLX;
 using System;
@@ -85,6 +86,13 @@ namespace DrivingCenter.App.DAO
             string query = $"SELECT * FROM KhoaHoc WHERE MaKH = '{MaKH}'";
             DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
             return dt.Rows[0];
+        }
+
+        public string GenerateMaDK()
+        {
+            string query = "SELECT dbo.fn_GenerateMaHV('66015') AS NewMaHV;";
+            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            return result.ToString().Trim();
         }
 
         //public List<HvTotNghiep> GetHvTotNghiep()
@@ -205,7 +213,6 @@ namespace DrivingCenter.App.DAO
             DataProviderGPLX.Instance.ExecuteNonQuery(query);
 
         }
-
         #endregion
     }    
 }

@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.CodeParser;
+using DevExpress.DataProcessing.InMemoryDataProcessor;
+using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.Common;
 using DrivingCenter.App.DAO;
@@ -66,9 +68,12 @@ namespace DrivingCenter.App.UserControl
 
         public string MaDK()
         {
-            string prefix = "66015-";
-            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            return prefix + timestamp;
+            string prefix = GPLX_DAO.Instance.GenerateMaDK();
+            return prefix;
+
+            //string prefix = "66015-";
+            //string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            //return prefix + timestamp;
         }
 
         //public string ConvertNgaySinh(string birthday)
