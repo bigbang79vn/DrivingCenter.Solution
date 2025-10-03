@@ -81,6 +81,7 @@ namespace DrivingCenter.App.DAO
                            .ToList();
             return lstKH;
         }
+
         public DataRow KhoaHocSelected(string MaKH)
         {
             string query = $"SELECT * FROM KhoaHoc WHERE MaKH = '{MaKH}'";
@@ -90,7 +91,7 @@ namespace DrivingCenter.App.DAO
 
         public string GenerateMaDK()
         {
-            string query = "SELECT dbo.fn_GenerateMaHV('66015') AS NewMaHV;";
+            string query = "SELECT dbo.CreateNewMaDK('66015') AS NewMaHV;";
             object result = DataProviderGPLX.Instance.ExecuteScalar(query);
             return result.ToString().Trim();
         }
