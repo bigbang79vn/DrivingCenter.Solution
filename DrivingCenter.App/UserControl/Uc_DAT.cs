@@ -733,7 +733,7 @@ namespace DrivingCenter.App.UserControl
 
                 int hour = Convert.ToInt32(item.SThoiGian.Trim().Remove(2, 6));
                 int minute = Convert.ToInt32((item.SThoiGian.Trim().Substring(3)).Remove(2, 3));
-                DayOfWeek wk = dtp_PhByDay.DateTime.DayOfWeek;
+                DayOfWeek wk = dtp_TongHopGioDay.DateTime.DayOfWeek;
                 if (wk == DayOfWeek.Monday && hour == 5)
                 {
                     item.SGhiChu = "Quá Giờ! ";
