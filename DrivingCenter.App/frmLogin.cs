@@ -13,7 +13,7 @@ namespace DrivingCenter.App
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.Properties.UseSystemPasswordChar = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -34,14 +34,14 @@ namespace DrivingCenter.App
         private void btnHide_Click(object sender, EventArgs e)
         {
             isPasswordVisible = true;
-            txtPassword.UseSystemPasswordChar = isPasswordVisible;
+            txtPassword.Properties.UseSystemPasswordChar = isPasswordVisible;
             btnShow.BringToFront();
         }
 
         private void btnShow_Click(object sender, EventArgs e)
         {
             isPasswordVisible = false;
-            txtPassword.UseSystemPasswordChar = isPasswordVisible;
+            txtPassword.Properties.UseSystemPasswordChar = isPasswordVisible;
             btnHide.BringToFront();
         }
     }

@@ -476,36 +476,8 @@ namespace DrivingCenter.App.UserControl
 
                         HvTotNghiep nguoiLxCCTN = new HvTotNghiep();
                         nguoiLxCCTN.MaDK = dt.Rows[i]["MaDK"].ToString().ToUpper();
-                        nguoiLxCCTN.HoVaTen = dt.Rows[i]["Ho"].ToString() + " " + dt.Rows[i]["Ten"].ToString();
-                        nguoiLxCCTN.NgaySinh = (dt.Rows[i]["NgaySinh"].ToString()).Substring(0, 10);
-                        nguoiLxCCTN.GioiTinh = dt.Rows[i]["GioiTinh"].ToString();
-                        nguoiLxCCTN.HangGPLX = dt.Rows[i]["Lop"].ToString().Substring(0, dt.Rows[i]["Lop"].ToString().IndexOf("-"));
-                        nguoiLxCCTN.XepLoaiTN = dt.Rows[i]["XepLoai"].ToString();
+                        nguoiLxCCTN.ThoiGianDT = Convert.ToInt32(dt.Rows[i]["ThoiGianDT"]);
                         nguoiLxCCTN.NgayQDTN = dtp_NgayQD.DateTime.ToString("dd/MM/yyyy");
-                        nguoiLxCCTN.NgayQDTNEng = dtp_NgayQD.DateTime.ToString("dd MMMM yyyy");
-                        nguoiLxCCTN.SoChungChi = "Q01/" + dt.Rows[i]["Lop"].ToString() + "/" + dt.Rows[i]["SoCNTN"].ToString();
-                        nguoiLxCCTN.SoCCTN = dt.Rows[i]["SoCNTN"].ToString() + " " + "LX" + dt.Rows[i]["Lop"].ToString();
-                        nguoiLxCCTN.SoVaoSo = $"Q{txt_SoSoCNTN.Text}/{dt.Rows[i]["SoCNTN"].ToString()}";
-                        nguoiLxCCTN.HoVaTenEng = StringUtil.RemoveVietnameseSign(dt.Rows[i]["Ho"].ToString() + " " + dt.Rows[i]["Ten"].ToString());
-                        if (nguoiLxCCTN.GioiTinh == "Nam")
-                            nguoiLxCCTN.GioiTinhEng = "Mr";
-                        else
-                            nguoiLxCCTN.GioiTinhEng = "Ms";
-                        var ngaysinh = Convert.ToDateTime(dt.Rows[i]["NgaySinh"]);
-                        nguoiLxCCTN.NgaySinhEng = ngaysinh.ToString("dd MMMM yyyy");
-                        if (nguoiLxCCTN.XepLoaiTN == "Xuất sắc")
-                            nguoiLxCCTN.XepLoaiTNEng = "Excellent";
-                        else if (nguoiLxCCTN.XepLoaiTN == "Giỏi")
-                            nguoiLxCCTN.XepLoaiTNEng = "Very good";
-                        else if (nguoiLxCCTN.XepLoaiTN == "Khá")
-                            nguoiLxCCTN.XepLoaiTNEng = "Good";
-                        else if (nguoiLxCCTN.XepLoaiTN == "TB Khá")
-                            nguoiLxCCTN.XepLoaiTNEng = "Average Good";
-                        else
-                            nguoiLxCCTN.XepLoaiTNEng = "Average";
-                        //nguoiLxCCTN.HangGPLXEng = "Class " + dt.Rows[i]["Lop"].ToString().Substring(0, dt.Rows[i]["Lop"].ToString().IndexOf("-")) + " car-driving";
-                        nguoiLxCCTN.HangGPLXEng = "Class B car-driving";
-                        nguoiLxCCTN.HinhAnh = "";
 
                         lstNguoiLxCCTN.Add(nguoiLxCCTN);
                     }
@@ -516,24 +488,24 @@ namespace DrivingCenter.App.UserControl
                     DialogResult dialogResult = XtraMessageBox.Show("Bạn chắc chắn đúng cập nhật kết quả?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        if (toggleSwitch_UpdateResult.IsOn)
-                        {
-                            if (lstNguoiLxUpdates != null)
-                            {
-                                foreach (NguoiLX_HoSo_Update item in lstNguoiLxUpdates)
-                                {
-                                    GPLX_DAO.Instance.UpdateResultGraduate(item);
-                                }
-                            }
-                            XtraMessageBox.Show(string.Format("Cập nhật kết quả tốt nghiệp thành công {0} học viên!", lstNguoiLxUpdates.Count));
-                        }
+                        //if (toggleSwitch_UpdateResult.IsOn)
+                        //{
+                        //    if (lstNguoiLxUpdates != null)
+                        //    {
+                        //        foreach (NguoiLX_HoSo_Update item in lstNguoiLxUpdates)
+                        //        {
+                        //            GPLX_DAO.Instance.UpdateResultGraduate(item);
+                        //        }
+                        //    }
+                        //    XtraMessageBox.Show(string.Format("Cập nhật kết quả tốt nghiệp thành công {0} học viên!", lstNguoiLxUpdates.Count));
+                        //}
 
                         if (lstNguoiLxCCTN != null)
                         {
-                            int status = IMG_DAO.Instance.DeleteDataReportOld();
+                            int status = GPLX_DAO.Instance.DeleteDataReportOld();
                             foreach (HvTotNghiep item in lstNguoiLxCCTN)
                             {
-                                IMG_DAO.Instance.InsertDataReportCNTN(item);
+                                GPLX_DAO.Instance.InsertDataReportCNTN(item);
                             }
                             XtraMessageBox.Show(string.Format("Cập nhật kết quả thành công dữ liệu in CCTN {0} học viên!", lstNguoiLxCCTN.Count));
                         }
@@ -558,16 +530,10 @@ namespace DrivingCenter.App.UserControl
 
         public void LoadlstStudentInReportCNTN()
         {
-            List<HvTotNghiep> lst = IMG_DAO.Instance.GetHvTotNghiep();
-
-            int stt = 0;
-            foreach (HvTotNghiep item in lst)
-            {
-                item.STT = stt + 1;
-                stt++;
-            }
+            List<HvTotNghiep> lst = GPLX_DAO.Instance.GetHvTotNghiep();
 
             grd_Certificate.DataSource = lst;
+            GridHelper.EnableRowNumbering(gridView_Certificate);
         }
 
         private void windowsUIButtonPanelMain_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
@@ -582,7 +548,7 @@ namespace DrivingCenter.App.UserControl
 
             foreach (int rowHandle in selectedRowHandles)
             {
-                var cellValue = gridView_Certificate.GetRowCellValue(rowHandle, "Id");
+                var cellValue = gridView_Certificate.GetRowCellValue(rowHandle, "MaDK");
 
                 lstId = lstId + "," + cellValue;
             }
@@ -594,9 +560,9 @@ namespace DrivingCenter.App.UserControl
             else if (button.Caption == "Print B2")
             {
                 HangDT = 2;
-                if (lstId != "")
+                if (!string.IsNullOrEmpty(lstId))
                 {
-                    DataTable dt = IMG_DAO.Instance.GetDataPrintCCTN(lstId);
+                    DataTable dt = GPLX_DAO.Instance.GetDataPrintCCTN(lstId);
                     rptPrintReportCNTN f = new rptPrintReportCNTN(dt, HangDT);
                     f.Show();
                 }
@@ -610,7 +576,7 @@ namespace DrivingCenter.App.UserControl
                 HangDT = 1;
                 if (lstId != "")
                 {
-                    DataTable dt = IMG_DAO.Instance.GetDataPrintCCTN(lstId);
+                    DataTable dt = GPLX_DAO.Instance.GetDataPrintCCTN(lstId);
                     rptPrintReportCNTN f = new rptPrintReportCNTN(dt, HangDT);
                     f.Show();
                 }
@@ -621,9 +587,9 @@ namespace DrivingCenter.App.UserControl
             }
             else if (button.Caption == "Print")
             {
-                if (lstId != "")
+                if (!string.IsNullOrEmpty(lstId))
                 {
-                    DataTable dt = IMG_DAO.Instance.GetDataPrintCCTN(lstId);
+                    DataTable dt = GPLX_DAO.Instance.GetDataPrintCCTN(lstId);
 
                     new ReportPrintTool(new rptCertificate { DataSource = dt }).ShowPreview();
                 }
@@ -658,13 +624,12 @@ namespace DrivingCenter.App.UserControl
                     var result = XtraMessageBox.Show(string.Format("Cập nhật thông tin học viên {0}?", HoVaTen), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (result == DialogResult.OK)
                     {
-                        IMG_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng, SoVaoSo);
+                        GPLX_DAO.Instance.UpdateInfo(MaDK, HoVaTen, HoVaTenEng, NgaySinh, NgaySinhEng, GioiTinh, GioiTinhEng, SoVaoSo);
                     }
                     LoadlstStudentInReportCNTN();
                 }
             }
         }
-
         #endregion In chứng chỉ tốt nghiệp
     }
 }

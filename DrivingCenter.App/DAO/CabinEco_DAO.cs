@@ -281,23 +281,23 @@ namespace DrivingCenter.App.DAO
             return lstGiaoVien;
         }
 
-        public void InsertTeacherNew(GiaoVien GV)
+        public void InsertTeacherNew(GiaoVien gv)
         {
             string query = @"
                         INSERT INTO [dbo].[tblGiaoVien] 
                         ([GiaoVienID], [MaGV], [HoTenDem], [TenGV], [NgaySinh], [SoCMT], [HangGPLX], [SuDung]) 
                         VALUES 
-                        (@GiaoVienID, @MaGV, @HoTenDem, @TenGV, @NgaySinh, @SoCMT, @HangGPLX, 1);";
+                        (@giaoVienID, @maGV, @hoTenDem, @tenGV, @ngaySinh, @soCMT, @hangGPLX, 1);";
 
             var parameters = new
             {
-                GiaoVienID = GV.GiaoVienID,
-                MaGV = GV.MaGV,
-                HoTenDem = GV.HoTenDem,
-                TenGV = GV.TenGV,
-                NgaySinh = GV.NgaySinh,
-                SoCMT = GV.SoCMT,
-                HangGPLX = GV.HangGPLX
+                giaoVienID = gv.GiaoVienID,
+                maGV = gv.MaGV,
+                hoTenDem = gv.HoTenDem,
+                tenGV = gv.TenGV,
+                ngaySinh = gv.NgaySinh,
+                soCMT = gv.SoCMT,
+                hangGPLX = gv.HangGPLX
             };
 
             DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);

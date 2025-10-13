@@ -39,14 +39,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnShow = new DevExpress.XtraEditors.SimpleButton();
             this.btnHide = new DevExpress.XtraEditors.SimpleButton();
-            this.txtPassword = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtUserName = new DevExpress.XtraEditors.TextEdit();
+            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.chkRemember = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,7 +58,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(278, 268);
+            this.panel1.Size = new System.Drawing.Size(278, 263);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -84,12 +85,17 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 268);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 263);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnShow);
+            this.panel2.Controls.Add(this.btnHide);
+            this.panel2.Controls.Add(this.chkRemember);
+            this.panel2.Controls.Add(this.txtPassword);
+            this.panel2.Controls.Add(this.txtUserName);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnLogin);
@@ -100,7 +106,7 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
-            this.panel2.Size = new System.Drawing.Size(417, 268);
+            this.panel2.Size = new System.Drawing.Size(417, 263);
             this.panel2.TabIndex = 1;
             // 
             // label1
@@ -147,13 +153,10 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.btnShow);
-            this.panel4.Controls.Add(this.btnHide);
-            this.panel4.Controls.Add(this.txtPassword);
-            this.panel4.Location = new System.Drawing.Point(36, 132);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panel4.Location = new System.Drawing.Point(36, 154);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(342, 32);
+            this.panel4.Size = new System.Drawing.Size(342, 1);
             this.panel4.TabIndex = 0;
             // 
             // btnShow
@@ -167,7 +170,7 @@
             this.btnShow.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnShow.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnShow.ImageOptions.SvgImage")));
             this.btnShow.ImageOptions.SvgImageSize = new System.Drawing.Size(18, 18);
-            this.btnShow.Location = new System.Drawing.Point(310, 0);
+            this.btnShow.Location = new System.Drawing.Point(346, 120);
             this.btnShow.Name = "btnShow";
             this.btnShow.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnShow.Size = new System.Drawing.Size(32, 32);
@@ -185,49 +188,66 @@
             this.btnHide.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnHide.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHide.ImageOptions.SvgImage")));
             this.btnHide.ImageOptions.SvgImageSize = new System.Drawing.Size(18, 18);
-            this.btnHide.Location = new System.Drawing.Point(310, 0);
+            this.btnHide.Location = new System.Drawing.Point(346, 121);
             this.btnHide.Name = "btnHide";
             this.btnHide.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnHide.Size = new System.Drawing.Size(32, 32);
             this.btnHide.TabIndex = 1;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Roboto Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(13, 7);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(288, 19);
-            this.txtPassword.TabIndex = 0;
-            this.txtPassword.Text = "admin";
-            this.txtPassword.UseSystemPasswordChar = true;
-            // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.txtUserName);
-            this.panel3.Location = new System.Drawing.Point(36, 89);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panel3.Location = new System.Drawing.Point(36, 114);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(342, 32);
+            this.panel3.Size = new System.Drawing.Size(342, 1);
             this.panel3.TabIndex = 0;
             // 
             // txtUserName
             // 
-            this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUserName.Font = new System.Drawing.Font("Roboto Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(13, 7);
+            this.txtUserName.EditValue = "admin";
+            this.txtUserName.Location = new System.Drawing.Point(49, 83);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(288, 19);
-            this.txtUserName.TabIndex = 0;
-            this.txtUserName.Text = "admin";
+            this.txtUserName.Properties.Appearance.Font = new System.Drawing.Font("Roboto Light", 11.25F);
+            this.txtUserName.Properties.Appearance.Options.UseFont = true;
+            this.txtUserName.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtUserName.Properties.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("txtUserName.Properties.ContextImageOptions.SvgImage")));
+            this.txtUserName.Properties.ContextImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+            this.txtUserName.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.txtUserName.Size = new System.Drawing.Size(329, 27);
+            this.txtUserName.TabIndex = 4;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.EditValue = "admin";
+            this.txtPassword.Location = new System.Drawing.Point(49, 122);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Roboto Light", 11.25F);
+            this.txtPassword.Properties.Appearance.Options.UseFont = true;
+            this.txtPassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtPassword.Properties.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("txtPassword.Properties.ContextImageOptions.SvgImage")));
+            this.txtPassword.Properties.ContextImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+            this.txtPassword.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.txtPassword.Size = new System.Drawing.Size(329, 27);
+            this.txtPassword.TabIndex = 5;
+            // 
+            // chkRemember
+            // 
+            this.chkRemember.AutoSize = true;
+            this.chkRemember.Font = new System.Drawing.Font("Roboto Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRemember.Location = new System.Drawing.Point(273, 161);
+            this.chkRemember.Name = "chkRemember";
+            this.chkRemember.Size = new System.Drawing.Size(105, 18);
+            this.chkRemember.TabIndex = 7;
+            this.chkRemember.Text = "Remember me";
+            this.chkRemember.UseVisualStyleBackColor = true;
             // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 268);
+            this.ClientSize = new System.Drawing.Size(693, 263);
             this.Controls.Add(this.tableLayoutPanel1);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("frmLogin.IconOptions.SvgImage")));
             this.MaximizeBox = false;
@@ -240,10 +260,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,10 +276,11 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtUserName;
         private DevExpress.XtraEditors.SimpleButton btnHide;
         private DevExpress.XtraEditors.SimpleButton btnShow;
+        private DevExpress.XtraEditors.TextEdit txtUserName;
+        private System.Windows.Forms.CheckBox chkRemember;
+        private DevExpress.XtraEditors.TextEdit txtPassword;
     }
 }

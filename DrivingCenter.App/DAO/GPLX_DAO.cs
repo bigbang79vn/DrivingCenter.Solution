@@ -1,6 +1,7 @@
 ﻿using DevExpress.DataProcessing.InMemoryDataProcessor;
 using DevExpress.Pdf.Native;
 using DevExpress.Pdf.Native.BouncyCastle.Asn1.GM;
+using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.GPLX;
 using System;
 using System.Collections.Generic;
@@ -96,25 +97,7 @@ namespace DrivingCenter.App.DAO
             return result.ToString().Trim();
         }
 
-        //public List<HvTotNghiep> GetHvTotNghiep()
-        //{
-        //    List<HvTotNghiep> lst = new List<HvTotNghiep>();
-        //    DataTable dt = DataProviderGPLX.Instance.ExecuteQuery("SELECT * FROM ReportCNTN ORDER BY SoCCTN ASC");
-
-        //    lst = dt.AsEnumerable().Select(item => new HvTotNghiep
-        //    {
-        //        Id = (int)item["Id"],
-        //        MaDK = item["MaDK"].ToString(),
-        //        HoVaTen = item["HoVaTen"].ToString(),
-        //        NgaySinh = item["NgaySinh"].ToString(),
-        //        GioiTinh = item["GioiTinh"].ToString(),
-        //        HangGPLX = item["HangGPLX"].ToString(),
-        //        XepLoai = item["XepLoaiTN"].ToString(),
-        //        SoCCTN = item["SoCCTN"].ToString(),
-        //        SoVaoSo = item["SoVaoSo"].ToString()
-        //    }).OrderBy(x => x.SoCCTN).ToList();
-        //    return lst;
-        //}
+        //Giấy xác nhận hoàn thành khóa học
 
         //public DataTable GetDataPrintCCTN(string lstId)
         //{
@@ -129,6 +112,89 @@ namespace DrivingCenter.App.DAO
                 "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
                 nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
             DataProviderGPLX.Instance.ExecuteNonQuery(query);
+        }
+        public int DeleteDataReportOld()
+        {
+            int status = 0;
+            try
+            {
+                string query = string.Format("DELETE VNDC_ReportCNTN");
+                return status = DataProviderGPLX.Instance.ExecuteNonQuery(query);
+            }
+            catch
+            {
+                return status;
+            }
+        }
+
+        public List<HvTotNghiep> GetHvTotNghiep()
+        {
+            List<HvTotNghiep> lst = new List<HvTotNghiep>();
+            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery("SELECT * FROM VNDC_ReportCNTN ORDER BY SoCCTN ASC");
+
+            lst = dt.AsEnumerable().Select(item => new HvTotNghiep
+            {
+                Id = (int)item["Id"],
+                MaDK = item["MaDK"].ToString(),
+                HoVaTen = item["HoVaTen"].ToString(),
+                NgaySinh = item["NgaySinh"].ToString(),
+                GioiTinh = item["GioiTinh"].ToString(),
+                HangGPLX = item["HangDT"].ToString(),
+                ThoiGianDT = item["ThoiGianDT"] == DBNull.Value ? 0 : (int)item["ThoiGianDT"],
+                NgayKG = item["NgayKG"].ToString(),
+                NgayBG = item["NgayBG"].ToString(),
+                SoCCTN = item["SoCCTN"].ToString(),
+                SoVaoSo = item["SoVaoSo"].ToString()
+            }).OrderBy(x => x.SoCCTN).ToList();
+            return lst;
+        }
+
+        public void InsertDataReportCNTN(HvTotNghiep nguoiLx_CCTN)
+        {
+            //string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
+            //        @MaDK = '{nguoiLx_CCTN.MaDK}', 
+            //        @HoVaTen = N'{nguoiLx_CCTN.HoVaTen}', 
+            //        @NgaySinh = '{nguoiLx_CCTN.NgaySinh}',
+            //        @GioiTinh = N'{nguoiLx_CCTN.GioiTinh}', 
+            //        @HangGPLX = N'{nguoiLx_CCTN.HangGPLX}', 
+            //        @XepLoaiTN = N'{nguoiLx_CCTN.XepLoaiTN}', 
+            //        @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}',
+            //        @SoChungChi = '{nguoiLx_CCTN.SoChungChi}',
+            //        @SoCCTN = '{nguoiLx_CCTN.SoCCTN}', 
+            //        @SoVaoSo = '{nguoiLx_CCTN.SoVaoSo}',
+            //        @HoVaTenEng = '{nguoiLx_CCTN.HoVaTenEng}',
+            //        @GioiTinhEng = '{nguoiLx_CCTN.GioiTinhEng}', 
+            //        @NgaySinhEng = '{nguoiLx_CCTN.NgaySinhEng}',
+            //        @XepLoaiTNEng = '{nguoiLx_CCTN.XepLoaiTNEng}', 
+            //        @NgayQDTNEng = '{nguoiLx_CCTN.NgayQDTNEng}',
+            //        @HangGPLXEng = '{nguoiLx_CCTN.HangGPLXEng}'";
+
+            string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
+                    @MaDK = '{nguoiLx_CCTN.MaDK}',
+                    @ThoiGianDT = {nguoiLx_CCTN.ThoiGianDT},
+                    @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}'";
+
+            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+        }
+
+        public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng, string sovaoso)
+        {
+            string query = $@"UPDATE VNDC_ReportCNTN SET HoVaTen = N'{hoten}', 
+                NgaySinh = '{ngaysinh}', 
+                GioiTinh = N'{gioitinh}', 
+                HoVaTenEng = '{hotenEng}', 
+                NgaySinhEng = '{ngaysinhEng}',
+                GioiTinhEng = '{gioitinhEng}',
+                SoVaoSo = '{sovaoso}'
+                WHERE MaDK = '{madk}'";
+            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+        }
+
+        public DataTable GetDataPrintCCTN(string lstMaDK)
+        {
+            string query = $"SELECT * FROM VNDC_ReportCNTN WHERE MaDK IN (SELECT itemID FROM dbo.VNDC_Split('{@lstMaDK}', ',')) ORDER BY SoCCTN ASC";
+            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            return dt;
         }
 
         #region Xếp Lớp
