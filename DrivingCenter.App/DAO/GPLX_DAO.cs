@@ -1,16 +1,10 @@
-﻿using DevExpress.DataProcessing.InMemoryDataProcessor;
-using DevExpress.Pdf.Native;
-using DevExpress.Pdf.Native.BouncyCastle.Asn1.GM;
-using DrivingCenter.App.DataProvider;
-using DrivingCenter.App.DTO.GPLX;
+﻿using DrivingCenter.App.DTO.GPLX;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App.DAO

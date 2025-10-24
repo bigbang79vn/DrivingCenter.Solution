@@ -30,23 +30,23 @@ namespace DrivingCenter.App.UserControl
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_CabinEco));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule5 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue5 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule6 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue6 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.Result = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Result_Col = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoCheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -91,11 +91,6 @@ namespace DrivingCenter.App.UserControl
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbb_KhoaHocEco = new DevExpress.XtraEditors.LookUpEdit();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.cbb_Cabin = new DevExpress.XtraEditors.LookUpEdit();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dt_TimeStart = new DevExpress.XtraEditors.DateEdit();
             this.LayoutPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -126,6 +121,9 @@ namespace DrivingCenter.App.UserControl
             this.ThoiDiemBatDau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemKetThuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TongThoiGianPhien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTab_BaiTapChuaHoanThanh = new DevExpress.XtraTab.XtraTabPage();
+            this.lblBaiTap = new System.Windows.Forms.Label();
+            this.lblTieuDe = new System.Windows.Forms.Label();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tblLayout_ThongKe = new System.Windows.Forms.TableLayoutPanel();
             this.grd_ThongKe = new DevExpress.XtraGrid.GridControl();
@@ -174,9 +172,12 @@ namespace DrivingCenter.App.UserControl
             this.NgayKhaiGiang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayBeGiang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDaoTao = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lblTieuDe = new System.Windows.Forms.Label();
-            this.lblBaiTap = new System.Windows.Forms.Label();
-            this.xtraTab_BaiTapChuaHoanThanh = new DevExpress.XtraTab.XtraTabPage();
+            this.dt_TimeStart = new DevExpress.XtraEditors.DateEdit();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbb_Cabin = new DevExpress.XtraEditors.LookUpEdit();
+            this.checkbox = new DevExpress.XtraEditors.CheckEdit();
+            this.panel12 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ToggleSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
@@ -190,10 +191,6 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.gridview_HocVien)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocEco.Properties)).BeginInit();
-            this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).BeginInit();
             this.LayoutPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -205,6 +202,7 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.grd_Result)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkDanhMucBaiTap)).BeginInit();
+            this.xtraTab_BaiTapChuaHoanThanh.SuspendLayout();
             this.navigationPage2.SuspendLayout();
             this.tblLayout_ThongKe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ThongKe)).BeginInit();
@@ -230,7 +228,11 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaKH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_QuanLyKhoaHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_QLKhoaHoc)).BeginInit();
-            this.xtraTab_BaiTapChuaHoanThanh.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkbox.Properties)).BeginInit();
+            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // Result
@@ -334,17 +336,17 @@ namespace DrivingCenter.App.UserControl
             this.TileBar_DangDaoTao.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.TileBar_DangDaoTao.AppearanceItem.Normal.Options.UseBackColor = true;
             this.TileBar_DangDaoTao.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.Text = "Đang Đào Tạo";
-            this.TileBar_DangDaoTao.Elements.Add(tileItemElement4);
+            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement1.Text = "Đang Đào Tạo";
+            this.TileBar_DangDaoTao.Elements.Add(tileItemElement1);
             this.TileBar_DangDaoTao.Name = "TileBar_DangDaoTao";
             // 
             // TileBar_TongHop
             // 
             this.TileBar_TongHop.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement5.Text = "Tổng Hợp";
-            this.TileBar_TongHop.Elements.Add(tileItemElement5);
+            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement2.Text = "Tổng Hợp";
+            this.TileBar_TongHop.Elements.Add(tileItemElement2);
             this.TileBar_TongHop.Id = 2;
             this.TileBar_TongHop.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.TileBar_TongHop.Name = "TileBar_TongHop";
@@ -352,9 +354,9 @@ namespace DrivingCenter.App.UserControl
             // TileBar_KhoaHoc
             // 
             this.TileBar_KhoaHoc.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement6.Text = "Khóa Học";
-            this.TileBar_KhoaHoc.Elements.Add(tileItemElement6);
+            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement3.Text = "Khóa Học";
+            this.TileBar_KhoaHoc.Elements.Add(tileItemElement3);
             this.TileBar_KhoaHoc.Id = 3;
             this.TileBar_KhoaHoc.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.TileBar_KhoaHoc.Name = "TileBar_KhoaHoc";
@@ -404,6 +406,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage1
             // 
+            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.tblLayout_Result);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
@@ -606,28 +609,28 @@ namespace DrivingCenter.App.UserControl
             this.Result,
             this.TenGV,
             this.HangGPLX});
-            gridFormatRule5.ApplyToRow = true;
-            gridFormatRule5.Column = this.Result;
-            gridFormatRule5.Name = "Format_True";
-            formatConditionRuleValue5.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.Navy;
-            formatConditionRuleValue5.Appearance.Options.UseFont = true;
-            formatConditionRuleValue5.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue5.Value1 = "True";
-            gridFormatRule5.Rule = formatConditionRuleValue5;
-            gridFormatRule6.ApplyToRow = true;
-            gridFormatRule6.Column = this.Result;
-            gridFormatRule6.Name = "Format_False";
-            formatConditionRuleValue6.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue6.Appearance.Options.UseFont = true;
-            formatConditionRuleValue6.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue6.Value1 = "False";
-            gridFormatRule6.Rule = formatConditionRuleValue6;
-            this.gridview_HocVien.FormatRules.Add(gridFormatRule5);
-            this.gridview_HocVien.FormatRules.Add(gridFormatRule6);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.Result;
+            gridFormatRule1.Name = "Format_True";
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Navy;
+            formatConditionRuleValue1.Appearance.Options.UseFont = true;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "True";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.Result;
+            gridFormatRule2.Name = "Format_False";
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue2.Appearance.Options.UseFont = true;
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "False";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridview_HocVien.FormatRules.Add(gridFormatRule1);
+            this.gridview_HocVien.FormatRules.Add(gridFormatRule2);
             this.gridview_HocVien.GridControl = this.grd_HocVien;
             this.gridview_HocVien.GroupCount = 1;
             this.gridview_HocVien.GroupRowHeight = 32;
@@ -780,78 +783,6 @@ namespace DrivingCenter.App.UserControl
             this.cbb_KhoaHocEco.Size = new System.Drawing.Size(392, 27);
             this.cbb_KhoaHocEco.TabIndex = 0;
             this.cbb_KhoaHocEco.EditValueChanged += new System.EventHandler(this.cbb_KhoaHocEco_EditValueChanged);
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.cbb_Cabin);
-            this.panel12.Controls.Add(this.label16);
-            this.panel12.Controls.Add(this.label15);
-            this.panel12.Controls.Add(this.dt_TimeStart);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(3, 647);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(499, 29);
-            this.panel12.TabIndex = 2;
-            // 
-            // cbb_Cabin
-            // 
-            this.cbb_Cabin.Location = new System.Drawing.Point(107, 3);
-            this.cbb_Cabin.Name = "cbb_Cabin";
-            this.cbb_Cabin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_Cabin.Properties.Appearance.Options.UseFont = true;
-            this.cbb_Cabin.Properties.Appearance.Options.UseTextOptions = true;
-            this.cbb_Cabin.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_Cabin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbb_Cabin.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IdThietBi", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameCabin", "Cabin", 35, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GhiChu", "Ghi Chú", 65, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cbb_Cabin.Properties.DropDownRows = 4;
-            this.cbb_Cabin.Properties.NullText = "Chọn Cabin";
-            this.cbb_Cabin.Size = new System.Drawing.Size(100, 24);
-            this.cbb_Cabin.TabIndex = 4;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(251, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 18);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Time:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(22, 7);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 18);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Cabin:";
-            // 
-            // dt_TimeStart
-            // 
-            this.dt_TimeStart.EditValue = null;
-            this.dt_TimeStart.Location = new System.Drawing.Point(313, 3);
-            this.dt_TimeStart.Name = "dt_TimeStart";
-            this.dt_TimeStart.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_TimeStart.Properties.Appearance.Options.UseFont = true;
-            this.dt_TimeStart.Properties.Appearance.Options.UseTextOptions = true;
-            this.dt_TimeStart.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.dt_TimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dt_TimeStart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dt_TimeStart.Properties.DisplayFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
-            this.dt_TimeStart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dt_TimeStart.Properties.EditFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
-            this.dt_TimeStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dt_TimeStart.Properties.MaskSettings.Set("mask", "HH:mm:ss dd-MM-yyyy");
-            this.dt_TimeStart.Size = new System.Drawing.Size(186, 24);
-            this.dt_TimeStart.TabIndex = 1;
             // 
             // LayoutPanel
             // 
@@ -1111,15 +1042,15 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions6.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
-            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
-            windowsUIButtonImageOptions8.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions3.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -1318,6 +1249,37 @@ namespace DrivingCenter.App.UserControl
             this.TongThoiGianPhien.VisibleIndex = 5;
             this.TongThoiGianPhien.Width = 218;
             // 
+            // xtraTab_BaiTapChuaHoanThanh
+            // 
+            this.xtraTab_BaiTapChuaHoanThanh.Controls.Add(this.lblBaiTap);
+            this.xtraTab_BaiTapChuaHoanThanh.Controls.Add(this.lblTieuDe);
+            this.xtraTab_BaiTapChuaHoanThanh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTab_BaiTapChuaHoanThanh.ImageOptions.SvgImage")));
+            this.xtraTab_BaiTapChuaHoanThanh.Name = "xtraTab_BaiTapChuaHoanThanh";
+            this.xtraTab_BaiTapChuaHoanThanh.Size = new System.Drawing.Size(949, 326);
+            this.xtraTab_BaiTapChuaHoanThanh.Text = "Ghi Chú";
+            // 
+            // lblBaiTap
+            // 
+            this.lblBaiTap.AutoSize = true;
+            this.lblBaiTap.Font = new System.Drawing.Font("Roboto Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaiTap.ForeColor = System.Drawing.Color.DimGray;
+            this.lblBaiTap.Location = new System.Drawing.Point(37, 84);
+            this.lblBaiTap.Name = "lblBaiTap";
+            this.lblBaiTap.Size = new System.Drawing.Size(77, 20);
+            this.lblBaiTap.TabIndex = 16;
+            this.lblBaiTap.Text = "TenBaiTap";
+            // 
+            // lblTieuDe
+            // 
+            this.lblTieuDe.AutoSize = true;
+            this.lblTieuDe.Font = new System.Drawing.Font("Roboto Condensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTieuDe.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTieuDe.Location = new System.Drawing.Point(33, 45);
+            this.lblTieuDe.Name = "lblTieuDe";
+            this.lblTieuDe.Size = new System.Drawing.Size(183, 26);
+            this.lblTieuDe.TabIndex = 12;
+            this.lblTieuDe.Text = "BÀI TẬP CHƯA HỌC";
+            // 
             // navigationPage2
             // 
             this.navigationPage2.Caption = "navigationPage2";
@@ -1401,17 +1363,17 @@ namespace DrivingCenter.App.UserControl
             this.CabinName,
             this.TotalHour,
             this.Result_Col});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.Result_Col;
-            gridFormatRule1.Name = "Format";
-            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue1.Appearance.Options.UseFont = true;
-            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = "False";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView_TongHop.FormatRules.Add(gridFormatRule1);
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Column = this.Result_Col;
+            gridFormatRule3.Name = "Format";
+            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = "False";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            this.gridView_TongHop.FormatRules.Add(gridFormatRule3);
             this.gridView_TongHop.GridControl = this.grd_ThongKe;
             this.gridView_TongHop.GroupCount = 1;
             this.gridView_TongHop.GroupRowHeight = 32;
@@ -1831,13 +1793,13 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions9.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
-            windowsUIButtonImageOptions10.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions10.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions10.SvgImage")));
+            windowsUIButtonImageOptions4.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Thêm Khóa Học", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Thêm Khóa Học", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cập Nhật", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
@@ -1940,20 +1902,20 @@ namespace DrivingCenter.App.UserControl
             this.NgayBeGiang,
             this.HangDaoTao,
             this.Status});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.Status;
-            gridFormatRule2.Name = "format_Status";
-            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue2.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
-            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue2.Appearance.Options.UseFont = true;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "False";
-            formatConditionRuleValue2.Value2 = "";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule2);
+            gridFormatRule4.ApplyToRow = true;
+            gridFormatRule4.Column = this.Status;
+            gridFormatRule4.Name = "format_Status";
+            formatConditionRuleValue4.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue4.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Critical;
+            formatConditionRuleValue4.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue4.Appearance.Options.UseFont = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = "False";
+            formatConditionRuleValue4.Value2 = "";
+            gridFormatRule4.Rule = formatConditionRuleValue4;
+            this.gridView_QLKhoaHoc.FormatRules.Add(gridFormatRule4);
             this.gridView_QLKhoaHoc.GridControl = this.grd_QuanLyKhoaHoc;
             this.gridView_QLKhoaHoc.GroupCount = 1;
             this.gridView_QLKhoaHoc.GroupRowHeight = 32;
@@ -2025,36 +1987,87 @@ namespace DrivingCenter.App.UserControl
             this.HangDaoTao.Visible = true;
             this.HangDaoTao.VisibleIndex = 1;
             // 
-            // lblTieuDe
+            // dt_TimeStart
             // 
-            this.lblTieuDe.AutoSize = true;
-            this.lblTieuDe.Font = new System.Drawing.Font("Roboto Condensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTieuDe.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTieuDe.Location = new System.Drawing.Point(33, 45);
-            this.lblTieuDe.Name = "lblTieuDe";
-            this.lblTieuDe.Size = new System.Drawing.Size(183, 26);
-            this.lblTieuDe.TabIndex = 12;
-            this.lblTieuDe.Text = "BÀI TẬP CHƯA HỌC";
+            this.dt_TimeStart.EditValue = null;
+            this.dt_TimeStart.Location = new System.Drawing.Point(313, 3);
+            this.dt_TimeStart.Name = "dt_TimeStart";
+            this.dt_TimeStart.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_TimeStart.Properties.Appearance.Options.UseFont = true;
+            this.dt_TimeStart.Properties.Appearance.Options.UseTextOptions = true;
+            this.dt_TimeStart.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.dt_TimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dt_TimeStart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dt_TimeStart.Properties.DisplayFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
+            this.dt_TimeStart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dt_TimeStart.Properties.EditFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
+            this.dt_TimeStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dt_TimeStart.Properties.MaskSettings.Set("mask", "HH:mm:ss dd-MM-yyyy");
+            this.dt_TimeStart.Size = new System.Drawing.Size(186, 24);
+            this.dt_TimeStart.TabIndex = 1;
             // 
-            // lblBaiTap
+            // label15
             // 
-            this.lblBaiTap.AutoSize = true;
-            this.lblBaiTap.Font = new System.Drawing.Font("Roboto Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaiTap.ForeColor = System.Drawing.Color.DimGray;
-            this.lblBaiTap.Location = new System.Drawing.Point(37, 84);
-            this.lblBaiTap.Name = "lblBaiTap";
-            this.lblBaiTap.Size = new System.Drawing.Size(77, 20);
-            this.lblBaiTap.TabIndex = 16;
-            this.lblBaiTap.Text = "TenBaiTap";
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(22, 7);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 18);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Cabin:";
             // 
-            // xtraTab_BaiTapChuaHoanThanh
+            // label16
             // 
-            this.xtraTab_BaiTapChuaHoanThanh.Controls.Add(this.lblBaiTap);
-            this.xtraTab_BaiTapChuaHoanThanh.Controls.Add(this.lblTieuDe);
-            this.xtraTab_BaiTapChuaHoanThanh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("xtraTab_BaiTapChuaHoanThanh.ImageOptions.SvgImage")));
-            this.xtraTab_BaiTapChuaHoanThanh.Name = "xtraTab_BaiTapChuaHoanThanh";
-            this.xtraTab_BaiTapChuaHoanThanh.Size = new System.Drawing.Size(949, 326);
-            this.xtraTab_BaiTapChuaHoanThanh.Text = "Ghi Chú";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(251, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 18);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Time:";
+            // 
+            // cbb_Cabin
+            // 
+            this.cbb_Cabin.Location = new System.Drawing.Point(107, 3);
+            this.cbb_Cabin.Name = "cbb_Cabin";
+            this.cbb_Cabin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_Cabin.Properties.Appearance.Options.UseFont = true;
+            this.cbb_Cabin.Properties.Appearance.Options.UseTextOptions = true;
+            this.cbb_Cabin.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_Cabin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_Cabin.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IdThietBi", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameCabin", "Cabin", 35, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GhiChu", "Ghi Chú", 65, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cbb_Cabin.Properties.DropDownRows = 4;
+            this.cbb_Cabin.Properties.NullText = "Chọn Cabin";
+            this.cbb_Cabin.Size = new System.Drawing.Size(100, 24);
+            this.cbb_Cabin.TabIndex = 4;
+            // 
+            // checkbox
+            // 
+            this.checkbox.EditValue = true;
+            this.checkbox.Location = new System.Drawing.Point(214, 5);
+            this.checkbox.Name = "checkbox";
+            this.checkbox.Properties.Caption = "";
+            this.checkbox.Size = new System.Drawing.Size(20, 20);
+            this.checkbox.TabIndex = 5;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.checkbox);
+            this.panel12.Controls.Add(this.cbb_Cabin);
+            this.panel12.Controls.Add(this.label16);
+            this.panel12.Controls.Add(this.label15);
+            this.panel12.Controls.Add(this.dt_TimeStart);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(3, 647);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(499, 29);
+            this.panel12.TabIndex = 2;
             // 
             // Uc_CabinEco
             // 
@@ -2081,11 +2094,6 @@ namespace DrivingCenter.App.UserControl
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocEco.Properties)).EndInit();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).EndInit();
             this.LayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -2098,6 +2106,8 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.grd_Result)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkDanhMucBaiTap)).EndInit();
+            this.xtraTab_BaiTapChuaHoanThanh.ResumeLayout(false);
+            this.xtraTab_BaiTapChuaHoanThanh.PerformLayout();
             this.navigationPage2.ResumeLayout(false);
             this.tblLayout_ThongKe.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ThongKe)).EndInit();
@@ -2126,8 +2136,12 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaKH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_QuanLyKhoaHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_QLKhoaHoc)).EndInit();
-            this.xtraTab_BaiTapChuaHoanThanh.ResumeLayout(false);
-            this.xtraTab_BaiTapChuaHoanThanh.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkbox.Properties)).EndInit();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2230,11 +2244,6 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lbl_GioiTinh;
         private System.Windows.Forms.ToolStripMenuItem mn_ChangeCourse;
-        private System.Windows.Forms.Panel panel12;
-        private DevExpress.XtraEditors.DateEdit dt_TimeStart;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private DevExpress.XtraEditors.LookUpEdit cbb_Cabin;
         private System.Windows.Forms.Button btn_ViewTongHop;
         private System.Windows.Forms.ToolStripMenuItem mn_TransferCabin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
@@ -2264,5 +2273,11 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.Label lblBaiTap;
         private System.Windows.Forms.Label lblTieuDe;
         private DevExpress.XtraTab.XtraTabPage xtraTab_BaiTapChuaHoanThanh;
+        private System.Windows.Forms.Panel panel12;
+        private DevExpress.XtraEditors.CheckEdit checkbox;
+        private DevExpress.XtraEditors.LookUpEdit cbb_Cabin;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private DevExpress.XtraEditors.DateEdit dt_TimeStart;
     }
 }

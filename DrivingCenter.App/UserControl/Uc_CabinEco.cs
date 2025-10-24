@@ -365,11 +365,10 @@ namespace DrivingCenter.App.UserControl
                     LanTap++;
 
                     int minute2 = rd.Next(isB11orB2 ? 18 : 12, isB11orB2 ? 28 : 17);
-
                     CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, IdBaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute2);
-
                     lst.Remove(IdBaiTap);
                 }
+
                 LoadInfoHocVienById(IdHocVien);
                 //Result(IdHocVien);
                 LoadLstHvByKH(IdKhoaHoc);
@@ -420,7 +419,15 @@ namespace DrivingCenter.App.UserControl
                         MaxID_BaiTap++;
                     }
                     LanTap++;
-                    CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, MaxID_BaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
+
+                    if (checkbox.Checked)
+                    {
+                        CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, 3, Datecreate, IdKhoaHoc, LanTap, LanTap, rd.Next(30, 34));
+                    }
+                    else
+                    {
+                        CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, MaxID_BaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
+                    }
                     LoadInfoHocVienById(IdHocVien);
                     //Result(IdHocVien);
                     LoadLstHvByKH(IdKhoaHoc);
