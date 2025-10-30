@@ -29,15 +29,15 @@ namespace DrivingCenter.App.UserControl
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_GPLX));
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.cbb_SheetData = new DevExpress.XtraBars.Navigation.TileBar();
             this.tileBarGroupTables = new DevExpress.XtraBars.Navigation.TileBarGroup();
             this.tileBar_NhapHoSo = new DevExpress.XtraBars.Navigation.TileBarItem();
@@ -89,8 +89,7 @@ namespace DrivingCenter.App.UserControl
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.navigationPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.grd_Certificate = new DevExpress.XtraGrid.GridControl();
             this.gridView_Certificate = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -105,7 +104,8 @@ namespace DrivingCenter.App.UserControl
             this.XepLoaiTN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoCCTN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoVaoSo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grd_Certificate = new DevExpress.XtraGrid.GridControl();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
             this.navigationFrame.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -137,9 +137,9 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoQD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoSoCNTN.Properties)).BeginInit();
             this.navigationPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Certificate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Certificate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Certificate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbb_SheetData
@@ -187,18 +187,18 @@ namespace DrivingCenter.App.UserControl
             this.tileBar_NhapHoSo.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.tileBar_NhapHoSo.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileBar_NhapHoSo.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.Text = "Import Data";
-            this.tileBar_NhapHoSo.Elements.Add(tileItemElement4);
+            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement1.Text = "Import Data";
+            this.tileBar_NhapHoSo.Elements.Add(tileItemElement1);
             this.tileBar_NhapHoSo.Name = "tileBar_NhapHoSo";
             // 
             // tileBar_UpdateResult
             // 
             this.tileBar_UpdateResult.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement5.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement5.Text = "Cập Nhật Kết Quả";
-            this.tileBar_UpdateResult.Elements.Add(tileItemElement5);
+            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement2.Text = "Cập Nhật Kết Quả";
+            this.tileBar_UpdateResult.Elements.Add(tileItemElement2);
             this.tileBar_UpdateResult.Id = 2;
             this.tileBar_UpdateResult.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.tileBar_UpdateResult.Name = "tileBar_UpdateResult";
@@ -206,9 +206,9 @@ namespace DrivingCenter.App.UserControl
             // tileBar_Certificate
             // 
             this.tileBar_Certificate.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement6.Text = "In Chứng Chỉ";
-            this.tileBar_Certificate.Elements.Add(tileItemElement6);
+            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement3.Text = "In Chứng Chỉ";
+            this.tileBar_Certificate.Elements.Add(tileItemElement3);
             this.tileBar_Certificate.Id = 3;
             this.tileBar_Certificate.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.tileBar_Certificate.Name = "tileBar_Certificate";
@@ -233,7 +233,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage1
             // 
-            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.tblLayout_ImportData);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
@@ -636,7 +635,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // txt_SoCNTN
             // 
-            this.txt_SoCNTN.EditValue = "LX";
+            this.txt_SoCNTN.EditValue = "14LX";
             this.txt_SoCNTN.Location = new System.Drawing.Point(125, 95);
             this.txt_SoCNTN.Name = "txt_SoCNTN";
             this.txt_SoCNTN.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -789,54 +788,17 @@ namespace DrivingCenter.App.UserControl
             this.navigationPage3.Name = "navigationPage3";
             this.navigationPage3.Size = new System.Drawing.Size(1500, 690);
             // 
-            // windowsUIButtonPanelMain
+            // grd_Certificate
             // 
-            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.FontSizeDelta = -1;
-            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.Options.UseBackColor = true;
-            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.Options.UseFont = true;
-            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.Options.UseForeColor = true;
-            this.windowsUIButtonPanelMain.AppearanceButton.Normal.FontSizeDelta = -1;
-            this.windowsUIButtonPanelMain.AppearanceButton.Normal.Options.UseFont = true;
-            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.FontSizeDelta = -1;
-            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseBackColor = true;
-            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
-            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
-            this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
-            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
-            windowsUIButtonImageOptions8.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions8.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions8.SvgImage")));
-            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
-            windowsUIButtonImageOptions10.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions10.SvgImage")));
-            this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B11", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B2", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIButtonPanelMain.EnableImageTransparency = true;
-            this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanelMain.Location = new System.Drawing.Point(0, 630);
-            this.windowsUIButtonPanelMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.windowsUIButtonPanelMain.MaximumSize = new System.Drawing.Size(0, 60);
-            this.windowsUIButtonPanelMain.MinimumSize = new System.Drawing.Size(60, 60);
-            this.windowsUIButtonPanelMain.Name = "windowsUIButtonPanelMain";
-            this.windowsUIButtonPanelMain.Size = new System.Drawing.Size(1500, 60);
-            this.windowsUIButtonPanelMain.TabIndex = 4;
-            this.windowsUIButtonPanelMain.Text = "windowsUIButtonPanelMain";
-            this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
-            this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
-            // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.grd_Certificate.Location = new System.Drawing.Point(3, 0);
+            this.grd_Certificate.MainView = this.gridView_Certificate;
+            this.grd_Certificate.Name = "grd_Certificate";
+            this.grd_Certificate.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.grd_Certificate.Size = new System.Drawing.Size(1484, 626);
+            this.grd_Certificate.TabIndex = 5;
+            this.grd_Certificate.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_Certificate});
             // 
             // gridView_Certificate
             // 
@@ -991,17 +953,54 @@ namespace DrivingCenter.App.UserControl
             this.SoVaoSo.VisibleIndex = 10;
             this.SoVaoSo.Width = 104;
             // 
-            // grd_Certificate
+            // repositoryItemCheckEdit1
             // 
-            this.grd_Certificate.Location = new System.Drawing.Point(3, 0);
-            this.grd_Certificate.MainView = this.gridView_Certificate;
-            this.grd_Certificate.Name = "grd_Certificate";
-            this.grd_Certificate.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
-            this.grd_Certificate.Size = new System.Drawing.Size(1484, 626);
-            this.grd_Certificate.TabIndex = 5;
-            this.grd_Certificate.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_Certificate});
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // windowsUIButtonPanelMain
+            // 
+            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.FontSizeDelta = -1;
+            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.Options.UseBackColor = true;
+            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.Options.UseFont = true;
+            this.windowsUIButtonPanelMain.AppearanceButton.Hovered.Options.UseForeColor = true;
+            this.windowsUIButtonPanelMain.AppearanceButton.Normal.FontSizeDelta = -1;
+            this.windowsUIButtonPanelMain.AppearanceButton.Normal.Options.UseFont = true;
+            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.FontSizeDelta = -1;
+            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
+            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseBackColor = true;
+            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
+            this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
+            this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
+            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
+            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
+            this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Refresh", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B11", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print B2", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.windowsUIButtonPanelMain.EnableImageTransparency = true;
+            this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
+            this.windowsUIButtonPanelMain.Location = new System.Drawing.Point(0, 630);
+            this.windowsUIButtonPanelMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.windowsUIButtonPanelMain.MaximumSize = new System.Drawing.Size(0, 60);
+            this.windowsUIButtonPanelMain.MinimumSize = new System.Drawing.Size(60, 60);
+            this.windowsUIButtonPanelMain.Name = "windowsUIButtonPanelMain";
+            this.windowsUIButtonPanelMain.Size = new System.Drawing.Size(1500, 60);
+            this.windowsUIButtonPanelMain.TabIndex = 4;
+            this.windowsUIButtonPanelMain.Text = "windowsUIButtonPanelMain";
+            this.windowsUIButtonPanelMain.UseButtonBackgroundImages = false;
+            this.windowsUIButtonPanelMain.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanelMain_ButtonClick);
             // 
             // UcChild_GPLX
             // 
@@ -1048,9 +1047,9 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoQD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoSoCNTN.Properties)).EndInit();
             this.navigationPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Certificate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Certificate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Certificate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -165,7 +165,6 @@ namespace DrivingCenter.App.DAO
 
             string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
                     @MaDK = '{nguoiLx_CCTN.MaDK}',
-                    @ThoiGianDT = {nguoiLx_CCTN.ThoiGianDT},
                     @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}'";
 
             DataProviderGPLX.Instance.ExecuteNonQuery(query);

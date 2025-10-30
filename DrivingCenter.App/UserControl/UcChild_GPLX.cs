@@ -463,7 +463,8 @@ namespace DrivingCenter.App.UserControl
 
                         NguoiLX_HoSo_Update nguoiLx = new NguoiLX_HoSo_Update();
                         nguoiLx.MaDK = dt.Rows[i]["MaDK"].ToString().ToUpper().Trim();
-                        nguoiLx.SoGiayCNTN = txt_SoCNTN.Text + "|" + dt.Rows[i]["SoCNTN"].ToString().ToUpper().Trim();
+                        string hang = dt.Rows[i]["Lop"].ToString().ToUpper().Trim().Substring(0,2);
+                        nguoiLx.SoGiayCNTN = txt_SoCNTN.Text + (hang == "C1" ? "C1" : "B") + "|" + dt.Rows[i]["SoCNTN"].ToString().ToUpper().Trim();
                         nguoiLx.TT_XuLy = "09";
                         nguoiLx.SoQuyetDinhTN = txt_SoQD.Text;
                         nguoiLx.NgayRaQDTN = dtp_NgayQD.DateTime.ToString("yyyy-MM-dd 00:00:00.000");
@@ -476,7 +477,6 @@ namespace DrivingCenter.App.UserControl
 
                         HvTotNghiep nguoiLxCCTN = new HvTotNghiep();
                         nguoiLxCCTN.MaDK = dt.Rows[i]["MaDK"].ToString().ToUpper();
-                        nguoiLxCCTN.ThoiGianDT = Convert.ToInt32(dt.Rows[i]["ThoiGianDT"]);
                         nguoiLxCCTN.NgayQDTN = dtp_NgayQD.DateTime.ToString("dd/MM/yyyy");
 
                         lstNguoiLxCCTN.Add(nguoiLxCCTN);
@@ -488,17 +488,17 @@ namespace DrivingCenter.App.UserControl
                     DialogResult dialogResult = XtraMessageBox.Show("Bạn chắc chắn đúng cập nhật kết quả?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        //if (toggleSwitch_UpdateResult.IsOn)
-                        //{
-                        //    if (lstNguoiLxUpdates != null)
-                        //    {
-                        //        foreach (NguoiLX_HoSo_Update item in lstNguoiLxUpdates)
-                        //        {
-                        //            GPLX_DAO.Instance.UpdateResultGraduate(item);
-                        //        }
-                        //    }
-                        //    XtraMessageBox.Show(string.Format("Cập nhật kết quả tốt nghiệp thành công {0} học viên!", lstNguoiLxUpdates.Count));
-                        //}
+                        if (toggleSwitch_UpdateResult.IsOn)
+                        {
+                            if (lstNguoiLxUpdates != null)
+                            {
+                                foreach (NguoiLX_HoSo_Update item in lstNguoiLxUpdates)
+                                {
+                                    GPLX_DAO.Instance.UpdateResultGraduate(item);
+                                }
+                            }
+                            XtraMessageBox.Show(string.Format("Cập nhật kết quả tốt nghiệp thành công {0} học viên!", lstNguoiLxUpdates.Count));
+                        }
 
                         if (lstNguoiLxCCTN != null)
                         {
