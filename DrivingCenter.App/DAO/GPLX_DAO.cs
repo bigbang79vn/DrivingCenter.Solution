@@ -185,7 +185,7 @@ namespace DrivingCenter.App.DAO
 
         public DataTable GetDataPrintCCTN(string lstMaDK)
         {
-            string query = $"SELECT * FROM VNDC_ReportCNTN WHERE MaDK IN (SELECT itemID FROM dbo.VNDC_Split('{@lstMaDK}', ',')) ORDER BY SoCCTN ASC";
+            string query = $"SELECT * FROM VNDC_ReportCNTN WHERE MaDK IN (SELECT itemID FROM dbo.VNDC_Split('{@lstMaDK}', ',')) ORDER BY Id ASC";
             DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
             return dt;
         }
