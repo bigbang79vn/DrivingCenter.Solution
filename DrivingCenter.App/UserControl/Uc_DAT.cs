@@ -78,6 +78,7 @@ namespace DrivingCenter.App.UserControl
             LoadPhienHoc();
         }
 
+        private bool _errorShown = false;
         private async Task ReloadClick()
         {
             string datetime = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd HH:mm:ss");
@@ -104,7 +105,11 @@ namespace DrivingCenter.App.UserControl
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi reload: " + ex.Message);
+                if (!_errorShown)
+                {
+                    _errorShown = true;
+                    XtraMessageBox.Show("Lỗi khi reload: " + ex.Message);
+                }
             }
             finally
             {
@@ -223,7 +228,7 @@ namespace DrivingCenter.App.UserControl
 
                 // Sai ngày giờ theo khóa học
                 int khoahoc = int.Parse(item.TenKH.Substring(item.TenKH.IndexOf("K") + 1));
-                if (IsInvalidCourseTime(item, khoahoc)) errorMap[item].Add("Sai ngày giờ!");
+                if (IsInvalidCourseTime(item, khoahoc))  errorMap[item].Add("Sai ngày giờ!");
 
                 // Gửi Tổng cục
                 if (item.LogOut && !item.SendTongCuc)
@@ -245,6 +250,13 @@ namespace DrivingCenter.App.UserControl
             var loginHour = item.Time_LogIn.Hour;
             var logout = item.Time_LogOut;
             bool isEven = khoahoc % 2 == 0;
+
+            if (item.MaKH.Contains("C"))
+            {
+                if (wk == DayOfWeek.Monday)
+                    return true;
+                return false;
+            }
 
             return isEven
                 ? wk == DayOfWeek.Tuesday || wk == DayOfWeek.Wednesday || wk == DayOfWeek.Thursday ||

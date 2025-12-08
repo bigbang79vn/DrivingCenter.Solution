@@ -6,6 +6,10 @@
 
         //public const string connectionString = @"Data Source=TRUNGHIEU\SQLEXPRESS;Initial Catalog=GPLX_CSDT;User ID=sa;Password=123";
 
+        //public const string connectionStringDAT = @"Data Source=192.168.50.254\SQLEXPRESS;Initial Catalog=I2EDAT2023;User ID=sa;Password=vNdc@123;";
+
+        //public const string connectionStringDatImg = @"Data Source=192.168.50.254\SQLEXPRESS;Initial Catalog=I2EDAT_IMAGE;User ID=sa;Password=vNdc@123";
+
         public const string connectionStringDAT = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
         public const string connectionStringDatImg = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";

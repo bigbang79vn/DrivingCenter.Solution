@@ -487,7 +487,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(502, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 17);
+            this.label2.Size = new System.Drawing.Size(121, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ngày Kết Thúc DAT";
             // 
@@ -520,7 +520,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(210, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 17);
+            this.label1.Size = new System.Drawing.Size(115, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ngày Bắt Đầu DAT";
             // 
