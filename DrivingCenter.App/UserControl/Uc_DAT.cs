@@ -230,6 +230,10 @@ namespace DrivingCenter.App.UserControl
                 int khoahoc = int.Parse(item.TenKH.Substring(item.TenKH.IndexOf("K") + 1));
                 if (IsInvalidCourseTime(item, khoahoc))  errorMap[item].Add("Sai ngày giờ!");
 
+                // Kiểm tra số lần chụp
+                int lanchup = Math.Max(1, (int)Math.Ceiling(item.dbTime / 300)) + 1;
+                if (lanchup < item.SoLanNhanDien && item.LogOut == true) errorMap[item].Add("Số lần chụp!");
+
                 // Gửi Tổng cục
                 if (item.LogOut && !item.SendTongCuc)
                 {
