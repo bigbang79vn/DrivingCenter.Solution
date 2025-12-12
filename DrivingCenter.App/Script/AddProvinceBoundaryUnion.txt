@@ -1,1 +1,4 @@
 ﻿
+SELECT geometry::UnionAggregate(Boundary).MakeValid() AS BoundaryUnion
+INTO ProvinceBoundaryUnion
+FROM ProvinceBoundary;

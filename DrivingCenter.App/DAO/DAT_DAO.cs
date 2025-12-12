@@ -1037,10 +1037,7 @@ namespace DrivingCenter.App.DAO
 
         public List<Guid> CheckMapOut(DateTime fromDay, DateTime toDay)
         {
-            string query = $@"DECLARE @Boundary GEOMETRY = (
-                                SELECT BoundaryUnion 
-                                FROM ProvinceBoundaryUnion
-                            );
+            string query = $@"DECLARE @Boundary GEOMETRY = ( SELECT BoundaryUnion FROM ProvinceBoundaryUnion);
 
                             DECLARE @FromDate DATETIME = '{fromDay:yyyy-MM-ddTHH:mm:ss}';
                             DECLARE @ToDate   DATETIME = '{toDay:yyyy-MM-ddTHH:mm:ss}';
