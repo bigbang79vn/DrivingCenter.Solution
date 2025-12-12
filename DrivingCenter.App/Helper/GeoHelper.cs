@@ -28,34 +28,7 @@ namespace DrivingCenter.App.Helper
             if (featureCollection == null)
                 throw new Exception("Không đọc được FeatureCollection từ file GeoJSON.");
 
-            // FeatureCollection.Features là IList<Feature>, duyệt an toàn
-            //foreach (var feature in featureCollection.Features)
-            //{
-            //    // Tên thuộc tính có thể khác: 'ten_tinh', 'NAME', 'NAME_EN', v.v.
-            //    // Kiểm tra vài tên hay dùng, so sánh không phân biệt hoa thường
-            //    string[] possibleKeys = new[] { "ten_tinh", "NAME", "name", "TenTinh", "ten" };
-
-            //    foreach (var key in possibleKeys)
-            //    {
-            //        if (feature.Attributes.Exists(key))
-            //        {
-            //            var val = feature.Attributes[key]?.ToString();
-            //            if (!string.IsNullOrEmpty(val) &&
-            //                string.Equals(val.Trim(), provinceName.Trim(), StringComparison.OrdinalIgnoreCase))
-            //            {
-            //                // Đặt SRID nếu cần (GeoJSON thường WGS84)
-            //                var geom = feature.Geometry;
-            //                if (geom != null)
-            //                {
-            //                    geom.SRID = 4326;
-            //                }
-            //                return geom;
-            //            }
-            //        }
-            //    }
-            //}
-
-            foreach (var feature in featureCollection)  // trực tiếp trên featureCollection
+            foreach (var feature in featureCollection)
             {
                 // Tên thuộc tính có thể khác: 'ten_tinh', 'NAME', 'NAME_EN', v.v.
                 string[] possibleKeys = new[] { "ten_tinh", "NAME", "name", "TenTinh", "ten" };

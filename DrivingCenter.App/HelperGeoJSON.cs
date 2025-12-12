@@ -1,16 +1,11 @@
 ﻿using DevExpress.XtraEditors;
-using DocumentFormat.OpenXml.Features;
 using DrivingCenter.App.Helper;
-using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 using System;
 using System.Data.SqlClient;
-using System.IO;
-using System.Windows.Forms;
 
 namespace DrivingCenter.App
 {
-    public partial class HelperGeoJSON : DevExpress.XtraEditors.XtraForm
+    public partial class HelperGeoJSON : XtraForm
     {
         public HelperGeoJSON()
         {
