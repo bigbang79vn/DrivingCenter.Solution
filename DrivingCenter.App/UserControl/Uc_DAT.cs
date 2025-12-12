@@ -1,7 +1,9 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
+using DevExpress.XtraLayout.Filtering.Templates;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
+using DocumentFormat.OpenXml.VariantTypes;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
@@ -14,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.Utils.Drawing.Helpers.NativeMethods;
 
 namespace DrivingCenter.App.UserControl
 {
@@ -293,6 +296,25 @@ namespace DrivingCenter.App.UserControl
 
             frmDetailSession f = new frmDetailSession(diemdanhnguoilxId.ToString());
             f.ShowDialog();
+        }
+
+        private void mn_CheckMap_Click(object sender, EventArgs e)
+        {
+            List<PhienHoc> lstNull = new List<PhienHoc>();
+
+            DateTime selected = dtp_PhByDay.DateTime;
+
+            //string day = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd 00:00:00");
+            string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
+            DateTime fromDay = new DateTime(selected.Year, selected.Month, selected.Day, 0, 0, 0);
+            DateTime toDay = fromDay.AddDays(1);
+
+            List<Guid> lstGuid = DAT_DAO.Instance.CheckMapOut(fromDay, toDay);
+
+            gridControl_PhienHoc.DataSource = lstNull;
+
+            var result = lstPH.Where(x=>lstGuid.Contains(x.MaPhien)).ToList();
+            gridControl_PhienHoc.DataSource = result;
         }
 
         private void CheckImgNull_Click(object sender, EventArgs e)

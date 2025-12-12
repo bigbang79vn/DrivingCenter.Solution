@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraCharts.Native;
+using DevExpress.XtraLayout.Filtering.Templates;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
@@ -133,7 +134,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("select MaDK, GiaoVienID from NguoiLX where TenKH like '%{0}%' ORDER BY GiaoVienID", TenKH);
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
-            List<GvCabin>  lst = dt.AsEnumerable().Select(item => new GvCabin
+            List<GvCabin> lst = dt.AsEnumerable().Select(item => new GvCabin
             {
                 MaDK = (string)(item)["MaDK"],
                 GiaoVienID = (int)(item)["GiaoVienID"]
@@ -149,7 +150,7 @@ namespace DrivingCenter.App.DAO
                         INNER JOIN TrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma";
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
-            List<GiaoVien>  lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
+            List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
                 GiaoVienID = (int)item["GiaoVienID"],
                 MaGV = (string)item["MaGV"],
@@ -642,7 +643,7 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
-            List<TongHopGV> lstGV = dt.AsEnumerable().Select(item => new TongHopGV{
+            List<TongHopGV> lstGV = dt.AsEnumerable().Select(item => new TongHopGV {
                 MaGv = item["MaGV"].ToString(),
                 SHoTenGV = item["HoTenGV"].ToString(),
                 NgayTap = item["ThoiDiem"].ToString(),
@@ -943,7 +944,7 @@ namespace DrivingCenter.App.DAO
             string query = $@"SELECT DISTINCT kh.KhoaHocId, kh.MaKH, kh.TenKH, HV.GiaoVienID, ThoiDiemChayDAT, ThoiDiemKetThucDAT, gv.HoTenDem, gv.TenGV, MaXeTap, XeB11, kh.HangDaoTao
                 FROM NguoiLX HV, GiaoVien gv, KhoaHoc kh 
                 WHERE gv.GiaoVienID = hv.GiaoVienID and hv.KhoaHocId = kh.KhoaHocID and kh.MonthID = {monthId}";
-            
+
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
 
             List<Schedule> list = dt.AsEnumerable().Select(item => new Schedule
@@ -1033,5 +1034,28 @@ namespace DrivingCenter.App.DAO
         }
 
         #endregion
+
+        public List<Guid> CheckMapOut(DateTime fromDay, DateTime toDay)
+        {
+            string query = $@"DECLARE @Boundary GEOMETRY = (
+                                SELECT BoundaryUnion 
+                                FROM ProvinceBoundaryUnion
+                            );
+
+                            DECLARE @FromDate DATETIME = '{fromDay:yyyy-MM-ddTHH:mm:ss}';
+                            DECLARE @ToDate   DATETIME = '{toDay:yyyy-MM-ddTHH:mm:ss}';
+
+                            SELECT DISTINCT G.DiemDanhNguoiLxId
+                            FROM VehicleHistory G
+                            WHERE @Boundary.STContains(geometry::Point(G.Lng, G.Lat, 4326)) = 0
+                              AND G.AddDated >= @FromDate
+                              AND G.AddDated <  @ToDate;";
+            var data = DataProviderDAT.Instance.ExecuteQuery(query);
+
+            List<Guid> lst = data.AsEnumerable()
+                            .Select(r => Guid.Parse(r.Field<string>("DiemDanhNguoiLxId")))
+                            .ToList();
+            return lst;
+        }
     }
 }

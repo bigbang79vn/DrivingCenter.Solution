@@ -40,7 +40,6 @@ namespace DrivingCenter.App.UserControl
             this.gridControl_XeOnline = new DevExpress.XtraGrid.GridControl();
             this.gridView_XeOnline = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -174,7 +173,7 @@ namespace DrivingCenter.App.UserControl
             this.lb_Month.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_Month.Location = new System.Drawing.Point(452, 8);
             this.lb_Month.Name = "lb_Month";
-            this.lb_Month.Size = new System.Drawing.Size(231, 25);
+            this.lb_Month.Size = new System.Drawing.Size(227, 28);
             this.lb_Month.TabIndex = 1;
             this.lb_Month.Text = "SỐ PHIÊN HỌC THÁNG";
             // 
@@ -196,7 +195,7 @@ namespace DrivingCenter.App.UserControl
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label6.Location = new System.Drawing.Point(438, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(258, 25);
+            this.label6.Size = new System.Drawing.Size(254, 28);
             this.label6.TabIndex = 1;
             this.label6.Text = "XE TẬP LÁI ĐANG ONLINE";
             // 
@@ -227,7 +226,6 @@ namespace DrivingCenter.App.UserControl
             this.gridView_XeOnline.AutoFillColumn = this.gridColumn3;
             this.gridView_XeOnline.ColumnPanelRowHeight = 32;
             this.gridView_XeOnline.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
             this.gridColumn5,
             this.gridColumn2,
             this.gridColumn4,
@@ -242,7 +240,6 @@ namespace DrivingCenter.App.UserControl
             this.gridView_XeOnline.OptionsFind.AllowFindPanel = false;
             this.gridView_XeOnline.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView_XeOnline.OptionsView.ShowGroupPanel = false;
-            this.gridView_XeOnline.OptionsView.ShowIndicator = false;
             this.gridView_XeOnline.RowHeight = 28;
             // 
             // gridColumn3
@@ -255,19 +252,8 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn3.FieldName = "ThoiDiem";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.VisibleIndex = 4;
             this.gridColumn3.Width = 228;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn1.Caption = "STT";
-            this.gridColumn1.FieldName = "STT";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 56;
             // 
             // gridColumn5
             // 
@@ -277,7 +263,7 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn5.FieldName = "Imei";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.VisibleIndex = 0;
             this.gridColumn5.Width = 226;
             // 
             // gridColumn2
@@ -288,7 +274,7 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn2.FieldName = "BienSoXe";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 127;
             // 
             // gridColumn4
@@ -299,7 +285,7 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn4.FieldName = "HangGPLX";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 2;
             this.gridColumn4.Width = 158;
             // 
             // gridColumn6
@@ -310,7 +296,7 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn6.FieldName = "VanToc";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 205;
             // 
             // gridColumn7
@@ -321,7 +307,7 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn7.FieldName = "Version";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
+            this.gridColumn7.VisibleIndex = 3;
             this.gridColumn7.Width = 107;
             // 
             // cc_Chart
@@ -366,7 +352,7 @@ namespace DrivingCenter.App.UserControl
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label4.Location = new System.Drawing.Point(48, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(273, 25);
+            this.label4.Size = new System.Drawing.Size(265, 28);
             this.label4.TabIndex = 2;
             this.label4.Text = "KHÓA HỌC ĐANG ĐÀO TẠO";
             // 
@@ -492,7 +478,7 @@ namespace DrivingCenter.App.UserControl
             this.cbb_Year.FormattingEnabled = true;
             this.cbb_Year.Location = new System.Drawing.Point(7, 85);
             this.cbb_Year.Name = "cbb_Year";
-            this.cbb_Year.Size = new System.Drawing.Size(121, 27);
+            this.cbb_Year.Size = new System.Drawing.Size(121, 28);
             this.cbb_Year.TabIndex = 2;
             this.cbb_Year.SelectedIndexChanged += new System.EventHandler(this.cbb_Year_SelectedIndexChanged);
             // 
@@ -560,7 +546,7 @@ namespace DrivingCenter.App.UserControl
             this.lb_SoXeTapLai.ForeColor = System.Drawing.Color.White;
             this.lb_SoXeTapLai.Location = new System.Drawing.Point(131, 19);
             this.lb_SoXeTapLai.Name = "lb_SoXeTapLai";
-            this.lb_SoXeTapLai.Size = new System.Drawing.Size(53, 58);
+            this.lb_SoXeTapLai.Size = new System.Drawing.Size(55, 63);
             this.lb_SoXeTapLai.TabIndex = 16;
             this.lb_SoXeTapLai.Text = "0";
             // 
@@ -571,7 +557,7 @@ namespace DrivingCenter.App.UserControl
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(25, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 20);
+            this.label11.Size = new System.Drawing.Size(84, 21);
             this.label11.TabIndex = 12;
             this.label11.Text = "Xe Tập Lái";
             // 
@@ -607,7 +593,7 @@ namespace DrivingCenter.App.UserControl
             this.lb_SoGiaoVien.ForeColor = System.Drawing.Color.White;
             this.lb_SoGiaoVien.Location = new System.Drawing.Point(127, 19);
             this.lb_SoGiaoVien.Name = "lb_SoGiaoVien";
-            this.lb_SoGiaoVien.Size = new System.Drawing.Size(53, 58);
+            this.lb_SoGiaoVien.Size = new System.Drawing.Size(55, 63);
             this.lb_SoGiaoVien.TabIndex = 15;
             this.lb_SoGiaoVien.Text = "0";
             // 
@@ -618,7 +604,7 @@ namespace DrivingCenter.App.UserControl
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(22, 19);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 20);
+            this.label8.Size = new System.Drawing.Size(78, 21);
             this.label8.TabIndex = 11;
             this.label8.Text = "Giáo Viên";
             // 
@@ -666,7 +652,7 @@ namespace DrivingCenter.App.UserControl
             this.lb_SoKhoaHocByNam.ForeColor = System.Drawing.Color.White;
             this.lb_SoKhoaHocByNam.Location = new System.Drawing.Point(125, 19);
             this.lb_SoKhoaHocByNam.Name = "lb_SoKhoaHocByNam";
-            this.lb_SoKhoaHocByNam.Size = new System.Drawing.Size(53, 58);
+            this.lb_SoKhoaHocByNam.Size = new System.Drawing.Size(55, 63);
             this.lb_SoKhoaHocByNam.TabIndex = 14;
             this.lb_SoKhoaHocByNam.Text = "0";
             // 
@@ -677,7 +663,7 @@ namespace DrivingCenter.App.UserControl
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(18, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 20);
+            this.label5.Size = new System.Drawing.Size(80, 21);
             this.label5.TabIndex = 10;
             this.label5.Text = "Khóa Học";
             // 
@@ -714,7 +700,7 @@ namespace DrivingCenter.App.UserControl
             this.lb_SoHocVienByNam.ForeColor = System.Drawing.Color.White;
             this.lb_SoHocVienByNam.Location = new System.Drawing.Point(121, 19);
             this.lb_SoHocVienByNam.Name = "lb_SoHocVienByNam";
-            this.lb_SoHocVienByNam.Size = new System.Drawing.Size(53, 58);
+            this.lb_SoHocVienByNam.Size = new System.Drawing.Size(55, 63);
             this.lb_SoHocVienByNam.TabIndex = 13;
             this.lb_SoHocVienByNam.Text = "0";
             // 
@@ -725,7 +711,7 @@ namespace DrivingCenter.App.UserControl
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(20, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 20);
+            this.label2.Size = new System.Drawing.Size(74, 21);
             this.label2.TabIndex = 9;
             this.label2.Text = "Học Viên";
             // 
@@ -826,7 +812,6 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraGrid.Columns.GridColumn TongHocVien;
         private DevExpress.XtraGrid.GridControl gridControl_XeOnline;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_XeOnline;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
