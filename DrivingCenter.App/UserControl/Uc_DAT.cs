@@ -434,7 +434,7 @@ namespace DrivingCenter.App.UserControl
 
             List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(KhoaHocID, HangDaoTao);
 
-            if (HangDaoTao == "B2" || HangDaoTao == "B")
+            if (HangDaoTao == "B2" || HangDaoTao == "B" || HangDaoTao == "C1")
             {
                 foreach (TongHopHVByKhoa itemB1 in lstB1)
                 {
@@ -516,6 +516,9 @@ namespace DrivingCenter.App.UserControl
                            item.TongThoiGian_PhienDem > 7500 && item.TongThoiGian_B1 > 7500;
                 case "B.01":
                     return baseCondition && item.TongThoiGian_PhienDem > 7500;
+                case "C1":
+                    return item.TongQuangDuongTichLuy > 827 && item.TongThoiGianTichLuy > 87000 &&
+                           item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 7500;
                 default:
                     return item.TongQuangDuongTichLuy > 812 && item.TongThoiGianTichLuy > 72480 &&
                            item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8;
