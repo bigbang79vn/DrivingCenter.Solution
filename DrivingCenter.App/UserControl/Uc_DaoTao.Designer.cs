@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DaoTao));
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             this.TongQuangDuongTichLuy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiemChayDAT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -203,19 +203,19 @@
             this.employeesTileBarItem.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.employeesTileBarItem.AppearanceItem.Normal.Options.UseBackColor = true;
             this.employeesTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            tileItemElement3.Text = "Đào Tạo";
-            this.employeesTileBarItem.Elements.Add(tileItemElement3);
+            tileItemElement1.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            tileItemElement1.Text = "Đào Tạo";
+            this.employeesTileBarItem.Elements.Add(tileItemElement1);
             this.employeesTileBarItem.Name = "employeesTileBarItem";
             // 
             // customersTileBarItem
             // 
             this.customersTileBarItem.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
-            tileItemElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
-            tileItemElement4.Text = "Phân Công";
-            this.customersTileBarItem.Elements.Add(tileItemElement4);
+            tileItemElement2.ImageOptions.ImageUri.Uri = "Cube;Size32x32;GrayScaled";
+            tileItemElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage1")));
+            tileItemElement2.Text = "Phân Công";
+            this.customersTileBarItem.Elements.Add(tileItemElement2);
             this.customersTileBarItem.Id = 2;
             this.customersTileBarItem.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.customersTileBarItem.Name = "customersTileBarItem";
@@ -283,7 +283,7 @@
             this.lb_KetquaKh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_KetquaKh.Location = new System.Drawing.Point(534, 3);
             this.lb_KetquaKh.Name = "lb_KetquaKh";
-            this.lb_KetquaKh.Size = new System.Drawing.Size(104, 23);
+            this.lb_KetquaKh.Size = new System.Drawing.Size(105, 25);
             this.lb_KetquaKh.TabIndex = 3;
             this.lb_KetquaKh.Text = "KHÓA HỌC";
             this.lb_KetquaKh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -700,7 +700,7 @@
             this.MenuItem_XuatBaoCao,
             this.mn_Baocaokhoahoc});
             this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 142);
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 120);
             // 
             // MenuItem_ThemKhoaHoc
             // 
@@ -843,7 +843,7 @@
             this.cb_SheetData.FormattingEnabled = true;
             this.cb_SheetData.Location = new System.Drawing.Point(3, 2);
             this.cb_SheetData.Name = "cb_SheetData";
-            this.cb_SheetData.Size = new System.Drawing.Size(134, 25);
+            this.cb_SheetData.Size = new System.Drawing.Size(134, 26);
             this.cb_SheetData.TabIndex = 5;
             this.cb_SheetData.SelectedIndexChanged += new System.EventHandler(this.cb_SheetData_SelectedIndexChanged);
             // 
@@ -872,7 +872,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(22, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 17);
+            this.label6.Size = new System.Drawing.Size(64, 18);
             this.label6.TabIndex = 10;
             this.label6.Text = "File name";
             // 
@@ -884,7 +884,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(863, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 17);
+            this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 17;
             this.label4.Text = "Sheet data";
             // 
@@ -922,7 +922,7 @@
             this.txtFilePath.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilePath.Location = new System.Drawing.Point(8, 7);
             this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(704, 16);
+            this.txtFilePath.Size = new System.Drawing.Size(704, 18);
             this.txtFilePath.TabIndex = 0;
             // 
             // ColKhoaHoc

@@ -21,5 +21,6 @@ namespace DrivingCenter.App.DTO.Cabin
         public DateTime NgayDaoTao { get; set; }
         public string LoaiDaoTao { get; set; }
         public bool Status { get; set; }
+        public int Year { get; set; }
     }
 }

@@ -10,9 +10,15 @@
 
         //public const string connectionStringDatImg = @"Data Source=192.168.50.254\SQLEXPRESS;Initial Catalog=I2EDAT_IMAGE;User ID=sa;Password=vNdc@123";
 
-        public const string connectionStringDAT = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+        //public const string connectionStringDAT = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT2023;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
-        public const string connectionStringDatImg = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+        //public const string connectionStringDatImg = @"Data Source=192.168.50.253;Initial Catalog=I2EDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+
+       
+        
+        public const string connectionStringDAT = @"Data Source=192.168.50.253;Initial Catalog=EMCDAT2025;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
+
+        public const string connectionStringDatImg = @"Data Source=192.168.50.253;Initial Catalog=EMCDAT_IMAGE;User ID=it;Password=@97UiLYW0Fwkl3qQWK($4My^";
 
         public const string connectionStringCaBinEMC = @"Data Source=192.168.10.19;Initial Catalog=I2ECABIN3D;User ID=it;Password=hieu*123";
 

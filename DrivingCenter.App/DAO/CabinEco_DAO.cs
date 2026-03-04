@@ -23,7 +23,7 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHoc> GetAllKhoaHoc()
         {
-            string query = @"SELECT ID, MaKhoaHoc, Ten, NgayKhaiGiang, NgayBeGiang, HangDaoTao, Status 
+            string query = @"SELECT ID, MaKhoaHoc, Ten, NgayKhaiGiang, NgayBeGiang, HangDaoTao, Status, Year
                 FROM tblKhoaHoc 
                 ORDER BY MaKhoaHoc ASC";
 
@@ -38,6 +38,7 @@ namespace DrivingCenter.App.DAO
                 NgayBeGiang = (DateTime)item["NgayBeGiang"],
                 HangDaoTao = (string)item["HangDaoTao"],
                 Status = (bool)item["Status"],
+                Year = (int)item["Year"]
             }).ToList();
 
             return lstKhoaHoc;

@@ -84,21 +84,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule8 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue8 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DAT));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule9 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue9 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule8 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue8 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule5 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue5 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_DAT));
             this.LogOut_PH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ActivePh = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -200,6 +200,7 @@
             this.menu_Phienhoc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DetailSession = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_CheckMap = new System.Windows.Forms.ToolStripMenuItem();
             this.CheckImgNull = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -361,7 +362,6 @@
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.countdownTimer = new System.Windows.Forms.Timer(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
-            this.mn_CheckMap = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -1651,7 +1651,7 @@
             this.toolStripSeparator6,
             this.EndSession});
             this.menu_Phienhoc.Name = "contextMenuStrip2";
-            this.menu_Phienhoc.Size = new System.Drawing.Size(189, 214);
+            this.menu_Phienhoc.Size = new System.Drawing.Size(189, 192);
             // 
             // refreshToolStripMenuItem
             // 
@@ -1668,6 +1668,14 @@
             this.DetailSession.Size = new System.Drawing.Size(188, 22);
             this.DetailSession.Text = "Detail Session";
             this.DetailSession.Click += new System.EventHandler(this.DetailSession_Click);
+            // 
+            // mn_CheckMap
+            // 
+            this.mn_CheckMap.Image = ((System.Drawing.Image)(resources.GetObject("mn_CheckMap.Image")));
+            this.mn_CheckMap.Name = "mn_CheckMap";
+            this.mn_CheckMap.Size = new System.Drawing.Size(188, 22);
+            this.mn_CheckMap.Text = "Check Map";
+            this.mn_CheckMap.Click += new System.EventHandler(this.mn_CheckMap_Click);
             // 
             // CheckImgNull
             // 
@@ -1748,18 +1756,18 @@
             this.Error_PH,
             this.NguoiLxID_PH,
             this.ActivePh});
-            gridFormatRule8.ApplyToRow = true;
-            gridFormatRule8.Column = this.LogOut_PH;
-            gridFormatRule8.Name = "FormatUnLogout";
-            formatConditionRuleValue8.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            formatConditionRuleValue8.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue8.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue8.Appearance.Options.UseFont = true;
-            formatConditionRuleValue8.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue8.Value1 = "False";
-            gridFormatRule8.Rule = formatConditionRuleValue8;
+            gridFormatRule4.ApplyToRow = true;
+            gridFormatRule4.Column = this.LogOut_PH;
+            gridFormatRule4.Name = "FormatUnLogout";
+            formatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue4.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue4.Appearance.Options.UseFont = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = "False";
+            gridFormatRule4.Rule = formatConditionRuleValue4;
             gridFormatRule9.ApplyToRow = true;
             gridFormatRule9.Column = this.ActivePh;
             gridFormatRule9.Name = "FormatActivePhien";
@@ -1770,7 +1778,7 @@
             formatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
             formatConditionRuleValue9.Value1 = "false";
             gridFormatRule9.Rule = formatConditionRuleValue9;
-            this.gridView_PhienHoc.FormatRules.Add(gridFormatRule8);
+            this.gridView_PhienHoc.FormatRules.Add(gridFormatRule4);
             this.gridView_PhienHoc.FormatRules.Add(gridFormatRule9);
             this.gridView_PhienHoc.GridControl = this.gridControl_PhienHoc;
             this.gridView_PhienHoc.Name = "gridView_PhienHoc";
@@ -2105,18 +2113,18 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Name = "FormatUnLogout";
-            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue2.Appearance.Options.UseFont = true;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "False";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gridView_TongHopHvByDay.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Name = "FormatUnLogout";
+            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue1.Appearance.Options.UseFont = true;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "False";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView_TongHopHvByDay.FormatRules.Add(gridFormatRule1);
             this.gridView_TongHopHvByDay.GridControl = this.gridControl_TongHopHvByDay;
             this.gridView_TongHopHvByDay.Name = "gridView_TongHopHvByDay";
             this.gridView_TongHopHvByDay.OptionsBehavior.AutoExpandAllGroups = true;
@@ -2391,18 +2399,18 @@
             this.gridColumn16,
             this.gridColumn17,
             this.gridColumn18});
-            gridFormatRule3.ApplyToRow = true;
-            gridFormatRule3.Name = "FormatUnLogout";
-            formatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue3.Appearance.Options.UseFont = true;
-            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = "False";
-            gridFormatRule3.Rule = formatConditionRuleValue3;
-            this.gridView_TongHopGioDay.FormatRules.Add(gridFormatRule3);
+            gridFormatRule8.ApplyToRow = true;
+            gridFormatRule8.Name = "FormatUnLogout";
+            formatConditionRuleValue8.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            formatConditionRuleValue8.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue8.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue8.Appearance.Options.UseFont = true;
+            formatConditionRuleValue8.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue8.Value1 = "False";
+            gridFormatRule8.Rule = formatConditionRuleValue8;
+            this.gridView_TongHopGioDay.FormatRules.Add(gridFormatRule8);
             this.gridView_TongHopGioDay.GridControl = this.gridControl_TongHopGioDay;
             this.gridView_TongHopGioDay.Name = "gridView_TongHopGioDay";
             this.gridView_TongHopGioDay.OptionsBehavior.AutoExpandAllGroups = true;
@@ -2691,19 +2699,19 @@
             this.gridColumn32,
             this.gridColumn33,
             this.gridColumn34});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.gridColumn30;
-            gridFormatRule1.Name = "FormatUnLogout";
-            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue1.Appearance.Options.UseFont = true;
-            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = "False";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView_PhienHocLoi.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.gridColumn30;
+            gridFormatRule2.Name = "FormatUnLogout";
+            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue2.Appearance.Options.UseFont = true;
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "False";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridView_PhienHocLoi.FormatRules.Add(gridFormatRule2);
             this.gridView_PhienHocLoi.GridControl = this.gridControl_PhienHocLoi;
             this.gridView_PhienHocLoi.Name = "gridView_PhienHocLoi";
             this.gridView_PhienHocLoi.OptionsBehavior.ReadOnly = true;
@@ -2968,17 +2976,17 @@
             this.View_SoNgayHoc,
             this.View_Status,
             this.View_NguoilxId});
-            gridFormatRule4.ApplyToRow = true;
-            gridFormatRule4.Column = this.View_Status;
-            gridFormatRule4.Name = "KiemTra_DDK";
-            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            formatConditionRuleValue4.Appearance.Options.UseFont = true;
-            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue4.Value1 = "Đủ điều kiện!";
-            gridFormatRule4.Rule = formatConditionRuleValue4;
-            this.gridView_Result.FormatRules.Add(gridFormatRule4);
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Column = this.View_Status;
+            gridFormatRule3.Name = "KiemTra_DDK";
+            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = "Đủ điều kiện!";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            this.gridView_Result.FormatRules.Add(gridFormatRule3);
             this.gridView_Result.GridControl = this.grid_Result;
             this.gridView_Result.GroupCount = 1;
             this.gridView_Result.GroupRowHeight = 28;
@@ -3850,14 +3858,6 @@
             // 
             this.refreshTimer.Interval = 1000;
             this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
-            // 
-            // mn_CheckMap
-            // 
-            this.mn_CheckMap.Image = ((System.Drawing.Image)(resources.GetObject("mn_CheckMap.Image")));
-            this.mn_CheckMap.Name = "mn_CheckMap";
-            this.mn_CheckMap.Size = new System.Drawing.Size(188, 22);
-            this.mn_CheckMap.Text = "Check Map";
-            this.mn_CheckMap.Click += new System.EventHandler(this.mn_CheckMap_Click);
             // 
             // Uc_DAT
             // 

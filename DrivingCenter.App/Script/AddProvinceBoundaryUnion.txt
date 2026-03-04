@@ -1,4 +1,10 @@
-﻿
+﻿CREATE TABLE ProvinceBoundary (
+    Id INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(100),
+    Boundary GEOMETRY
+);
+
+
 SELECT geometry::UnionAggregate(Boundary).MakeValid() AS BoundaryUnion
 INTO ProvinceBoundaryUnion
 FROM ProvinceBoundary;

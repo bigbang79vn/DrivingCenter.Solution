@@ -615,7 +615,7 @@ namespace DrivingCenter.App.UserControl
                         {
                             string groupText = groupValue.ToString().Trim();
 
-                            if (groupText == "B" || groupText == "B.01")
+                            if (groupText == "B" || groupText == "B.01" || groupText == "C1")
                                 gridView_QLKhoaHoc.ExpandGroupRow(rowHandle); // Chỉ mở nhóm B và B.01
                             else
                                 gridView_QLKhoaHoc.CollapseGroupRow(rowHandle); // Thu nhóm khác

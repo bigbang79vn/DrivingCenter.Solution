@@ -91,6 +91,12 @@ namespace DrivingCenter.App.UserControl
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbb_KhoaHocEco = new DevExpress.XtraEditors.LookUpEdit();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.checkbox = new DevExpress.XtraEditors.CheckEdit();
+            this.cbb_Cabin = new DevExpress.XtraEditors.LookUpEdit();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dt_TimeStart = new DevExpress.XtraEditors.DateEdit();
             this.LayoutPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -172,12 +178,7 @@ namespace DrivingCenter.App.UserControl
             this.NgayKhaiGiang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayBeGiang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangDaoTao = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.dt_TimeStart = new DevExpress.XtraEditors.DateEdit();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbb_Cabin = new DevExpress.XtraEditors.LookUpEdit();
-            this.checkbox = new DevExpress.XtraEditors.CheckEdit();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.Year = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repoCheckEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ToggleSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame)).BeginInit();
@@ -191,6 +192,11 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.gridview_HocVien)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocEco.Properties)).BeginInit();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkbox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).BeginInit();
             this.LayoutPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -228,11 +234,6 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaKH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_QuanLyKhoaHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_QLKhoaHoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkbox.Properties)).BeginInit();
-            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // Result
@@ -783,6 +784,88 @@ namespace DrivingCenter.App.UserControl
             this.cbb_KhoaHocEco.Size = new System.Drawing.Size(392, 27);
             this.cbb_KhoaHocEco.TabIndex = 0;
             this.cbb_KhoaHocEco.EditValueChanged += new System.EventHandler(this.cbb_KhoaHocEco_EditValueChanged);
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.checkbox);
+            this.panel12.Controls.Add(this.cbb_Cabin);
+            this.panel12.Controls.Add(this.label16);
+            this.panel12.Controls.Add(this.label15);
+            this.panel12.Controls.Add(this.dt_TimeStart);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(3, 647);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(499, 29);
+            this.panel12.TabIndex = 2;
+            // 
+            // checkbox
+            // 
+            this.checkbox.EditValue = true;
+            this.checkbox.Location = new System.Drawing.Point(214, 5);
+            this.checkbox.Name = "checkbox";
+            this.checkbox.Properties.Caption = "";
+            this.checkbox.Size = new System.Drawing.Size(20, 20);
+            this.checkbox.TabIndex = 5;
+            // 
+            // cbb_Cabin
+            // 
+            this.cbb_Cabin.Location = new System.Drawing.Point(107, 3);
+            this.cbb_Cabin.Name = "cbb_Cabin";
+            this.cbb_Cabin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_Cabin.Properties.Appearance.Options.UseFont = true;
+            this.cbb_Cabin.Properties.Appearance.Options.UseTextOptions = true;
+            this.cbb_Cabin.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.cbb_Cabin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbb_Cabin.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IdThietBi", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameCabin", "Cabin", 35, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GhiChu", "Ghi Chú", 65, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cbb_Cabin.Properties.DropDownRows = 4;
+            this.cbb_Cabin.Properties.NullText = "Chọn Cabin";
+            this.cbb_Cabin.Size = new System.Drawing.Size(100, 24);
+            this.cbb_Cabin.TabIndex = 4;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(251, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 18);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Time:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(22, 7);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 18);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Cabin:";
+            // 
+            // dt_TimeStart
+            // 
+            this.dt_TimeStart.EditValue = null;
+            this.dt_TimeStart.Location = new System.Drawing.Point(313, 3);
+            this.dt_TimeStart.Name = "dt_TimeStart";
+            this.dt_TimeStart.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_TimeStart.Properties.Appearance.Options.UseFont = true;
+            this.dt_TimeStart.Properties.Appearance.Options.UseTextOptions = true;
+            this.dt_TimeStart.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.dt_TimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dt_TimeStart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dt_TimeStart.Properties.DisplayFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
+            this.dt_TimeStart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dt_TimeStart.Properties.EditFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
+            this.dt_TimeStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dt_TimeStart.Properties.MaskSettings.Set("mask", "HH:mm:ss dd-MM-yyyy");
+            this.dt_TimeStart.Size = new System.Drawing.Size(186, 24);
+            this.dt_TimeStart.TabIndex = 1;
             // 
             // LayoutPanel
             // 
@@ -1901,7 +1984,8 @@ namespace DrivingCenter.App.UserControl
             this.NgayKhaiGiang,
             this.NgayBeGiang,
             this.HangDaoTao,
-            this.Status});
+            this.Status,
+            this.Year});
             gridFormatRule4.ApplyToRow = true;
             gridFormatRule4.Column = this.Status;
             gridFormatRule4.Name = "format_Status";
@@ -1987,87 +2071,15 @@ namespace DrivingCenter.App.UserControl
             this.HangDaoTao.Visible = true;
             this.HangDaoTao.VisibleIndex = 1;
             // 
-            // dt_TimeStart
+            // Year
             // 
-            this.dt_TimeStart.EditValue = null;
-            this.dt_TimeStart.Location = new System.Drawing.Point(313, 3);
-            this.dt_TimeStart.Name = "dt_TimeStart";
-            this.dt_TimeStart.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_TimeStart.Properties.Appearance.Options.UseFont = true;
-            this.dt_TimeStart.Properties.Appearance.Options.UseTextOptions = true;
-            this.dt_TimeStart.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.dt_TimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dt_TimeStart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dt_TimeStart.Properties.DisplayFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
-            this.dt_TimeStart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dt_TimeStart.Properties.EditFormat.FormatString = "HH:mm:ss dd-MM-yyyy";
-            this.dt_TimeStart.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dt_TimeStart.Properties.MaskSettings.Set("mask", "HH:mm:ss dd-MM-yyyy");
-            this.dt_TimeStart.Size = new System.Drawing.Size(186, 24);
-            this.dt_TimeStart.TabIndex = 1;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(22, 7);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 18);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Cabin:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(251, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 18);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Time:";
-            // 
-            // cbb_Cabin
-            // 
-            this.cbb_Cabin.Location = new System.Drawing.Point(107, 3);
-            this.cbb_Cabin.Name = "cbb_Cabin";
-            this.cbb_Cabin.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_Cabin.Properties.Appearance.Options.UseFont = true;
-            this.cbb_Cabin.Properties.Appearance.Options.UseTextOptions = true;
-            this.cbb_Cabin.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_Cabin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbb_Cabin.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IdThietBi", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameCabin", "Cabin", 35, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GhiChu", "Ghi Chú", 65, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cbb_Cabin.Properties.DropDownRows = 4;
-            this.cbb_Cabin.Properties.NullText = "Chọn Cabin";
-            this.cbb_Cabin.Size = new System.Drawing.Size(100, 24);
-            this.cbb_Cabin.TabIndex = 4;
-            // 
-            // checkbox
-            // 
-            this.checkbox.EditValue = true;
-            this.checkbox.Location = new System.Drawing.Point(214, 5);
-            this.checkbox.Name = "checkbox";
-            this.checkbox.Properties.Caption = "";
-            this.checkbox.Size = new System.Drawing.Size(20, 20);
-            this.checkbox.TabIndex = 5;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.checkbox);
-            this.panel12.Controls.Add(this.cbb_Cabin);
-            this.panel12.Controls.Add(this.label16);
-            this.panel12.Controls.Add(this.label15);
-            this.panel12.Controls.Add(this.dt_TimeStart);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(3, 647);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(499, 29);
-            this.panel12.TabIndex = 2;
+            this.Year.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.Year.AppearanceHeader.Options.UseBackColor = true;
+            this.Year.Caption = "Năm Học";
+            this.Year.FieldName = "Year";
+            this.Year.Name = "Year";
+            this.Year.Visible = true;
+            this.Year.VisibleIndex = 5;
             // 
             // Uc_CabinEco
             // 
@@ -2094,6 +2106,12 @@ namespace DrivingCenter.App.UserControl
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_KhoaHocEco.Properties)).EndInit();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkbox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).EndInit();
             this.LayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -2136,12 +2154,6 @@ namespace DrivingCenter.App.UserControl
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaKH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_QuanLyKhoaHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_QLKhoaHoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_TimeStart.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_Cabin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkbox.Properties)).EndInit();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2279,5 +2291,6 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private DevExpress.XtraEditors.DateEdit dt_TimeStart;
+        private DevExpress.XtraGrid.Columns.GridColumn Year;
     }
 }

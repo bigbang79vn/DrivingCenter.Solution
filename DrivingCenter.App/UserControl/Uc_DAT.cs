@@ -231,8 +231,8 @@ namespace DrivingCenter.App.UserControl
                 if (IsInvalidCourseTime(item, khoahoc))  errorMap[item].Add("Sai ngày giờ!");
 
                 // Kiểm tra số lần chụp
-                int lanchup = Math.Max(1, (int)Math.Ceiling(item.dbTime / 300)) + 1;
-                if (lanchup < item.SoLanNhanDien && item.LogOut == true) errorMap[item].Add("Số lần chụp!");
+                //int lanchup = Math.Max(1, (int)Math.Ceiling(item.dbTime / 300)) + 1;
+                //if (lanchup < item.SoLanNhanDien && item.LogOut == true) errorMap[item].Add("Số lần chụp!");
 
                 // Gửi Tổng cục
                 if (item.LogOut && !item.SendTongCuc)
@@ -611,7 +611,6 @@ namespace DrivingCenter.App.UserControl
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
             rpt.DataSource = resultBC;
-
 
             // Hiển thị report
             ReportPrintTool printTool = new ReportPrintTool(rpt);

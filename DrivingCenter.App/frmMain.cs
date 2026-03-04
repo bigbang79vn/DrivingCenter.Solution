@@ -25,6 +25,7 @@ namespace DrivingCenter.App
             {
                 MainContainer.Controls.Clear();
                 Uc_Home uc = new Uc_Home();
+                //Uc_CabinEco uc = new Uc_CabinEco();
                 uc.Dock = DockStyle.Fill;
                 MainContainer.Controls.Add(uc);
                 this.itemNav.Caption = $"Dashboard";

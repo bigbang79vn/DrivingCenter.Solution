@@ -145,7 +145,7 @@ namespace DrivingCenter.App.DAO
 
         public List<GiaoVien> GetAllGV()
         {
-            string query = $@"SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, AnhChup, MaCNDT, hv.Ten , SuDung, DateUse 
+            string query = $@"SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, AnhChup, MaCNDT, hv.Ten  
                         FROM GiaoVien AS gv
                         INNER JOIN TrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma";
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
@@ -162,9 +162,9 @@ namespace DrivingCenter.App.DAO
                 HangGPLX = (string)item["HangGPLX"],
                 AnhChup = (byte[])item["AnhChup"],
                 MaCNDT = (string)item["MaCNDT"],
-                TrinhDoHocVan = (string)item["Ten"],
-                SuDung = (bool)item["SuDung"],
-                DateUse = item["DateUse"] == DBNull.Value ? DateTime.Now : (DateTime)item["DateUse"]
+                TrinhDoHocVan = (string)item["Ten"]
+                //SuDung = (bool)item["SuDung"],
+                //DateUse = item["DateUse"] == DBNull.Value ? DateTime.Now : (DateTime)item["DateUse"]
             }).ToList();
 
             return lstGiaoVien;
@@ -226,9 +226,9 @@ namespace DrivingCenter.App.DAO
                 NamSX = (int)item["NamSX"],
                 SoGPXTL = (string)item["SoGPXTL"],
                 NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
-                NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
-                ThanhLy = item["ThanhLy"] == DBNull.Value ? true : (bool)item["ThanhLy"],
-                SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
+                NgayHHXTL = (DateTime)item["NgayHHGPXTL"]
+                //ThanhLy = item["ThanhLy"] == DBNull.Value ? true : (bool)item["ThanhLy"],
+                //SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
             }).ToList();
 
             return lstXeTapLai;
@@ -318,13 +318,13 @@ namespace DrivingCenter.App.DAO
 
         public void LockSession(string diemdanhnguoilxId, string note)
         {
-            string query = string.Format("UPDATE DiemDanhNguoiLx set Note = N'{0}', ActivePhien = 0 WHERE DiemDanhNguoiLxID = '{1}'", note, diemdanhnguoilxId);
+            string query = string.Format("UPDATE DiemDanhNguoiLx set GhiChu = N'{0}', ActivePhien = 0 WHERE DiemDanhNguoiLxID = '{1}'", note, diemdanhnguoilxId);
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         public void UnlockSession(string diemdanhnguoilxId)
         {
-            string query = string.Format("UPDATE DiemDanhNguoiLx set Note = NULL, ActivePhien = 1 WHERE DiemDanhNguoiLxID = '{0}'", diemdanhnguoilxId);
+            string query = string.Format("UPDATE DiemDanhNguoiLx set GhiChu = NULL, ActivePhien = 1 WHERE DiemDanhNguoiLxID = '{0}'", diemdanhnguoilxId);
             DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
         private async Task SafeExecuteAsync(string query)
@@ -355,7 +355,7 @@ namespace DrivingCenter.App.DAO
 
         public List<PhienHoc> GetAllPhienHocToDay(string day)
         {
-            string query = string.Format("SELECT CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, ph.NguoiLxID, hv.HoVaTen, kh.MaKH, kh.TenKH, ph.DiemDanhNguoiLxID, ph.BienSo, ph.Logout, ph.SendTongCuc, ph.ThoiDiem, ph.ThoiDiem_Logout, ROUND( ph.TongQuangDuongLD_Phien, 1) AS TongQuangDuongLD_Phien,  CONVERT(varchar,DATEADD(second,ph.TongThoiGianLD_Phien,0),108) AS TongThoiGianLD_Phien, TongThoiGianLD_Phien as dbTime, ph.SoLanNhanDien, ph.SoLanNhanDienThanhCong, ph.ActivePhien, ph.Note " +
+            string query = string.Format("SELECT CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, ph.NguoiLxID, hv.HoVaTen, kh.MaKH, kh.TenKH, ph.DiemDanhNguoiLxID, ph.BienSo, ph.Logout, ph.SendTongCuc, ph.ThoiDiem, ph.ThoiDiem_Logout, ROUND( ph.TongQuangDuongLD_Phien, 1) AS TongQuangDuongLD_Phien,  CONVERT(varchar,DATEADD(second,ph.TongThoiGianLD_Phien,0),108) AS TongThoiGianLD_Phien, TongThoiGianLD_Phien as dbTime, ph.SoLanNhanDien, ph.SoLanNhanDienThanhCong, ph.ActivePhien, ph.GhiChu " +
                 "FROM DiemDanhNguoiLx as ph, GiaoVien as gv, NguoiLX as hv,  KhoaHoc as kh " +
                 "WHERE ph.GiaoVienID = gv.GiaoVienID and hv.NguoiLXID = ph.NguoiLxID AND hv.KhoaHocID = kh.KhoaHocID and CONVERT(VARCHAR, ThoiDiem, 103) = '{0}' " +
                 "ORDER by ph.Logout, ph.SendTongCuc ASC", day);
@@ -382,7 +382,7 @@ namespace DrivingCenter.App.DAO
                 SoLanNhanDien = item.Field<int?>("SoLanNhanDien") ?? 0,
                 SoLanNhanDienThanhCong = item.Field<int?>("SoLanNhanDienThanhCong") ?? 0,
                 Active = item.Field<bool>("ActivePhien"),
-                Note = item.Field<string>("Note") ?? ""
+                Note = item.Field<string>("GhiChu") ?? ""
             }).ToList();
         }
 
@@ -477,7 +477,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("SELECT hv.MaDK, ph.HangXe , ROUND(SUM(ph.TongQuangDuongLD_Phien),1) AS TongQuangDuong_B11 , SUM(ph.TongThoiGianLD_Phien) AS TongThoiGian_B11 , ROUND(SUM(TongQuangDuongLD_BanDem),1) AS TongQuangDuongB11_PhienDem, " +
                 "ROUND( SUM(ph.TongThoiGianLD_BanDem), 1) AS TongThoiGianB11_PhienDem  " +
                 "FROM DiemDanhNguoiLx AS ph, GiaoVien AS gv, NguoiLX AS hv, KhoaHocDangDT AS kh " +
-                "where ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ActivePhien = 1 and HangXe = 'B11' and kh.KhoaHocID = '{0}' " +
+                "WHERE ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ActivePhien = 1 and HangXe = 'B.01' and kh.KhoaHocID = '{0}' " +
                 "GROUP BY hv.MaDK, hv.HangDaoTao, kh.KhoaHocID, ph.HangXe", khoahocId);
 
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
@@ -703,7 +703,7 @@ namespace DrivingCenter.App.DAO
 
         public List<PhienHoc> TongHopPhienHocLoi(string from, string to)
         {
-            string query = string.Format("SELECT CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, hv.HoVaTen, ph.NguoiLxID, ph.DiemDanhNguoiLxID, ph.TongThoiGianLD_Phien as TongThoiGian_Double, hv.HangDaoTao, ph.ThoiDiem, ph.ThoiDiem_Logout,  kh.TenKH, ph.LogOut, ph.SendTongCuc, ROUND(ph.TongQuangDuongLD_Phien,1) AS TongQuangDuongLD_Phien, CONVERT(varchar, DATEADD(second, ph.TongThoiGianLD_Phien, 0), 108) AS TongThoiGianLD_Phien, ph.BienSo, ph.Note " +
+            string query = string.Format("SELECT CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, hv.HoVaTen, ph.NguoiLxID, ph.DiemDanhNguoiLxID, ph.TongThoiGianLD_Phien as TongThoiGian_Double, hv.HangDaoTao, ph.ThoiDiem, ph.ThoiDiem_Logout,  kh.TenKH, ph.LogOut, ph.SendTongCuc, ROUND(ph.TongQuangDuongLD_Phien,1) AS TongQuangDuongLD_Phien, CONVERT(varchar, DATEADD(second, ph.TongThoiGianLD_Phien, 0), 108) AS TongThoiGianLD_Phien, ph.BienSo, ph.GhiChu " +
                 "FROM DiemDanhNguoiLx AS ph, GiaoVien AS gv, NguoiLX AS hv, KhoaHoc AS kh " +
                 "where ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ActivePhien = 0 and CONVERT(VARCHAR, ph.ThoiDiem, 112) >= '{0}' AND CONVERT(VARCHAR, ph.ThoiDiem, 112) <= '{1}' " +
                 "ORDER BY HoTenGV", from, to);
@@ -724,7 +724,7 @@ namespace DrivingCenter.App.DAO
                 ThoiGianPhien = item["TongThoiGianLD_Phien"] == DBNull.Value ? "" : (string)item["TongThoiGianLD_Phien"],
                 LogOut = (bool)item["LogOut"],
                 SendTongCuc = (bool)item["SendTongCuc"],
-                Note = item["Note"] == DBNull.Value ? string.Empty : (string)item["Note"]
+                Note = item["GhiChu"] == DBNull.Value ? string.Empty : (string)item["GhiChu"]
             }).ToList();
             return lst;
         }
@@ -798,7 +798,7 @@ namespace DrivingCenter.App.DAO
         public List<ChiTietPhienHoc> GetHistoryData(string diemdanhnguoilxId)
         {
             string query = $@"SELECT dt.HistoryID, dt.ThoiDiem, dt.VanToc, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, FaceStatus, img.AnhChup 
-                FROM HistoryData as dt, I2EDAT_IMAGE.dbo.HistoryData as img 
+                FROM HistoryData as dt, EMCDAT_IMAGE.dbo.HistoryData as img 
                 WHERE dt.DiemDanhNguoiLxId = '{diemdanhnguoilxId}' AND dt.HistoryID = img.HistoryID";
 
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
@@ -1014,7 +1014,7 @@ namespace DrivingCenter.App.DAO
         public DataTable GetResultNguoiLxByID(Int64 NguoiLxId)
         {
             string query = $@"SELECT IMG.AnhChup, IMG.AnhChup_Logout, DAT.DiemDanhNguoiLxID, DAT.ThoiDiem, ThoiDiem_Logout, BienSo, HangXe, ROUND(TongQuangDuongLD_Phien,3) AS TongQuangDuongLD_Phien, ROUND(TongThoiGianLD_Phien / 3600,3) AS TongThoiGianLD_Phien 
-            FROM DiemDanhNguoiLx AS DAT, [I2EDAT_IMAGE].[dbo].[DiemDanhNguoiLx] AS IMG 
+            FROM DiemDanhNguoiLx AS DAT, [EMCDAT_IMAGE].[dbo].[DiemDanhNguoiLx] AS IMG 
             WHERE DAT.DiemDanhNguoiLxID = IMG.DiemDanhNguoiLxID AND DAT.NguoiLxID = {NguoiLxId} 
             ORDER BY DAT.ThoiDiem DESC";
             return DataProviderDAT.Instance.ExecuteQuery(query);
