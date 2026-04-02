@@ -518,7 +518,7 @@ namespace DrivingCenter.App.UserControl
                     return baseCondition && item.TongThoiGian_PhienDem > 7500;
                 case "C1":
                     return item.TongQuangDuongTichLuy > 827 && item.TongThoiGianTichLuy > 87000 &&
-                           item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 7500;
+                           item.TongThoiGian_B1 > 3900 && item.TongThoiGian_PhienDem > 7500;
                 default:
                     return item.TongQuangDuongTichLuy > 812 && item.TongThoiGianTichLuy > 72480 &&
                            item.TongThoiGian_B1 > 7500 && item.TongThoiGian_PhienDem > 11100 && item.SoNgayHocKQ >= 8;

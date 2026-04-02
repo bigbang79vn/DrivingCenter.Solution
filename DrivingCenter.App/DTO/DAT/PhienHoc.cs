@@ -50,7 +50,7 @@ namespace DrivingCenter.App.DTO.DAT
             this.SoLanNhanDien = row["SoLanNhanDien"] == DBNull.Value ? 0 : (int)row["SoLanNhanDien"];
             this.SoLanNhanDienThanhCong = row["SoLanNhanDienThanhCong"] == DBNull.Value ? 0 : (int)row["SoLanNhanDienThanhCong"];
             this.Active = (bool)row["ActivePhien"];
-            this.Note = row["Note"].ToString();
+            this.Note = row["GhiChu"].ToString();
         }
     }
 }
