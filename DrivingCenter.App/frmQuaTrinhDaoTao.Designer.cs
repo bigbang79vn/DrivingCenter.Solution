@@ -131,7 +131,7 @@
             // 
             // txt_KmSTD
             // 
-            this.txt_KmSTD.Location = new System.Drawing.Point(228, 490);
+            this.txt_KmSTD.Location = new System.Drawing.Point(228, 536);
             this.txt_KmSTD.Name = "txt_KmSTD";
             this.txt_KmSTD.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KmSTD.Properties.Appearance.Options.UseFont = true;
@@ -143,7 +143,7 @@
             // 
             // txt_KmDem
             // 
-            this.txt_KmDem.Location = new System.Drawing.Point(228, 464);
+            this.txt_KmDem.Location = new System.Drawing.Point(228, 510);
             this.txt_KmDem.Name = "txt_KmDem";
             this.txt_KmDem.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KmDem.Properties.Appearance.Options.UseFont = true;
@@ -155,7 +155,7 @@
             // 
             // txt_GioSTD
             // 
-            this.txt_GioSTD.Location = new System.Drawing.Point(121, 490);
+            this.txt_GioSTD.Location = new System.Drawing.Point(121, 536);
             this.txt_GioSTD.Name = "txt_GioSTD";
             this.txt_GioSTD.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_GioSTD.Properties.Appearance.Options.UseFont = true;
@@ -167,7 +167,7 @@
             // 
             // txt_GioDem
             // 
-            this.txt_GioDem.Location = new System.Drawing.Point(121, 464);
+            this.txt_GioDem.Location = new System.Drawing.Point(121, 510);
             this.txt_GioDem.Name = "txt_GioDem";
             this.txt_GioDem.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_GioDem.Properties.Appearance.Options.UseFont = true;
@@ -179,7 +179,7 @@
             // 
             // txt_ThoiGian
             // 
-            this.txt_ThoiGian.Location = new System.Drawing.Point(121, 438);
+            this.txt_ThoiGian.Location = new System.Drawing.Point(121, 484);
             this.txt_ThoiGian.Name = "txt_ThoiGian";
             this.txt_ThoiGian.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ThoiGian.Properties.Appearance.Options.UseFont = true;
@@ -191,7 +191,7 @@
             // 
             // txt_QuangDuong
             // 
-            this.txt_QuangDuong.Location = new System.Drawing.Point(121, 412);
+            this.txt_QuangDuong.Location = new System.Drawing.Point(121, 458);
             this.txt_QuangDuong.Name = "txt_QuangDuong";
             this.txt_QuangDuong.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_QuangDuong.Properties.Appearance.Options.UseFont = true;
@@ -203,7 +203,7 @@
             // 
             // txt_HangDT
             // 
-            this.txt_HangDT.Location = new System.Drawing.Point(121, 358);
+            this.txt_HangDT.Location = new System.Drawing.Point(121, 404);
             this.txt_HangDT.Name = "txt_HangDT";
             this.txt_HangDT.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HangDT.Properties.Appearance.Options.UseFont = true;
@@ -217,14 +217,14 @@
             this.pic_Avatar.Name = "pic_Avatar";
             this.pic_Avatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pic_Avatar.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pic_Avatar.Size = new System.Drawing.Size(120, 160);
+            this.pic_Avatar.Size = new System.Drawing.Size(150, 200);
             this.pic_Avatar.TabIndex = 0;
             // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(15, 309);
+            this.labelControl5.Location = new System.Drawing.Point(15, 355);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(73, 16);
             this.labelControl5.TabIndex = 6;
@@ -232,7 +232,7 @@
             // 
             // txt_KhoaHoc
             // 
-            this.txt_KhoaHoc.Location = new System.Drawing.Point(121, 332);
+            this.txt_KhoaHoc.Location = new System.Drawing.Point(121, 378);
             this.txt_KhoaHoc.Name = "txt_KhoaHoc";
             this.txt_KhoaHoc.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_KhoaHoc.Properties.Appearance.Options.UseFont = true;
@@ -244,7 +244,7 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(15, 493);
+            this.labelControl7.Location = new System.Drawing.Point(15, 539);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(66, 16);
             this.labelControl7.TabIndex = 9;
@@ -254,7 +254,7 @@
             // 
             this.lb_HoTen.Appearance.Font = new System.Drawing.Font("Roboto Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_HoTen.Appearance.Options.UseFont = true;
-            this.lb_HoTen.Location = new System.Drawing.Point(14, 243);
+            this.lb_HoTen.Location = new System.Drawing.Point(14, 289);
             this.lb_HoTen.Name = "lb_HoTen";
             this.lb_HoTen.Size = new System.Drawing.Size(74, 20);
             this.lb_HoTen.TabIndex = 5;
@@ -264,7 +264,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(15, 467);
+            this.labelControl6.Location = new System.Drawing.Point(15, 513);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(52, 16);
             this.labelControl6.TabIndex = 9;
@@ -274,7 +274,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(15, 335);
+            this.labelControl4.Location = new System.Drawing.Point(15, 381);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(57, 16);
             this.labelControl4.TabIndex = 9;
@@ -284,7 +284,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(15, 441);
+            this.labelControl3.Location = new System.Drawing.Point(15, 487);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(74, 16);
             this.labelControl3.TabIndex = 9;
@@ -294,7 +294,7 @@
             // 
             this.lb_NgaySinh.Appearance.Font = new System.Drawing.Font("Roboto Condensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_NgaySinh.Appearance.Options.UseFont = true;
-            this.lb_NgaySinh.Location = new System.Drawing.Point(14, 269);
+            this.lb_NgaySinh.Location = new System.Drawing.Point(14, 315);
             this.lb_NgaySinh.Name = "lb_NgaySinh";
             this.lb_NgaySinh.Size = new System.Drawing.Size(59, 17);
             this.lb_NgaySinh.TabIndex = 8;
@@ -304,7 +304,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(15, 415);
+            this.labelControl2.Location = new System.Drawing.Point(15, 461);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(97, 16);
             this.labelControl2.TabIndex = 9;
@@ -312,7 +312,7 @@
             // 
             // txt_maDK
             // 
-            this.txt_maDK.Location = new System.Drawing.Point(121, 306);
+            this.txt_maDK.Location = new System.Drawing.Point(121, 352);
             this.txt_maDK.Name = "txt_maDK";
             this.txt_maDK.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_maDK.Properties.Appearance.Options.UseFont = true;
@@ -324,7 +324,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(15, 361);
+            this.labelControl1.Location = new System.Drawing.Point(15, 407);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(82, 16);
             this.labelControl1.TabIndex = 9;
@@ -401,7 +401,7 @@
             this.Img_Login.Name = "Img_Login";
             this.Img_Login.Visible = true;
             this.Img_Login.VisibleIndex = 0;
-            this.Img_Login.Width = 125;
+            this.Img_Login.Width = 136;
             // 
             // repo_Picture
             // 
@@ -416,7 +416,7 @@
             this.Img_Logout.Name = "Img_Logout";
             this.Img_Logout.Visible = true;
             this.Img_Logout.VisibleIndex = 1;
-            this.Img_Logout.Width = 125;
+            this.Img_Logout.Width = 136;
             // 
             // MaPhien
             // 
@@ -425,7 +425,7 @@
             this.MaPhien.Name = "MaPhien";
             this.MaPhien.Visible = true;
             this.MaPhien.VisibleIndex = 2;
-            this.MaPhien.Width = 288;
+            this.MaPhien.Width = 276;
             // 
             // BienSoXe
             // 
@@ -434,7 +434,7 @@
             this.BienSoXe.Name = "BienSoXe";
             this.BienSoXe.Visible = true;
             this.BienSoXe.VisibleIndex = 3;
-            this.BienSoXe.Width = 82;
+            this.BienSoXe.Width = 77;
             // 
             // HangXe
             // 
@@ -454,7 +454,7 @@
             this.Login.Name = "Login";
             this.Login.Visible = true;
             this.Login.VisibleIndex = 4;
-            this.Login.Width = 115;
+            this.Login.Width = 126;
             // 
             // Logout
             // 
@@ -465,7 +465,7 @@
             this.Logout.Name = "Logout";
             this.Logout.Visible = true;
             this.Logout.VisibleIndex = 5;
-            this.Logout.Width = 93;
+            this.Logout.Width = 126;
             // 
             // Distance_Phien
             // 
@@ -474,7 +474,7 @@
             this.Distance_Phien.Name = "Distance_Phien";
             this.Distance_Phien.Visible = true;
             this.Distance_Phien.VisibleIndex = 6;
-            this.Distance_Phien.Width = 127;
+            this.Distance_Phien.Width = 116;
             // 
             // Time_Phien
             // 
@@ -483,7 +483,7 @@
             this.Time_Phien.Name = "Time_Phien";
             this.Time_Phien.Visible = true;
             this.Time_Phien.VisibleIndex = 7;
-            this.Time_Phien.Width = 127;
+            this.Time_Phien.Width = 116;
             // 
             // Result_Sent
             // 
@@ -492,7 +492,7 @@
             this.Result_Sent.Name = "Result_Sent";
             this.Result_Sent.Visible = true;
             this.Result_Sent.VisibleIndex = 8;
-            this.Result_Sent.Width = 118;
+            this.Result_Sent.Width = 69;
             // 
             // frmQuaTrinhDaoTao
             // 

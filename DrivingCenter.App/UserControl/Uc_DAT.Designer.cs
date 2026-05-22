@@ -364,6 +364,8 @@
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.countdownTimer = new System.Windows.Forms.Timer(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.mn_trainingProcess = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -1647,6 +1649,8 @@
             this.mn_CheckMap,
             this.CheckImgNull,
             this.toolStripSeparator5,
+            this.mn_trainingProcess,
+            this.toolStripSeparator4,
             this.deleteSToolStripMenuItem,
             this.mn_SessionLock,
             this.mb_SessionUnlock,
@@ -1654,7 +1658,7 @@
             this.toolStripSeparator6,
             this.EndSession});
             this.menu_Phienhoc.Name = "contextMenuStrip2";
-            this.menu_Phienhoc.Size = new System.Drawing.Size(189, 214);
+            this.menu_Phienhoc.Size = new System.Drawing.Size(189, 264);
             // 
             // refreshToolStripMenuItem
             // 
@@ -3880,6 +3884,19 @@
             this.refreshTimer.Interval = 1000;
             this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
             // 
+            // mn_trainingProcess
+            // 
+            this.mn_trainingProcess.Image = ((System.Drawing.Image)(resources.GetObject("mn_trainingProcess.Image")));
+            this.mn_trainingProcess.Name = "mn_trainingProcess";
+            this.mn_trainingProcess.Size = new System.Drawing.Size(188, 22);
+            this.mn_trainingProcess.Text = "Training Process";
+            this.mn_trainingProcess.Click += new System.EventHandler(this.mn_trainingProcess_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(185, 6);
+            // 
             // Uc_DAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4222,5 +4239,7 @@
         private System.Windows.Forms.ToolStripMenuItem mn_CheckMap;
         private System.Windows.Forms.ToolStripMenuItem mb_SessionUnlock;
         private System.Windows.Forms.ToolStripMenuItem mn_DetailByMaDK;
+        private System.Windows.Forms.ToolStripMenuItem mn_trainingProcess;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

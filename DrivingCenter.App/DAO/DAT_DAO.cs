@@ -1021,6 +1021,12 @@ namespace DrivingCenter.App.DAO
 
         }
 
+        public string GetMaDKByNguoiLxId(Int64 nguoiLxId)
+        {
+            string query = $"SELECT MaDK FROM NguoiLX WHERE NguoiLXID = {nguoiLxId}";
+            return (string)DataProviderDAT.Instance.ExecuteScalar(query);
+        }
+
         public DataTable GetKetQuaDaoTaoByMaDK(string maDK)
         {
             string query = $@"SELECT img.AnhChup, img.AnhChup_Logout, ph.DiemDanhNguoiLxID, ph.BienSo, ph.HangXe, ph.ThoiDiem, ph.ThoiDiem_Logout, ROUND(ph.TongQuangDuongLD_Phien,4) AS TongQuangDuongLD_Phien, ph.TongThoiGianLD_Phien as Time, CONVERT(VARCHAR, DATEADD(SECOND, ph.TongThoiGianLD_Phien, 0), 108) AS TongThoiGianLD_Phien, ph.SendTongCuc 

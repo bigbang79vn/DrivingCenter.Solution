@@ -313,7 +313,6 @@ namespace DrivingCenter.App.UserControl
             var result = lstPH.Where(x=>lstGuid.Contains(x.MaPhien)).ToList();
             gridControl_PhienHoc.DataSource = result;
         }
-
         private void CheckImgNull_Click(object sender, EventArgs e)
         {
             List<PhienHoc> lstNull = new List<PhienHoc>();
@@ -328,7 +327,21 @@ namespace DrivingCenter.App.UserControl
 
             gridControl_PhienHoc.DataSource = lstPH;
         }
+        private string GetMaDKByNguoiLxId(Int64 nguoiLxId)
+        {
+            var maDK = DAT_DAO.Instance.GetMaDKByNguoiLxId(nguoiLxId);
+            return maDK;
+        }
+        private void mn_trainingProcess_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;
+            var nguoiLxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "NguoiLxID");
 
+            var maDK = GetMaDKByNguoiLxId(Convert.ToInt64(nguoiLxId));
+
+            frmQuaTrinhDaoTao f = new frmQuaTrinhDaoTao(maDK.ToString());
+            f.ShowDialog();
+        }
         private void mn_SessionLock_Click(object sender, EventArgs e)
         {
             int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;

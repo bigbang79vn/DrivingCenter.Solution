@@ -1,13 +1,10 @@
-﻿using DevExpress.XtraMap.Drawing.DirectD3D9;
-using DrivingCenter.App.DAO;
+﻿using DrivingCenter.App.DAO;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static DevExpress.Office.Utils.DrawingGroupShapePosH;
 
 namespace DrivingCenter.App
 {
