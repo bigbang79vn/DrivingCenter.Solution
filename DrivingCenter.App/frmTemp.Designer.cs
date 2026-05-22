@@ -33,10 +33,9 @@
             // 
             // MainContainer
             // 
-            this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainContainer.Location = new System.Drawing.Point(0, 0);
+            this.MainContainer.Location = new System.Drawing.Point(137, 89);
             this.MainContainer.Name = "MainContainer";
-            this.MainContainer.Size = new System.Drawing.Size(1477, 763);
+            this.MainContainer.Size = new System.Drawing.Size(1169, 429);
             this.MainContainer.TabIndex = 0;
             // 
             // frmTemp

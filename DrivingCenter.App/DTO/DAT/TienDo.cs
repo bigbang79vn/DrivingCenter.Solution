@@ -1,11 +1,4 @@
-﻿using DevExpress.XtraLayout.Filtering.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DrivingCenter.App.DTO.DAT
+﻿namespace DrivingCenter.App.DTO.DAT
 {
     public class TienDo
     {

@@ -5,6 +5,8 @@ namespace DrivingCenter.App.DTO.DAT
 {
     public class PhienHoc
     {
+        public byte[] AnhChup { get; set; }
+        public byte[] AnhChup_Logout { get; set; }
         public string HoTenGV { get; set; }
         public Int64 NguoiLxID { get; set; }
         public string HoTenHV { get; set; }
@@ -32,6 +34,8 @@ namespace DrivingCenter.App.DTO.DAT
         }
         public PhienHoc(DataRow row)
         {
+            this.AnhChup = row["AnhChup"] == DBNull.Value ? null : (byte[])row["AnhChup"];
+            this.AnhChup_Logout = row["AnhChup_Logout"] == DBNull.Value ? null : (byte[])row["AnhChup_Logout"];
             this.HoTenGV = row["HoTenGV"].ToString();
             this.NguoiLxID = Convert.ToInt64(row["NguoiLxID"]);
             this.HoTenHV = row["HoVaTen"].ToString();

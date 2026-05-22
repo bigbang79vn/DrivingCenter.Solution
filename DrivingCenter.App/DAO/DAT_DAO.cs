@@ -1021,6 +1021,16 @@ namespace DrivingCenter.App.DAO
 
         }
 
+        public DataTable GetKetQuaDaoTaoByMaDK(string maDK)
+        {
+            string query = $@"SELECT img.AnhChup, img.AnhChup_Logout, ph.DiemDanhNguoiLxID, ph.BienSo, ph.HangXe, ph.ThoiDiem, ph.ThoiDiem_Logout, ROUND(ph.TongQuangDuongLD_Phien,4) AS TongQuangDuongLD_Phien, ph.TongThoiGianLD_Phien as Time, CONVERT(VARCHAR, DATEADD(SECOND, ph.TongThoiGianLD_Phien, 0), 108) AS TongThoiGianLD_Phien, ph.SendTongCuc 
+                FROM DiemDanhNguoiLx ph 
+                JOIN EMCDAT_IMAGE.dbo.DiemDanhNguoiLx img ON ph.DiemDanhNguoiLxID = img.DiemDanhNguoiLxID  and ph.PhienDaoTao = img.PhienDaoTao 
+                WHERE ph.NguoiLxID = (SELECT NguoiLxID from NguoiLX WHERE MaDK = '{maDK}') AND ph.ActivePhien = 1 AND ph.TongThoiGianLD_Phien >= 300
+                ORDER BY ph.ThoiDiem DESC";
+            DataTable data = DataProviderDAT.Instance.ExecuteQuery(query);
+            return data;
+        }
         public DataTable GetBaoCaoHocVienByNguoilxID(Int64 NguoilxId)
         {
             string query = $"EXEC [dbo].[spTongHopDiemDanhLDByNguoiLx] @MaCSDT = N'66015', @NguoiLxID = {NguoilxId}";
@@ -1053,6 +1063,29 @@ namespace DrivingCenter.App.DAO
                             .Select(r => Guid.Parse(r.Field<string>("DiemDanhNguoiLxId")))
                             .ToList();
             return lst;
+        }
+
+        public NguoiLxInDAT GetInfoHocVienByMaDK(string maDK)
+        {
+            string query = $"SELECT MaDK, HoVaTen, NgaySinh, TenKH, HangGPLX FROM NguoiLX WHERE MaDK = '{maDK}'";
+            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow item = dt.Rows[0];
+                NguoiLxInDAT hv = new NguoiLxInDAT
+                {
+                    MaDK = item["MaDK"].ToString(),
+                    HoVaTen = item["HoVaTen"].ToString(),
+                    NgaySinh = (DateTime)item["NgaySinh"],
+                    TenKH = item["TenKH"].ToString(),
+                    HangGPLX = item["HangGPLX"].ToString()
+                };
+                return hv;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

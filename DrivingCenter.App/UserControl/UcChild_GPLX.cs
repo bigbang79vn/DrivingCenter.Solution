@@ -1,5 +1,5 @@
-﻿using DevExpress.CodeParser;
-using DevExpress.DataProcessing.InMemoryDataProcessor;
+﻿
+using Dapper.Contrib.Extensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.Common;
@@ -17,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Z.Dapper.Plus;
 
@@ -68,6 +69,7 @@ namespace DrivingCenter.App.UserControl
 
         public string MaDK()
         {
+            Delay(1);
             string prefix = GPLX_DAO.Instance.GenerateMaDK();
             return prefix;
 
@@ -100,7 +102,7 @@ namespace DrivingCenter.App.UserControl
             double delayTime = 0;
             while (delayTime < delay)
             {
-                Thread.Sleep(TimeSpan.FromSeconds(0.05));
+                Thread.Sleep(TimeSpan.FromSeconds(1));
                 delayTime++;
             }
         }
@@ -310,7 +312,6 @@ namespace DrivingCenter.App.UserControl
                         nguoiLX_HoSo.NhanXet_MoPhong = null;
                         lstnguoiLX_HoSo.Add(nguoiLX_HoSo);
 
-                        Delay(1);
                     }
 
                     //Add NguoiLXHS_GT
@@ -358,21 +359,22 @@ namespace DrivingCenter.App.UserControl
                                 db.BulkInsert(lstNguoiLX);
                                 db.BulkInsert(lstnguoiLX_HoSo);
                                 db.BulkInsert(lstnguoiLXHS_GT);
+
                             }
+
+                            lbStatus.Text = "Done";
+
+                            string KhoaHoc = kh.TenKH;
+
+                            XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {KhoaHoc}!");
+
+                            lbStatus.Text = "Done...";
                         }
-
-                        lbStatus.Text = "Done";
-
-                        string KhoaHoc = kh.TenKH;
-
-                        XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {KhoaHoc}!");
-
-                        lbStatus.Text = "Done...";
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        lbStatus.Text = "Try Again";
-                        txtHangDaoTao.Focus();
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            lbStatus.Text = "Try Again";
+                            txtHangDaoTao.Focus();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -463,7 +465,7 @@ namespace DrivingCenter.App.UserControl
 
                         NguoiLX_HoSo_Update nguoiLx = new NguoiLX_HoSo_Update();
                         nguoiLx.MaDK = dt.Rows[i]["MaDK"].ToString().ToUpper().Trim();
-                        string hang = dt.Rows[i]["Lop"].ToString().ToUpper().Trim().Substring(0,2);
+                        string hang = dt.Rows[i]["Lop"].ToString().ToUpper().Trim().Substring(0, 2);
                         nguoiLx.SoGiayCNTN = txt_SoCNTN.Text + (hang == "C1" ? "C1" : "B") + "|" + dt.Rows[i]["SoCNTN"].ToString().ToUpper().Trim();
                         nguoiLx.TT_XuLy = "09";
                         nguoiLx.SoQuyetDinhTN = txt_SoQD.Text;

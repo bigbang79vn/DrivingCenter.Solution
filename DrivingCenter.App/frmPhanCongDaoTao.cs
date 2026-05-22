@@ -62,7 +62,7 @@ namespace DrivingCenter.App
             repoGrid_XeTapLai.PopupView.Columns.AddField("MaXe").Visible = true;
             repoGrid_XeTapLai.PopupView.Columns.AddField("HangGPLX").Visible = true;
 
-            List<XeTapLai> lstSTD = lst.Where(i => i.HangGPLX == "B11").ToList();
+            List<XeTapLai> lstSTD = lst.Where(i => i.HangGPLX == "B01").ToList();
             repoGrid_XeSTD.DataSource = lstSTD;
             repoGrid_XeSTD.DisplayMember = "BienSoXe";
             repoGrid_XeSTD.ValueMember = "MaXe";

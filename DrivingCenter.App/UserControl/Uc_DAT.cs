@@ -337,6 +337,25 @@ namespace DrivingCenter.App.UserControl
 
             fGhiChu f = new fGhiChu(diemdanhnguoilxId.ToString());
             f.Show();
+            LoadPhienHoc();
+        }
+        private void mb_SessionUnlock_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_PhienHoc.FocusedRowHandle;
+
+            var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
+
+            var result = XtraMessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                DAT_DAO.Instance.UnlockSession(diemdanhnguoilxId.ToString());
+            }
+
+            string from = dtp_From.DateTime.ToString("yyyyMMdd");
+            string to = dtp_To.DateTime.ToString("yyyyMMdd");
+
+            LoadLstPhienHocBo(from, to);
+            LoadPhienHoc();
         }
 
         private void deleteSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -914,5 +933,23 @@ namespace DrivingCenter.App.UserControl
 
 
         #endregion Phiên học sai
+
+        private void mn_DetailByMaDK_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_Result.FocusedRowHandle;
+            var maDK = gridView_Result.GetRowCellValue(focusedRowHandle, "View_MaDK");
+
+            frmQuaTrinhDaoTao f = new frmQuaTrinhDaoTao(maDK.ToString());
+            f.ShowDialog();
+        }
+
+        private void grid_Result_DoubleClick(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_Result.FocusedRowHandle;
+            var maDK = gridView_Result.GetRowCellValue(focusedRowHandle, "View_MaDK");
+
+            frmQuaTrinhDaoTao f = new frmQuaTrinhDaoTao(maDK.ToString());
+            f.ShowDialog();
+        }
     }
 }

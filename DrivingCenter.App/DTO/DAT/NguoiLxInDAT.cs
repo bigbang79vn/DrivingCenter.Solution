@@ -11,6 +11,7 @@ namespace DrivingCenter.App.DTO.DAT
         public int KhoaHocID { get; set; }
         public string TenKH { get; set; }
         public string HangDT { get; set; }
+        public string HangGPLX { get; set; }
         public Int64 NguoiLXID { get; set; }
         public string MaDK { get; set; }
         public string HoVaTen { get; set; }

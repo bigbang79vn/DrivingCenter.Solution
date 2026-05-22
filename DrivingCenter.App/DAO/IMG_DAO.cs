@@ -29,6 +29,12 @@ namespace DrivingCenter.App.DAO
             return dt;   
         }
 
+        public DataTable GetImgByMaDK(string maDK)
+        {
+            string query = $"SELECT Anh FROM NguoiLX WHERE MaDK = '{maDK}'";
+            return DataProviderIMG.Instance.ExecuteQuery(query);
+        }
+
         public DataTable GetDataTheHocVien(string lstNguoiLxID)
         {
             string query = $"EXEC [dbo].[usp_LoadDaTaHV] @lstNguoiLXID = N'{lstNguoiLxID}'";
