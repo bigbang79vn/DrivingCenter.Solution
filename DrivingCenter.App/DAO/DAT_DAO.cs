@@ -787,9 +787,11 @@ namespace DrivingCenter.App.DAO
 
         public DataTable GetDetailSession(string diemdanhnguoilxId)
         {
-            string query = string.Format("SELECT TenGV, dd.NguoiLxID, hv.HoVaTen, hv.TenKH, dd.DiemDanhNguoiLxID, dd.BienSo, dd.HangXe, dd.ThoiDiem, dd.ThoiDiem_Logout, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, Lat_Logout, Lng_Logout  " +
-                "FROM DiemDanhNguoiLx AS dd, NguoiLX AS hv " +
-                "WHERE DiemDanhNguoiLxId = '{0}' and dd.NguoiLxID = hv.NguoiLXID", diemdanhnguoilxId);
+            string query = $@"SELECT TenGV, dd.NguoiLxID, hv.HoVaTen, kh.KhoaHocID, hv.TenKH, dd.DiemDanhNguoiLxID, dd.BienSo, dd.HangXe, dd.ThoiDiem, dd.ThoiDiem_Logout, TongQuangDuongLD_Phien, TongThoiGianLD_Phien, Lat, Lng, Lat_Logout, Lng_Logout  
+                    FROM DiemDanhNguoiLx AS dd
+                    JOIN NguoiLX AS hv ON dd.NguoiLxID = hv.NguoiLXID
+                    JOIN KhoaHoc as KH ON hv.KhoaHocID = kh.KhoaHocID
+                    WHERE DiemDanhNguoiLxId = '{diemdanhnguoilxId}'";
 
             DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
             return dt;
@@ -856,6 +858,32 @@ namespace DrivingCenter.App.DAO
                 "WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId, historyId);
 
             DataProviderIMG.Instance.ExecuteNonQuery(query);
+        }
+
+        public void InsertHinhDem (int khoaHocID, long nguoiLxID, string diemdanhnguoilxId, Guid historyId)
+        {
+            string query = $@"
+                DECLARE @Image VARBINARY(MAX)
+                DECLARE @AddDated DATETIME = GETDATE()
+                DECLARE @LengthImage INT
+
+                SELECT @Image = AnhChup
+                FROM EMCDAT_IMAGE.dbo.HistoryData
+                WHERE DiemDanhNguoiLxId = '{diemdanhnguoilxId}'
+                    AND HistoryID = '{historyId}'
+                
+                SET @LengthImage = DATALENGTH(@Image)
+
+                EXEC spAddNguoiLxFace 
+                    N'66015',
+                    {khoaHocID},
+                    {nguoiLxID},
+                    11,
+                    @AddDated,
+                    @Image,
+                    @LengthImage
+                ";
+            DataProviderDAT.Instance.ExecuteNonQuery(query);
         }
 
         #endregion DAT

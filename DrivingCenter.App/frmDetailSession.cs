@@ -94,6 +94,9 @@ namespace DrivingCenter.App
             gridControl_VehicleHistory.DataSource = lst;
         }
 
+        Int64 NguoiLxID;
+        int KhoaHocID;
+
         private void InitializeMap(string _diemdanhnguoilxId)
         {
             _points = DAT_DAO.Instance.GetlstPoint(_diemdanhnguoilxId);
@@ -114,6 +117,9 @@ namespace DrivingCenter.App
                 lb_TimeIn.Text = timeStart;
                 timeEnd = firstRow.Field<DateTime>("ThoiDiem_Logout").ToString("HH:mm:ss dd/MM/yyyy");
                 lb_TimeOut.Text = timeEnd;
+
+                NguoiLxID = firstRow.Field<Int64>("NguoiLxID");
+                KhoaHocID = firstRow.Field<int>("KhoaHocID");
             }
 
             var firstPoint = _points[0];
@@ -189,6 +195,14 @@ namespace DrivingCenter.App
             Guid _historyID = (Guid)gridView_HistoryData.GetRowCellValue(focusedRowHandle, "Id");
             DAT_DAO.Instance.UpdateImageLogin(_diemdanhnguoilxId, _historyID);
             GetImgLogInLogOut(_diemdanhnguoilxId);
+        }
+
+        private void mn_InsertHinhDem_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gridView_HistoryData.FocusedRowHandle;
+            Guid _historyID = (Guid)gridView_HistoryData.GetRowCellValue(focusedRowHandle, "Id");
+
+            DAT_DAO.Instance.InsertHinhDem(KhoaHocID, NguoiLxID, _diemdanhnguoilxId, _historyID);
         }
     }
 }

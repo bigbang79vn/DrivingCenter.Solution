@@ -36,6 +36,8 @@
             this.Menu_DetailSession = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.update_ImageLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.update_ImageLoout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mn_InsertHinhDem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_HistoryData = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiDiem = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -182,23 +184,37 @@
             // 
             this.Menu_DetailSession.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.update_ImageLogin,
-            this.update_ImageLoout});
+            this.update_ImageLoout,
+            this.toolStripSeparator1,
+            this.mn_InsertHinhDem});
             this.Menu_DetailSession.Name = "contextMenuStrip1";
-            this.Menu_DetailSession.Size = new System.Drawing.Size(201, 48);
+            this.Menu_DetailSession.Size = new System.Drawing.Size(204, 98);
             // 
             // update_ImageLogin
             // 
             this.update_ImageLogin.Name = "update_ImageLogin";
-            this.update_ImageLogin.Size = new System.Drawing.Size(200, 22);
+            this.update_ImageLogin.Size = new System.Drawing.Size(203, 22);
             this.update_ImageLogin.Text = "Bổ sung ảnh đăng nhập";
             this.update_ImageLogin.Click += new System.EventHandler(this.update_ImageLogin_Click);
             // 
             // update_ImageLoout
             // 
             this.update_ImageLoout.Name = "update_ImageLoout";
-            this.update_ImageLoout.Size = new System.Drawing.Size(200, 22);
+            this.update_ImageLoout.Size = new System.Drawing.Size(203, 22);
             this.update_ImageLoout.Text = "Bổ sung ảnh đăng xuất";
             this.update_ImageLoout.Click += new System.EventHandler(this.update_ImageLoout_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(200, 6);
+            // 
+            // mn_InsertHinhDem
+            // 
+            this.mn_InsertHinhDem.Name = "mn_InsertHinhDem";
+            this.mn_InsertHinhDem.Size = new System.Drawing.Size(203, 22);
+            this.mn_InsertHinhDem.Text = "Lấy mẫu ban đêm VT_11";
+            this.mn_InsertHinhDem.Click += new System.EventHandler(this.mn_InsertHinhDem_Click);
             // 
             // gridView_HistoryData
             // 
@@ -550,7 +566,7 @@
             this.txt_ThoiGian.Location = new System.Drawing.Point(9, 4);
             this.txt_ThoiGian.Name = "txt_ThoiGian";
             this.txt_ThoiGian.ReadOnly = true;
-            this.txt_ThoiGian.Size = new System.Drawing.Size(258, 15);
+            this.txt_ThoiGian.Size = new System.Drawing.Size(258, 16);
             this.txt_ThoiGian.TabIndex = 1;
             // 
             // panel7
@@ -572,7 +588,7 @@
             this.txt_BienSo.Location = new System.Drawing.Point(9, 4);
             this.txt_BienSo.Name = "txt_BienSo";
             this.txt_BienSo.ReadOnly = true;
-            this.txt_BienSo.Size = new System.Drawing.Size(258, 15);
+            this.txt_BienSo.Size = new System.Drawing.Size(258, 16);
             this.txt_BienSo.TabIndex = 1;
             // 
             // panel6
@@ -594,7 +610,7 @@
             this.txt_QuangDuong.Location = new System.Drawing.Point(9, 4);
             this.txt_QuangDuong.Name = "txt_QuangDuong";
             this.txt_QuangDuong.ReadOnly = true;
-            this.txt_QuangDuong.Size = new System.Drawing.Size(258, 15);
+            this.txt_QuangDuong.Size = new System.Drawing.Size(258, 16);
             this.txt_QuangDuong.TabIndex = 1;
             // 
             // panel5
@@ -616,7 +632,7 @@
             this.txt_GiaoVien.Location = new System.Drawing.Point(9, 4);
             this.txt_GiaoVien.Name = "txt_GiaoVien";
             this.txt_GiaoVien.ReadOnly = true;
-            this.txt_GiaoVien.Size = new System.Drawing.Size(258, 15);
+            this.txt_GiaoVien.Size = new System.Drawing.Size(258, 16);
             this.txt_GiaoVien.TabIndex = 1;
             // 
             // panel4
@@ -638,7 +654,7 @@
             this.txt_KhoaHoc.Location = new System.Drawing.Point(9, 4);
             this.txt_KhoaHoc.Name = "txt_KhoaHoc";
             this.txt_KhoaHoc.ReadOnly = true;
-            this.txt_KhoaHoc.Size = new System.Drawing.Size(258, 15);
+            this.txt_KhoaHoc.Size = new System.Drawing.Size(258, 16);
             this.txt_KhoaHoc.TabIndex = 1;
             // 
             // panel3
@@ -660,7 +676,7 @@
             this.txt_HocVien.Location = new System.Drawing.Point(9, 5);
             this.txt_HocVien.Name = "txt_HocVien";
             this.txt_HocVien.ReadOnly = true;
-            this.txt_HocVien.Size = new System.Drawing.Size(258, 15);
+            this.txt_HocVien.Size = new System.Drawing.Size(258, 16);
             this.txt_HocVien.TabIndex = 1;
             // 
             // panel2
@@ -682,7 +698,7 @@
             this.txt_PhienHoc.Location = new System.Drawing.Point(9, 5);
             this.txt_PhienHoc.Name = "txt_PhienHoc";
             this.txt_PhienHoc.ReadOnly = true;
-            this.txt_PhienHoc.Size = new System.Drawing.Size(258, 15);
+            this.txt_PhienHoc.Size = new System.Drawing.Size(258, 16);
             this.txt_PhienHoc.TabIndex = 1;
             // 
             // label6
@@ -905,5 +921,7 @@
         private System.Windows.Forms.ContextMenuStrip Menu_DetailSession;
         private System.Windows.Forms.ToolStripMenuItem update_ImageLogin;
         private System.Windows.Forms.ToolStripMenuItem update_ImageLoout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mn_InsertHinhDem;
     }
 }
