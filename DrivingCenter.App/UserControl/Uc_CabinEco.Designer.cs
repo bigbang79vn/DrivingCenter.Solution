@@ -118,6 +118,8 @@ namespace DrivingCenter.App.UserControl
             this.xtraTab_KetQua = new DevExpress.XtraTab.XtraTabPage();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.grd_Result = new DevExpress.XtraGrid.GridControl();
+            this.mn_Change = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mn_ChuyenKhoaHoc = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_Result = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.DiemDanhNguoiLxID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NameCabin = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -206,6 +208,7 @@ namespace DrivingCenter.App.UserControl
             this.xtraTabControl1.SuspendLayout();
             this.xtraTab_KetQua.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Result)).BeginInit();
+            this.mn_Change.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkDanhMucBaiTap)).BeginInit();
             this.xtraTab_BaiTapChuaHoanThanh.SuspendLayout();
@@ -1153,6 +1156,7 @@ namespace DrivingCenter.App.UserControl
             this.grd_Result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grd_Result.ContextMenuStrip = this.mn_Change;
             this.grd_Result.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grd_Result.Location = new System.Drawing.Point(5, 5);
             this.grd_Result.MainView = this.gridView_Result;
@@ -1164,6 +1168,21 @@ namespace DrivingCenter.App.UserControl
             this.grd_Result.TabIndex = 1;
             this.grd_Result.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Result});
+            // 
+            // mn_Change
+            // 
+            this.mn_Change.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mn_ChuyenKhoaHoc});
+            this.mn_Change.Name = "contextMenuStrip1";
+            this.mn_Change.Size = new System.Drawing.Size(145, 26);
+            this.mn_Change.Text = "Chuyển sang khóa";
+            // 
+            // mn_ChuyenKhoaHoc
+            // 
+            this.mn_ChuyenKhoaHoc.Name = "mn_ChuyenKhoaHoc";
+            this.mn_ChuyenKhoaHoc.Size = new System.Drawing.Size(144, 22);
+            this.mn_ChuyenKhoaHoc.Text = "Chuyển khóa";
+            this.mn_ChuyenKhoaHoc.Click += new System.EventHandler(this.mn_ChuyenKhoaHoc_Click);
             // 
             // gridView_Result
             // 
@@ -1181,6 +1200,7 @@ namespace DrivingCenter.App.UserControl
             this.gridView_Result.OptionsCustomization.AllowSort = false;
             this.gridView_Result.OptionsSelection.CheckBoxSelectorColumnWidth = 50;
             this.gridView_Result.OptionsSelection.MultiSelect = true;
+            this.gridView_Result.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView_Result.OptionsView.ShowGroupPanel = false;
             this.gridView_Result.RowHeight = 32;
             this.gridView_Result.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.None;
@@ -1210,7 +1230,7 @@ namespace DrivingCenter.App.UserControl
             this.NameCabin.Name = "NameCabin";
             this.NameCabin.OptionsColumn.ReadOnly = true;
             this.NameCabin.Visible = true;
-            this.NameCabin.VisibleIndex = 0;
+            this.NameCabin.VisibleIndex = 1;
             this.NameCabin.Width = 85;
             // 
             // BaiHocCaBinID
@@ -1230,7 +1250,7 @@ namespace DrivingCenter.App.UserControl
             this.BaiHocCaBinID.Name = "BaiHocCaBinID";
             this.BaiHocCaBinID.OptionsColumn.ReadOnly = true;
             this.BaiHocCaBinID.Visible = true;
-            this.BaiHocCaBinID.VisibleIndex = 1;
+            this.BaiHocCaBinID.VisibleIndex = 2;
             this.BaiHocCaBinID.Width = 85;
             // 
             // TenBaiTap
@@ -1246,7 +1266,7 @@ namespace DrivingCenter.App.UserControl
             this.TenBaiTap.FieldName = "BaiHocCaBinID";
             this.TenBaiTap.Name = "TenBaiTap";
             this.TenBaiTap.Visible = true;
-            this.TenBaiTap.VisibleIndex = 2;
+            this.TenBaiTap.VisibleIndex = 3;
             this.TenBaiTap.Width = 445;
             // 
             // lkDanhMucBaiTap
@@ -1289,7 +1309,7 @@ namespace DrivingCenter.App.UserControl
             this.ThoiDiemBatDau.Name = "ThoiDiemBatDau";
             this.ThoiDiemBatDau.OptionsColumn.ReadOnly = true;
             this.ThoiDiemBatDau.Visible = true;
-            this.ThoiDiemBatDau.VisibleIndex = 3;
+            this.ThoiDiemBatDau.VisibleIndex = 4;
             this.ThoiDiemBatDau.Width = 210;
             // 
             // ThoiDiemKetThuc
@@ -1309,7 +1329,7 @@ namespace DrivingCenter.App.UserControl
             this.ThoiDiemKetThuc.Name = "ThoiDiemKetThuc";
             this.ThoiDiemKetThuc.OptionsColumn.ReadOnly = true;
             this.ThoiDiemKetThuc.Visible = true;
-            this.ThoiDiemKetThuc.VisibleIndex = 4;
+            this.ThoiDiemKetThuc.VisibleIndex = 5;
             this.ThoiDiemKetThuc.Width = 210;
             // 
             // TongThoiGianPhien
@@ -1329,7 +1349,7 @@ namespace DrivingCenter.App.UserControl
             this.TongThoiGianPhien.Name = "TongThoiGianPhien";
             this.TongThoiGianPhien.OptionsColumn.ReadOnly = true;
             this.TongThoiGianPhien.Visible = true;
-            this.TongThoiGianPhien.VisibleIndex = 5;
+            this.TongThoiGianPhien.VisibleIndex = 6;
             this.TongThoiGianPhien.Width = 218;
             // 
             // xtraTab_BaiTapChuaHoanThanh
@@ -2122,6 +2142,7 @@ namespace DrivingCenter.App.UserControl
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTab_KetQua.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Result)).EndInit();
+            this.mn_Change.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Result)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkDanhMucBaiTap)).EndInit();
             this.xtraTab_BaiTapChuaHoanThanh.ResumeLayout(false);
@@ -2292,5 +2313,7 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.Label label15;
         private DevExpress.XtraEditors.DateEdit dt_TimeStart;
         private DevExpress.XtraGrid.Columns.GridColumn Year;
+        private System.Windows.Forms.ContextMenuStrip mn_Change;
+        private System.Windows.Forms.ToolStripMenuItem mn_ChuyenKhoaHoc;
     }
 }

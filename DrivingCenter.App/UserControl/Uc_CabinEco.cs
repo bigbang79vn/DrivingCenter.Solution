@@ -75,6 +75,16 @@ namespace DrivingCenter.App.UserControl
                 subItem.Click += MenuItem_Click;
                 subItem.Tag = item;
             }
+
+            mn_ChuyenKhoaHoc.DropDownItems.Clear();
+            //----- Add subitem chuyển khóa học
+            foreach (var item in lstKhoaHoc)
+            {
+                ToolStripItem subItem = new ToolStripMenuItem(item.TenKhoaHoc);
+                mn_ChuyenKhoaHoc.DropDownItems.Add(subItem);
+                subItem.Click += MenuItemChangeCourse_Click;
+                subItem.Tag = item;
+            }
         }
 
 
@@ -291,7 +301,6 @@ namespace DrivingCenter.App.UserControl
                 }
             }
         }
-
         //------------------------------------
 
         //-----------Chuyển Cabin-------------
@@ -325,12 +334,10 @@ namespace DrivingCenter.App.UserControl
             }
         }
         //-------------------------------------
-
         private void mn_refresh_Click(object sender, EventArgs e)
         {
             LoadLstHvByKH(IdKhoaHoc);
         }
-
         private void mn_CreateAll_Click(object sender, EventArgs e)
         {
             if (XtraMessageBox.Show("Are you sure add all result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
@@ -383,7 +390,6 @@ namespace DrivingCenter.App.UserControl
                 }
             }
         }
-
         private void mn_Create01Result_Click(object sender, EventArgs e)
         {
             if (XtraMessageBox.Show("Are you sure add 01 result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
@@ -451,7 +457,6 @@ namespace DrivingCenter.App.UserControl
                 }
             }
         }
-
         private void mn_PrintAllReport_Click(object sender, EventArgs e)
         {
             StringBuilder lstMaDK = new StringBuilder();
@@ -495,7 +500,6 @@ namespace DrivingCenter.App.UserControl
 
             new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
         }
-
         private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
         {
             var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
@@ -791,6 +795,56 @@ namespace DrivingCenter.App.UserControl
             var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(rowData.MaDK);
 
             new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
+        }
+
+        private void MenuItemChangeCourse_Click(object sender, EventArgs e)
+        {
+            int Id_KhoaHoc = ((sender as ToolStripMenuItem).Tag as KhoaHoc).KhoaHocID;
+            string MaDKNewBySoCCD = CabinEco_DAO.Instance.GetMaDKNew(Id_KhoaHoc, SoCCCD);
+
+            if (MaDKNewBySoCCD == string.Empty)
+            {
+                XtraMessageBox.Show(string.Format("Không có thông tin học viên trong khóa học {0}", ((sender as ToolStripMenuItem).Tag as KhoaHoc).TenKhoaHoc), "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int[] selectedRowHandlesResults = gridView_Result.GetSelectedRows();
+                if (selectedRowHandlesResults.Length == 0 && selectedRowHandlesResults.Length == 0)
+                {
+                    XtraMessageBox.Show("Vui lòng chọn ít nhất kết quả cần chuyển.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (XtraMessageBox.Show("Are you sure change course this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+
+                    foreach (var rowHandle in selectedRowHandlesResults)
+                    {
+                        var selectedRow = gridView_Result.GetRow(rowHandle) as Result;
+                        if (selectedRow != null)
+                        {
+                            int ID = (int)selectedRow.DiemDanhNguoiLxID;
+                            CabinEco_DAO.Instance.ChangeCourse(Id_KhoaHoc, MaDKNewBySoCCD, ID);
+                        }
+                    }
+                    LoadInfoHocVienById(IdHocVien);
+                    //Result(ID_HocVien);
+                    LoadLstHvByKH(IdKhoaHoc);
+                    for (int i = 0; i < gridview_HocVien.RowCount; i++)
+                    {
+                        if (gridview_HocVien.GetRowCellValue(i, "MaDK").ToString() == IdHocVien)
+                        {
+                            gridview_HocVien.FocusedRowHandle = i;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void mn_ChuyenKhoaHoc_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

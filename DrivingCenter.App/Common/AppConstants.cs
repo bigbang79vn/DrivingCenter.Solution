@@ -26,5 +26,6 @@
 
         public const string connectionStringGplx = @"Data Source=192.168.50.254;Initial Catalog=gplx_csdt;User ID=sa;Password=vNdc@123";
 
+        public const string connectionStringGplx_CDB = @"Data Source=192.168.50.254;Initial Catalog=GPLX_CDB_CSDT;User ID=sa;Password=vNdc@123";
     }
 }

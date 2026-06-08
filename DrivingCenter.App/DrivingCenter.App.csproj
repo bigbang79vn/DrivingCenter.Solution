@@ -416,11 +416,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CabinEco_frmDDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CabinEco_frmDDT.Designer.cs">
+      <DependentUpon>CabinEco_frmDDT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\AppConstants.cs" />
     <Compile Include="DAO\AppBee_DAO.cs" />
     <Compile Include="DAO\CabinEco_DAO.cs" />
     <Compile Include="DAO\CabinI2E_DAO.cs" />
     <Compile Include="DAO\DAT_DAO.cs" />
+    <Compile Include="DAO\GPLX_CDB_CSDT_DAO.cs" />
     <Compile Include="DAO\GPLX_DAO.cs" />
     <Compile Include="DAO\IMG_DAO.cs" />
     <Compile Include="DAO\MySQL_DAO.cs" />
@@ -430,6 +437,7 @@
     <Compile Include="DataProvider\DataProviderDAT.cs" />
     <Compile Include="DataProvider\DataProviderGPLX.cs" />
     <Compile Include="DataProvider\DataProviderIMG.cs" />
+    <Compile Include="DataProvider\DbProvider.cs" />
     <Compile Include="DTO\Account\Account.cs" />
     <Compile Include="DTO\Cabin\Cabin.cs" />
     <Compile Include="DTO\Cabin\Exercise.cs" />
@@ -533,6 +541,12 @@
     </Compile>
     <Compile Include="frmTemp.Designer.cs">
       <DependentUpon>frmTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateSendTC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateSendTC.Designer.cs">
+      <DependentUpon>frmUpdateSendTC.cs</DependentUpon>
     </Compile>
     <Compile Include="fSplitSession.cs">
       <SubType>Form</SubType>
@@ -744,6 +758,9 @@
     <Compile Include="UC_DetailStudent.Designer.cs">
       <DependentUpon>UC_DetailStudent.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CabinEco_frmDDT.resx">
+      <DependentUpon>CabinEco_frmDDT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fAccount.resx">
       <DependentUpon>fAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -779,6 +796,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTemp.resx">
       <DependentUpon>frmTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateSendTC.resx">
+      <DependentUpon>frmUpdateSendTC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSplitSession.resx">
       <DependentUpon>fSplitSession.cs</DependentUpon>
