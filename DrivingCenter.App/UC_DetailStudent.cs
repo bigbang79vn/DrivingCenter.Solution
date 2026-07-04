@@ -1,29 +1,17 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.XtraLayout;
-using DevExpress.XtraLayout.Helpers;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
-using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.Helper;
 using DrivingCenter.App.Report;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App
 {
     public partial class UC_DetailStudent : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         private readonly NguoiLxInDAT _NguoiLxid;
         public UC_DetailStudent(NguoiLxInDAT NguoiLxId)
         {
@@ -43,12 +31,12 @@ namespace DrivingCenter.App
             lb_NgayCapCMT.Text = nguoiLx.NgayCapCMT.ToString("dd/MM/yyyy");
             lb_GioiTinh.Text = nguoiLx.GioiTinh.ToString();
             lb_KhoaHoc.Text = nguoiLx.TenKH;
-            pic_Image.Image = new ImageExtension().byteArrayToImage(DAT_DAO.Instance.GetAnhChupNguoiLx(nguoiLx.NguoiLXID));
+            pic_Image.Image = new ImageExtension().byteArrayToImage(_DAO.GetAnhChupNguoiLx(nguoiLx.NguoiLXID));
 
             lb_QuangDuongTL.Text = nguoiLx.TongQuangDuongTichLuy.ToString();
             lb_TimeTichLuy.Text = nguoiLx.TongThoiGianText;
 
-            gridControl_PhienHocByNguoiLxId.DataSource = DAT_DAO.Instance.GetResultNguoiLxByID(nguoiLx.NguoiLXID);
+            gridControl_PhienHocByNguoiLxId.DataSource = _DAO.GetResultNguoiLxByID(nguoiLx.NguoiLXID);
         }
 
         private void gridView_PhienHocByNguoiLxId_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -88,7 +76,7 @@ namespace DrivingCenter.App
             }
             else if (button.Caption == "Print")
             {
-                var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(_NguoiLxid.NguoiLXID);
+                var resultBC = _DAO.GetBaoCaoHocVienByNguoilxID(_NguoiLxid.NguoiLXID);
                 new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
             }
             else if (button.Caption == "Reset Changes")
@@ -102,8 +90,8 @@ namespace DrivingCenter.App
 
                 if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học \n{0}", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
-                    gridControl_PhienHocByNguoiLxId.DataSource = DAT_DAO.Instance.GetResultNguoiLxByID(_NguoiLxid.NguoiLXID);
+                    _DAO.DeletePhByID(diemdanhnguoilxId.ToString());
+                    gridControl_PhienHocByNguoiLxId.DataSource = _DAO.GetResultNguoiLxByID(_NguoiLxid.NguoiLXID);
                 }
             }
         }

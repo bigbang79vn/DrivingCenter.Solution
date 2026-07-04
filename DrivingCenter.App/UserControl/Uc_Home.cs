@@ -9,6 +9,7 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_Home : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         public Uc_Home()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace DrivingCenter.App.UserControl
 
         private void AddItemYearToCombobox()
         {
-            List<int> yearDashboards = DAT_DAO.Instance.LstYear();
+            List<int> yearDashboards = _DAO.LstYear();
 
             cbb_Year.DataSource = yearDashboards;
             cbb_Year.DisplayMember = "Nam";
@@ -37,18 +38,18 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadDashboarByYear(int year)
         {
-            lb_SoHocVienByNam.Text = DAT_DAO.Instance.LoadSoHocVienByYear(year).ToString();
-            lb_SoKhoaHocByNam.Text = DAT_DAO.Instance.LoadSoKhoaHocByYear(year).ToString();
-            lb_SumSoHocVien.Text = DAT_DAO.Instance.LoadSoHocVien().ToString();
-            lb_SumSoKhoaHoc.Text = DAT_DAO.Instance.LoadSoKhoaHoc().ToString();
-            lb_SoGiaoVien.Text = DAT_DAO.Instance.LoadSoGiaoVien().ToString();
-            lb_SoXeTapLai.Text = DAT_DAO.Instance.LoadSoXeTapLai().ToString();
+            lb_SoHocVienByNam.Text = _DAO.LoadSoHocVienByYear(year).ToString();
+            lb_SoKhoaHocByNam.Text = _DAO.LoadSoKhoaHocByYear(year).ToString();
+            lb_SumSoHocVien.Text = _DAO.LoadSoHocVien().ToString();
+            lb_SumSoKhoaHoc.Text = _DAO.LoadSoKhoaHoc().ToString();
+            lb_SoGiaoVien.Text = _DAO.LoadSoGiaoVien().ToString();
+            lb_SoXeTapLai.Text = _DAO.LoadSoXeTapLai().ToString();
         }
 
         private async Task TaskXeOnline()
         {
             // Chạy tác vụ nặng trong thread pool
-            var lstXe = await Task.Run(() => DAT_DAO.Instance.GetLstXeTapLaiOnline());
+            var lstXe = await Task.Run(() => _DAO.GetLstXeTapLaiOnline());
 
             // Cập nhật giao diện trên UI thread
             gridControl_XeOnline.Invoke(new Action(() =>
@@ -60,8 +61,8 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadKhoaHocDDT()
         {
-            DAT_DAO.Instance.UpdateKhoaHocDangDT();
-            List<KhoaHocDangDT> lst = DAT_DAO.Instance.GetAllKhoaHocDDT();
+            _DAO.UpdateKhoaHocDangDT();
+            List<KhoaHocDangDT> lst = _DAO.GetAllKhoaHocDDT();
             gridControl_KhoaHocDDT.DataSource = lst;
         }
 
@@ -75,8 +76,8 @@ namespace DrivingCenter.App.UserControl
 
                 for (int i = 1; i <= numDay; i++)
                 {
-                    int Sophien = DAT_DAO.Instance.CountPhien(i, month, year);
-                    //decimal TongKm = DAT_DAO.Instance.SumKmByDay(i, month, year);
+                    int Sophien = _DAO.CountPhien(i, month, year);
+                    //decimal TongKm = _DAO.SumKmByDay(i, month, year);
                     int TongSoKm = 1212;
                     tempList.Add(new ChartSoPhien(i.ToString(), Sophien.ToString(), TongSoKm.ToString()));
                 }

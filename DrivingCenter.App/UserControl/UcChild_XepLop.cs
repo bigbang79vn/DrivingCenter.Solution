@@ -1,22 +1,14 @@
-﻿using DevExpress.Utils.Extensions;
-using DevExpress.XtraEditors;
-using DrivingCenter.App.DAO;
-using DrivingCenter.App.DTO.Cabin;
+﻿using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.GPLX;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
     public partial class UcChild_XepLop : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly GPLX_DAO _DAO = new GPLX_DAO();
         public UcChild_XepLop()
         {
             InitializeComponent();
@@ -33,14 +25,14 @@ namespace DrivingCenter.App.UserControl
         {
             // Load danh sách người lái xe chưa xếp lớp vào gridControlLeft
             string MakhoaHoc = "66015K22DB001";
-            var data = GPLX_DAO.Instance.Get_lstNguoiLxByMaKh(MakhoaHoc);
+            var data = _DAO.Get_lstNguoiLxByMaKh(MakhoaHoc);
             listLeft = new BindingList<NguoiLX>(data);
             gridControlLeft.DataSource = listLeft;
 
             //listRight = new BindingList<NguoiLX>();
             //gridControlRight.DataSource = listRight;
 
-            var khoaHoc = GPLX_DAO.Instance.GetlstKh();
+            var khoaHoc = _DAO.GetlstKh();
             SlookUpEdit_KhoaHoc.Properties.DataSource = khoaHoc;
             SlookUpEdit_KhoaHoc.Properties.DisplayMember = "KhoaHocs";
             SlookUpEdit_KhoaHoc.Properties.ValueMember = "MaKH";
@@ -61,7 +53,7 @@ namespace DrivingCenter.App.UserControl
                 {
                     listRight.Add(nguoiLx);
                     listLeft.Remove(nguoiLx);
-                    GPLX_DAO.Instance.UpdateNguoiLxToKhoaHoc(nguoiLx, SlookUpEdit_KhoaHoc.EditValue.ToString());
+                    _DAO.UpdateNguoiLxToKhoaHoc(nguoiLx, SlookUpEdit_KhoaHoc.EditValue.ToString());
                 }
             }
         }
@@ -76,7 +68,7 @@ namespace DrivingCenter.App.UserControl
                 {
                     listLeft.Add(nguoiLx);
                     listRight.Remove(nguoiLx);
-                    GPLX_DAO.Instance.UpdateNguoiLxToKhoaHoc(nguoiLx, "66015K22DB001"); // Trả về khóa học mặc định
+                    _DAO.UpdateNguoiLxToKhoaHoc(nguoiLx, "66015K22DB001"); // Trả về khóa học mặc định
                 }
             }
         }
@@ -90,7 +82,7 @@ namespace DrivingCenter.App.UserControl
                 dtNgayKG.DateTime = obj.NgayKG;
                 dtNgayBG.DateTime = obj.NgayBG;
 
-                var data = GPLX_DAO.Instance.Get_lstNguoiLxByMaKh(obj.MaKH);
+                var data = _DAO.Get_lstNguoiLxByMaKh(obj.MaKH);
                 listRight = new BindingList<NguoiLX>(data);
                 gridControlRight.DataSource = listRight;
             }

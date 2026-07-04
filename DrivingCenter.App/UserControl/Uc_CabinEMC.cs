@@ -9,11 +9,13 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static DevExpress.Office.Drawing.LazyGroupBrush;
 
 namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_CabinEMC : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly CabinI2E_DAO _DAO = new CabinI2E_DAO();
         public Uc_CabinEMC()
         {
             InitializeComponent();
@@ -32,8 +34,7 @@ namespace DrivingCenter.App.UserControl
 
         private void Uc_CabinEMC_Load(object sender, EventArgs e)
         {
-            GetLstKhoaHocDDT();
-            GetAllKhoaHoc();
+            Initialize();
             tblLayout_Result.Dock = DockStyle.Fill;
             tblLayout_ThongKe.Dock = DockStyle.Fill;
             tblLayout_KhoaHoc.Dock = DockStyle.Fill;
@@ -41,15 +42,14 @@ namespace DrivingCenter.App.UserControl
             dtp_DayTHCabin.DateTime = DateTime.Now;
         }
 
-        public void GetAllKhoaHoc()
+        public void Initialize()
         {
-            List<KhoaHoc> lst = CabinI2E_DAO.Instance.GetAllKhoaHoc();
+            List<KhoaHoc> lst = _DAO.GetAllKhoaHoc();
             grd_QuanLyKhoaHoc.DataSource = lst;
-        }
 
-        public void GetLstKhoaHocDDT()
-        {
-            lstKhoaHoc = CabinI2E_DAO.Instance.GetlstKhoaHocDDT();
+            lstKhoaHoc = lst.Where(x => x.LoaiDaoTao == "Đang Đào Tạo")
+                .OrderBy(x => x.TenKhoaHoc)
+                .ToList();
             cbb_KhoaHocEMC.Properties.DataSource = lstKhoaHoc;
             cbb_KhoaHocEMC.Properties.DisplayMember = "TenKhoaHoc";
             cbb_KhoaHocEMC.Properties.ValueMember = "KhoaHocID";
@@ -63,7 +63,7 @@ namespace DrivingCenter.App.UserControl
         {
             foreach (HocVien item in lst)
             {
-                string kl = CabinI2E_DAO.Instance.CheckDK(item.NguoiLxID, item.MaKH);
+                string kl = _DAO.CheckDK(item.NguoiLxID, item.MaKH);
                 if (kl == "Đáp ứng quy định")
                 {
                     item.Result = true;
@@ -78,16 +78,16 @@ namespace DrivingCenter.App.UserControl
 
         public void LoadLstHvByKH(int IdKhoaHoc)
         {
-            List<Int64> lstNguoiLxID = CabinI2E_DAO.Instance.GetlstNguoiLxID(IdKhoaHoc);
+            List<Int64> lstNguoiLxID = _DAO.GetlstNguoiLxID(IdKhoaHoc);
 
             //---------Update thoi gian tap, bai tap to NguoiLx-----
 
             foreach (var item in lstNguoiLxID)
             {
-                CabinI2E_DAO.Instance.UpdateTimeExerToNguoiLx(item);
+                _DAO.UpdateTimeExerToNguoiLx(item);
             }
 
-            List<HocVien> _lstStudent = CabinI2E_DAO.Instance.GetlstHocVienByIdKhoaHoc(IdKhoaHoc);
+            List<HocVien> _lstStudent = _DAO.GetlstHocVienByIdKhoaHoc(IdKhoaHoc);
 
             CheckResult(_lstStudent);
 
@@ -100,7 +100,7 @@ namespace DrivingCenter.App.UserControl
 
             lb_ThongKe.Text = "THỐNG KÊ KẾT QUẢ CABIN NGÀY " + day;
 
-            _lstThongKe = CabinI2E_DAO.Instance.LstThongKe(day);
+            _lstThongKe = _DAO.LstThongKe(day);
 
             grd_ThongKe.DataSource = _lstThongKe;
         }
@@ -200,7 +200,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_PrintAllReport_Click(object sender, EventArgs e)
         {
-            string lstNguoiLxID = CabinI2E_DAO.Instance.GetLstNguoiLxID(IdKhoaHoc);
+            string lstNguoiLxID = _DAO.GetLstNguoiLxID(IdKhoaHoc);
             int? khoahocId = null;
             rptPrintResult_EMC f = new rptPrintResult_EMC(lstNguoiLxID, khoahocId, 1);
             f.Show();
@@ -218,8 +218,8 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_SyncTeacher_Click(object sender, EventArgs e)
         {
-            List<GiaoVien> lstGiaoVienDAT = CabinI2E_DAO.Instance.GetAllGV();
-            List<GiaoVien> lstGiaoVienCabin = CabinI2E_DAO.Instance.GetAllGV();
+            List<GiaoVien> lstGiaoVienDAT = _DAO.GetAllGV();
+            List<GiaoVien> lstGiaoVienCabin = _DAO.GetAllGV();
 
             foreach (GiaoVien item in lstGiaoVienDAT.ToList())
             {
@@ -234,12 +234,12 @@ namespace DrivingCenter.App.UserControl
             {
                 foreach (GiaoVien item in lstGiaoVienDAT)
                 {
-                    CabinI2E_DAO.Instance.InsertTeacherNew(item);
+                    _DAO.InsertTeacherNew(item);
                 }
             }
-            List<GvCabin> _lstGvInDat = CabinI2E_DAO.Instance.GetListGvByNameKH(TenKH);
+            List<GvCabin> _lstGvInDat = _DAO.GetListGvByNameKH(TenKH);
 
-            List<HocVien> _lstStudent = CabinI2E_DAO.Instance.GetlstHocVienByIdKhoaHoc(IdKhoaHoc);
+            List<HocVien> _lstStudent = _DAO.GetlstHocVienByIdKhoaHoc(IdKhoaHoc);
 
             foreach (HocVien item in _lstStudent)
             {
@@ -247,7 +247,7 @@ namespace DrivingCenter.App.UserControl
                 {
                     if (item.MaDK == item1.MaDK)
                     {
-                        CabinI2E_DAO.Instance.UpdateGv(item1.GiaoVienID, item.MaDK);
+                        _DAO.UpdateGv(item1.GiaoVienID, item.MaDK);
                     }
                 }
             }
@@ -274,9 +274,9 @@ namespace DrivingCenter.App.UserControl
             {
                 loaidaotao = 3;
             }
-            CabinI2E_DAO.Instance.UpdateStatusKhoaHoc(tenkhoahoc, loaidaotao, makhoahoc);
-            GetAllKhoaHoc();
-            GetLstKhoaHocDDT();
+            _DAO.UpdateStatusKhoaHoc(tenkhoahoc, loaidaotao, makhoahoc);
+            Initialize();
+            XtraMessageBox.Show("Cập nhật khóa học thành công!", "Thông báo", MessageBoxButtons.OK);
         }
 
         private void ThemKhoaHoc()
@@ -310,10 +310,10 @@ namespace DrivingCenter.App.UserControl
                             kh.HangDaoTao = khoaHocNode.Element("HANG_GPLX")?.Value;
                             kh.NgayDaoTao = Convert.ToDateTime(khoaHocNode.Element("NGAY_BCI")?.Value);
 
-                            CabinI2E_DAO.Instance.InsertKhoaHoc(kh);
+                            _DAO.InsertKhoaHoc(kh);
                         }
 
-                        int khoahocId = CabinI2E_DAO.Instance.GetKhoaHocIdByMaKhoaHoc(MaKH);
+                        int khoahocId = _DAO.GetKhoaHocIdByMaKhoaHoc(MaKH);
 
                         List<XElement> nguoiLxLst = xdoc.Descendants("NGUOI_LX").ToList();
 
@@ -332,7 +332,7 @@ namespace DrivingCenter.App.UserControl
                             hv.HangGPLX = (string)item.Element("HO_SO").Element("HANG_GPLX");
                             hv.ImageBase64 = (string)item.Element("HO_SO").Element("ANH_CHAN_DUNG");
 
-                            CabinI2E_DAO.Instance.InsertNguoiLxBase(khoahocId, tenkhoahoc, hv, ConvertBase64ToBytes(hv.ImageBase64));
+                            _DAO.InsertNguoiLxBase(khoahocId, tenkhoahoc, hv, ConvertBase64ToBytes(hv.ImageBase64));
                         }
                         XtraMessageBox.Show("Thêm khóa học thành công!");
                     }

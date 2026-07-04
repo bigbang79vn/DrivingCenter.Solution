@@ -1,13 +1,10 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
-using DevExpress.XtraGrid;
 using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -16,6 +13,7 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_XeTapLai : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         public Uc_XeTapLai()
         {
             InitializeComponent();
@@ -33,7 +31,7 @@ namespace DrivingCenter.App.UserControl
 
         private void GetLsVehicle()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetAllVehicles();
+            List<XeTapLai> lst = _DAO.GetAllVehicles();
             int stt = 0;
             foreach (XeTapLai item in lst)
             {
@@ -45,7 +43,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadlstXeTapLai()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai();
+            List<XeTapLai> lst = _DAO.GetLstXeTapLai();
 
             cbb_XeTapLai.Properties.DataSource = lst;
             cbb_XeTapLai.Properties.DisplayMember = "BienSoXe";
@@ -133,7 +131,7 @@ namespace DrivingCenter.App.UserControl
             XeTapLai xeTap = cbb_XeTapLai.Properties.GetRowByKeyValue(selectedValue) as XeTapLai;
             if (xeTap != null && vehicleId != null)
             {
-                DAT_DAO.Instance.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap);
+                _DAO.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap);
             }
         }
 
@@ -143,7 +141,7 @@ namespace DrivingCenter.App.UserControl
             var Imei = gridView_XeTapLai.GetFocusedRowCellValue("Imei");
             if (vehicleId != null)
             {
-                DAT_DAO.Instance.DeleteXeTapLai((int)vehicleId, (string)Imei);
+                _DAO.DeleteXeTapLai((int)vehicleId, (string)Imei);
             }
         }
     }

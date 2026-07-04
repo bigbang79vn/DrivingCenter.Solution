@@ -9,17 +9,8 @@ namespace DrivingCenter.App.DAO
 {
     public class CabinEco_DAO
     {
-        private static CabinEco_DAO instance;
 
-        public static CabinEco_DAO Instance
-        {
-            get { if (instance == null) instance = new CabinEco_DAO(); return CabinEco_DAO.instance; }
-            private set => CabinEco_DAO.instance = value;
-        }
-
-        public CabinEco_DAO()
-        {
-        }
+        private readonly DbProvider _db = new DbProvider(Enums.DatabaseType.db_CabinEco);
 
         public List<KhoaHoc> GetAllKhoaHoc()
         {
@@ -27,7 +18,7 @@ namespace DrivingCenter.App.DAO
                 FROM tblKhoaHoc 
                 ORDER BY MaKhoaHoc ASC";
 
-            DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<KhoaHoc> lstKhoaHoc = dt.AsEnumerable().Select(item => new KhoaHoc
             {
@@ -44,20 +35,10 @@ namespace DrivingCenter.App.DAO
             return lstKhoaHoc;
         }
 
-        public List<KhoaHoc> GetKHDangDT()
-        {
-            List<KhoaHoc> lstKhoaHoc = GetAllKhoaHoc()
-                .Where(x => x.Status == false)
-                .OrderBy(C => C.TenKhoaHoc)
-                .ToList();
-
-            return lstKhoaHoc;
-        }
-
         public List<Cabin> GetLstCabin()
         {
             string query = "SELECT ID, Name, GhiChu FROM tblThietBi";
-            DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<Cabin> lstCabin = dt.AsEnumerable().Select(item => new Cabin
             {
@@ -73,7 +54,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"EXEC [dbo].[spGetLstHvByKhoaHoc] @ID_KhoaHoc = {IdKhoaHoc}";
 
-            DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<HocVien> lstStudent = dt.AsEnumerable().Select(item => new HocVien
             {
@@ -92,7 +73,7 @@ namespace DrivingCenter.App.DAO
         public string CheckDK(string idhocvien)
         {
             string query = "spKTDieuKien @Id_HocVien = " + "'" + idhocvien + "'";
-            var getValue = DataProviderCaBinEco.Instance.ExecuteScalar(query);
+            var getValue = _db.Execute(query);
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
 
@@ -102,7 +83,7 @@ namespace DrivingCenter.App.DAO
                 "FROM v_ThongTinTap KQ, tblThietBi TB " +
                 "WHERE ID_HocVien = '{0}' AND KQ.ID_ThietBi = TB.ID", idHocVien);
 
-            DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<Result> lstKetQuaTap =  dt.AsEnumerable().Select(item => new Result
             {
@@ -122,7 +103,7 @@ namespace DrivingCenter.App.DAO
         public List<Exercise> GetListBaiTap()
         {
             string query = "SELECT ID_BaiTap, Name from tblExam";
-            DataTable data = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable data = _db.QueryToDataTable(query);
 
             List<Exercise> lst = data.AsEnumerable().Select(item => new Exercise
             {
@@ -139,13 +120,13 @@ namespace DrivingCenter.App.DAO
                 "FROM tblHocVien AS hv INNER JOIN tblKhoaHoc AS kh ON hv.IDKhoaHoc = kh.ID " +
                 "WHERE hv.ID = '{0}'", MaDK);
 
-            return DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            return _db.QueryToDataTable(query);
         }
 
         public string GetMaDKNew(int Id_KhoaHoc, string SoCMT)
         {
             string query = $"SELECT ID FROM tblHocVien WHERE IDKhoaHoc = {Id_KhoaHoc} AND SoCMT = '{SoCMT}'";
-            var getValue = DataProviderCaBinEco.Instance.ExecuteScalar(query);
+            var getValue = _db.QueryToDataTable(query);
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
 
@@ -166,58 +147,56 @@ namespace DrivingCenter.App.DAO
                 Minute = minute
             };
 
-            return DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
+            return _db.Execute(query, parameters);
         }
 
         public int GetIdMaxByIdHocVien(string IdHocVien)
         {
             string query = "select MAX(ID) from tblKetQuaTap where ID_HocVien = '" + IdHocVien + "'";
-            var getValue = DataProviderCaBinEco.Instance.ExecuteScalar(query);
-
-            return getValue == DBNull.Value ? 0 : (int)getValue;
+            return _db.QuerySingle<int>(query);
         }
 
         public DateTime GetTimeOut(int id)
         {
             string query = $"SELECT Convert (datetime, dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), Time_Out)) AS Time_Out FROM tblKetQuaTap WHERE ID = {id}";
-            return (DateTime)DataProviderCaBinEco.Instance.ExecuteScalar(query);
+            return _db.QuerySingle<DateTime>(query);
         }
 
         public void DeleteResultExcer(int ID_KetQua)
         {
             string querykqt = "DELETE tblKetQuaTap where ID = '" + ID_KetQua + "'";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(querykqt);
+            _db.Execute(querykqt);
 
             string querytst = "DELETE tblThiSinhTap WHERE ID_KetQua = '" + ID_KetQua + "'";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(querytst);
+            _db.Execute(querytst);
         }
         public DataTable GetDataReportByMaDK(string lstMaDK)
         {
             string query = $"EXEC [dbo].[spLoadDataReport] @lstMaDK = N'{lstMaDK}'";
-            return DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            return _db.QueryToDataTable(query);
         }
 
         public DataTable GetBaoCaoByKhoaHocID(int IdKhoaHoc, int flag)
         {
             string query = $"EXEC [dbo].[spTongHop] @flag = {flag}, @ID_KhoaHoc = {IdKhoaHoc}, @NguongHang = 10800";
-            return DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            return _db.QueryToDataTable(query);
         }
         public void UpdateGv(int GiaoVienID, string MaDK)
         {
             string query = $"UPDATE tblHocVien set GiaoVienID = '{GiaoVienID}' where ID = '{MaDK}'";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public void ChangeCourse(int idKhoaHoc, string MaDK, int ID)
         {
             string query = $"UPDATE tblKetQuaTap SET ID_KhoaHoc = {idKhoaHoc} , ID_HocVien = '{MaDK}'  WHERE ID  = {ID}";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public void ChangeCabin(Cabin cabin, int ID)
         {
             string query = $"UPDATE tblKetQuaTap SET ID_ThietBi = {cabin.IdThietBi} , Cabin = '{cabin.GhiChu}'  WHERE ID  = {ID}";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public int GetMaxLanTap(string IdHocVien)
@@ -225,8 +204,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = $"EXEC dbo.spGetLstMaDK @KhoaHocID = {IdHocVien}";
-                var getValue = DataProviderCaBinEco.Instance.ExecuteScalar(query);
-                return Convert.ToInt32(getValue);
+                return _db.QuerySingle<int>(query);
             }
             catch
             {
@@ -238,7 +216,7 @@ namespace DrivingCenter.App.DAO
         {
             int count;
             string query = string.Format("SELECT COUNT(*) FROM tblKetQuaTap WHERE CONVERT(VARCHAR, Convert (datetime, dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), Time_In)), 103) = '{0}' AND ID_HocVien = '{1}'", day, IdHocVien);
-            count = (int)DataProviderCaBinEco.Instance.ExecuteScalar(query);
+            count = _db.QuerySingle<int>(query);
 
             return count > 0 ? count : 0;
         }
@@ -248,8 +226,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = $"SELECT MAX(dbo.GetEcoString(dbo.GetEcoString(N'edsecotek@2023',Mikiway), ID_BaiTap)) AS IdBaiTapMax FROM tblKetQuaTap WHERE Id_HocVien =  '{IdHocVien}' ";
-                var getValue = DataProviderCaBinEco.Instance.ExecuteScalar(query);
-                return Convert.ToInt32(getValue);
+                return _db.QuerySingle<int>(query);
             }
             catch
             {
@@ -259,13 +236,13 @@ namespace DrivingCenter.App.DAO
         public void UpdateBaiTap(Int64 ID, int IDBaiTap)
         {
             string query = $"UPDATE tblKetQuaTap SET ID_BaiTap = dbo.SetEcoString(N'csdt@66015','{IDBaiTap}') WHERE ID = '{ID}'";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public List<GiaoVien> GetAllGV()
         {
             string query = "SELECT * FROM tblGiaoVien";
-            DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
@@ -301,19 +278,19 @@ namespace DrivingCenter.App.DAO
                 hangGPLX = gv.HangGPLX
             };
 
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
+            _db.Execute(query, parameters);
         }
 
         public void UpdateKhoaHoc(int id, string Ten, string hangdaotao, int status)
         {
             string query = $"Update tblKhoaHoc set Ten = N'{Ten}', HangDaoTao = N'{hangdaotao}', HangGPLX = N'{hangdaotao}', Status = {status} where ID = {id}";
-            DataProviderCaBinEco.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
         public List<ThongKe> LstThongKe(string day)
         {
             string query = $"EXEC [dbo].[spTongHopByDay] @Day = '{day}'";
 
-            DataTable dt = DataProviderCaBinEco.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<ThongKe> lst = dt.AsEnumerable().Select(item => new ThongKe
             {
@@ -346,8 +323,7 @@ namespace DrivingCenter.App.DAO
                 HangDaoTao = kh.HangDaoTao
             };
 
-            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
-            return result;
+            return _db.Execute(query, parameters);
         }
 
         public int GetKhoaHocIdByMaKhoaHoc(string MaKH)
@@ -355,7 +331,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = $"SELECT ID FROM tblKhoaHoc WHERE MaKhoaHoc = '{MaKH}'";
-                return (int)DataProviderCaBinEco.Instance.ExecuteScalar(query);
+                return _db.QuerySingle<int>(query);
             }
             catch
             {
@@ -382,7 +358,7 @@ namespace DrivingCenter.App.DAO
                 Ten = hv.Ten 
             };
 
-            int result = DataProviderCaBinEco.Instance.ExecuteNonQuery(query, parameters);
+            int result = _db.QuerySingle<int>(query, parameters);
 
             return result;
         }

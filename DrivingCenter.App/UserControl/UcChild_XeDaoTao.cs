@@ -11,6 +11,7 @@ namespace DrivingCenter.App.UserControl
 {
 	public partial class UcChild_XeDaoTao: DevExpress.XtraEditors.XtraUserControl
 	{
+        private readonly AppBee_DAO _DAO = new AppBee_DAO();
         public UcChild_XeDaoTao()
 		{
             InitializeComponent();
@@ -54,7 +55,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void Get_DmHangXe()
         {
-            DataTable dt = AppBee_DAO.Instance.GetlstHangGPLX();
+            DataTable dt = _DAO.GetlstHangGPLX();
             cbb_HangXe.Properties.DataSource = dt;
             cbb_HangXe.Properties.DisplayMember = "TenHang";
             cbb_HangXe.Properties.ValueMember = "MaHang";
@@ -63,7 +64,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = AppBee_DAO.Instance.GetAllXeTapLai()
+            List<XeTapLai> lst = _DAO.GetAllXeTapLai()
                 .OrderBy(o => o.BienSoXe)
                 .ToList();
             gridControl_XeTapLai.DataSource = lst;
@@ -120,7 +121,7 @@ namespace DrivingCenter.App.UserControl
                 xe.NgayHHXTL = date_NgayHHGPXTL.DateTime;
                 xe.ThanhLy = toggleSwitch_TrangThai.IsOn;
                 xe.ChuSoHuu = txt_SoHuu.Text;
-                AppBee_DAO.Instance.UpdateXeTapLai(xe, _IdXeTapLai);
+                _DAO.UpdateXeTapLai(xe, _IdXeTapLai);
                 LoadXeTapLai();
                 SetControlsEnabled(false);
                 SetButtonPanelEnable(0, 1);
@@ -137,7 +138,7 @@ namespace DrivingCenter.App.UserControl
             var result = XtraMessageBox.Show("Đang phát triển", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
-                int InsertResult = AppBee_DAO.Instance.SyncXeTapLai();
+                int InsertResult = _DAO.SyncXeTapLai();
                 XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

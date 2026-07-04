@@ -233,6 +233,7 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage1
             // 
+            this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.tblLayout_ImportData);
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(1500, 690);
@@ -431,6 +432,7 @@ namespace DrivingCenter.App.UserControl
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 17;
             this.label4.Text = "Sheet data";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 

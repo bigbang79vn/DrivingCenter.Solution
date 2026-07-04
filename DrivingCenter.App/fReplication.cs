@@ -4,12 +4,8 @@ using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.UserControl;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App
@@ -27,18 +23,24 @@ namespace DrivingCenter.App
             _nguoiLxId = nguoiLxId;
         }
 
+        private readonly CabinI2E_DAO _cabinI2E = new CabinI2E_DAO();
         private void fReplication_Load(object sender, EventArgs e)
         {
-            GetLstKhoaHoc();
+            lstKhoaHocDDT();
             LoadThietBi();
             LoadlstKQ(_nguoiLxId);
             dt_TimeStart.DateTime = DateTime.Now;
         }
 
         private int KhoaHocID;
-        private void GetLstKhoaHoc()
+
+        private void lstKhoaHocDDT()
         {
-            List<KhoaHoc> lstKhoaHoc = CabinI2E_DAO.Instance.GetlstKhoaHocDDT();
+            List<KhoaHoc> lstKhoaHoc = _cabinI2E.GetAllKhoaHoc()
+                .Where(x => x.LoaiDaoTao == "Đang Đào Tạo")
+                .OrderBy(c => c.TenKhoaHoc)
+                .ToList();
+            
             cbb_KhoaHoc.Properties.DataSource = lstKhoaHoc;
             cbb_KhoaHoc.Properties.DisplayMember = "TenKhoaHoc";
             cbb_KhoaHoc.Properties.ValueMember = "KhoaHocID";
@@ -50,7 +52,7 @@ namespace DrivingCenter.App
 
         private void LoadThietBi()
         {
-            List<Cabin> lst = CabinI2E_DAO.Instance.GetLstCabin();
+            List<Cabin> lst = _cabinI2E.GetLstCabin();
             cbb_Cabin.Properties.DataSource = lst;
             cbb_Cabin.Properties.DisplayMember = "NameCabin";
             cbb_Cabin.Properties.ValueMember = "IdThietBi";
@@ -62,7 +64,7 @@ namespace DrivingCenter.App
 
         private void LoadLstHvByKH(int IdKhoaHoc)
         {
-            List<HocVien> lstStudent = CabinI2E_DAO.Instance.GetlstHocVienByIdKhoaHoc(IdKhoaHoc);
+            List<HocVien> lstStudent = _cabinI2E.GetlstHocVienByIdKhoaHoc(IdKhoaHoc);
 
             Uc_CabinEMC uCResult_I2E = new Uc_CabinEMC();
             uCResult_I2E.CheckResult(lstStudent);
@@ -72,23 +74,22 @@ namespace DrivingCenter.App
 
         private void LoadlstKQ(Int64 NguoiLxID)
         {
-            List<Result> lst = CabinI2E_DAO.Instance.GetResultByNguoiLxID(NguoiLxID);
+            List<Result> lst = _cabinI2E.GetResultByNguoiLxID(NguoiLxID);
 
             grid_BaiTapNguon.DataSource = lst;
         }
 
         private void LoadResultByNguoiLxID(HocVien hv)
         {
-            List<Result> lstKetQuaTap = CabinI2E_DAO.Instance.GetResultByNguoiLxID(hv.NguoiLxID);
+            List<Result> lstKetQuaTap = _cabinI2E.GetResultByNguoiLxID(hv.NguoiLxID);
 
             grid_Result.DataSource = lstKetQuaTap;
 
-            int totalsecond = (int)CabinI2E_DAO.Instance.GetTongThoiGianByNguoiLxID(hv.NguoiLxID);
+            int totalsecond = (int)_cabinI2E.GetTongThoiGianByNguoiLxID(hv.NguoiLxID);
             TimeSpan t = TimeSpan.FromSeconds(totalsecond);
             lb_time.Text = t.ToString(@"hh\:mm\:ss");
 
-            lb_KetQua.Text = CabinI2E_DAO.Instance.CheckDK(hv.NguoiLxID, hv.MaKH);
-
+            lb_KetQua.Text = _cabinI2E.CheckDK(hv.NguoiLxID, hv.MaKH);
         }
 
         private void cbb_KhoaHoc_EditValueChanged(object sender, EventArgs e)
@@ -121,8 +122,8 @@ namespace DrivingCenter.App
                 {
                     Result re = new Result();
                     re.BaiHocCaBinID = (int)gridView_BaiTapNguon.GetRowCellValue(rowHandle, "BaiHocCaBinID");
-                    Int64 diemdanhnguoilxId = CabinI2E_DAO.Instance.GetMaxDiemdanhnguoilxByNguoiLxID(hv.NguoiLxID);
-                    int dayOld = CabinI2E_DAO.Instance.GetDayDiemdanhnguoilxByNguoiLxID(hv.NguoiLxID);
+                    Int64 diemdanhnguoilxId = _cabinI2E.GetMaxDiemdanhnguoilxByNguoiLxID(hv.NguoiLxID);
+                    int dayOld = _cabinI2E.GetDayDiemdanhnguoilxByNguoiLxID(hv.NguoiLxID);
                     int dayNew = (dt_TimeStart.DateTime).Day;
                     if (diemdanhnguoilxId == 0)
                     {
@@ -134,16 +135,16 @@ namespace DrivingCenter.App
                     }
                     else
                     {
-                        re.ThoiDiemBatDau = CabinI2E_DAO.Instance.GetTimeOut(diemdanhnguoilxId, hv.NguoiLxID);
+                        re.ThoiDiemBatDau = _cabinI2E.GetTimeOut(diemdanhnguoilxId, hv.NguoiLxID);
                     }
                     re.TotalSecond = (double)gridView_BaiTapNguon.GetRowCellValue(rowHandle, "TotalSecond");
                     re.QuangDuong = (double)gridView_BaiTapNguon.GetRowCellValue(rowHandle, "QuangDuong");
                     re.PathVideo = gridView_BaiTapNguon.GetRowCellValue(rowHandle, "PathVideo").ToString();
                     int IdThietBi = (int)cbb_Cabin.EditValue;
 
-                    CabinI2E_DAO.Instance.InsertData(re, hv.NguoiLxID, IdThietBi, KhoaHocID);
+                    _cabinI2E.InsertData(re, hv.NguoiLxID, IdThietBi, KhoaHocID);
 
-                    CabinI2E_DAO.Instance.UpdateTimeExerToNguoiLx(hv.NguoiLxID);
+                    _cabinI2E.UpdateTimeExerToNguoiLx(hv.NguoiLxID);
                     LoadResultByNguoiLxID(hv);
                 }
                 XtraMessageBox.Show("Cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);

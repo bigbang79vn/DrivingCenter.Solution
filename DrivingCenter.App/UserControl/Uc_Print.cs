@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using DrivingCenter.App.FReport;
 using DrivingCenter.App.Report;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,8 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_Print : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private readonly IMG_DAO _IMG_DAO = new IMG_DAO();
         public Uc_Print()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace DrivingCenter.App.UserControl
         private void GetAllKhoaHoc()
         {
             List<KhoaHoc> lst = new List<KhoaHoc>();
-            lst = DAT_DAO.Instance.GetAllKhoaHoc();
+            lst = _DAO.GetAllKhoaHoc();
             searchLookUpEdit_KhoaHoc.Properties.DataSource = lst;
             searchLookUpEdit_KhoaHoc.Properties.DisplayMember = "TenKhoaHoc";
             searchLookUpEdit_KhoaHoc.Properties.ValueMember = "KhoaHocID";
@@ -37,7 +38,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadlstHocVienbyKhoaHoc(int idkhoahoc)
         {
-            List<HocVien> lstHocVien = DAT_DAO.Instance.GetlstHocVienByKhoaHoc(idkhoahoc);
+            List<HocVien> lstHocVien = _DAO.GetlstHocVienByKhoaHoc(idkhoahoc);
             grd_lstHocVien.DataSource = lstHocVien;
         }
 
@@ -72,7 +73,7 @@ namespace DrivingCenter.App.UserControl
                 lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
             }
 
-            DataTable resultBC = IMG_DAO.Instance.GetDataTheHocVien(lstNguoiLxID);
+            DataTable resultBC = _IMG_DAO.GetDataTheHocVien(lstNguoiLxID);
 
             // Gán DataSource cho Report
             rptTheHocVien rpt = new rptTheHocVien();
@@ -97,7 +98,7 @@ namespace DrivingCenter.App.UserControl
                 lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
             }
 
-            DataTable resultBC = IMG_DAO.Instance.GetDataPhieuTheoDoi(lstNguoiLxID);
+            DataTable resultBC = _IMG_DAO.GetDataPhieuTheoDoi(lstNguoiLxID);
 
             // Gán DataSource cho Report
             rptPhieuTheoDoi rpt = new rptPhieuTheoDoi();
@@ -122,7 +123,7 @@ namespace DrivingCenter.App.UserControl
                 lstNguoiLxID = lstNguoiLxID + "," + cellValue.ToString();
             }
 
-            DataTable resultBC = IMG_DAO.Instance.GetDataTemTheDAT(lstNguoiLxID);
+            DataTable resultBC = _IMG_DAO.GetDataTemTheDAT(lstNguoiLxID);
 
             // Gán DataSource cho Report
             rptTemTheDAT rpt = new rptTemTheDAT();

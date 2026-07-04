@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DrivingCenter.App.DAO;
+﻿using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
-using DocumentFormat.OpenXml.Bibliography;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace DrivingCenter.App
 {
 	public partial class frmPhanCongDaoTao: DevExpress.XtraEditors.XtraForm
 	{
-		private int _monthId; 
+        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private int _monthId; 
         public frmPhanCongDaoTao(int monthId)
 		{
             InitializeComponent();
@@ -36,7 +30,7 @@ namespace DrivingCenter.App
         public void LoadLichHoc(int monthId)
         {
             List<Schedule> lst = new List<Schedule>();
-            lst = DAT_DAO.Instance.GetAllSchedule(_monthId);
+            lst = _DAO.GetAllSchedule(_monthId);
 
             gridCtrl_LichHoc.DataSource = lst;
 
@@ -53,7 +47,7 @@ namespace DrivingCenter.App
 
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai().Where(x=>x.ThanhLy == false).ToList();
+            List<XeTapLai> lst = _DAO.GetLstXeTapLai().Where(x=>x.ThanhLy == false).ToList();
             repoGrid_XeTapLai.DataSource = lst;
             repoGrid_XeTapLai.DisplayMember = "BienSoXe";
             repoGrid_XeTapLai.ValueMember = "MaXe";
@@ -79,14 +73,14 @@ namespace DrivingCenter.App
             Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
             string timeStart = dateEdit_Start.DateTime.ToString("yyyy-MM-dd 00:00:01");
             string timeEnd = dateEdit_End.DateTime.ToString("yyyy-MM-dd 23:59:59");
-            DAT_DAO.Instance.UpdatePhanCongDAT(rowData.KhoaHocId, timeStart, timeEnd);
+            _DAO.UpdatePhanCongDAT(rowData.KhoaHocId, timeStart, timeEnd);
 
             LoadLichHoc(_monthId);
         }
         private void gridView_LichHoc_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             Schedule rowData = gridView_LichHoc.GetFocusedRow() as Schedule;
-            DAT_DAO.Instance.UpdateXeTapB11(rowData);
+            _DAO.UpdateXeTapB11(rowData);
         }
     }
 }

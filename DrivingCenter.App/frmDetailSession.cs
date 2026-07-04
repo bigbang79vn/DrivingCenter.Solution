@@ -11,13 +11,14 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DrivingCenter.App
 {
     public partial class frmDetailSession : DevExpress.XtraEditors.XtraForm
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private readonly IMG_DAO _IMG_DAO = new IMG_DAO();
         private string _diemdanhnguoilxId;
         private List<PointLatLng> _points;
 
@@ -41,7 +42,7 @@ namespace DrivingCenter.App
 
         private void GetImgLogInLogOut(string _diemdanhnguoilxId)
         {
-            DataTable dt = IMG_DAO.Instance.GetImgById(_diemdanhnguoilxId);
+            DataTable dt = _IMG_DAO.GetImgById(_diemdanhnguoilxId);
 
             byte[] ImgLogin = (byte[])dt.Rows[0]["AnhChup"];
             using (var ms = new MemoryStream(ImgLogin, 0, ImgLogin.Length))
@@ -69,7 +70,7 @@ namespace DrivingCenter.App
         private void GetHistoryData(string _diemdanhnguoilxId)
         {
 
-            List<ChiTietPhienHoc> lst = DAT_DAO.Instance.GetHistoryData(_diemdanhnguoilxId);
+            List<ChiTietPhienHoc> lst = _DAO.GetHistoryData(_diemdanhnguoilxId);
 
             foreach (var item in lst)
             {
@@ -82,7 +83,7 @@ namespace DrivingCenter.App
 
         private void GetVehicleHistory(string _diemdanhnguoilxId)
         {
-            List<ChiTietPhienHoc> lst = DAT_DAO.Instance.GetVehicleHistory(_diemdanhnguoilxId);
+            List<ChiTietPhienHoc> lst = _DAO.GetVehicleHistory(_diemdanhnguoilxId);
 
             foreach (var item in lst)
             {
@@ -99,8 +100,8 @@ namespace DrivingCenter.App
 
         private void InitializeMap(string _diemdanhnguoilxId)
         {
-            _points = DAT_DAO.Instance.GetlstPoint(_diemdanhnguoilxId);
-            DataTable dt = DAT_DAO.Instance.GetDetailSession(_diemdanhnguoilxId);
+            _points = _DAO.GetlstPoint(_diemdanhnguoilxId);
+            var dt = _DAO.GetDetailSession(_diemdanhnguoilxId);
 
             var firstRow = dt.AsEnumerable().FirstOrDefault();
             if (firstRow != null)
@@ -185,7 +186,7 @@ namespace DrivingCenter.App
         {
             int focusedRowHandle = gridView_HistoryData.FocusedRowHandle;
             Guid _historyID = (Guid)gridView_HistoryData.GetRowCellValue(focusedRowHandle, "Id");
-            DAT_DAO.Instance.UpdateImageLogout(_diemdanhnguoilxId, _historyID);
+            _DAO.UpdateImageLogout(_diemdanhnguoilxId, _historyID);
             GetImgLogInLogOut(_diemdanhnguoilxId);
         }
 
@@ -193,7 +194,7 @@ namespace DrivingCenter.App
         {
             int focusedRowHandle = gridView_HistoryData.FocusedRowHandle;
             Guid _historyID = (Guid)gridView_HistoryData.GetRowCellValue(focusedRowHandle, "Id");
-            DAT_DAO.Instance.UpdateImageLogin(_diemdanhnguoilxId, _historyID);
+            _DAO.UpdateImageLogin(_diemdanhnguoilxId, _historyID);
             GetImgLogInLogOut(_diemdanhnguoilxId);
         }
 
@@ -202,7 +203,7 @@ namespace DrivingCenter.App
             int focusedRowHandle = gridView_HistoryData.FocusedRowHandle;
             Guid _historyID = (Guid)gridView_HistoryData.GetRowCellValue(focusedRowHandle, "Id");
 
-            DAT_DAO.Instance.InsertHinhDem(KhoaHocID, NguoiLxID, _diemdanhnguoilxId, _historyID);
+            _DAO.InsertHinhDem(KhoaHocID, NguoiLxID, _diemdanhnguoilxId, _historyID);
         }
     }
 }

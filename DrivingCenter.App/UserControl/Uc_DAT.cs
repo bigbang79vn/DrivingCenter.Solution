@@ -19,6 +19,7 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_DAT : XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         public Uc_DAT()
         {
             InitializeComponent();
@@ -36,8 +37,8 @@ namespace DrivingCenter.App.UserControl
             dtp_TongHopGioDay.DateTime = DateTime.Now;
             dtp_PhienHocLoiByDay.DateTime = DateTime.Now;
 
-            dtp_From.DateTime = DAT_DAO.Instance.GetMinNgayKG();
-            dtp_To.DateTime = DAT_DAO.Instance.GetMaxNgayBG();
+            dtp_From.DateTime = _DAO.GetMinNgayKG();
+            dtp_To.DateTime = _DAO.GetMaxNgayBG();
 
             LoadKhDangDaoTao();
 
@@ -69,7 +70,7 @@ namespace DrivingCenter.App.UserControl
         {
             string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
             label11.Text = "DANH SÁCH PHIÊN HỌC NGÀY " + day;
-            lstPH = DAT_DAO.Instance.GetLstPhienByDateTrue(day);
+            lstPH = _DAO.GetLstPhienByDateTrue(day);
             CheckPhInList(lstPH);
         }
 
@@ -86,7 +87,7 @@ namespace DrivingCenter.App.UserControl
 
             try
             {
-                await DAT_DAO.Instance.ReLoad(datetime);
+                await _DAO.ReLoad(datetime);
 
                 // Đảm bảo chạy trên UI thread
                 if (this.InvokeRequired)
@@ -306,7 +307,7 @@ namespace DrivingCenter.App.UserControl
             DateTime fromDay = new DateTime(selected.Year, selected.Month, selected.Day, 0, 0, 0);
             DateTime toDay = fromDay.AddDays(1);
 
-            List<Guid> lstGuid = DAT_DAO.Instance.CheckMapOut(fromDay, toDay);
+            List<Guid> lstGuid = _DAO.CheckMapOut(fromDay, toDay);
 
             gridControl_PhienHoc.DataSource = lstNull;
 
@@ -321,7 +322,7 @@ namespace DrivingCenter.App.UserControl
 
             foreach (PhienHoc item in lstPH.ToList())
             {
-                int check = DAT_DAO.Instance.CheckImgNullNew(item.MaPhien.ToString());
+                int check = _DAO.CheckImgNullNew(item.MaPhien.ToString());
                 if (check == 1) lstPH.Remove(item);
             }
 
@@ -329,7 +330,7 @@ namespace DrivingCenter.App.UserControl
         }
         private string GetMaDKByNguoiLxId(Int64 nguoiLxId)
         {
-            var maDK = DAT_DAO.Instance.GetMaDKByNguoiLxId(nguoiLxId);
+            var maDK = _DAO.GetMaDKByNguoiLxId(nguoiLxId);
             return maDK;
         }
         private void mn_trainingProcess_Click(object sender, EventArgs e)
@@ -361,7 +362,7 @@ namespace DrivingCenter.App.UserControl
             var result = XtraMessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                DAT_DAO.Instance.UnlockSession(diemdanhnguoilxId.ToString());
+                _DAO.UnlockSession(diemdanhnguoilxId.ToString());
             }
 
             string from = dtp_From.DateTime.ToString("yyyyMMdd");
@@ -380,8 +381,8 @@ namespace DrivingCenter.App.UserControl
             string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
             if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học \n{0}", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
-                DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
-                List<PhienHoc> lstPH = DAT_DAO.Instance.GetLstPhienByDateTrue(day);
+                _DAO.DeletePhByID(diemdanhnguoilxId.ToString());
+                List<PhienHoc> lstPH = _DAO.GetLstPhienByDateTrue(day);
                 CheckPhInList(lstPH);
             }
         }
@@ -400,7 +401,7 @@ namespace DrivingCenter.App.UserControl
                 var result = XtraMessageBox.Show(string.Format("Phiên học chưa kết thúc. Bạn muốn kết thúc phiên học?"), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
                 if (result == DialogResult.OK)
                 {
-                    DAT_DAO.Instance.KetThucPhien(Convert.ToInt64(NguoiLxID), diemdanhnguoilxId.ToString());
+                    _DAO.KetThucPhien(Convert.ToInt64(NguoiLxID), diemdanhnguoilxId.ToString());
                     LoadPhienHoc();
                 }
             }
@@ -449,7 +450,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadKhDangDaoTao()
         {
-            lstKhoaHoc = DAT_DAO.Instance.GetAllKhoaHocDDT();
+            lstKhoaHoc = _DAO.GetAllKhoaHocDDT();
             gridControl_KhoaHoc.DataSource = lstKhoaHoc;
         }
 
@@ -460,11 +461,11 @@ namespace DrivingCenter.App.UserControl
 
         public List<TongHopHVByKhoa> TongHopKQByKhoa(int KhoaHocID)
         {
-            List<TongHopHVByKhoa> lst = DAT_DAO.Instance.TongHopHvByKhoa(KhoaHocID);
+            List<TongHopHVByKhoa> lst = _DAO.TongHopHvByKhoa(KhoaHocID);
 
-            List<TongHopHVByKhoa> lstB1 = DAT_DAO.Instance.TongHopPhB11(KhoaHocID);
+            List<TongHopHVByKhoa> lstB1 = _DAO.TongHopPhB11(KhoaHocID);
 
-            List<TongHopHVByKhoa> lstBD = DAT_DAO.Instance.TongHopPhBD(KhoaHocID, HangDaoTao);
+            List<TongHopHVByKhoa> lstBD = _DAO.TongHopPhBD(KhoaHocID, HangDaoTao);
 
             if (HangDaoTao == "B2" || HangDaoTao == "B" || HangDaoTao == "C1")
             {
@@ -577,7 +578,7 @@ namespace DrivingCenter.App.UserControl
             lb_KetquaKh.Text = "KẾT QUẢ HỌC VIÊN KHÓA " + TenKhoaHoc;
             HvDuDK = 0;
             ViewTongHopKQ(TongHopKQByKhoa(KhoaHocID), HangDaoTao);
-            DAT_DAO.Instance.UpdateHvDuDK(HvDuDK, KhoaHocID);
+            _DAO.UpdateHvDuDK(HvDuDK, KhoaHocID);
         }
 
         private void cb_ShowSendTC_CheckedChanged(object sender, EventArgs e)
@@ -599,7 +600,7 @@ namespace DrivingCenter.App.UserControl
             int focusedRowHandle = gridView_KhoaHocDDT.FocusedRowHandle;
             string khoahoc = gridView_KhoaHocDDT.GetRowCellValue(focusedRowHandle, "TenKH").ToString();
 
-            lstSumGV = DAT_DAO.Instance.TongHopGVsByKh(khoahoc);
+            lstSumGV = _DAO.TongHopGVsByKh(khoahoc);
 
             foreach (var item in lstSumGV)
             {
@@ -629,7 +630,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_TongHopTienDo_Click(object sender, EventArgs e)
         {
-            List<TienDo> lst = DAT_DAO.Instance.TongHopTienDoDatByKH(KhoaHocID, MaKH);
+            List<TienDo> lst = _DAO.TongHopTienDoDatByKH(KhoaHocID, MaKH);
 
             ConvertListToDataTable convert = new ConvertListToDataTable();
             DataTable dt = convert.ToDataTable(lst);
@@ -638,7 +639,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_ThongKeKetQuaHocVien_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocID, 0);
+            DataTable resultBC = _DAO.BaoCaoKetQuaHocVien(KhoaHocID, 0);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -650,7 +651,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_ThongKeHocVienHoanThanh_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocID, 1);
+            DataTable resultBC = _DAO.BaoCaoKetQuaHocVien(KhoaHocID, 1);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -663,7 +664,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_ThongKeHocVienKhongHoanThanh_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocID, 2);
+            DataTable resultBC = _DAO.BaoCaoKetQuaHocVien(KhoaHocID, 2);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -677,7 +678,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_XoaPhienHocLoginIsNull_Click(object sender, EventArgs e)
         {
-            List<Guid> list = DAT_DAO.Instance.GetlstPhienHocLoginIsNull(KhoaHocID);
+            List<Guid> list = _DAO.GetlstPhienHocLoginIsNull(KhoaHocID);
             int sophienhocLoginIsNull = list.Count();
             if (sophienhocLoginIsNull == 0)
             {
@@ -687,7 +688,7 @@ namespace DrivingCenter.App.UserControl
             {
                 if (XtraMessageBox.Show($"Có {sophienhocLoginIsNull} phiên học Login Is Null ! \n Bạn có chắc muốn xóa {sophienhocLoginIsNull} phiên học Login Is Null? " , "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    DAT_DAO.Instance.DeletePhienHocLoginIsNull(list);
+                    _DAO.DeletePhienHocLoginIsNull(list);
                 }
             }
         }
@@ -719,7 +720,7 @@ namespace DrivingCenter.App.UserControl
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var NguoiLXID = Convert.ToInt64(gridView_Result.GetFocusedRowCellValue("NguoiLxID"));
-            var resultBC = DAT_DAO.Instance.GetBaoCaoHocVienByNguoilxID(NguoiLXID);
+            var resultBC = _DAO.GetBaoCaoHocVienByNguoilxID(NguoiLXID);
             new ReportPrintTool(new rptResultDAT { DataSource = resultBC }).ShowPreview();
         }
 
@@ -729,7 +730,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadSumTimeHV(string day)
         {
-            lstSum = DAT_DAO.Instance.TongHopGioHVByDay(day)
+            lstSum = _DAO.TongHopGioHVByDay(day)
                 .Select(item =>
                 {
                     int time = Convert.ToInt32((item.TongThoiGianLD_Phien.Trim()).Remove(2, 6));
@@ -790,8 +791,8 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadTongHopGV(string day, int flag)
         {
-            lstSumGV = DAT_DAO.Instance.TongHopGVsByDay(day, flag);
-            List<string> lstMaGVs = DAT_DAO.Instance.GetLstGvTrue(day);
+            lstSumGV = _DAO.TongHopGVsByDay(day, flag);
+            List<string> lstMaGVs = _DAO.GetLstGvTrue(day);
 
             foreach (TongHopGV item in lstSumGV)
             {
@@ -846,7 +847,7 @@ namespace DrivingCenter.App.UserControl
                 string day = dtp_PhienHocLoiByDay.DateTime.ToString("dd/MM/yyyy");
                 if (XtraMessageBox.Show(string.Format("Bạn có chắc chắn xóa phiên học \n{0}", diemdanhnguoilxId), "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
+                    _DAO.DeletePhByID(diemdanhnguoilxId.ToString());
                     LoadAllPhLoi(day);
                 }
             }
@@ -854,7 +855,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadAllPhLoi(string day)
         {
-            List<PhienHoc> lstPhLoi = DAT_DAO.Instance.GetLstPhienLoiByDate(day);
+            List<PhienHoc> lstPhLoi = _DAO.GetLstPhienLoiByDate(day);
             CheckPhInList(lstPhLoi);
             gridControl_PhienHocLoi.DataSource = lstPhLoi;
             GridHelper.EnableRowNumbering(gridView_PhienHocLoi);
@@ -874,7 +875,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadLstPhienHocBo(string from, string to)
         {
-            List<PhienHoc> lst = DAT_DAO.Instance.TongHopPhienHocLoi(from, to);
+            List<PhienHoc> lst = _DAO.TongHopPhienHocLoi(from, to);
 
             ConvertListToDataTable convert = new ConvertListToDataTable();
             dt = convert.ToDataTable(lst);
@@ -899,7 +900,7 @@ namespace DrivingCenter.App.UserControl
             var result = XtraMessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                DAT_DAO.Instance.UnlockSession(diemdanhnguoilxId.ToString());
+                _DAO.UnlockSession(diemdanhnguoilxId.ToString());
             }
 
             string from = dtp_From.DateTime.ToString("yyyyMMdd");
@@ -917,7 +918,7 @@ namespace DrivingCenter.App.UserControl
             var result = XtraMessageBox.Show(string.Format("Xóa phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                DAT_DAO.Instance.DeletePhByID(diemdanhnguoilxId.ToString());
+                _DAO.DeletePhByID(diemdanhnguoilxId.ToString());
             }
 
             string from = dtp_From.DateTime.ToString("yyyyMMdd");

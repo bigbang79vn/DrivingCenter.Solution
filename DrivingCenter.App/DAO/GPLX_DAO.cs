@@ -1,4 +1,5 @@
-﻿using DrivingCenter.App.DTO.GPLX;
+﻿using DrivingCenter.App.DataProvider;
+using DrivingCenter.App.DTO.GPLX;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,17 +12,7 @@ namespace DrivingCenter.App.DAO
 {
     public class GPLX_DAO
     {
-        private static GPLX_DAO instance;
-
-        public static GPLX_DAO Instance
-        {
-            get { if (instance == null) instance = new GPLX_DAO(); return GPLX_DAO.instance; }
-            private set => GPLX_DAO.instance = value;
-        }
-
-        public GPLX_DAO()
-        {
-        }
+        private readonly DbProvider _db = new DbProvider(Enums.DatabaseType.db_Gplx);
 
         public List<KhoaHoc> GetlstKh()
         {
@@ -44,7 +35,7 @@ namespace DrivingCenter.App.DAO
                 WHERE 
                     MaKH NOT IN (SELECT MaKH FROM BaoCaoI) AND TongSoHV IS NOT NULL";
 
-            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
             var lstKH = dt.AsEnumerable()
                            .Select(row => new KhoaHoc
                            {
@@ -61,8 +52,7 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHoc> GetAllKhoaHoc()
         {
-            // Lấy danh sách khóa học
-            var dt1 = DataProviderGPLX.Instance.ExecuteQuery($"SELECT MaKH, TenKH, HangGPLX, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE YEAR(NgayKG) >= 2025");
+            var dt1 = _db.QueryToDataTable($"SELECT MaKH, TenKH, HangGPLX, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE YEAR(NgayKG) >= 2025");
             var lstKH = dt1.AsEnumerable()
                            .Select(row => new KhoaHoc
                            {
@@ -80,14 +70,14 @@ namespace DrivingCenter.App.DAO
         public DataRow KhoaHocSelected(string MaKH)
         {
             string query = $"SELECT * FROM KhoaHoc WHERE MaKH = '{MaKH}'";
-            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
             return dt.Rows[0];
         }
 
         public string GenerateMaDK()
         {
             string query = "SELECT dbo.CreateNewMaDK('66015') AS NewMaHV;";
-            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            object result = _db.Execute(query);
             return result.ToString().Trim();
         }
 
@@ -105,7 +95,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("UPDATE NguoiLX_HoSo set " +
                 "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
                 nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
-            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+                _db.Execute(query);
         }
         public int DeleteDataReportOld()
         {
@@ -113,7 +103,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = string.Format("DELETE VNDC_ReportCNTN");
-                return status = DataProviderGPLX.Instance.ExecuteNonQuery(query);
+                return status = _db.Execute(query);
             }
             catch
             {
@@ -124,7 +114,7 @@ namespace DrivingCenter.App.DAO
         public List<HvTotNghiep> GetHvTotNghiep()
         {
             List<HvTotNghiep> lst = new List<HvTotNghiep>();
-            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery("SELECT * FROM VNDC_ReportCNTN ORDER BY SoCCTN ASC");
+            DataTable dt = _db.QueryToDataTable("SELECT * FROM VNDC_ReportCNTN ORDER BY SoCCTN ASC");
 
             lst = dt.AsEnumerable().Select(item => new HvTotNghiep
             {
@@ -145,29 +135,11 @@ namespace DrivingCenter.App.DAO
 
         public void InsertDataReportCNTN(HvTotNghiep nguoiLx_CCTN)
         {
-            //string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
-            //        @MaDK = '{nguoiLx_CCTN.MaDK}', 
-            //        @HoVaTen = N'{nguoiLx_CCTN.HoVaTen}', 
-            //        @NgaySinh = '{nguoiLx_CCTN.NgaySinh}',
-            //        @GioiTinh = N'{nguoiLx_CCTN.GioiTinh}', 
-            //        @HangGPLX = N'{nguoiLx_CCTN.HangGPLX}', 
-            //        @XepLoaiTN = N'{nguoiLx_CCTN.XepLoaiTN}', 
-            //        @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}',
-            //        @SoChungChi = '{nguoiLx_CCTN.SoChungChi}',
-            //        @SoCCTN = '{nguoiLx_CCTN.SoCCTN}', 
-            //        @SoVaoSo = '{nguoiLx_CCTN.SoVaoSo}',
-            //        @HoVaTenEng = '{nguoiLx_CCTN.HoVaTenEng}',
-            //        @GioiTinhEng = '{nguoiLx_CCTN.GioiTinhEng}', 
-            //        @NgaySinhEng = '{nguoiLx_CCTN.NgaySinhEng}',
-            //        @XepLoaiTNEng = '{nguoiLx_CCTN.XepLoaiTNEng}', 
-            //        @NgayQDTNEng = '{nguoiLx_CCTN.NgayQDTNEng}',
-            //        @HangGPLXEng = '{nguoiLx_CCTN.HangGPLXEng}'";
-
             string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
                     @MaDK = '{nguoiLx_CCTN.MaDK}',
                     @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}'";
 
-            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng, string sovaoso)
@@ -180,14 +152,52 @@ namespace DrivingCenter.App.DAO
                 GioiTinhEng = '{gioitinhEng}',
                 SoVaoSo = '{sovaoso}'
                 WHERE MaDK = '{madk}'";
-            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public DataTable GetDataPrintCCTN(string lstMaDK)
         {
             string query = $"SELECT * FROM VNDC_ReportCNTN WHERE MaDK IN (SELECT itemID FROM dbo.VNDC_Split('{@lstMaDK}', ',')) ORDER BY Id ASC";
-            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
             return dt;
+        }
+
+        public bool InsertHocVien(NguoiLxDto nlx)
+        {
+            string query = $@"EXEC [dbo].[VNDC_spInsertHocVien]
+                    @p_out = 0,
+                    @p_MaKH = '{nlx.MaKH}',
+                    @p_MaHangGPLX = '{nlx.MaHangGPLX}',
+                    @p_HangDaoTao = '{nlx.HangDaoTao}',
+                    @p_MaDK = '{null}',
+                    @p_SoHoSo = '{nlx.SoHoSo}',
+                    @p_NguoiNhanHSo = N'{nlx.NguoiNhanHSo}',
+                    @p_HoVaTen = N'{nlx.HoVaTen}',
+                    @p_HoVaTenIn = N'{nlx.HoVaTenIn}',
+                    @p_NgaySinh = '{nlx.NgaySinh}',
+                    @p_GioiTinh = N'{nlx.GioiTinh}',
+                    @p_MaQuocTich = '{nlx.MaQuocTich}',
+                    @p_SoCMT = '{nlx.SoCMT}',
+                    @p_NgayCap = '{nlx.NgayCap}',
+                    @p_NoiCap = N'{nlx.NoiCap}',
+                    @p_MaDVHC_TT = '{nlx.MaDVHC_TT}',
+                    @p_ChiTiet_TT = N'{nlx.ChiTiet_TT}',
+                    @p_MaDVHC_CT = '{nlx.MaDVHC_CT}',
+                    @p_ChiTiet_CT = N'{nlx.ChiTiet_CT}',
+                    @p_SoNamLX = {nlx.SoNamLX},
+                    @p_SoKmLX = {nlx.SoKmLX},
+                    @p_GiayTo = N'{nlx.GiayTo}',
+                    @p_SoGPLXDaCo = '{nlx.SoGPLXDaCo}',
+                    @p_HangGPLXDaCo = '{nlx.HangGPLXDaCo}',
+                    @p_NgayTTGPLXDaCo = '{nlx.NgayTTGPLXDaCo}',
+                    @p_NgayCapGPLXDaCo = '{nlx.NgayCapGPLXDaCo}',
+                    @p_NgayHHGPLXDaCo = '{nlx.NgayHHGPLXDaCo}',
+                    @p_DVCapGPLXDaCo = N'{nlx.DVCapGPLXDaCo}',
+                    @p_NoiCapGPLXDaCo = N'{nlx.NoiCapGPLXDaCo}',
+                    @p_GhiChu = N'{nlx.GhiChu}',
+                    @p_SO_CMND_CU = '{nlx.SO_CMND_CU}',
+                    @p_CHON_IN_GPLX = '{nlx.CHON_IN_GPLX}'";
+            return _db.Execute(query) > 0;
         }
 
         #region Xếp Lớp
@@ -198,7 +208,7 @@ namespace DrivingCenter.App.DAO
                         INNER JOIN KhoaHoc AS kh ON hs.MaKhoaHoc = kh.MaKH
                         where kh.MaKH = '{MaKH}'";
 
-            DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<NguoiLX> lst = dt.AsEnumerable().Select(item => new NguoiLX
             {
@@ -217,7 +227,7 @@ namespace DrivingCenter.App.DAO
         public string GetImgPath()
         {
             string query = "SELECT GiaTriTS FROM QTHT_ThamSoHT where TenTS = 'IMG_PATH_CSDT'";
-            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            object result = _db.Execute(query);
             return result != null ? result.ToString() : string.Empty;
 
         }
@@ -225,14 +235,14 @@ namespace DrivingCenter.App.DAO
         public string GetImgPathByMaDK(string maDK)
         {
             string query = $"SELECT DuongDanAnh FROM NguoiLX_HoSo WHERE MaDK = '{maDK}'";
-            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            object result = _db.Execute(query);
             return result != null ? result.ToString() : string.Empty;
         }
 
         public string GetMaxSoHSByMaKKH(string makh)
         {
             string query = $"SELECT MAX(SoHoSo) FROM NguoiLX_HoSo WHERE MaKhoaHoc = '{makh}'";
-            object result = DataProviderGPLX.Instance.ExecuteScalar(query);
+            object result = _db.Execute(query);
             return result != null ? result.ToString() : "0";
         }
 
@@ -270,7 +280,7 @@ namespace DrivingCenter.App.DAO
                 ? $@"UPDATE NguoiLX_HoSo SET MaKhoaHoc = '{MaKH}', SoHoSo = '{soHS}', DuongDanAnh = '{newImagePath}' WHERE MaDK = '{nguoiLx.MaDK}'"
                 : $@"UPDATE NguoiLX_HoSo SET MaKhoaHoc = '{MaKH}', SoHoSo = '{soHS}' WHERE MaDK = '{nguoiLx.MaDK}'";
 
-            DataProviderGPLX.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
 
         }
         #endregion

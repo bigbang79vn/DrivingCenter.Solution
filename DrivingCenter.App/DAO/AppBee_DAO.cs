@@ -10,17 +10,7 @@ namespace DrivingCenter.App.DAO
 {
     public class AppBee_DAO
     {
-        private static AppBee_DAO instance;
-
-        public static AppBee_DAO Instance
-        {
-            get { if (instance == null) instance = new AppBee_DAO(); return AppBee_DAO.instance; }
-            private set => AppBee_DAO.instance = value;
-        }
-
-        public AppBee_DAO()
-        {
-        }
+        private static DbProvider _db = new DbProvider(Enums.DatabaseType.db_BeeSolution);
 
         #region Giáo Viên
         public List<GiaoVien> GetAllGV()
@@ -29,7 +19,7 @@ namespace DrivingCenter.App.DAO
             string query = $@"SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, AnhChup, MaCNDT, hv.Ten , SuDung, DateUse 
                         FROM tblGiaoVien AS gv
                         INNER JOIN tblTrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma";
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
@@ -60,7 +50,7 @@ namespace DrivingCenter.App.DAO
                                 SELECT GiaoVienID 
                                 FROM tblKhoaHoc_GiaoVien 
                                 WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE()) AND SuDung = 1";
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
@@ -90,7 +80,7 @@ namespace DrivingCenter.App.DAO
 						INNER JOIN tblGiaoVien AS gv ON KH.GiaoVienID = GV.GiaoVienID
                         INNER JOIN tblTrinhDoHocVan AS hv ON gv.MaTrinhDoHocVan = hv.Ma
 						WHERE MaKH = '{makh}'";
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
@@ -115,33 +105,32 @@ namespace DrivingCenter.App.DAO
         public DataTable GetlstHangGPLX()
         {
             string query = $"SELECT [ID], [MaHang], [TenHang] FROM HangGPLX";
-            return DataProviderApp.Instance.ExecuteQuery(query);
+            return _db.QueryToDataTable(query);
         }
 
         public DataTable GetlstHocVan()
         {
             string query = $"SELECT * FROM tblTrinhDoHocVan";
-            return DataProviderApp.Instance.ExecuteQuery(query);
+            return _db.QueryToDataTable(query);
         }
 
         public int SynsGiaoVien()
         {
             string query = $@"EXEC dbo.usp_SyncGiaoVien";
-            return DataProviderApp.Instance.ExecuteNonQuery(query);
+            return _db.Execute(query);
         }
 
         public int UpdateGiaoVien(GiaoVien gv, int idgiaovien)
         {
             var sudung = gv.SuDung ? 1 : 0;
             string query = $"Update tblGiaoVien set SuDung = {sudung} Where GiaoVienID = {idgiaovien}";
-            return DataProviderApp.Instance.ExecuteNonQuery(query);
+            return _db.Execute(query);
         }
 
         public List<Schedule> GetKhoaHocDaPhanCong(string maKh)
         {
             string query = $"SELECT * FROM tblKhoaHoc_GiaoVien WHERE MaKH = '{maKh}'";
-
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<Schedule> lst = dt.AsEnumerable().Select(item => new Schedule
             {
@@ -169,7 +158,7 @@ namespace DrivingCenter.App.DAO
         public string GetMaXeTapById(int idxetap)
         {
             string query = $"SELECT MaXe FROM tblXeTapLai WHERE ID = {idxetap}";
-            object result = DataProviderApp.Instance.ExecuteScalar(query);
+            object result = _db.QuerySingle<string>(query);
             return result?.ToString();
         }
 
@@ -193,7 +182,7 @@ namespace DrivingCenter.App.DAO
                 NgayHetHL = ngayHetHieuLuc
             };
 
-            return DataProviderApp.Instance.ExecuteNonQuery(query, parameters);
+            return _db.Execute(query, parameters);
         }
 
         public int UpdateKhoaHocGiaoVien(int Id, string maKhoaHoc, int? giaoVienId, int? xeTapId, int soHocVien, DateTime ngayHieuLuc, DateTime ngayHetHieuLuc)
@@ -218,13 +207,13 @@ namespace DrivingCenter.App.DAO
                 NgayHetHL = ngayHetHieuLuc
             };
 
-            return DataProviderApp.Instance.ExecuteNonQuery(query, parameters);
+            return _db.Execute(query, parameters);
         }
 
         public int DeleteKhoaHocGiaoVien(Schedule item)
         {
             string query = $"DELETE FROM tblKhoaHoc_GiaoVien WHERE ID = '{item.Id}'";
-            return DataProviderApp.Instance.ExecuteNonQuery(query);
+            return _db.Execute(query);
         }
 
         #endregion
@@ -239,7 +228,7 @@ namespace DrivingCenter.App.DAO
                                 FROM tblKhoaHoc_GiaoVien 
                                 WHERE LoaiLop = N'{loailop}' AND HetHieuLuc > GETDATE()) AND ThanhLy = 0";
 
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
             {
@@ -275,7 +264,7 @@ namespace DrivingCenter.App.DAO
                     ) 
                     AND xe.HangGPLX = 'B11'";
 
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
             {
@@ -300,7 +289,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = $@"select * from tblXeTapLai";
 
-            DataTable dt = DataProviderApp.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
             List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
             {
@@ -324,13 +313,13 @@ namespace DrivingCenter.App.DAO
         {
             var thanhly = xe.ThanhLy ? 1 : 0;
             string query = $"Update tblXeTapLai set ChuSoHuu = N'{xe.ChuSoHuu}', ThanhLy = {thanhly} Where ID = {idxetap}";
-            return DataProviderApp.Instance.ExecuteNonQuery(query);
+            return _db.Execute(query);
         }
 
         public int SyncXeTapLai()
         {
             string query = $@"EXEC dbo.usp_SyncXeTapLai";
-            return DataProviderApp.Instance.ExecuteNonQuery(query);
+            return _db.Execute(query);
         }
         #endregion
     }

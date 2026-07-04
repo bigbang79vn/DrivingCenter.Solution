@@ -10,6 +10,8 @@ namespace DrivingCenter.App
 {
     public partial class frmQuaTrinhDaoTao : DevExpress.XtraEditors.XtraForm
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private readonly IMG_DAO _IMG_DAO = new IMG_DAO();
         private string _madk;
         public frmQuaTrinhDaoTao(string madk)
         {
@@ -32,14 +34,14 @@ namespace DrivingCenter.App
             }
             else
             {
-                var result = DAT_DAO.Instance.GetInfoHocVienByMaDK(madk);
+                var result = _DAO.GetInfoHocVienByMaDK(madk);
                 lb_HoTen.Text = result.HoVaTen;
                 lb_NgaySinh.Text = result.NgaySinh.ToString("dd/MM/yyyy");
                 txt_maDK.Text = result.MaDK;
                 txt_KhoaHoc.Text = result.TenKH;
                 txt_HangDT.Text = result.HangGPLX;
 
-                var img = IMG_DAO.Instance.GetImgByMaDK(madk);
+                var img = _IMG_DAO.GetImgByMaDK(madk);
                 if (img.Rows.Count > 0 && img.Rows[0]["Anh"] != DBNull.Value)
                 {
                     byte[] imageData = (byte[])img.Rows[0]["Anh"];
@@ -59,7 +61,7 @@ namespace DrivingCenter.App
             }
             else
             {
-                var result = DAT_DAO.Instance.GetKetQuaDaoTaoByMaDK(madk);
+                var result = _DAO.GetKetQuaDaoTaoByMaDK(madk);
                 txt_QuangDuongTH.DataSource = result;
                 GridHelper.EnableRowNumbering(grdView_KetQuaDaoTao);
 

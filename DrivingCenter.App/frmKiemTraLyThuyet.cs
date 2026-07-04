@@ -15,7 +15,8 @@ namespace DrivingCenter.App
 {
 	public partial class frmKiemTraLyThuyet: DevExpress.XtraEditors.XtraForm
 	{
-		private readonly DataTable _data;
+        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private readonly DataTable _data;
         private readonly int _khoahocId;
         public frmKiemTraLyThuyet(DataTable data, int khoahocId)
 		{
@@ -29,7 +30,7 @@ namespace DrivingCenter.App
         {
 
             LoadGiaoVien();
-            List<NguoiLxInLT> lst = DAT_DAO.Instance.GetAllNguoiLxByKhoaHoc(_khoahocId);
+            List<NguoiLxInLT> lst = _DAO.GetAllNguoiLxByKhoaHoc(_khoahocId);
 
             int[] columnsToSelect = { 1, 9, 10, 12, 14, 16, 18, 20, 22, 26, 27 };
 
@@ -76,7 +77,7 @@ namespace DrivingCenter.App
 
         private void LoadGiaoVien()
         {
-            List<GiaoVien> lst = DAT_DAO.Instance.GetAllGV();
+            List<GiaoVien> lst = _DAO.GetAllGV();
             repoGrid_GiaoVien.DataSource = lst;
             repoGrid_GiaoVien.DisplayMember = "HoTenGV";
             repoGrid_GiaoVien.ValueMember = "GiaoVienID";

@@ -21,6 +21,7 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_DaoTao : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         public Uc_DaoTao()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadCategory()
         {
-            DataTable dt = DAT_DAO.Instance.GetCategory();
+            DataTable dt = _DAO.GetCategory();
 
             var filteredData = dt.AsEnumerable()
                 .Where(row => row.Field<int>("Level") != 0)
@@ -60,14 +61,14 @@ namespace DrivingCenter.App.UserControl
 
         public void LoadDanhSachHocVien(int KhoaHocID)
         {
-            List<NguoiLxInDAT> lst = DAT_DAO.Instance.GetAllNguoiLxByKhoaHocID(KhoaHocID);
+            List<NguoiLxInDAT> lst = _DAO.GetAllNguoiLxByKhoaHocID(KhoaHocID);
 
             gridCtrl_DanhSachHocVien.DataSource = lst;
         }
 
         private void LoadXeTapLai()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai();
+            List<XeTapLai> lst = _DAO.GetLstXeTapLai();
             repoGrid_XeTapLai.DataSource = lst;
             repoGrid_XeTapLai.DisplayMember = "BienSoXe";
             repoGrid_XeTapLai.ValueMember = "MaXe";
@@ -79,7 +80,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadGiaoVien()
         {
-            List<GiaoVien> lst = DAT_DAO.Instance.GetAllGV();
+            List<GiaoVien> lst = _DAO.GetAllGV();
             repoGrid_GiaoVien.DataSource = lst;
             repoGrid_GiaoVien.DisplayMember = "HoTenGV";
             repoGrid_GiaoVien.ValueMember = "GiaoVienID";
@@ -119,7 +120,7 @@ namespace DrivingCenter.App.UserControl
         private void gridView_DanhSachHocVien_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
-            //DAT_DAO.Instance.UpdateXeTapB11(rowData);
+            //_DAO.UpdateXeTapB11(rowData);
         }
 
         #endregion
@@ -201,7 +202,7 @@ namespace DrivingCenter.App.UserControl
                     {
                         foreach (var item in lst)
                         {
-                            DAT_DAO.Instance.Assignment(item);
+                            _DAO.Assignment(item);
                         }
                         XtraMessageBox.Show(string.Format("Hoàn thành phân công đào tạo khóa {0}", cb_SheetData.SelectedIndex.ToString()), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -233,7 +234,7 @@ namespace DrivingCenter.App.UserControl
         #region ContextMenuStrip
         private void mn_KetQuaQuaTrinhHoc_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 0);
+            DataTable resultBC = _DAO.BaoCaoKetQuaHocVien(KhoaHocId, 0);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -246,7 +247,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_KetQuaDATQuaTrinhHoc_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 1);
+            DataTable resultBC = _DAO.BaoCaoKetQuaHocVien(KhoaHocId, 1);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();
@@ -258,7 +259,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_KetQuaKHONGDATQuaTrinhHoc_Click(object sender, EventArgs e)
         {
-            DataTable resultBC = DAT_DAO.Instance.BaoCaoKetQuaHocVien(KhoaHocId, 2);
+            DataTable resultBC = _DAO.BaoCaoKetQuaHocVien(KhoaHocId, 2);
 
             // Gán DataSource cho Report
             rptBaoCaoKetQuaHocDAT rpt = new rptBaoCaoKetQuaHocDAT();

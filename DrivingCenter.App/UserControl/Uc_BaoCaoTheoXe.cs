@@ -17,6 +17,7 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_BaoCaoTheoXe : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         public Uc_BaoCaoTheoXe()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void LoadlstXe()
         {
-            List<XeTapLai> lst = DAT_DAO.Instance.GetLstXeTapLai().Where(x=>x.ThanhLy == false).ToList();
+            List<XeTapLai> lst = _DAO.GetLstXeTapLai().Where(x=>x.ThanhLy == false).ToList();
 
             cbb_XeTapLai.Properties.DataSource = lst;
             cbb_XeTapLai.Properties.DisplayMember = "BienSoXe";
@@ -63,7 +64,7 @@ namespace DrivingCenter.App.UserControl
 
                 bienso = selectedObject.MaXe;
 
-                List<PhienHoc> lstPhienHocTheoXe = DAT_DAO.Instance.LstPhienHocTheoXe(bienso, from, to);
+                List<PhienHoc> lstPhienHocTheoXe = _DAO.LstPhienHocTheoXe(bienso, from, to);
 
                 gridControl_BaoCaoTheoXe.DataSource = lstPhienHocTheoXe;
             }

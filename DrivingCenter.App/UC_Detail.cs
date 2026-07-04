@@ -10,7 +10,7 @@ namespace DrivingCenter.App
     public partial class UC_Detail : DevExpress.XtraEditors.XtraUserControl
     {
         private Int64 _NguoiLxId;
-
+        private readonly CabinI2E_DAO _DAO = new CabinI2E_DAO();
         public UC_Detail(Int64 nguoilxId)
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace DrivingCenter.App
 
         private void LoadBaiTapCabin()
         {
-            List<Exercise> lstBaiTap = CabinI2E_DAO.Instance.GetListBaiTap();
+            List<Exercise> lstBaiTap = _DAO.GetListBaiTap();
 
             lkDanhMucBaiTap.DataSource = lstBaiTap;
             lkDanhMucBaiTap.ValueMember = "ID";
@@ -30,7 +30,7 @@ namespace DrivingCenter.App
 
         private void LoadInfoHocVienById(Int64? NguoiLxID)
         {
-            HocVien hv = CabinI2E_DAO.Instance.GetInfoHVByNguoiLxID(NguoiLxID);
+            HocVien hv = _DAO.GetInfoHVByNguoiLxID(NguoiLxID);
 
             if (hv != null)
             {
@@ -60,10 +60,10 @@ namespace DrivingCenter.App
                 lb_KhoaHoc.Text = hv.TenKH;
                 pictureBox2.Image = image;
 
-                lb_KetQua.Text = CabinI2E_DAO.Instance.CountBaiTap(_NguoiLxId).ToString() + " / " + hv.ToTalSecond;
-                lb_KetLuan.Text = CabinI2E_DAO.Instance.CheckDK(hv.NguoiLxID, hv.MaKH);
+                lb_KetQua.Text = _DAO.CountBaiTap(_NguoiLxId).ToString() + " / " + hv.ToTalSecond;
+                lb_KetLuan.Text = _DAO.CheckDK(hv.NguoiLxID, hv.MaKH);
 
-                List<Result> lstKetQuaTap = CabinI2E_DAO.Instance.GetResultByNguoiLxID(NguoiLxID);
+                List<Result> lstKetQuaTap = _DAO.GetResultByNguoiLxID(NguoiLxID);
 
                 grd_Result.DataSource = lstKetQuaTap;
             }
@@ -90,7 +90,7 @@ namespace DrivingCenter.App
                         var IDBaiTap = (int)this.gridView.GetRowCellValue(rowHandle, "BaiHocCaBinID");
                         Int64 DiemdanhnguoiLxID = Convert.ToInt64(gridView.GetRowCellValue(rowHandle, "DiemDanhNguoiLxID"));
 
-                        CabinI2E_DAO.Instance.UpdateBaiTap(IDBaiTap, DiemdanhnguoiLxID);
+                        _DAO.UpdateBaiTap(IDBaiTap, DiemdanhnguoiLxID);
 
                         LoadInfoHocVienById(_NguoiLxId);
                     }
@@ -106,7 +106,7 @@ namespace DrivingCenter.App
                 {
                     Int64 DiemdanhnguoiLxID = Convert.ToInt64(gridView.GetRowCellValue(rowHandle, "DiemDanhNguoiLxID"));
 
-                    CabinI2E_DAO.Instance.DeleteResultExcer(DiemdanhnguoiLxID);
+                    _DAO.DeleteResultExcer(DiemdanhnguoiLxID);
 
                     LoadInfoHocVienById(_NguoiLxId);
                 }

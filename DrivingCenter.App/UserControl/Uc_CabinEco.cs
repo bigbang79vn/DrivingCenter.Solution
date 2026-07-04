@@ -19,6 +19,8 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_CabinEco : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly CabinEco_DAO _DAO = new CabinEco_DAO();
+        private readonly DAT_DAO DAT_DAO = new DAT_DAO();
         public Uc_CabinEco()
         {
             InitializeComponent();
@@ -40,10 +42,7 @@ namespace DrivingCenter.App.UserControl
 
             Task taskThongKe = LoadThCabinAsync();
 
-            GetLstKhoaHocDDT();
-            LoadBaiTapCabin();
-            GetLstCabin();
-            GetAllKhoaHoc();
+            InitializeData();
         }
 
         private List<KhoaHoc> _lstKhoaHoc;
@@ -55,9 +54,21 @@ namespace DrivingCenter.App.UserControl
         private byte[] Jpegbytes;
         private int Idtemp;
 
+
+        public void InitializeData()
+        {
+            GetLstKhoaHocDDT();
+            LoadBaiTapCabin();
+            GetLstCabin();
+            GetAllKhoaHoc();
+        }
         public void GetLstKhoaHocDDT()
         {
-            List<KhoaHoc> lstKhoaHoc = CabinEco_DAO.Instance.GetKHDangDT();
+            List<KhoaHoc> lstKhoaHoc = _DAO.GetAllKhoaHoc()
+                .Where(x=>x.Status == false)
+                .OrderBy(x => x.TenKhoaHoc)
+                .ToList();
+
             cbb_KhoaHocEco.Properties.DataSource = lstKhoaHoc;
             cbb_KhoaHocEco.Properties.DisplayMember = "TenKhoaHoc";
             cbb_KhoaHocEco.Properties.ValueMember = "KhoaHocID";
@@ -90,7 +101,7 @@ namespace DrivingCenter.App.UserControl
 
         private void GetLstCabin()
         {
-            List<Cabin> lst = CabinEco_DAO.Instance.GetLstCabin();
+            List<Cabin> lst = _DAO.GetLstCabin();
             cbb_Cabin.Properties.DataSource = lst;
             cbb_Cabin.Properties.DisplayMember = "NameCabin";
             cbb_Cabin.Properties.ValueMember = "IdThietBi";
@@ -112,7 +123,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadLstHvByKH(int IdKhoaHoc)
         {
-            _lstStudent = CabinEco_DAO.Instance.LoadLstHocVienById(IdKhoaHoc);
+            _lstStudent = _DAO.LoadLstHocVienById(IdKhoaHoc);
 
             grd_HocVien.DataSource = _lstStudent;
         }
@@ -144,7 +155,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadBaiTapCabin()
         {
-            List<Exercise> lstBaiTap = CabinEco_DAO.Instance.GetListBaiTap();
+            List<Exercise> lstBaiTap = _DAO.GetListBaiTap();
 
             lkDanhMucBaiTap.DataSource = lstBaiTap;
             lkDanhMucBaiTap.ValueMember = "ID";
@@ -153,7 +164,7 @@ namespace DrivingCenter.App.UserControl
 
         private void LoadInfoHocVienById(string MaDK)
         {
-            DataTable data = CabinEco_DAO.Instance.LoadInfoHVByMaDK(MaDK);
+            DataTable data = _DAO.LoadInfoHVByMaDK(MaDK);
 
             if (data.Rows.Count > 0)
             {
@@ -175,7 +186,7 @@ namespace DrivingCenter.App.UserControl
                 }
             }
 
-            List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(MaDK);
+            List<Result> lstKetQuaTap = _DAO.lstResultById(MaDK);
 
             //Lấy danh sách các bài tập chưa hoàn thành
             List<int> IdBaiThieu = lstKetQuaTap
@@ -183,7 +194,7 @@ namespace DrivingCenter.App.UserControl
                 .Select(t => t.BaiHocCaBinID)
                 .ToList();
 
-            List<Exercise> lstBaiTap = CabinEco_DAO.Instance.GetListBaiTap();
+            List<Exercise> lstBaiTap = _DAO.GetListBaiTap();
 
             List<Exercise> lstBaiTapChuaLam = lstBaiTap.Where(t => !IdBaiThieu.Contains(t.ID)).ToList();
 
@@ -221,7 +232,7 @@ namespace DrivingCenter.App.UserControl
                         if (selectedRow != null)
                         {
                             int ID = (int)selectedRow.DiemDanhNguoiLxID;
-                            CabinEco_DAO.Instance.DeleteResultExcer(ID);
+                            _DAO.DeleteResultExcer(ID);
                         }
                     }
 
@@ -241,7 +252,7 @@ namespace DrivingCenter.App.UserControl
             else if (button.Caption == "Print")
             {
                 HocVien hv = gridview_HocVien.GetFocusedRow() as HocVien;
-                var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(hv.MaDK);
+                var resultBC = _DAO.GetDataReportByMaDK(hv.MaDK);
 
                 // Gán DataSource và hiển thị report
                 new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
@@ -256,7 +267,7 @@ namespace DrivingCenter.App.UserControl
                     int IDBaiTap = selecthandle.BaiHocCaBinID;
                     Int64 DiemdanhnguoiLxID = selecthandle.DiemDanhNguoiLxID;
 
-                    CabinEco_DAO.Instance.UpdateBaiTap(DiemdanhnguoiLxID, IDBaiTap);
+                    _DAO.UpdateBaiTap(DiemdanhnguoiLxID, IDBaiTap);
 
                     LoadInfoHocVienById(IdHocVien);
                 }
@@ -279,7 +290,7 @@ namespace DrivingCenter.App.UserControl
             HocVien rowData = gridview_HocVien.GetFocusedRow() as HocVien;
 
             int Id_KhoaHoc = ((sender as ToolStripMenuItem).Tag as KhoaHoc).KhoaHocID;
-            string MaDKNewBySoCCD = CabinEco_DAO.Instance.GetMaDKNew(Id_KhoaHoc, SoCCCD);
+            string MaDKNewBySoCCD = _DAO.GetMaDKNew(Id_KhoaHoc, SoCCCD);
             if (MaDKNewBySoCCD == string.Empty)
             {
                 XtraMessageBox.Show(string.Format("Không có thông tin học viên trong khóa học {0}", ((sender as ToolStripMenuItem).Tag as KhoaHoc).TenKhoaHoc), "Thông báo", MessageBoxButtons.OK);
@@ -288,12 +299,12 @@ namespace DrivingCenter.App.UserControl
             {
                 if (XtraMessageBox.Show("Are you sure change course this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(rowData.MaDK);
+                    List<Result> lstKetQuaTap = _DAO.lstResultById(rowData.MaDK);
 
                     foreach (var item in lstKetQuaTap)
                     {
                         int ID = (int)item.DiemDanhNguoiLxID;
-                        CabinEco_DAO.Instance.ChangeCourse(Id_KhoaHoc, MaDKNewBySoCCD, ID);
+                        _DAO.ChangeCourse(Id_KhoaHoc, MaDKNewBySoCCD, ID);
                     }
                     LoadInfoHocVienById(rowData.MaDK);
                     //Result(ID_HocVien);
@@ -312,12 +323,12 @@ namespace DrivingCenter.App.UserControl
 
             if (XtraMessageBox.Show("Are you sure change Cabin this result?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
-                List<Result> lstKetQuaTap = CabinEco_DAO.Instance.lstResultById(rowData.MaDK);
+                List<Result> lstKetQuaTap = _DAO.lstResultById(rowData.MaDK);
 
                 foreach (var item in lstKetQuaTap)
                 {
                     int ID = (int)item.DiemDanhNguoiLxID;
-                    CabinEco_DAO.Instance.ChangeCabin(cabin, ID);
+                    _DAO.ChangeCabin(cabin, ID);
                 }
                 LoadInfoHocVienById(rowData.MaDK);
                 //Result(ID_HocVien);
@@ -359,12 +370,12 @@ namespace DrivingCenter.App.UserControl
                 bool isB11orB2 = rowData.HangGPLX == "B11" || rowData.HangGPLX == "B2";
                 int minute = rd.Next(isB11orB2 ? 18 : 12, isB11orB2 ? 28 : 17);
 
-                CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, 2, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
+                _DAO.CreateResult(IdCabin, ghichu, IdHocVien, 2, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
 
                 while (lst.Count != 0)
                 {
-                    int ID = CabinEco_DAO.Instance.GetIdMaxByIdHocVien(IdHocVien);
-                    DateTime timeout = CabinEco_DAO.Instance.GetTimeOut(ID);
+                    int ID = _DAO.GetIdMaxByIdHocVien(IdHocVien);
+                    DateTime timeout = _DAO.GetTimeOut(ID);
 
                     int index = rd.Next(lst.Count);
                     int IdBaiTap = lst[index];
@@ -372,7 +383,7 @@ namespace DrivingCenter.App.UserControl
                     LanTap++;
 
                     int minute2 = rd.Next(isB11orB2 ? 18 : 12, isB11orB2 ? 28 : 17);
-                    CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, IdBaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute2);
+                    _DAO.CreateResult(IdCabin, ghichu, IdHocVien, IdBaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute2);
                     lst.Remove(IdBaiTap);
                 }
 
@@ -404,16 +415,16 @@ namespace DrivingCenter.App.UserControl
 
                 string Datecreate = dt_TimeStart.DateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-                int LanTap = CabinEco_DAO.Instance.GetMaxLanTap(IdHocVien);
+                int LanTap = _DAO.GetMaxLanTap(IdHocVien);
 
                 string day = dt_TimeStart.DateTime.ToString("dd/MM/yyyy");
-                int count = CabinEco_DAO.Instance.CountLanTapByDay(day, IdHocVien);
+                int count = _DAO.CountLanTapByDay(day, IdHocVien);
 
                 if (count > 0)
                 {
-                    int MaxID_BaiTap = CabinEco_DAO.Instance.GetMaxIdBaiTap(IdHocVien);
-                    int ID = CabinEco_DAO.Instance.GetIdMaxByIdHocVien(IdHocVien);
-                    DateTime timeout = CabinEco_DAO.Instance.GetTimeOut(ID);
+                    int MaxID_BaiTap = _DAO.GetMaxIdBaiTap(IdHocVien);
+                    int ID = _DAO.GetIdMaxByIdHocVien(IdHocVien);
+                    DateTime timeout = _DAO.GetTimeOut(ID);
                     Datecreate = timeout.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
                     Random rd = new Random();
@@ -428,11 +439,11 @@ namespace DrivingCenter.App.UserControl
 
                     if (checkbox.Checked)
                     {
-                        CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, 3, Datecreate, IdKhoaHoc, LanTap, LanTap, rd.Next(30, 34));
+                        _DAO.CreateResult(IdCabin, ghichu, IdHocVien, 3, Datecreate, IdKhoaHoc, LanTap, LanTap, rd.Next(30, 34));
                     }
                     else
                     {
-                        CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, MaxID_BaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
+                        _DAO.CreateResult(IdCabin, ghichu, IdHocVien, MaxID_BaiTap, Datecreate, IdKhoaHoc, LanTap, LanTap, minute);
                     }
                     LoadInfoHocVienById(IdHocVien);
                     //Result(IdHocVien);
@@ -441,7 +452,7 @@ namespace DrivingCenter.App.UserControl
                 else
                 {
                     LanTap++;
-                    CabinEco_DAO.Instance.CreateResult(IdCabin, ghichu, IdHocVien, 2, Datecreate, IdKhoaHoc, LanTap, LanTap, 0);
+                    _DAO.CreateResult(IdCabin, ghichu, IdHocVien, 2, Datecreate, IdKhoaHoc, LanTap, LanTap, 0);
                     LoadInfoHocVienById(IdHocVien);
                     //Result(IdHocVien);
                     LoadLstHvByKH(IdKhoaHoc);
@@ -483,7 +494,7 @@ namespace DrivingCenter.App.UserControl
                 return;
             }
 
-            var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(lstMaDK.ToString());
+            var resultBC = _DAO.GetDataReportByMaDK(lstMaDK.ToString());
 
             if (resultBC == null || resultBC.Rows.Count == 0)
             {
@@ -496,13 +507,13 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_TongHopBaoCao_Click(object sender, EventArgs e)
         {
-            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 0);
+            var resultBC = _DAO.GetBaoCaoByKhoaHocID(IdKhoaHoc, 0);
 
             new ReportPrintTool(new rptBaoCaoTongHopEco { DataSource = resultBC }).ShowPreview();
         }
         private void mn_HocVienDuDieuKien_Click(object sender, EventArgs e)
         {
-            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
+            var resultBC = _DAO.GetBaoCaoByKhoaHocID(IdKhoaHoc, 1);
             if (resultBC == null || resultBC.Rows.Count == 0)
             {
                 XtraMessageBox.Show("Không có học viên đủ điều kiện thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -513,7 +524,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_HocVienKoDuDieuKien_Click(object sender, EventArgs e)
         {
-            var resultBC = CabinEco_DAO.Instance.GetBaoCaoByKhoaHocID(IdKhoaHoc, 2);
+            var resultBC = _DAO.GetBaoCaoByKhoaHocID(IdKhoaHoc, 2);
             if (resultBC == null || resultBC.Rows.Count == 0)
             {
                 XtraMessageBox.Show("Không có học viên không đủ điều kiện thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -530,8 +541,8 @@ namespace DrivingCenter.App.UserControl
         }
         private void mn_SyncTeacher_Click(object sender, EventArgs e)
         {
-            List<GiaoVien> lstGiaoVienDAT = DAT_DAO.Instance.GetAllGV();
-            List<GiaoVien> lstGiaoVienCabin = CabinEco_DAO.Instance.GetAllGV();
+            List<GiaoVien> lstGiaoVienDAT = DAT_DAO.GetAllGV();
+            List<GiaoVien> lstGiaoVienCabin = _DAO.GetAllGV();
 
             foreach (GiaoVien item in lstGiaoVienDAT.ToList())
             {
@@ -546,18 +557,18 @@ namespace DrivingCenter.App.UserControl
             {
                 foreach (GiaoVien item in lstGiaoVienDAT)
                 {
-                    CabinEco_DAO.Instance.InsertTeacherNew(item);
+                    _DAO.InsertTeacherNew(item);
                 }
             }
 
-            List<GvCabin> _lstHvInDat = DAT_DAO.Instance.GetListGvByNameKH(TenKH);
+            List<GvCabin> _lstHvInDat = DAT_DAO.GetListGvByNameKH(TenKH);
             foreach (HocVien item in _lstStudent)
             {
                 foreach (GvCabin item1 in _lstHvInDat)
                 {
                     if (item.MaDK == item1.MaDK)
                     {
-                        CabinEco_DAO.Instance.UpdateGv(item1.GiaoVienID, item.MaDK);
+                        _DAO.UpdateGv(item1.GiaoVienID, item.MaDK);
                     }
                 }
             }
@@ -575,7 +586,7 @@ namespace DrivingCenter.App.UserControl
 
             lb_ThongKe.Text = "THỐNG KÊ KẾT QUẢ CABIN NGÀY " + day;
 
-            var lst = await Task.Run(() => CabinEco_DAO.Instance.LstThongKe(day));
+            var lst = await Task.Run(() => _DAO.LstThongKe(day));
 
             if (grd_ThongKe.InvokeRequired)
             {
@@ -600,7 +611,7 @@ namespace DrivingCenter.App.UserControl
 
         private void GetAllKhoaHoc()
         {
-            _lstKhoaHoc = CabinEco_DAO.Instance.GetAllKhoaHoc()
+            _lstKhoaHoc = _DAO.GetAllKhoaHoc()
                 .OrderBy(t => t.Status)
                 .ToList();
             grd_QuanLyKhoaHoc.DataSource = _lstKhoaHoc;
@@ -673,7 +684,7 @@ namespace DrivingCenter.App.UserControl
             string hangdaotao = txt_HangDT.Text;
             int status = toggleSwitch_Status.IsOn ? status = 1 : status = 0;
 
-            CabinEco_DAO.Instance.UpdateKhoaHoc(Idtemp, tenkhoahoc, hangdaotao, status);
+            _DAO.UpdateKhoaHoc(Idtemp, tenkhoahoc, hangdaotao, status);
             GetAllKhoaHoc();
             GetLstKhoaHocDDT();
         }
@@ -706,10 +717,10 @@ namespace DrivingCenter.App.UserControl
                             kh.HangDaoTao = khoaHocNode.Element("HANG_GPLX")?.Value;
                             kh.NgayDaoTao = Convert.ToDateTime(khoaHocNode.Element("NGAY_BCI")?.Value);
 
-                            CabinEco_DAO.Instance.InsertKhoaHoc(kh);
+                            _DAO.InsertKhoaHoc(kh);
                         }
 
-                        int khoahocId = CabinEco_DAO.Instance.GetKhoaHocIdByMaKhoaHoc(MaKH);
+                        int khoahocId = _DAO.GetKhoaHocIdByMaKhoaHoc(MaKH);
 
                         List<XElement> nguoiLxLst = xdoc.Descendants("NGUOI_LX").ToList();
 
@@ -729,7 +740,7 @@ namespace DrivingCenter.App.UserControl
                             hv.ImageBase64 = (string)item.Element("HO_SO").Element("ANH_CHAN_DUNG");
                             STT++;
 
-                            CabinEco_DAO.Instance.InsertNguoiLxBase(khoahocId, STT, hv, ConvertBase64ToBytes(hv.ImageBase64), STT);
+                            _DAO.InsertNguoiLxBase(khoahocId, STT, hv, ConvertBase64ToBytes(hv.ImageBase64), STT);
                         }
                         XtraMessageBox.Show("Thêm khóa học thành công!");
                     }
@@ -792,7 +803,7 @@ namespace DrivingCenter.App.UserControl
         private void Mn_ViewResult_Click(object sender, EventArgs e)
         {
             ThongKe rowData = gridView_TongHop.GetFocusedRow() as ThongKe;
-            var resultBC = CabinEco_DAO.Instance.GetDataReportByMaDK(rowData.MaDK);
+            var resultBC = _DAO.GetDataReportByMaDK(rowData.MaDK);
 
             new ReportPrintTool(new rptResultEco { DataSource = resultBC }).ShowPreview();
         }
@@ -800,7 +811,7 @@ namespace DrivingCenter.App.UserControl
         private void MenuItemChangeCourse_Click(object sender, EventArgs e)
         {
             int Id_KhoaHoc = ((sender as ToolStripMenuItem).Tag as KhoaHoc).KhoaHocID;
-            string MaDKNewBySoCCD = CabinEco_DAO.Instance.GetMaDKNew(Id_KhoaHoc, SoCCCD);
+            string MaDKNewBySoCCD = _DAO.GetMaDKNew(Id_KhoaHoc, SoCCCD);
 
             if (MaDKNewBySoCCD == string.Empty)
             {
@@ -824,7 +835,7 @@ namespace DrivingCenter.App.UserControl
                         if (selectedRow != null)
                         {
                             int ID = (int)selectedRow.DiemDanhNguoiLxID;
-                            CabinEco_DAO.Instance.ChangeCourse(Id_KhoaHoc, MaDKNewBySoCCD, ID);
+                            _DAO.ChangeCourse(Id_KhoaHoc, MaDKNewBySoCCD, ID);
                         }
                     }
                     LoadInfoHocVienById(IdHocVien);

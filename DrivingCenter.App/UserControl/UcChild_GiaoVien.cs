@@ -11,6 +11,7 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class UcChild_GiaoVien : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly AppBee_DAO _DAO = new AppBee_DAO();
         public UcChild_GiaoVien()
         {
             InitializeComponent();
@@ -64,13 +65,13 @@ namespace DrivingCenter.App.UserControl
         }
         private void Get_DmGiaoVien()
         {
-            List<GiaoVien> data = AppBee_DAO.Instance.GetAllGV();
+            List<GiaoVien> data = _DAO.GetAllGV();
             gridControl_GiaoVien.DataSource = data;
             GridHelper.EnableRowNumbering(gridView_GiaoVien);
         }
         private void Get_DmTrinhDoHocVan()
         {
-            DataTable dt = AppBee_DAO.Instance.GetlstHocVan();
+            DataTable dt = _DAO.GetlstHocVan();
             cbb_HocVan.Properties.DataSource = dt;
             cbb_HocVan.Properties.DisplayMember = "Ten";
             cbb_HocVan.Properties.ValueMember = "Ma";
@@ -79,7 +80,7 @@ namespace DrivingCenter.App.UserControl
         }
         private void Get_DmHangGPLX()
         {
-            DataTable dt = AppBee_DAO.Instance.GetlstHangGPLX();
+            DataTable dt = _DAO.GetlstHangGPLX();
 
             cbb_HangGPLX.Properties.DataSource = dt;
             cbb_HangGPLX.Properties.DisplayMember = "TenHang";
@@ -155,7 +156,7 @@ namespace DrivingCenter.App.UserControl
                 gv.MaCNDT = txt_MaCNDT.Text;
                 gv.NgaySinh = date_NgaySinh.DateTime;
                 gv.SuDung = toggleSwitch_TrangThai.IsOn;
-                AppBee_DAO.Instance.UpdateGiaoVien(gv, _giaoVienID);
+                _DAO.UpdateGiaoVien(gv, _giaoVienID);
                 Get_DmGiaoVien();
                 SetControlsEnabled(false);
                 DisableAllButtons();
@@ -171,7 +172,7 @@ namespace DrivingCenter.App.UserControl
 
         private void mn_SynsGiaoVien_Click(object sender, EventArgs e)
         {
-            int result = AppBee_DAO.Instance.SynsGiaoVien();
+            int result = _DAO.SynsGiaoVien();
             //XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -180,7 +181,7 @@ namespace DrivingCenter.App.UserControl
             DialogResult dialogResult = MessageBox.Show("Đồng bộ lại giáo viên từ hệ thống DAT?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                //AppBee_DAO.Instance.Synchronize();
+                //_DAO.Synchronize();
                 Get_DmGiaoVien();
                 SetControlsEnabled(false);
                 DisableAllButtons();

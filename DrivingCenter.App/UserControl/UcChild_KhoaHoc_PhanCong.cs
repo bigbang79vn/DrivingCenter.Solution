@@ -15,6 +15,8 @@ namespace DrivingCenter.App.UserControl
 {
     public partial class UcChild_KhoaHoc_PhanCong : DevExpress.XtraEditors.XtraUserControl
     {
+        private readonly AppBee_DAO _DAO = new AppBee_DAO();
+        private readonly GPLX_DAO GPLX_DAO = new GPLX_DAO();
         public UcChild_KhoaHoc_PhanCong()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace DrivingCenter.App.UserControl
 
         private void UcChild_KhoaHoc_PhanCong_Load(object sender, EventArgs e)
         {
-            xeTapLais = AppBee_DAO.Instance.GetAllXeTapLai();
+            xeTapLais =_DAO.GetAllXeTapLai();
             GetAllKhoaHoc();
 
             cbb_KhoaHocXeDaoTao.EditValueChanged += cbb_KhoaHocXeDaoTao_EditValueChanged;
@@ -41,7 +43,7 @@ namespace DrivingCenter.App.UserControl
 
         //private void GetKhoaHocDuKien()
         //{
-        //    List<KhoaHocGPLX> lst = GPLX_DAO.Instance.GetlstKH();
+        //    List<KhoaHocGPLX> lst = GPLX_DAO.GetlstKH();
         //    cbb_KhoaHocDuKien.Properties.DataSource = lst;
         //    cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKHGplx";
         //    cbb_KhoaHocDuKien.Properties.ValueMember = "MaKHGplx";
@@ -51,7 +53,7 @@ namespace DrivingCenter.App.UserControl
 
         private void GetAllKhoaHoc()
         {
-            List<DTO.GPLX.KhoaHoc> lst = GPLX_DAO.Instance.GetAllKhoaHoc();
+            List<DTO.GPLX.KhoaHoc> lst = GPLX_DAO.GetAllKhoaHoc();
             cbb_KhoaHocDuKien.Properties.DataSource = lst;
             cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKH";
             cbb_KhoaHocDuKien.Properties.ValueMember = "MaKH";
@@ -64,7 +66,7 @@ namespace DrivingCenter.App.UserControl
 
         private void Get_DmGvTrong(string loailop)
         {
-            var data = AppBee_DAO.Instance.Get_GvTrong(loailop).Where(x => x.SuDung == true).ToList();
+            var data =_DAO.Get_GvTrong(loailop).Where(x => x.SuDung == true).ToList();
             listLeft = new BindingList<GiaoVien>(data);
             gridControlLeft.DataSource = listLeft;
 
@@ -74,7 +76,7 @@ namespace DrivingCenter.App.UserControl
 
         private void Get_DmXeDaoTaoConTrong(string loailop)
         {
-            lslistXeConTrong = AppBee_DAO.Instance.Get_XeTapLaiTrong(loailop);
+            lslistXeConTrong =_DAO.Get_XeTapLaiTrong(loailop);
             cbb_KhoaHocXeDaoTao.Properties.DataSource = lslistXeConTrong;
             cbb_KhoaHocXeDaoTao.Properties.DisplayMember = "BienSoXe";
             cbb_KhoaHocXeDaoTao.Properties.ValueMember = "VehicleID";
@@ -83,7 +85,7 @@ namespace DrivingCenter.App.UserControl
 
         private void Get_DmXeB11ConTrong(string loailop, DateTime ngayTH)
         {
-            xeB11ConTrong = AppBee_DAO.Instance.Get_XeB11ConTrong(loailop, ngayTH);
+            xeB11ConTrong =_DAO.Get_XeB11ConTrong(loailop, ngayTH);
             cbb_KhoaHocXeB11.Properties.DataSource = xeB11ConTrong;
             cbb_KhoaHocXeB11.Properties.DisplayMember = "BienSoXe";
             cbb_KhoaHocXeB11.Properties.ValueMember = "VehicleID";
@@ -115,7 +117,7 @@ namespace DrivingCenter.App.UserControl
         {
             if (!string.IsNullOrEmpty(MaKhDuKien))
             {
-                row = GPLX_DAO.Instance.KhoaHocSelected(MaKhDuKien);
+                row = GPLX_DAO.KhoaHocSelected(MaKhDuKien);
                 txt_MaKH.Text = row["MaKH"].ToString();
 
                 txt_TenKH.Text = row["TenKH"].ToString();
@@ -129,13 +131,13 @@ namespace DrivingCenter.App.UserControl
                 dateEdit_Begin.EditValue = ((DateTime)row["NgayKG"]).AddDays(25);
                 dateEdit_End.EditValue = (DateTime)row["NgayBG"];
 
-                data = AppBee_DAO.Instance.GetKhoaHocDaPhanCong(MaKhDuKien);
+                data =_DAO.GetKhoaHocDaPhanCong(MaKhDuKien);
                 gridCtrl_BoTri.DataSource = data;
 
                 giaoVienXe = data.ToDictionary(x => x.GiaoVienId, x => x.IdXeTap);
 
                 listRight.Clear();
-                var giaoViens = AppBee_DAO.Instance.Get_GiaoVienByMaKH(MaKhDuKien);
+                var giaoViens =_DAO.Get_GiaoVienByMaKH(MaKhDuKien);
                 listRight = new BindingList<GiaoVien>(giaoViens);
                 gridControlRight.DataSource = listRight;
             }
@@ -332,20 +334,20 @@ namespace DrivingCenter.App.UserControl
                     //int? xeCu = giaoVienXe[giaoVienId];
                     //if (existing.IdXeTap != xeMoi)
                         // Update
-                        AppBee_DAO.Instance.UpdateKhoaHocGiaoVien(existing.Id, MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+                       _DAO.UpdateKhoaHocGiaoVien(existing.Id, MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
                     
                 }
                 else
                 {
                     // Insert
-                    AppBee_DAO.Instance.InsertKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
+                   _DAO.InsertKhoaHocGiaoVien(MaKhDuKien, giaoVienId, xeMoi, soHocVien, ngayHieuLuc, ngayHetHieuLuc);
                 }
             }
 
             // Xóa những phần tử trong data không có trong giaoVienXe
             data.Where(s => !giaoVienXe.ContainsKey(s.GiaoVienId))
                 .ToList()
-                .ForEach(item => AppBee_DAO.Instance.DeleteKhoaHocGiaoVien(item));
+                .ForEach(item =>_DAO.DeleteKhoaHocGiaoVien(item));
 
         }
 

@@ -1,145 +1,183 @@
 ﻿using Dapper;
-using DrivingCenter.App.Common;
+using DrivingCenter.App.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace App.DrivingManager.Dataprovider
+namespace DrivingCenter.App.DataProvider
 {
-    public sealed class DbProvider : IDisposable
+    public sealed class DbProvider
     {
-        private static readonly Lazy<DbProvider> _instance = new Lazy<DbProvider>(() => new DbProvider());
-        // Chuỗi kết nối đến cơ sở dữ liệu
-        private string _connectionString = AppConstants.connectionStringGplx_CDB;
+        private readonly string _connectionString;
 
-        private IDbConnection _connection;
-        private IDbTransaction _transaction;
-
-        private DbProvider() { }
-
-        public static DbProvider Instance => _instance.Value;
-
-        private IDbConnection GetConnection()
+        public DbProvider(DatabaseType databaseType)
         {
-            if (string.IsNullOrEmpty(_connectionString))
-                throw new InvalidOperationException("DataProvider chưa được khởi tạo.");
+            _connectionString = DbConnectionFactory.GetConnection(databaseType);
 
-            if (_connection == null)
-            {
-                _connection = new SqlConnection(_connectionString);
-                _connection.Open();
-            }
-            else if (_connection.State == ConnectionState.Closed)
-            {
-                _connection.Open();
-            }
-
-            return _connection;
+            if (string.IsNullOrWhiteSpace(_connectionString))
+                throw new Exception($"Không tìm thấy ConnectionString của {databaseType}");
         }
 
-        #region Transaction
-        public void BeginTransaction()
+        #region Connection
+
+        private IDbConnection CreateConnection()
         {
-            if (_transaction == null)
-            {
-                var conn = GetConnection();
-                _transaction = conn.BeginTransaction();
-            }
+            return new SqlConnection(_connectionString);
         }
 
-        public void CommitTransaction()
-        {
-            _transaction?.Commit();
-            DisposeTransaction();
-        }
-
-        public void RollbackTransaction()
-        {
-            _transaction?.Rollback();
-            DisposeTransaction();
-        }
-
-        private void DisposeTransaction()
-        {
-            _transaction?.Dispose();
-            _transaction = null;
-        }
         #endregion
 
-        #region Sync methods
-        public IEnumerable<T> Query<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
+        #region Query
+
+        public IEnumerable<T> Query<T>(string sql,object param = null,CommandType commandType = CommandType.Text)
         {
-            var conn = GetConnection();
-            return conn.Query<T>(sql, param, transaction: _transaction, commandType: commandType);
+            using (var conn = CreateConnection())
+            {
+                return conn.Query<T>(sql, param, commandType: commandType);
+            }
         }
+
+        public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
+        {
+            using (var conn = CreateConnection())
+            {
+                return await conn.QueryAsync<T>(sql, param, commandType: commandType);
+            }
+        }
+
+        #endregion
+
+        #region Query Single
 
         public T QuerySingle<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
         {
-            var conn = GetConnection();
-            return conn.QuerySingleOrDefault<T>(sql, param, transaction: _transaction, commandType: commandType);
-        }
-
-        public int Execute(string sql, object param = null, CommandType commandType = CommandType.Text)
-        {
-            var conn = GetConnection();
-            return conn.Execute(sql, param, transaction: _transaction, commandType: commandType);
-        }
-
-        public SqlMapper.GridReader QueryMultiple(string sql, object param = null, CommandType commandType = CommandType.StoredProcedure)
-        {
-            var conn = GetConnection();
-            return conn.QueryMultiple(sql, param, transaction: _transaction, commandType: commandType);
-        }
-
-        public DataTable QueryToDataTable(string sql, object param = null, CommandType commandType = CommandType.StoredProcedure)
-        {
-            var conn = GetConnection();
-            var reader = conn.ExecuteReader(sql, param, transaction: _transaction, commandType: commandType);
-            var dt = new DataTable();
-            dt.Load(reader);
-            return dt;
-        }
-        #endregion
-
-        #region Async methods
-        public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
-        {
-            var conn = GetConnection();
-            return await conn.QueryAsync<T>(sql, param, transaction: _transaction, commandType: commandType);
+            using (var conn = CreateConnection())
+            {
+                return conn.QuerySingleOrDefault<T>(sql, param, commandType: commandType);
+            }
         }
 
         public async Task<T> QuerySingleAsync<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
         {
-            var conn = GetConnection();
-            return await conn.QuerySingleOrDefaultAsync<T>(sql, param, transaction: _transaction, commandType: commandType);
+            using (var conn = CreateConnection())
+            {
+                return await conn.QuerySingleOrDefaultAsync<T>(sql, param, commandType: commandType);
+            }
+        }
+
+        #endregion
+
+        #region Execute
+
+        public int Execute(string sql, object param = null, CommandType commandType = CommandType.Text)
+        {
+            using (var conn = CreateConnection())
+            {
+                return conn.Execute(sql, param, commandType: commandType);
+            }
         }
 
         public async Task<int> ExecuteAsync(string sql, object param = null, CommandType commandType = CommandType.Text)
         {
-            var conn = GetConnection();
-            return await conn.ExecuteAsync(sql, param, transaction: _transaction, commandType: commandType);
-        }
-
-        public async Task<SqlMapper.GridReader> QueryMultipleAsync(string sql, object param = null, CommandType commandType = CommandType.StoredProcedure)
-        {
-            var conn = GetConnection();
-            return await conn.QueryMultipleAsync(sql, param, transaction: _transaction, commandType: commandType);
-        }
-        #endregion
-
-        public void Dispose()
-        {
-            DisposeTransaction();
-
-            if (_connection != null)
+            using (var conn = CreateConnection())
             {
-                if (_connection.State != ConnectionState.Closed)
-                    _connection.Close();
-                _connection.Dispose();
-                _connection = null;
+                return await conn.ExecuteAsync(sql, param, commandType: commandType);
             }
         }
+
+        #endregion
+
+        #region Query Multiple
+
+        public (SqlMapper.GridReader Reader, IDbConnection Connection) QueryMultiple( string sql, object param = null, CommandType commandType = CommandType.Text)
+        {
+            var conn = CreateConnection();
+
+            conn.Open();
+
+            var reader = conn.QueryMultiple(sql, param, commandType: commandType);
+
+            return (reader, conn);
+        }
+
+        public async Task<(SqlMapper.GridReader Reader, IDbConnection Connection)> QueryMultipleAsync( string sql, object param = null, CommandType commandType = CommandType.Text)
+        {
+            var conn = CreateConnection();
+
+            conn.Open();
+
+            var reader = await conn.QueryMultipleAsync(sql, param, commandType: commandType);
+
+            return (reader, conn);
+        }
+
+        #endregion
+
+        #region DataTable
+
+        public DataTable QueryToDataTable( string sql, object param = null, CommandType commandType = CommandType.Text)
+        {
+            using (var conn = CreateConnection())
+            using (var reader = conn.ExecuteReader(sql, param, commandType: commandType))
+            {
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                return dt;
+            }
+        }
+
+        #endregion
+
+        #region Transaction
+
+        public void ExecuteTransaction(Action<IDbConnection, IDbTransaction> action)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();
+
+                using (var tran = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        action(conn, tran);
+
+                        tran.Commit();
+                    }
+                    catch
+                    {
+                        tran.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public async Task ExecuteTransactionAsync(Func<IDbConnection, IDbTransaction, Task> action)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();
+
+                using (var tran = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        await action(conn, tran);
+
+                        tran.Commit();
+                    }
+                    catch
+                    {
+                        tran.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

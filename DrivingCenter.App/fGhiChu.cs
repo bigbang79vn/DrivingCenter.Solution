@@ -1,20 +1,12 @@
-﻿using DevExpress.XtraEditors;
-using DrivingCenter.App.DAO;
+﻿using DrivingCenter.App.DAO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DrivingCenter.App
 {
     public partial class fGhiChu : DevExpress.XtraEditors.XtraForm
     {
         private string _diemdanhnguoilxId;
+        private readonly DAT_DAO _DAO = new DAT_DAO();
         public fGhiChu()
         {
             InitializeComponent();
@@ -33,7 +25,7 @@ namespace DrivingCenter.App
         private void btn_AcceptGhiChu_Click(object sender, EventArgs e)
         {
             string note = txtGhiChu.Text;
-            DAT_DAO.Instance.LockSession(_diemdanhnguoilxId, note);
+           _DAO.LockSession(_diemdanhnguoilxId, note);
             this.Close();
         }
     }

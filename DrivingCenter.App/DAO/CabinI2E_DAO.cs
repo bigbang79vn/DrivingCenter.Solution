@@ -10,25 +10,13 @@ namespace DrivingCenter.App.DAO
 {
     public class CabinI2E_DAO
     {
-        private static CabinI2E_DAO instance;
-
-        public static CabinI2E_DAO Instance
-        {
-            get { if (instance == null) instance = new CabinI2E_DAO(); return CabinI2E_DAO.instance; }
-            private set => CabinI2E_DAO.instance = value;
-        }
-
-        public CabinI2E_DAO()
-        {
-        }
+        private readonly DbProvider _db = new DbProvider(Enums.DatabaseType.db_CaBinEMC);
 
         public List<KhoaHoc> GetAllKhoaHoc()
         {
-            List<KhoaHoc> lstKhoaHoc = new List<KhoaHoc>();
             string query = "SELECT KhoaHocID, MaKH, TenKH, NgayKG, NgayBG, MaBC1, HangDaoTao, LoaiDaoTao FROM KhoaHoc";
-            DataTable dt = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
-
-            lstKhoaHoc = dt.AsEnumerable().Select(item => new KhoaHoc
+            var result = _db.QueryToDataTable(query);
+            List<KhoaHoc> lstKhoaHoc = result.AsEnumerable().Select(item => new KhoaHoc
             {
                 KhoaHocID = (int)item["KhoaHocID"],
                 MaKhoaHoc = (string)item["MaKH"],
@@ -43,30 +31,10 @@ namespace DrivingCenter.App.DAO
             return lstKhoaHoc;
         }
 
-        public List<KhoaHoc> GetlstKhoaHocDDT()
-        {
-            List<KhoaHoc> lstKhoaHoc = GetAllKhoaHoc()
-                .Where(x => x.LoaiDaoTao == "Đang Đào Tạo")
-                .OrderBy(c => c.TenKhoaHoc)
-                .ToList();
-
-            return lstKhoaHoc;
-        }
-
         public List<Int64> GetlstNguoiLxID(int IdKhoaHoc)
         {
-            List<Int64> lst = new List<Int64>();
-
             string query = string.Format("SELECT NguoiLXID FROM NguoiLX WHERE KhoaHocID = {0}", IdKhoaHoc);
-
-            DataTable data = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                Int64 NguoiLxID = Convert.ToInt64(item["NguoiLXID"]);
-                lst.Add(NguoiLxID);
-            }
-            return lst;
+            return _db.Query<Int64>(query).ToList();
         }
 
         public void UpdateTimeExerToNguoiLx(Int64 NguoilxId)
@@ -75,7 +43,7 @@ namespace DrivingCenter.App.DAO
             var para = new {
                 ID_HocVien = NguoilxId
             };
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query, para);
+            _db.Execute(query, para);
         }
 
         public List<HocVien> GetlstHocVienByIdKhoaHoc(int IdKhoaHoc)
@@ -85,7 +53,7 @@ namespace DrivingCenter.App.DAO
                 "WHERE KhoaHocID = {0} " +
                 "ORDER BY GiaoVienID ASC", IdKhoaHoc);
 
-            DataTable data = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
+            DataTable data = _db.QueryToDataTable(query);
 
             List<HocVien> lstStudent = data.AsEnumerable().Select(item => new HocVien
             {
@@ -109,7 +77,7 @@ namespace DrivingCenter.App.DAO
         public string CheckDK(Int64? NguoiLxID, string makh)
         {
             string query = $"EXEC sp_KTDieuKien @Id_HocVien = {NguoiLxID}, @MaKH = '{makh}'";
-            string KetLuan = DataProviderCaBinI2E.Instance.ExecuteScalar(query).ToString();
+            string KetLuan = _db.QuerySingle<string>(query).ToString();
             return KetLuan;
         }
 
@@ -120,7 +88,7 @@ namespace DrivingCenter.App.DAO
                 WHERE hv.NguoiLXID = kqt.NguoiLxID and hv.GiaoVienID = gv.GiaoVienID and CONVERT(VARCHAR, ThoiDiemBatDau, 103) = '{day}' 
                 GROUP BY hv.NguoiLXID, hv.TenKH, hv.MaDK, hv.NgaySinh, hv.HoVaTen, hv.SoCMT, gv.TenGV, gv.HoTenDem";
 
-            DataTable dt = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
+            var dt = _db.QueryToDataTable(query);
 
             List<ThongKe> lst = new List<ThongKe>();
             lst = dt.AsEnumerable().Select(item => new ThongKe
@@ -143,7 +111,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("SELECT * FROM [I2ECABIN3D].[dbo].[v_LstHocVienByKH] WHERE NguoiLXID = '{0}'", NguoiLxID);
 
-            DataTable dt = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
+            var dt = _db.QueryToDataTable(query);
 
             List<HocVien> lstStudent = dt.AsEnumerable().Select(item => new HocVien
             {
@@ -169,7 +137,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("SELECT count(*) FROM " +
                 "(SELECT MIN(BaiHocCaBinID) AS ID_BaiTap FROM DiemDanhNguoiLx where NguoiLxID = {0} and BaiHocCaBinID > 0 and Datediff(s, ThoiDiemBatDau, ThoiDiemKetThuc) > 60 GROUP BY BaiHocCaBinID) t", NguoiLxID);
-            int TongBaiTap = (int)DataProviderCaBinI2E.Instance.ExecuteScalar(query);
+            int TongBaiTap = _db.QuerySingle<int>(query);
             return TongBaiTap;
         }
 
@@ -180,11 +148,9 @@ namespace DrivingCenter.App.DAO
                 "WHERE kq.BaiHocCaBinID = bt.BaiTapCaBinID and tb.ThietBiID = kq.ThietBiID and NguoiLxID = {0} " +
                 "ORDER BY ThoiDiemBatDau", NguoiLxID);
 
-            DataTable dt = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
+            var dt = _db.QueryToDataTable(query);
 
-            List<Result> lst = new List<Result>();
-
-            lst = dt.AsEnumerable().Select(item => new Result
+            List<Result> lst = dt.AsEnumerable().Select(item => new Result
             {
                 NameCabin = item["TenThietBi"].ToString(),
                 DiemDanhNguoiLxID = (long)item["DiemDanhNguoiLxID"],
@@ -205,11 +171,9 @@ namespace DrivingCenter.App.DAO
         public List<Exercise> GetListBaiTap()
         {
             string query = "SELECT BaiTapCaBinID, TenBaiTapCaBin FROM BaiTapCaBin";
-            DataTable data = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
+            var data = _db.QueryToDataTable(query);
 
-            List<Exercise> lst = new List<Exercise>();
-
-            lst = data.AsEnumerable().Select(item => new Exercise
+            List<Exercise> lst = data.AsEnumerable().Select(item => new Exercise
             {
                 ID = (int)item["BaiTapCaBinID"],
                 TenBaiTap = (string)item["TenBaiTapCaBin"],
@@ -221,16 +185,16 @@ namespace DrivingCenter.App.DAO
         public void UpdateBaiTap(int IdBaiTap, Int64 diemdanhnguoilxId)
         {
             string query = string.Format("UPDATE DiemDanhNguoiLx SET BaiHocCaBinID = {0} WHERE DiemDanhNguoiLxID = {1}", IdBaiTap, diemdanhnguoilxId);
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public void DeleteResultExcer(Int64 DiemdanhnguoilxID)
         {
             string querydeltediemdanhnguoilx = string.Format("DELETE DiemDanhNguoiLx WHERE DiemDanhNguoiLxID =  {0}", DiemdanhnguoilxID);
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(querydeltediemdanhnguoilx);
+            _db.Execute(querydeltediemdanhnguoilx);
 
             string querydeleteSK = string.Format("DELETE SuKienHoc WHERE DiemDanhNguoiLxID = {0}", DiemdanhnguoilxID);
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(querydeleteSK);
+            _db.Execute(querydeleteSK);
         }
 
         public void InsertTeacherNew(GiaoVien GV)
@@ -239,26 +203,25 @@ namespace DrivingCenter.App.DAO
                 "([GiaoVienID], [MaGV],[HoTenDem],[TenGV],[NgaySinh],[SoCMT],[HangGPLX],[SuDung]) " +
                 "VALUES " +
                 "('{0}' , '{1}' , N'{2}' , N'{3}', '{4}', '{5}', '{6}' ,'1')", GV.GiaoVienID, GV.MaGV, GV.HoTenDem, GV.TenGV, GV.NgaySinh.ToString("yyyy-MM-dd HH:mm:ss.fff"), GV.SoCMT, GV.HangGPLX);
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public void UpdateGv(int GiaoVienID, string MaDK)
         {
             string query = string.Format("UPDATE NguoiLX set GiaoVienID = '{0}' where MaDK = '{1}'", GiaoVienID, MaDK);
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         public string GetLstNguoiLxID(int khoahocID)
         {
             string query = string.Format("EXEC VNDC_spGetLstNguoiLxID @KhoaHocID = {0}", khoahocID);
-            string LstNguoiLxID = DataProviderCaBinI2E.Instance.ExecuteScalar(query).ToString();
-            return LstNguoiLxID;
+            return _db.QuerySingle<string>(query);
         }
 
         public void UpdateStatusKhoaHoc(string tenkhoahoc, int loaidaotao, string makhoahoc)
         {
             string query = string.Format("UPDATE KhoaHoc SET TenKH = '{0}', LoaiDaoTao = '{1}' WHERE MaKH = '{2}'", tenkhoahoc, loaidaotao, makhoahoc);
-            DataProviderCaBinI2E.Instance.ExecuteNonQuery(query);
+            _db.Execute(query);
         }
 
         #region Sync GV for Cabin
@@ -266,10 +229,9 @@ namespace DrivingCenter.App.DAO
         public List<GvCabin> GetListGvByNameKH(string TenKH)
         {
             string query = string.Format("select MaDK, GiaoVienID from NguoiLX where TenKH like '%{0}%' ORDER BY GiaoVienID", TenKH);
-            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
-            List<GvCabin> lst = new List<GvCabin>();
+            DataTable dt = _db.QueryToDataTable(query);
 
-            lst = dt.AsEnumerable().Select(item => new GvCabin
+            List<GvCabin> lst = dt.AsEnumerable().Select(item => new GvCabin
             {
                 MaDK = (string)(item)["MaDK"],
                 GiaoVienID = (int)(item)["GiaoVienID"]
@@ -280,11 +242,10 @@ namespace DrivingCenter.App.DAO
 
         public List<GiaoVien> GetAllGV()
         {
-            List<GiaoVien> lstGiaoVien = new List<GiaoVien>();
             string query = "SELECT GiaoVienID, MaGV, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX FROM GiaoVien";
-            DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
+            DataTable dt = _db.QueryToDataTable(query);
 
-            lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
+            List<GiaoVien> lstGiaoVien = dt.AsEnumerable().Select(item => new GiaoVien
             {
                 GiaoVienID = (int)item["GiaoVienID"],
                 MaGV = (string)item["MaGV"],
@@ -303,9 +264,8 @@ namespace DrivingCenter.App.DAO
 
         public List<Cabin> GetLstCabin()
         {
-            DataTable dt = new DataTable();
             string query = "SELECT ThietBiID, TenThietBi FROM ThietBi";
-            dt = DataProviderCaBinI2E.Instance.ExecuteQuery(query);
+            var dt = _db.QueryToDataTable(query);
             List<Cabin> lstCabin = dt.AsEnumerable().Select(item => new Cabin
             {
                 IdThietBi = (int)item["ThietBiID"],
@@ -319,7 +279,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = string.Format("SELECT SUM(TongThoiGianPhien) as  TongThoiGianPhien FROM DiemDanhNguoiLx  WHERE NguoiLxID = {0}", NguoiLxID);
-                return (double)DataProviderCaBinI2E.Instance.ExecuteScalar(query);
+                return _db.QuerySingle<double>(query);
             }
             catch
             {
@@ -332,7 +292,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = string.Format("SELECT MAX(DiemDanhNguoiLxID) FROM DiemDanhNguoiLx WHERE NguoiLxID = {0}", NguoiLxID);
-                return Convert.ToInt64(DataProviderCaBinI2E.Instance.ExecuteScalar(query));
+                return Convert.ToInt64(_db.Equals(query));
             }
             catch
             {
@@ -345,7 +305,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = string.Format("SELECT DISTINCT MAX(day(ThoiDiemBatDau)) as NgayTap FROM DiemDanhNguoiLx WHERE NguoiLxID = {0}", NguoiLxID);
-                return (int)DataProviderCaBinI2E.Instance.ExecuteScalar(query);
+                return _db.QuerySingle<int>(query);
             }
             catch
             {
@@ -357,14 +317,13 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("select ThoiDiemKetThuc from DiemDanhNguoiLx where DiemDanhNguoiLxID = {0} AND NguoiLxID = {1}", diemdanhnguoilxId, NguoiLxID);
 
-            DateTime timeout = (DateTime)DataProviderCaBinI2E.Instance.ExecuteScalar(query);
-            return timeout;
+            return _db.QuerySingle<DateTime>(query);
         }
 
         public int InsertData(Result r, Int64 nguoiLxId, int IdThietBi, int IDKhoaHoc)
         {
             string query = "VNDC_Insert @IdBaiTap , @NguoiLxID , @IdThietBi , @TimeIn , @ThoiGianPhien , @QuangDuong , @PathVideo , @KhoaHocId";
-            int result = DataProviderCaBinI2E.Instance.ExecuteNonQuery(query, new object[] { r.BaiHocCaBinID, nguoiLxId, IdThietBi, r.ThoiDiemBatDau, r.TotalSecond, r.QuangDuong, r.PathVideo, IDKhoaHoc });
+            int result =  _db.Execute(query, new object[] { r.BaiHocCaBinID, nguoiLxId, IdThietBi, r.ThoiDiemBatDau, r.TotalSecond, r.QuangDuong, r.PathVideo, IDKhoaHoc });
             return result;
         }
 
@@ -373,7 +332,7 @@ namespace DrivingCenter.App.DAO
         public int InsertKhoaHoc(KhoaHoc kh)
         {
             string query = "spAddKhoaHoc @MaKH , @TenKH , @NgayKG , @MaBC1 , @NgayBG , @NgaySatHach , @HangDaoTao , @NgayDaoTao";
-            int result = DataProviderCaBinI2E.Instance.ExecuteNonQuery(query, new object[] { kh.MaKhoaHoc, kh.TenKhoaHoc, kh.NgayKhaiGiang, kh.MaBC1, kh.NgayBeGiang, kh.NgaySatHach, kh.HangDaoTao, kh.NgayDaoTao });
+            int result = _db.Execute(query, new object[] { kh.MaKhoaHoc, kh.TenKhoaHoc, kh.NgayKhaiGiang, kh.MaBC1, kh.NgayBeGiang, kh.NgaySatHach, kh.HangDaoTao, kh.NgayDaoTao });
             return result;
         }
 
@@ -382,7 +341,7 @@ namespace DrivingCenter.App.DAO
             try
             {
                 string query = string.Format("SELECT KhoaHocID FROM KhoaHoc WHERE MaKH = '{0}'", MaKH);
-                return (int)DataProviderCaBinI2E.Instance.ExecuteScalar(query);
+                return _db.QuerySingle<int>(query);
             }
             catch
             {
@@ -416,7 +375,7 @@ namespace DrivingCenter.App.DAO
                 new SqlParameter("@IsRFID" , SqlDbType.Bit) { Value = 0 }
             };
 
-            int result = DataProviderCaBinI2E.Instance.ExecuteNonQuery(query, parameters);
+            int result = _db.Execute(query, parameters);
 
             return result;
         }
