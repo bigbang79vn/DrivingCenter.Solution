@@ -31,7 +31,7 @@ namespace DrivingCenter.App
             lb_NgayCapCMT.Text = nguoiLx.NgayCapCMT.ToString("dd/MM/yyyy");
             lb_GioiTinh.Text = nguoiLx.GioiTinh.ToString();
             lb_KhoaHoc.Text = nguoiLx.TenKH;
-            pic_Image.Image = new ImageExtension().byteArrayToImage(_DAO.GetAnhChupNguoiLx(nguoiLx.NguoiLXID));
+            pic_Image.Image = ImageExtension.byteArrayToImage(_DAO.GetAnhChupNguoiLx(nguoiLx.NguoiLXID));
 
             lb_QuangDuongTL.Text = nguoiLx.TongQuangDuongTichLuy.ToString();
             lb_TimeTichLuy.Text = nguoiLx.TongThoiGianText;

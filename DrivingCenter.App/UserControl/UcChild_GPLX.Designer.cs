@@ -265,6 +265,8 @@ namespace DrivingCenter.App.UserControl
             // 
             // gridView_ImportData
             // 
+            this.gridView_ImportData.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_ImportData.Appearance.Row.Options.UseFont = true;
             this.gridView_ImportData.GridControl = this.grd_ImportData;
             this.gridView_ImportData.Name = "gridView_ImportData";
             // 
@@ -432,7 +434,6 @@ namespace DrivingCenter.App.UserControl
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 17;
             this.label4.Text = "Sheet data";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -466,7 +467,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage2
             // 
-            this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.tblLayout_UpdateResult);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(1500, 690);
@@ -784,7 +784,6 @@ namespace DrivingCenter.App.UserControl
             // 
             // navigationPage3
             // 
-            this.navigationPage3.Caption = "navigationPage3";
             this.navigationPage3.Controls.Add(this.grd_Certificate);
             this.navigationPage3.Controls.Add(this.windowsUIButtonPanelMain);
             this.navigationPage3.Name = "navigationPage3";

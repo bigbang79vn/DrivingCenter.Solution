@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fReplication));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.Result = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.btn_InserResult = new System.Windows.Forms.Button();
@@ -179,7 +179,7 @@
             this.lb_KetQua.ForeColor = System.Drawing.Color.White;
             this.lb_KetQua.Location = new System.Drawing.Point(843, 707);
             this.lb_KetQua.Name = "lb_KetQua";
-            this.lb_KetQua.Size = new System.Drawing.Size(19, 15);
+            this.lb_KetQua.Size = new System.Drawing.Size(20, 18);
             this.lb_KetQua.TabIndex = 8;
             this.lb_KetQua.Text = "...";
             // 
@@ -191,7 +191,7 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(688, 707);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 15);
+            this.label8.Size = new System.Drawing.Size(70, 18);
             this.label8.TabIndex = 9;
             this.label8.Text = "KẾT LUẬN:";
             // 
@@ -203,7 +203,7 @@
             this.lb_time.ForeColor = System.Drawing.Color.White;
             this.lb_time.Location = new System.Drawing.Point(843, 681);
             this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(19, 15);
+            this.lb_time.Size = new System.Drawing.Size(20, 18);
             this.lb_time.TabIndex = 10;
             this.lb_time.Text = "...";
             // 
@@ -215,7 +215,7 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(688, 681);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 15);
+            this.label7.Size = new System.Drawing.Size(111, 18);
             this.label7.TabIndex = 11;
             this.label7.Text = "TỔNG THỜI GIAN:";
             // 
@@ -227,7 +227,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(182, 674);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 17);
+            this.label6.Size = new System.Drawing.Size(111, 18);
             this.label6.TabIndex = 12;
             this.label6.Text = "Thời Gian Bắt Đầu";
             // 
@@ -239,7 +239,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(20, 674);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 17);
+            this.label5.Size = new System.Drawing.Size(40, 18);
             this.label5.TabIndex = 13;
             this.label5.Text = "Cabin";
             // 
@@ -250,7 +250,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(20, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 17);
+            this.label4.Size = new System.Drawing.Size(63, 18);
             this.label4.TabIndex = 14;
             this.label4.Text = "Khóa Học";
             // 
@@ -627,28 +627,28 @@
             this.CCCD,
             this.TotalSecond,
             this.Result});
-            gridFormatRule3.ApplyToRow = true;
-            gridFormatRule3.Column = this.Result;
-            gridFormatRule3.Name = "FormatTrue";
-            formatConditionRuleValue3.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Navy;
-            formatConditionRuleValue3.Appearance.Options.UseFont = true;
-            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = "True";
-            gridFormatRule3.Rule = formatConditionRuleValue3;
-            gridFormatRule4.ApplyToRow = true;
-            gridFormatRule4.Column = this.Result;
-            gridFormatRule4.Name = "FormatFalse";
-            formatConditionRuleValue4.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue4.Appearance.Options.UseFont = true;
-            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue4.Value1 = "False";
-            gridFormatRule4.Rule = formatConditionRuleValue4;
-            this.gridView_HocVien.FormatRules.Add(gridFormatRule3);
-            this.gridView_HocVien.FormatRules.Add(gridFormatRule4);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.Result;
+            gridFormatRule1.Name = "FormatTrue";
+            formatConditionRuleValue1.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Navy;
+            formatConditionRuleValue1.Appearance.Options.UseFont = true;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "True";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.Result;
+            gridFormatRule2.Name = "FormatFalse";
+            formatConditionRuleValue2.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue2.Appearance.Options.UseFont = true;
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "False";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridView_HocVien.FormatRules.Add(gridFormatRule1);
+            this.gridView_HocVien.FormatRules.Add(gridFormatRule2);
             this.gridView_HocVien.GridControl = this.grid_HocVien;
             this.gridView_HocVien.GroupCount = 1;
             this.gridView_HocVien.GroupRowHeight = 28;

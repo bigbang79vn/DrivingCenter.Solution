@@ -576,7 +576,7 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"SELECT COUNT(AnhChup_Logout) FROM DiemDanhNguoiLx WHERE DiemDanhNguoiLxId = '{diemdanhnguoilxId}'";
 
-            int count = _db.QuerySingle<int>(query);
+            int count = _dbImg.QuerySingle<int>(query);
 
             return count;
         }
@@ -829,7 +829,7 @@ namespace DrivingCenter.App.DAO
                 "SET AnhChup_Logout = (select AnhChup from HistoryData WHERE DiemDanhNguoiLxId = '{0}' AND HistoryID = '{1}') " +
                 "WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId, historyId);
 
-            _db.Execute(query);
+            _dbImg.Execute(query);
         }
 
         public void UpdateImageLogin(string diemdanhnguoilxId, Guid historyId)
@@ -838,7 +838,7 @@ namespace DrivingCenter.App.DAO
                 "SET AnhChup = (select AnhChup from HistoryData WHERE DiemDanhNguoiLxId = '{0}' AND HistoryID = '{1}') " +
                 "WHERE DiemDanhNguoiLxId = '{0}'", diemdanhnguoilxId, historyId);
 
-            _db.Execute(query);
+            _dbImg.Execute(query);
         }
 
         public void InsertHinhDem (int khoaHocID, long nguoiLxID, string diemdanhnguoilxId, Guid historyId)
@@ -864,7 +864,7 @@ namespace DrivingCenter.App.DAO
                     @Image,
                     @LengthImage
                 ";
-            _db.Execute(query);
+            _dbImg.Execute(query);
         }
 
         #endregion DAT

@@ -1,9 +1,5 @@
-﻿
-using Dapper.Contrib.Extensions;
-using DevExpress.XtraCharts.Native;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
-using DrivingCenter.App.Common;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.FReport;
@@ -13,21 +9,18 @@ using ExcelDataReader;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Web.Services.Description;
 using System.Windows.Forms;
-using Z.Dapper.Plus;
 
 namespace DrivingCenter.App.UserControl
 {
     public partial class UcChild_GPLX : DevExpress.XtraEditors.XtraUserControl
     {
-        private readonly GPLX_DAO _DAO = new GPLX_DAO();
+        private readonly GPLX_DAO _gplx_Dao = new GPLX_DAO();
+        private readonly GPLX_CDB_CSDT_DAO _DAO = new GPLX_CDB_CSDT_DAO();
         public UcChild_GPLX()
         {
             InitializeComponent();
@@ -141,6 +134,7 @@ namespace DrivingCenter.App.UserControl
         {
             DataTable dt = tableCollection[cb_SheetDataImport.SelectedItem.ToString()];
             grd_ImportData.DataSource = dt;
+            GridHelper.EnableRowNumbering(gridView_ImportData);
         }
 
         private void cbx_KhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,13 +165,12 @@ namespace DrivingCenter.App.UserControl
                         //Tạo mới NguoiLX
                         NguoiLxDto nlx = new NguoiLxDto();
 
-
                         nlx.MaKH = kh.MaKH;
                         nlx.MaHangGPLX = kh.HangGPLX;
                         nlx.HangDaoTao = kh.HangDT;
                         nlx.SoHoSo = string.Format("{0:000}", (int)nbmSoHS.Value + i).ToString();
                         nlx.NguoiNhanHSo = "";
-                        nlx.HoVaTen = dt.Rows[i]["HoVaTen"].ToString().Trim();
+                        nlx.HoVaTen = dt.Rows[i]["HoVaTen"].ToString().Trim().ToUpper();
                         nlx.HoVaTenIn = nlx.HoVaTen.ToUpper();
                         nlx.NgaySinh = ConvertNgaySinh(dt.Rows[i]["NgaySinh"].ToString());
                         nlx.GioiTinh = dt.Rows[i]["GioiTinh"].ToString() == "Nam" ? "M" : "F";
@@ -188,7 +181,7 @@ namespace DrivingCenter.App.UserControl
                         nlx.MaDVHC_TT = dt.Rows[i]["NoiTT_MaDVHC"].ToString();
                         nlx.ChiTiet_TT = "";
                         nlx.MaDVHC_CT = dt.Rows[i]["NoiCT_MaDVHC"].ToString();
-                        nlx.ChiTiet_CT  = "";
+                        nlx.ChiTiet_CT = "";
                         nlx.SoNamLX = 0;
                         nlx.SoKmLX = 0;
                         nlx.GiayTo = "1,2,3";
@@ -214,23 +207,17 @@ namespace DrivingCenter.App.UserControl
                         {
                             if (lstNguoiLX != null)
                             {
-                                foreach (var item in lstNguoiLX)
+
+                                var rs = _DAO.InsertHocVien(lstNguoiLX);
+                                if (rs)
                                 {
-                                    int count = 0;
-                                    var rs = _DAO.InsertHocVien(item);
-                                    if (rs)
-                                    {
-                                        count++;
-                                    }
+                                    XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {kh.TenKH}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-
+                                else
+                                {
+                                    XtraMessageBox.Show($"Import thất bại! Vui lòng kiểm tra lại dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                                 lbStatus.Text = "Done";
-
-                                string KhoaHoc = kh.TenKH;
-
-                                XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {KhoaHoc}!");
-
-                                lbStatus.Text = "Done...";
                             }
                             else if (dialogResult == DialogResult.No)
                             {
@@ -392,7 +379,7 @@ namespace DrivingCenter.App.UserControl
 
         public void LoadlstStudentInReportCNTN()
         {
-            List<HvTotNghiep> lst = _DAO.GetHvTotNghiep();
+            List<HvTotNghiep> lst = _gplx_Dao.GetHvTotNghiep();
 
             grd_Certificate.DataSource = lst;
             GridHelper.EnableRowNumbering(gridView_Certificate);
@@ -451,7 +438,7 @@ namespace DrivingCenter.App.UserControl
             {
                 if (!string.IsNullOrEmpty(lstId))
                 {
-                    DataTable dt = _DAO.GetDataPrintCCTN(lstId);
+                    DataTable dt = _gplx_Dao.GetDataPrintCCTN(lstId);
 
                     new ReportPrintTool(new rptCertificate { DataSource = dt }).ShowPreview();
                 }
@@ -493,10 +480,5 @@ namespace DrivingCenter.App.UserControl
             }
         }
         #endregion In chứng chỉ tốt nghiệp
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

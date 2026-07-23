@@ -1,4 +1,6 @@
-﻿using DrivingCenter.App.DataProvider;
+﻿using Dapper;
+using DevExpress.XtraRichEdit.Layout;
+using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.GPLX;
 using System;
 using System.Collections.Generic;
@@ -95,7 +97,7 @@ namespace DrivingCenter.App.DAO
             string query = string.Format("UPDATE NguoiLX_HoSo set " +
                 "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
                 nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
-                _db.Execute(query);
+            _db.Execute(query);
         }
         public int DeleteDataReportOld()
         {
@@ -162,42 +164,86 @@ namespace DrivingCenter.App.DAO
             return dt;
         }
 
-        public bool InsertHocVien(NguoiLxDto nlx)
+        private void InsertHocVien(IDbConnection conn, IDbTransaction tran, NguoiLxDto nlx)
         {
-            string query = $@"EXEC [dbo].[VNDC_spInsertHocVien]
-                    @p_out = 0,
-                    @p_MaKH = '{nlx.MaKH}',
-                    @p_MaHangGPLX = '{nlx.MaHangGPLX}',
-                    @p_HangDaoTao = '{nlx.HangDaoTao}',
-                    @p_MaDK = '{null}',
-                    @p_SoHoSo = '{nlx.SoHoSo}',
-                    @p_NguoiNhanHSo = N'{nlx.NguoiNhanHSo}',
-                    @p_HoVaTen = N'{nlx.HoVaTen}',
-                    @p_HoVaTenIn = N'{nlx.HoVaTenIn}',
-                    @p_NgaySinh = '{nlx.NgaySinh}',
-                    @p_GioiTinh = N'{nlx.GioiTinh}',
-                    @p_MaQuocTich = '{nlx.MaQuocTich}',
-                    @p_SoCMT = '{nlx.SoCMT}',
-                    @p_NgayCap = '{nlx.NgayCap}',
-                    @p_NoiCap = N'{nlx.NoiCap}',
-                    @p_MaDVHC_TT = '{nlx.MaDVHC_TT}',
-                    @p_ChiTiet_TT = N'{nlx.ChiTiet_TT}',
-                    @p_MaDVHC_CT = '{nlx.MaDVHC_CT}',
-                    @p_ChiTiet_CT = N'{nlx.ChiTiet_CT}',
-                    @p_SoNamLX = {nlx.SoNamLX},
-                    @p_SoKmLX = {nlx.SoKmLX},
-                    @p_GiayTo = N'{nlx.GiayTo}',
-                    @p_SoGPLXDaCo = '{nlx.SoGPLXDaCo}',
-                    @p_HangGPLXDaCo = '{nlx.HangGPLXDaCo}',
-                    @p_NgayTTGPLXDaCo = '{nlx.NgayTTGPLXDaCo}',
-                    @p_NgayCapGPLXDaCo = '{nlx.NgayCapGPLXDaCo}',
-                    @p_NgayHHGPLXDaCo = '{nlx.NgayHHGPLXDaCo}',
-                    @p_DVCapGPLXDaCo = N'{nlx.DVCapGPLXDaCo}',
-                    @p_NoiCapGPLXDaCo = N'{nlx.NoiCapGPLXDaCo}',
-                    @p_GhiChu = N'{nlx.GhiChu}',
-                    @p_SO_CMND_CU = '{nlx.SO_CMND_CU}',
-                    @p_CHON_IN_GPLX = '{nlx.CHON_IN_GPLX}'";
-            return _db.Execute(query) > 0;
+            conn.Execute(
+                "VNDC_spInsertHocVien",
+                new
+                {
+                    p_out = 0,
+                    p_MaKH = nlx.MaKH,
+                    p_MaHangGPLX = nlx.MaHangGPLX,
+                    p_HangDaoTao = nlx.HangDaoTao,
+                    p_MaDK = (string)null,
+                    p_SoHoSo = nlx.SoHoSo,
+                    p_NguoiNhanHSo = nlx.NguoiNhanHSo,
+                    p_HoVaTen = nlx.HoVaTen,
+                    p_HoVaTenIn = nlx.HoVaTenIn,
+                    p_NgaySinh = nlx.NgaySinh,
+                    p_GioiTinh = nlx.GioiTinh,
+                    p_MaQuocTich = nlx.MaQuocTich,
+                    p_SoCMT = nlx.SoCMT,
+                    p_NgayCap = nlx.NgayCap,
+                    p_NoiCap = nlx.NoiCap,
+                    p_MaDVHC_TT = nlx.MaDVHC_TT,
+                    p_ChiTiet_TT = nlx.ChiTiet_TT,
+                    p_MaDVHC_CT = nlx.MaDVHC_CT,
+                    p_ChiTiet_CT = nlx.ChiTiet_CT,
+                    p_SoNamLX = nlx.SoNamLX,
+                    p_SoKmLX = nlx.SoKmLX,
+                    p_GiayTo = nlx.GiayTo,
+                    p_SoGPLXDaCo = nlx.SoGPLXDaCo,
+                    p_HangGPLXDaCo = nlx.HangGPLXDaCo,
+                    p_NgayTTGPLXDaCo = nlx.NgayTTGPLXDaCo,
+                    p_NgayCapGPLXDaCo = nlx.NgayCapGPLXDaCo,
+                    p_NgayHHGPLXDaCo = nlx.NgayHHGPLXDaCo,
+                    p_DVCapGPLXDaCo = nlx.DVCapGPLXDaCo,
+                    p_NoiCapGPLXDaCo = nlx.NoiCapGPLXDaCo,
+                    p_GhiChu = nlx.GhiChu,
+                    p_SO_CMND_CU = nlx.SO_CMND_CU,
+                    p_CHON_IN_GPLX = nlx.CHON_IN_GPLX
+                },
+                transaction: tran,
+                commandType: CommandType.StoredProcedure);
+
+        }
+
+        public bool InsertHocVien(List<NguoiLxDto> lstNguoiLX)
+        {
+            try
+            {
+                _db.ExecuteTransaction((conn, tran) =>
+                {
+                    foreach (var item in lstNguoiLX)
+                    {
+                        try
+                        {
+                            InsertHocVien(conn, tran, item);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(
+                                $"Học viên '{item.HoVaTen}' \n " +
+                                $"Ngày sinh: {item.NgaySinh} \n" +
+                                $"(Số hồ sơ: {item.SoHoSo}) \n" +
+                                $"lỗi: {ex.Message}",
+                                ex);
+                        }
+                    }
+                });
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return false;
+            }
         }
 
         #region Xếp Lớp
@@ -284,5 +330,5 @@ namespace DrivingCenter.App.DAO
 
         }
         #endregion
-    }    
+    }
 }

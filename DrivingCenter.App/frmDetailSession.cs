@@ -45,20 +45,22 @@ namespace DrivingCenter.App
             DataTable dt = _IMG_DAO.GetImgById(_diemdanhnguoilxId);
 
             byte[] ImgLogin = (byte[])dt.Rows[0]["AnhChup"];
-            using (var ms = new MemoryStream(ImgLogin, 0, ImgLogin.Length))
+            if (ImgLogin != null)
             {
-                Img_Login.Image = Image.FromStream(ms, true);
+                Img_Login.Image = ImageExtension.byteArrayToImage(ImgLogin);
+                Img_Login.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                Img_Login.Image = Properties.Resources.Null;
                 Img_Login.SizeMode = PictureBoxSizeMode.StretchImage;
             }
 
             byte[] ImgLogout = dt.Rows[0]["AnhChup_Logout"] == DBNull.Value ? null : (byte[])dt.Rows[0]["AnhChup_Logout"];
             if (ImgLogout != null)
             {
-                using (var ms = new MemoryStream(ImgLogout, 0, ImgLogout.Length))
-                {
-                    Img_Logout.Image = Image.FromStream(ms, true);
-                    Img_Logout.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
+                Img_Logout.Image = ImageExtension.byteArrayToImage(ImgLogout);
+                Img_Logout.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             else
             {

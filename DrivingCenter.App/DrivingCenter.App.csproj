@@ -533,18 +533,6 @@
     <Compile Include="frmQuaTrinhDaoTao.Designer.cs">
       <DependentUpon>frmQuaTrinhDaoTao.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTemp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTemp.Designer.cs">
-      <DependentUpon>frmTemp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmUpdateSendTC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUpdateSendTC.Designer.cs">
-      <DependentUpon>frmUpdateSendTC.cs</DependentUpon>
-    </Compile>
     <Compile Include="fSplitSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -560,7 +548,6 @@
     <Compile Include="Helper\ConnectMySQL.cs" />
     <Compile Include="Helper\ConvertListToDataTable.cs" />
     <Compile Include="Helper\CustomToolTip.cs" />
-    <Compile Include="Helper\ExportExcel.cs" />
     <Compile Include="Helper\ExportExcelWithName.cs" />
     <Compile Include="Helper\GeoHelper.cs" />
     <Compile Include="Helper\GridHelper.cs" />
@@ -790,12 +777,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuaTrinhDaoTao.resx">
       <DependentUpon>frmQuaTrinhDaoTao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTemp.resx">
-      <DependentUpon>frmTemp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateSendTC.resx">
-      <DependentUpon>frmUpdateSendTC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSplitSession.resx">
       <DependentUpon>fSplitSession.cs</DependentUpon>

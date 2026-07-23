@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingCenter.App.Helper
 {
-    public class ImageExtension
+    public static class ImageExtension
     {
-        public Image Base64ToImage(string base64Image)
+        public static Image Base64ToImage(string base64Image)
         {
             using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64Image)))
             {
@@ -19,7 +15,7 @@ namespace DrivingCenter.App.Helper
             }
         }
 
-        public Image byteArrayToImage(byte[] byteArrayIn)
+        public static Image byteArrayToImage(byte[] byteArrayIn)
         {
             if (byteArrayIn == null || byteArrayIn.Length == 0)
             {
