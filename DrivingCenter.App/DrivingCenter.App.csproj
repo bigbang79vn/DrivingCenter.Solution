@@ -527,12 +527,6 @@
     <Compile Include="frmQuaTrinhDaoTao.Designer.cs">
       <DependentUpon>frmQuaTrinhDaoTao.cs</DependentUpon>
     </Compile>
-    <Compile Include="fSplitSession.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fSplitSession.Designer.cs">
-      <DependentUpon>fSplitSession.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperGeoJSON.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -768,9 +762,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuaTrinhDaoTao.resx">
       <DependentUpon>frmQuaTrinhDaoTao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fSplitSession.resx">
-      <DependentUpon>fSplitSession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperGeoJSON.resx">
       <DependentUpon>HelperGeoJSON.cs</DependentUpon>
