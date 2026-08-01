@@ -32,12 +32,7 @@ namespace DrivingCenter.App.UserControl
         private void GetLsVehicle()
         {
             List<XeTapLai> lst = _DAO.GetAllVehicles();
-            int stt = 0;
-            foreach (XeTapLai item in lst)
-            {
-                item.STT = stt + 1;
-                stt++;
-            }
+            GridHelper.EnableRowNumbering(bandedGridView);
             gridControl_XeTapLai.DataSource = lst;
         }
 
@@ -48,21 +43,6 @@ namespace DrivingCenter.App.UserControl
             cbb_XeTapLai.Properties.DataSource = lst;
             cbb_XeTapLai.Properties.DisplayMember = "BienSoXe";
             cbb_XeTapLai.Properties.ValueMember = "MaXe";
-        }
-
-        private void gridView_XeTapLai_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            XeTapLai rowData = gridView_XeTapLai.GetFocusedRow() as XeTapLai;
-
-            if (rowData != null)
-            {
-                txt_Imei.Text = rowData.Imei;
-                cbb_XeTapLai.EditValue = rowData.MaXe;
-                txt_HangXe.Text = rowData.HangGPLX;
-                date_NgayCapNhat.Text = rowData.ThoiDiem.ToString("dd/MM/yyyy");
-                txt_Version.Text = rowData.Version;
-                check_Status.EditValue = rowData.TrangThai;
-            }
         }
 
         private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
@@ -123,25 +103,41 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private new void Update()
+        private void Update()
         {
-            var vehicleId = gridView_XeTapLai.GetFocusedRowCellValue("VehicleID");
-            var Imei = gridView_XeTapLai.GetFocusedRowCellValue("Imei");
+            var vehicleId = bandedGridView.GetFocusedRowCellValue("VehicleID");
+            var Imei = bandedGridView.GetFocusedRowCellValue("Imei");
             var selectedValue = cbb_XeTapLai.EditValue;
+            bool status = check_Status.Checked;
             XeTapLai xeTap = cbb_XeTapLai.Properties.GetRowByKeyValue(selectedValue) as XeTapLai;
             if (xeTap != null && vehicleId != null)
             {
-                _DAO.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap);
+                _DAO.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap, status);
             }
         }
 
         private void Delete()
         {
-            var vehicleId = gridView_XeTapLai.GetFocusedRowCellValue("VehicleID");
-            var Imei = gridView_XeTapLai.GetFocusedRowCellValue("Imei");
+            var vehicleId = bandedGridView.GetFocusedRowCellValue("VehicleID");
+            var Imei = bandedGridView.GetFocusedRowCellValue("Imei");
             if (vehicleId != null)
             {
                 _DAO.DeleteXeTapLai((int)vehicleId, (string)Imei);
+            }
+        }
+
+        private void bandedGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            XeTapLai rowData = bandedGridView.GetFocusedRow() as XeTapLai;
+
+            if (rowData != null)
+            {
+                txt_Imei.Text = rowData.Imei;
+                cbb_XeTapLai.EditValue = rowData.MaXe;
+                txt_HangXe.Text = rowData.HangGPLX;
+                date_NgayCapNhat.Text = rowData.ThoiDiem.ToString("dd/MM/yyyy");
+                txt_Version.Text = rowData.Version;
+                check_Status.EditValue = rowData.TrangThai;
             }
         }
     }

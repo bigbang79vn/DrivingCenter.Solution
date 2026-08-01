@@ -20,17 +20,18 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = _db.QueryToDataTable(query);
 
-            List<KhoaHoc> lstKhoaHoc = dt.AsEnumerable().Select(item => new KhoaHoc
-            {
-                KhoaHocID = (int)item["ID"],
-                MaKhoaHoc = (string)item["MaKhoaHoc"],
-                TenKhoaHoc = (string)item["Ten"],
-                NgayKhaiGiang = (DateTime)item["NgayKhaiGiang"],
-                NgayBeGiang = (DateTime)item["NgayBeGiang"],
-                HangDaoTao = (string)item["HangDaoTao"],
-                Status = (bool)item["Status"],
-                Year = (int)item["Year"]
-            }).ToList();
+            List<KhoaHoc> lstKhoaHoc = dt.AsEnumerable()
+                .Select(item => new KhoaHoc
+                {
+                    KhoaHocID = item.Field<int>("ID"),
+                    MaKhoaHoc = item.Field<string>("MaKhoaHoc"),
+                    TenKhoaHoc = item.Field<string>("Ten"),
+                    NgayKhaiGiang = item.Field<DateTime>("NgayKhaiGiang"),
+                    NgayBeGiang = item.Field<DateTime>("NgayBeGiang"),
+                    HangDaoTao = item.Field<string>("HangDaoTao"),
+                    Status = item.Field<bool>("Status"),
+                    Year = item.Field<int>("Year")
+                }).ToList();
 
             return lstKhoaHoc;
         }
@@ -40,12 +41,13 @@ namespace DrivingCenter.App.DAO
             string query = "SELECT ID, Name, GhiChu FROM tblThietBi";
             DataTable dt = _db.QueryToDataTable(query);
 
-            List<Cabin> lstCabin = dt.AsEnumerable().Select(item => new Cabin
-            {
-                IdThietBi = (int)(item["ID"]),
-                NameCabin = (string)(item["Name"]),
-                GhiChu = (string)(item["GhiChu"])
-            }).ToList();
+            List<Cabin> lstCabin = dt.AsEnumerable()
+                .Select(item => new Cabin
+                {
+                    IdThietBi = item.Field<int>("ID"),
+                    NameCabin = item.Field<string>("Name"),
+                    GhiChu = item.Field<string>("GhiChu")
+                }).ToList();
 
             return lstCabin;
         }
@@ -54,14 +56,14 @@ namespace DrivingCenter.App.DAO
         {
             string query = $"EXEC [dbo].[spGetLstHvByKhoaHoc] @ID_KhoaHoc = {IdKhoaHoc}";
 
-            DataTable dt = _db.QueryToDataTable(query);
+            var dt = _db.QueryToDataTable(query);
 
             List<HocVien> lstStudent = dt.AsEnumerable().Select(item => new HocVien
             {
-                MaDK = (string)item["ID"],
-                HoTenHV = (string)item["HoTen"],
-                SoCMT = (string)item["SoCMT"],
-                ToTalSecond = (string)item["TongThoiGianText"],
+                MaDK = item.Field<string>("ID"),
+                HoTenHV = item.Field<string>("HoTen"),
+                SoCMT = item.Field<string>("SoCMT"),
+                ToTalSecond = item.Field<string>("TongThoiGianText"),
                 TenGV = item["GiaoVienID"] == DBNull.Value ? "" : (string)item["HoGiaoVien"] + " " + (string)item["TenGiaoVien"],
                 HangGPLX = item.Field<string>("HangGPLX"),
                 Result = item.Field<bool>("KetLuan")
@@ -126,7 +128,7 @@ namespace DrivingCenter.App.DAO
         public string GetMaDKNew(int Id_KhoaHoc, string SoCMT)
         {
             string query = $"SELECT ID FROM tblHocVien WHERE IDKhoaHoc = {Id_KhoaHoc} AND SoCMT = '{SoCMT}'";
-            var getValue = _db.QueryToDataTable(query);
+            var getValue = _db.QuerySingle<string>(query);
             return (getValue == null) ? string.Empty : getValue.ToString();
         }
 

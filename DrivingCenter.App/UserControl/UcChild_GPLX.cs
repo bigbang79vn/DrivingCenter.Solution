@@ -63,12 +63,6 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        public string MaDK()
-        {
-            //Delay(0.5);
-            string prefix = _DAO.GenerateMaDK();
-            return prefix;
-        }
         public string ConvertNgaySinh(string birthday)
         {
             if (DateTime.TryParse(birthday, CultureInfo.GetCultureInfo("vi-VN"), DateTimeStyles.None, out DateTime ngaysinh))
@@ -209,6 +203,7 @@ namespace DrivingCenter.App.UserControl
                             {
 
                                 var rs = _DAO.InsertHocVien(lstNguoiLX);
+
                                 if (rs)
                                 {
                                     XtraMessageBox.Show($"Import thành công {lstNguoiLX.Count} học viên cho khóa {kh.TenKH}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

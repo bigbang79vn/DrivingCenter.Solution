@@ -1,10 +1,8 @@
 ﻿using DevExpress.Export;
 using DevExpress.XtraEditors;
-using DevExpress.XtraGrid;
 using DevExpress.XtraPrinting;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,7 +41,7 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private void ViewInfo()
+        private void btn_View_Click(object sender, EventArgs e)
         {
             try
             {
@@ -62,11 +60,16 @@ namespace DrivingCenter.App.UserControl
                 string from = dtk_From.DateTime.ToString("yyyyMMdd");
                 string to = dtk_To.DateTime.ToString("yyyyMMdd");
 
-                bienso = selectedObject.MaXe;
+                bienso = selectedObject.BienSoXe;
 
-                List<PhienHoc> lstPhienHocTheoXe = _DAO.LstPhienHocTheoXe(bienso, from, to);
+                lb_BienSoXe.Text = selectedObject.BienSoXe;
+                lb_HangXe.Text = selectedObject.HangGPLX;
+                lb_ThoiGian.Text = "Từ " + from + " Đến " + to;
 
-                gridControl_BaoCaoTheoXe.DataSource = lstPhienHocTheoXe;
+                var rs = _DAO.LstPhienHocTheoXe(selectedObject.MaXe, from, to);
+
+                gridControl_BaoCaoTheoXe.DataSource = rs;
+                GridHelper.EnableRowNumbering(gridView_BaoCaoTheoXe);
             }
             catch (Exception ex)
             {
@@ -74,13 +77,17 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
-        private void btn_View_Click(object sender, EventArgs e)
+
+        private void gridView_BaoCaoTheoXe_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            ViewInfo();
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
+                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
+            }
         }
 
-
-        private void btn_export_Click_1(object sender, EventArgs e)
+        private void btn_export_Click(object sender, EventArgs e)
         {
             try
             {
@@ -107,15 +114,6 @@ namespace DrivingCenter.App.UserControl
             catch (Exception ex)
             {
                 XtraMessageBox.Show("❌ Đã xảy ra lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void gridView_BaoCaoTheoXe_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0) // Chỉ xử lý các dòng dữ liệu
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Hiển thị STT bắt đầu từ 1
-                e.Info.ImageIndex = -1; // Tắt biểu tượng mặc định (nếu không muốn hiển thị hình)
             }
         }
     }

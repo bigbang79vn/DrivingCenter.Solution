@@ -47,7 +47,21 @@ namespace DrivingCenter.App
                 this.itemNav.Caption = $"Dashboard";
             }
         }
-
+        private void acc_VNDC_Click(object sender, EventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                Uc_VNDC uc = new Uc_VNDC();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+                this.itemNav.Caption = $"Kết Quả Tốt Nghiệp";
+            }
+        }
         private void acc_CabinEco_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -80,99 +94,6 @@ namespace DrivingCenter.App
             }
         }
 
-        private void accChild_XeTap_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_XeDaoTao uc = new UcChild_XeDaoTao();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Danh Mục Thông Tin Xe Đào Tạo";
-            }
-        }
-
-        private void accChild_GiaoVien_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_GiaoVien uc = new UcChild_GiaoVien();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Danh Mục Giáo Viên Dạy Lái Xe";
-            }
-        }
-        private void acc_GPLX_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_GPLX uc = new UcChild_GPLX();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Quản Lý Cabin Điện Tử EMC";
-            }
-        }
-
-        private void acc_XepLop_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_XepLop uc = new UcChild_XepLop();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Xếp Lớp";
-            }
-        }
-        private void accChild_SapLuuLuong_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_KhoaHoc_PhanCong uc = new UcChild_KhoaHoc_PhanCong();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Sắp Xếp Lưu Lượng Xe & Giáo Viên";
-            }
-        }
-
-        private void accChild_PhanCongGiaoVien_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_PhanCongDaoTao uc = new UcChild_PhanCongDaoTao();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Phân Công Giáo Viên";
-            }
-        }
         private void acc_DAT_Click(object sender, EventArgs e)
         {
             if (MainContainer.Controls.Count < 0)
@@ -293,5 +214,6 @@ namespace DrivingCenter.App
                 barToggleSwitchItem.Caption = "Dark Mode";
             }
         }
+        
     }
 }

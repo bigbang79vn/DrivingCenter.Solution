@@ -1,6 +1,4 @@
-﻿using System.Web.Services.Description;
-
-namespace DrivingCenter.App.DTO.GPLX
+﻿namespace DrivingCenter.App.DTO.GPLX
 {
     public class NguoiLxDto
     {

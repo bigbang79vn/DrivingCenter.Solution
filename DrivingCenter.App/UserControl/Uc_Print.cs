@@ -3,7 +3,6 @@ using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.Report;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -25,21 +24,20 @@ namespace DrivingCenter.App.UserControl
 
         private void GetAllKhoaHoc()
         {
-            List<KhoaHoc> lst = new List<KhoaHoc>();
-            lst = _DAO.GetAllKhoaHoc();
-            searchLookUpEdit_KhoaHoc.Properties.DataSource = lst;
+            var rs = _DAO.GetAllKhoaHoc();
+            searchLookUpEdit_KhoaHoc.Properties.DataSource = rs;
             searchLookUpEdit_KhoaHoc.Properties.DisplayMember = "TenKhoaHoc";
             searchLookUpEdit_KhoaHoc.Properties.ValueMember = "KhoaHocID";
-            if (lst.Count > 0)
+            if (rs.Count > 0)
             {
-                searchLookUpEdit_KhoaHoc.EditValue = lst[0].KhoaHocID;
+                searchLookUpEdit_KhoaHoc.EditValue = rs[0].KhoaHocID;
             }
         }
 
         private void LoadlstHocVienbyKhoaHoc(int idkhoahoc)
         {
-            List<HocVien> lstHocVien = _DAO.GetlstHocVienByKhoaHoc(idkhoahoc);
-            grd_lstHocVien.DataSource = lstHocVien;
+            var rs = _DAO.GetlstHocVienByKhoaHoc(idkhoahoc);
+            grd_lstHocVien.DataSource = rs;
         }
 
         private void searchLookUpEdit_KhoaHoc_EditValueChanged(object sender, EventArgs e)

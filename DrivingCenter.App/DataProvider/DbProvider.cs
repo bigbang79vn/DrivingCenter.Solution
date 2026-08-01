@@ -79,6 +79,14 @@ namespace DrivingCenter.App.DataProvider
             }
         }
 
+        public int ExecuteStore(string sql, object param = null, CommandType commandType = CommandType.StoredProcedure)
+        {
+            using (var conn = CreateConnection())
+            {
+                return conn.Execute(sql, param, commandType: commandType);
+            }
+        }
+
         public async Task<int> ExecuteAsync(string sql, object param = null, CommandType commandType = CommandType.Text)
         {
             using (var conn = CreateConnection())

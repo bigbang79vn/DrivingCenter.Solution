@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_BaoCaoTheoXe));
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lb_ThoiGian = new System.Windows.Forms.Label();
@@ -38,8 +39,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lb_BienSoXe = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbb_XeTapLai = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -59,6 +58,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl_BaoCaoTheoXe = new DevExpress.XtraGrid.GridControl();
             this.gridView_BaoCaoTheoXe = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.HoTenGV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,6 +71,7 @@
             this.QuangDuongPhien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThoiGianPhien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Note = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_XeTapLai.Properties)).BeginInit();
@@ -81,8 +82,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtk_From.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_BaoCaoTheoXe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_BaoCaoTheoXe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -93,15 +98,12 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(462, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 17);
+            this.label3.Size = new System.Drawing.Size(64, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Đến ngày:";
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.lb_ThoiGian);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label13);
@@ -110,128 +112,91 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lb_BienSoXe);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(0, 81);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(2, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1494, 141);
+            this.panel2.Size = new System.Drawing.Size(1490, 145);
             this.panel2.TabIndex = 2;
             // 
             // lb_ThoiGian
             // 
             this.lb_ThoiGian.AutoSize = true;
-            this.lb_ThoiGian.BackColor = System.Drawing.Color.White;
             this.lb_ThoiGian.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.lb_ThoiGian.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_ThoiGian.Location = new System.Drawing.Point(173, 102);
             this.lb_ThoiGian.Name = "lb_ThoiGian";
-            this.lb_ThoiGian.Size = new System.Drawing.Size(12, 18);
+            this.lb_ThoiGian.Size = new System.Drawing.Size(13, 19);
             this.lb_ThoiGian.TabIndex = 0;
             this.lb_ThoiGian.Text = ".";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label10.Location = new System.Drawing.Point(38, 102);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 18);
+            this.label10.Size = new System.Drawing.Size(87, 19);
             this.label10.TabIndex = 0;
             this.label10.Text = "4. Thời gian:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label13.Location = new System.Drawing.Point(173, 75);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(12, 18);
+            this.label13.Size = new System.Drawing.Size(13, 19);
             this.label13.TabIndex = 0;
             this.label13.Text = ".";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label9.Location = new System.Drawing.Point(38, 75);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 18);
+            this.label9.Size = new System.Drawing.Size(102, 19);
             this.label9.TabIndex = 0;
             this.label9.Text = "3. Chủ Sở Hữu:";
             // 
             // lb_HangXe
             // 
             this.lb_HangXe.AutoSize = true;
-            this.lb_HangXe.BackColor = System.Drawing.Color.White;
             this.lb_HangXe.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.lb_HangXe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_HangXe.Location = new System.Drawing.Point(173, 48);
             this.lb_HangXe.Name = "lb_HangXe";
-            this.lb_HangXe.Size = new System.Drawing.Size(12, 18);
+            this.lb_HangXe.Size = new System.Drawing.Size(13, 19);
             this.lb_HangXe.TabIndex = 0;
             this.lb_HangXe.Text = ".";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label8.Location = new System.Drawing.Point(38, 48);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 18);
+            this.label8.Size = new System.Drawing.Size(81, 19);
             this.label8.TabIndex = 0;
             this.label8.Text = "2. Hạng Xe:";
             // 
             // lb_BienSoXe
             // 
             this.lb_BienSoXe.AutoSize = true;
-            this.lb_BienSoXe.BackColor = System.Drawing.Color.White;
             this.lb_BienSoXe.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.lb_BienSoXe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.lb_BienSoXe.Location = new System.Drawing.Point(173, 21);
             this.lb_BienSoXe.Name = "lb_BienSoXe";
-            this.lb_BienSoXe.Size = new System.Drawing.Size(12, 18);
+            this.lb_BienSoXe.Size = new System.Drawing.Size(13, 19);
             this.lb_BienSoXe.TabIndex = 0;
             this.lb_BienSoXe.Text = ".";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Roboto", 10.5F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label7.Location = new System.Drawing.Point(38, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 18);
+            this.label7.Size = new System.Drawing.Size(76, 19);
             this.label7.TabIndex = 0;
             this.label7.Text = "1. Biển Số:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.label5.Location = new System.Drawing.Point(20, 228);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(248, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "II. Thông tin quá trình đào tạo";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.label6.Location = new System.Drawing.Point(20, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(177, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "I. Thông tin xe tập lái";
             // 
             // label4
             // 
@@ -241,7 +206,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.label4.Location = new System.Drawing.Point(423, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(603, 33);
+            this.label4.Size = new System.Drawing.Size(593, 35);
             this.label4.TabIndex = 1;
             this.label4.Text = "BÁO CÁO QUÁ TRÌNH ĐÀO TẠO CỦA XE TẬP LÁI";
             // 
@@ -424,7 +389,7 @@
             this.btn_export.TabIndex = 7;
             this.btn_export.Text = "Xuất Excel";
             this.btn_export.UseVisualStyleBackColor = false;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click_1);
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // label1
             // 
@@ -434,7 +399,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(24, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.Size = new System.Drawing.Size(61, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Xe tập lái";
             // 
@@ -462,7 +427,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(245, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 17);
+            this.label2.Size = new System.Drawing.Size(57, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Từ ngày:";
             // 
@@ -470,41 +435,51 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.groupControl2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 196F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1500, 800);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.gridControl_BaoCaoTheoXe);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1494, 733);
+            this.panel1.Size = new System.Drawing.Size(1494, 65);
             this.panel1.TabIndex = 1;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.groupControl2.AppearanceCaption.Options.UseFont = true;
+            this.groupControl2.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.groupControl2.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl2.CaptionImageOptions.SvgImage")));
+            this.groupControl2.Controls.Add(this.gridControl_BaoCaoTheoXe);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(3, 331);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(1494, 466);
+            this.groupControl2.TabIndex = 5;
+            this.groupControl2.Text = "II. Thông tin quá trình đào tạo";
             // 
             // gridControl_BaoCaoTheoXe
             // 
-            this.gridControl_BaoCaoTheoXe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl_BaoCaoTheoXe.Location = new System.Drawing.Point(0, 251);
+            this.gridControl_BaoCaoTheoXe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_BaoCaoTheoXe.Location = new System.Drawing.Point(2, 43);
             this.gridControl_BaoCaoTheoXe.MainView = this.gridView_BaoCaoTheoXe;
             this.gridControl_BaoCaoTheoXe.Name = "gridControl_BaoCaoTheoXe";
-            this.gridControl_BaoCaoTheoXe.Size = new System.Drawing.Size(1494, 482);
+            this.gridControl_BaoCaoTheoXe.Size = new System.Drawing.Size(1490, 421);
             this.gridControl_BaoCaoTheoXe.TabIndex = 3;
             this.gridControl_BaoCaoTheoXe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_BaoCaoTheoXe});
@@ -539,7 +514,7 @@
             this.ThoiGianPhien,
             this.Note});
             this.gridView_BaoCaoTheoXe.GridControl = this.gridControl_BaoCaoTheoXe;
-            this.gridView_BaoCaoTheoXe.GroupCount = 2;
+            this.gridView_BaoCaoTheoXe.GroupCount = 1;
             this.gridView_BaoCaoTheoXe.GroupRowHeight = 27;
             this.gridView_BaoCaoTheoXe.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuangDuongPhien", this.QuangDuongPhien, "{0} Km"),
@@ -549,7 +524,6 @@
             this.gridView_BaoCaoTheoXe.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_BaoCaoTheoXe.RowHeight = 27;
             this.gridView_BaoCaoTheoXe.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.BienSoXe, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.HoTenGV, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView_BaoCaoTheoXe.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_BaoCaoTheoXe_CustomDrawRowIndicator);
             // 
@@ -566,13 +540,15 @@
             // 
             // HoTenHV
             // 
+            this.HoTenHV.AppearanceCell.Options.UseTextOptions = true;
+            this.HoTenHV.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.HoTenHV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.HoTenHV.AppearanceHeader.Options.UseBackColor = true;
             this.HoTenHV.Caption = "Học Viên";
             this.HoTenHV.FieldName = "HoTenHV";
             this.HoTenHV.Name = "HoTenHV";
             this.HoTenHV.Visible = true;
-            this.HoTenHV.VisibleIndex = 0;
+            this.HoTenHV.VisibleIndex = 1;
             this.HoTenHV.Width = 149;
             // 
             // TenKH
@@ -583,7 +559,7 @@
             this.TenKH.FieldName = "TenKH";
             this.TenKH.Name = "TenKH";
             this.TenKH.Visible = true;
-            this.TenKH.VisibleIndex = 1;
+            this.TenKH.VisibleIndex = 2;
             this.TenKH.Width = 98;
             // 
             // MaPhien
@@ -594,7 +570,7 @@
             this.MaPhien.FieldName = "MaPhien";
             this.MaPhien.Name = "MaPhien";
             this.MaPhien.Visible = true;
-            this.MaPhien.VisibleIndex = 2;
+            this.MaPhien.VisibleIndex = 3;
             this.MaPhien.Width = 217;
             // 
             // BienSoXe
@@ -605,7 +581,7 @@
             this.BienSoXe.FieldName = "BienSoXe";
             this.BienSoXe.Name = "BienSoXe";
             this.BienSoXe.Visible = true;
-            this.BienSoXe.VisibleIndex = 5;
+            this.BienSoXe.VisibleIndex = 0;
             this.BienSoXe.Width = 97;
             // 
             // Time_LogIn
@@ -618,7 +594,7 @@
             this.Time_LogIn.FieldName = "Time_LogIn";
             this.Time_LogIn.Name = "Time_LogIn";
             this.Time_LogIn.Visible = true;
-            this.Time_LogIn.VisibleIndex = 3;
+            this.Time_LogIn.VisibleIndex = 4;
             this.Time_LogIn.Width = 135;
             // 
             // Time_LogOut
@@ -631,7 +607,7 @@
             this.Time_LogOut.FieldName = "Time_LogOut";
             this.Time_LogOut.Name = "Time_LogOut";
             this.Time_LogOut.Visible = true;
-            this.Time_LogOut.VisibleIndex = 4;
+            this.Time_LogOut.VisibleIndex = 5;
             this.Time_LogOut.Width = 135;
             // 
             // QuangDuongPhien
@@ -642,7 +618,7 @@
             this.QuangDuongPhien.FieldName = "QuangDuongPhien";
             this.QuangDuongPhien.Name = "QuangDuongPhien";
             this.QuangDuongPhien.Visible = true;
-            this.QuangDuongPhien.VisibleIndex = 5;
+            this.QuangDuongPhien.VisibleIndex = 6;
             this.QuangDuongPhien.Width = 135;
             // 
             // ThoiGianPhien
@@ -653,7 +629,7 @@
             this.ThoiGianPhien.FieldName = "ThoiGianPhien";
             this.ThoiGianPhien.Name = "ThoiGianPhien";
             this.ThoiGianPhien.Visible = true;
-            this.ThoiGianPhien.VisibleIndex = 6;
+            this.ThoiGianPhien.VisibleIndex = 7;
             this.ThoiGianPhien.Width = 135;
             // 
             // Note
@@ -668,8 +644,24 @@
             this.Note.FieldName = "Note";
             this.Note.Name = "Note";
             this.Note.Visible = true;
-            this.Note.VisibleIndex = 7;
+            this.Note.VisibleIndex = 8;
             this.Note.Width = 178;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.groupControl1.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl1.CaptionImageOptions.SvgImage")));
+            this.groupControl1.Controls.Add(this.panel2);
+            this.groupControl1.Location = new System.Drawing.Point(3, 135);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1494, 190);
+            this.groupControl1.TabIndex = 4;
+            this.groupControl1.Text = "I. Thông tin xe tập lái";
             // 
             // Uc_BaoCaoTheoXe
             // 
@@ -692,8 +684,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_BaoCaoTheoXe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_BaoCaoTheoXe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -710,8 +706,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lb_BienSoXe;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_export;
@@ -743,5 +737,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn QuangDuongPhien;
         private DevExpress.XtraGrid.Columns.GridColumn ThoiGianPhien;
         private DevExpress.XtraGrid.Columns.GridColumn Note;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }

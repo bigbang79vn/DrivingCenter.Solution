@@ -416,7 +416,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AppConstants.cs" />
+    <Compile Include="Common\Constans\AppConstants.cs" />
+    <Compile Include="Common\Helper\ToDate.cs" />
     <Compile Include="DAO\AppBee_DAO.cs" />
     <Compile Include="DAO\CabinEco_DAO.cs" />
     <Compile Include="DAO\CabinI2E_DAO.cs" />
@@ -427,39 +428,39 @@
     <Compile Include="DAO\MySQL_DAO.cs" />
     <Compile Include="DataProvider\DbConnectionFactory.cs" />
     <Compile Include="DataProvider\DbProvider.cs" />
-    <Compile Include="DTO\Account\Account.cs" />
-    <Compile Include="DTO\Cabin\Cabin.cs" />
-    <Compile Include="DTO\Cabin\Exercise.cs" />
-    <Compile Include="DTO\Cabin\GiaoVien.cs" />
-    <Compile Include="DTO\Cabin\GvCabin.cs" />
-    <Compile Include="DTO\Cabin\HocVien.cs" />
-    <Compile Include="DTO\Cabin\KhoaHoc.cs" />
-    <Compile Include="DTO\Common\Schedule.cs" />
-    <Compile Include="DTO\Cabin\ThongKe.cs" />
-    <Compile Include="DTO\Cabin\Result.cs" />
-    <Compile Include="DTO\Common\AssignmentGV.cs" />
-    <Compile Include="DTO\Common\Category.cs" />
-    <Compile Include="DTO\CSDT\LichB11.cs" />
-    <Compile Include="DTO\DAT\ChiTietPhienHoc.cs" />
-    <Compile Include="DTO\DAT\KhoaHocDDT.cs" />
-    <Compile Include="DTO\DAT\NguoiLxInDAT.cs" />
-    <Compile Include="DTO\DAT\PhienHoc.cs" />
-    <Compile Include="DTO\DAT\SoPhien.cs" />
-    <Compile Include="DTO\DAT\TienDo.cs" />
-    <Compile Include="DTO\DAT\TongHopGV.cs" />
-    <Compile Include="DTO\DAT\TongHopHVByDay.cs" />
-    <Compile Include="DTO\DAT\TongHopHVByKhoa.cs" />
-    <Compile Include="DTO\DAT\ViewTongHopHvByKhoa.cs" />
-    <Compile Include="DTO\DAT\XeTapLai.cs" />
-    <Compile Include="DTO\GPLX\HvTotNghiep.cs" />
-    <Compile Include="DTO\GPLX\KhoaHoc.cs" />
-    <Compile Include="DTO\GPLX\NguoiLX.cs" />
-    <Compile Include="DTO\GPLX\NguoiLxDto.cs" />
-    <Compile Include="DTO\GPLX\NguoiLXHS_GT.cs" />
-    <Compile Include="DTO\GPLX\NguoiLX_HoSo.cs" />
-    <Compile Include="DTO\GPLX\NguoiLX_HoSo_Update.cs" />
-    <Compile Include="DTO\GPLX\ThiSinh.cs" />
-    <Compile Include="DTO\LyThuyet\NguoiLxInLT.cs" />
+    <Compile Include="Dtos\Account\Account.cs" />
+    <Compile Include="Dtos\Cabin\Cabin.cs" />
+    <Compile Include="Dtos\Cabin\Exercise.cs" />
+    <Compile Include="Dtos\Cabin\GiaoVien.cs" />
+    <Compile Include="Dtos\Cabin\GvCabin.cs" />
+    <Compile Include="Dtos\Cabin\HocVien.cs" />
+    <Compile Include="Dtos\Cabin\KhoaHoc.cs" />
+    <Compile Include="Dtos\Common\Schedule.cs" />
+    <Compile Include="Dtos\Cabin\ThongKe.cs" />
+    <Compile Include="Dtos\Cabin\Result.cs" />
+    <Compile Include="Dtos\Common\AssignmentGV.cs" />
+    <Compile Include="Dtos\Common\Category.cs" />
+    <Compile Include="Dtos\CSDT\LichB11.cs" />
+    <Compile Include="Dtos\DAT\ChiTietPhienHoc.cs" />
+    <Compile Include="Dtos\DAT\GiaoVienDto.cs" />
+    <Compile Include="Dtos\DAT\KhoaHocDDT.cs" />
+    <Compile Include="Dtos\DAT\NguoiLxInDAT.cs" />
+    <Compile Include="Dtos\DAT\PhienHoc.cs" />
+    <Compile Include="Dtos\DAT\SoPhien.cs" />
+    <Compile Include="Dtos\DAT\TienDo.cs" />
+    <Compile Include="Dtos\DAT\TongHopGV.cs" />
+    <Compile Include="Dtos\DAT\TongHopHVByDay.cs" />
+    <Compile Include="Dtos\DAT\TongHopHVByKhoa.cs" />
+    <Compile Include="Dtos\DAT\ViewTongHopHvByKhoa.cs" />
+    <Compile Include="Dtos\DAT\XeTapLai.cs" />
+    <Compile Include="Dtos\GPLX\HvTotNghiep.cs" />
+    <Compile Include="Dtos\GPLX\KhoaHoc.cs" />
+    <Compile Include="Dtos\GPLX\NguoiLX.cs" />
+    <Compile Include="Dtos\GPLX\NguoiLxDto.cs" />
+    <Compile Include="Dtos\GPLX\NguoiLXHS_GT.cs" />
+    <Compile Include="Dtos\GPLX\NguoiLX_HoSo.cs" />
+    <Compile Include="Dtos\GPLX\NguoiLX_HoSo_Update.cs" />
+    <Compile Include="Dtos\GPLX\ThiSinh.cs" />
     <Compile Include="Enums\DatabaseType.cs" />
     <Compile Include="fAccount.cs">
       <SubType>Form</SubType>
@@ -478,12 +479,6 @@
     </Compile>
     <Compile Include="frmDetailSession.Designer.cs">
       <DependentUpon>frmDetailSession.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmKiemTraLyThuyet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmKiemTraLyThuyet.Designer.cs">
-      <DependentUpon>frmKiemTraLyThuyet.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -533,15 +528,15 @@
     <Compile Include="HelperGeoJSON.Designer.cs">
       <DependentUpon>HelperGeoJSON.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\ConnectMySQL.cs" />
-    <Compile Include="Helper\ConvertListToDataTable.cs" />
-    <Compile Include="Helper\CustomToolTip.cs" />
-    <Compile Include="Helper\ExportExcelWithName.cs" />
-    <Compile Include="Helper\GeoHelper.cs" />
-    <Compile Include="Helper\GridHelper.cs" />
-    <Compile Include="Helper\ImageExtension.cs" />
-    <Compile Include="Helper\ImageToByteArray.cs" />
-    <Compile Include="Helper\StringUtil.cs" />
+    <Compile Include="Common\Helper\ConnectMySQL.cs" />
+    <Compile Include="Common\Helper\ConvertListToDataTable.cs" />
+    <Compile Include="Common\Helper\CustomToolTip.cs" />
+    <Compile Include="Common\Helper\ExportExcelWithName.cs" />
+    <Compile Include="Common\Helper\GeoHelper.cs" />
+    <Compile Include="Common\Helper\GridHelper.cs" />
+    <Compile Include="Common\Helper\ImageExtension.cs" />
+    <Compile Include="Common\Helper\ImageToByteArray.cs" />
+    <Compile Include="Common\Helper\StringUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\rptBaoCaoTongHopEco.cs">
@@ -646,12 +641,6 @@
     <Compile Include="UserControl\UcChild_KhoaHoc_PhanCong.Designer.cs">
       <DependentUpon>UcChild_KhoaHoc_PhanCong.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UcChild_PhanCongDaoTao.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\UcChild_PhanCongDaoTao.Designer.cs">
-      <DependentUpon>UcChild_PhanCongDaoTao.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\UcChild_XeDaoTao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -718,6 +707,12 @@
     <Compile Include="UserControl\Uc_Print.Designer.cs">
       <DependentUpon>Uc_Print.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\Uc_VNDC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Uc_VNDC.Designer.cs">
+      <DependentUpon>Uc_VNDC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_XeTapLai.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -738,9 +733,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetailSession.resx">
       <DependentUpon>frmDetailSession.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmKiemTraLyThuyet.resx">
-      <DependentUpon>frmKiemTraLyThuyet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -832,9 +824,6 @@
     <EmbeddedResource Include="UserControl\UcChild_KhoaHoc_PhanCong.resx">
       <DependentUpon>UcChild_KhoaHoc_PhanCong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UcChild_PhanCongDaoTao.resx">
-      <DependentUpon>UcChild_PhanCongDaoTao.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UcChild_XeDaoTao.resx">
       <DependentUpon>UcChild_XeDaoTao.cs</DependentUpon>
     </EmbeddedResource>
@@ -867,6 +856,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_Print.resx">
       <DependentUpon>Uc_Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Uc_VNDC.resx">
+      <DependentUpon>Uc_VNDC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_XeTapLai.resx">
       <DependentUpon>Uc_XeTapLai.cs</DependentUpon>

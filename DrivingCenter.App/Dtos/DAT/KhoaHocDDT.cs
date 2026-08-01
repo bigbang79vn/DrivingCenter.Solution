@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DTO.DAT
 {
@@ -18,16 +14,6 @@ namespace DrivingCenter.App.DTO.DAT
 
         public KhoaHocDangDT()
         {
-        }
-
-        public KhoaHocDangDT(int khoahocID, string makh, string tenkh, string hangdt, int sohvdudk, int tonghocvien)
-        {
-            this.KhoaHocID = khoahocID;
-            this.MaKH = makh;
-            this.TenKH = tenkh;
-            this.HangDaoTao = hangdt;
-            this.SoHVDuDK = sohvdudk;
-            this.TongHocVien = tonghocvien;
         }
 
         public KhoaHocDangDT(DataRow row)

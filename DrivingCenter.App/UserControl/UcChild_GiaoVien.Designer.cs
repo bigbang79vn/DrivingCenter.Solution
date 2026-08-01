@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_GiaoVien));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl_GiaoVien = new DevExpress.XtraEditors.GroupControl();
             this.txt_MaGV = new DevExpress.XtraEditors.TextEdit();
-            this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.pictureBox_AnhChup = new System.Windows.Forms.PictureBox();
             this.memo_DiaChi = new DevExpress.XtraEditors.MemoEdit();
             this.cbb_HangGPLX = new DevExpress.XtraEditors.LookUpEdit();
@@ -59,8 +53,6 @@
             this.txt_CCCD = new DevExpress.XtraEditors.TextEdit();
             this.date_NgaySinh = new DevExpress.XtraEditors.DateEdit();
             this.gridControl_GiaoVien = new DevExpress.XtraGrid.GridControl();
-            this.contextMenu_GiaoVien = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mn_SynsGiaoVien = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_GiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaGV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -93,7 +85,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).BeginInit();
-            this.contextMenu_GiaoVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
@@ -119,7 +110,6 @@
             this.groupControl_GiaoVien.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.groupControl_GiaoVien.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl_GiaoVien.CaptionImageOptions.SvgImage")));
             this.groupControl_GiaoVien.Controls.Add(this.txt_MaGV);
-            this.groupControl_GiaoVien.Controls.Add(this.windowsUIButtonPanel);
             this.groupControl_GiaoVien.Controls.Add(this.pictureBox_AnhChup);
             this.groupControl_GiaoVien.Controls.Add(this.memo_DiaChi);
             this.groupControl_GiaoVien.Controls.Add(this.cbb_HangGPLX);
@@ -162,47 +152,6 @@
             this.txt_MaGV.Properties.AutoHeight = false;
             this.txt_MaGV.Size = new System.Drawing.Size(207, 23);
             this.txt_MaGV.TabIndex = 39;
-            // 
-            // windowsUIButtonPanel
-            // 
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            windowsUIButtonImageOptions3.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
-            windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
-            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIButtonPanel.EnableImageTransparency = true;
-            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanel.Location = new System.Drawing.Point(2, 740);
-            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
-            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
-            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
-            this.windowsUIButtonPanel.Size = new System.Drawing.Size(490, 60);
-            this.windowsUIButtonPanel.TabIndex = 36;
-            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
-            this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
             // 
             // pictureBox_AnhChup
             // 
@@ -457,7 +406,6 @@
             // 
             // gridControl_GiaoVien
             // 
-            this.gridControl_GiaoVien.ContextMenuStrip = this.contextMenu_GiaoVien;
             this.gridControl_GiaoVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_GiaoVien.Location = new System.Drawing.Point(3, 3);
             this.gridControl_GiaoVien.MainView = this.gridView_GiaoVien;
@@ -469,20 +417,6 @@
             this.gridControl_GiaoVien.TabIndex = 0;
             this.gridControl_GiaoVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_GiaoVien});
-            // 
-            // contextMenu_GiaoVien
-            // 
-            this.contextMenu_GiaoVien.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mn_SynsGiaoVien});
-            this.contextMenu_GiaoVien.Name = "contextMenu_GiaoVien";
-            this.contextMenu_GiaoVien.Size = new System.Drawing.Size(211, 26);
-            // 
-            // mn_SynsGiaoVien
-            // 
-            this.mn_SynsGiaoVien.Name = "mn_SynsGiaoVien";
-            this.mn_SynsGiaoVien.Size = new System.Drawing.Size(210, 22);
-            this.mn_SynsGiaoVien.Text = "Đồng bộ dữ liệu giáo viên";
-            this.mn_SynsGiaoVien.Click += new System.EventHandler(this.mn_SynsGiaoVien_Click);
             // 
             // gridView_GiaoVien
             // 
@@ -669,7 +603,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgaySinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_GiaoVien)).EndInit();
-            this.contextMenu_GiaoVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView_GiaoVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
@@ -696,11 +629,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn DateTime_Use;
         private DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch repoToggleSwitch;
         private DevExpress.XtraGrid.Columns.GridColumn SoCMT;
-        private System.Windows.Forms.ContextMenuStrip contextMenu_GiaoVien;
-        private System.Windows.Forms.ToolStripMenuItem mn_SynsGiaoVien;
         private DevExpress.XtraEditors.GroupControl groupControl_GiaoVien;
         private DevExpress.XtraEditors.TextEdit txt_MaGV;
-        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel;
         private System.Windows.Forms.PictureBox pictureBox_AnhChup;
         private DevExpress.XtraEditors.MemoEdit memo_DiaChi;
         private DevExpress.XtraEditors.LookUpEdit cbb_HangGPLX;

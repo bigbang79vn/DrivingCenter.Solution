@@ -270,37 +270,7 @@ namespace DrivingCenter.App.UserControl
             ReportPrintTool printTool = new ReportPrintTool(rpt);
             printTool.ShowPreview();
         }
-        private void MenuItem_CheckLyThuyet_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    txtFilePath.Text = openFileDialog.FileName;
-
-                    //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
-                    using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
-                        {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
-                            {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
-                            });
-                            tableCollection = result.Tables;
-
-                            foreach (DataTable table in tableCollection)
-                            {
-                                DataTable dt = tableCollection["Worksheet"];
-                                frmKiemTraLyThuyet f = new frmKiemTraLyThuyet(dt, KhoaHocId);
-                                f.Show();
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        
         private void MenuItem_XuatBaoCao_Click(object sender, EventArgs e)
         {
 

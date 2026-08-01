@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using DrivingCenter.App.Common.Helper;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.GPLX;
+using DrivingCenter.App.Dtos.DAT;
 using DrivingCenter.App.Enums;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,45 @@ namespace DrivingCenter.App.DAO
     public class GPLX_CDB_CSDT_DAO
     {
         private readonly DbProvider _db = new DbProvider(DatabaseType.db_Gplx);
+        private readonly DbProvider _db_Cdb = new DbProvider(DatabaseType.db_Gplx_CDB);
 
+        public List<GiaoVienDto> GetAllGv()
+        {
+            string query = "SELECT MaGV, MaCSDT, HoTenDem, TenGV, NgaySinh, SoCMT, HangGPLX, CacHangGPLXDuocDT, DienThoai, NoiCT, TrinhDo_ChuyenMon, TrinhDo_SuPham, SoQD_GCN, TrangThai FROM GiaoVien";
+            var dt = _db_Cdb.QueryToDataTable(query);
+
+            List<GiaoVienDto> lst = dt.AsEnumerable()
+                .Select(row => new GiaoVienDto
+                {
+                    MaGV = row.Field<string>("MaGV"),
+                    MaCSDT = row.Field<string>("MaCSDT"),
+                    HoTenDem = row.Field<string>("HoTenDem") ?? string.Empty,
+                    TenGV = row.Field<string>("TenGV") ?? string.Empty,
+                    NgaySinh = ToDate.ConvertToDate(row.Field<string>("NgaySinh")),
+                    SoCMT = row.Field<string>("SoCMT") ?? string.Empty,
+                    HangGPLX = row.Field<string>("HangGPLX") ?? string.Empty,
+                    HangGPLXDuocDT = GetLastValue(row.Field<string>("CacHangGPLXDuocDT") ?? string.Empty),
+                    SoDienThoai = row.Field<string>("DienThoai") ?? string.Empty,
+                    DiaChi = row.Field<string>("NoiCT") ?? string.Empty,
+                    MaCNDT = row.Field<string>("SoQD_GCN") ?? string.Empty,
+                    MaTrinhDoHocVan = 0,
+                    MonGiangDay = string.Empty,
+                    AnhChup = null
+                }).ToList();
+
+            return lst;
+        }
+        private static string GetLastValue(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return string.Empty;
+
+            int index = value.LastIndexOf(',');
+
+            return index >= 0
+                ? value.Substring(index + 1).Trim()
+                : value.Trim();
+        }
         public List<KhoaHoc> GetlstKh()
         {
             string query = @"SELECT 
@@ -35,7 +75,7 @@ namespace DrivingCenter.App.DAO
                 WHERE 
                     MaKH NOT IN (SELECT MaKH FROM BaoCaoI) AND TongSoHV IS NOT NULL";
 
-            DataTable dt = _db.QueryToDataTable(query);
+            DataTable dt = _db_Cdb.QueryToDataTable(query);
             var lstKH = dt.AsEnumerable()
                            .Select(row => new KhoaHoc
                            {
@@ -50,17 +90,9 @@ namespace DrivingCenter.App.DAO
             return lstKH;
         }
 
-        public string GenerateMaDK()
-        {
-            string query = "SELECT dbo.CreateNewMaDK('66015') AS NewMaHV;";
-            object result = _db.Execute(query);
-            return result.ToString().Trim();
-        }
-
         private void InsertHocVien(IDbConnection conn, IDbTransaction tran, NguoiLxDto nlx)
         {
-            conn.Execute(
-                "VNDC_spInsertHocVien",
+            conn.Execute("VNDC_spInsertHocVien",
                 new
                 {
                     p_out = 0,
@@ -104,7 +136,7 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                _db.ExecuteTransaction((conn, tran) =>
+                _db_Cdb.ExecuteTransaction((conn, tran) =>
                 {
                     foreach (var item in lstNguoiLX)
                     {
@@ -128,15 +160,11 @@ namespace DrivingCenter.App.DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    ex.Message,
-                    "Thông báo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
+
         public void UpdateResultGraduate(NguoiLX_HoSo_Update nguoiLXUpdate)
         {
             string query = string.Format("UPDATE NguoiLX_HoSo set " +
@@ -144,6 +172,7 @@ namespace DrivingCenter.App.DAO
                 nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
             _db.Execute(query);
         }
+
         public int DeleteDataReportOld()
         {
             int status = 0;
@@ -157,6 +186,7 @@ namespace DrivingCenter.App.DAO
                 return status;
             }
         }
+
         public void InsertDataReportCNTN(HvTotNghiep nguoiLx_CCTN)
         {
             string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DrivingCenter.App.DTO.Common
+﻿namespace DrivingCenter.App.DTO.Common
 {
     public class AssignmentGV
     {

@@ -76,7 +76,6 @@
             this.contextMenuStrip_KhoaHoc = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuItem_ThemKhoaHoc = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_BoTriXeSTD = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_CheckLyThuyet = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_XuatBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_Baocaokhoahoc = new System.Windows.Forms.ToolStripMenuItem();
@@ -695,46 +694,37 @@
             this.contextMenuStrip_KhoaHoc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_ThemKhoaHoc,
             this.MenuItem_BoTriXeSTD,
-            this.MenuItem_CheckLyThuyet,
             this.toolStripSeparator1,
             this.MenuItem_XuatBaoCao,
             this.mn_Baocaokhoahoc});
             this.contextMenuStrip_KhoaHoc.Name = "contextMenuStrip_KhoaHoc";
-            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(191, 120);
+            this.contextMenuStrip_KhoaHoc.Size = new System.Drawing.Size(187, 98);
             // 
             // MenuItem_ThemKhoaHoc
             // 
             this.MenuItem_ThemKhoaHoc.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_ThemKhoaHoc.Image")));
             this.MenuItem_ThemKhoaHoc.Name = "MenuItem_ThemKhoaHoc";
-            this.MenuItem_ThemKhoaHoc.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_ThemKhoaHoc.Size = new System.Drawing.Size(186, 22);
             this.MenuItem_ThemKhoaHoc.Text = "Thêm khóa học";
             // 
             // MenuItem_BoTriXeSTD
             // 
             this.MenuItem_BoTriXeSTD.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_BoTriXeSTD.Image")));
             this.MenuItem_BoTriXeSTD.Name = "MenuItem_BoTriXeSTD";
-            this.MenuItem_BoTriXeSTD.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_BoTriXeSTD.Size = new System.Drawing.Size(186, 22);
             this.MenuItem_BoTriXeSTD.Text = "Bố trí xe STĐ";
             this.MenuItem_BoTriXeSTD.Click += new System.EventHandler(this.MenuItem_BoTriXeSTD_Click);
-            // 
-            // MenuItem_CheckLyThuyet
-            // 
-            this.MenuItem_CheckLyThuyet.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_CheckLyThuyet.Image")));
-            this.MenuItem_CheckLyThuyet.Name = "MenuItem_CheckLyThuyet";
-            this.MenuItem_CheckLyThuyet.Size = new System.Drawing.Size(190, 22);
-            this.MenuItem_CheckLyThuyet.Text = "Kiểm tra học lý thuyết";
-            this.MenuItem_CheckLyThuyet.Click += new System.EventHandler(this.MenuItem_CheckLyThuyet_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
             // 
             // MenuItem_XuatBaoCao
             // 
             this.MenuItem_XuatBaoCao.Image = ((System.Drawing.Image)(resources.GetObject("MenuItem_XuatBaoCao.Image")));
             this.MenuItem_XuatBaoCao.Name = "MenuItem_XuatBaoCao";
-            this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(190, 22);
+            this.MenuItem_XuatBaoCao.Size = new System.Drawing.Size(186, 22);
             this.MenuItem_XuatBaoCao.Text = "Xuất báo cáo đào tạo";
             this.MenuItem_XuatBaoCao.Click += new System.EventHandler(this.MenuItem_XuatBaoCao_Click);
             // 
@@ -746,7 +736,7 @@
             this.mn_KetQuaKHONGDATQuaTrinhHoc});
             this.mn_Baocaokhoahoc.Image = ((System.Drawing.Image)(resources.GetObject("mn_Baocaokhoahoc.Image")));
             this.mn_Baocaokhoahoc.Name = "mn_Baocaokhoahoc";
-            this.mn_Baocaokhoahoc.Size = new System.Drawing.Size(190, 22);
+            this.mn_Baocaokhoahoc.Size = new System.Drawing.Size(186, 22);
             this.mn_Baocaokhoahoc.Text = "Báo cáo khóa học";
             // 
             // mn_KetQuaQuaTrinhHoc
@@ -1029,7 +1019,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repoGrid_GiaoVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn HangDT;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_CheckLyThuyet;
         private System.Windows.Forms.Panel panel_Right;
         private System.Windows.Forms.Panel PanelLeft;
         private System.Windows.Forms.Panel panel3;

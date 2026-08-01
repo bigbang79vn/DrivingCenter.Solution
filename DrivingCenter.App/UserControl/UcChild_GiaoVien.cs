@@ -1,29 +1,33 @@
-﻿using DrivingCenter.App.DAO;
+﻿using DevExpress.XtraEditors;
+using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
+using DrivingCenter.App.Dtos.DAT;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DrivingCenter.App.UserControl
 {
     public partial class UcChild_GiaoVien : DevExpress.XtraEditors.XtraUserControl
     {
-        private readonly AppBee_DAO _DAO = new AppBee_DAO();
+        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private readonly GPLX_CDB_CSDT_DAO _gplx = new GPLX_CDB_CSDT_DAO();
         public UcChild_GiaoVien()
         {
             InitializeComponent();
         }
         private void UcChild_GiaoVien_Load(object sender, EventArgs e)
         {
+
             Get_DmTrinhDoHocVan();
             Get_DmHangGPLX();
-            Get_DmGiaoVien();
-
+            Get_DmGiaoVienDAT();
             SetControlsEnabled(false);
-            SetButtonPanelEnable(0,1);
         }
 
         private int _giaoVienID;
@@ -39,31 +43,7 @@ namespace DrivingCenter.App.UserControl
             date_NgaySinh.Enabled = enable;
             toggleSwitch_TrangThai.Enabled = enable;
         }
-        private void SetButtonPanelEnable(params int[] enabledIndexes)
-        {
-            int totalButtons = windowsUIButtonPanel.Buttons.Count;
-
-            for (int i = 0; i < totalButtons; i++)
-            {
-                var button = windowsUIButtonPanel.Buttons[i] as DevExpress.XtraBars.Docking2010.WindowsUIButton;
-
-                if (button != null)
-                {
-                    button.Enabled = enabledIndexes.Contains(i);
-                }
-            }
-        }
-        private void DisableAllButtons()
-        {
-            foreach (var obj in windowsUIButtonPanel.Buttons)
-            {
-                if (obj is DevExpress.XtraBars.Docking2010.WindowsUIButton button)
-                {
-                    button.Enabled = false;
-                }
-            }
-        }
-        private void Get_DmGiaoVien()
+        private void Get_DmGiaoVienDAT()
         {
             List<GiaoVien> data = _DAO.GetAllGV();
             gridControl_GiaoVien.DataSource = data;
@@ -114,78 +94,50 @@ namespace DrivingCenter.App.UserControl
             }
             toggleSwitch_TrangThai.IsOn = gv.SuDung;
         }
-        private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
-        {
-            var button = e.Button as DevExpress.XtraBars.Docking2010.WindowsUIButton;
-
-            if (button.Caption == "Edit")
-            {
-                SetControlsEnabled(true);
-                DisableAllButtons();
-                SetButtonPanelEnable(2, 3);
-            }
-            else if (button.Caption == "Add")
-            {
-                SetControlsEnabled(true);
-                DisableAllButtons();
-                SetButtonPanelEnable(2, 3);
-
-                txt_MaGV.Text = "";
-                txt_HoDem.Text = "";
-                txt_TenGV.Text = "";
-                txt_CCCD.Text = "";
-                cbb_HangGPLX.EditValue = null;
-                cbb_HocVan.EditValue = null;
-                txt_MaCNDT.Text = "";
-                date_NgaySinh.EditValue = null;
-                pictureBox_AnhChup.Image = null;
-                toggleSwitch_TrangThai.IsOn = true;
-                txt_MaGV.Focus();
-
-            }
-            else if (button.Caption == "Save")
-            {
-                GiaoVien gv = new GiaoVien();
-
-                gv.MaGV = txt_MaGV.Text;
-                gv.HoTenDem = txt_HoDem.Text;
-                gv.TenGV = txt_TenGV.Text;
-                gv.SoCMT = txt_CCCD.Text;
-                gv.HangGPLX = cbb_HangGPLX.EditValue.ToString();
-                gv.TrinhDoHocVan = cbb_HocVan.EditValue.ToString();
-                gv.MaCNDT = txt_MaCNDT.Text;
-                gv.NgaySinh = date_NgaySinh.DateTime;
-                gv.SuDung = toggleSwitch_TrangThai.IsOn;
-                _DAO.UpdateGiaoVien(gv, _giaoVienID);
-                Get_DmGiaoVien();
-                SetControlsEnabled(false);
-                DisableAllButtons();
-                SetButtonPanelEnable(0, 1);
-            }
-            else if (button.Caption == "Cancel")
-            {
-                SetControlsEnabled(false);
-                DisableAllButtons();
-                SetButtonPanelEnable(0, 1);
-            }
-        }
-
-        private void mn_SynsGiaoVien_Click(object sender, EventArgs e)
-        {
-            int result = _DAO.SynsGiaoVien();
-            //XtraMessageBox.Show("Đồng bộ thành công " + result + " bản ghi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
         private void groupControl_GiaoVien_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Đồng bộ lại giáo viên từ hệ thống DAT?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
+            if (e.Button.Properties.Caption == "Import")
             {
-                //_DAO.Synchronize();
-                Get_DmGiaoVien();
-                SetControlsEnabled(false);
-                DisableAllButtons();
-                SetButtonPanelEnable(0, 1);
+                //---
+            }
+            if(e.Button.Properties.Caption == "Synchronize")
+            {
+                DialogResult dialogResult = MessageBox.Show("Đồng bộ lại giáo viên từ hệ thống GPLX?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Synchronize();
+                    Get_DmGiaoVienDAT();
+                    SetControlsEnabled(false);
+                }
+            }    
+        }
+
+        private void Synchronize()
+        {
+            var giaoViens = _gplx.GetAllGv();
+
+            foreach (var item in giaoViens)
+            {
+                GiaoVienDto dto = new GiaoVienDto
+                {
+                    MaGV = item.MaGV,
+                    MaCSDT = item.MaCSDT,
+                    HoTenDem = item.HoTenDem ,
+                    TenGV = item.TenGV,
+                    NgaySinh = item.NgaySinh,
+                    SoCMT = item.SoCMT,
+                    HangGPLX = item.HangGPLX,
+                    HangGPLXDuocDT = item.HangGPLXDuocDT,
+                    SoDienThoai = item.SoDienThoai,
+                    DiaChi = item.DiaChi,
+                    MaCNDT = item.MaCNDT,
+                    MaTrinhDoHocVan = item.MaTrinhDoHocVan,
+                    MonGiangDay = item.MonGiangDay,
+                    AnhChup = item.AnhChup
+                };
+
+                _DAO.AddGiaoVien(item);
             }
         }
     }

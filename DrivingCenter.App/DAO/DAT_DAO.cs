@@ -1,8 +1,10 @@
-﻿using DrivingCenter.App.DataProvider;
+﻿using DevExpress.DataProcessing;
+using DocumentFormat.OpenXml.Wordprocessing;
+using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
 using DrivingCenter.App.DTO.DAT;
-using DrivingCenter.App.DTO.LyThuyet;
+using DrivingCenter.App.Dtos.DAT;
 using DrivingCenter.App.Enums;
 using GMap.NET;
 using System;
@@ -27,7 +29,7 @@ namespace DrivingCenter.App.DAO
         }
         public int LoadSoHocVienByYear(int year)
         {
-             return _db.QuerySingle<int>($"SELECT COUNT(*) from NguoiLX WHERE KhoaHocID IN (SELECT KhoaHocID FROM KhoaHoc WHERE YEAR(NgayKG) = {year})");
+            return _db.QuerySingle<int>($"SELECT COUNT(*) from NguoiLX WHERE KhoaHocID IN (SELECT KhoaHocID FROM KhoaHoc WHERE YEAR(NgayKG) = {year})");
         }
 
         public int LoadSoKhoaHocByYear(int year)
@@ -184,7 +186,7 @@ namespace DrivingCenter.App.DAO
         }
         public DataTable GetlstHangGPLX()
         {
-            string query = $"SELECT [ID], [MaHang], [TenHang] FROM [I2EDAT2023].[dbo].[HangGPLX]";
+            string query = $"SELECT [ID], [MaHang], [TenHang] FROM [EMCDAT2025].[dbo].[HangGPLX]";
             return _db.QueryToDataTable(query);
         }
 
@@ -238,51 +240,56 @@ namespace DrivingCenter.App.DAO
 
         public List<XeTapLai> GetAllVehicles()
         {
-            string query = string.Format("SELECT VehicleID, Imei, MaXe, BienSoXe, HangGPLX, Version, TrangThai, CreateDate, UpdateTime  FROM Vehicles ORDER BY BienSoXe ASC");
+            string query = string.Format("SELECT * FROM Vehicles ORDER BY BienSoXe ASC");
 
             DataTable dt = _db.QueryToDataTable(query);
 
             List<XeTapLai> lst = dt.AsEnumerable().Select(item => new XeTapLai
             {
-                VehicleID = (int)item["VehicleID"],
-                MaXe = item["MaXe"] == DBNull.Value ? "Null" : (string)item["MaXe"],
+                VehicleID = item.Field<int>("VehicleID"),
+                MaXe = item["MaXe"] == DBNull.Value ? "Null" : item.Field<string>("MaXe"),
+                SerialNumber = item["SerialNumber"] == DBNull.Value ? "Null" : item.Field<string>("SerialNumber"),
                 Imei = item["Imei"] == DBNull.Value ? "Null" : (string)item["Imei"],
                 BienSoXe = (string)item["BienSoXe"],
                 HangGPLX = (string)item["HangGPLX"],
                 Version = item["Version"] == DBNull.Value ? "Null" : (string)item["Version"],
-                TrangThai = (bool)item["TrangThai"],
+                TrangThai = (bool)item["Active"],
+                //Active = item.Field<bool>("Active"),
                 CreateDate = (DateTime)item["CreateDate"],
-                ThoiDiem = (DateTime)item["UpdateTime"]
+                ThoiDiem = (DateTime)item["UpdateTime"],
+
+                LoginCCCD = item.Field<bool>("allowLoginWithID"),
+                LoginOline = item.Field<bool>("bLoginOnline"),
+                ShowInfoClass = item.Field<bool>("bShowReportTraining"),
+                Accumulation = item.Field<bool>("bTichLuyPhienDangTap"),
+                CheckTeacher = item.Field<bool>("bCheckGiaoVienHuongDan"),
+                CheckCar = item.Field<bool>("bCheckXeDaoTao"),
+                CheckTimeTeacher = item.Field<bool>("bCheckTotalTimeTeacher24h"),
+                OptimizeFace = item.Field<bool>("bToiUuNhanDien")
             }).ToList();
 
             return lst;
         }
 
-        //public List<PhienHoc> LstPhienHocTheoXe(string biensoxe, string from, string to)
-        //{
-        //    string query = string.Format("SELECT CONCAT(gv.HoTenDem, ' ', gv.TenGV) AS HoTenGV, ph.NguoiLxID, hv.HoVaTen,kh.MaKH, kh.TenKH, ph.DiemDanhNguoiLxID, ph.BienSo, ph.Logout, ph.SendTongCuc, ph.ThoiDiem, ph.ThoiDiem_Logout, ROUND( ph.TongQuangDuongLD_Phien, 1) AS TongQuangDuongLD_Phien,  CONVERT(varchar,DATEADD(second,ph.TongThoiGianLD_Phien,0),108) AS TongThoiGianLD_Phien, TongThoiGianLD_Phien as dbTime, ph.SoLanNhanDien, ph.SoLanNhanDienThanhCong , ActivePhien, Note " +
-        //        "FROM DiemDanhNguoiLx AS ph, GiaoVien AS gv, NguoiLX AS hv, KhoaHoc AS kh " +
-        //        "WHERE ph.GiaoVienID = gv.GiaoVienID and ph.NguoiLxID = hv.NguoiLXID and hv.KhoaHocID = kh.KhoaHocID and ph.TongQuangDuongLD_Phien >= 1 and ph.BienSo = '{0}' and CONVERT(VARCHAR, ph.ThoiDiem, 112) >= '{1}' AND CONVERT(VARCHAR, ph.ThoiDiem, 112) <= '{2}' " +
-        //        "ORDER BY ThoiDiem", biensoxe, from, to);
-
-        //    DataTable dt = DataProviderDAT.Instance.ExecuteQuery(query);
-
-        //    List<PhienHoc> lst = new List<PhienHoc>();
-        //    foreach (DataRow item in dt.Rows)
-        //    {
-        //        PhienHoc hv = new PhienHoc(item);
-        //        lst.Add(hv);
-        //    }
-        //    return lst;
-        //}
-
-        public int UpdateXeTapLai(int vehicleId, string imei, XeTapLai xeTap)
+        public int UpdateXeTapLai(int vehicleId, string imei, XeTapLai xeTap, bool status)
         {
             string ngayCapGPXTL = xeTap.NgayCapGPXTL.ToString("yyyy-MM-dd 00:00:00");
             string ngayHHGPXTL = xeTap.NgayHHXTL.ToString("yyyy-MM-dd 00:00:00");
-            string query = string.Format("EXEC [dbo].[spUpdateXeTapLai] N'66015' , {0} , N'{1}' , N'{2}' ,N'{3}', N'{4}', 1 , {5} , N'{6}' , '{7}' , '{8}'",
-                vehicleId, xeTap.MaXe, xeTap.BienSoXe, xeTap.HangGPLX, imei, xeTap.NamSX, xeTap.SoGPXTL, ngayCapGPXTL, ngayHHGPXTL);
-            int result = _db.Execute(query);
+            string query = "EXEC [dbo].[spUpdateXeTapLai] @MaCSDT, @VehicleID, @MaXe, @BienSoXe, @HangGPLX, @Imei, @Active, @NamSX, @SoGPXTL, @NgayCapGPXTL, @NgayHHGPXTL";
+            int result = _db.Execute(query, new
+            {
+                MaCSDT = "66015",
+                VehicleID = vehicleId,
+                MaXe = xeTap.MaXe,
+                BienSoXe = xeTap.BienSoXe,
+                HangGPLX = xeTap.HangGPLX,
+                Imei = imei,
+                Active = status,
+                NamSX = xeTap.NamSX,
+                SoGPXTL = xeTap.SoGPXTL,
+                NgayCapGPXTL = ngayCapGPXTL,
+                NgayHHGPXTL = ngayHHGPXTL
+            });
             return result;
         }
 
@@ -380,17 +387,16 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = _db.QueryToDataTable(query);
 
-            List<KhoaHocDangDT> lst = new List<KhoaHocDangDT>();
-
-            lst = dt.AsEnumerable().Select(item => new KhoaHocDangDT
-            {
-                KhoaHocID = (int)(item["KhoaHocID"]),
-                MaKH = (string)(item)["MaKH"],
-                TenKH = (string)(item)["TenKH"],
-                HangDaoTao = (string)(item)["HangDaoTao"],
-                SoHVDuDK = item["SoHVDuDK"] == DBNull.Value ? 0 : (int)item["SoHVDuDK"],
-                TongHocVien = item["TongHocVien"] == DBNull.Value ? 0 : (int)(item["TongHocVien"])
-            }).OrderBy(x => x.TenKH).ToList();
+            List<KhoaHocDangDT> lst = dt.AsEnumerable()
+                .Select(item => new KhoaHocDangDT
+                {
+                    KhoaHocID = (int)(item["KhoaHocID"]),
+                    MaKH = (string)(item)["MaKH"],
+                    TenKH = (string)(item)["TenKH"],
+                    HangDaoTao = (string)(item)["HangDaoTao"],
+                    SoHVDuDK = item["SoHVDuDK"] == DBNull.Value ? 0 : (int)item["SoHVDuDK"],
+                    TongHocVien = item["TongHocVien"] == DBNull.Value ? 0 : (int)(item["TongHocVien"])
+                }).OrderBy(x => x.TenKH).ToList();
 
             return lst;
         }
@@ -719,12 +725,24 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = _db.QueryToDataTable(query);
 
-            List<PhienHoc> lst = new List<PhienHoc>();
-            foreach (DataRow item in dt.Rows)
+            List<PhienHoc> lst = dt.AsEnumerable().Select(item => new PhienHoc
             {
-                PhienHoc hv = new PhienHoc(item);
-                lst.Add(hv);
-            }
+                HoTenGV = (string)item["HoTenGV"],
+                NguoiLxID = (Int64)item["NguoiLxID"],
+                HoTenHV = (string)item["HoVaTen"],
+                TenKH = (string)item["TenKH"],
+                MaPhien = (Guid)item["DiemDanhNguoiLxID"],
+                BienSoXe = (string)item["BienSo"],
+                Time_LogIn = (DateTime)item["ThoiDiem"],
+                Time_LogOut = item["ThoiDiem_Logout"] == DBNull.Value ? DateTime.Now : (DateTime)item["ThoiDiem_Logout"],
+                QuangDuongPhien = item["TongQuangDuongLD_Phien"] == DBNull.Value ? 0 : (double)item["TongQuangDuongLD_Phien"],
+                ThoiGianPhien = item["TongThoiGianLD_Phien"] == DBNull.Value ? "" : (string)item["TongThoiGianLD_Phien"],
+                dbTime = item.Field<double>("dbTime"),
+                LogOut = (bool)item["LogOut"],
+                SendTongCuc = (bool)item["SendTongCuc"],
+                Note = item["GhiChu"] == DBNull.Value ? string.Empty : (string)item["GhiChu"]
+            }).ToList();
+
             return lst;
         }
 
@@ -841,7 +859,7 @@ namespace DrivingCenter.App.DAO
             _dbImg.Execute(query);
         }
 
-        public void InsertHinhDem (int khoaHocID, long nguoiLxID, string diemdanhnguoilxId, Guid historyId)
+        public void InsertHinhDem(int khoaHocID, long nguoiLxID, string diemdanhnguoilxId, Guid historyId)
         {
             string query = $@"
                 DECLARE @Image VARBINARY(MAX)
@@ -994,28 +1012,6 @@ namespace DrivingCenter.App.DAO
 
         #endregion
 
-        #region Kết Quả học lý thuyết
-        public List<NguoiLxInLT> GetAllNguoiLxByKhoaHoc(int khoahocId)
-        {
-            string query = $"SELECT KhoaHocID, TenKH, MaDK, NguoiLXID, HoVaTen, NgaySinh, GioiTinh, SoCMT, HangDaoTao, GiaoVienID FROM NguoiLX WHERE KhoaHocID =  {khoahocId}";
-            DataTable dt = _db.QueryToDataTable(query);
-
-            List<NguoiLxInLT> lst = dt.AsEnumerable().Select(item => new NguoiLxInLT
-            {
-                MaDK = item["MaDK"].ToString(),
-                TenKH = item["TenKH"].ToString(),
-                HoVaTen = item["HoVaTen"].ToString(),
-                NgaySinh = (DateTime)item["NgaySinh"],
-                GioiTinh = item["GioiTinh"].ToString(),
-                CCCD = item["SoCMT"].ToString(),
-                HangDT = item["HangDaoTao"].ToString(),
-                GiaoVienID = (int)item["GiaoVienID"],
-            }).ToList();
-            return lst;
-        }
-
-        #endregion
-
         #region Thông tin đào tạo chi tiết
 
         public DataTable GetResultNguoiLxByID(Int64 NguoiLxId)
@@ -1098,6 +1094,37 @@ namespace DrivingCenter.App.DAO
             {
                 return null;
             }
+        }
+
+
+
+        public bool AddGiaoVien(GiaoVienDto giaoVien)
+        {
+            string query = "EXEC [dbo].[spAddGiaoVien] @MaGV, @MaCSDT, @HoTenDem, @TenGV, @NgaySinh, @SoCMT, @HangGPLX, @SoDienThoai, @DiaChi, @MaCNDT, @MaTrinhDoHocVan, @MonGiangDay, @AnhChup";
+            var rs = _db.Execute(query, new
+            {
+                MaGV = giaoVien.MaGV,
+                MaCSDT = giaoVien.MaCSDT,
+                HoTenDem = giaoVien.HoTenDem,
+                TenGV = giaoVien.TenGV,
+                NgaySinh = giaoVien.NgaySinh,
+                SoCMT = giaoVien.SoCMT,
+                HangGPLX = giaoVien.HangGPLXDuocDT,
+                SoDienThoai = giaoVien.SoDienThoai,
+                DiaChi= giaoVien.DiaChi,
+                MaCNDT = giaoVien.MaCNDT,
+                MaTrinhDoHocVan = giaoVien.MaTrinhDoHocVan,
+                MonGiangDay = "",
+                AnhChup = (byte[])null
+            });
+
+            return rs > 0;
+        }
+
+        public void UpdateImeiSerial(string diemdanhnguoilxId)
+        {
+            string query = $"UPDATE DiemDanhNguoiLx SET serialNumber = 'C0166ECC81AA4C106456', imei = 'EMC865651046973859' WHERE DiemDanhNguoiLxID = '{diemdanhnguoilxId}'";
+            _db.Execute(query);
         }
     }
 }

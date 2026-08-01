@@ -1,6 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.Utils;
+﻿using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Grid;
 
 public static class GridHelper
 {

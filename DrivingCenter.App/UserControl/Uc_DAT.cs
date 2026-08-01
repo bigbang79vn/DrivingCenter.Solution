@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
+using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using DrivingCenter.App.Report;
@@ -167,6 +168,30 @@ namespace DrivingCenter.App.UserControl
             }
         }
 
+        private static void CheckOverlap<TKey>(IEnumerable<PhienHoc> data, Func<PhienHoc, TKey> keySelector, Dictionary<PhienHoc, HashSet<string>> errorMap, string message)
+        {
+            foreach (var grp in data.GroupBy(keySelector))
+            {
+                var sessions = grp.OrderBy(x => x.Time_LogIn).ToList();
+
+                for (int i = 0; i < sessions.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < sessions.Count; j++)
+                    {
+                        if (sessions[j].Time_LogIn >= sessions[i].Time_LogOut)
+                            break;
+
+                        if (sessions[i].Time_LogIn < sessions[j].Time_LogOut &&
+                            sessions[j].Time_LogIn < sessions[i].Time_LogOut)
+                        {
+                            errorMap[sessions[i]].Add(message);
+                            errorMap[sessions[j]].Add(message);
+                        }
+                    }
+                }
+            }
+        }
+
         public int ProcessPhienHoc(List<PhienHoc> lstPH)
         {
             int SendTC = 0;
@@ -203,6 +228,11 @@ namespace DrivingCenter.App.UserControl
                     }
                 }
             }
+
+            CheckOverlap(sortedList, x => x.NguoiLxID, errorMap, "Trùng học viên!");
+
+            CheckOverlap(sortedList, x => x.BienSoXe, errorMap, "Trùng xe!");
+
 
             // PASS 2: Các cảnh báo khác
             foreach (var item in sortedList)
@@ -359,7 +389,7 @@ namespace DrivingCenter.App.UserControl
 
             var diemdanhnguoilxId = gridView_PhienHoc.GetRowCellValue(focusedRowHandle, "MaPhien");
 
-            var result = XtraMessageBox.Show(string.Format("Sử dụng lại phiên học {0}?", diemdanhnguoilxId), "Thông báo", MessageBoxButtons.OKCancel);
+            var result = XtraMessageBox.Show(string.Format($"Sử dụng lại phiên học {diemdanhnguoilxId}?", "Thông báo", MessageBoxButtons.OKCancel));
             if (result == DialogResult.OK)
             {
                 _DAO.UnlockSession(diemdanhnguoilxId.ToString());
@@ -964,6 +994,41 @@ namespace DrivingCenter.App.UserControl
 
             frmQuaTrinhDaoTao f = new frmQuaTrinhDaoTao(maDK.ToString());
             f.ShowDialog();
+        }
+
+        private void gridControl_PhienHoc_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Kiểm tra chuột phải
+            if (e.Button == MouseButtons.Right)
+            {
+                // Kiểm tra tổ hợp Shift + Ctrl
+                if (Control.ModifierKeys == (Keys.Shift | Keys.Control))
+                {
+                    // Hiển thị các item ẩn
+                    menu_Phienhoc.Items["tstrip_UpdateImei"].Visible = true;
+                }
+                else
+                {
+                    // Ẩn các item ẩn khi không nhấn Shift + Ctrl
+                    menu_Phienhoc.Items["tstrip_UpdateImei"].Visible = false;
+                }
+
+                // Hiển thị ContextMenuStrip tại vị trí chuột
+                menu_Phienhoc.Show(gridControl_PhienHoc, e.Location);
+            }
+        }
+
+        private void tstrip_UpdateImei_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Cập nhật thông tin Imei + Serial cho phiên học này?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            {
+                var focusedRowHandle = gridView_PhienHoc.GetFocusedRow() as PhienHoc;
+                if (focusedRowHandle != null)
+                {
+                    _DAO.UpdateImeiSerial(focusedRowHandle.MaPhien.ToString());
+                    LoadPhienHoc();
+                }
+            }
         }
     }
 }
