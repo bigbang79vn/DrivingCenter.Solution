@@ -184,15 +184,17 @@
             // xrLabel9
             // 
             this.xrLabel9.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SoChungChi]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "\'Số: \' + [SoChungChi]")});
             this.xrLabel9.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(334.6252F, 121.7083F);
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(27.08333F, 121.7083F);
             this.xrLabel9.Multiline = true;
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(404.2914F, 23F);
+            this.xrLabel9.SizeF = new System.Drawing.SizeF(765.625F, 23F);
             this.xrLabel9.StylePriority.UseFont = false;
+            this.xrLabel9.StylePriority.UseTextAlignment = false;
             this.xrLabel9.Text = "xrLabel2";
+            this.xrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel8
             // 
@@ -253,7 +255,7 @@
             // xrLabel4
             // 
             this.xrLabel4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HangDT]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HangDtText]")});
             this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(519.5833F, 291.675F);
             this.xrLabel4.Multiline = true;

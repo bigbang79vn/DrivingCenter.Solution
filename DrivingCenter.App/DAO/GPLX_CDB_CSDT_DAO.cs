@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DrivingCenter.App.Common.Helper;
 using DrivingCenter.App.DataProvider;
+using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.DTO.GPLX;
 using DrivingCenter.App.Dtos.DAT;
 using DrivingCenter.App.Enums;
@@ -15,7 +16,7 @@ namespace DrivingCenter.App.DAO
     public class GPLX_CDB_CSDT_DAO
     {
         private readonly DbProvider _db = new DbProvider(DatabaseType.db_Gplx);
-        private readonly DbProvider _db_Cdb = new DbProvider(DatabaseType.db_Gplx_CDB);
+        private readonly DbProvider _db_Cdb = new DbProvider(DatabaseType.db_GplxCDB);
 
         public List<GiaoVienDto> GetAllGv()
         {
@@ -43,6 +44,30 @@ namespace DrivingCenter.App.DAO
 
             return lst;
         }
+        public List<XeTapLai> GetAllXeTapLai()
+        {
+            string query = $@"select * from tblXeTapLai";
+
+            DataTable dt = _db_Cdb.QueryToDataTable(query);
+
+            List<XeTapLai> lstXeTapLai = dt.AsEnumerable().Select(item => new XeTapLai
+            {
+                VehicleID = (int)item["ID"],
+                BienSoXe = (string)item["BienSoXe"],
+                MaXe = (string)item["MaXe"],
+                HangGPLX = (string)item["HangGPLX"],
+                NamSX = (int)item["NamSX"],
+                SoGPXTL = (string)item["SoGPXTL"],
+                NgayCapGPXTL = (DateTime)item["NgayCapGPXTL"],
+                NgayHHXTL = (DateTime)item["NgayHHGPXTL"],
+                ThanhLy = item["ThanhLy"] == DBNull.Value ? true : (bool)item["ThanhLy"],
+                ChuSoHuu = (string)item["ChuSoHuu"],
+                SuDungDen = item["DateUse"] == DBNull.Value ? null : (DateTime?)item["DateUse"],
+            }).ToList();
+
+            return lstXeTapLai;
+        }
+
         private static string GetLastValue(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -54,6 +79,7 @@ namespace DrivingCenter.App.DAO
                 ? value.Substring(index + 1).Trim()
                 : value.Trim();
         }
+
         public List<KhoaHoc> GetlstKh()
         {
             string query = @"SELECT 

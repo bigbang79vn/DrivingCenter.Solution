@@ -14,9 +14,7 @@ namespace DrivingCenter.App.DAO
 
         public List<KhoaHoc> GetAllKhoaHoc()
         {
-            string query = @"SELECT ID, MaKhoaHoc, Ten, NgayKhaiGiang, NgayBeGiang, HangDaoTao, Status, Year
-                FROM tblKhoaHoc 
-                ORDER BY MaKhoaHoc ASC";
+            string query = @"SELECT * FROM tblKhoaHoc ORDER BY MaKhoaHoc ASC";
 
             DataTable dt = _db.QueryToDataTable(query);
 
@@ -29,7 +27,7 @@ namespace DrivingCenter.App.DAO
                     NgayKhaiGiang = item.Field<DateTime>("NgayKhaiGiang"),
                     NgayBeGiang = item.Field<DateTime>("NgayBeGiang"),
                     HangDaoTao = item.Field<string>("HangDaoTao"),
-                    Status = item.Field<bool>("Status"),
+                    Status = item.Field<bool>("Type"),
                     Year = item.Field<int>("Year")
                 }).ToList();
 
@@ -70,13 +68,6 @@ namespace DrivingCenter.App.DAO
             }).ToList();
 
             return lstStudent;
-        }
-
-        public string CheckDK(string idhocvien)
-        {
-            string query = "spKTDieuKien @Id_HocVien = " + "'" + idhocvien + "'";
-            var getValue = _db.Execute(query);
-            return (getValue == null) ? string.Empty : getValue.ToString();
         }
 
         public List<Result> lstResultById(string idHocVien)
@@ -235,6 +226,7 @@ namespace DrivingCenter.App.DAO
                 return 0;
             }
         }
+
         public void UpdateBaiTap(Int64 ID, int IDBaiTap)
         {
             string query = $"UPDATE tblKetQuaTap SET ID_BaiTap = dbo.SetEcoString(N'csdt@66015','{IDBaiTap}') WHERE ID = '{ID}'";
@@ -285,7 +277,7 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateKhoaHoc(int id, string Ten, string hangdaotao, int status)
         {
-            string query = $"Update tblKhoaHoc set Ten = N'{Ten}', HangDaoTao = N'{hangdaotao}', HangGPLX = N'{hangdaotao}', Status = {status} where ID = {id}";
+            string query = $"Update tblKhoaHoc set Ten = N'{Ten}', HangDaoTao = N'{hangdaotao}', HangGPLX = N'{hangdaotao}', Type = {status} where ID = {id}";
             _db.Execute(query);
         }
         public List<ThongKe> LstThongKe(string day)

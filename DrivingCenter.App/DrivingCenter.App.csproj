@@ -671,6 +671,12 @@
     <Compile Include="UserControl\Uc_CabinEMC.Designer.cs">
       <DependentUpon>Uc_CabinEMC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\UcChild_KhoaHoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcChild_KhoaHoc.Designer.cs">
+      <DependentUpon>UcChild_KhoaHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_DAT.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -700,6 +706,12 @@
     </Compile>
     <Compile Include="UserControl\Uc_DaoTao.Designer.cs">
       <DependentUpon>Uc_DaoTao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Uc_PhanCongDAT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Uc_PhanCongDAT.Designer.cs">
+      <DependentUpon>Uc_PhanCongDAT.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Uc_Print.cs">
       <SubType>UserControl</SubType>
@@ -839,6 +851,9 @@
     <EmbeddedResource Include="UserControl\Uc_CabinEMC.resx">
       <DependentUpon>Uc_CabinEMC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcChild_KhoaHoc.resx">
+      <DependentUpon>UcChild_KhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_DAT.resx">
       <DependentUpon>Uc_DAT.cs</DependentUpon>
     </EmbeddedResource>
@@ -853,6 +868,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_DaoTao.resx">
       <DependentUpon>Uc_DaoTao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Uc_PhanCongDAT.resx">
+      <DependentUpon>Uc_PhanCongDAT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_Print.resx">
       <DependentUpon>Uc_Print.cs</DependentUpon>

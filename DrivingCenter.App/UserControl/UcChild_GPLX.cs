@@ -178,7 +178,7 @@ namespace DrivingCenter.App.UserControl
                         nlx.ChiTiet_CT = "";
                         nlx.SoNamLX = 0;
                         nlx.SoKmLX = 0;
-                        nlx.GiayTo = "1,2,3";
+                        nlx.GiayTo = "1,2,3,";
                         nlx.SoGPLXDaCo = dt.Rows[i]["SoGPLXDaCo"].ToString();
                         nlx.HangGPLXDaCo = dt.Rows[i]["HangGPLXDaCo"].ToString();
                         nlx.NgayTTGPLXDaCo = dt.Rows[i]["NgayTTGPLXDaCo"].ToString();
@@ -192,7 +192,6 @@ namespace DrivingCenter.App.UserControl
 
                         lstNguoiLX.Add(nlx);
                     }
-                    #endregion
 
                     try
                     {
@@ -228,6 +227,7 @@ namespace DrivingCenter.App.UserControl
                 }
             }
         }
+        #endregion
         #region Update Result Graduate
 
         private void btn_ReadDataUpdate_Click(object sender, EventArgs e)
@@ -278,6 +278,7 @@ namespace DrivingCenter.App.UserControl
         {
             dt = tableCollection[cbb_SheetDataUpdate.SelectedItem.ToString()];
             gridControl_UpdateResult.DataSource = dt;
+            GridHelper.EnableRowNumbering(gridView_UpdateResult);
         }
 
         private void dtp_NgayQD_EditValueChanged(object sender, EventArgs e)

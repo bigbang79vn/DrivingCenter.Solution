@@ -16,7 +16,7 @@ namespace DrivingCenter.App.UserControl
     public partial class UcChild_KhoaHoc_PhanCong : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly AppBee_DAO _DAO = new AppBee_DAO();
-        private readonly GPLX_DAO GPLX_DAO = new GPLX_DAO();
+        private readonly GPLX_DAO _DAO_Gplx = new GPLX_DAO();
         public UcChild_KhoaHoc_PhanCong()
         {
             InitializeComponent();
@@ -41,19 +41,9 @@ namespace DrivingCenter.App.UserControl
         private string MaKhDuKien;
         private int? currentGiaoVienId = null; // Biến lưu giáo viên đang focus
 
-        //private void GetKhoaHocDuKien()
-        //{
-        //    List<KhoaHocGPLX> lst = GPLX_DAO.GetlstKH();
-        //    cbb_KhoaHocDuKien.Properties.DataSource = lst;
-        //    cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKHGplx";
-        //    cbb_KhoaHocDuKien.Properties.ValueMember = "MaKHGplx";
-
-        //    if (lst.Count > 0) cbb_KhoaHocDuKien.EditValue = lst[0].MaKHGplx;
-        //}
-
         private void GetAllKhoaHoc()
         {
-            List<DTO.GPLX.KhoaHoc> lst = GPLX_DAO.GetAllKhoaHoc();
+            List<DTO.GPLX.KhoaHoc> lst = _DAO_Gplx.GetAllKhoaHoc();
             cbb_KhoaHocDuKien.Properties.DataSource = lst;
             cbb_KhoaHocDuKien.Properties.DisplayMember = "TenKH";
             cbb_KhoaHocDuKien.Properties.ValueMember = "MaKH";
@@ -117,7 +107,7 @@ namespace DrivingCenter.App.UserControl
         {
             if (!string.IsNullOrEmpty(MaKhDuKien))
             {
-                row = GPLX_DAO.KhoaHocSelected(MaKhDuKien);
+                row = _DAO_Gplx.KhoaHocSelected(MaKhDuKien);
                 txt_MaKH.Text = row["MaKH"].ToString();
 
                 txt_TenKH.Text = row["TenKH"].ToString();

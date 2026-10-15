@@ -26,8 +26,6 @@ namespace DrivingCenter.App.UserControl
         {
             InitializeComponent();
 
-            tblLayout_ImportData.Dock = DockStyle.Fill;
-            panel_Right.Dock = DockStyle.Fill;
             xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
 
             LoadCategory();
@@ -35,16 +33,9 @@ namespace DrivingCenter.App.UserControl
             LoadGiaoVien();
         }
 
-        private bool isCollapsed;
         int MonthId = 0;
         int KhoaHocId;
         object TenKhoaHoc;
-        private void tileBar_SelectedItemChanged(object sender, TileItemEventArgs e)
-        {
-            navigationFrame.SelectedPageIndex = tileBarGroupTables.Items.IndexOf(e.Item);
-        }
-
-        #region Đào Tạo
 
         private void LoadCategory()
         {
@@ -52,7 +43,7 @@ namespace DrivingCenter.App.UserControl
 
             var filteredData = dt.AsEnumerable()
                 .Where(row => row.Field<int>("Level") != 0)
-                .OrderBy(row => row.Field<int>("MonthID"))
+                .OrderByDescending(row => row.Field<int>("MonthID"))
                 .CopyToDataTable();
 
             treeList_Category.DataSource = filteredData;
@@ -117,106 +108,6 @@ namespace DrivingCenter.App.UserControl
             f.Show();
         }
 
-        private void gridView_DanhSachHocVien_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
-            //_DAO.UpdateXeTapB11(rowData);
-        }
-
-        #endregion
-
-        #region Phân công đào tạo
-
-        public DataTableCollection tableCollection;
-        private void btn_ReadData_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls;*.xlsx" })
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    txtFilePath.Text = openFileDialog.FileName;
-
-                    //System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
-                    using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
-                        {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
-                            {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
-                            });
-                            tableCollection = result.Tables;
-                            cb_SheetData.Items.Clear();
-
-                            XtraMessageBox.Show("Chọn Sheet chứa thông tin học viên cần phân công", "Thông báo", MessageBoxButtons.OK);
-
-                            foreach (DataTable table in tableCollection)
-                            {
-                                cb_SheetData.Items.Add(table.TableName);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void cb_SheetData_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DataTable dt = tableCollection[cb_SheetData.SelectedItem.ToString()];
-            grdCtrl_ImportData.DataSource = dt;
-        }
-
-        private void btn_Import_Click(object sender, EventArgs e)
-        {
-            if (cb_SheetData.SelectedItem == null)
-            {
-                XtraMessageBox.Show(string.Format("Bạn chưa chọn Sheet chứa Data!"));
-                cb_SheetData.Focus();
-            }
-            else
-            {
-                DataTable dt = tableCollection[cb_SheetData.SelectedItem.ToString()];
-                List<AssignmentGV> lst = new List<AssignmentGV>();
-
-                if (dt != null)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        AssignmentGV asg = new AssignmentGV();
-                        asg.GiaoVien = dt.Rows[i]["GiaoVien"].ToString().Trim();
-                        asg.TenGV = asg.GiaoVien.Substring(asg.GiaoVien.Trim().LastIndexOf(' ') + 1);
-                        int lastIndex = asg.GiaoVien.LastIndexOf(' ');
-                        asg.HoTenDem = asg.GiaoVien.Trim().Substring(0, lastIndex);
-                        asg.MaDK = dt.Rows[i]["MaDK"].ToString().Trim();
-                        asg.BienSoXe = dt.Rows[i]["BienSoXe"].ToString().Trim();
-                        asg.MaXeTap = asg.BienSoXe.Replace(" ", "").Replace(".", "").Replace("-", "");
-
-                        lst.Add(asg);
-                    }
-                }
-                try
-                {
-                    DialogResult dialogResult = XtraMessageBox.Show("Phân công đào tạo dựa vào danh sách?", "Thông Báo", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        foreach (var item in lst)
-                        {
-                            _DAO.Assignment(item);
-                        }
-                        XtraMessageBox.Show(string.Format("Hoàn thành phân công đào tạo khóa {0}", cb_SheetData.SelectedIndex.ToString()), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
-        #endregion
-
         private void gridView_DanhSachHocVien_DoubleClick(object sender, EventArgs e)
         {
             NguoiLxInDAT rowData = gridView_DanhSachHocVien.GetFocusedRow() as NguoiLxInDAT;
@@ -275,25 +166,7 @@ namespace DrivingCenter.App.UserControl
         {
 
         }
-        private void btn_LoadKhoaHoc_Click(object sender, EventArgs e)
-        {
-            LoadCategory();
-        }
-        private void btn_Extend_Click(object sender, EventArgs e)
-        {
-            if (isCollapsed)
-            {
-                PanelLeft.Width = PanelLeft.Width + 234;
-                isCollapsed = false;
-                this.Refresh();
-            }
-            else
-            {
-                PanelLeft.Width = PanelLeft.Width - 234;
-                isCollapsed = true;
-                this.Refresh();
-            }
-        }
+
         private void btn_ExportResultToExcel_Click(object sender, EventArgs e)
         {
             string fileName = $"Danh-Sach-{TenKhoaHoc}.xlsx";
@@ -314,14 +187,7 @@ namespace DrivingCenter.App.UserControl
                 TenKhoaHoc = treeList_Category.FocusedNode.GetValue("Name");
 
                 object IDKhoaHoc = treeList_Category.FocusedNode.GetValue("KhoaHocID");
-                if (IDKhoaHoc == DBNull.Value)
-                {
-                    lb_KetquaKh.Text = TenKhoaHoc.ToString();
-                }
-                else
-                {
-                    lb_KetquaKh.Text = "KHÓA HỌC " + TenKhoaHoc.ToString();
-                }
+
                 LoadDanhSachHocVien((int)KhoaHocId);
                 xtraTabControl.SelectedTabPage = xtraTabPage_LstHocVien;
             }
@@ -337,5 +203,13 @@ namespace DrivingCenter.App.UserControl
         }
 
         #endregion
+
+        private void groupControl1_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            if (e.Button.Properties.Caption == "Load")
+            {
+                LoadCategory();
+            }
+        }
     }
 }

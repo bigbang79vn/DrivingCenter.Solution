@@ -1,10 +1,6 @@
 ﻿using DrivingCenter.App.Common;
 using DrivingCenter.App.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DataProvider
 {
@@ -18,7 +14,7 @@ namespace DrivingCenter.App.DataProvider
             { DatabaseType.db_DatImg, AppConstants.connectionStringDatImg },
             { DatabaseType.db_CaBinEMC, AppConstants.connectionStringCaBinEMC },
             { DatabaseType.db_CabinEco, AppConstants.connectionStringCabinEco },
-            { DatabaseType.db_Gplx_CDB, AppConstants.connectionStringGplx_CDB },
+            { DatabaseType.db_GplxCDB, AppConstants.connectionStringGplx_CDB },
             { DatabaseType.db_BeeSolution, AppConstants.connectionStringApp }
         };
 

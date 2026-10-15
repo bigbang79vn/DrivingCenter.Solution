@@ -1,5 +1,4 @@
-﻿using DevExpress.DataProcessing;
-using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.Common;
@@ -12,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DAO
@@ -254,7 +254,7 @@ namespace DrivingCenter.App.DAO
                 HangGPLX = (string)item["HangGPLX"],
                 Version = item["Version"] == DBNull.Value ? "Null" : (string)item["Version"],
                 TrangThai = (bool)item["Active"],
-                //Active = item.Field<bool>("Active"),
+                //Active = item.Field<bool>("TrangThai"),
                 CreateDate = (DateTime)item["CreateDate"],
                 ThoiDiem = (DateTime)item["UpdateTime"],
 
@@ -271,11 +271,11 @@ namespace DrivingCenter.App.DAO
             return lst;
         }
 
-        public int UpdateXeTapLai(int vehicleId, string imei, XeTapLai xeTap, bool status)
+        public int UpdateXeTapLai(int vehicleId, string imei, XeTapLai xeTap, bool status, bool loginCCCD)
         {
             string ngayCapGPXTL = xeTap.NgayCapGPXTL.ToString("yyyy-MM-dd 00:00:00");
             string ngayHHGPXTL = xeTap.NgayHHXTL.ToString("yyyy-MM-dd 00:00:00");
-            string query = "EXEC [dbo].[spUpdateXeTapLai] @MaCSDT, @VehicleID, @MaXe, @BienSoXe, @HangGPLX, @Imei, @Active, @NamSX, @SoGPXTL, @NgayCapGPXTL, @NgayHHGPXTL";
+            string query = "EXEC [dbo].[spAlterVehicle] @MaCSDT, @VehicleID, @MaXe, @BienSoXe, @HangGPLX, @Imei, @Active, @NamSX, @SoGPXTL, @NgayCapGPXTL, @NgayHHGPXTL, @LoginCCCD";
             int result = _db.Execute(query, new
             {
                 MaCSDT = "66015",
@@ -288,7 +288,8 @@ namespace DrivingCenter.App.DAO
                 NamSX = xeTap.NamSX,
                 SoGPXTL = xeTap.SoGPXTL,
                 NgayCapGPXTL = ngayCapGPXTL,
-                NgayHHGPXTL = ngayHHGPXTL
+                NgayHHGPXTL = ngayHHGPXTL,
+                LoginCCCD = loginCCCD
             });
             return result;
         }
@@ -314,6 +315,13 @@ namespace DrivingCenter.App.DAO
         {
             string query = string.Format("UPDATE DiemDanhNguoiLx set GhiChu = NULL, ActivePhien = 1 WHERE DiemDanhNguoiLxID = '{0}'", diemdanhnguoilxId);
             _db.Execute(query);
+        }
+
+        public bool OptimizeTime(Int64 nguoilxId, string diemdanhnguoilxId)
+        {
+            string query = "EXEC [dbo].[spOptimizeTimeSession] @NguoiLxID , @DiemDanhNguoiLxID";
+            int result = _db.Execute(query, new { NguoiLxID = nguoilxId, DiemDanhNguoiLxID = diemdanhnguoilxId });
+            return result > 0;
         }
         private async Task SafeExecuteAsync(string query)
         {
@@ -873,7 +881,7 @@ namespace DrivingCenter.App.DAO
                 
                 SET @LengthImage = DATALENGTH(@Image)
 
-                EXEC spAddNguoiLxFace 
+                EXEC dbo.spAddFace 
                     N'66015',
                     {khoaHocID},
                     {nguoiLxID},
@@ -882,7 +890,7 @@ namespace DrivingCenter.App.DAO
                     @Image,
                     @LengthImage
                 ";
-            _dbImg.Execute(query);
+            _db.Execute(query);
         }
 
         #endregion DAT
@@ -1053,6 +1061,13 @@ namespace DrivingCenter.App.DAO
 
         #endregion
 
+        public List<Guid> CheckHighWay()
+        {
+            string query = "EXEC sp_CheckPhienDiQuaFixedLocation";
+
+            List<Guid> list = new List<Guid>();
+            return list;    
+        }
         public List<Guid> CheckMapOut(DateTime fromDay, DateTime toDay)
         {
             string query = $@"DECLARE @Boundary GEOMETRY = ( SELECT BoundaryUnion FROM ProvinceBoundaryUnion);

@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using DevExpress.XtraRichEdit.Layout;
 using DrivingCenter.App.DataProvider;
 using DrivingCenter.App.DTO.GPLX;
 using System;

@@ -11,6 +11,7 @@ namespace DrivingCenter.App.DAO
     public class AppBee_DAO
     {
         private static DbProvider _db = new DbProvider(Enums.DatabaseType.db_BeeSolution);
+        private static DbProvider _dbgplx = new DbProvider(Enums.DatabaseType.db_GplxCDB);
 
         #region Giáo Viên
         public List<GiaoVien> GetAllGV()

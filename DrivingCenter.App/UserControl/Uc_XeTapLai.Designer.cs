@@ -30,11 +30,11 @@ namespace DrivingCenter.App.UserControl
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_XeTapLai));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions11 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions12 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions13 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions14 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions15 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.gridControl_XeTapLai = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -46,6 +46,7 @@ namespace DrivingCenter.App.UserControl
             this.HangGPLX = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.Version = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.TrangThai = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_ToggleStatus = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
             this.CreateDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ThoiDiem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -57,7 +58,6 @@ namespace DrivingCenter.App.UserControl
             this.CheckCar = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.CheckTimeTeacher = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.OptimizeFace = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.check_Status = new DevExpress.XtraEditors.CheckEdit();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_Version = new DevExpress.XtraEditors.TextEdit();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,7 +69,10 @@ namespace DrivingCenter.App.UserControl
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.tog_Active = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tog_Status = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tog_LoginCCCD = new DevExpress.XtraEditors.ToggleSwitch();
             this.txt_HangXe = new DevExpress.XtraEditors.TextEdit();
             this.cbb_XeTapLai = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -82,9 +85,10 @@ namespace DrivingCenter.App.UserControl
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.check_Status.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_ToggleStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Version.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapNhat.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapNhat.Properties)).BeginInit();
@@ -92,7 +96,10 @@ namespace DrivingCenter.App.UserControl
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tog_Active.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tog_Status.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tog_LoginCCCD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_HangXe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_XeTapLai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -104,6 +111,8 @@ namespace DrivingCenter.App.UserControl
             this.gridControl_XeTapLai.Location = new System.Drawing.Point(2, 43);
             this.gridControl_XeTapLai.MainView = this.bandedGridView;
             this.gridControl_XeTapLai.Name = "gridControl_XeTapLai";
+            this.gridControl_XeTapLai.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repo_ToggleStatus});
             this.gridControl_XeTapLai.Size = new System.Drawing.Size(1132, 749);
             this.gridControl_XeTapLai.TabIndex = 0;
             this.gridControl_XeTapLai.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -175,7 +184,7 @@ namespace DrivingCenter.App.UserControl
             this.gridBand1.Columns.Add(this.ThoiDiem);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 667;
+            this.gridBand1.Width = 723;
             // 
             // VehicleID
             // 
@@ -189,7 +198,7 @@ namespace DrivingCenter.App.UserControl
             this.SerialNumber.FieldName = "SerialNumber";
             this.SerialNumber.Name = "SerialNumber";
             this.SerialNumber.Visible = true;
-            this.SerialNumber.Width = 110;
+            this.SerialNumber.Width = 125;
             // 
             // Imei
             // 
@@ -197,7 +206,7 @@ namespace DrivingCenter.App.UserControl
             this.Imei.FieldName = "Imei";
             this.Imei.Name = "Imei";
             this.Imei.Visible = true;
-            this.Imei.Width = 109;
+            this.Imei.Width = 106;
             // 
             // MaXe
             // 
@@ -212,7 +221,7 @@ namespace DrivingCenter.App.UserControl
             this.BienSoXe.FieldName = "BienSoXe";
             this.BienSoXe.Name = "BienSoXe";
             this.BienSoXe.Visible = true;
-            this.BienSoXe.Width = 79;
+            this.BienSoXe.Width = 83;
             // 
             // HangGPLX
             // 
@@ -220,7 +229,7 @@ namespace DrivingCenter.App.UserControl
             this.HangGPLX.FieldName = "HangGPLX";
             this.HangGPLX.Name = "HangGPLX";
             this.HangGPLX.Visible = true;
-            this.HangGPLX.Width = 57;
+            this.HangGPLX.Width = 54;
             // 
             // Version
             // 
@@ -228,15 +237,23 @@ namespace DrivingCenter.App.UserControl
             this.Version.FieldName = "Version";
             this.Version.Name = "Version";
             this.Version.Visible = true;
-            this.Version.Width = 72;
+            this.Version.Width = 81;
             // 
             // TrangThai
             // 
             this.TrangThai.Caption = "Trạng Thái";
+            this.TrangThai.ColumnEdit = this.repo_ToggleStatus;
             this.TrangThai.FieldName = "TrangThai";
             this.TrangThai.Name = "TrangThai";
             this.TrangThai.Visible = true;
-            this.TrangThai.Width = 49;
+            this.TrangThai.Width = 65;
+            // 
+            // repo_ToggleStatus
+            // 
+            this.repo_ToggleStatus.AutoHeight = false;
+            this.repo_ToggleStatus.Name = "repo_ToggleStatus";
+            this.repo_ToggleStatus.OffText = "Off";
+            this.repo_ToggleStatus.OnText = "On";
             // 
             // CreateDate
             // 
@@ -244,7 +261,7 @@ namespace DrivingCenter.App.UserControl
             this.CreateDate.FieldName = "CreateDate";
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Visible = true;
-            this.CreateDate.Width = 73;
+            this.CreateDate.Width = 86;
             // 
             // ThoiDiem
             // 
@@ -254,7 +271,7 @@ namespace DrivingCenter.App.UserControl
             this.ThoiDiem.FieldName = "ThoiDiem";
             this.ThoiDiem.Name = "ThoiDiem";
             this.ThoiDiem.Visible = true;
-            this.ThoiDiem.Width = 118;
+            this.ThoiDiem.Width = 123;
             // 
             // gridBand2
             // 
@@ -269,7 +286,7 @@ namespace DrivingCenter.App.UserControl
             this.gridBand2.Columns.Add(this.OptimizeFace);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 422;
+            this.gridBand2.Width = 386;
             // 
             // LoginCCCD
             // 
@@ -279,7 +296,7 @@ namespace DrivingCenter.App.UserControl
             this.LoginCCCD.FieldName = "LoginCCCD";
             this.LoginCCCD.Name = "LoginCCCD";
             this.LoginCCCD.Visible = true;
-            this.LoginCCCD.Width = 50;
+            this.LoginCCCD.Width = 48;
             // 
             // LoginOline
             // 
@@ -289,7 +306,7 @@ namespace DrivingCenter.App.UserControl
             this.LoginOline.FieldName = "LoginOline";
             this.LoginOline.Name = "LoginOline";
             this.LoginOline.Visible = true;
-            this.LoginOline.Width = 50;
+            this.LoginOline.Width = 48;
             // 
             // ShowInfoClass
             // 
@@ -299,7 +316,7 @@ namespace DrivingCenter.App.UserControl
             this.ShowInfoClass.FieldName = "ShowInfoClass";
             this.ShowInfoClass.Name = "ShowInfoClass";
             this.ShowInfoClass.Visible = true;
-            this.ShowInfoClass.Width = 50;
+            this.ShowInfoClass.Width = 48;
             // 
             // Accumulation
             // 
@@ -309,7 +326,7 @@ namespace DrivingCenter.App.UserControl
             this.Accumulation.FieldName = "Accumulation";
             this.Accumulation.Name = "Accumulation";
             this.Accumulation.Visible = true;
-            this.Accumulation.Width = 50;
+            this.Accumulation.Width = 48;
             // 
             // CheckTeacher
             // 
@@ -319,7 +336,7 @@ namespace DrivingCenter.App.UserControl
             this.CheckTeacher.FieldName = "CheckTeacher";
             this.CheckTeacher.Name = "CheckTeacher";
             this.CheckTeacher.Visible = true;
-            this.CheckTeacher.Width = 50;
+            this.CheckTeacher.Width = 48;
             // 
             // CheckCar
             // 
@@ -329,7 +346,7 @@ namespace DrivingCenter.App.UserControl
             this.CheckCar.FieldName = "CheckCar";
             this.CheckCar.Name = "CheckCar";
             this.CheckCar.Visible = true;
-            this.CheckCar.Width = 50;
+            this.CheckCar.Width = 48;
             // 
             // CheckTimeTeacher
             // 
@@ -339,7 +356,7 @@ namespace DrivingCenter.App.UserControl
             this.CheckTimeTeacher.FieldName = "CheckTimeTeacher";
             this.CheckTimeTeacher.Name = "CheckTimeTeacher";
             this.CheckTimeTeacher.Visible = true;
-            this.CheckTimeTeacher.Width = 50;
+            this.CheckTimeTeacher.Width = 48;
             // 
             // OptimizeFace
             // 
@@ -349,20 +366,7 @@ namespace DrivingCenter.App.UserControl
             this.OptimizeFace.FieldName = "OptimizeFace";
             this.OptimizeFace.Name = "OptimizeFace";
             this.OptimizeFace.Visible = true;
-            this.OptimizeFace.Width = 72;
-            // 
-            // check_Status
-            // 
-            this.check_Status.Location = new System.Drawing.Point(127, 202);
-            this.check_Status.Name = "check_Status";
-            this.check_Status.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_Status.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.check_Status.Properties.Appearance.Options.UseFont = true;
-            this.check_Status.Properties.Appearance.Options.UseForeColor = true;
-            this.check_Status.Properties.Caption = "Trạng Thái";
-            this.check_Status.Properties.ReadOnly = true;
-            this.check_Status.Size = new System.Drawing.Size(203, 22);
-            this.check_Status.TabIndex = 34;
+            this.OptimizeFace.Width = 50;
             // 
             // label9
             // 
@@ -385,6 +389,7 @@ namespace DrivingCenter.App.UserControl
             this.txt_Version.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_Version.Properties.AutoHeight = false;
             this.txt_Version.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txt_Version.Properties.ReadOnly = true;
             this.txt_Version.Size = new System.Drawing.Size(210, 23);
             this.txt_Version.TabIndex = 41;
             // 
@@ -463,6 +468,7 @@ namespace DrivingCenter.App.UserControl
             this.txt_Imei.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_Imei.Properties.AutoHeight = false;
             this.txt_Imei.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txt_Imei.Properties.ReadOnly = true;
             this.txt_Imei.Size = new System.Drawing.Size(210, 23);
             this.txt_Imei.TabIndex = 39;
             // 
@@ -483,7 +489,7 @@ namespace DrivingCenter.App.UserControl
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 358F));
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelRight, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -504,27 +510,62 @@ namespace DrivingCenter.App.UserControl
             this.groupControl1.TabIndex = 42;
             this.groupControl1.Text = "Danh sách thiết bị xe tập lái";
             // 
-            // panel1
+            // panelRight
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
-            this.panel1.Controls.Add(this.txt_Imei);
-            this.panel1.Controls.Add(this.txt_HangXe);
-            this.panel1.Controls.Add(this.txt_Version);
-            this.panel1.Controls.Add(this.cbb_XeTapLai);
-            this.panel1.Controls.Add(this.date_NgayCapNhat);
-            this.panel1.Controls.Add(this.windowsUIButtonPanel);
-            this.panel1.Controls.Add(this.check_Status);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(1145, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 794);
-            this.panel1.TabIndex = 1;
+            this.panelRight.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelRight.Controls.Add(this.tog_Active);
+            this.panelRight.Controls.Add(this.tog_Status);
+            this.panelRight.Controls.Add(this.tog_LoginCCCD);
+            this.panelRight.Controls.Add(this.txt_Imei);
+            this.panelRight.Controls.Add(this.txt_HangXe);
+            this.panelRight.Controls.Add(this.txt_Version);
+            this.panelRight.Controls.Add(this.cbb_XeTapLai);
+            this.panelRight.Controls.Add(this.date_NgayCapNhat);
+            this.panelRight.Controls.Add(this.windowsUIButtonPanel);
+            this.panelRight.Controls.Add(this.label3);
+            this.panelRight.Controls.Add(this.label1);
+            this.panelRight.Controls.Add(this.label9);
+            this.panelRight.Controls.Add(this.label4);
+            this.panelRight.Controls.Add(this.label7);
+            this.panelRight.Controls.Add(this.label5);
+            this.panelRight.Controls.Add(this.label6);
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRight.Location = new System.Drawing.Point(1145, 3);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(352, 794);
+            this.panelRight.TabIndex = 1;
+            // 
+            // tog_Active
+            // 
+            this.tog_Active.Location = new System.Drawing.Point(235, 206);
+            this.tog_Active.Name = "tog_Active";
+            this.tog_Active.Properties.OffText = "Disable";
+            this.tog_Active.Properties.OnText = "Active";
+            this.tog_Active.Properties.ReadOnly = true;
+            this.tog_Active.Size = new System.Drawing.Size(95, 18);
+            this.tog_Active.TabIndex = 43;
+            // 
+            // tog_Status
+            // 
+            this.tog_Status.Location = new System.Drawing.Point(120, 206);
+            this.tog_Status.Name = "tog_Status";
+            this.tog_Status.Properties.OffText = "Off";
+            this.tog_Status.Properties.OnText = "On";
+            this.tog_Status.Properties.ReadOnly = true;
+            this.tog_Status.Size = new System.Drawing.Size(95, 18);
+            this.tog_Status.TabIndex = 43;
+            // 
+            // tog_LoginCCCD
+            // 
+            this.tog_LoginCCCD.Location = new System.Drawing.Point(120, 240);
+            this.tog_LoginCCCD.Name = "tog_LoginCCCD";
+            this.tog_LoginCCCD.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.tog_LoginCCCD.Properties.Appearance.Options.UseForeColor = true;
+            this.tog_LoginCCCD.Properties.OffText = "Off";
+            this.tog_LoginCCCD.Properties.OnText = "On";
+            this.tog_LoginCCCD.Properties.ReadOnly = true;
+            this.tog_LoginCCCD.Size = new System.Drawing.Size(95, 18);
+            this.tog_LoginCCCD.TabIndex = 42;
             // 
             // txt_HangXe
             // 
@@ -536,6 +577,7 @@ namespace DrivingCenter.App.UserControl
             this.txt_HangXe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txt_HangXe.Properties.AutoHeight = false;
             this.txt_HangXe.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txt_HangXe.Properties.ReadOnly = true;
             this.txt_HangXe.Size = new System.Drawing.Size(210, 23);
             this.txt_HangXe.TabIndex = 40;
             // 
@@ -681,19 +723,19 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions11.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions11.Image")));
-            windowsUIButtonImageOptions12.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions12.Image")));
-            windowsUIButtonImageOptions12.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions13.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions13.Image")));
-            windowsUIButtonImageOptions14.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions14.Image")));
-            windowsUIButtonImageOptions15.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions15.Image")));
-            windowsUIButtonImageOptions15.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions1.Image")));
+            windowsUIButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions2.Image")));
+            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions3.Image")));
+            windowsUIButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions4.Image")));
+            windowsUIButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions5.Image")));
+            windowsUIButtonImageOptions5.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
             this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Update", true, windowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions13, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Export", true, windowsUIButtonImageOptions14, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions15, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Update", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Undo", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Export", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
@@ -708,6 +750,17 @@ namespace DrivingCenter.App.UserControl
             this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
             this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(18, 239);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 18);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Login CCCD";
+            // 
             // Uc_XeTapLai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,7 +771,7 @@ namespace DrivingCenter.App.UserControl
             this.Load += new System.EventHandler(this.Uc_XeTapLai_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.check_Status.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_ToggleStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Version.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapNhat.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapNhat.Properties)).EndInit();
@@ -726,8 +779,11 @@ namespace DrivingCenter.App.UserControl
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelRight.ResumeLayout(false);
+            this.panelRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tog_Active.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tog_Status.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tog_LoginCCCD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_HangXe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbb_XeTapLai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -737,7 +793,6 @@ namespace DrivingCenter.App.UserControl
 
         #endregion
         private DevExpress.XtraGrid.GridControl gridControl_XeTapLai;
-        private DevExpress.XtraEditors.CheckEdit check_Status;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private DevExpress.XtraEditors.DateEdit date_NgayCapNhat;
@@ -746,7 +801,7 @@ namespace DrivingCenter.App.UserControl
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelRight;
         private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel;
         private DevExpress.XtraEditors.SearchLookUpEdit cbb_XeTapLai;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
@@ -762,7 +817,6 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraEditors.TextEdit txt_Version;
         private DevExpress.XtraEditors.TextEdit txt_HangXe;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn VehicleID;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn SerialNumber;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn Imei;
@@ -773,7 +827,6 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TrangThai;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn CreateDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ThoiDiem;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn LoginCCCD;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn LoginOline;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ShowInfoClass;
@@ -783,5 +836,12 @@ namespace DrivingCenter.App.UserControl
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn CheckTimeTeacher;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn OptimizeFace;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.ToggleSwitch tog_LoginCCCD;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch repo_ToggleStatus;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraEditors.ToggleSwitch tog_Status;
+        private DevExpress.XtraEditors.ToggleSwitch tog_Active;
     }
 }

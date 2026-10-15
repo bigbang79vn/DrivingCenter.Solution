@@ -3,7 +3,6 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using DrivingCenter.App.DAO;
-using DrivingCenter.App.DTO.Cabin;
 using DrivingCenter.App.DTO.DAT;
 using DrivingCenter.App.Helper;
 using DrivingCenter.App.Report;
@@ -11,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -282,22 +282,41 @@ namespace DrivingCenter.App.UserControl
         private bool IsInvalidCourseTime(PhienHoc item, int khoahoc)
         {
             DayOfWeek wk = item.Time_LogIn.DayOfWeek;
-            var loginHour = item.Time_LogIn.Hour;
-            var logout = item.Time_LogOut;
-            bool isEven = khoahoc % 2 == 0;
 
-            if (item.MaKH.Contains("C"))
+            TimeSpan timeStart = item.Time_LogIn.TimeOfDay;
+            TimeSpan timeEnd = item.Time_LogOut.TimeOfDay;
+
+            TimeSpan minTime = new TimeSpan(7, 0, 0);
+            TimeSpan maxTime = new TimeSpan(22, 30, 0);
+
+            // Tất cả khóa học chỉ được học từ 07:00 đến 22:30
+            //if (timeStart < minTime || timeEnd > maxTime)
+            //    return true;
+
+            // Khóa có ký tự C:
+            // Không học thứ 2, các ngày còn lại được học
+            if (!string.IsNullOrEmpty(item.TenKH) &&
+                item.TenKH.IndexOf("C", StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                if (wk == DayOfWeek.Monday)
-                    return true;
-                return false;
+                return wk == DayOfWeek.Monday;
             }
 
-            return isEven
-                ? wk == DayOfWeek.Tuesday || wk == DayOfWeek.Wednesday || wk == DayOfWeek.Thursday ||
-                  (wk == DayOfWeek.Monday && (loginHour < 16 || logout.Hour > 22 || (logout.Hour == 22 && logout.Minute > 30)))
-                : wk == DayOfWeek.Friday || wk == DayOfWeek.Saturday || wk == DayOfWeek.Sunday ||
-                  (wk == DayOfWeek.Monday && (loginHour < 7 || logout.Hour > 12 || (logout.Hour == 12 && logout.Minute > 30)));
+            // Khóa không có C:
+            // Lấy 2 số cuối của khóa học
+            int soCuoi = khoahoc % 100;
+
+            // Lớp lẻ: chỉ học thứ 3, 4, 5
+            if (soCuoi % 2 != 0)
+            {
+                return wk != DayOfWeek.Tuesday &&
+                       wk != DayOfWeek.Wednesday &&
+                       wk != DayOfWeek.Thursday;
+            }
+
+            // Lớp chẵn: chỉ học thứ 6, 7, Chủ nhật
+            return wk != DayOfWeek.Friday &&
+                   wk != DayOfWeek.Saturday &&
+                   wk != DayOfWeek.Sunday;
         }
 
         private void CheckPhInList(List<PhienHoc> lstPH)
@@ -1026,6 +1045,39 @@ namespace DrivingCenter.App.UserControl
                 if (focusedRowHandle != null)
                 {
                     _DAO.UpdateImeiSerial(focusedRowHandle.MaPhien.ToString());
+                    LoadPhienHoc();
+                }
+            }
+        }
+
+        private void mn_Checkhighway_Click(object sender, EventArgs e)
+        {
+            List<PhienHoc> lstNull = new List<PhienHoc>();
+
+            DateTime selected = dtp_PhByDay.DateTime;
+
+            //string day = dtp_PhByDay.DateTime.ToString("yyyy-MM-dd 00:00:00");
+            //string day = dtp_PhByDay.DateTime.ToString("dd/MM/yyyy");
+            //DateTime fromDay = new DateTime(selected.Year, selected.Month, selected.Day, 0, 0, 0);
+            //DateTime toDay = fromDay.AddDays(1);
+
+            //List<Guid> lstGuid = _DAO.CheckHighway(fromDay, toDay);
+
+            //gridControl_PhienHoc.DataSource = lstNull;
+
+            //var result = lstPH.Where(x => lstGuid.Contains(x.MaPhien)).ToList();
+            //gridControl_PhienHoc.DataSource = result;
+
+        }
+
+        private void mn_OptimizeTime_Click(object sender, EventArgs e)
+        {
+            var focusedRow = gridView_PhienHoc.GetFocusedRow() as PhienHoc;
+            if (focusedRow != null)
+            {
+                if (XtraMessageBox.Show("Tối ưu thời gian cho phiên học này?", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+                    _DAO.OptimizeTime(focusedRow.NguoiLxID, focusedRow.MaPhien.ToString());
                     LoadPhienHoc();
                 }
             }

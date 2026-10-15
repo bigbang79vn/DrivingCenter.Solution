@@ -103,5 +103,35 @@ namespace DrivingCenter.App.UserControl
                 MainContainer.Controls.Add(uc);
             }
         }
+
+        private void btnKhoaHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                UcChild_KhoaHoc uc = new UcChild_KhoaHoc();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+            }
+        }
+
+        private void btn_PhanCong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MainContainer.Controls.Count < 0)
+            {
+                MainContainer.Controls.Clear();
+            }
+            else
+            {
+                MainContainer.Controls.Clear();
+                Uc_PhanCongDAT uc = new Uc_PhanCongDAT();
+                uc.Dock = DockStyle.Fill;
+                MainContainer.Controls.Add(uc);
+            }
+        }
     }
 }

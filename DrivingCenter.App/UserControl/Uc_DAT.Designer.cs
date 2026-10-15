@@ -201,6 +201,7 @@
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DetailSession = new System.Windows.Forms.ToolStripMenuItem();
             this.mn_CheckMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.mn_Checkhighway = new System.Windows.Forms.ToolStripMenuItem();
             this.CheckImgNull = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mn_trainingProcess = new System.Windows.Forms.ToolStripMenuItem();
@@ -211,6 +212,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.EndSession = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tstrip_UpdateImei = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView_PhienHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STT_PH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTenGV_PH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -367,8 +370,7 @@
             this.NhanDien_PH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.countdownTimer = new System.Windows.Forms.Timer(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
-            this.tstrip_UpdateImei = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.mn_OptimizeTime = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
@@ -1652,6 +1654,7 @@
             this.refreshToolStripMenuItem,
             this.DetailSession,
             this.mn_CheckMap,
+            this.mn_Checkhighway,
             this.CheckImgNull,
             this.toolStripSeparator5,
             this.mn_trainingProcess,
@@ -1659,19 +1662,20 @@
             this.deleteSToolStripMenuItem,
             this.mn_SessionLock,
             this.mb_SessionUnlock,
+            this.mn_OptimizeTime,
             this.toolStripMenuItem1,
             this.toolStripSeparator6,
             this.EndSession,
             this.toolStripSeparator7,
             this.tstrip_UpdateImei});
             this.menu_Phienhoc.Name = "contextMenuStrip2";
-            this.menu_Phienhoc.Size = new System.Drawing.Size(189, 292);
+            this.menu_Phienhoc.Size = new System.Drawing.Size(195, 336);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("refreshToolStripMenuItem.Image")));
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
@@ -1679,7 +1683,7 @@
             // 
             this.DetailSession.Image = ((System.Drawing.Image)(resources.GetObject("DetailSession.Image")));
             this.DetailSession.Name = "DetailSession";
-            this.DetailSession.Size = new System.Drawing.Size(188, 22);
+            this.DetailSession.Size = new System.Drawing.Size(194, 22);
             this.DetailSession.Text = "Detail Session";
             this.DetailSession.Click += new System.EventHandler(this.DetailSession_Click);
             // 
@@ -1687,41 +1691,49 @@
             // 
             this.mn_CheckMap.Image = ((System.Drawing.Image)(resources.GetObject("mn_CheckMap.Image")));
             this.mn_CheckMap.Name = "mn_CheckMap";
-            this.mn_CheckMap.Size = new System.Drawing.Size(188, 22);
+            this.mn_CheckMap.Size = new System.Drawing.Size(194, 22);
             this.mn_CheckMap.Text = "Check Map";
             this.mn_CheckMap.Click += new System.EventHandler(this.mn_CheckMap_Click);
+            // 
+            // mn_Checkhighway
+            // 
+            this.mn_Checkhighway.Image = ((System.Drawing.Image)(resources.GetObject("mn_Checkhighway.Image")));
+            this.mn_Checkhighway.Name = "mn_Checkhighway";
+            this.mn_Checkhighway.Size = new System.Drawing.Size(194, 22);
+            this.mn_Checkhighway.Text = "Check Highway";
+            this.mn_Checkhighway.Click += new System.EventHandler(this.mn_Checkhighway_Click);
             // 
             // CheckImgNull
             // 
             this.CheckImgNull.Image = ((System.Drawing.Image)(resources.GetObject("CheckImgNull.Image")));
             this.CheckImgNull.Name = "CheckImgNull";
-            this.CheckImgNull.Size = new System.Drawing.Size(188, 22);
+            this.CheckImgNull.Size = new System.Drawing.Size(194, 22);
             this.CheckImgNull.Text = "Check Img Logout";
             this.CheckImgNull.Click += new System.EventHandler(this.CheckImgNull_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(191, 6);
             // 
             // mn_trainingProcess
             // 
             this.mn_trainingProcess.Image = ((System.Drawing.Image)(resources.GetObject("mn_trainingProcess.Image")));
             this.mn_trainingProcess.Name = "mn_trainingProcess";
-            this.mn_trainingProcess.Size = new System.Drawing.Size(188, 22);
+            this.mn_trainingProcess.Size = new System.Drawing.Size(194, 22);
             this.mn_trainingProcess.Text = "Training Process";
             this.mn_trainingProcess.Click += new System.EventHandler(this.mn_trainingProcess_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(191, 6);
             // 
             // deleteSToolStripMenuItem
             // 
             this.deleteSToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteSToolStripMenuItem.Image")));
             this.deleteSToolStripMenuItem.Name = "deleteSToolStripMenuItem";
-            this.deleteSToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.deleteSToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.deleteSToolStripMenuItem.Text = "Delete Session";
             this.deleteSToolStripMenuItem.Click += new System.EventHandler(this.deleteSToolStripMenuItem_Click);
             // 
@@ -1729,7 +1741,7 @@
             // 
             this.mn_SessionLock.Image = ((System.Drawing.Image)(resources.GetObject("mn_SessionLock.Image")));
             this.mn_SessionLock.Name = "mn_SessionLock";
-            this.mn_SessionLock.Size = new System.Drawing.Size(188, 22);
+            this.mn_SessionLock.Size = new System.Drawing.Size(194, 22);
             this.mn_SessionLock.Text = "Session Lock";
             this.mn_SessionLock.Click += new System.EventHandler(this.mn_SessionLock_Click);
             // 
@@ -1737,7 +1749,7 @@
             // 
             this.mb_SessionUnlock.Image = ((System.Drawing.Image)(resources.GetObject("mb_SessionUnlock.Image")));
             this.mb_SessionUnlock.Name = "mb_SessionUnlock";
-            this.mb_SessionUnlock.Size = new System.Drawing.Size(188, 22);
+            this.mb_SessionUnlock.Size = new System.Drawing.Size(194, 22);
             this.mb_SessionUnlock.Text = "Session Unlock";
             this.mb_SessionUnlock.Click += new System.EventHandler(this.mb_SessionUnlock_Click);
             // 
@@ -1745,22 +1757,35 @@
             // 
             this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
             this.toolStripMenuItem1.Text = "Export Session By Day";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
             // 
             // EndSession
             // 
             this.EndSession.Image = ((System.Drawing.Image)(resources.GetObject("EndSession.Image")));
             this.EndSession.Name = "EndSession";
-            this.EndSession.Size = new System.Drawing.Size(188, 22);
+            this.EndSession.Size = new System.Drawing.Size(194, 22);
             this.EndSession.Text = "End Session";
             this.EndSession.Click += new System.EventHandler(this.EndSession_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(191, 6);
+            // 
+            // tstrip_UpdateImei
+            // 
+            this.tstrip_UpdateImei.Image = ((System.Drawing.Image)(resources.GetObject("tstrip_UpdateImei.Image")));
+            this.tstrip_UpdateImei.Name = "tstrip_UpdateImei";
+            this.tstrip_UpdateImei.Size = new System.Drawing.Size(194, 22);
+            this.tstrip_UpdateImei.Text = "Update Imei";
+            this.tstrip_UpdateImei.Click += new System.EventHandler(this.tstrip_UpdateImei_Click);
             // 
             // gridView_PhienHoc
             // 
@@ -3910,18 +3935,13 @@
             this.refreshTimer.Interval = 1000;
             this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
             // 
-            // tstrip_UpdateImei
+            // mn_OptimizeTime
             // 
-            this.tstrip_UpdateImei.Image = ((System.Drawing.Image)(resources.GetObject("tstrip_UpdateImei.Image")));
-            this.tstrip_UpdateImei.Name = "tstrip_UpdateImei";
-            this.tstrip_UpdateImei.Size = new System.Drawing.Size(188, 22);
-            this.tstrip_UpdateImei.Text = "Update Imei";
-            this.tstrip_UpdateImei.Click += new System.EventHandler(this.tstrip_UpdateImei_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(185, 6);
+            this.mn_OptimizeTime.Image = ((System.Drawing.Image)(resources.GetObject("mn_OptimizeTime.Image")));
+            this.mn_OptimizeTime.Name = "mn_OptimizeTime";
+            this.mn_OptimizeTime.Size = new System.Drawing.Size(194, 22);
+            this.mn_OptimizeTime.Text = "Optimize Time Session";
+            this.mn_OptimizeTime.Click += new System.EventHandler(this.mn_OptimizeTime_Click);
             // 
             // Uc_DAT
             // 
@@ -4270,5 +4290,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTab_LichSTD;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem tstrip_UpdateImei;
+        private System.Windows.Forms.ToolStripMenuItem mn_Checkhighway;
+        private System.Windows.Forms.ToolStripMenuItem mn_OptimizeTime;
     }
 }

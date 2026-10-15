@@ -45,36 +45,40 @@ namespace DrivingCenter.App.UserControl
             cbb_XeTapLai.Properties.ValueMember = "MaXe";
         }
 
+        private void SetEditMode(bool isEdit)
+        {
+            gridControl_XeTapLai.Enabled = !isEdit;
+
+            cbb_XeTapLai.ReadOnly = !isEdit;
+            tog_LoginCCCD.ReadOnly = !isEdit;
+            tog_Status.ReadOnly = !isEdit;
+
+            // Button
+            ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[0]).Enabled = !isEdit; // Edit
+            ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[1]).Enabled = isEdit;  // Update
+            ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[2]).Enabled = isEdit;  // Undo
+
+            if (isEdit)
+                cbb_XeTapLai.Focus();
+        }
+
         private void windowsUIButtonPanel_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
         {
             var button = e.Button as DevExpress.XtraBars.Docking2010.WindowsUIButton;
 
             if (button.Caption == "Edit")
             {
-                gridControl_XeTapLai.Enabled = false;
-                cbb_XeTapLai.ReadOnly = false;
-                cbb_XeTapLai.Focus();
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[0]).Enabled = false;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[1]).Enabled = true;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[2]).Enabled = true;
+                SetEditMode(true);  
             }
             else if (button.Caption == "Update")
             {
                 Update();
-                gridControl_XeTapLai.Enabled = true;
-                cbb_XeTapLai.ReadOnly = true;
+                SetEditMode(false);
                 GetLsVehicle();
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[0]).Enabled = true;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[1]).Enabled = false;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[2]).Enabled = false;
             }
             else if (button.Caption == "Undo")
             {
-                gridControl_XeTapLai.Enabled = true;
-                cbb_XeTapLai.ReadOnly = true;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[0]).Enabled = true;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[1]).Enabled = false;
-                ((DevExpress.XtraBars.Docking2010.WindowsUIButton)windowsUIButtonPanel.Buttons[2]).Enabled = false;
+                SetEditMode(false);
             }
             else if (button.Caption == "Export")
             {
@@ -108,11 +112,12 @@ namespace DrivingCenter.App.UserControl
             var vehicleId = bandedGridView.GetFocusedRowCellValue("VehicleID");
             var Imei = bandedGridView.GetFocusedRowCellValue("Imei");
             var selectedValue = cbb_XeTapLai.EditValue;
-            bool status = check_Status.Checked;
+            bool status = tog_Status.IsOn ? true : false;
+            bool loginCCCD = tog_LoginCCCD.IsOn ? true : false;
             XeTapLai xeTap = cbb_XeTapLai.Properties.GetRowByKeyValue(selectedValue) as XeTapLai;
             if (xeTap != null && vehicleId != null)
             {
-                _DAO.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap, status);
+                _DAO.UpdateXeTapLai((int)vehicleId, (string)Imei, xeTap, status, loginCCCD);
             }
         }
 
@@ -137,7 +142,10 @@ namespace DrivingCenter.App.UserControl
                 txt_HangXe.Text = rowData.HangGPLX;
                 date_NgayCapNhat.Text = rowData.ThoiDiem.ToString("dd/MM/yyyy");
                 txt_Version.Text = rowData.Version;
-                check_Status.EditValue = rowData.TrangThai;
+                tog_Status.IsOn = rowData.TrangThai;
+                tog_Active.IsOn = rowData.Active;
+
+                tog_LoginCCCD.IsOn = rowData.LoginCCCD;
             }
         }
     }
