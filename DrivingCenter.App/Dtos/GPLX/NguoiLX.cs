@@ -34,5 +34,12 @@ namespace DrivingCenter.App.DTO.GPLX
         public string GioiTinh { get; set; }
         public string HoVaTenIn { get; set; }
         public string SO_CMND_CU { get; set; }
+
+        // Từ NguoiLX_HoSo (màn hình Xếp lớp)
+        public string SoHoSo { get; set; }
+        public string HangGPLX { get; set; }
+        public string DuongDanAnh { get; set; }
+        public string SoNamLX { get; set; }
+        public string SoKmLXAnToan { get; set; }
     }
 }

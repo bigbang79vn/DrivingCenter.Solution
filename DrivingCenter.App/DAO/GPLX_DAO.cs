@@ -15,7 +15,7 @@ namespace DrivingCenter.App.DAO
     {
         private readonly DbProvider _db = new DbProvider(Enums.DatabaseType.db_Gplx);
 
-        public List<KhoaHoc> GetlstKh()
+        public List<KhoaHocGplx> GetlstKh()
         {
             string query = @"SELECT 
                     MaKH + ' - ' + TenKH + 
@@ -30,7 +30,8 @@ namespace DrivingCenter.App.DAO
                     HangGPLX,
                     HangDT,
                     CONVERT(VARCHAR(10), NgayKG, 103) AS NgayKG,
-                    CONVERT(VARCHAR(10), NgayBG, 103) AS NgayBG
+                    CONVERT(VARCHAR(10), NgayBG, 103) AS NgayBG,
+                    TongSoHV
                 FROM 
                     KhoaHoc
                 WHERE 
@@ -38,24 +39,25 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = _db.QueryToDataTable(query);
             var lstKH = dt.AsEnumerable()
-                           .Select(row => new KhoaHoc
+                           .Select(row => new KhoaHocGplx
                            {
                                KhoaHocs = row.Field<string>("KhoaHoc"),
                                MaKH = row.Field<string>("MaKH"),
                                TenKH = row.Field<string>("TenKH"),
                                HangGPLX = row.Field<string>("HangGPLX"),
                                HangDT = row.Field<string>("HangDT"),
-                               NgayKG = DateTime.TryParse(row.Field<string>("NgayKG"), out DateTime ngaykg) ? ngaykg : DateTime.MinValue,
-                               NgayBG = DateTime.TryParse(row.Field<string>("NgayBG"), out DateTime ngaybg) ? ngaybg : DateTime.MinValue,
+                               NgayKG = DateTime.TryParseExact(row.Field<string>("NgayKG"), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ngaykg) ? ngaykg : DateTime.MinValue,
+                               NgayBG = DateTime.TryParseExact(row.Field<string>("NgayBG"), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ngaybg) ? ngaybg : DateTime.MinValue,
+                               TongSoHV = row["TongSoHV"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["TongSoHV"]),
                            }).ToList();
             return lstKH;
         }
 
-        public List<KhoaHoc> GetAllKhoaHoc()
+        public List<KhoaHocGplx> GetAllKhoaHoc()
         {
             var dt1 = _db.QueryToDataTable($"SELECT MaKH, TenKH, HangGPLX, HangDT, NgayKG, NgayBG FROM KhoaHoc WHERE YEAR(NgayKG) >= 2025");
             var lstKH = dt1.AsEnumerable()
-                           .Select(row => new KhoaHoc
+                           .Select(row => new KhoaHocGplx
                            {
                                MaKH = row.Field<string>("MaKH"),
                                TenKH = row.Field<string>("TenKH"),
@@ -70,8 +72,8 @@ namespace DrivingCenter.App.DAO
 
         public DataRow KhoaHocSelected(string MaKH)
         {
-            string query = $"SELECT * FROM KhoaHoc WHERE MaKH = '{MaKH}'";
-            DataTable dt = _db.QueryToDataTable(query);
+            const string query = "SELECT * FROM KhoaHoc WHERE MaKH = @MaKH";
+            DataTable dt = _db.QueryToDataTable(query, new { MaKH });
             return dt.Rows[0];
         }
 
@@ -87,23 +89,19 @@ namespace DrivingCenter.App.DAO
         //public DataTable GetDataPrintCCTN(string lstId)
         //{
         //    string query = string.Format("SELECT * FROM ReportCNTN WHERE Id IN (SELECT itemID FROM Split('{0}', ',')) ORDER BY SoCCTN ASC", lstId);
-        //    DataTable dt = DataProviderGPLX.Instance.ExecuteQuery(query);
         //    return dt;
         //}
 
         public void UpdateResultGraduate(NguoiLX_HoSo_Update nguoiLXUpdate)
         {
-            string query = string.Format("UPDATE NguoiLX_HoSo set " +
-                "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
-                nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
-            _db.Execute(query);
+            _db.Execute(CntnSql.UpdateHoSo, CntnSql.HoSoParams(nguoiLXUpdate));
         }
         public int DeleteDataReportOld()
         {
             int status = 0;
             try
             {
-                string query = string.Format("DELETE VNDC_ReportCNTN");
+                const string query = "DELETE VNDC_ReportCNTN";
                 return status = _db.Execute(query);
             }
             catch
@@ -136,30 +134,18 @@ namespace DrivingCenter.App.DAO
 
         public void InsertDataReportCNTN(HvTotNghiep nguoiLx_CCTN)
         {
-            string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
-                    @MaDK = '{nguoiLx_CCTN.MaDK}',
-                    @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}'";
-
-            _db.Execute(query);
+            _db.Execute(CntnSql.InsertReport, CntnSql.InsertParams(nguoiLx_CCTN));
         }
 
         public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng, string sovaoso)
         {
-            string query = $@"UPDATE VNDC_ReportCNTN SET HoVaTen = N'{hoten}', 
-                NgaySinh = '{ngaysinh}', 
-                GioiTinh = N'{gioitinh}', 
-                HoVaTenEng = '{hotenEng}', 
-                NgaySinhEng = '{ngaysinhEng}',
-                GioiTinhEng = '{gioitinhEng}',
-                SoVaoSo = '{sovaoso}'
-                WHERE MaDK = '{madk}'";
-            _db.Execute(query);
+            _db.Execute(CntnSql.UpdateInfo, CntnSql.InfoParams(madk, hoten, hotenEng, ngaysinh, ngaysinhEng, gioitinh, gioitinhEng, sovaoso));
         }
 
         public DataTable GetDataPrintCCTN(string lstMaDK)
         {
-            string query = $"SELECT * FROM VNDC_ReportCNTN WHERE MaDK IN (SELECT itemID FROM dbo.VNDC_Split('{@lstMaDK}', ',')) ORDER BY Id ASC";
-            DataTable dt = _db.QueryToDataTable(query);
+            const string query = CntnSql.SelectPrint;
+            DataTable dt = _db.QueryToDataTable(query, new { lstMaDK = lstMaDK ?? "" });
             return dt;
         }
 
@@ -246,87 +232,125 @@ namespace DrivingCenter.App.DAO
         }
 
         #region Xếp Lớp
+
+        /// <summary>Khóa dự bị: học viên chờ xếp lớp nằm ở khóa này.</summary>
+        public const string MaKhoaDuBi = "66015K22DB001";
+
         public List<NguoiLX> Get_lstNguoiLxByMaKh(string MaKH)
         {
-            string query = $@"SELECT * FROM NguoiLX AS nlx
-                        INNER JOIN NguoiLX_HoSo AS hs ON nlx.MaDK = HS.MaDK
-                        INNER JOIN KhoaHoc AS kh ON hs.MaKhoaHoc = kh.MaKH
-                        where kh.MaKH = '{MaKH}'";
+            // Liệt kê cột rõ ràng (SELECT * nối 3 bảng bị trùng tên cột GhiChu / TrangThai / NguoiTao...)
+            const string query = @"SELECT nlx.MaDK, nlx.HoVaTen, nlx.HoVaTenIn, nlx.NgaySinh, nlx.GioiTinh, nlx.MaQuocTich,
+                               nlx.SoCMT, nlx.NgayCapCMT, nlx.NoiCapCMT, nlx.NoiTT, nlx.NoiCT,
+                               hs.SoHoSo, hs.HangGPLX, hs.DuongDanAnh, hs.SoNamLX, hs.SoKmLXAnToan, hs.GhiChu
+                        FROM NguoiLX AS nlx
+                        INNER JOIN NguoiLX_HoSo AS hs ON nlx.MaDK = hs.MaDK
+                        WHERE hs.MaKhoaHoc = @MaKH";
 
-            DataTable dt = _db.QueryToDataTable(query);
+            DataTable dt = _db.QueryToDataTable(query, new { MaKH });
 
-            List<NguoiLX> lst = dt.AsEnumerable().Select(item => new NguoiLX
+            string S(DataRow r, string c) => r[c] == DBNull.Value ? "" : Convert.ToString(r[c]).Trim();
+
+            return dt.AsEnumerable().Select(item =>
             {
-                MaDK = item["MaDK"].ToString(),
-                HoVaTen = item["HoVaTen"].ToString(),
-                NgaySinh = item["NgaySinh"].ToString(),
-                NgaySinhDateTime = DateTime.ParseExact(item["NgaySinh"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture),
-                GioiTinh = item["GioiTinh"].ToString() == "F" ? "Nữ" : "Nam",
-                SoCMT = item["SoCMT"].ToString(),
-                NgayCapCMT = item["NgayCapCMT"]?.ToString() is string s && s.Length >= 10 ? s.Substring(0, 10) : item["NgayCapCMT"]?.ToString()
+                string ngaySinh = S(item, "NgaySinh");
+                string ngayCap = S(item, "NgayCapCMT");
+                return new NguoiLX
+                {
+                    MaDK = S(item, "MaDK"),
+                    HoVaTen = S(item, "HoVaTen"),
+                    HoVaTenIn = S(item, "HoVaTenIn"),
+                    NgaySinh = ngaySinh,
+                    // Ngày sinh lưu dạng yyyyMMdd; trước đây ParseExact lỗi cả danh sách khi có 1 hồ sơ thiếu ngày sinh
+                    NgaySinhDateTime = DateTime.TryParseExact(ngaySinh, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ns) ? ns : DateTime.MinValue,
+                    GioiTinh = S(item, "GioiTinh") == "F" ? "Nữ" : "Nam",
+                    MaQuocTich = S(item, "MaQuocTich"),
+                    SoCMT = S(item, "SoCMT"),
+                    NgayCapCMT = ngayCap.Length >= 10 ? ngayCap.Substring(0, 10) : ngayCap,
+                    NoiCapCMT = S(item, "NoiCapCMT"),
+                    NoiTT = S(item, "NoiTT"),
+                    NoiCT = S(item, "NoiCT"),
+                    GhiChu = S(item, "GhiChu"),
+                    SoHoSo = S(item, "SoHoSo"),
+                    HangGPLX = S(item, "HangGPLX"),
+                    DuongDanAnh = S(item, "DuongDanAnh"),
+                    SoNamLX = S(item, "SoNamLX"),
+                    SoKmLXAnToan = S(item, "SoKmLXAnToan")
+                };
             }).OrderBy(x => x.MaDK).ToList();
-
-            return lst;
         }
 
+        // 3 hàm đọc 1 giá trị: trước đây dùng _db.Execute (trả về số dòng bị ảnh hưởng = -1 với SELECT),
+        // nên số hồ sơ mới luôn là "000" và ảnh không bao giờ được chuyển sang thư mục của khóa mới.
         public string GetImgPath()
         {
-            string query = "SELECT GiaTriTS FROM QTHT_ThamSoHT where TenTS = 'IMG_PATH_CSDT'";
-            object result = _db.Execute(query);
-            return result != null ? result.ToString() : string.Empty;
-
+            return _db.QuerySingle<string>("SELECT TOP 1 GiaTriTS FROM QTHT_ThamSoHT WHERE TenTS = 'IMG_PATH_CSDT'") ?? string.Empty;
         }
 
         public string GetImgPathByMaDK(string maDK)
         {
-            string query = $"SELECT DuongDanAnh FROM NguoiLX_HoSo WHERE MaDK = '{maDK}'";
-            object result = _db.Execute(query);
-            return result != null ? result.ToString() : string.Empty;
+            return _db.QuerySingle<string>("SELECT TOP 1 DuongDanAnh FROM NguoiLX_HoSo WHERE MaDK = @maDK", new { maDK }) ?? string.Empty;
         }
 
         public string GetMaxSoHSByMaKKH(string makh)
         {
-            string query = $"SELECT MAX(SoHoSo) FROM NguoiLX_HoSo WHERE MaKhoaHoc = '{makh}'";
-            object result = _db.Execute(query);
-            return result != null ? result.ToString() : "0";
+            return _db.QuerySingle<string>("SELECT MAX(SoHoSo) FROM NguoiLX_HoSo WHERE MaKhoaHoc = @makh", new { makh }) ?? "0";
         }
 
-        public void UpdateNguoiLxToKhoaHoc(NguoiLX nguoiLx, string MaKH)
+        /// <summary>
+        /// Chuyển học viên sang khóa <paramref name="MaKH"/>: cấp số hồ sơ tiếp theo của khóa và chuyển ảnh chân dung
+        /// sang thư mục của khóa. Trả về cảnh báo (vd. không chuyển được ảnh) hoặc null nếu trọn vẹn.
+        /// </summary>
+        public string UpdateNguoiLxToKhoaHoc(NguoiLX nguoiLx, string MaKH)
         {
             int maxSoHS = int.TryParse(GetMaxSoHSByMaKKH(MaKH), out int val) ? val : 0;
             string soHS = (maxSoHS + 1).ToString("D3");
+            string canhBao = null;
 
             string oldImagePath = GetImgPathByMaDK(nguoiLx.MaDK);
             string newImagePath = null;
-
             if (!string.IsNullOrEmpty(oldImagePath) && File.Exists(oldImagePath))
             {
-                string fileName = Path.GetFileName(oldImagePath);
-                string newFolder = Path.Combine(GetImgPath(), MaKH);
-                newImagePath = Path.Combine(newFolder, fileName);
-
-                try
+                string imgRoot = GetImgPath();
+                if (string.IsNullOrEmpty(imgRoot))
+                    canhBao = "chưa cấu hình thư mục ảnh (IMG_PATH_CSDT) nên ảnh giữ nguyên chỗ cũ";
+                else
                 {
-                    Directory.CreateDirectory(newFolder); // Tự kiểm tra tồn tại
-
-                    if (File.Exists(newImagePath))
-                        File.Delete(newImagePath);
-
-                    File.Move(oldImagePath, newImagePath);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi di chuyển ảnh: " + ex.Message);
-                    newImagePath = null;
+                    string newFolder = Path.Combine(imgRoot, MaKH);
+                    string target = Path.Combine(newFolder, Path.GetFileName(oldImagePath));
+                    if (!string.Equals(Path.GetFullPath(target), Path.GetFullPath(oldImagePath), StringComparison.OrdinalIgnoreCase))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory(newFolder);
+                            if (File.Exists(target)) File.Delete(target);
+                            File.Move(oldImagePath, target);
+                            newImagePath = target;
+                        }
+                        catch (Exception ex)
+                        {
+                            canhBao = "không chuyển được ảnh: " + ex.Message;
+                        }
+                    }
                 }
             }
 
-            string query = newImagePath != null
-                ? $@"UPDATE NguoiLX_HoSo SET MaKhoaHoc = '{MaKH}', SoHoSo = '{soHS}', DuongDanAnh = '{newImagePath}' WHERE MaDK = '{nguoiLx.MaDK}'"
-                : $@"UPDATE NguoiLX_HoSo SET MaKhoaHoc = '{MaKH}', SoHoSo = '{soHS}' WHERE MaDK = '{nguoiLx.MaDK}'";
-
-            _db.Execute(query);
-
+            try
+            {
+                if (newImagePath != null)
+                    _db.Execute("UPDATE NguoiLX_HoSo SET MaKhoaHoc = @MaKH, SoHoSo = @soHS, DuongDanAnh = @newImagePath WHERE MaDK = @MaDK",
+                        new { MaKH, soHS, newImagePath, nguoiLx.MaDK });
+                else
+                    _db.Execute("UPDATE NguoiLX_HoSo SET MaKhoaHoc = @MaKH, SoHoSo = @soHS WHERE MaDK = @MaDK",
+                        new { MaKH, soHS, nguoiLx.MaDK });
+            }
+            catch
+            {
+                // Lưu CSDL lỗi: trả ảnh về chỗ cũ để đường dẫn trong hồ sơ vẫn đúng
+                if (newImagePath != null)
+                    try { File.Move(newImagePath, oldImagePath); } catch { }
+                throw;
+            }
+            return canhBao;
         }
         #endregion
     }

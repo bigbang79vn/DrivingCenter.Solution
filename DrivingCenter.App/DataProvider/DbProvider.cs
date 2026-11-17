@@ -51,6 +51,23 @@ namespace DrivingCenter.App.DataProvider
 
         #region Query Single
 
+        /// <summary>
+        /// Đọc MỘT giá trị (cột đầu, dòng đầu) — vd. SELECT MAX(...), SELECT TOP 1 ...; không có dòng → default(T).
+        /// KHÔNG dùng <see cref="Execute"/> để đọc giá trị: Execute trả về số dòng bị ảnh hưởng (-1 với SELECT),
+        /// lỗi này từng làm mọi học viên xếp lớp nhận số hồ sơ "000".
+        /// </summary>
+        public T Scalar<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
+        {
+            using (var conn = CreateConnection())
+            {
+                object value = conn.ExecuteScalar(sql, param, commandType: commandType);
+                if (value == null || value == DBNull.Value) return default(T);
+                var target = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+                return (T)(target.IsInstanceOfType(value) ? value : Convert.ChangeType(value, target));
+            }
+        }
+
+        /// <summary>Đọc một dòng ánh xạ sang T; không có dòng → default(T). Lỗi nếu có nhiều hơn một dòng.</summary>
         public T QuerySingle<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
         {
             using (var conn = CreateConnection())

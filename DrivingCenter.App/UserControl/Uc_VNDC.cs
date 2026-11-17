@@ -1,136 +1,116 @@
-﻿using System.Windows.Forms;
+﻿using DevExpress.XtraBars;
+using System;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DrivingCenter.App.UserControl
 {
     public partial class Uc_VNDC : DevExpress.XtraEditors.XtraUserControl
     {
+        private const string RootCaption = "Trung Tâm GDNN Việt Nhật";
+
         public Uc_VNDC()
         {
             InitializeComponent();
         }
 
-        void barButtonNavigation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            int barItemIndex = barSubItemNavigation.ItemLinks.IndexOf(e.Link);
-        }
+        #region Điều hướng
 
-        private void btnGiaoVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        /// <summary>
+        /// Hiển thị màn hình con vào MainContainer, giải phóng màn hình cũ
+        /// và đánh dấu nút đang chọn trên Ribbon.
+        /// </summary>
+        private void ShowChild<T>(BarButtonItem source, string groupCaption) where T : Control, new()
         {
-            if (MainContainer.Controls.Count < 0)
+            // Bấm lại nút đang mở thì giữ nguyên màn hình, không tạo lại
+            if (MainContainer.Controls.Count == 1 && MainContainer.Controls[0] is T)
             {
-                MainContainer.Controls.Clear();
+                source.Down = true;
+                return;
             }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_GiaoVien uc = new UcChild_GiaoVien();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-            }
-        }
 
-        private void btnXeTapLai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
+            Cursor = Cursors.WaitCursor;
+            MainContainer.SuspendLayout();
+            try
             {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_XeDaoTao uc = new UcChild_XeDaoTao();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-            }
-        }
+                foreach (var old in MainContainer.Controls.Cast<Control>().ToList())
+                    old.Dispose();
 
-        private void btnDevice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_XeTapLai uc = new Uc_XeTapLai();
-                uc.Dock = DockStyle.Fill;
+                var uc = new T { Dock = DockStyle.Fill };
                 MainContainer.Controls.Add(uc);
+
+                source.Down = true;
+                bsi_Breadcrumb.Caption = $"{RootCaption}  ›  {groupCaption}  ›  {source.Caption}";
+            }
+            finally
+            {
+                MainContainer.ResumeLayout();
+                Cursor = Cursors.Default;
             }
         }
 
-        private void btnImportData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnGiaoVien_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (MainContainer.Controls.Count < 0)
+            ShowChild<UcChild_GiaoVien>(btnGiaoVien, rpg_DanhMuc.Text);
+        }
+
+        private void btnXeTapLai_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowChild<UcChild_XeDaoTao>(btnXeTapLai, rpg_DanhMuc.Text);
+        }
+
+        private void btnDevice_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowChild<UcChild_ThietBiDAT>(btnDevice, rpg_DanhMuc.Text);
+        }
+
+        private void btnXepLop_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowChild<UcChild_XepLop>(btnXepLop, rpg_DaoTao.Text);
+        }
+
+        private void btn_PhanCong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowChild<Uc_PhanCongDAT>(btn_PhanCong, rpg_DaoTao.Text);
+        }
+
+        private void btnLuuLuongDT_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowChild<UcChild_KhoaHoc_PhanCong>(btnLuuLuongDT, rpg_DaoTao.Text);
+        }
+
+        private void btnImportData_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowChild<UcChild_GPLX>(btnImportData, rpg_DuLieu.Text);
+        }
+
+        private void btnKhoaHoc_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (frmKhoaHocDangDT frm = new frmKhoaHocDangDT())
             {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_GPLX uc = new UcChild_GPLX();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
+                frm.ShowDialog(FindForm());
             }
         }
 
-        private void btnXepLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_XepLop uc = new UcChild_XepLop();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-            }
-        }
+        #endregion
 
-        private void btnLuuLuongDT_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void MainContainer_Paint(object sender, PaintEventArgs e)
         {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_KhoaHoc_PhanCong uc = new UcChild_KhoaHoc_PhanCong();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-            }
-        }
+            if (MainContainer.Controls.Count > 0) return;
 
-        private void btnKhoaHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
+            // Trạng thái trống: hướng dẫn người dùng chọn chức năng
+            var bounds = MainContainer.ClientRectangle;
+            using (var titleFont = new Font("Roboto", 14F, FontStyle.Bold))
+            using (var hintFont = new Font("Roboto", 10F))
+            using (var titleBrush = new SolidBrush(Color.FromArgb(78, 109, 156)))
+            using (var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
             {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                UcChild_KhoaHoc uc = new UcChild_KhoaHoc();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-            }
-        }
+                var titleRect = new Rectangle(bounds.X, bounds.Y + bounds.Height / 2 - 30, bounds.Width, 30);
+                var hintRect = new Rectangle(bounds.X, bounds.Y + bounds.Height / 2 + 4, bounds.Width, 24);
 
-        private void btn_PhanCong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_PhanCongDAT uc = new Uc_PhanCongDAT();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
+                e.Graphics.DrawString("QUẢN LÝ ĐÀO TẠO DAT", titleFont, titleBrush, titleRect, format);
+                e.Graphics.DrawString("Chọn một chức năng trên thanh công cụ phía trên để bắt đầu", hintFont, Brushes.Gray, hintRect, format);
             }
         }
     }

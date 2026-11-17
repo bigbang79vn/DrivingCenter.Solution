@@ -80,7 +80,7 @@ namespace DrivingCenter.App.DAO
                 : value.Trim();
         }
 
-        public List<KhoaHoc> GetlstKh()
+        public List<KhoaHocGplx> GetlstKh()
         {
             string query = @"SELECT 
                     MaKH + ' - ' + TenKH + 
@@ -103,7 +103,7 @@ namespace DrivingCenter.App.DAO
 
             DataTable dt = _db_Cdb.QueryToDataTable(query);
             var lstKH = dt.AsEnumerable()
-                           .Select(row => new KhoaHoc
+                           .Select(row => new KhoaHocGplx
                            {
                                KhoaHocs = row.Field<string>("KhoaHoc"),
                                MaKH = row.Field<string>("MaKH"),
@@ -193,10 +193,7 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateResultGraduate(NguoiLX_HoSo_Update nguoiLXUpdate)
         {
-            string query = string.Format("UPDATE NguoiLX_HoSo set " +
-                "SoGiayCNTN = '{0}', TT_XuLy = '{1}', SoQuyetDinhTN = '{2}', NgayRaQDTN = '{3}', SoSoTN = '{4}', NgayVaoSoTN = '{5}', NgayInGiayTN = '{6}' where MaDK = '{7}'",
-                nguoiLXUpdate.SoGiayCNTN, nguoiLXUpdate.TT_XuLy, nguoiLXUpdate.SoQuyetDinhTN, nguoiLXUpdate.NgayRaQDTN, nguoiLXUpdate.SoSoTN, nguoiLXUpdate.NgayVaoSoTN, nguoiLXUpdate.NgayInGiayTN, nguoiLXUpdate.MaDK);
-            _db.Execute(query);
+            _db.Execute(CntnSql.UpdateHoSo, CntnSql.HoSoParams(nguoiLXUpdate));
         }
 
         public int DeleteDataReportOld()
@@ -204,7 +201,7 @@ namespace DrivingCenter.App.DAO
             int status = 0;
             try
             {
-                string query = string.Format("DELETE VNDC_ReportCNTN");
+                const string query = "DELETE VNDC_ReportCNTN";
                 return status = _db.Execute(query);
             }
             catch
@@ -215,11 +212,7 @@ namespace DrivingCenter.App.DAO
 
         public void InsertDataReportCNTN(HvTotNghiep nguoiLx_CCTN)
         {
-            string query = $@"EXEC [dbo].[VNDC_ReportCNTN_Insert]
-                    @MaDK = '{nguoiLx_CCTN.MaDK}',
-                    @NgayQDTN = '{nguoiLx_CCTN.NgayQDTN}'";
-
-            _db.Execute(query);
+            _db.Execute(CntnSql.InsertReport, CntnSql.InsertParams(nguoiLx_CCTN));
         }
 
         public List<HvTotNghiep> GetHvTotNghiep()
@@ -246,22 +239,14 @@ namespace DrivingCenter.App.DAO
 
         public DataTable GetDataPrintCCTN(string lstMaDK)
         {
-            string query = $"SELECT * FROM VNDC_ReportCNTN WHERE MaDK IN (SELECT itemID FROM dbo.VNDC_Split('{@lstMaDK}', ',')) ORDER BY Id ASC";
-            DataTable dt = _db.QueryToDataTable(query);
+            const string query = CntnSql.SelectPrint;
+            DataTable dt = _db.QueryToDataTable(query, new { lstMaDK = lstMaDK ?? "" });
             return dt;
         }
 
         public void UpdateInfo(string madk, string hoten, string hotenEng, string ngaysinh, string ngaysinhEng, string gioitinh, string gioitinhEng, string sovaoso)
         {
-            string query = $@"UPDATE VNDC_ReportCNTN SET HoVaTen = N'{hoten}', 
-                NgaySinh = '{ngaysinh}', 
-                GioiTinh = N'{gioitinh}', 
-                HoVaTenEng = '{hotenEng}', 
-                NgaySinhEng = '{ngaysinhEng}',
-                GioiTinhEng = '{gioitinhEng}',
-                SoVaoSo = '{sovaoso}'
-                WHERE MaDK = '{madk}'";
-            _db.Execute(query);
+            _db.Execute(CntnSql.UpdateInfo, CntnSql.InfoParams(madk, hoten, hotenEng, ngaysinh, ngaysinhEng, gioitinh, gioitinhEng, sovaoso));
         }
     }
 }

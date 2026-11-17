@@ -111,13 +111,6 @@ namespace DrivingCenter.App.UserControl
 
                 gridControl_ThiSinh.DataSource = lstThiSinh;
                 GridHelper.EnableRowNumbering(gridView_ThiSinh);
-
-                //----Format datetime ----------
-
-                //foreach (DataRow dr in dt.Rows)
-                //{
-                //    dr["NgaySinh"] = DateTime.Parse((dr["NgaySinh"].ToString())).ToString("dd-MM-yyyy");
-                //}
             }
         }
         private void btn_Insert_Click(object sender, EventArgs e)

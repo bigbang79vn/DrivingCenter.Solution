@@ -1,144 +1,169 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using DrivingCenter.App.DAO;
 using DrivingCenter.App.DTO.Cabin;
-using DrivingCenter.App.Dtos.DAT;
+using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace DrivingCenter.App.UserControl
 {
     public partial class UcChild_GiaoVien : DevExpress.XtraEditors.XtraUserControl
     {
-        private readonly DAT_DAO _DAO = new DAT_DAO();
+        private readonly GiaoVienDatDAO _giaoVienDao = new GiaoVienDatDAO();
         private readonly GPLX_CDB_CSDT_DAO _gplx = new GPLX_CDB_CSDT_DAO();
+
         public UcChild_GiaoVien()
         {
             InitializeComponent();
+            ApplyTheme();
         }
+
+        private void ApplyTheme()
+        {
+            pnl_Header.Paint += UiTheme.PaintHeader;
+
+            UiTheme.StylePrimary(btn_Sync);
+            UiTheme.SetIcon(btn_Sync, "svgimages/icon%20builder/actions_reload.svg");
+            UiTheme.SetIcon(btn_Export, "svgimages/export/exporttoxlsx.svg");
+            UiTheme.SetIcon(btn_Refresh, "svgimages/icon%20builder/actions_refresh.svg");
+
+            UiTheme.StyleGrid(gridView_GiaoVien, "Tìm theo mã, họ tên, số CMT/CCCD...");
+            gridView_GiaoVien.RowHeight = 42;
+        }
+
         private void UcChild_GiaoVien_Load(object sender, EventArgs e)
         {
-
-            Get_DmTrinhDoHocVan();
-            Get_DmHangGPLX();
             Get_DmGiaoVienDAT();
-            SetControlsEnabled(false);
         }
 
-        private int _giaoVienID;
-        private void SetControlsEnabled(bool enable)
-        {
-            txt_MaGV.Enabled = enable;
-            txt_HoDem.Enabled = enable;
-            txt_TenGV.Enabled = enable;
-            txt_CCCD.Enabled = enable;
-            cbb_HangGPLX.Enabled = enable;
-            cbb_HocVan.Enabled = enable;
-            txt_MaCNDT.Enabled = enable;
-            date_NgaySinh.Enabled = enable;
-            toggleSwitch_TrangThai.Enabled = enable;
-        }
         private void Get_DmGiaoVienDAT()
         {
-            List<GiaoVien> data = _DAO.GetAllGV();
+            List<GiaoVien> data = _giaoVienDao.GetAllGV();
             gridControl_GiaoVien.DataSource = data;
             GridHelper.EnableRowNumbering(gridView_GiaoVien);
-        }
-        private void Get_DmTrinhDoHocVan()
-        {
-            DataTable dt = _DAO.GetlstHocVan();
-            cbb_HocVan.Properties.DataSource = dt;
-            cbb_HocVan.Properties.DisplayMember = "Ten";
-            cbb_HocVan.Properties.ValueMember = "Ma";
 
-            cbb_HocVan.Properties.NullText = "-- Chọn giá trị --"; // placeholder
-        }
-        private void Get_DmHangGPLX()
-        {
-            DataTable dt = _DAO.GetlstHangGPLX();
+            int soHang = data.Select(x => x.HangGPLX).Distinct().Count();
+            grp_List.Text = $"DANH SÁCH GIÁO VIÊN  ·  {data.Count} giáo viên  ·  {soHang} hạng GPLX";
 
-            cbb_HangGPLX.Properties.DataSource = dt;
-            cbb_HangGPLX.Properties.DisplayMember = "TenHang";
-            cbb_HangGPLX.Properties.ValueMember = "MaHang";
-
-            cbb_HangGPLX.Properties.NullText = "-- Chọn giá trị --"; // placeholder
+            ShowDetail(gridView_GiaoVien.GetFocusedRow() as GiaoVien);
         }
 
-        private void gridView_GiaoVien_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void gridView_GiaoVien_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
-            GiaoVien gv = gridView_GiaoVien.GetFocusedRow() as GiaoVien;
+            ShowDetail(gridView_GiaoVien.GetFocusedRow() as GiaoVien);
+        }
 
-            _giaoVienID = gv.GiaoVienID;
-            txt_MaGV.Text = gv.MaGV;
-            txt_HoDem.Text = gv.HoTenDem;
-            txt_TenGV.Text = gv.TenGV;
-            txt_CCCD.Text = gv.SoCMT;
-            cbb_HangGPLX.EditValue = gv.HangGPLX;
-            cbb_HocVan.Text = gv.TrinhDoHocVan;
-            txt_MaCNDT.Text = gv.MaCNDT;
-            date_NgaySinh.DateTime = gv.NgaySinh;
-            if (gv.AnhChup != null)
+        private void ShowDetail(GiaoVien gv)
+        {
+            if (gv == null)
             {
-                Image image = Image.FromStream(new System.IO.MemoryStream(gv.AnhChup));
-                pictureBox_AnhChup.Image = image;
-                pictureBox_AnhChup.SizeMode = PictureBoxSizeMode.StretchImage;
+                lbl_HoTen.Text = "Chọn một giáo viên";
+                lbl_MaGV.Text = "Mã GV: —";
+                pic_AnhChup.EditValue = null;
+                foreach (var label in new[] { val_NgaySinh, val_CCCD, val_HangGPLX, val_MaCNDT, val_HocVan })
+                    label.Text = "—";
+                return;
             }
-            else
-            {
-                pictureBox_AnhChup.Image = null;
-            }
-            toggleSwitch_TrangThai.IsOn = gv.SuDung;
+
+            lbl_HoTen.Text = string.IsNullOrWhiteSpace(gv.HoTenGV) ? $"{gv.HoTenDem} {gv.TenGV}" : gv.HoTenGV;
+            lbl_MaGV.Text = "Mã GV: " + gv.MaGV;
+            pic_AnhChup.EditValue = gv.AnhChup;
+
+            val_NgaySinh.Text = gv.NgaySinh == DateTime.MinValue ? "—" : gv.NgaySinh.ToString("dd/MM/yyyy");
+            val_CCCD.Text = ValueOrDash(gv.SoCMT);
+            val_HangGPLX.Text = ValueOrDash(gv.HangGPLX);
+            val_MaCNDT.Text = ValueOrDash(gv.MaCNDT);
+            val_HocVan.Text = ValueOrDash(gv.TrinhDoHocVan);
         }
 
-        private void groupControl_GiaoVien_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        private static string ValueOrDash(string value) => string.IsNullOrWhiteSpace(value) ? "—" : value;
+
+        private void grp_Detail_Paint(object sender, PaintEventArgs e)
         {
-            if (e.Button.Properties.Caption == "Import")
+            UiTheme.DrawSection(e.Graphics, "THÔNG TIN CÁ NHÂN", 20, 202, 340);
+            UiTheme.DrawSection(e.Graphics, "LƯU Ý", 20, 404, 340);
+        }
+
+        private void gridView_GiaoVien_CustomDrawEmptyForeground(object sender, CustomDrawEventArgs e)
+        {
+            if (gridView_GiaoVien.RowCount > 0) return;
+            UiTheme.DrawEmptyState(e, "Chưa có giáo viên", "Bấm \"Đồng bộ từ GPLX\" để lấy danh sách giáo viên.");
+        }
+
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            Get_DmGiaoVienDAT();
+        }
+
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog
             {
-                //---
-            }
-            if(e.Button.Properties.Caption == "Synchronize")
+                Filter = "Excel Workbook|*.xlsx",
+                FileName = $"DanhSachGiaoVien_{DateTime.Now:yyyyMMdd}.xlsx"
+            })
             {
-                DialogResult dialogResult = MessageBox.Show("Đồng bộ lại giáo viên từ hệ thống GPLX?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (dialog.ShowDialog() != DialogResult.OK) return;
+
+                try
                 {
-                    Synchronize();
-                    Get_DmGiaoVienDAT();
-                    SetControlsEnabled(false);
+                    gridView_GiaoVien.ExportToXlsx(dialog.FileName);
+                    if (XtraMessageBox.Show("Xuất Excel thành công. Mở file ngay?", "Thông báo",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        Process.Start(dialog.FileName);
+                    }
                 }
-            }    
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Không xuất được file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
-        private void Synchronize()
+        private async void btn_Sync_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Đồng bộ lại danh sách giáo viên từ hệ thống GPLX?", "Xác nhận",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            btn_Sync.Enabled = false;
+            string caption = btn_Sync.Text;
+            btn_Sync.Text = "Đang đồng bộ...";
+            try
+            {
+                int count = await Task.Run(() => Synchronize());
+                Get_DmGiaoVienDAT();
+                XtraMessageBox.Show($"Đã đồng bộ {count} giáo viên từ hệ thống GPLX.", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Đồng bộ thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btn_Sync.Text = caption;
+                btn_Sync.Enabled = true;
+            }
+        }
+
+        private int Synchronize()
         {
             var giaoViens = _gplx.GetAllGv();
 
+            int count = 0;
             foreach (var item in giaoViens)
             {
-                GiaoVienDto dto = new GiaoVienDto
-                {
-                    MaGV = item.MaGV,
-                    MaCSDT = item.MaCSDT,
-                    HoTenDem = item.HoTenDem ,
-                    TenGV = item.TenGV,
-                    NgaySinh = item.NgaySinh,
-                    SoCMT = item.SoCMT,
-                    HangGPLX = item.HangGPLX,
-                    HangGPLXDuocDT = item.HangGPLXDuocDT,
-                    SoDienThoai = item.SoDienThoai,
-                    DiaChi = item.DiaChi,
-                    MaCNDT = item.MaCNDT,
-                    MaTrinhDoHocVan = item.MaTrinhDoHocVan,
-                    MonGiangDay = item.MonGiangDay,
-                    AnhChup = item.AnhChup
-                };
-
-                _DAO.AddGiaoVien(item);
+                if (_giaoVienDao.AddGiaoVien(item))
+                    count++;
             }
+            return count;
         }
     }
 }

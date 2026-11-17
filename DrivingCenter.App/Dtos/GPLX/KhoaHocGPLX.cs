@@ -8,25 +8,15 @@ using System.Threading.Tasks;
 
 namespace DrivingCenter.App.DTO.GPLX
 {
-    public class KhoaHocGPLX
+    public class KhoaHocGplx
     {
-        public string MaKHGplx { get; set; }
-        public string TenKHGplx { get; set; }
+        public string MaKH { get; set; }
+        public string KhoaHocs { get; set; }
+        public string TenKH { get; set; }
         public string HangGPLX { get; set; }
         public string HangDT { get; set; }
-        public string NgayKG { get; set; }
-        public string NgayBG { get; set; }
-
-
-        public KhoaHocGPLX(DataRow row)
-        {
-            this.MaKHGplx = row["MaKH"].ToString();
-            this.TenKHGplx = row["TenKH"].ToString();
-            this.HangGPLX = row["HangGPLX"].ToString();
-            this.HangDT = row["HangDT"].ToString();
-            this.NgayKG = row["NgayKG"].ToString();
-            this.NgayBG = row["NgayBG"].ToString();
-        }
-
+        public DateTime NgayKG { get; set; }
+        public DateTime NgayBG { get; set; }
+        public int? TongSoHV { get; set; }
     }
 }

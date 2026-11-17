@@ -20,5 +20,11 @@ namespace DrivingCenter.App.DTO.Cabin
         public double QuangDuong { get; set; }
         public string PathVideo { get; set; }
         public DateTime CreateDate { get; set; }
+
+        /// <summary>
+        /// Cabin Eco: phiên ghi bằng phần mềm cabin mới (từ 21/08/2026) — bài tập, giờ kết thúc, thời lượng
+        /// được mã hóa phía phần mềm cabin nên CSDL không giải mã được; chỉ đọc được cabin và giờ bắt đầu.
+        /// </summary>
+        public bool MaHoaMoi { get; set; }
     }
 }

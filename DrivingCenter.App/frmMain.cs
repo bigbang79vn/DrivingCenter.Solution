@@ -1,5 +1,9 @@
-﻿using DevExpress.Utils.Frames;
+﻿using DevExpress.LookAndFeel;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
+using DrivingCenter.App.Helper;
 using DrivingCenter.App.UserControl;
 using System;
 using System.Linq;
@@ -9,211 +13,181 @@ namespace DrivingCenter.App
 {
     public partial class frmMain : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        private const string SkinLight = "Basic";
+        private const string SkinDark = "Office 2019 Black";
+        private const string PrefDarkMode = "DarkMode";
+
+        private bool _applyingTheme;
+
+        /// <summary>
+        /// Tên đăng nhập hiển thị trên thanh tiêu đề (frmLogin truyền vào).
+        /// </summary>
+        public string CurrentUser { get; set; }
+
         public frmMain()
         {
             InitializeComponent();
+            ApplyTheme();
         }
 
-        bool isDarkMode = false;
+        private void ApplyTheme()
+        {
+            acc_DangXuat.ImageOptions.SvgImage = UiTheme.Svg("svgimages/xaf/action_exit.svg");
+            itemUser.ImageOptions.SvgImage = UiTheme.Svg("svgimages/icon%20builder/actions_user.svg");
+            acc_CabinManager.ImageOptions.SvgImage = UiTheme.Svg("svgimages/business%20objects/bo_scheduler.svg");
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_Home uc = new Uc_Home();
-                //Uc_CabinEco uc = new Uc_CabinEco();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Dashboard";
-            }
+            // Tên hiển thị người dùng tự đặt trong "Tài khoản" (lưu trên máy), mặc định là tên đăng nhập
+            itemUser.Caption = string.IsNullOrWhiteSpace(CurrentUser)
+                ? "Người dùng"
+                : AppPreferences.GetString(frmAccount.DisplayNameKey(CurrentUser), CurrentUser);
+
+            // Khôi phục chế độ sáng/tối lần trước
+            _applyingTheme = true;
+            barToggleSwitchItem.Checked = AppPreferences.GetBool(PrefDarkMode);
+            _applyingTheme = false;
+            SetSkin(barToggleSwitchItem.Checked);
+
+            ShowPage<Uc_Home>(acc_Home);
         }
 
-        private void acc_Home_Click(object sender, EventArgs e)
+        #region Điều hướng
+
+        /// <summary>
+        /// Hiển thị trang vào MainContainer: giải phóng trang cũ (dừng timer, giải phóng bộ nhớ),
+        /// đánh dấu mục menu đang chọn, cập nhật tiêu đề "Nhóm › Trang".
+        /// </summary>
+        private void ShowPage<T>(AccordionControlElement menuItem) where T : Control, new()
         {
-            if (MainContainer.Controls.Count < 0)
+            // Bấm lại mục đang mở: giữ nguyên, không tải lại
+            if (MainContainer.Controls.Count == 1 && MainContainer.Controls[0] is T)
             {
-                MainContainer.Controls.Clear();
+                accMain.SelectElement(menuItem);
+                return;
             }
-            else
+
+            IOverlaySplashScreenHandle overlay = null;
+            Cursor = Cursors.WaitCursor;
+            MainContainer.SuspendLayout();
+            try
             {
-                MainContainer.Controls.Clear();
-                Uc_Home uc = new Uc_Home();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Dashboard";
+                if (MainContainer.IsHandleCreated && MainContainer.Visible)
+                    overlay = SplashScreenManager.ShowOverlayForm(MainContainer);
+
+                foreach (var old in MainContainer.Controls.Cast<Control>().ToList())
+                    old.Dispose();
+
+                var page = new T { Dock = DockStyle.Fill };
+                MainContainer.Controls.Add(page);
+
+                accMain.SelectElement(menuItem);
+                string group = (menuItem.OwnerElement as AccordionControlElement)?.Text;
+                itemNav.Caption = string.IsNullOrEmpty(group) || menuItem == acc_Home
+                    ? menuItem.Text
+                    : $"{ToTitle(group)}  ›  {menuItem.Text}";
             }
-        }
-        private void acc_VNDC_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
+            catch (Exception ex)
             {
-                MainContainer.Controls.Clear();
+                // Màn hình lỗi khi tải: báo cho người dùng thay vì để văng exception
+                foreach (var broken in MainContainer.Controls.Cast<Control>().ToList())
+                    broken.Dispose();
+
+                // new T() bọc lỗi constructor trong TargetInvocationException: lấy lỗi thật và ghi log đầy đủ
+                Exception real = ErrorLog.Unwrap(ex);
+                string logFile = ErrorLog.Write($"ShowPage<{typeof(T).Name}>", ex);
+
+                // Đóng overlay trước khi báo lỗi: trước đây hộp thoại hiện dưới vòng loading nên trông như bị treo
+                CloseOverlay(ref overlay);
+                MainContainer.ResumeLayout();
+                Cursor = Cursors.Default;
+
+                XtraMessageBox.Show(this,
+                    $"Không mở được màn hình \"{menuItem.Text}\".\n\nChi tiết: {real.GetType().Name}: {real.Message}"
+                    + (logFile == null ? "" : $"\n\nĐã ghi log: {logFile}"),
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+            finally
             {
-                MainContainer.Controls.Clear();
-                Uc_VNDC uc = new Uc_VNDC();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Kết Quả Tốt Nghiệp";
+                CloseOverlay(ref overlay);
+                Cursor = Cursors.Default;
             }
-        }
-        private void acc_CabinEco_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_CabinEco uc = new Uc_CabinEco();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Quản Lý Cabin Điện Tử Ecotek";
-            }
+            MainContainer.ResumeLayout();
         }
 
-        private void acc_CabinEMC_Click(object sender, EventArgs e)
+        private static void CloseOverlay(ref IOverlaySplashScreenHandle overlay)
         {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_CabinEMC uc = new Uc_CabinEMC();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Quản Lý Cabin Điện Tử EMC";
-            }
+            if (overlay == null) return;
+            try { SplashScreenManager.CloseOverlayForm(overlay); }
+            catch { /* overlay đã đóng hoặc control nền đã bị hủy */ }
+            overlay = null;
         }
 
-        private void acc_DAT_Click(object sender, EventArgs e)
+        // "CABIN ĐIỆN TỬ" -> "Cabin điện tử"
+        private static string ToTitle(string upper)
         {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_DAT uc = new Uc_DAT();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Quản lý Thời gian và Quãng đường tập lái";
-            }
+            string lower = upper.ToLower(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
+            return lower.Length == 0 ? lower : char.ToUpper(lower[0]) + lower.Substring(1);
         }
 
-        private void acc_LichHoc_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_DaoTao uc = new Uc_DaoTao();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Lịch học số tự động";
-            }
-        }
-        private void acc_TongHopXe_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_BaoCaoTheoXe uc = new Uc_BaoCaoTheoXe();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Báo Cáo Theo Xe Tập Lái";
-            }
-        }
+        private void acc_Home_Click(object sender, EventArgs e) => ShowPage<Uc_Home>(acc_Home);
 
-        private void acc_XeTapLai_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_XeTapLai uc = new Uc_XeTapLai();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Xe Tập Lái";
-            }
-        }
+        private void acc_LichHoc_Click(object sender, EventArgs e) => ShowPage<Uc_DaoTao>(acc_LichHoc);
 
-        private void acc_TotNghiep_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_Gradute uc = new Uc_Gradute();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Kết Quả Tốt Nghiệp";
-            }
-        }
+        private void acc_DAT_Click(object sender, EventArgs e) => ShowPage<Uc_DAT>(acc_DAT);
 
-        private void acc_Print_Click(object sender, EventArgs e)
-        {
-            if (MainContainer.Controls.Count < 0)
-            {
-                MainContainer.Controls.Clear();
-            }
-            else
-            {
-                MainContainer.Controls.Clear();
-                Uc_Print uc = new Uc_Print();
-                uc.Dock = DockStyle.Fill;
-                MainContainer.Controls.Add(uc);
-                this.itemNav.Caption = $"Kết Quả Tốt Nghiệp";
-            }
-        }
+        private void acc_VNDC_Click(object sender, EventArgs e) => ShowPage<Uc_VNDC>(acc_VNDC);
 
-        private void barButtonItem_Refresh_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        }
+        private void acc_CabinEco_Click(object sender, EventArgs e) => ShowPage<Uc_CabinEco>(acc_CabinEco);
+
+        private void acc_CabinEMC_Click(object sender, EventArgs e) => ShowPage<Uc_CabinEMC>(acc_CabinEMC);
+
+        private void acc_CabinManager_Click(object sender, EventArgs e) => ShowPage<Uc_CabinManager>(acc_CabinManager);
+
+        private void acc_TongHopXe_Click(object sender, EventArgs e) => ShowPage<Uc_BaoCaoTheoXe>(acc_TongHopXe);
+
+        private void acc_TotNghiep_Click(object sender, EventArgs e) => ShowPage<Uc_Gradute>(acc_TotNghiep);
+
+        private void acc_Print_Click(object sender, EventArgs e) => ShowPage<Uc_Print>(acc_Print);
+
+        #endregion
+
+        #region Hệ thống
 
         private void acc_TaiKhoan_Click(object sender, EventArgs e)
         {
-            fAccount f = new fAccount();
-            f.Show();
+            using (frmAccount f = new frmAccount(CurrentUser, itemUser.Caption))
+            {
+                if (f.ShowDialog(this) == DialogResult.OK)
+                    itemUser.Caption = f.DisplayName;
+            }
         }
 
-        private void barToggleSwitchItem_ItemClick(object sender, ItemClickEventArgs e)
+        private void acc_DangXuat_Click(object sender, EventArgs e)
         {
-            isDarkMode = !isDarkMode;
-
-            if (isDarkMode)
+            if (XtraMessageBox.Show(this, "Đăng xuất khỏi hệ thống?", "Xác nhận",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2019 Black");
-                barToggleSwitchItem.Caption = "Light Mode";
-            }
-            else
-            {
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Basic");
-                barToggleSwitchItem.Caption = "Dark Mode";
+                // frmLogin mở frmMain bằng ShowDialog: đóng form là quay về màn hình đăng nhập
+                Close();
             }
         }
-        
+
+        private void barToggleSwitchItem_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (_applyingTheme) return;
+
+            SetSkin(barToggleSwitchItem.Checked);
+            AppPreferences.SetBool(PrefDarkMode, barToggleSwitchItem.Checked);
+        }
+
+        private static void SetSkin(bool dark)
+        {
+            UserLookAndFeel.Default.SetSkinStyle(dark ? SkinDark : SkinLight);
+        }
+
+        #endregion
     }
 }

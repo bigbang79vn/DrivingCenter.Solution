@@ -1,5 +1,5 @@
 ﻿using DrivingCenter.App.DTO.GPLX;
-using MySql.Data.MySqlClient;
+using DrivingCenter.App.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,141 +7,94 @@ using System.Linq;
 
 namespace DrivingCenter.App.DAO
 {
+    /// <summary>
+    /// Truy vấn CSDL sát hạch esmartn (MySQL). Mọi giá trị đều truyền qua tham số
+    /// (trước đây ghép chuỗi và mỗi câu SELECT/CALL bị chạy hai lần: ExecuteNonQuery rồi Fill).
+    /// </summary>
     public class MySQL_DAO
     {
-        private static MySqlCommand cmd = null;
-        private static DataTable dt;
-        private static MySqlDataAdapter sda;
-
         public static DataTable GetlistKhoaHoc()
         {
-            string query = "SELECT IDKhoaHoc, TenKhoaHoc FROM esmartn.khoahoc where TrangThai = 2 OR TrangThai = 0;";
-            //string query = "CALL esmartn.khoahoc_getlist_Online;";
-
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
-            if (cmd != null)
-            {
-                dt = new DataTable();
-                sda = new MySqlDataAdapter(cmd);
-                sda.Fill(dt);
-            }
-            return dt;
+            const string query = "SELECT IDKhoaHoc, TenKhoaHoc FROM esmartn.khoahoc WHERE TrangThai = 2 OR TrangThai = 0;";
+            return ConnectMySQL.Query(query);
         }
 
         public static List<ThiSinh> LoadlstThiSinhByKHTN(string IDKhoaHoc)
         {
-            List<ThiSinh> lstIDThiSinh = new List<ThiSinh>();
-            string query = string.Format("CALL esmartn.VNDCResultStudent('{0}');", IDKhoaHoc);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
-            if (cmd != null)
-            {
-                dt = new DataTable();
-                sda = new MySqlDataAdapter(cmd);
-                sda.Fill(dt);
-            }
+            DataTable dt = ConnectMySQL.Query("CALL esmartn.VNDCResultStudent(@IDKhoaHoc);", ("@IDKhoaHoc", IDKhoaHoc));
 
-            lstIDThiSinh = dt.AsEnumerable()
-                           .Select(item => new ThiSinh
-                           {
-                               IDThiSinh = (int)(item["IDThiSinh"]),
-                               MaDK = (string)(item["Ma_Dang_Ky"]),
-                               SoBaoDanh = (int)(item["SoBaoDanh"]),
-                               HoVaTen = (string)(item["HoTen"]),
-                               NgaySinh = (DateTime)(item["NgaySinh"]),
-                               SoCMT = (string)(item["SoCMT"]),
-                               TenKhoaHoc = (string)(item["KhoaThi"]),
-                               NgayThi = (DateTime)(item["NgayThi"]),
-                               HangGPLX = (string)(item["LoaiBang"]),
-                               DiemLT = (int)(item["TraLoiDung"]),
-                               Result_LT = (string)(item["KetQua"]),
-                               DiemMP = (item["DiemMoPhong"]) == DBNull.Value || (int)(item["DiemMoPhong"]) == -1  ? 0 : (int)(item["DiemMoPhong"]),
-                               Result_MP = (item["KetQuaMoPhong"]) == DBNull.Value ? "" : (string)(item["KetQuaMoPhong"])
-                           })
-                           .ToList();
-            return lstIDThiSinh;
+            return dt.AsEnumerable()
+                     .Select(item => new ThiSinh
+                     {
+                         IDThiSinh = (int)(item["IDThiSinh"]),
+                         MaDK = (string)(item["Ma_Dang_Ky"]),
+                         SoBaoDanh = (int)(item["SoBaoDanh"]),
+                         HoVaTen = (string)(item["HoTen"]),
+                         NgaySinh = (DateTime)(item["NgaySinh"]),
+                         SoCMT = (string)(item["SoCMT"]),
+                         TenKhoaHoc = (string)(item["KhoaThi"]),
+                         NgayThi = (DateTime)(item["NgayThi"]),
+                         HangGPLX = (string)(item["LoaiBang"]),
+                         DiemLT = (int)(item["TraLoiDung"]),
+                         Result_LT = (string)(item["KetQua"]),
+                         DiemMP = (item["DiemMoPhong"]) == DBNull.Value || (int)(item["DiemMoPhong"]) == -1 ? 0 : (int)(item["DiemMoPhong"]),
+                         Result_MP = (item["KetQuaMoPhong"]) == DBNull.Value ? "" : (string)(item["KetQuaMoPhong"])
+                     })
+                     .ToList();
         }
 
         public static List<ThiSinh> LoadlstThiSinhSH(string IDKhoaHoc)
         {
-            List<ThiSinh> lstThiSinhSH = new List<ThiSinh>();
-            string query = string.Format("CALL esmartn.VNDCLstThiSinh('{0}');", IDKhoaHoc);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
-            if (cmd != null)
-            {
-                dt = new DataTable();
-                sda = new MySqlDataAdapter(cmd);
-                sda.Fill(dt);
-            }
+            DataTable dt = ConnectMySQL.Query("CALL esmartn.VNDCLstThiSinh(@IDKhoaHoc);", ("@IDKhoaHoc", IDKhoaHoc));
 
-            lstThiSinhSH = dt.AsEnumerable()
-                           .Select(item => new ThiSinh
-                           {
-                               IDThiSinh = (int)(item["IDThiSinh"]),
-                               MaDK = (string)(item["Ma_Dang_Ky"]),
-                               HoVaTen = (string)(item["HoTen"]),
-                               NgaySinh = (DateTime)(item["NgaySinh"]),
-                               SoCMT = (string)(item["SoCMT"])
-                           })
-                           .ToList();
-            return lstThiSinhSH;
+            return dt.AsEnumerable()
+                     .Select(item => new ThiSinh
+                     {
+                         IDThiSinh = (int)(item["IDThiSinh"]),
+                         MaDK = (string)(item["Ma_Dang_Ky"]),
+                         HoVaTen = (string)(item["HoTen"]),
+                         NgaySinh = (DateTime)(item["NgaySinh"]),
+                         SoCMT = (string)(item["SoCMT"])
+                     })
+                     .ToList();
         }
 
         public static string GetHangGplxByMaDK(string MaDK)
         {
-            string query = string.Format("SELECT LoaiBang FROM esmartn.khoahoc_thisinh \r\n" +
-                "WHERE IDThiSinh = (SELECT MIN(IDThiSinh) AS IDThiSinh FROM esmartn.thisinh WHERE Ma_Dang_Ky = '{0}');", MaDK);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
-            if (cmd != null)
-            {
-                dt = new DataTable();
-                sda = new MySqlDataAdapter(cmd);
-                sda.Fill(dt);
-            }
+            const string query = "SELECT LoaiBang FROM esmartn.khoahoc_thisinh " +
+                "WHERE IDThiSinh = (SELECT MIN(IDThiSinh) FROM esmartn.thisinh WHERE Ma_Dang_Ky = @MaDK);";
+            DataTable dt = ConnectMySQL.Query(query, ("@MaDK", MaDK));
 
-            string HangGplxByMaDK = dt.Rows[0][0].ToString();
-
-            return HangGplxByMaDK;
+            return dt.Rows.Count > 0 ? dt.Rows[0][0].ToString() : string.Empty;
         }
 
         public static void InsertThiSinh(string IDKhoaHoc, string MaDK)
         {
-            string query = string.Format("CALL esmartn.VNDCInsertThiSinh('{0}', '{1}');", IDKhoaHoc, MaDK);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
+            ConnectMySQL.Execute("CALL esmartn.VNDCInsertThiSinh(@IDKhoaHoc, @MaDK);",
+                ("@IDKhoaHoc", IDKhoaHoc), ("@MaDK", MaDK));
         }
 
         public static void InsertKhoaHocThiSinh(string IDKhoaHoc, int IDThiSinh, string HangGPLX)
         {
-            string query = string.Format("CALL esmartn.VNDCInsertKhoaHocThiSinh('{0}', {1}, '{2}');", IDKhoaHoc, IDThiSinh, HangGPLX);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
+            ConnectMySQL.Execute("CALL esmartn.VNDCInsertKhoaHocThiSinh(@IDKhoaHoc, @IDThiSinh, @HangGPLX);",
+                ("@IDKhoaHoc", IDKhoaHoc), ("@IDThiSinh", IDThiSinh), ("@HangGPLX", HangGPLX));
         }
 
         public static List<int> GetlstIDThiSinhDuplicate(string IDKhoaHoc)
         {
-            string query = string.Format("SELECT IDThiSinh FROM esmartn.thisinh " +
-                "WHERE IDKhoaHoc = '{0}' AND IDThiSinh NOT IN " +
-                "(SELECT MAX(IDThiSinh) AS MaxID " +
-                "FROM esmartn.thisinh " +
-                "WHERE IDKhoaHoc = '{0}' " +
-                "GROUP BY IDKhoaHoc, Ma_Dang_Ky);", IDKhoaHoc);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
+            const string query = "SELECT IDThiSinh FROM esmartn.thisinh " +
+                "WHERE IDKhoaHoc = @IDKhoaHoc AND IDThiSinh NOT IN " +
+                "(SELECT MAX(IDThiSinh) FROM esmartn.thisinh WHERE IDKhoaHoc = @IDKhoaHoc GROUP BY IDKhoaHoc, Ma_Dang_Ky);";
+            DataTable dt = ConnectMySQL.Query(query, ("@IDKhoaHoc", IDKhoaHoc));
 
-            if (cmd != null)
-            {
-                dt = new DataTable();
-                sda = new MySqlDataAdapter(cmd);
-                sda.Fill(dt);
-            }
-
-            List<int> lst = dt.AsEnumerable()
-                           .Select(r => r.Field<int>("IDThiSinh"))
-                           .ToList();
-            return lst;
+            return dt.AsEnumerable().Select(r => Convert.ToInt32(r["IDThiSinh"])).ToList();
         }
 
         public static void DeleteThiSinh(int IDThiSinh, string IDKhoaHoc)
         {
-            string query = string.Format("DELETE FROM esmartn.thisinh WHERE IDThiSinh = {0} AND IDKhoaHoc = '{1}';  ('{0}';", IDThiSinh, IDKhoaHoc);
-            cmd = Helper.ConnectMySQL.ExcuteNonQuery(query);
+            // Bản cũ có đoạn thừa "  ('{0}';" sau câu DELETE (lỗi cú pháp ở câu thứ hai, bị nuốt lỗi)
+            ConnectMySQL.Execute("DELETE FROM esmartn.thisinh WHERE IDThiSinh = @IDThiSinh AND IDKhoaHoc = @IDKhoaHoc;",
+                ("@IDThiSinh", IDThiSinh), ("@IDKhoaHoc", IDKhoaHoc));
         }
     }
 }

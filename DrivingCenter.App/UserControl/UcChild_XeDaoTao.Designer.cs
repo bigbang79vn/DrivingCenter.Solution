@@ -1,13 +1,14 @@
-﻿namespace DrivingCenter.App.UserControl
+﻿
+namespace DrivingCenter.App.UserControl
 {
     partial class UcChild_XeDaoTao
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -22,525 +23,563 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcChild_XeDaoTao));
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            this.tblLayout_DmXeTapLai = new System.Windows.Forms.TableLayoutPanel();
-            this.groupControl_XeTapLai = new DevExpress.XtraEditors.GroupControl();
-            this.label3 = new System.Windows.Forms.Label();
-            this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.pnl_Header = new DevExpress.XtraEditors.PanelControl();
+            this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_ImportXml = new DevExpress.XtraEditors.SimpleButton();
+            this.lbl_Desc = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_Title = new DevExpress.XtraEditors.LabelControl();
+            this.spacerTop = new System.Windows.Forms.Panel();
+            this.grp_Detail = new DevExpress.XtraEditors.GroupControl();
+            this.lbl_Hint = new DevExpress.XtraEditors.LabelControl();
+            this.btn_Cancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Edit = new DevExpress.XtraEditors.SimpleButton();
             this.toggleSwitch_TrangThai = new DevExpress.XtraEditors.ToggleSwitch();
-            this.cbb_HangXe = new DevExpress.XtraEditors.LookUpEdit();
-            this.txt_BienSoXe = new DevExpress.XtraEditors.TextEdit();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_CQCapGPXTL = new DevExpress.XtraEditors.TextEdit();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_SoGPXTL = new DevExpress.XtraEditors.TextEdit();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txt_NamSX = new DevExpress.XtraEditors.TextEdit();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_SoDK = new DevExpress.XtraEditors.TextEdit();
-            this.label8 = new System.Windows.Forms.Label();
+            this.cap_ThanhLy = new DevExpress.XtraEditors.LabelControl();
             this.txt_SoHuu = new DevExpress.XtraEditors.TextEdit();
-            this.label1 = new System.Windows.Forms.Label();
-            this.date_NgayHHGPXTL = new DevExpress.XtraEditors.DateEdit();
-            this.label10 = new System.Windows.Forms.Label();
-            this.date_NgayCapGPXTL = new DevExpress.XtraEditors.DateEdit();
-            this.label11 = new System.Windows.Forms.Label();
+            this.cap_SoHuu = new DevExpress.XtraEditors.LabelControl();
+            this.val_SuDungDen = new DevExpress.XtraEditors.LabelControl();
+            this.cap_SuDungDen = new DevExpress.XtraEditors.LabelControl();
+            this.val_NgayHH = new DevExpress.XtraEditors.LabelControl();
+            this.cap_NgayHH = new DevExpress.XtraEditors.LabelControl();
+            this.val_NgayCap = new DevExpress.XtraEditors.LabelControl();
+            this.cap_NgayCap = new DevExpress.XtraEditors.LabelControl();
+            this.val_SoGPXTL = new DevExpress.XtraEditors.LabelControl();
+            this.cap_SoGPXTL = new DevExpress.XtraEditors.LabelControl();
+            this.val_NamSX = new DevExpress.XtraEditors.LabelControl();
+            this.cap_NamSX = new DevExpress.XtraEditors.LabelControl();
+            this.val_MaXe = new DevExpress.XtraEditors.LabelControl();
+            this.cap_MaXe = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_TrangThai = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_HangXe = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_BienSo = new DevExpress.XtraEditors.LabelControl();
+            this.spacerRight = new System.Windows.Forms.Panel();
+            this.grp_List = new DevExpress.XtraEditors.GroupControl();
             this.gridControl_XeTapLai = new DevExpress.XtraGrid.GridControl();
             this.gridView_XeTapLai = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaXe = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BienSoXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HangXe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NamSX = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoGPXTL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayCapGPXTL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayHHGPXTL = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.CoQuanCapGPXTL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ChuSoHuu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhLy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoToggleSwitch = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
             this.DateTime_Use = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repo_CheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.tblLayout_DmXeTapLai.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl_XeTapLai)).BeginInit();
-            this.groupControl_XeTapLai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Header)).BeginInit();
+            this.pnl_Header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grp_Detail)).BeginInit();
+            this.grp_Detail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_TrangThai.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_HangXe.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_BienSoXe.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_CQCapGPXTL.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SoGPXTL.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_NamSX.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SoDK.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoHuu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grp_List)).BeginInit();
+            this.grp_List.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).BeginInit();
             this.SuspendLayout();
             // 
-            // tblLayout_DmXeTapLai
+            // pnl_Header
             // 
-            this.tblLayout_DmXeTapLai.ColumnCount = 2;
-            this.tblLayout_DmXeTapLai.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayout_DmXeTapLai.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 380F));
-            this.tblLayout_DmXeTapLai.Controls.Add(this.groupControl_XeTapLai, 1, 0);
-            this.tblLayout_DmXeTapLai.Controls.Add(this.gridControl_XeTapLai, 0, 0);
-            this.tblLayout_DmXeTapLai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblLayout_DmXeTapLai.Location = new System.Drawing.Point(0, 0);
-            this.tblLayout_DmXeTapLai.Name = "tblLayout_DmXeTapLai";
-            this.tblLayout_DmXeTapLai.RowCount = 1;
-            this.tblLayout_DmXeTapLai.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayout_DmXeTapLai.Size = new System.Drawing.Size(1500, 800);
-            this.tblLayout_DmXeTapLai.TabIndex = 3;
+            this.pnl_Header.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnl_Header.Controls.Add(this.btn_Refresh);
+            this.pnl_Header.Controls.Add(this.btn_Export);
+            this.pnl_Header.Controls.Add(this.btn_ImportXml);
+            this.pnl_Header.Controls.Add(this.lbl_Desc);
+            this.pnl_Header.Controls.Add(this.lbl_Title);
+            this.pnl_Header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_Header.Location = new System.Drawing.Point(12, 12);
+            this.pnl_Header.Name = "pnl_Header";
+            this.pnl_Header.Size = new System.Drawing.Size(1476, 62);
+            this.pnl_Header.TabIndex = 0;
             // 
-            // groupControl_XeTapLai
+            // btn_Refresh
             // 
-            this.groupControl_XeTapLai.Appearance.Options.UseFont = true;
-            this.groupControl_XeTapLai.Appearance.Options.UseForeColor = true;
-            this.groupControl_XeTapLai.Appearance.Options.UseImage = true;
-            this.groupControl_XeTapLai.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupControl_XeTapLai.AppearanceCaption.Options.UseFont = true;
-            this.groupControl_XeTapLai.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.groupControl_XeTapLai.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl_XeTapLai.CaptionImageOptions.SvgImage")));
-            this.groupControl_XeTapLai.Controls.Add(this.label3);
-            this.groupControl_XeTapLai.Controls.Add(this.windowsUIButtonPanel);
-            this.groupControl_XeTapLai.Controls.Add(this.toggleSwitch_TrangThai);
-            this.groupControl_XeTapLai.Controls.Add(this.cbb_HangXe);
-            this.groupControl_XeTapLai.Controls.Add(this.txt_BienSoXe);
-            this.groupControl_XeTapLai.Controls.Add(this.label2);
-            this.groupControl_XeTapLai.Controls.Add(this.txt_CQCapGPXTL);
-            this.groupControl_XeTapLai.Controls.Add(this.label5);
-            this.groupControl_XeTapLai.Controls.Add(this.txt_SoGPXTL);
-            this.groupControl_XeTapLai.Controls.Add(this.label12);
-            this.groupControl_XeTapLai.Controls.Add(this.txt_NamSX);
-            this.groupControl_XeTapLai.Controls.Add(this.label7);
-            this.groupControl_XeTapLai.Controls.Add(this.txt_SoDK);
-            this.groupControl_XeTapLai.Controls.Add(this.label8);
-            this.groupControl_XeTapLai.Controls.Add(this.txt_SoHuu);
-            this.groupControl_XeTapLai.Controls.Add(this.label1);
-            this.groupControl_XeTapLai.Controls.Add(this.date_NgayHHGPXTL);
-            this.groupControl_XeTapLai.Controls.Add(this.label10);
-            this.groupControl_XeTapLai.Controls.Add(this.date_NgayCapGPXTL);
-            this.groupControl_XeTapLai.Controls.Add(this.label11);
-            buttonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions2.SvgImage")));
-            this.groupControl_XeTapLai.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Synchronize", false, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
-            this.groupControl_XeTapLai.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            this.groupControl_XeTapLai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl_XeTapLai.Location = new System.Drawing.Point(1123, 3);
-            this.groupControl_XeTapLai.Name = "groupControl_XeTapLai";
-            this.groupControl_XeTapLai.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupControl_XeTapLai.Size = new System.Drawing.Size(374, 794);
-            this.groupControl_XeTapLai.TabIndex = 46;
-            this.groupControl_XeTapLai.Text = "Thông tin xe tập lái";
-            this.groupControl_XeTapLai.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControl_XeTapLai_CustomButtonClick);
+            this.btn_Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Refresh.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.btn_Refresh.Appearance.Options.UseFont = true;
+            this.btn_Refresh.Location = new System.Drawing.Point(1084, 14);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(110, 34);
+            this.btn_Refresh.TabIndex = 2;
+            this.btn_Refresh.Text = "Làm mới";
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
-            // label3
+            // btn_Export
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label3.Location = new System.Drawing.Point(20, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 18);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Biển Số (*)";
+            this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Location = new System.Drawing.Point(1200, 14);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(120, 34);
+            this.btn_Export.TabIndex = 3;
+            this.btn_Export.Text = "Xuất Excel";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
-            // windowsUIButtonPanel
+            // btn_ImportXml
             // 
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.FontSizeDelta = -1;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(159)))));
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseBackColor = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
-            this.windowsUIButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
-            this.windowsUIButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
-            windowsUIButtonImageOptions7.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions7.SvgImage")));
-            windowsUIButtonImageOptions8.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions8.SvgImage")));
-            this.windowsUIButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Add", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Edit", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIButtonPanel.EnableImageTransparency = true;
-            this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanel.Location = new System.Drawing.Point(2, 732);
-            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 60);
-            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(60, 60);
-            this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
-            this.windowsUIButtonPanel.Size = new System.Drawing.Size(370, 60);
-            this.windowsUIButtonPanel.TabIndex = 36;
-            this.windowsUIButtonPanel.Text = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
-            this.windowsUIButtonPanel.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIButtonPanel_ButtonClick);
+            this.btn_ImportXml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ImportXml.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_ImportXml.Appearance.Options.UseFont = true;
+            this.btn_ImportXml.Location = new System.Drawing.Point(1326, 14);
+            this.btn_ImportXml.Name = "btn_ImportXml";
+            this.btn_ImportXml.Size = new System.Drawing.Size(150, 34);
+            this.btn_ImportXml.TabIndex = 4;
+            this.btn_ImportXml.Text = "Import Xml";
+            this.btn_ImportXml.ToolTip = "Nhập danh sách xe tập lái từ file XML (DSXTL) do Sở gửi";
+            this.btn_ImportXml.Click += new System.EventHandler(this.btn_ImportXml_Click);
+            // 
+            // lbl_Desc
+            // 
+            this.lbl_Desc.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.lbl_Desc.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lbl_Desc.Appearance.Options.UseFont = true;
+            this.lbl_Desc.Appearance.Options.UseForeColor = true;
+            this.lbl_Desc.Location = new System.Drawing.Point(18, 36);
+            this.lbl_Desc.Name = "lbl_Desc";
+            this.lbl_Desc.Size = new System.Drawing.Size(410, 18);
+            this.lbl_Desc.TabIndex = 1;
+            this.lbl_Desc.Text = "Danh sách xe tập lái, giấy phép xe tập lái (GPXTL) và tình trạng sử dụng. Cập nhật GPXTL bằng file XML do Sở gửi.";
+            // 
+            // lbl_Title
+            // 
+            this.lbl_Title.Appearance.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.lbl_Title.Appearance.Options.UseFont = true;
+            this.lbl_Title.Appearance.Options.UseForeColor = true;
+            this.lbl_Title.Location = new System.Drawing.Point(16, 6);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(87, 28);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "Xe tập lái";
+            // 
+            // spacerTop
+            // 
+            this.spacerTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.spacerTop.Location = new System.Drawing.Point(12, 74);
+            this.spacerTop.Name = "spacerTop";
+            this.spacerTop.Size = new System.Drawing.Size(1476, 10);
+            this.spacerTop.TabIndex = 1;
+            // 
+            // grp_Detail
+            // 
+            this.grp_Detail.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 10.5F, System.Drawing.FontStyle.Bold);
+            this.grp_Detail.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.grp_Detail.AppearanceCaption.Options.UseFont = true;
+            this.grp_Detail.AppearanceCaption.Options.UseForeColor = true;
+            this.grp_Detail.Controls.Add(this.lbl_Hint);
+            this.grp_Detail.Controls.Add(this.btn_Cancel);
+            this.grp_Detail.Controls.Add(this.btn_Save);
+            this.grp_Detail.Controls.Add(this.btn_Edit);
+            this.grp_Detail.Controls.Add(this.toggleSwitch_TrangThai);
+            this.grp_Detail.Controls.Add(this.cap_ThanhLy);
+            this.grp_Detail.Controls.Add(this.txt_SoHuu);
+            this.grp_Detail.Controls.Add(this.cap_SoHuu);
+            this.grp_Detail.Controls.Add(this.val_SuDungDen);
+            this.grp_Detail.Controls.Add(this.cap_SuDungDen);
+            this.grp_Detail.Controls.Add(this.val_NgayHH);
+            this.grp_Detail.Controls.Add(this.cap_NgayHH);
+            this.grp_Detail.Controls.Add(this.val_NgayCap);
+            this.grp_Detail.Controls.Add(this.cap_NgayCap);
+            this.grp_Detail.Controls.Add(this.val_SoGPXTL);
+            this.grp_Detail.Controls.Add(this.cap_SoGPXTL);
+            this.grp_Detail.Controls.Add(this.val_NamSX);
+            this.grp_Detail.Controls.Add(this.cap_NamSX);
+            this.grp_Detail.Controls.Add(this.val_MaXe);
+            this.grp_Detail.Controls.Add(this.cap_MaXe);
+            this.grp_Detail.Controls.Add(this.lbl_TrangThai);
+            this.grp_Detail.Controls.Add(this.lbl_HangXe);
+            this.grp_Detail.Controls.Add(this.lbl_BienSo);
+            this.grp_Detail.Dock = System.Windows.Forms.DockStyle.Right;
+            this.grp_Detail.Location = new System.Drawing.Point(1108, 84);
+            this.grp_Detail.Name = "grp_Detail";
+            this.grp_Detail.Size = new System.Drawing.Size(380, 704);
+            this.grp_Detail.TabIndex = 4;
+            this.grp_Detail.Text = "THÔNG TIN XE TẬP LÁI";
+            this.grp_Detail.Paint += new System.Windows.Forms.PaintEventHandler(this.grp_Detail_Paint);
+            // 
+            // lbl_Hint
+            // 
+            this.lbl_Hint.Appearance.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Italic);
+            this.lbl_Hint.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lbl_Hint.Appearance.Options.UseFont = true;
+            this.lbl_Hint.Appearance.Options.UseForeColor = true;
+            this.lbl_Hint.Appearance.Options.UseTextOptions = true;
+            this.lbl_Hint.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.lbl_Hint.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lbl_Hint.Location = new System.Drawing.Point(20, 530);
+            this.lbl_Hint.Name = "lbl_Hint";
+            this.lbl_Hint.Size = new System.Drawing.Size(340, 26);
+            this.lbl_Hint.TabIndex = 22;
+            this.lbl_Hint.Text = "Số GPXTL, ngày cấp và ngày hết hạn được cập nhật bằng Import Xml. Tại đây chỉ sửa được Chủ sở hữu và tình trạng Thanh lý.";
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.btn_Cancel.Appearance.Options.UseFont = true;
+            this.btn_Cancel.Location = new System.Drawing.Point(248, 480);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(112, 34);
+            this.btn_Cancel.TabIndex = 21;
+            this.btn_Cancel.Text = "Hủy";
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_Save.Appearance.Options.UseFont = true;
+            this.btn_Save.Location = new System.Drawing.Point(134, 480);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(108, 34);
+            this.btn_Save.TabIndex = 20;
+            this.btn_Save.Text = "Lưu";
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Edit
+            // 
+            this.btn_Edit.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_Edit.Appearance.Options.UseFont = true;
+            this.btn_Edit.Location = new System.Drawing.Point(20, 480);
+            this.btn_Edit.Name = "btn_Edit";
+            this.btn_Edit.Size = new System.Drawing.Size(108, 34);
+            this.btn_Edit.TabIndex = 19;
+            this.btn_Edit.Text = "Sửa";
+            this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
             // 
             // toggleSwitch_TrangThai
             // 
-            this.toggleSwitch_TrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.toggleSwitch_TrangThai.Location = new System.Drawing.Point(144, 384);
+            this.toggleSwitch_TrangThai.Location = new System.Drawing.Point(20, 436);
             this.toggleSwitch_TrangThai.Name = "toggleSwitch_TrangThai";
-            this.toggleSwitch_TrangThai.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch_TrangThai.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.toggleSwitch_TrangThai.Properties.Appearance.Options.UseFont = true;
-            this.toggleSwitch_TrangThai.Properties.OffText = "Sử Dụng";
-            this.toggleSwitch_TrangThai.Properties.OnText = "Đã Thanh Lý";
-            this.toggleSwitch_TrangThai.Size = new System.Drawing.Size(159, 22);
-            this.toggleSwitch_TrangThai.TabIndex = 44;
+            this.toggleSwitch_TrangThai.Properties.OffText = "Đang sử dụng";
+            this.toggleSwitch_TrangThai.Properties.OnText = "Đã thanh lý";
+            this.toggleSwitch_TrangThai.Size = new System.Drawing.Size(340, 22);
+            this.toggleSwitch_TrangThai.TabIndex = 18;
             // 
-            // cbb_HangXe
+            // cap_ThanhLy
             // 
-            this.cbb_HangXe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbb_HangXe.EditValue = "Chọn Hạng Xe";
-            this.cbb_HangXe.Location = new System.Drawing.Point(144, 113);
-            this.cbb_HangXe.Name = "cbb_HangXe";
-            this.cbb_HangXe.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbb_HangXe.Properties.Appearance.Options.UseFont = true;
-            this.cbb_HangXe.Properties.Appearance.Options.UseTextOptions = true;
-            this.cbb_HangXe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HangXe.Properties.AppearanceDropDown.Options.UseTextOptions = true;
-            this.cbb_HangXe.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.cbb_HangXe.Properties.AutoHeight = false;
-            this.cbb_HangXe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbb_HangXe.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenHang", "Hạng Xe")});
-            this.cbb_HangXe.Properties.DropDownRows = 10;
-            this.cbb_HangXe.Properties.NullText = "Chọn xe tập lái";
-            this.cbb_HangXe.Size = new System.Drawing.Size(209, 23);
-            this.cbb_HangXe.TabIndex = 38;
-            this.cbb_HangXe.UseWaitCursor = true;
-            // 
-            // txt_BienSoXe
-            // 
-            this.txt_BienSoXe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_BienSoXe.Location = new System.Drawing.Point(144, 80);
-            this.txt_BienSoXe.Name = "txt_BienSoXe";
-            this.txt_BienSoXe.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_BienSoXe.Properties.Appearance.Options.UseFont = true;
-            this.txt_BienSoXe.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_BienSoXe.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_BienSoXe.Properties.AutoHeight = false;
-            this.txt_BienSoXe.Size = new System.Drawing.Size(209, 23);
-            this.txt_BienSoXe.TabIndex = 39;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label2.Location = new System.Drawing.Point(20, 281);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 18);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "Ngày Cấp GPXTL";
-            // 
-            // txt_CQCapGPXTL
-            // 
-            this.txt_CQCapGPXTL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_CQCapGPXTL.Location = new System.Drawing.Point(144, 245);
-            this.txt_CQCapGPXTL.Name = "txt_CQCapGPXTL";
-            this.txt_CQCapGPXTL.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_CQCapGPXTL.Properties.Appearance.Options.UseFont = true;
-            this.txt_CQCapGPXTL.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_CQCapGPXTL.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_CQCapGPXTL.Properties.AutoHeight = false;
-            this.txt_CQCapGPXTL.Size = new System.Drawing.Size(209, 23);
-            this.txt_CQCapGPXTL.TabIndex = 40;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label5.Location = new System.Drawing.Point(20, 149);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 18);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Số ĐK (*)";
-            // 
-            // txt_SoGPXTL
-            // 
-            this.txt_SoGPXTL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_SoGPXTL.Location = new System.Drawing.Point(144, 212);
-            this.txt_SoGPXTL.Name = "txt_SoGPXTL";
-            this.txt_SoGPXTL.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_SoGPXTL.Properties.Appearance.Options.UseFont = true;
-            this.txt_SoGPXTL.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_SoGPXTL.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_SoGPXTL.Properties.AutoHeight = false;
-            this.txt_SoGPXTL.Size = new System.Drawing.Size(209, 23);
-            this.txt_SoGPXTL.TabIndex = 40;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label12.Location = new System.Drawing.Point(20, 314);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 18);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Ngày HH GPXTL";
-            // 
-            // txt_NamSX
-            // 
-            this.txt_NamSX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_NamSX.Location = new System.Drawing.Point(144, 179);
-            this.txt_NamSX.Name = "txt_NamSX";
-            this.txt_NamSX.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_NamSX.Properties.Appearance.Options.UseFont = true;
-            this.txt_NamSX.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_NamSX.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_NamSX.Properties.AutoHeight = false;
-            this.txt_NamSX.Size = new System.Drawing.Size(209, 23);
-            this.txt_NamSX.TabIndex = 40;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label7.Location = new System.Drawing.Point(20, 347);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 18);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "Chủ Sở Hữu";
-            // 
-            // txt_SoDK
-            // 
-            this.txt_SoDK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_SoDK.Location = new System.Drawing.Point(144, 146);
-            this.txt_SoDK.Name = "txt_SoDK";
-            this.txt_SoDK.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txt_SoDK.Properties.Appearance.Options.UseFont = true;
-            this.txt_SoDK.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_SoDK.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_SoDK.Properties.AutoHeight = false;
-            this.txt_SoDK.Size = new System.Drawing.Size(209, 23);
-            this.txt_SoDK.TabIndex = 40;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label8.Location = new System.Drawing.Point(20, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 18);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "Năm SX (*)";
+            this.cap_ThanhLy.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_ThanhLy.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_ThanhLy.Appearance.Options.UseFont = true;
+            this.cap_ThanhLy.Appearance.Options.UseForeColor = true;
+            this.cap_ThanhLy.Location = new System.Drawing.Point(20, 416);
+            this.cap_ThanhLy.Name = "cap_ThanhLy";
+            this.cap_ThanhLy.Size = new System.Drawing.Size(56, 16);
+            this.cap_ThanhLy.TabIndex = 17;
+            this.cap_ThanhLy.Text = "Tình trạng";
             // 
             // txt_SoHuu
             // 
-            this.txt_SoHuu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_SoHuu.Location = new System.Drawing.Point(144, 344);
+            this.txt_SoHuu.Location = new System.Drawing.Point(20, 380);
             this.txt_SoHuu.Name = "txt_SoHuu";
-            this.txt_SoHuu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.txt_SoHuu.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.txt_SoHuu.Properties.Appearance.Options.UseFont = true;
-            this.txt_SoHuu.Properties.Appearance.Options.UseTextOptions = true;
-            this.txt_SoHuu.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txt_SoHuu.Properties.AutoHeight = false;
-            this.txt_SoHuu.Size = new System.Drawing.Size(209, 23);
-            this.txt_SoHuu.TabIndex = 41;
+            this.txt_SoHuu.Properties.NullValuePrompt = "Tên chủ sở hữu xe";
+            this.txt_SoHuu.Size = new System.Drawing.Size(340, 24);
+            this.txt_SoHuu.TabIndex = 16;
             // 
-            // label1
+            // cap_SoHuu
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label1.Location = new System.Drawing.Point(20, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 18);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Hạng Xe (*)";
+            this.cap_SoHuu.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_SoHuu.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_SoHuu.Appearance.Options.UseFont = true;
+            this.cap_SoHuu.Appearance.Options.UseForeColor = true;
+            this.cap_SoHuu.Location = new System.Drawing.Point(20, 360);
+            this.cap_SoHuu.Name = "cap_SoHuu";
+            this.cap_SoHuu.Size = new System.Drawing.Size(62, 16);
+            this.cap_SoHuu.TabIndex = 15;
+            this.cap_SoHuu.Text = "Chủ sở hữu";
             // 
-            // date_NgayHHGPXTL
+            // val_SuDungDen
             // 
-            this.date_NgayHHGPXTL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.date_NgayHHGPXTL.EditValue = null;
-            this.date_NgayHHGPXTL.Location = new System.Drawing.Point(144, 311);
-            this.date_NgayHHGPXTL.Name = "date_NgayHHGPXTL";
-            this.date_NgayHHGPXTL.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date_NgayHHGPXTL.Properties.Appearance.Options.UseFont = true;
-            this.date_NgayHHGPXTL.Properties.Appearance.Options.UseTextOptions = true;
-            this.date_NgayHHGPXTL.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_NgayHHGPXTL.Properties.AutoHeight = false;
-            this.date_NgayHHGPXTL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgayHHGPXTL.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgayHHGPXTL.Size = new System.Drawing.Size(209, 23);
-            this.date_NgayHHGPXTL.TabIndex = 10;
+            this.val_SuDungDen.Appearance.Font = new System.Drawing.Font("Roboto", 10F);
+            this.val_SuDungDen.Appearance.Options.UseFont = true;
+            this.val_SuDungDen.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.val_SuDungDen.Location = new System.Drawing.Point(160, 300);
+            this.val_SuDungDen.Name = "val_SuDungDen";
+            this.val_SuDungDen.Size = new System.Drawing.Size(200, 18);
+            this.val_SuDungDen.TabIndex = 14;
+            this.val_SuDungDen.Text = "—";
             // 
-            // label10
+            // cap_SuDungDen
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label10.Location = new System.Drawing.Point(20, 215);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 18);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Số GPXTL (*)";
+            this.cap_SuDungDen.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_SuDungDen.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_SuDungDen.Appearance.Options.UseFont = true;
+            this.cap_SuDungDen.Appearance.Options.UseForeColor = true;
+            this.cap_SuDungDen.Location = new System.Drawing.Point(20, 301);
+            this.cap_SuDungDen.Name = "cap_SuDungDen";
+            this.cap_SuDungDen.Size = new System.Drawing.Size(68, 16);
+            this.cap_SuDungDen.TabIndex = 13;
+            this.cap_SuDungDen.Text = "Sử dụng đến";
             // 
-            // date_NgayCapGPXTL
+            // val_NgayHH
             // 
-            this.date_NgayCapGPXTL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.date_NgayCapGPXTL.EditValue = null;
-            this.date_NgayCapGPXTL.Location = new System.Drawing.Point(144, 278);
-            this.date_NgayCapGPXTL.Name = "date_NgayCapGPXTL";
-            this.date_NgayCapGPXTL.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date_NgayCapGPXTL.Properties.Appearance.Options.UseFont = true;
-            this.date_NgayCapGPXTL.Properties.Appearance.Options.UseTextOptions = true;
-            this.date_NgayCapGPXTL.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_NgayCapGPXTL.Properties.AutoHeight = false;
-            this.date_NgayCapGPXTL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgayCapGPXTL.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_NgayCapGPXTL.Size = new System.Drawing.Size(209, 23);
-            this.date_NgayCapGPXTL.TabIndex = 10;
+            this.val_NgayHH.Appearance.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Bold);
+            this.val_NgayHH.Appearance.Options.UseFont = true;
+            this.val_NgayHH.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.val_NgayHH.Location = new System.Drawing.Point(160, 266);
+            this.val_NgayHH.Name = "val_NgayHH";
+            this.val_NgayHH.Size = new System.Drawing.Size(200, 18);
+            this.val_NgayHH.TabIndex = 12;
+            this.val_NgayHH.Text = "—";
             // 
-            // label11
+            // cap_NgayHH
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label11.Location = new System.Drawing.Point(20, 248);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 18);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "C/Quan cấp GPXTL";
+            this.cap_NgayHH.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_NgayHH.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_NgayHH.Appearance.Options.UseFont = true;
+            this.cap_NgayHH.Appearance.Options.UseForeColor = true;
+            this.cap_NgayHH.Location = new System.Drawing.Point(20, 267);
+            this.cap_NgayHH.Name = "cap_NgayHH";
+            this.cap_NgayHH.Size = new System.Drawing.Size(113, 16);
+            this.cap_NgayHH.TabIndex = 11;
+            this.cap_NgayHH.Text = "Ngày hết hạn GPXTL";
+            // 
+            // val_NgayCap
+            // 
+            this.val_NgayCap.Appearance.Font = new System.Drawing.Font("Roboto", 10F);
+            this.val_NgayCap.Appearance.Options.UseFont = true;
+            this.val_NgayCap.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.val_NgayCap.Location = new System.Drawing.Point(160, 232);
+            this.val_NgayCap.Name = "val_NgayCap";
+            this.val_NgayCap.Size = new System.Drawing.Size(200, 18);
+            this.val_NgayCap.TabIndex = 10;
+            this.val_NgayCap.Text = "—";
+            // 
+            // cap_NgayCap
+            // 
+            this.cap_NgayCap.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_NgayCap.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_NgayCap.Appearance.Options.UseFont = true;
+            this.cap_NgayCap.Appearance.Options.UseForeColor = true;
+            this.cap_NgayCap.Location = new System.Drawing.Point(20, 233);
+            this.cap_NgayCap.Name = "cap_NgayCap";
+            this.cap_NgayCap.Size = new System.Drawing.Size(92, 16);
+            this.cap_NgayCap.TabIndex = 9;
+            this.cap_NgayCap.Text = "Ngày cấp GPXTL";
+            // 
+            // val_SoGPXTL
+            // 
+            this.val_SoGPXTL.Appearance.Font = new System.Drawing.Font("Roboto", 10F);
+            this.val_SoGPXTL.Appearance.Options.UseFont = true;
+            this.val_SoGPXTL.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.val_SoGPXTL.Location = new System.Drawing.Point(160, 198);
+            this.val_SoGPXTL.Name = "val_SoGPXTL";
+            this.val_SoGPXTL.Size = new System.Drawing.Size(200, 18);
+            this.val_SoGPXTL.TabIndex = 8;
+            this.val_SoGPXTL.Text = "—";
+            // 
+            // cap_SoGPXTL
+            // 
+            this.cap_SoGPXTL.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_SoGPXTL.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_SoGPXTL.Appearance.Options.UseFont = true;
+            this.cap_SoGPXTL.Appearance.Options.UseForeColor = true;
+            this.cap_SoGPXTL.Location = new System.Drawing.Point(20, 199);
+            this.cap_SoGPXTL.Name = "cap_SoGPXTL";
+            this.cap_SoGPXTL.Size = new System.Drawing.Size(54, 16);
+            this.cap_SoGPXTL.TabIndex = 7;
+            this.cap_SoGPXTL.Text = "Số GPXTL";
+            // 
+            // val_NamSX
+            // 
+            this.val_NamSX.Appearance.Font = new System.Drawing.Font("Roboto", 10F);
+            this.val_NamSX.Appearance.Options.UseFont = true;
+            this.val_NamSX.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.val_NamSX.Location = new System.Drawing.Point(160, 164);
+            this.val_NamSX.Name = "val_NamSX";
+            this.val_NamSX.Size = new System.Drawing.Size(200, 18);
+            this.val_NamSX.TabIndex = 6;
+            this.val_NamSX.Text = "—";
+            // 
+            // cap_NamSX
+            // 
+            this.cap_NamSX.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_NamSX.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_NamSX.Appearance.Options.UseFont = true;
+            this.cap_NamSX.Appearance.Options.UseForeColor = true;
+            this.cap_NamSX.Location = new System.Drawing.Point(20, 165);
+            this.cap_NamSX.Name = "cap_NamSX";
+            this.cap_NamSX.Size = new System.Drawing.Size(76, 16);
+            this.cap_NamSX.TabIndex = 5;
+            this.cap_NamSX.Text = "Năm sản xuất";
+            // 
+            // val_MaXe
+            // 
+            this.val_MaXe.Appearance.Font = new System.Drawing.Font("Roboto", 10F);
+            this.val_MaXe.Appearance.Options.UseFont = true;
+            this.val_MaXe.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.val_MaXe.Location = new System.Drawing.Point(160, 130);
+            this.val_MaXe.Name = "val_MaXe";
+            this.val_MaXe.Size = new System.Drawing.Size(200, 18);
+            this.val_MaXe.TabIndex = 4;
+            this.val_MaXe.Text = "—";
+            // 
+            // cap_MaXe
+            // 
+            this.cap_MaXe.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
+            this.cap_MaXe.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.cap_MaXe.Appearance.Options.UseFont = true;
+            this.cap_MaXe.Appearance.Options.UseForeColor = true;
+            this.cap_MaXe.Location = new System.Drawing.Point(20, 131);
+            this.cap_MaXe.Name = "cap_MaXe";
+            this.cap_MaXe.Size = new System.Drawing.Size(33, 16);
+            this.cap_MaXe.TabIndex = 3;
+            this.cap_MaXe.Text = "Mã xe";
+            // 
+            // lbl_TrangThai
+            // 
+            this.lbl_TrangThai.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_TrangThai.Appearance.Options.UseFont = true;
+            this.lbl_TrangThai.Location = new System.Drawing.Point(150, 80);
+            this.lbl_TrangThai.Name = "lbl_TrangThai";
+            this.lbl_TrangThai.Size = new System.Drawing.Size(3, 18);
+            this.lbl_TrangThai.TabIndex = 2;
+            this.lbl_TrangThai.Text = " ";
+            // 
+            // lbl_HangXe
+            // 
+            this.lbl_HangXe.Appearance.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_HangXe.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.lbl_HangXe.Appearance.Options.UseFont = true;
+            this.lbl_HangXe.Appearance.Options.UseForeColor = true;
+            this.lbl_HangXe.Location = new System.Drawing.Point(20, 80);
+            this.lbl_HangXe.Name = "lbl_HangXe";
+            this.lbl_HangXe.Size = new System.Drawing.Size(3, 18);
+            this.lbl_HangXe.TabIndex = 1;
+            this.lbl_HangXe.Text = " ";
+            // 
+            // lbl_BienSo
+            // 
+            this.lbl_BienSo.Appearance.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Bold);
+            this.lbl_BienSo.Appearance.Options.UseFont = true;
+            this.lbl_BienSo.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_BienSo.Location = new System.Drawing.Point(18, 38);
+            this.lbl_BienSo.Name = "lbl_BienSo";
+            this.lbl_BienSo.Size = new System.Drawing.Size(342, 36);
+            this.lbl_BienSo.TabIndex = 0;
+            this.lbl_BienSo.Text = "Chọn một xe";
+            // 
+            // spacerRight
+            // 
+            this.spacerRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.spacerRight.Location = new System.Drawing.Point(1098, 84);
+            this.spacerRight.Name = "spacerRight";
+            this.spacerRight.Size = new System.Drawing.Size(10, 704);
+            this.spacerRight.TabIndex = 3;
+            // 
+            // grp_List
+            // 
+            this.grp_List.AppearanceCaption.Font = new System.Drawing.Font("Roboto", 10.5F, System.Drawing.FontStyle.Bold);
+            this.grp_List.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.grp_List.AppearanceCaption.Options.UseFont = true;
+            this.grp_List.AppearanceCaption.Options.UseForeColor = true;
+            this.grp_List.Controls.Add(this.gridControl_XeTapLai);
+            this.grp_List.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grp_List.Location = new System.Drawing.Point(12, 84);
+            this.grp_List.Name = "grp_List";
+            this.grp_List.Size = new System.Drawing.Size(1086, 704);
+            this.grp_List.TabIndex = 2;
+            this.grp_List.Text = "DANH SÁCH XE TẬP LÁI";
             // 
             // gridControl_XeTapLai
             // 
             this.gridControl_XeTapLai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_XeTapLai.Location = new System.Drawing.Point(3, 3);
+            this.gridControl_XeTapLai.Location = new System.Drawing.Point(2, 23);
             this.gridControl_XeTapLai.MainView = this.gridView_XeTapLai;
             this.gridControl_XeTapLai.Name = "gridControl_XeTapLai";
-            this.gridControl_XeTapLai.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repoToggleSwitch,
-            this.repo_CheckEdit});
-            this.gridControl_XeTapLai.Size = new System.Drawing.Size(1114, 794);
+            this.gridControl_XeTapLai.Size = new System.Drawing.Size(1082, 679);
             this.gridControl_XeTapLai.TabIndex = 0;
             this.gridControl_XeTapLai.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_XeTapLai});
             // 
             // gridView_XeTapLai
             // 
-            this.gridView_XeTapLai.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_XeTapLai.Appearance.GroupRow.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridView_XeTapLai.Appearance.GroupRow.Options.UseFont = true;
-            this.gridView_XeTapLai.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_XeTapLai.Appearance.HeaderPanel.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
             this.gridView_XeTapLai.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView_XeTapLai.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridView_XeTapLai.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView_XeTapLai.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView_XeTapLai.Appearance.Row.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.gridView_XeTapLai.Appearance.Row.Options.UseFont = true;
             this.gridView_XeTapLai.Appearance.Row.Options.UseTextOptions = true;
             this.gridView_XeTapLai.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView_XeTapLai.ColumnPanelRowHeight = 32;
             this.gridView_XeTapLai.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.MaXe,
-            this.ID,
             this.BienSoXe,
             this.HangXe,
             this.NamSX,
             this.SoGPXTL,
             this.NgayCapGPXTL,
             this.NgayHHGPXTL,
-            this.CoQuanCapGPXTL,
             this.ChuSoHuu,
             this.ThanhLy,
             this.DateTime_Use});
             this.gridView_XeTapLai.GridControl = this.gridControl_XeTapLai;
             this.gridView_XeTapLai.GroupCount = 1;
-            this.gridView_XeTapLai.GroupRowHeight = 32;
+            this.gridView_XeTapLai.GroupFormat = "Hạng {1} {2}";
+            this.gridView_XeTapLai.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "BienSoXe", null, "— {0} xe")});
             this.gridView_XeTapLai.Name = "gridView_XeTapLai";
             this.gridView_XeTapLai.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView_XeTapLai.OptionsBehavior.Editable = false;
             this.gridView_XeTapLai.OptionsBehavior.ReadOnly = true;
-            this.gridView_XeTapLai.RowHeight = 32;
             this.gridView_XeTapLai.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.HangXe, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.HangXe, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.BienSoXe, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView_XeTapLai.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView_XeTapLai_RowCellStyle);
+            this.gridView_XeTapLai.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridView_XeTapLai_CustomDrawEmptyForeground);
             this.gridView_XeTapLai.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView_XeTapLai_FocusedRowChanged);
+            this.gridView_XeTapLai.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridView_XeTapLai_CustomColumnDisplayText);
             // 
             // MaXe
             // 
-            this.MaXe.Caption = "Mã Xe";
+            this.MaXe.Caption = "Mã xe";
             this.MaXe.FieldName = "MaXe";
             this.MaXe.Name = "MaXe";
             this.MaXe.Visible = true;
             this.MaXe.VisibleIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.Caption = "VehicleID";
-            this.ID.FieldName = "ID";
-            this.ID.Name = "ID";
+            this.MaXe.Width = 80;
             // 
             // BienSoXe
             // 
-            this.BienSoXe.Caption = "Biển Số Xe";
+            this.BienSoXe.AppearanceCell.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BienSoXe.AppearanceCell.Options.UseFont = true;
+            this.BienSoXe.Caption = "Biển số";
             this.BienSoXe.FieldName = "BienSoXe";
             this.BienSoXe.Name = "BienSoXe";
             this.BienSoXe.Visible = true;
             this.BienSoXe.VisibleIndex = 1;
-            this.BienSoXe.Width = 69;
+            this.BienSoXe.Width = 110;
             // 
             // HangXe
             // 
-            this.HangXe.Caption = "Hạng Xe";
+            this.HangXe.Caption = "Hạng xe";
             this.HangXe.FieldName = "HangGPLX";
             this.HangXe.Name = "HangXe";
             this.HangXe.Visible = true;
             this.HangXe.VisibleIndex = 2;
-            this.HangXe.Width = 76;
+            this.HangXe.Width = 80;
             // 
             // NamSX
             // 
-            this.NamSX.Caption = "Năm Sản Xuất";
+            this.NamSX.Caption = "Năm SX";
             this.NamSX.FieldName = "NamSX";
             this.NamSX.Name = "NamSX";
             this.NamSX.Visible = true;
             this.NamSX.VisibleIndex = 2;
-            this.NamSX.Width = 97;
+            this.NamSX.Width = 80;
             // 
             // SoGPXTL
             // 
@@ -549,148 +588,137 @@
             this.SoGPXTL.Name = "SoGPXTL";
             this.SoGPXTL.Visible = true;
             this.SoGPXTL.VisibleIndex = 3;
-            this.SoGPXTL.Width = 104;
+            this.SoGPXTL.Width = 120;
             // 
             // NgayCapGPXTL
             // 
-            this.NgayCapGPXTL.Caption = "Ngày Cấp GPXTL";
+            this.NgayCapGPXTL.Caption = "Ngày cấp GPXTL";
+            this.NgayCapGPXTL.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.NgayCapGPXTL.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.NgayCapGPXTL.FieldName = "NgayCapGPXTL";
             this.NgayCapGPXTL.Name = "NgayCapGPXTL";
             this.NgayCapGPXTL.Visible = true;
             this.NgayCapGPXTL.VisibleIndex = 4;
-            this.NgayCapGPXTL.Width = 102;
+            this.NgayCapGPXTL.Width = 110;
             // 
             // NgayHHGPXTL
             // 
-            this.NgayHHGPXTL.Caption = "Ngày Hết Hạn GPXTL";
+            this.NgayHHGPXTL.Caption = "Hết hạn GPXTL";
+            this.NgayHHGPXTL.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.NgayHHGPXTL.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.NgayHHGPXTL.FieldName = "NgayHHXTL";
             this.NgayHHGPXTL.Name = "NgayHHGPXTL";
+            this.NgayHHGPXTL.ToolTip = "Đỏ: đã hết hạn · Cam: hết hạn trong 30 ngày";
             this.NgayHHGPXTL.Visible = true;
             this.NgayHHGPXTL.VisibleIndex = 5;
-            this.NgayHHGPXTL.Width = 95;
-            // 
-            // CoQuanCapGPXTL
-            // 
-            this.CoQuanCapGPXTL.Caption = "Cơ Quan Cấp GPXTL";
-            this.CoQuanCapGPXTL.FieldName = "CoQuanCapGPXTL";
-            this.CoQuanCapGPXTL.Name = "CoQuanCapGPXTL";
-            this.CoQuanCapGPXTL.Visible = true;
-            this.CoQuanCapGPXTL.VisibleIndex = 6;
-            this.CoQuanCapGPXTL.Width = 139;
+            this.NgayHHGPXTL.Width = 110;
             // 
             // ChuSoHuu
             // 
             this.ChuSoHuu.AppearanceCell.Options.UseTextOptions = true;
             this.ChuSoHuu.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.ChuSoHuu.Caption = "Chủ Sở Hữu";
+            this.ChuSoHuu.Caption = "Chủ sở hữu";
             this.ChuSoHuu.FieldName = "ChuSoHuu";
             this.ChuSoHuu.Name = "ChuSoHuu";
             this.ChuSoHuu.Visible = true;
-            this.ChuSoHuu.VisibleIndex = 7;
-            this.ChuSoHuu.Width = 139;
+            this.ChuSoHuu.VisibleIndex = 6;
+            this.ChuSoHuu.Width = 170;
             // 
             // ThanhLy
             // 
-            this.ThanhLy.Caption = "Thanh Lý";
-            this.ThanhLy.ColumnEdit = this.repoToggleSwitch;
+            this.ThanhLy.Caption = "Tình trạng";
             this.ThanhLy.FieldName = "ThanhLy";
             this.ThanhLy.Name = "ThanhLy";
             this.ThanhLy.Visible = true;
-            this.ThanhLy.VisibleIndex = 8;
-            this.ThanhLy.Width = 55;
-            // 
-            // repoToggleSwitch
-            // 
-            this.repoToggleSwitch.AutoHeight = false;
-            this.repoToggleSwitch.Name = "repoToggleSwitch";
-            this.repoToggleSwitch.OffText = "Off";
-            this.repoToggleSwitch.OnText = "On";
+            this.ThanhLy.VisibleIndex = 7;
+            this.ThanhLy.Width = 110;
             // 
             // DateTime_Use
             // 
-            this.DateTime_Use.Caption = "Sử Dụng Đến";
+            this.DateTime_Use.Caption = "Sử dụng đến";
+            this.DateTime_Use.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.DateTime_Use.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.DateTime_Use.FieldName = "SuDungDen";
             this.DateTime_Use.Name = "DateTime_Use";
             this.DateTime_Use.Visible = true;
-            this.DateTime_Use.VisibleIndex = 9;
-            this.DateTime_Use.Width = 129;
-            // 
-            // repo_CheckEdit
-            // 
-            this.repo_CheckEdit.AutoHeight = false;
-            this.repo_CheckEdit.Name = "repo_CheckEdit";
+            this.DateTime_Use.VisibleIndex = 8;
+            this.DateTime_Use.Width = 110;
             // 
             // UcChild_XeDaoTao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tblLayout_DmXeTapLai);
+            this.Controls.Add(this.grp_List);
+            this.Controls.Add(this.spacerRight);
+            this.Controls.Add(this.grp_Detail);
+            this.Controls.Add(this.spacerTop);
+            this.Controls.Add(this.pnl_Header);
             this.Name = "UcChild_XeDaoTao";
+            this.Padding = new System.Windows.Forms.Padding(12);
             this.Size = new System.Drawing.Size(1500, 800);
             this.Load += new System.EventHandler(this.UcChild_XeTap_Load);
-            this.tblLayout_DmXeTapLai.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl_XeTapLai)).EndInit();
-            this.groupControl_XeTapLai.ResumeLayout(false);
-            this.groupControl_XeTapLai.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Header)).EndInit();
+            this.pnl_Header.ResumeLayout(false);
+            this.pnl_Header.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grp_Detail)).EndInit();
+            this.grp_Detail.ResumeLayout(false);
+            this.grp_Detail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_TrangThai.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbb_HangXe.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_BienSoXe.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_CQCapGPXTL.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SoGPXTL.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_NamSX.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SoDK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoHuu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayHHGPXTL.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_NgayCapGPXTL.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grp_List)).EndInit();
+            this.grp_List.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_XeTapLai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_XeTapLai)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoToggleSwitch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_CheckEdit)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tblLayout_DmXeTapLai;
+        private DevExpress.XtraEditors.PanelControl pnl_Header;
+        private DevExpress.XtraEditors.LabelControl lbl_Title;
+        private DevExpress.XtraEditors.LabelControl lbl_Desc;
+        private DevExpress.XtraEditors.SimpleButton btn_ImportXml;
+        private DevExpress.XtraEditors.SimpleButton btn_Export;
+        private DevExpress.XtraEditors.SimpleButton btn_Refresh;
+        private System.Windows.Forms.Panel spacerTop;
+        private DevExpress.XtraEditors.GroupControl grp_List;
         private DevExpress.XtraGrid.GridControl gridControl_XeTapLai;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_XeTapLai;
         private DevExpress.XtraGrid.Columns.GridColumn MaXe;
-        private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn BienSoXe;
         private DevExpress.XtraGrid.Columns.GridColumn HangXe;
         private DevExpress.XtraGrid.Columns.GridColumn NamSX;
         private DevExpress.XtraGrid.Columns.GridColumn SoGPXTL;
         private DevExpress.XtraGrid.Columns.GridColumn NgayCapGPXTL;
         private DevExpress.XtraGrid.Columns.GridColumn NgayHHGPXTL;
-        private DevExpress.XtraGrid.Columns.GridColumn CoQuanCapGPXTL;
         private DevExpress.XtraGrid.Columns.GridColumn ChuSoHuu;
         private DevExpress.XtraGrid.Columns.GridColumn ThanhLy;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repo_CheckEdit;
-        private DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch repoToggleSwitch;
         private DevExpress.XtraGrid.Columns.GridColumn DateTime_Use;
-        private DevExpress.XtraEditors.GroupControl groupControl_XeTapLai;
-        private System.Windows.Forms.Label label3;
-        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_TrangThai;
-        private DevExpress.XtraEditors.LookUpEdit cbb_HangXe;
-        private DevExpress.XtraEditors.TextEdit txt_BienSoXe;
-        private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.TextEdit txt_CQCapGPXTL;
-        private System.Windows.Forms.Label label5;
-        private DevExpress.XtraEditors.TextEdit txt_SoGPXTL;
-        private System.Windows.Forms.Label label12;
-        private DevExpress.XtraEditors.TextEdit txt_NamSX;
-        private System.Windows.Forms.Label label7;
-        private DevExpress.XtraEditors.TextEdit txt_SoDK;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel spacerRight;
+        private DevExpress.XtraEditors.GroupControl grp_Detail;
+        private DevExpress.XtraEditors.LabelControl lbl_BienSo;
+        private DevExpress.XtraEditors.LabelControl lbl_HangXe;
+        private DevExpress.XtraEditors.LabelControl lbl_TrangThai;
+        private DevExpress.XtraEditors.LabelControl cap_MaXe;
+        private DevExpress.XtraEditors.LabelControl val_MaXe;
+        private DevExpress.XtraEditors.LabelControl cap_NamSX;
+        private DevExpress.XtraEditors.LabelControl val_NamSX;
+        private DevExpress.XtraEditors.LabelControl cap_SoGPXTL;
+        private DevExpress.XtraEditors.LabelControl val_SoGPXTL;
+        private DevExpress.XtraEditors.LabelControl cap_NgayCap;
+        private DevExpress.XtraEditors.LabelControl val_NgayCap;
+        private DevExpress.XtraEditors.LabelControl cap_NgayHH;
+        private DevExpress.XtraEditors.LabelControl val_NgayHH;
+        private DevExpress.XtraEditors.LabelControl cap_SuDungDen;
+        private DevExpress.XtraEditors.LabelControl val_SuDungDen;
+        private DevExpress.XtraEditors.LabelControl cap_SoHuu;
         private DevExpress.XtraEditors.TextEdit txt_SoHuu;
-        private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.DateEdit date_NgayHHGPXTL;
-        private System.Windows.Forms.Label label10;
-        private DevExpress.XtraEditors.DateEdit date_NgayCapGPXTL;
-        private System.Windows.Forms.Label label11;
+        private DevExpress.XtraEditors.LabelControl cap_ThanhLy;
+        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_TrangThai;
+        private DevExpress.XtraEditors.SimpleButton btn_Edit;
+        private DevExpress.XtraEditors.SimpleButton btn_Save;
+        private DevExpress.XtraEditors.SimpleButton btn_Cancel;
+        private DevExpress.XtraEditors.LabelControl lbl_Hint;
     }
 }

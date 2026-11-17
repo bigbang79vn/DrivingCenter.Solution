@@ -12,11 +12,11 @@ namespace DrivingCenter.App.DAO
     {
         private readonly DbProvider _db = new DbProvider(Enums.DatabaseType.db_CaBinEMC);
 
-        public List<KhoaHoc> GetAllKhoaHoc()
+        public List<KhoaHocCabin> GetAllKhoaHoc()
         {
             string query = "SELECT KhoaHocID, MaKH, TenKH, NgayKG, NgayBG, MaBC1, HangDaoTao, LoaiDaoTao FROM KhoaHoc";
             var result = _db.QueryToDataTable(query);
-            List<KhoaHoc> lstKhoaHoc = result.AsEnumerable().Select(item => new KhoaHoc
+            List<KhoaHocCabin> lstKhoaHoc = result.AsEnumerable().Select(item => new KhoaHocCabin
             {
                 KhoaHocID = (int)item["KhoaHocID"],
                 MaKhoaHoc = (string)item["MaKH"],
@@ -33,8 +33,8 @@ namespace DrivingCenter.App.DAO
 
         public List<Int64> GetlstNguoiLxID(int IdKhoaHoc)
         {
-            string query = string.Format("SELECT NguoiLXID FROM NguoiLX WHERE KhoaHocID = {0}", IdKhoaHoc);
-            return _db.Query<Int64>(query).ToList();
+            const string query = "SELECT NguoiLXID FROM NguoiLX WHERE KhoaHocID = @IdKhoaHoc";
+            return _db.Query<Int64>(query, new { IdKhoaHoc }).ToList();
         }
 
         public void UpdateTimeExerToNguoiLx(Int64 NguoilxId)
@@ -48,12 +48,9 @@ namespace DrivingCenter.App.DAO
 
         public List<HocVien> GetlstHocVienByIdKhoaHoc(int IdKhoaHoc)
         {
-            string query = string.Format("SELECT * " +
-                "FROM v_LstHocVienByKH " +
-                "WHERE KhoaHocID = {0} " +
-                "ORDER BY GiaoVienID ASC", IdKhoaHoc);
+            const string query = "SELECT * FROM v_LstHocVienByKH WHERE KhoaHocID = @IdKhoaHoc ORDER BY GiaoVienID ASC";
 
-            DataTable data = _db.QueryToDataTable(query);
+            DataTable data = _db.QueryToDataTable(query, new { IdKhoaHoc });
 
             List<HocVien> lstStudent = data.AsEnumerable().Select(item => new HocVien
             {
@@ -76,8 +73,8 @@ namespace DrivingCenter.App.DAO
 
         public string CheckDK(Int64? NguoiLxID, string makh)
         {
-            string query = $"EXEC sp_KTDieuKien @Id_HocVien = {NguoiLxID}, @MaKH = '{makh}'";
-            string KetLuan = _db.QuerySingle<string>(query).ToString();
+            const string query = "EXEC sp_KTDieuKien @Id_HocVien = @Id_HocVien, @MaKH = @MaKH";
+            string KetLuan = _db.QuerySingle<string>(query, new { Id_HocVien = NguoiLxID, MaKH = makh }) ?? string.Empty;
             return KetLuan;
         }
 
@@ -85,10 +82,10 @@ namespace DrivingCenter.App.DAO
         {
             string query = $@"SELECT hv.NguoiLXID, gv.HoTenDem, gv.TenGV, hv.TenKH, hv.MaDK, hv.HoVaTen, CONVERT(varchar, hv.NgaySinh, 103) as NgaySinh, hv.SoCMT, CONVERT(varchar,DATEADD(second,SUM(TongThoiGianPhien),0),108) AS TongThoiGian , SUM(TongThoiGianPhien) / 3600 AS TotalSecond 
                 FROM DiemDanhNguoiLx as kqt, NguoiLX as hv, GiaoVien AS gv  
-                WHERE hv.NguoiLXID = kqt.NguoiLxID and hv.GiaoVienID = gv.GiaoVienID and CONVERT(VARCHAR, ThoiDiemBatDau, 103) = '{day}' 
+                WHERE hv.NguoiLXID = kqt.NguoiLxID and hv.GiaoVienID = gv.GiaoVienID and CONVERT(VARCHAR, ThoiDiemBatDau, 103) = @Day
                 GROUP BY hv.NguoiLXID, hv.TenKH, hv.MaDK, hv.NgaySinh, hv.HoVaTen, hv.SoCMT, gv.TenGV, gv.HoTenDem";
 
-            var dt = _db.QueryToDataTable(query);
+            var dt = _db.QueryToDataTable(query, new { Day = day });
 
             List<ThongKe> lst = new List<ThongKe>();
             lst = dt.AsEnumerable().Select(item => new ThongKe
@@ -109,14 +106,17 @@ namespace DrivingCenter.App.DAO
 
         public HocVien GetInfoHVByNguoiLxID(Int64? NguoiLxID)
         {
-            string query = string.Format("SELECT * FROM [I2ECABIN3D].[dbo].[v_LstHocVienByKH] WHERE NguoiLXID = '{0}'", NguoiLxID);
+            const string query = "SELECT * FROM [I2ECABIN3D].[dbo].[v_LstHocVienByKH] WHERE NguoiLXID = @NguoiLxID";
 
-            var dt = _db.QueryToDataTable(query);
+            var dt = _db.QueryToDataTable(query, new { NguoiLxID });
 
             List<HocVien> lstStudent = dt.AsEnumerable().Select(item => new HocVien
             {
                 MaDK = item["MaDK"].ToString(),
                 NguoiLxID = (long)item["NguoiLXID"],
+                // Thiếu MaKH thì sp_KTDieuKien trả "Không tìm thấy thông tin khóa học" dù học viên đã đạt
+                MaKH = item["MaKH"].ToString(),
+                TenKH = item["TenKH"].ToString(),
                 HoTenHV = item["HoVaTen"].ToString(),
                 NgaySinh = (DateTime)item["NgaySinh"],
                 GioiTinh = item["GioiTinh"].ToString(),
@@ -124,7 +124,7 @@ namespace DrivingCenter.App.DAO
                 NgayCapCMT = (DateTime)item["NgayCapCMT"],
                 HangGPLX = item["HangGPLX"].ToString(),
 
-                Anh = (byte[])item["Anh"],
+                Anh = item["Anh"] as byte[],   // học viên chưa có ảnh: DBNull → null (trước đây ném lỗi ép kiểu)
                 ToTalSecond = item["TongThoiGianPhien"].ToString(),
                 TongNoiDungDT = (int)item["TongNoiDungDT"],
                 TenGV = item["HoTenDem"].ToString() + " " + item["TenGV"].ToString()
@@ -135,20 +135,20 @@ namespace DrivingCenter.App.DAO
 
         public int CountBaiTap(Int64? NguoiLxID)
         {
-            string query = string.Format("SELECT count(*) FROM " +
-                "(SELECT MIN(BaiHocCaBinID) AS ID_BaiTap FROM DiemDanhNguoiLx where NguoiLxID = {0} and BaiHocCaBinID > 0 and Datediff(s, ThoiDiemBatDau, ThoiDiemKetThuc) > 60 GROUP BY BaiHocCaBinID) t", NguoiLxID);
-            int TongBaiTap = _db.QuerySingle<int>(query);
+            const string query = "SELECT count(*) FROM " +
+                "(SELECT MIN(BaiHocCaBinID) AS ID_BaiTap FROM DiemDanhNguoiLx where NguoiLxID = @NguoiLxID and BaiHocCaBinID > 0 and Datediff(s, ThoiDiemBatDau, ThoiDiemKetThuc) > 60 GROUP BY BaiHocCaBinID) t";
+            int TongBaiTap = _db.Scalar<int>(query, new { NguoiLxID });
             return TongBaiTap;
         }
 
         public List<Result> GetResultByNguoiLxID(Int64? NguoiLxID)
         {
-            string query = string.Format("SELECT tb.TenThietBi, kq.DiemDanhNguoiLxID, kq.BaiHocCaBinID, bt.TenBaiTapCabin, kq.ThoiDiemBatDau, kq.ThoiDiemKetThuc, QuangDuong, PathVideo, CONVERT(varchar, DATEADD(second, kq.TongThoiGianPhien, 0), 108) as TongThoiGianPhien, kq.TongThoiGianPhien as TotalSecond, CreateDate " +
+            const string query = "SELECT tb.TenThietBi, kq.DiemDanhNguoiLxID, kq.BaiHocCaBinID, bt.TenBaiTapCabin, kq.ThoiDiemBatDau, kq.ThoiDiemKetThuc, QuangDuong, PathVideo, CONVERT(varchar, DATEADD(second, kq.TongThoiGianPhien, 0), 108) as TongThoiGianPhien, kq.TongThoiGianPhien as TotalSecond, CreateDate " +
                 "FROM DiemDanhNguoiLx as kq, BaiTapCaBin as bt, ThietBi as tb " +
-                "WHERE kq.BaiHocCaBinID = bt.BaiTapCaBinID and tb.ThietBiID = kq.ThietBiID and NguoiLxID = {0} " +
-                "ORDER BY ThoiDiemBatDau", NguoiLxID);
+                "WHERE kq.BaiHocCaBinID = bt.BaiTapCaBinID and tb.ThietBiID = kq.ThietBiID and NguoiLxID = @NguoiLxID " +
+                "ORDER BY ThoiDiemBatDau";
 
-            var dt = _db.QueryToDataTable(query);
+            var dt = _db.QueryToDataTable(query, new { NguoiLxID });
 
             List<Result> lst = dt.AsEnumerable().Select(item => new Result
             {
@@ -184,52 +184,49 @@ namespace DrivingCenter.App.DAO
 
         public void UpdateBaiTap(int IdBaiTap, Int64 diemdanhnguoilxId)
         {
-            string query = string.Format("UPDATE DiemDanhNguoiLx SET BaiHocCaBinID = {0} WHERE DiemDanhNguoiLxID = {1}", IdBaiTap, diemdanhnguoilxId);
-            _db.Execute(query);
+            const string query = "UPDATE DiemDanhNguoiLx SET BaiHocCaBinID = @IdBaiTap WHERE DiemDanhNguoiLxID = @Id";
+            _db.Execute(query, new { IdBaiTap, Id = diemdanhnguoilxId });
         }
 
         public void DeleteResultExcer(Int64 DiemdanhnguoilxID)
         {
-            string querydeltediemdanhnguoilx = string.Format("DELETE DiemDanhNguoiLx WHERE DiemDanhNguoiLxID =  {0}", DiemdanhnguoilxID);
-            _db.Execute(querydeltediemdanhnguoilx);
-
-            string querydeleteSK = string.Format("DELETE SuKienHoc WHERE DiemDanhNguoiLxID = {0}", DiemdanhnguoilxID);
-            _db.Execute(querydeleteSK);
+            var p = new { Id = DiemdanhnguoilxID };
+            _db.Execute("DELETE DiemDanhNguoiLx WHERE DiemDanhNguoiLxID = @Id", p);
+            _db.Execute("DELETE SuKienHoc WHERE DiemDanhNguoiLxID = @Id", p);
         }
 
         public void InsertTeacherNew(GiaoVien GV)
         {
-            string query = string.Format("INSERT INTO [dbo].[GiaoVien] " +
+            const string query = "INSERT INTO [dbo].[GiaoVien] " +
                 "([GiaoVienID], [MaGV],[HoTenDem],[TenGV],[NgaySinh],[SoCMT],[HangGPLX],[SuDung]) " +
-                "VALUES " +
-                "('{0}' , '{1}' , N'{2}' , N'{3}', '{4}', '{5}', '{6}' ,'1')", GV.GiaoVienID, GV.MaGV, GV.HoTenDem, GV.TenGV, GV.NgaySinh.ToString("yyyy-MM-dd HH:mm:ss.fff"), GV.SoCMT, GV.HangGPLX);
-            _db.Execute(query);
+                "VALUES (@GiaoVienID, @MaGV, @HoTenDem, @TenGV, @NgaySinh, @SoCMT, @HangGPLX, 1)";
+            _db.Execute(query, new { GV.GiaoVienID, GV.MaGV, GV.HoTenDem, GV.TenGV, GV.NgaySinh, GV.SoCMT, GV.HangGPLX });
         }
 
         public void UpdateGv(int GiaoVienID, string MaDK)
         {
-            string query = string.Format("UPDATE NguoiLX set GiaoVienID = '{0}' where MaDK = '{1}'", GiaoVienID, MaDK);
-            _db.Execute(query);
+            const string query = "UPDATE NguoiLX set GiaoVienID = @GiaoVienID where MaDK = @MaDK";
+            _db.Execute(query, new { GiaoVienID, MaDK });
         }
 
         public string GetLstNguoiLxID(int khoahocID)
         {
-            string query = string.Format("EXEC VNDC_spGetLstNguoiLxID @KhoaHocID = {0}", khoahocID);
-            return _db.QuerySingle<string>(query);
+            const string query = "EXEC VNDC_spGetLstNguoiLxID @KhoaHocID = @KhoaHocID";
+            return _db.QuerySingle<string>(query, new { KhoaHocID = khoahocID });
         }
 
         public void UpdateStatusKhoaHoc(string tenkhoahoc, int loaidaotao, string makhoahoc)
         {
-            string query = string.Format("UPDATE KhoaHoc SET TenKH = '{0}', LoaiDaoTao = '{1}' WHERE MaKH = '{2}'", tenkhoahoc, loaidaotao, makhoahoc);
-            _db.Execute(query);
+            const string query = "UPDATE KhoaHoc SET TenKH = @TenKH, LoaiDaoTao = @LoaiDaoTao WHERE MaKH = @MaKH";
+            _db.Execute(query, new { TenKH = tenkhoahoc, LoaiDaoTao = loaidaotao, MaKH = makhoahoc });
         }
 
         #region Sync GV for Cabin
 
         public List<GvCabin> GetListGvByNameKH(string TenKH)
         {
-            string query = string.Format("select MaDK, GiaoVienID from NguoiLX where TenKH like '%{0}%' ORDER BY GiaoVienID", TenKH);
-            DataTable dt = _db.QueryToDataTable(query);
+            const string query = "select MaDK, GiaoVienID from NguoiLX where TenKH like '%' + @TenKH + '%' ORDER BY GiaoVienID";
+            DataTable dt = _db.QueryToDataTable(query, new { TenKH });
 
             List<GvCabin> lst = dt.AsEnumerable().Select(item => new GvCabin
             {
@@ -278,8 +275,8 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = string.Format("SELECT SUM(TongThoiGianPhien) as  TongThoiGianPhien FROM DiemDanhNguoiLx  WHERE NguoiLxID = {0}", NguoiLxID);
-                return _db.QuerySingle<double>(query);
+                const string query = "SELECT SUM(TongThoiGianPhien) FROM DiemDanhNguoiLx WHERE NguoiLxID = @NguoiLxID";
+                return _db.Scalar<double>(query, new { NguoiLxID });
             }
             catch
             {
@@ -291,8 +288,10 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = string.Format("SELECT MAX(DiemDanhNguoiLxID) FROM DiemDanhNguoiLx WHERE NguoiLxID = {0}", NguoiLxID);
-                return Convert.ToInt64(_db.Equals(query));
+                // Trước đây gọi _db.Equals(query) (so sánh object, không truy vấn) nên luôn trả 0:
+                // mọi bài sao chép đều bắt đầu cùng một thời điểm thay vì nối tiếp nhau
+                const string query = "SELECT MAX(DiemDanhNguoiLxID) FROM DiemDanhNguoiLx WHERE NguoiLxID = @NguoiLxID";
+                return _db.QuerySingle<long?>(query, new { NguoiLxID }) ?? 0;
             }
             catch
             {
@@ -300,12 +299,19 @@ namespace DrivingCenter.App.DAO
             }
         }
 
+        /// <summary>Thời điểm kết thúc của phiên cabin muộn nhất của học viên (null nếu chưa có phiên nào).</summary>
+        public DateTime? GetLastSessionEnd(Int64 NguoiLxID)
+        {
+            const string query = "SELECT MAX(ThoiDiemKetThuc) FROM DiemDanhNguoiLx WHERE NguoiLxID = @NguoiLxID";
+            return _db.QuerySingle<DateTime?>(query, new { NguoiLxID });
+        }
+
         public int GetDayDiemdanhnguoilxByNguoiLxID(Int64 NguoiLxID)
         {
             try
             {
-                string query = string.Format("SELECT DISTINCT MAX(day(ThoiDiemBatDau)) as NgayTap FROM DiemDanhNguoiLx WHERE NguoiLxID = {0}", NguoiLxID);
-                return _db.QuerySingle<int>(query);
+                const string query = "SELECT MAX(day(ThoiDiemBatDau)) FROM DiemDanhNguoiLx WHERE NguoiLxID = @NguoiLxID";
+                return _db.Scalar<int>(query, new { NguoiLxID });
             }
             catch
             {
@@ -315,24 +321,45 @@ namespace DrivingCenter.App.DAO
 
         public DateTime GetTimeOut(Int64 diemdanhnguoilxId, Int64 NguoiLxID)
         {
-            string query = string.Format("select ThoiDiemKetThuc from DiemDanhNguoiLx where DiemDanhNguoiLxID = {0} AND NguoiLxID = {1}", diemdanhnguoilxId, NguoiLxID);
+            const string query = "select ThoiDiemKetThuc from DiemDanhNguoiLx where DiemDanhNguoiLxID = @Id AND NguoiLxID = @NguoiLxID";
 
-            return _db.QuerySingle<DateTime>(query);
+            return _db.QuerySingle<DateTime>(query, new { Id = diemdanhnguoilxId, NguoiLxID });
         }
 
         public int InsertData(Result r, Int64 nguoiLxId, int IdThietBi, int IDKhoaHoc)
         {
+            // Dapper cần tham số có tên: truyền object[] (kiểu cũ của DataProvider) làm các @tham số không được gán
             string query = "VNDC_Insert @IdBaiTap , @NguoiLxID , @IdThietBi , @TimeIn , @ThoiGianPhien , @QuangDuong , @PathVideo , @KhoaHocId";
-            int result =  _db.Execute(query, new object[] { r.BaiHocCaBinID, nguoiLxId, IdThietBi, r.ThoiDiemBatDau, r.TotalSecond, r.QuangDuong, r.PathVideo, IDKhoaHoc });
+            int result = _db.Execute(query, new
+            {
+                IdBaiTap = r.BaiHocCaBinID,
+                NguoiLxID = nguoiLxId,
+                IdThietBi,
+                TimeIn = r.ThoiDiemBatDau,
+                ThoiGianPhien = r.TotalSecond,
+                r.QuangDuong,
+                r.PathVideo,
+                KhoaHocId = IDKhoaHoc
+            });
             return result;
         }
 
         #region Thêm Khóa Học
 
-        public int InsertKhoaHoc(KhoaHoc kh)
+        public int InsertKhoaHoc(KhoaHocCabin kh)
         {
             string query = "spAddKhoaHoc @MaKH , @TenKH , @NgayKG , @MaBC1 , @NgayBG , @NgaySatHach , @HangDaoTao , @NgayDaoTao";
-            int result = _db.Execute(query, new object[] { kh.MaKhoaHoc, kh.TenKhoaHoc, kh.NgayKhaiGiang, kh.MaBC1, kh.NgayBeGiang, kh.NgaySatHach, kh.HangDaoTao, kh.NgayDaoTao });
+            int result = _db.Execute(query, new
+            {
+                MaKH = kh.MaKhoaHoc,
+                TenKH = kh.TenKhoaHoc,
+                NgayKG = kh.NgayKhaiGiang,
+                kh.MaBC1,
+                NgayBG = kh.NgayBeGiang,
+                kh.NgaySatHach,
+                kh.HangDaoTao,
+                kh.NgayDaoTao
+            });
             return result;
         }
 
@@ -340,8 +367,8 @@ namespace DrivingCenter.App.DAO
         {
             try
             {
-                string query = string.Format("SELECT KhoaHocID FROM KhoaHoc WHERE MaKH = '{0}'", MaKH);
-                return _db.QuerySingle<int>(query);
+                const string query = "SELECT KhoaHocID FROM KhoaHoc WHERE MaKH = @MaKH";
+                return _db.QuerySingle<int>(query, new { MaKH });
             }
             catch
             {
@@ -353,27 +380,26 @@ namespace DrivingCenter.App.DAO
         {
             string query = "spAddBaseNguoiLx @KhoaHocID , @TenKH , @MaDK , @HoDemNLX , @TenNLX , @HoVaTen , @NgaySinh , @GioiTinh , @QuocTich , @NoiCT , @SoCMT ,  @NgayCapCMT , @HangDaoTao , @HangGPLX , @Anh , @RFID , @SoTheRFID , @IsRFID ";
 
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@KhoaHocID", SqlDbType.NVarChar) { Value = khoahocId},
-                new SqlParameter("@TenKH", SqlDbType.NVarChar) { Value = tenkhoahoc },
-                new SqlParameter("@MaDK", SqlDbType.NVarChar) { Value = hv.MaDK },
-                new SqlParameter("@HoDemNLX", SqlDbType.NVarChar) { Value = hv.HoTenDem },
-                new SqlParameter("@TenNLX", SqlDbType.NVarChar) { Value = hv.Ten },
-                new SqlParameter("@HoVaTen", SqlDbType.NVarChar) { Value = hv.HoTenHV },
-                new SqlParameter("@NgaySinh", SqlDbType.DateTime) { Value = hv.NgaySinh },
-                new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = hv.GioiTinh },
-                new SqlParameter("@QuocTich", SqlDbType.NVarChar) { Value = hv.QuocTich },
-                new SqlParameter("@NoiCT", SqlDbType.NVarChar) { Value = ""},
-                new SqlParameter("@SoCMT" , SqlDbType.NVarChar) { Value = hv.SoCMT },
-                new SqlParameter("@NgayCapCMT" , SqlDbType.DateTime) { Value = hv.NgayCapCMT },
-                new SqlParameter("@HangDaoTao" , SqlDbType.NVarChar) { Value = hv.HangGPLX },
-                new SqlParameter("@HangGPLX" , SqlDbType.NVarChar) { Value = hv.HangGPLX },
-                new SqlParameter("@Anh" , SqlDbType.VarBinary) { Value = bytesImg },
-                new SqlParameter("@RFID" , SqlDbType.VarChar) { Value = "" },
-                new SqlParameter("@SoTheRFID" , SqlDbType.VarChar) { Value = "" },
-                new SqlParameter("@IsRFID" , SqlDbType.Bit) { Value = 0 }
-            };
+            // Dapper không đọc SqlParameter[]: dùng DynamicParameters (giữ kiểu varbinary cho ảnh, kể cả khi null)
+            var parameters = new Dapper.DynamicParameters();
+            parameters.Add("KhoaHocID", khoahocId.ToString(), DbType.String);
+            parameters.Add("TenKH", tenkhoahoc, DbType.String);
+            parameters.Add("MaDK", hv.MaDK, DbType.String);
+            parameters.Add("HoDemNLX", hv.HoTenDem, DbType.String);
+            parameters.Add("TenNLX", hv.Ten, DbType.String);
+            parameters.Add("HoVaTen", hv.HoTenHV, DbType.String);
+            parameters.Add("NgaySinh", hv.NgaySinh, DbType.DateTime);
+            parameters.Add("GioiTinh", hv.GioiTinh, DbType.String);
+            parameters.Add("QuocTich", hv.QuocTich, DbType.String);
+            parameters.Add("NoiCT", "", DbType.String);
+            parameters.Add("SoCMT", hv.SoCMT, DbType.String);
+            parameters.Add("NgayCapCMT", hv.NgayCapCMT, DbType.DateTime);
+            parameters.Add("HangDaoTao", hv.HangGPLX, DbType.String);
+            parameters.Add("HangGPLX", hv.HangGPLX, DbType.String);
+            parameters.Add("Anh", bytesImg, DbType.Binary);
+            parameters.Add("RFID", "", DbType.AnsiString);
+            parameters.Add("SoTheRFID", "", DbType.AnsiString);
+            parameters.Add("IsRFID", false, DbType.Boolean);
 
             int result = _db.Execute(query, parameters);
 

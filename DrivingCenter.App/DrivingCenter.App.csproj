@@ -1,6 +1,5 @@
 ﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\SixLabors.ImageSharp.3.1.11\build\SixLabors.ImageSharp.props" Condition="Exists('..\packages\SixLabors.ImageSharp.3.1.11\build\SixLabors.ImageSharp.props')" />
-  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -54,7 +53,7 @@
     <UseWinFormsOutOfProcDesigner>False</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Bee.Icon.ico</ApplicationIcon>
+    <ApplicationIcon>favicon_rounded.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>DrivingCenter.App.Program</StartupObject>
@@ -120,12 +119,6 @@
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.Framework.3.3.0\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Enums.NET, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
       <HintPath>..\packages\Enums.NET.5.0.0\lib\net461\Enums.NET.dll</HintPath>
@@ -233,12 +226,6 @@
     </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.EF6, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.119.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.10, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.10\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -408,23 +395,31 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="Z.Dapper.Plus, Version=9.3.2.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Z.Dapper.Plus.9.3.2\lib\net45\Z.Dapper.Plus.dll</HintPath>
-    </Reference>
     <Reference Include="ZstdSharp, Version=0.8.6.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.8.6\lib\net462\ZstdSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constans\AppConstants.cs" />
+    <Compile Include="Common\Constans\HangGplx.cs" />
     <Compile Include="Common\Helper\ToDate.cs" />
     <Compile Include="DAO\AppBee_DAO.cs" />
     <Compile Include="DAO\CabinEco_DAO.cs" />
     <Compile Include="DAO\CabinI2E_DAO.cs" />
-    <Compile Include="DAO\DAT_DAO.cs" />
+    <Compile Include="DAO\DAT\BaoCaoDatDAO.cs" />
+    <Compile Include="DAO\DAT\DatDaoBase.cs" />
+    <Compile Include="DAO\DAT\GiaoVienDatDAO.cs" />
+    <Compile Include="DAO\DAT\HocVienDatDAO.cs" />
+    <Compile Include="DAO\DAT\KhoaHocDatDAO.cs" />
+    <Compile Include="DAO\DAT\PhanCongDAO.cs" />
+    <Compile Include="DAO\DAT\PhienHocDAO.cs" />
+    <Compile Include="DAO\DAT\ThongKeDatDAO.cs" />
+    <Compile Include="DAO\DAT\XeTapLaiDAO.cs" />
+    <Compile Include="Dtos\DAT\XeTapLaiXml.cs" />
     <Compile Include="DAO\GPLX_CDB_CSDT_DAO.cs" />
     <Compile Include="DAO\GPLX_DAO.cs" />
     <Compile Include="DAO\IMG_DAO.cs" />
+    <Compile Include="DAO\CntnSql.cs" />
     <Compile Include="DAO\MySQL_DAO.cs" />
     <Compile Include="DataProvider\DbConnectionFactory.cs" />
     <Compile Include="DataProvider\DbProvider.cs" />
@@ -434,7 +429,7 @@
     <Compile Include="Dtos\Cabin\GiaoVien.cs" />
     <Compile Include="Dtos\Cabin\GvCabin.cs" />
     <Compile Include="Dtos\Cabin\HocVien.cs" />
-    <Compile Include="Dtos\Cabin\KhoaHoc.cs" />
+    <Compile Include="Dtos\Cabin\KhoaHocCabin.cs" />
     <Compile Include="Dtos\Common\Schedule.cs" />
     <Compile Include="Dtos\Cabin\ThongKe.cs" />
     <Compile Include="Dtos\Cabin\Result.cs" />
@@ -443,7 +438,7 @@
     <Compile Include="Dtos\CSDT\LichB11.cs" />
     <Compile Include="Dtos\DAT\ChiTietPhienHoc.cs" />
     <Compile Include="Dtos\DAT\GiaoVienDto.cs" />
-    <Compile Include="Dtos\DAT\KhoaHocDDT.cs" />
+    <Compile Include="Dtos\DAT\KhoaHocNode.cs" />
     <Compile Include="Dtos\DAT\NguoiLxInDAT.cs" />
     <Compile Include="Dtos\DAT\PhienHoc.cs" />
     <Compile Include="Dtos\DAT\SoPhien.cs" />
@@ -454,25 +449,39 @@
     <Compile Include="Dtos\DAT\ViewTongHopHvByKhoa.cs" />
     <Compile Include="Dtos\DAT\XeTapLai.cs" />
     <Compile Include="Dtos\GPLX\HvTotNghiep.cs" />
-    <Compile Include="Dtos\GPLX\KhoaHoc.cs" />
+    <Compile Include="Dtos\GPLX\KhoaHocGplx.cs" />
     <Compile Include="Dtos\GPLX\NguoiLX.cs" />
     <Compile Include="Dtos\GPLX\NguoiLxDto.cs" />
     <Compile Include="Dtos\GPLX\NguoiLXHS_GT.cs" />
     <Compile Include="Dtos\GPLX\NguoiLX_HoSo.cs" />
     <Compile Include="Dtos\GPLX\NguoiLX_HoSo_Update.cs" />
     <Compile Include="Dtos\GPLX\ThiSinh.cs" />
+    <Compile Include="Entities\DAT\KhoaHocDat.cs" />
     <Compile Include="Enums\DatabaseType.cs" />
-    <Compile Include="fAccount.cs">
+    <Compile Include="Enums\ImportAction.cs" />
+    <Compile Include="Enums\StatusKind.cs" />
+    <Compile Include="frmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fAccount.Designer.cs">
-      <DependentUpon>fAccount.cs</DependentUpon>
+    <Compile Include="frmAccount.Designer.cs">
+      <DependentUpon>frmAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="fGhiChu.cs">
+    <Compile Include="frmGhiChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fGhiChu.Designer.cs">
-      <DependentUpon>fGhiChu.cs</DependentUpon>
+    <Compile Include="frmGhiChu.Designer.cs">
+      <DependentUpon>frmGhiChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Network\CabinClientConnection.cs" />
+    <Compile Include="Common\Network\CabinMessage.cs" />
+    <Compile Include="Common\Network\CabinServer.cs" />
+    <Compile Include="Common\Network\CabinSettings.cs" />
+    <Compile Include="Dtos\Cabin\CabinClientInfo.cs" />
+    <Compile Include="frmCabinClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCabinClient.Designer.cs">
+      <DependentUpon>frmCabinClient.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDetailSession.cs">
       <SubType>Form</SubType>
@@ -480,17 +489,23 @@
     <Compile Include="frmDetailSession.Designer.cs">
       <DependentUpon>frmDetailSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKhoaHocDangDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKhoaHocDangDT.Designer.cs">
+      <DependentUpon>frmKhoaHocDangDT.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="fReplication.cs">
+    <Compile Include="frmReplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fReplication.Designer.cs">
-      <DependentUpon>fReplication.cs</DependentUpon>
+    <Compile Include="frmReplication.Designer.cs">
+      <DependentUpon>frmReplication.cs</DependentUpon>
     </Compile>
     <Compile Include="FReport\rptPrintReportCNTN.cs">
       <SubType>Form</SubType>
@@ -533,6 +548,11 @@
     <Compile Include="Common\Helper\CustomToolTip.cs" />
     <Compile Include="Common\Helper\ExportExcelWithName.cs" />
     <Compile Include="Common\Helper\GeoHelper.cs" />
+    <Compile Include="Common\Helper\AppPreferences.cs" />
+    <Compile Include="Common\Helper\ErrorLog.cs" />
+    <Compile Include="Common\Helper\DataRowExtensions.cs" />
+    <Compile Include="Common\Helper\UiTheme.cs" />
+    <Compile Include="Common\Helper\XeTapLaiXmlReader.cs" />
     <Compile Include="Common\Helper\GridHelper.cs" />
     <Compile Include="Common\Helper\ImageExtension.cs" />
     <Compile Include="Common\Helper\ImageToByteArray.cs" />
@@ -617,12 +637,6 @@
     <Compile Include="Report\rptTemTheDAT.Designer.cs">
       <DependentUpon>rptTemTheDAT.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_Detail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Detail.Designer.cs">
-      <DependentUpon>UC_Detail.cs</DependentUpon>
-    </Compile>
     <Compile Include="Uc_HocVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -671,12 +685,6 @@
     <Compile Include="UserControl\Uc_CabinEMC.Designer.cs">
       <DependentUpon>Uc_CabinEMC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UcChild_KhoaHoc.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\UcChild_KhoaHoc.Designer.cs">
-      <DependentUpon>UcChild_KhoaHoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\Uc_DAT.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -719,38 +727,50 @@
     <Compile Include="UserControl\Uc_Print.Designer.cs">
       <DependentUpon>Uc_Print.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\Uc_CabinManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Uc_CabinManager.Designer.cs">
+      <DependentUpon>Uc_CabinManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UcCabinClientCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UcCabinClientCard.Designer.cs">
+      <DependentUpon>UcCabinClientCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Uc_VNDC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl\Uc_VNDC.Designer.cs">
       <DependentUpon>Uc_VNDC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\Uc_XeTapLai.cs">
+    <Compile Include="UserControl\UcChild_ThietBiDAT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\Uc_XeTapLai.Designer.cs">
-      <DependentUpon>Uc_XeTapLai.cs</DependentUpon>
+    <Compile Include="UserControl\UcChild_ThietBiDAT.Designer.cs">
+      <DependentUpon>UcChild_ThietBiDAT.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_DetailStudent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_DetailStudent.Designer.cs">
-      <DependentUpon>UC_DetailStudent.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="fAccount.resx">
-      <DependentUpon>fAccount.cs</DependentUpon>
+    <EmbeddedResource Include="frmAccount.resx">
+      <DependentUpon>frmAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fGhiChu.resx">
-      <DependentUpon>fGhiChu.cs</DependentUpon>
+    <EmbeddedResource Include="frmGhiChu.resx">
+      <DependentUpon>frmGhiChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCabinClient.resx">
+      <DependentUpon>frmCabinClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetailSession.resx">
       <DependentUpon>frmDetailSession.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKhoaHocDangDT.resx">
+      <DependentUpon>frmKhoaHocDangDT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fReplication.resx">
-      <DependentUpon>fReplication.cs</DependentUpon>
+    <EmbeddedResource Include="frmReplication.resx">
+      <DependentUpon>frmReplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FReport\rptPrintReportCNTN.resx">
       <DependentUpon>rptPrintReportCNTN.cs</DependentUpon>
@@ -824,9 +844,6 @@
     <EmbeddedResource Include="Report\rptTemTheDAT.resx">
       <DependentUpon>rptTemTheDAT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_Detail.resx">
-      <DependentUpon>UC_Detail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Uc_HocVien.resx">
       <DependentUpon>Uc_HocVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -851,9 +868,6 @@
     <EmbeddedResource Include="UserControl\Uc_CabinEMC.resx">
       <DependentUpon>Uc_CabinEMC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UcChild_KhoaHoc.resx">
-      <DependentUpon>UcChild_KhoaHoc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_DAT.resx">
       <DependentUpon>Uc_DAT.cs</DependentUpon>
     </EmbeddedResource>
@@ -875,14 +889,17 @@
     <EmbeddedResource Include="UserControl\Uc_Print.resx">
       <DependentUpon>Uc_Print.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Uc_CabinManager.resx">
+      <DependentUpon>Uc_CabinManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UcCabinClientCard.resx">
+      <DependentUpon>UcCabinClientCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Uc_VNDC.resx">
       <DependentUpon>Uc_VNDC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\Uc_XeTapLai.resx">
-      <DependentUpon>Uc_XeTapLai.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_DetailStudent.resx">
-      <DependentUpon>UC_DetailStudent.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UcChild_ThietBiDAT.resx">
+      <DependentUpon>UcChild_ThietBiDAT.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -902,6 +919,7 @@
   <ItemGroup>
     <None Include="Resources\Null.jpg" />
     <Content Include="Bee.Icon.ico" />
+    <Content Include="favicon_rounded.ico" />
     <Content Include="Script\REMOTE_SQL.txt" />
     <Content Include="Script\AddProvinceBoundaryUnion.txt" />
     <Content Include="Script\VNDC_spGetLstHvByKhoaHoc.txt" />
@@ -925,15 +943,12 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
     <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
     <Error Condition="!Exists('..\packages\SixLabors.ImageSharp.3.1.11\build\SixLabors.ImageSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SixLabors.ImageSharp.3.1.11\build\SixLabors.ImageSharp.props'))" />
     <Error Condition="!Exists('..\packages\Magick.NET-Q8-AnyCPU.14.9.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Magick.NET-Q8-AnyCPU.14.9.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets'))" />
   </Target>
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
-  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
   <Import Project="..\packages\Magick.NET-Q8-AnyCPU.14.9.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets" Condition="Exists('..\packages\Magick.NET-Q8-AnyCPU.14.9.1\build\netstandard20\Magick.NET-Q8-AnyCPU.targets')" />
